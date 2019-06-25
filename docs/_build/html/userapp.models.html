@@ -40,7 +40,7 @@
 <span id="userapp-models-user-module"></span><h2>userapp.models.user module<a class="headerlink" href="#module-userapp.models.user" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="userapp.models.user.User">
-<em class="property">class </em><code class="descclassname">userapp.models.user.</code><code class="descname">User</code><span class="sig-paren">(</span><em>password</em>, <em>last_login</em>, <em>id</em>, <em>email</em>, <em>active</em>, <em>staff</em>, <em>admin</em>, <em>first_name</em>, <em>middle_name</em>, <em>last_name</em>, <em>image</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.User" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">userapp.models.user.</code><code class="descname">User</code><span class="sig-paren">(</span><em>password</em>, <em>last_login</em>, <em>id</em>, <em>email</em>, <em>active</em>, <em>staff</em>, <em>admin</em>, <em>first_name</em>, <em>middle_name</em>, <em>last_name</em>, <em>image</em>, <em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.base_user.AbstractBaseUser</span></code></p>
 <dl class="exception">
 <dt id="userapp.models.user.User.DoesNotExist">
@@ -230,6 +230,13 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="userapp.models.user.User.token">
+<code class="descname">token</code><a class="headerlink" href="#userapp.models.user.User.token" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="userapp.models.user.User.update_password">
 <code class="descname">update_password</code><em class="property"> = True</em><a class="headerlink" href="#userapp.models.user.User.update_password" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -285,6 +292,12 @@ object the first time, the query is executed.</p>
 
 
 <h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html">View all Appser and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#view-all-patients-and-register">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#resetpassword">ResetPassword</a></li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>

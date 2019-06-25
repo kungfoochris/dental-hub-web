@@ -23,7 +23,7 @@ class Patient(Address):
 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	first_name = models.CharField(max_length=60)
 	last_name = models.CharField(max_length=60)
-	middle_name = models.CharField(max_length=60)
+	middle_name = models.CharField(max_length=60,blank=True)
 	gender = models.CharField(choices=REQUEST_CHOICES,max_length=30)
 	dob = models.DateField(_("date of birth"),null=True)
 	phone = models.CharField(_("phone number"),max_length=17,unique=True)

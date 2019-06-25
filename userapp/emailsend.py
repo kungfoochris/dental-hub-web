@@ -5,12 +5,10 @@ from django.core.mail import EmailMultiAlternatives
 from celery import shared_task
 
 # @shared_task
-def emailsend(user_id,password):
+def emailsend(user_id,text_content,template_name,password):
 	try:
 		user=User.objects.get(id = user_id)
 		from_email = settings.DEFAULT_FROM_EMAIL
-		text_content = 'Account is successful created'
-		template_name = "email/activation.html"
 		subject = 'Dental_Alert'
 		recipients = [user.email]
 		context = {

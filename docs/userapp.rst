@@ -68,3 +68,51 @@ POST:
 - date : autofield()
 - latitude: DecimalField(required)
 - longitude: DecimalField(required)
+
+
+
+
+
+===============
+ForgetPassword
+===============
+1. **URL:** `ForgetPassword <http://localhost/api/v1/users/forgetpassword>`_
+::
+
+    http://localhost/api/v1/users/forgetpassword
+
+
+2. **METHOD:**
+POST:
+::
+
+- This Method is used to request for forgetpassword:
+
+**Body_Content**
+
+- email: Email(required)
+
+
+
+================
+ResetPassword
+================
+1. **URL:** `Resetpassword <http://localhost/api/v1/users/resetpassword>`_
+::
+
+    http://localhost/api/v1/users/resetpassword
+
+
+2. **METHOD:**
+POST:
+::
+
+- This Method is used for reset a password:
+
+**Body_Content**
+
+- token: String(required)
+- password: String(required)
+- confirm_password: String(required)
+
+

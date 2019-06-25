@@ -92,6 +92,40 @@ male, female. other</li>
 <li>longitude: DecimalField(required)</li>
 </ul>
 </div>
+<div class="section" id="forgetpassword">
+<h1>ForgetPassword<a class="headerlink" href="#forgetpassword" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/users/forgetpassword">ForgetPassword</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">forgetpassword</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">request</span> <span class="k">for</span> <span class="n">forgetpassword</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><strong>Body_Content</strong></p>
+<ul class="simple">
+<li>email: Email(required)</li>
+</ul>
+</div>
+<div class="section" id="resetpassword">
+<h1>ResetPassword<a class="headerlink" href="#resetpassword" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/users/resetpassword">Resetpassword</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">resetpassword</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">reset</span> <span class="n">a</span> <span class="n">password</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><strong>Body_Content</strong></p>
+<ul class="simple">
+<li>token: String(required)</li>
+<li>password: String(required)</li>
+<li>confirm_password: String(required)</li>
+</ul>
+</div>
 
 
           </div>
@@ -114,6 +148,8 @@ male, female. other</li>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">View all Appser and Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#view-all-patients-and-register">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#forgetpassword">ForgetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#resetpassword">ResetPassword</a></li>
 </ul>
 
 <div class="relations">

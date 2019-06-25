@@ -43,6 +43,7 @@ class User(AbstractBaseUser):
     middle_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100)
     image = models.FileField(upload_to='profile')
+    token = models.CharField(max_length=6,null=True)
     USERNAME_FIELD = 'email'
     update_password=True
 
