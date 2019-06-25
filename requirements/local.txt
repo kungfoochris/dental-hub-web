@@ -1,0 +1,26 @@
+-r ./base.txt
+
+# Testing
+# ------------------------------------------------------------------------------
+pytest==3.7.4  # https://github.com/pytest-dev/pytest
+pytest-cov==2.6.0
+pytest-django==3.4.2
+Faker==0.8.8
+memory-profiler==0.54.0
+mixer==6.0.1
+pytest-factoryboy==2.0.1
+
+# Code quality
+# ------------------------------------------------------------------------------
+flake8==3.5.0  # https://github.com/PyCQA/flake8
+coverage==4.5.1  # https://github.com/nedbat/coveragepy
+pylint
+
+django-debug-toolbar==1.10  # https://github.com/jazzband/django-debug-toolbar
+
+#Documentation
+Sphinx==1.7.9
+
+django-seed
+
+django_extensions==2.1.3

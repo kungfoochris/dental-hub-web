@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>patientapp.migrations package &#8212; Dental Hub 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="patientapp-migrations-package">
+<h1>patientapp.migrations package<a class="headerlink" href="#patientapp-migrations-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-patientapp.migrations.0001_initial">
+<span id="patientapp-migrations-0001-initial-module"></span><h2>patientapp.migrations.0001_initial module<a class="headerlink" href="#module-patientapp.migrations.0001_initial" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="patientapp.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="descclassname">patientapp.migrations.0001_initial.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="patientapp.migrations.0001_initial.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.migrations.0001_initial.Migration.initial">
+<code class="descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.initial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.migrations.0001_initial.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Patient', fields=[('id', &lt;django.db.models.fields.CharField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('gender', &lt;django.db.models.fields.CharField&gt;), ('phone', &lt;django.db.models.fields.CharField&gt;), ('education', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-patientapp.migrations.0002_patient_author">
+<span id="patientapp-migrations-0002-patient-author-module"></span><h2>patientapp.migrations.0002_patient_author module<a class="headerlink" href="#module-patientapp.migrations.0002_patient_author" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="patientapp.migrations.0002_patient_author.Migration">
+<em class="property">class </em><code class="descclassname">patientapp.migrations.0002_patient_author.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0002_patient_author.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="patientapp.migrations.0002_patient_author.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('userapp', '__first__'), ('patientapp', '0001_initial')]</em><a class="headerlink" href="#patientapp.migrations.0002_patient_author.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.migrations.0002_patient_author.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='patient', name='author', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0002_patient_author.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-patientapp.migrations.0003_auto_20190625_0602">
+<span id="patientapp-migrations-0003-auto-20190625-0602-module"></span><h2>patientapp.migrations.0003_auto_20190625_0602 module<a class="headerlink" href="#module-patientapp.migrations.0003_auto_20190625_0602" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="patientapp.migrations.0003_auto_20190625_0602.Migration">
+<em class="property">class </em><code class="descclassname">patientapp.migrations.0003_auto_20190625_0602.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0003_auto_20190625_0602.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="patientapp.migrations.0003_auto_20190625_0602.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('patientapp', '0002_patient_author')]</em><a class="headerlink" href="#patientapp.migrations.0003_auto_20190625_0602.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.migrations.0003_auto_20190625_0602.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='patient', name='city', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='patient', name='country', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='patient', name='dob', field=&lt;django.db.models.fields.DateField&gt;&gt;, &lt;AddField  model_name='patient', name='state', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0003_auto_20190625_0602.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-patientapp.migrations.0004_auto_20190625_0612">
+<span id="patientapp-migrations-0004-auto-20190625-0612-module"></span><h2>patientapp.migrations.0004_auto_20190625_0612 module<a class="headerlink" href="#module-patientapp.migrations.0004_auto_20190625_0612" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="patientapp.migrations.0004_auto_20190625_0612.Migration">
+<em class="property">class </em><code class="descclassname">patientapp.migrations.0004_auto_20190625_0612.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0004_auto_20190625_0612.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="patientapp.migrations.0004_auto_20190625_0612.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('patientapp', '0003_auto_20190625_0602')]</em><a class="headerlink" href="#patientapp.migrations.0004_auto_20190625_0612.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.migrations.0004_auto_20190625_0612.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='patient', name='date', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;, &lt;AddField  model_name='patient', name='latitude', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AddField  model_name='patient', name='longitude', field=&lt;django.db.models.fields.DecimalField&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0004_auto_20190625_0612.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-patientapp.migrations.0005_auto_20190625_0614">
+<span id="patientapp-migrations-0005-auto-20190625-0614-module"></span><h2>patientapp.migrations.0005_auto_20190625_0614 module<a class="headerlink" href="#module-patientapp.migrations.0005_auto_20190625_0614" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="patientapp.migrations.0005_auto_20190625_0614.Migration">
+<em class="property">class </em><code class="descclassname">patientapp.migrations.0005_auto_20190625_0614.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0005_auto_20190625_0614.Migration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="patientapp.migrations.0005_auto_20190625_0614.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('patientapp', '0004_auto_20190625_0612')]</em><a class="headerlink" href="#patientapp.migrations.0005_auto_20190625_0614.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.migrations.0005_auto_20190625_0614.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='patient', name='date', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0005_auto_20190625_0614.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-patientapp.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-patientapp.migrations" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Dental Hub</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Abhiyantrik Technology.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/patientapp.migrations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
