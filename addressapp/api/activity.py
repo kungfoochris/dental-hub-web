@@ -5,9 +5,9 @@ from rest_framework.response import Response
 from rest_framework import permissions
 
 from userapp.models import User
-from patientapp.models import Patient
 
-from patientapp.serializers.patient import PatientSerializer
+from addressapp.serializers.activity import ActivityAreaSerializer
+from addressapp.models import ActivityArea
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
@@ -18,23 +18,20 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
         return request.user and request.user.is_authenticated
 
 
-class PatientListView(APIView):
+class ActivityAreaListView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = PatientSerializer
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ('first_name', 'last_name','full_name')
+    serializer_class = ActivityAreaSerializer
 
     def get(self, request, format=None):
-        patient_obj = Patient.objects.all()
-        serializer = PatientSerializer(patient_obj, many=True, \
+        activityarea_obj = ActivityArea.objects.all()
+        serializer = ActivityAreaSerializer(activityarea_obj, many=True, \
             context={'request': request})
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        serializer = PatientSerializer(data=request.data,\
+        serializer = ActivityAreaSerializer(data=request.data,\
             context={'request': request})
-        print(serializer)
         if serializer.is_valid():
-            serializer.save(author=request.user)
+            serializer.save()
             return Response(serializer.data,status=200)
         return Response({'message':serializer.errors}, status=400)     

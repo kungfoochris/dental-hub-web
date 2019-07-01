@@ -5,7 +5,7 @@ from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateVie
 from encounterapp.api.encounter import EncounterView, EncounterUpdateView
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
-from encounterapp.api.encounter_type import EncounterTypeView
+
 
 
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -22,6 +22,5 @@ urlpatterns = [
 	path('encounter/<encounter_id>/refer/update', PatientReferUpdateView.as_view()),
 	path('encounter/<encounter_id>/screeing', PatientScreeingView.as_view()),
 	path('encounter/<encounter_id>/screeing/update', PatientScreeingUpdateView.as_view()),
-	path('encounter/type', EncounterTypeView.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)

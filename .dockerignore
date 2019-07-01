@@ -1,5 +1,4 @@
 /media
 /tmp
-/htmlcov
 *.pyc
 .git

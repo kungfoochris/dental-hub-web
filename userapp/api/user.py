@@ -15,11 +15,13 @@ PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer, PasswordChange
 from userapp.emailsend import emailsend
 from random import randint
 
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
 class IsPostOrIsAuthenticated(permissions.BasePermission):        
 
     def has_permission(self, request, view):
-        if request.method == 'POST':
-            return True
         return request.user and request.user.is_authenticated
 
 
@@ -33,7 +35,8 @@ class UserListView(APIView):
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
             return Response(serializer.data)
-        return Response({"message":"Access is denied."},status=403)
+        logger.error("Access is denied.")
+        return Response({"message":"Access is denied."},status=400)
 
     def post(self, request, format=None):
         serializer = UserSerializer(data=request.data,\
@@ -53,9 +56,11 @@ class UserListView(APIView):
                     template_name = "email/activation.html"
                     emailsend(user_obj.id,text_content,template_name,password)
                     return Response({"message":"User create successfully."},status=200)
-                return Response({'message':serializer.errors}, status=400)     
+                return Response({'message':serializer.errors}, status=400)
+            logger.error("This email already exists.")     
             return Response({'message':'This email already exists.'},status=400)
-        return Response({"message":"Access is denied."},status=403)
+        logger.error("Access is denied.")
+        return Response({"message":"Access is denied."},status=400)
 
 
 class UserForgetPassword(APIView):
@@ -149,7 +154,4 @@ class UserChangepassword(APIView):
                     return Response({'message':'password change successfully'},status=200)
                 return Response({'message':'old password do not match'},status=400)
             return Response({'message':'Your new password and confirmation password do not match.'},status=400)
-        return Response({'message':serializer.errors}, status=400)
-            
-       
-
+        return Response({'message':serializer.errors}, status=400)   
