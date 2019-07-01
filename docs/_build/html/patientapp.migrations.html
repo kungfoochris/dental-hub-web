@@ -44,7 +44,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
 <dl class="attribute">
 <dt id="patientapp.migrations.0001_initial.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dependencies</code><em class="property"> = [('userapp', '__first__')]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -54,87 +54,23 @@
 
 <dl class="attribute">
 <dt id="patientapp.migrations.0001_initial.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Patient', fields=[('id', &lt;django.db.models.fields.CharField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('gender', &lt;django.db.models.fields.CharField&gt;), ('phone', &lt;django.db.models.fields.CharField&gt;), ('education', &lt;django.db.models.fields.CharField&gt;)]&gt;]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Patient', fields=[('city', &lt;django.db.models.fields.CharField&gt;), ('state', &lt;django.db.models.fields.CharField&gt;), ('country', &lt;django.db.models.fields.CharField&gt;), ('id', &lt;django.db.models.fields.CharField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('gender', &lt;django.db.models.fields.CharField&gt;), ('dob', &lt;django.db.models.fields.DateField&gt;), ('phone', &lt;django.db.models.fields.CharField&gt;), ('education', &lt;django.db.models.fields.CharField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('latitude', &lt;django.db.models.fields.DecimalField&gt;), ('longitude', &lt;django.db.models.fields.DecimalField&gt;), ('author', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'abstract': False}&gt;]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-patientapp.migrations.0002_patient_author">
-<span id="patientapp-migrations-0002-patient-author-module"></span><h2>patientapp.migrations.0002_patient_author module<a class="headerlink" href="#module-patientapp.migrations.0002_patient_author" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="patientapp.migrations.0002_patient_author.Migration">
-<em class="property">class </em><code class="descclassname">patientapp.migrations.0002_patient_author.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0002_patient_author.Migration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
-<dl class="attribute">
-<dt id="patientapp.migrations.0002_patient_author.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = [('userapp', '__first__'), ('patientapp', '0001_initial')]</em><a class="headerlink" href="#patientapp.migrations.0002_patient_author.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="patientapp.migrations.0002_patient_author.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='patient', name='author', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0002_patient_author.Migration.operations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="patientapp-migrations-0002-patient-author-module">
+<h2>patientapp.migrations.0002_patient_author module<a class="headerlink" href="#patientapp-migrations-0002-patient-author-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-patientapp.migrations.0003_auto_20190625_0602">
-<span id="patientapp-migrations-0003-auto-20190625-0602-module"></span><h2>patientapp.migrations.0003_auto_20190625_0602 module<a class="headerlink" href="#module-patientapp.migrations.0003_auto_20190625_0602" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="patientapp.migrations.0003_auto_20190625_0602.Migration">
-<em class="property">class </em><code class="descclassname">patientapp.migrations.0003_auto_20190625_0602.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0003_auto_20190625_0602.Migration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
-<dl class="attribute">
-<dt id="patientapp.migrations.0003_auto_20190625_0602.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = [('patientapp', '0002_patient_author')]</em><a class="headerlink" href="#patientapp.migrations.0003_auto_20190625_0602.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="patientapp.migrations.0003_auto_20190625_0602.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='patient', name='city', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='patient', name='country', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='patient', name='dob', field=&lt;django.db.models.fields.DateField&gt;&gt;, &lt;AddField  model_name='patient', name='state', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0003_auto_20190625_0602.Migration.operations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="patientapp-migrations-0003-auto-20190625-0602-module">
+<h2>patientapp.migrations.0003_auto_20190625_0602 module<a class="headerlink" href="#patientapp-migrations-0003-auto-20190625-0602-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-patientapp.migrations.0004_auto_20190625_0612">
-<span id="patientapp-migrations-0004-auto-20190625-0612-module"></span><h2>patientapp.migrations.0004_auto_20190625_0612 module<a class="headerlink" href="#module-patientapp.migrations.0004_auto_20190625_0612" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="patientapp.migrations.0004_auto_20190625_0612.Migration">
-<em class="property">class </em><code class="descclassname">patientapp.migrations.0004_auto_20190625_0612.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0004_auto_20190625_0612.Migration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
-<dl class="attribute">
-<dt id="patientapp.migrations.0004_auto_20190625_0612.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = [('patientapp', '0003_auto_20190625_0602')]</em><a class="headerlink" href="#patientapp.migrations.0004_auto_20190625_0612.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="patientapp.migrations.0004_auto_20190625_0612.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='patient', name='date', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;, &lt;AddField  model_name='patient', name='latitude', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AddField  model_name='patient', name='longitude', field=&lt;django.db.models.fields.DecimalField&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0004_auto_20190625_0612.Migration.operations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="patientapp-migrations-0004-auto-20190625-0612-module">
+<h2>patientapp.migrations.0004_auto_20190625_0612 module<a class="headerlink" href="#patientapp-migrations-0004-auto-20190625-0612-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-patientapp.migrations.0005_auto_20190625_0614">
-<span id="patientapp-migrations-0005-auto-20190625-0614-module"></span><h2>patientapp.migrations.0005_auto_20190625_0614 module<a class="headerlink" href="#module-patientapp.migrations.0005_auto_20190625_0614" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="patientapp.migrations.0005_auto_20190625_0614.Migration">
-<em class="property">class </em><code class="descclassname">patientapp.migrations.0005_auto_20190625_0614.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.migrations.0005_auto_20190625_0614.Migration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
-<dl class="attribute">
-<dt id="patientapp.migrations.0005_auto_20190625_0614.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = [('patientapp', '0004_auto_20190625_0612')]</em><a class="headerlink" href="#patientapp.migrations.0005_auto_20190625_0614.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="patientapp.migrations.0005_auto_20190625_0614.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='patient', name='date', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;]</em><a class="headerlink" href="#patientapp.migrations.0005_auto_20190625_0614.Migration.operations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="patientapp-migrations-0005-auto-20190625-0614-module">
+<h2>patientapp.migrations.0005_auto_20190625_0614 module<a class="headerlink" href="#patientapp-migrations-0005-auto-20190625-0614-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-patientapp.migrations">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-patientapp.migrations" title="Permalink to this headline">¶</a></h2>
@@ -161,8 +97,16 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html">View all Appser and Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userapp.html#view-all-patients-and-register">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#forgetpassword">ForgetPassword</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#resetpassword">ResetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#profile">Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#updateappuser">UpdateAppuser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#changepassword">ChangePassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patientapp.html">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html">Encounter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-history">Encounter History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 </ul>
 
 <div class="relations">

@@ -19,6 +19,8 @@ POST:
 
 - This method is used to register a appuser:
 
+    
+
     **Body_Content**
 - first_name: string(required)
 - last_name: string(required)
@@ -26,51 +28,6 @@ POST:
 - email: EmailField(required)
 - image: ImageField(required)
 - password:CharField(required)
-
-
-
-
-
-
-
-
-==============================
-View all Patients and Register
-==============================
-
-1. **URL:** `View all Patients and Register <http://localhost/api/v1/patients>`_
-::
-
-    http://localhost/api/v1/patients
-
-2. **METHOD:**
-GET:
-::
-
-    - This method list all the patients:
-
-3. **METHOD:**
-POST:
-::
-
-- This method is used to register a patients:
-
-    **Body_Content**
-- first_name: string(required)
-- last_name: string(required)
-- middle_name: string()
-- gender: choicefield(required)
-  male, female. other
-- dob(date of birth): DateTimeField(required)
-- phone(phone number):CharField(required)
-- education : Charfield(required)
-- author : ForeignRelationship()
-- date : autofield()
-- latitude: DecimalField(required)
-- longitude: DecimalField(required)
-
-
-
 
 
 ===============
@@ -114,5 +71,68 @@ POST:
 - token: String(required)
 - password: String(required)
 - confirm_password: String(required)
+
+
+
+=========
+Profile
+=========
+
+1. **URL:** `profile of user <http://localhost/api/v1/profile>`_
+::
+
+    http://localhost/api/v1/profile
+
+2. **METHOD:**
+GET:
+::
+
+    - This method list the profilr of user:
+
+
+==============
+UpdateAppuser
+==============
+
+1. **URL:** `update user profile <http://localhost/api/v1/profile/update>`_
+::
+
+    http://localhost/api/v1/profile/update
+
+
+2. **METHOD:**
+POST:
+::
+
+- This method is used to update a profile of user:
+
+    **Body_Content**
+- image: ImageField(required)
+
+
+
+
+===============
+ChangePassword
+===============
+
+1. **URL:** `View all Appuser and Register <http://localhost/api/v1/users>`_
+::
+
+    http://localhost/api/v1/users/changepassword
+
+
+3. **METHOD:**
+POST:
+::
+
+- This method is used to change a password:
+
+    **Body_Content**
+- old_password: string(required)
+- new_password: string(required)
+- confirm_password: string(required)
+
+
 
 

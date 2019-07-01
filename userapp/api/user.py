@@ -11,7 +11,7 @@ from userapp.models import User
 
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
-PasswordResetSerializer
+PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer, PasswordChangeSerializer
 from userapp.emailsend import emailsend
 from random import randint
 
@@ -95,3 +95,61 @@ class UserResetPassword(APIView):
                 return Response({'message':'Token is expired'},status=400) 
             return Response({'message':serializer.errors}, status=400)
         return Response({'message':'Your new password and confirmation password do not match.'},status=400)
+
+
+
+
+class ProfileListView(APIView):
+    serializer_class = ProfileSerializer
+    permission_classes = (IsPostOrIsAuthenticated,)
+    def get(self, request,format=None):
+        user_obj = User.objects.get(id=request.user.id)
+        serializers = ProfileSerializer(user_obj, many=False,\
+            context={'request': request})
+        return Response(serializers.data,status=200)
+
+class UpdateUserView(APIView):
+    serializer_class = UpdateUserSerializer
+    permission_classes = (IsPostOrIsAuthenticated,)
+    def get(self, request,format=None):
+            user = User.objects.get(pk=request.user.id)
+            serializer = UpdateUserSerializer(user, \
+                context={'request': request})
+            return Response(serializer.data,status=200)
+
+    def put(self, request,format=None):
+        user_obj = User.objects.get(id = request.user.id)
+        serializer = UpdateUserSerializer(user_obj,\
+         data=request.data,context={'request': request}, partial=True)
+        if serializer.is_valid():
+            user_obj = User.objects.get(id = request.user.id)
+            user_obj.image = serializer.validated_data['image']
+            user_obj.update_password = False
+            user_obj.save()
+            return Response({"message":"Update successful"},status=200)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserChangepassword(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = PasswordChangeSerializer
+    def post(self, request, format=None):
+        serializer = PasswordChangeSerializer(data=request.data,\
+            context={'request': request})
+        if serializer.is_valid():
+            old_password = serializer.validated_data['old_password']
+            new_password = serializer.validated_data['new_password']
+            confirm_password = serializer.validated_data['confirm_password']
+            if new_password == confirm_password:
+                user_obj=User.objects.get(id=request.user.id)
+                user = authenticate(email=user_obj.email, password=old_password)
+                if user:
+                    dj_login(request, user)
+                    user_obj.password=confirm_password
+                    user_obj.save()
+                    return Response({'message':'password change successfully'},status=200)
+                return Response({'message':'old password do not match'},status=400)
+            return Response({'message':'Your new password and confirmation password do not match.'},status=400)
+        return Response({'message':serializer.errors}, status=400)
+            
+       
+

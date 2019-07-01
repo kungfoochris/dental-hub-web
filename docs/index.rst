@@ -12,6 +12,8 @@ Welcome to Dental Hub's documentation!
 
 
    userapp
+   patientapp
+   encounterapp
 
 Indices and tables
 ==================

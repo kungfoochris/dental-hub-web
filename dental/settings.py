@@ -63,6 +63,7 @@ DEV_APPS = [
     "userapp",
     "patientapp",
     "addressapp",
+    "encounterapp",
     ]
 
 INSTALLED_APPS = INTERNAL_APPS + THIRD_PARTY_APPS + DEV_APPS
@@ -154,7 +155,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 REST_FRAMEWORK = {
@@ -186,6 +187,9 @@ JWT_AUTH = {
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join((BASE_DIR),"media")
 
 DOCS_URL = '/docs/'
 DOCS_ROOT = os.path.join((BASE_DIR),"docs","_build","html")

@@ -1,46 +1,34 @@
-patientapp package
-==================
+==============================
+View all Patients and Register
+==============================
 
-Subpackages
------------
+1. **URL:** `View all Patients and Register <http://localhost/api/v1/patients>`_
+::
 
-.. toctree::
+    http://localhost/api/v1/patients
 
-    patientapp.migrations
-    patientapp.models
+2. **METHOD:**
+GET:
+::
 
-Submodules
-----------
+    - This method list all the patients:
 
-patientapp.admin module
------------------------
+3. **METHOD:**
+POST:
+::
 
-.. automodule:: patientapp.admin
-    :members:
-    :undoc-members:
-    :show-inheritance:
+- This method is used to register a patients:
 
-patientapp.apiurls module
--------------------------
-
-.. automodule:: patientapp.apiurls
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-patientapp.apps module
-----------------------
-
-.. automodule:: patientapp.apps
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: patientapp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    **Body_Content**
+- first_name: string(required)
+- last_name: string(required)
+- middle_name: string()
+- gender: choicefield(required)
+  male, female. other
+- dob(date of birth): DateTimeField(required)
+- phone(phone number):CharField(required)
+- education : Charfield(required)
+- author : ForeignRelationship()
+- date : autofield()
+- latitude: DecimalField(required)
+- longitude: DecimalField(required)

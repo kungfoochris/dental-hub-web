@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from userapp.models import User
 from addressapp.models import Address
+from datetime import date 
+
 
 REQUEST_CHOICES = (
     ("male", _("Male")),
@@ -25,7 +27,8 @@ class Patient(Address):
 	last_name = models.CharField(max_length=60)
 	middle_name = models.CharField(max_length=60,blank=True)
 	gender = models.CharField(choices=REQUEST_CHOICES,max_length=30)
-	dob = models.DateField(_("date of birth"),null=True)
+	dob = models.DateField(_("date of birth"))
+	age = models.PositiveIntegerField(editable=False,null=True)
 	phone = models.CharField(_("phone number"),max_length=17,unique=True)
 	education = models.CharField(_("education level"),max_length=255)
 	author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='author_obj',null=True)
@@ -33,6 +36,14 @@ class Patient(Address):
 	latitude = models.DecimalField(help_text='author latitude',max_digits=12, decimal_places=8,default=12)
 	longitude = models.DecimalField(help_text='author longitude',max_digits=12, decimal_places=8,default=12)
 
+
+	def save(self, *args, **kwargs):
+		today = date.today()
+		dob = self.dob
+		age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+		self.age=age
+		print(age)
+		super(Patient, self).save(*args, **kwargs)
 
 	@property
 	def full_name(self):

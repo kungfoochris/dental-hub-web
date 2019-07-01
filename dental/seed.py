@@ -10,8 +10,12 @@ from mixer.backend.django  import mixer
 fake = Faker()
 
 def seed(request):
-	for i in range(1,10):
-		user=mixer.blend(User)
-		mixer.blend(Patient)
+	try:
+		User.objects.create_superuser(email='admin@gmail.com',password='iam100good')
+		print("create superuser")
+	except:
+		for i in range(1,10):
+			user=mixer.blend(User)
+			mixer.blend(Patient)
 	return HttpResponse("it works")
 

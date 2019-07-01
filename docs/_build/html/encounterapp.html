@@ -1,0 +1,263 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Encounter &#8212; Dental Hub 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="View all Patients and Register" href="patientapp.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="encounter">
+<h1>Encounter<a class="headerlink" href="#encounter" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span><span class="o">/&lt;</span><span class="n">patient_id</span><span class="o">&gt;/</span><span class="n">encounter</span>
+<span class="n">Put</span> <span class="p">:</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span><span class="o">/&lt;</span><span class="n">patient_id</span><span class="o">&gt;/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="n">patient_id</span><span class="p">:</span> <span class="n">CharField</span> <span class="p">(</span><span class="n">patient_id</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">encounter_id</span><span class="p">:</span><span class="n">CharField</span> <span class="p">(</span><span class="n">encounter_id</span> <span class="n">ad</span> <span class="n">a</span> <span class="n">parameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">encounter</span> <span class="n">patient</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>3. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">encounter</span> <span class="k">for</span> <span class="n">patient</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><strong>Body_Content</strong></p>
+<ul class="simple">
+<li>encounter_type: ChoiceField(required)</li>
+</ul>
+<p>choice field are (screeing,pain,check,treatment)</p>
+<p>4. <strong>Put:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">updating</span> <span class="n">a</span> <span class="n">encounter</span> <span class="k">for</span> <span class="n">patient</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encounter-history">
+<h1>Encounter History<a class="headerlink" href="#encounter-history" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">history</span>
+<span class="n">Put</span><span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">history</span><span class="o">/</span><span class="n">update</span>
+
+<span class="o">-</span> <span class="n">encounter_id</span><span class="p">:</span> <span class="n">CharField</span><span class="p">(</span><span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">encounter</span> <span class="n">history</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>3. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">add</span> <span class="n">a</span> <span class="n">encounter</span> <span class="n">of</span> <span class="n">history</span><span class="p">:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><strong>Body_Content</strong></div></blockquote>
+<ul class="simple">
+<li>bleeding: BooleanField()</li>
+<li>diabete: BooleanField()</li>
+<li>fever: BooleanField()</li>
+<li>liver: BooleanField()</li>
+<li>seizures:BooleanField()</li>
+<li>hepatitis: BooleanField()</li>
+<li>hiv:BooleanField()</li>
+<li>allergic:BooleanField()</li>
+<li>other: CharField()</li>
+<li>medication:CharField()</li>
+<li>no_medication:BooleanField()</li>
+</ul>
+<p>4. <strong>METHOD:</strong>
+PUT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">update</span> <span class="n">the</span> <span class="n">encounter</span> <span class="n">history</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encounter-refer">
+<h1>Encounter Refer<a class="headerlink" href="#encounter-refer" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;</span><span class="n">refer</span>
+<span class="n">Put</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;</span><span class="n">refer</span><span class="o">/</span><span class="n">update</span>
+
+<span class="o">-</span> <span class="n">encounter_id</span><span class="p">:</span> <span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="p">)</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">encounter</span> <span class="n">refer</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>3. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">add</span> <span class="n">a</span> <span class="n">refer</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><strong>Body_Content</strong></p>
+<ul class="simple">
+<li>no_referal: BooleanField()</li>
+<li>health_post: BooleanField()</li>
+<li>dentist: BooleanField()</li>
+<li>physician: BooleanField()</li>
+<li>hygienist: BooleanField()</li>
+<li>other: CharField()</li>
+</ul>
+<p>4. <strong>METHOD:</strong>
+PUT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">update</span> <span class="n">a</span> <span class="n">refer</span> <span class="n">encounter</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encounter-screeing">
+<h1>Encounter Screeing<a class="headerlink" href="#encounter-screeing" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">screeing</span>
+<span class="n">Put</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">screeing</span><span class="o">/</span><span class="n">update</span>
+
+<span class="o">-</span> <span class="n">encounter_id</span><span class="p">:</span> <span class="n">CharField</span><span class="p">(</span><span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">encounter</span> <span class="n">screeing</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>3. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">add</span> <span class="n">a</span> <span class="n">screeing</span> <span class="n">encounter</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><strong>Body_Content</strong></p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>caries_risk: ChoiceField(required)</dt>
+<dd>choice field are (low,high,medium)</dd>
+</dl>
+</li>
+<li>primary_teeth: IntegerField(required)</li>
+<li>permanent_teeth: IntegerField(required)</li>
+<li>postiror_teeth: BooleanField()</li>
+<li>anterior_teeth: BooleanField()</li>
+<li>infection: BooleanField()</li>
+<li>reversible_pulpitis: BooleanField()</li>
+<li>art: BooleanField()</li>
+<li>extraction: BooleanField()</li>
+<li>refernal_kdh: BooleanField()</li>
+</ul>
+<p>4. <strong>METHOD:</strong>
+PUT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">update</span> <span class="n">a</span> <span class="n">screeing</span> <span class="n">encounter</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Dental Hub</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="userapp.html">View all Appser and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#forgetpassword">ForgetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#resetpassword">ResetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#profile">Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#updateappuser">UpdateAppuser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#changepassword">ChangePassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patientapp.html">View all Patients and Register</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Encounter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#encounter-history">Encounter History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#encounter-refer">Encounter Refer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#encounter-screeing">Encounter Screeing</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="patientapp.html" title="previous chapter">View all Patients and Register</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Abhiyantrik Technology.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/encounterapp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

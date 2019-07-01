@@ -35,5 +35,5 @@ urlpatterns = [
     path('api/v1/',include('dental.apiurls')),
     path('seed', seed,name='seed')
 ]
-
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns+=static(settings.DOCS_URL, document_root=settings.DOCS_ROOT)

@@ -40,7 +40,7 @@
 <span id="patientapp-models-patient-module"></span><h2>patientapp.models.patient module<a class="headerlink" href="#module-patientapp.models.patient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="patientapp.models.patient.Patient">
-<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>id</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>phone</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>id</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="addressapp.models.html#addressapp.models.address.Address" title="addressapp.models.address.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">addressapp.models.address.Address</span></code></a></p>
 <dl class="exception">
 <dt id="patientapp.models.patient.Patient.DoesNotExist">
@@ -52,6 +52,13 @@
 <dt id="patientapp.models.patient.Patient.MultipleObjectsReturned">
 <em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#patientapp.models.patient.Patient.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.age">
+<code class="descname">age</code><a class="headerlink" href="#patientapp.models.patient.Patient.age" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -96,6 +103,21 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="patientapp.models.patient.Patient.encounter_set">
+<code class="descname">encounter_set</code><a class="headerlink" href="#patientapp.models.patient.Patient.encounter_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="patientapp.models.patient.Patient.first_name">
 <code class="descname">first_name</code><a class="headerlink" href="#patientapp.models.patient.Patient.first_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
@@ -125,8 +147,18 @@ object the first time, the query is executed.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="patientapp.models.patient.Patient.get_next_by_dob">
+<code class="descname">get_next_by_dob</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateField: dob&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_next_by_dob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="patientapp.models.patient.Patient.get_previous_by_date">
 <code class="descname">get_previous_by_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="patientapp.models.patient.Patient.get_previous_by_dob">
+<code class="descname">get_previous_by_dob</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateField: dob&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_previous_by_dob" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -176,6 +208,16 @@ object the first time, the query is executed.</p>
 object the first time, the query is executed.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="patientapp.models.patient.Patient.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The ‘force_insert’ and ‘force_update’ parameters can be used to insist
+that the “save” must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="function">
@@ -209,8 +251,16 @@ object the first time, the query is executed.</p>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html">View all Appser and Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userapp.html#view-all-patients-and-register">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#forgetpassword">ForgetPassword</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#resetpassword">ResetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#profile">Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#updateappuser">UpdateAppuser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#changepassword">ChangePassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patientapp.html">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html">Encounter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-history">Encounter History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 </ul>
 
 <div class="relations">

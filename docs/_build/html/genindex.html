@@ -74,10 +74,10 @@
 </li>
       <li><a href="addressapp.html#module-addressapp.apps">addressapp.apps (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="addressapp.migrations.html#module-addressapp.migrations">addressapp.migrations (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="addressapp.models.html#module-addressapp.models">addressapp.models (module)</a>
 </li>
       <li><a href="addressapp.models.html#module-addressapp.models.address">addressapp.models.address (module)</a>
@@ -85,6 +85,8 @@
       <li><a href="addressapp.html#addressapp.apps.AddressappConfig">AddressappConfig (class in addressapp.apps)</a>
 </li>
       <li><a href="userapp.models.html#userapp.models.user.User.admin">admin (userapp.models.user.User attribute)</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.age">age (patientapp.models.patient.Patient attribute)</a>
 </li>
       <li><a href="userapp.models.html#userapp.models.user.User.auth_token">auth_token (userapp.models.user.User attribute)</a>
 </li>
@@ -128,23 +130,15 @@
 </li>
       <li><a href="dental.html#module-dental.settings">dental.settings (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dental.html#module-dental.urls">dental.urls (module)</a>
 </li>
       <li><a href="dental.html#module-dental.wsgi">dental.wsgi (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="patientapp.migrations.html#patientapp.migrations.0001_initial.Migration.dependencies">dependencies (patientapp.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0002_patient_author.Migration.dependencies">(patientapp.migrations.0002_patient_author.Migration attribute)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0003_auto_20190625_0602.Migration.dependencies">(patientapp.migrations.0003_auto_20190625_0602.Migration attribute)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0004_auto_20190625_0612.Migration.dependencies">(patientapp.migrations.0004_auto_20190625_0612.Migration attribute)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0005_auto_20190625_0614.Migration.dependencies">(patientapp.migrations.0005_auto_20190625_0614.Migration attribute)</a>
-</li>
         <li><a href="userapp.migrations.html#userapp.migrations.0001_initial.Migration.dependencies">(userapp.migrations.0001_initial.Migration attribute)</a>
 </li>
       </ul></li>
@@ -161,6 +155,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="userapp.models.html#userapp.models.user.User.email">email (userapp.models.user.User attribute)</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.encounter_set">encounter_set (patientapp.models.patient.Patient attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -192,11 +188,15 @@
 </li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.get_gender_display">get_gender_display() (patientapp.models.patient.Patient method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.get_next_by_date">get_next_by_date() (patientapp.models.patient.Patient method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.get_next_by_dob">get_next_by_dob() (patientapp.models.patient.Patient method)</a>
+</li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.get_previous_by_date">get_previous_by_date() (patientapp.models.patient.Patient method)</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.get_previous_by_dob">get_previous_by_dob() (patientapp.models.patient.Patient method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -286,17 +286,11 @@
         <li><a href="userapp.models.html#userapp.models.user.User.middle_name">(userapp.models.user.User attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="patientapp.migrations.html#patientapp.migrations.0001_initial.Migration">Migration (class in patientapp.migrations.0001_initial)</a>
 
       <ul>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0002_patient_author.Migration">(class in patientapp.migrations.0002_patient_author)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0003_auto_20190625_0602.Migration">(class in patientapp.migrations.0003_auto_20190625_0602)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0004_auto_20190625_0612.Migration">(class in patientapp.migrations.0004_auto_20190625_0612)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0005_auto_20190625_0614.Migration">(class in patientapp.migrations.0005_auto_20190625_0614)</a>
-</li>
         <li><a href="userapp.migrations.html#userapp.migrations.0001_initial.Migration">(class in userapp.migrations.0001_initial)</a>
 </li>
       </ul></li>
@@ -307,11 +301,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="addressapp.html#addressapp.apps.AddressappConfig.name">name (addressapp.apps.AddressappConfig attribute)</a>
-
-      <ul>
-        <li><a href="patientapp.html#patientapp.apps.PatientappConfig.name">(patientapp.apps.PatientappConfig attribute)</a>
 </li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -324,17 +314,11 @@
         <li><a href="userapp.models.html#userapp.models.user.User.objects">(userapp.models.user.User attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="patientapp.migrations.html#patientapp.migrations.0001_initial.Migration.operations">operations (patientapp.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0002_patient_author.Migration.operations">(patientapp.migrations.0002_patient_author.Migration attribute)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0003_auto_20190625_0602.Migration.operations">(patientapp.migrations.0003_auto_20190625_0602.Migration attribute)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0004_auto_20190625_0612.Migration.operations">(patientapp.migrations.0004_auto_20190625_0612.Migration attribute)</a>
-</li>
-        <li><a href="patientapp.migrations.html#patientapp.migrations.0005_auto_20190625_0614.Migration.operations">(patientapp.migrations.0005_auto_20190625_0614.Migration attribute)</a>
-</li>
         <li><a href="userapp.migrations.html#userapp.migrations.0001_initial.Migration.operations">(userapp.migrations.0001_initial.Migration attribute)</a>
 </li>
       </ul></li>
@@ -349,8 +333,6 @@
       <ul>
         <li><a href="dental.html#dental.urls.path">(in module dental.urls)</a>
 </li>
-        <li><a href="patientapp.html#patientapp.apiurls.path">(in module patientapp.apiurls)</a>
-</li>
       </ul></li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient">Patient (class in patientapp.models.patient)</a>
 </li>
@@ -358,33 +340,15 @@
 </li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.MultipleObjectsReturned">Patient.MultipleObjectsReturned</a>
 </li>
-      <li><a href="patientapp.html#module-patientapp">patientapp (module)</a>
-</li>
-      <li><a href="patientapp.html#module-patientapp.admin">patientapp.admin (module)</a>
-</li>
-      <li><a href="patientapp.html#module-patientapp.apiurls">patientapp.apiurls (module)</a>
-</li>
-      <li><a href="patientapp.html#module-patientapp.apps">patientapp.apps (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="patientapp.migrations.html#module-patientapp.migrations">patientapp.migrations (module)</a>
 </li>
       <li><a href="patientapp.migrations.html#module-patientapp.migrations.0001_initial">patientapp.migrations.0001_initial (module)</a>
 </li>
-      <li><a href="patientapp.migrations.html#module-patientapp.migrations.0002_patient_author">patientapp.migrations.0002_patient_author (module)</a>
-</li>
-      <li><a href="patientapp.migrations.html#module-patientapp.migrations.0003_auto_20190625_0602">patientapp.migrations.0003_auto_20190625_0602 (module)</a>
-</li>
-      <li><a href="patientapp.migrations.html#module-patientapp.migrations.0004_auto_20190625_0612">patientapp.migrations.0004_auto_20190625_0612 (module)</a>
-</li>
-      <li><a href="patientapp.migrations.html#module-patientapp.migrations.0005_auto_20190625_0614">patientapp.migrations.0005_auto_20190625_0614 (module)</a>
-</li>
       <li><a href="patientapp.models.html#module-patientapp.models">patientapp.models (module)</a>
 </li>
       <li><a href="patientapp.models.html#module-patientapp.models.patient">patientapp.models.patient (module)</a>
-</li>
-      <li><a href="patientapp.html#patientapp.apps.PatientappConfig">PatientappConfig (class in patientapp.apps)</a>
 </li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.phone">phone (patientapp.models.patient.Patient attribute)</a>
 </li>
@@ -394,12 +358,16 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="userapp.models.html#userapp.models.user.User.save">save() (userapp.models.user.User method)</a>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.save">save() (patientapp.models.patient.Patient method)</a>
+
+      <ul>
+        <li><a href="userapp.models.html#userapp.models.user.User.save">(userapp.models.user.User method)</a>
 </li>
-      <li><a href="dental.html#dental.seed.seed">seed() (in module dental.seed)</a>
-</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dental.html#dental.seed.seed">seed() (in module dental.seed)</a>
+</li>
       <li><a href="userapp.models.html#userapp.models.user.User.staff">staff (userapp.models.user.User attribute)</a>
 </li>
       <li><a href="addressapp.models.html#addressapp.models.address.Address.state">state (addressapp.models.address.Address attribute)</a>
@@ -464,9 +432,16 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html">View all Appser and Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="userapp.html#view-all-patients-and-register">View all Patients and Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#forgetpassword">ForgetPassword</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#resetpassword">ResetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#profile">Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#updateappuser">UpdateAppuser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userapp.html#changepassword">ChangePassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patientapp.html">View all Patients and Register</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html">Encounter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-history">Encounter History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 </ul>
 
 <div class="relations">

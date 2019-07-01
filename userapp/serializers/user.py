@@ -24,3 +24,26 @@ class PasswordResetSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ('token', 'password','confirm_password')
+
+class ProfileSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image')
+		# read_only_fields = ('notification_count','qrcode')
+
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+	image = serializers.ImageField(required=True)
+	class Meta:
+		model = User
+		fields = ('image',)
+
+
+		
+class PasswordChangeSerializer(serializers.ModelSerializer):
+	old_password = serializers.CharField(required=True,write_only=True)
+	new_password = serializers.CharField(required=True,write_only=True)
+	confirm_password = serializers.CharField(required=True,write_only=True)
+	class Meta:
+		model = User
+		fields = ('old_password','new_password','confirm_password')

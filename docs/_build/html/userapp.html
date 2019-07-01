@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="View all Patients and Register" href="patientapp.html" />
     <link rel="prev" title="Welcome to Dental Hub’s documentation!" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -59,39 +60,6 @@ POST:</p>
 <li>password:CharField(required)</li>
 </ul>
 </div>
-<div class="section" id="view-all-patients-and-register">
-<h1>View all Patients and Register<a class="headerlink" href="#view-all-patients-and-register" title="Permalink to this headline">¶</a></h1>
-<p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/patients">View all Patients and Register</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span>
-</pre></div>
-</div>
-<p>2. <strong>METHOD:</strong>
-GET:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">patients</span><span class="p">:</span>
-</pre></div>
-</div>
-<p>3. <strong>METHOD:</strong>
-POST:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">register</span> <span class="n">a</span> <span class="n">patients</span><span class="p">:</span>
-</pre></div>
-</div>
-<blockquote>
-<div><strong>Body_Content</strong></div></blockquote>
-<ul class="simple">
-<li>first_name: string(required)</li>
-<li>last_name: string(required)</li>
-<li>middle_name: string()</li>
-<li>gender: choicefield(required)
-male, female. other</li>
-<li>dob(date of birth): DateTimeField(required)</li>
-<li>phone(phone number):CharField(required)</li>
-<li>education : Charfield(required)</li>
-<li>author : ForeignRelationship()</li>
-<li>date : autofield()</li>
-<li>latitude: DecimalField(required)</li>
-<li>longitude: DecimalField(required)</li>
-</ul>
-</div>
 <div class="section" id="forgetpassword">
 <h1>ForgetPassword<a class="headerlink" href="#forgetpassword" title="Permalink to this headline">¶</a></h1>
 <p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/users/forgetpassword">ForgetPassword</a></p>
@@ -126,6 +94,54 @@ POST:</p>
 <li>confirm_password: String(required)</li>
 </ul>
 </div>
+<div class="section" id="profile">
+<h1>Profile<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/profile">profile of user</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">profile</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="n">the</span> <span class="n">profilr</span> <span class="n">of</span> <span class="n">user</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="updateappuser">
+<h1>UpdateAppuser<a class="headerlink" href="#updateappuser" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/profile/update">update user profile</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">profile</span><span class="o">/</span><span class="n">update</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">update</span> <span class="n">a</span> <span class="n">profile</span> <span class="n">of</span> <span class="n">user</span><span class="p">:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><strong>Body_Content</strong></div></blockquote>
+<ul class="simple">
+<li>image: ImageField(required)</li>
+</ul>
+</div>
+<div class="section" id="changepassword">
+<h1>ChangePassword<a class="headerlink" href="#changepassword" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong> <a class="reference external" href="http://localhost/api/v1/users">View all Appuser and Register</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">changepassword</span>
+</pre></div>
+</div>
+<p>3. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">change</span> <span class="n">a</span> <span class="n">password</span><span class="p">:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><strong>Body_Content</strong></div></blockquote>
+<ul class="simple">
+<li>old_password: string(required)</li>
+<li>new_password: string(required)</li>
+<li>confirm_password: string(required)</li>
+</ul>
+</div>
 
 
           </div>
@@ -147,9 +163,12 @@ POST:</p>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">View all Appser and Register</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#view-all-patients-and-register">View all Patients and Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#forgetpassword">ForgetPassword</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#resetpassword">ResetPassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#profile">Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#updateappuser">UpdateAppuser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#changepassword">ChangePassword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="patientapp.html">View all Patients and Register</a></li>
 </ul>
 
 <div class="relations">
@@ -157,6 +176,7 @@ POST:</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Welcome to Dental Hub’s documentation!</a></li>
+      <li>Next: <a href="patientapp.html" title="next chapter">View all Patients and Register</a></li>
   </ul></li>
 </ul>
 </div>
