@@ -11,6 +11,6 @@ app_name = 'addressapp'
 
 urlpatterns = [
 	path('geography', GeographyListView.as_view()),
-	path('activity', ActivityAreaListView.as_view()),
+	path('activities', ActivityAreaListView.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)

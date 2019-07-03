@@ -47,3 +47,9 @@ class PasswordChangeSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ('old_password','new_password','confirm_password')
+
+class CheckUSerializer(serializers.ModelSerializer):
+	email = serializers.EmailField(write_only=True)
+	class Meta:
+		model = User
+		fields = ('email',)

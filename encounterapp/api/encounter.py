@@ -14,6 +14,11 @@ from encounterapp.serializers.encounter import EncounterSerializer,AllEncounterS
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from addressapp.models import Geography, ActivityArea
+
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):        
 
@@ -27,7 +32,7 @@ class EncounterView(APIView):
 
 
     def get(self, request,patient_id, format=None):
-        patient_obj = Patient.objects.get(id=patient_id)
+        patient_obj = Patient.objects.get(uid=patient_id)
         encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
         serializer = AllEncounterSerializer(encounter_obj, many=True, \
             context={'request': request})
@@ -36,12 +41,28 @@ class EncounterView(APIView):
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
             context={'request': request})
-        if Patient.objects.filter(id=patient_id).exists():
-            patient_obj = Patient.objects.get(id=patient_id)
+        if Patient.objects.filter(uid=patient_id).exists():
+            patient_obj = Patient.objects.get(uid=patient_id)
             if serializer.is_valid():
-            	serializer.save(patient=patient_obj,author=request.user)
-            	return Response(serializer.data,status=200)
+                if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
+                    if ActivityArea.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
+                        activity_area_obj = ActivityArea.objects.get(id=serializer.validated_data['activityarea_id'])
+                        geography_obj = Geography.objects.get(id=serializer.validated_data['geography_id'])
+                        encounter_obj = Encounter()
+                        encounter_obj.encounter_type = serializer.validated_data['encounter_type']
+                        encounter_obj.activity_area = activity_area_obj
+                        encounter_obj.geography = geography_obj
+                        encounter_obj.patient = patient_obj
+                        encounter_obj.author = request.user
+                        encounter_obj.save()
+                        return Response(serializer.data,status=200)
+                    logger.error("ActivityArea id does not exists")
+                    return Response({"message":"ActivityArea id does not exists"}, status=400)
+                logger.error("Geography id does not exists")
+                return Response({"message":"Geography id does not exists"}, status=400)
+            logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
+        logger.error('patient does not exists')
         return Response({"message":"patient does not exists"},status=400)
 
 class EncounterUpdateView(APIView):
@@ -49,23 +70,27 @@ class EncounterUpdateView(APIView):
     serializer_class = EncounterSerializer
 
     def get(self, request, patient_id, encounter_id, format=None):
-        if Encounter.objects.select_related('patient').filter(patient__id=patient_id).exists():    
-            encounter_obj = Encounter.objects.get(id=encounter_id)
+        if Encounter.objects.select_related('patient').filter(patient__uid=patient_id).exists():    
+            encounter_obj = Encounter.objects.get(uid=encounter_id)
             serializer = EncounterSerializer(encounter_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
+        logger.error('encounter content not found.')
         return Response({"message":"content not found."},status=400)
 
     def put(self, request, patient_id, encounter_id, format=None):
         today_date = datetime.now()
-        if Encounter.objects.select_related('patient').filter(patient__id=patient_id).exists():
-            encounter_obj = Encounter.objects.get(id=encounter_id)
+        if Encounter.objects.select_related('patient').filter(patient__uid=patient_id).exists():
+            encounter_obj = Encounter.objects.get(uid=encounter_id)
             if today_date.timestamp() < encounter_obj.update_date.timestamp():
                 serializer = EncounterSerializer(encounter_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
                     serializer.save()
                     return Response({"message":"encounter update"},status=200)
+                logger.error(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
+            logger.error("update allow upto 24 hour only")
             return Response({"message":"update allow upto 24 hour only"},status=400)
+        logger.error("encounter id donot match")
         return Response({"message":"id do not match"},status=400)    

@@ -16,6 +16,11 @@ from encounterapp.serializers.screeing import PatientScreeingSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
+
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
 class IsPostOrIsAuthenticated(permissions.BasePermission):        
 
     def has_permission(self, request, view):
@@ -44,21 +49,24 @@ class PatientScreeingView(APIView):
             if Screeing.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
-                screeing_obj = Screeing()
-                screeing_obj.caries_risk = serializer.validated_data['caries_risk']
-                screeing_obj.primary_teeth = serializer.validated_data['primary_teeth']
-                screeing_obj.permanent_teeth = serializer.validated_data['permanent_teeth']
-                screeing_obj.postiror_teeth = serializer.validated_data['postiror_teeth']
-                screeing_obj.anterior_teeth = serializer.validated_data['anterior_teeth']
-                screeing_obj.infection = serializer.validated_data['infection']
-                screeing_obj.reversible_pulpitis = serializer.validated_data['reversible_pulpitis']
-                screeing_obj.art = serializer.validated_data['art']
-                screeing_obj.extraction = serializer.validated_data['extraction']
-                screeing_obj.refernal_kdh = serializer.validated_data['refernal_kdh']
-                screeing_obj.encounter_id = encounter_obj
-                screeing_obj.save()
+                # screeing_obj = Screeing()
+                # screeing_obj.caries_risk = serializer.validated_data['caries_risk']
+                # screeing_obj.primary_teeth = serializer.validated_data['primary_teeth']
+                # screeing_obj.permanent_teeth = serializer.validated_data['permanent_teeth']
+                # screeing_obj.postiror_teeth = serializer.validated_data['postiror_teeth']
+                # screeing_obj.anterior_teeth = serializer.validated_data['anterior_teeth']
+                # screeing_obj.infection = serializer.validated_data['infection']
+                # screeing_obj.reversible_pulpitis = serializer.validated_data['reversible_pulpitis']
+                # screeing_obj.art = serializer.validated_data['art']
+                # screeing_obj.extraction = serializer.validated_data['extraction']
+                # screeing_obj.refernal_kdh = serializer.validated_data['refernal_kdh']
+                # screeing_obj.encounter_id = encounter_obj
+                # screeing_obj.save()
+                serializer.save(encounter_id=encounter_obj)
                 return Response(serializer.data,status=200)
-            return Response({'message':serializer.errors}, status=400) 
+            logger.error(serializer.errors) 
+            return Response({'message':serializer.errors}, status=400)
+        logger.error("patient does not exists.") 
         return Response({"message":"patient does not exists."},status=400)
 
 
@@ -85,7 +93,10 @@ class PatientScreeingUpdateView(APIView):
                 if serializer.is_valid():
                     serializer.save()
                     return Response({"message":"screeing encounter update"},status=200)
+                logger.error(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
+            logger.error("update allow upto 24 hour only")
             return Response({"message":"update allow upto 24 hour only"},status=400)
+        logger.error("screeing encounter id donot match")
         return Response({"message":"id do not match"},status=400) 
    

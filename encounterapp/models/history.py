@@ -10,7 +10,8 @@ def keygenerator():
 
 
 class History(models.Model):
-	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+	id = models.CharField(max_length=200,blank=True)
+	uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	bleeding = models.BooleanField(_('bleeding problem'),default=False)
 	diabete = models.BooleanField(default=False)
 	liver = models.BooleanField(_('liver problem'),default=False)

@@ -1,6 +1,7 @@
 # from fcm_django.models import FCMDevice
 from userapp.models import User
 from patientapp.models import Patient
+from addressapp.models import Geography,ActivityArea
 from django.http import HttpResponse
 from django.db.models import Sum
 from django.db.models import Count
@@ -17,5 +18,7 @@ def seed(request):
 		for i in range(1,10):
 			user=mixer.blend(User)
 			mixer.blend(Patient)
+			mixer.blend(ActivityArea)
+			mixer.blend(Geography)
 	return HttpResponse("it works")
 

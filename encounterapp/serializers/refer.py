@@ -9,5 +9,5 @@ class PatientReferSerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	class Meta:
 		model = Refer
-		fields = ('id','no_referal','health_post','dentist','physician',\
+		fields = ('uid','id','no_referal','health_post','dentist','physician',\
 			'hygienist','other','encounter_id')

@@ -11,7 +11,8 @@ from userapp.models import User
 
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
-PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer, PasswordChangeSerializer
+PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
+ PasswordChangeSerializer, CheckUSerializer
 from userapp.emailsend import emailsend
 from random import randint
 
@@ -154,4 +155,18 @@ class UserChangepassword(APIView):
                     return Response({'message':'password change successfully'},status=200)
                 return Response({'message':'old password do not match'},status=400)
             return Response({'message':'Your new password and confirmation password do not match.'},status=400)
-        return Response({'message':serializer.errors}, status=400)   
+        return Response({'message':serializer.errors}, status=400) 
+
+class AdminUserCheckView(APIView):
+    serializer_class = CheckUSerializer
+    def post(self, request, format=None):
+        serializer = CheckUSerializer(data=request.data,\
+            context={'request': request})
+        if serializer.is_valid():
+            if User.objects.filter(email=serializer.validated_data['email']).exists():
+                email = serializer.validated_data['email']
+                if User.objects.filter(email=email,admin=True).exists():
+                    return Response({"status":"true"},status=200)
+                return Response({"message":"Invalid username/password"},status=400)
+            return Response({"message":"Invalid username/password."},status=400)
+        return Response({'message':serializer.errors}, status=400) 

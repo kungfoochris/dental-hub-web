@@ -11,7 +11,8 @@ def keygenerator():
 
 
 class Refer(models.Model):
-	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+	id = models.CharField(max_length=200,blank=True)
+	uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	no_referal = models.BooleanField(_('no referal'),default=False)
 	health_post = models.BooleanField(_('health post'),default=False)
 	dentist = models.BooleanField(default=False)

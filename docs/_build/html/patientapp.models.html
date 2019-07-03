@@ -40,7 +40,7 @@
 <span id="patientapp-models-patient-module"></span><h2>patientapp.models.patient module<a class="headerlink" href="#module-patientapp.models.patient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="patientapp.models.patient.Patient">
-<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>id</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>street_address</em>, <em>id</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>marital_status</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="addressapp.models.html#addressapp.models.address.Address" title="addressapp.models.address.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">addressapp.models.address.Address</span></code></a></p>
 <dl class="exception">
 <dt id="patientapp.models.patient.Patient.DoesNotExist">
@@ -142,6 +142,11 @@ object the first time, the query is executed.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="patientapp.models.patient.Patient.get_marital_status_display">
+<code class="descname">get_marital_status_display</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.CharField: marital_status&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_marital_status_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="patientapp.models.patient.Patient.get_next_by_date">
 <code class="descname">get_next_by_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_next_by_date" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -190,6 +195,13 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="patientapp.models.patient.Patient.marital_status">
+<code class="descname">marital_status</code><a class="headerlink" href="#patientapp.models.patient.Patient.marital_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="patientapp.models.patient.Patient.middle_name">
 <code class="descname">middle_name</code><a class="headerlink" href="#patientapp.models.patient.Patient.middle_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
@@ -216,6 +228,13 @@ control the saving process.</p>
 <p>The ‘force_insert’ and ‘force_update’ parameters can be used to insist
 that the “save” must be an SQL insert or update (or equivalent for
 non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.ward">
+<code class="descname">ward</code><a class="headerlink" href="#patientapp.models.patient.Patient.ward" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 </dd></dl>

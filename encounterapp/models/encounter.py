@@ -4,6 +4,7 @@ from uuid import uuid4
 from patientapp.models import Patient
 from userapp.models import User
 from datetime import datetime, timedelta
+from addressapp.models import Geography, ActivityArea
 
 REQUEST_CHOICES = (
     ("screeing", _("Screeing")),
@@ -24,9 +25,12 @@ def default_time():
 
 
 class Encounter(models.Model):
-    id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+    id = models.CharField(max_length=200,blank=True)
+    uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
     date = models.DateTimeField(auto_now=True)
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
     encounter_type = models.CharField(_('encounter type'),choices=REQUEST_CHOICES,max_length=30)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
-    update_date = models.DateTimeField(default=default_time)
+    updated_at = models.DateTimeField(default=default_time)
+    activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='encounter_area',null=True)
+    geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
