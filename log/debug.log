@@ -16582,3 +16582,719 @@ TypeError: 'Geography' object is not iterable
 2019-07-03 08:54:48,857 PIL.Image    DEBUG    Importing XbmImagePlugin
 2019-07-03 08:54:48,859 PIL.Image    DEBUG    Importing XpmImagePlugin
 2019-07-03 08:54:48,860 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-08 15:39:53,056 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-08 15:39:53,072 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-08 15:39:53,090 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-08 15:39:53,100 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-08 15:39:53,105 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-08 15:39:53,110 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-08 15:39:53,115 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-08 15:39:53,123 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-08 15:39:53,135 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-08 15:39:53,138 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-08 15:39:53,143 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-08 15:39:53,145 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-08 15:39:53,147 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-08 15:39:53,155 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-08 15:39:53,158 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-08 15:39:53,164 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-08 15:39:53,167 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-08 15:39:53,175 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-08 15:39:53,188 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-08 15:39:53,193 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-08 15:39:53,198 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-08 15:39:53,201 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-08 15:39:53,204 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-08 15:39:53,208 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-08 15:39:53,222 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-08 15:39:53,227 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-08 15:39:53,232 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-08 15:39:53,238 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-08 15:39:53,241 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-08 15:39:53,252 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-08 15:39:53,257 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-08 15:39:53,261 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-08 15:39:53,262 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-08 15:39:53,264 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-08 15:39:53,266 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-08 15:39:53,265 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-08 15:39:53,270 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-08 15:39:53,269 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-08 15:39:53,256 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-08 15:39:53,274 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-08 15:39:53,275 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-08 15:39:53,279 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-08 15:39:53,281 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-08 15:39:53,282 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-08 15:39:53,285 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-08 15:39:53,288 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-08 15:39:53,289 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-08 15:39:53,291 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-08 15:39:53,294 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-08 15:39:53,300 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-08 15:39:53,302 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-08 15:39:53,303 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-08 15:39:53,306 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-08 15:39:53,309 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-08 15:39:53,310 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-08 15:39:53,308 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-08 15:39:53,313 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-08 15:39:53,315 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-08 15:39:53,318 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-08 15:39:53,321 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-08 15:39:53,323 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-08 15:39:53,323 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-08 15:39:53,329 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-08 15:39:53,327 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-08 15:39:53,332 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-08 15:39:53,334 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-08 15:39:53,339 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-08 15:39:53,344 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-08 15:39:53,346 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-08 15:39:53,350 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-08 15:39:53,354 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-08 15:39:53,359 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-08 15:39:53,371 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-08 15:39:53,380 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-08 15:39:53,376 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-08 15:39:53,386 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-08 15:39:53,386 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-08 15:39:53,390 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-08 15:39:53,395 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-08 15:39:53,394 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-08 15:39:53,399 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-08 15:39:53,397 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-08 15:39:53,402 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-08 15:39:53,406 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-08 15:39:53,405 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-08 15:39:53,407 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-08 15:39:53,410 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-08 15:39:53,412 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-08 15:39:53,416 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-08 15:39:53,417 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-08 15:39:53,421 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-08 15:39:53,424 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-08 15:39:53,429 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-08 15:39:53,431 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-08 15:39:53,432 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-08 15:39:53,434 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-08 15:39:53,435 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-08 15:39:53,436 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-08 15:39:53,439 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-08 15:39:53,445 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-08 15:39:53,457 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-08 15:39:53,460 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-08 15:39:53,477 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-08 15:39:53,480 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-08 15:39:53,483 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-08 15:39:53,486 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-08 15:39:53,488 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-08 15:39:53,496 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-08 15:39:53,498 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-08 15:39:53,495 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-08 15:39:53,503 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-08 15:39:53,506 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-08 15:39:53,509 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-08 15:39:53,510 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-08 15:39:53,514 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-08 15:39:53,514 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-08 15:39:53,516 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-08 15:39:53,522 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-08 15:39:53,521 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-08 15:39:53,527 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-08 15:39:53,531 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-08 15:39:53,536 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-08 15:39:53,538 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-08 15:39:53,544 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-08 15:39:53,557 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-08 15:39:53,561 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-08 15:39:53,565 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-08 15:39:53,588 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-08 15:39:53,597 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-08 15:39:53,598 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-08 15:39:53,599 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-08 15:39:53,602 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-08 15:39:53,604 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-08 15:39:53,612 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-08 15:39:53,615 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-08 15:39:53,617 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-08 15:39:53,620 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-08 15:39:53,629 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-08 15:39:53,632 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-08 15:39:53,640 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-08 15:39:53,656 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-08 15:39:57,463 celery.utils.dispatch.signal ERROR    Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x7fb4c0845160>> raised: OperationalError(2003, 'Can\'t connect to MySQL server on \'db\' (111 "Connection refused")')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 236, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 164, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (2003, 'Can\'t connect to MySQL server on \'db\' (111 "Connection refused")')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/celery/utils/dispatch/signal.py", line 288, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/usr/local/lib/python3.6/site-packages/celery/fixups/django.py", line 82, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "/usr/local/lib/python3.6/site-packages/celery/fixups/django.py", line 121, in validate_models
+    run_checks()
+  File "/usr/local/lib/python3.6/site-packages/django/core/checks/registry.py", line 73, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "/usr/local/lib/python3.6/site-packages/django/core/checks/model_checks.py", line 27, in check_all_models
+    errors.extend(model.check(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/base.py", line 1200, in check
+    errors.extend(cls._check_fields(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/base.py", line 1272, in _check_fields
+    errors.extend(field.check(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 894, in check
+    errors = super().check(**kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 206, in check
+    errors.extend(self._check_backend_specific_checks(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 303, in _check_backend_specific_checks
+    return connections[db].validation.check_field(self, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/validation.py", line 21, in check_field
+    field_type = field.db_type(self.connection)
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 648, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "/usr/local/lib/python3.6/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 133, in data_types
+    if self.features.supports_microsecond_precision:
+  File "/usr/local/lib/python3.6/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/features.py", line 65, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4)
+  File "/usr/local/lib/python3.6/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 345, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "/usr/local/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 576, in temporary_connection
+    cursor = self.cursor()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 236, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 164, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+django.db.utils.OperationalError: (2003, 'Can\'t connect to MySQL server on \'db\' (111 "Connection refused")')
+2019-07-08 15:39:57,755 celery.utils.dispatch.signal ERROR    Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x7f2535ddc128>> raised: OperationalError(2003, 'Can\'t connect to MySQL server on \'db\' (111 "Connection refused")')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 236, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 164, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (2003, 'Can\'t connect to MySQL server on \'db\' (111 "Connection refused")')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/celery/utils/dispatch/signal.py", line 288, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/usr/local/lib/python3.6/site-packages/celery/fixups/django.py", line 82, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "/usr/local/lib/python3.6/site-packages/celery/fixups/django.py", line 121, in validate_models
+    run_checks()
+  File "/usr/local/lib/python3.6/site-packages/django/core/checks/registry.py", line 73, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "/usr/local/lib/python3.6/site-packages/django/core/checks/model_checks.py", line 27, in check_all_models
+    errors.extend(model.check(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/base.py", line 1200, in check
+    errors.extend(cls._check_fields(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/base.py", line 1272, in _check_fields
+    errors.extend(field.check(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 894, in check
+    errors = super().check(**kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 206, in check
+    errors.extend(self._check_backend_specific_checks(**kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 303, in _check_backend_specific_checks
+    return connections[db].validation.check_field(self, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/validation.py", line 21, in check_field
+    field_type = field.db_type(self.connection)
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 648, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "/usr/local/lib/python3.6/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 133, in data_types
+    if self.features.supports_microsecond_precision:
+  File "/usr/local/lib/python3.6/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/features.py", line 65, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4)
+  File "/usr/local/lib/python3.6/site-packages/django/utils/functional.py", line 36, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 345, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "/usr/local/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 576, in temporary_connection
+    cursor = self.cursor()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 255, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 232, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 216, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/base/base.py", line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.6/site-packages/django/db/backends/mysql/base.py", line 236, in get_new_connection
+    return Database.connect(**conn_params)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/MySQLdb/connections.py", line 164, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+django.db.utils.OperationalError: (2003, 'Can\'t connect to MySQL server on \'db\' (111 "Connection refused")')
+2019-07-08 15:39:59,734 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-08 15:39:59,738 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-08 15:39:59,745 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-08 15:39:59,747 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-08 15:39:59,749 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-08 15:39:59,755 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-08 15:39:59,756 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-08 15:39:59,760 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-08 15:39:59,762 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-08 15:39:59,763 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-08 15:39:59,765 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-08 15:39:59,766 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-08 15:39:59,767 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-08 15:39:59,768 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-08 15:39:59,771 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-08 15:39:59,772 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-08 15:39:59,774 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-08 15:39:59,780 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-08 15:39:59,782 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-08 15:39:59,789 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-08 15:39:59,790 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-08 15:39:59,793 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-08 15:39:59,810 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-08 15:39:59,811 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-08 15:39:59,814 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-08 15:39:59,816 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-08 15:39:59,818 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-08 15:39:59,821 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-08 15:39:59,825 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-08 15:39:59,828 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-08 15:39:59,833 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-08 15:39:59,836 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-08 15:39:59,840 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-08 15:39:59,863 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-08 15:39:59,865 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-08 15:39:59,870 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-08 15:39:59,872 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-08 15:39:59,876 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-08 15:39:59,878 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-08 15:39:59,880 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-08 15:39:59,883 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-08 15:39:59,886 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-08 15:39:59,887 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-08 15:39:59,890 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-08 15:39:59,892 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-08 15:39:59,895 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-08 15:39:59,897 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-08 15:40:01,928 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-08 15:40:01,931 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-08 15:40:01,938 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-08 15:40:01,941 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-08 15:40:01,943 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-08 15:40:01,946 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-08 15:40:01,947 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-08 15:40:01,951 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-08 15:40:01,952 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-08 15:40:01,954 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-08 15:40:01,956 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-08 15:40:01,957 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-08 15:40:01,959 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-08 15:40:01,962 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-08 15:40:01,966 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-08 15:40:01,968 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-08 15:40:01,970 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-08 15:40:01,975 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-08 15:40:01,978 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-08 15:40:01,980 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-08 15:40:01,983 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-08 15:40:01,985 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-08 15:40:02,001 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-08 15:40:02,002 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-08 15:40:02,004 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-08 15:40:02,007 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-08 15:40:02,008 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-08 15:40:02,010 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-08 15:40:02,011 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-08 15:40:02,014 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-08 15:40:02,017 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-08 15:40:02,019 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-08 15:40:02,021 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-08 15:40:02,044 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-08 15:40:02,047 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-08 15:40:02,048 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-08 15:40:02,049 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-08 15:40:02,051 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-08 15:40:02,054 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-08 15:40:02,056 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-08 15:40:02,057 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-08 15:40:02,059 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-08 15:40:02,060 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-08 15:40:02,063 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-08 15:40:02,065 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-08 15:40:02,069 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-08 15:40:02,072 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-08 15:40:03,712 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-08 15:40:03,718 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-08 15:40:03,726 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-08 15:40:03,728 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-08 15:40:03,730 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-08 15:40:03,732 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-08 15:40:03,734 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-08 15:40:03,742 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-08 15:40:03,744 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-08 15:40:03,745 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-08 15:40:03,747 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-08 15:40:03,748 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-08 15:40:03,751 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-08 15:40:03,753 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-08 15:40:03,757 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-08 15:40:03,762 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-08 15:40:03,764 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-08 15:40:03,768 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-08 15:40:03,771 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-08 15:40:03,776 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-08 15:40:03,778 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-08 15:40:03,780 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-08 15:40:03,796 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-08 15:40:03,797 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-08 15:40:03,798 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-08 15:40:03,801 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-08 15:40:03,802 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-08 15:40:03,804 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-08 15:40:03,809 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-08 15:40:03,812 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-08 15:40:03,816 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-08 15:40:03,820 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-08 15:40:03,823 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-08 15:40:03,850 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-08 15:40:03,852 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-08 15:40:03,853 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-08 15:40:03,854 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-08 15:40:03,856 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-08 15:40:03,857 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-08 15:40:03,863 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-08 15:40:03,865 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-08 15:40:03,867 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-08 15:40:03,869 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-08 15:40:03,873 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-08 15:40:03,877 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-08 15:40:03,882 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-08 15:40:03,885 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-10 06:52:03,995 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-10 06:52:04,006 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-10 06:52:04,009 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-10 06:52:04,017 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-10 06:52:04,018 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-10 06:52:04,019 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-10 06:52:04,020 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-10 06:52:04,028 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-10 06:52:04,028 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-10 06:52:04,029 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-10 06:52:04,032 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-10 06:52:04,032 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-10 06:52:04,033 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-10 06:52:04,034 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-10 06:52:04,038 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-10 06:52:04,042 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-10 06:52:04,044 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-10 06:52:04,048 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-10 06:52:04,056 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-10 06:52:04,058 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-10 06:52:04,061 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-10 06:52:04,062 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-10 06:52:04,082 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-10 06:52:04,089 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-10 06:52:04,090 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-10 06:52:04,093 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-10 06:52:04,094 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-10 06:52:04,094 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-10 06:52:04,095 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-10 06:52:04,096 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-10 06:52:04,105 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-10 06:52:04,106 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-10 06:52:04,109 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-10 06:52:04,142 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-10 06:52:04,149 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-10 06:52:04,150 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-10 06:52:04,150 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-10 06:52:04,155 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-10 06:52:04,156 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-10 06:52:04,159 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-10 06:52:04,161 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-10 06:52:04,162 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-10 06:52:04,164 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-10 06:52:04,166 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-10 06:52:04,170 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-10 06:52:04,175 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-10 06:52:04,178 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-10 06:52:04,604 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-10 06:52:04,616 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-10 06:52:04,623 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-10 06:52:04,625 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-10 06:52:04,633 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-10 06:52:04,634 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-10 06:52:04,635 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-10 06:52:04,641 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-10 06:52:04,641 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-10 06:52:04,642 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-10 06:52:04,645 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-10 06:52:04,646 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-10 06:52:04,647 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-10 06:52:04,647 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-10 06:52:04,653 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-10 06:52:04,654 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-10 06:52:04,654 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-10 06:52:04,662 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-10 06:52:04,666 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-10 06:52:04,667 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-10 06:52:04,671 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-10 06:52:04,673 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-10 06:52:04,698 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-10 06:52:04,701 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-10 06:52:04,701 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-10 06:52:04,707 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-10 06:52:04,708 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-10 06:52:04,708 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-10 06:52:04,710 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-10 06:52:04,712 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-10 06:52:04,717 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-10 06:52:04,719 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-10 06:52:04,721 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-10 06:52:04,746 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-10 06:52:04,761 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-10 06:52:04,762 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-10 06:52:04,765 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-10 06:52:04,765 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-10 06:52:04,766 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-10 06:52:04,767 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-10 06:52:04,770 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-10 06:52:04,771 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-10 06:52:04,773 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-10 06:52:04,776 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-10 06:52:04,778 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-10 06:52:04,781 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-10 06:52:04,784 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-10 06:52:04,789 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-10 06:52:04,824 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-10 06:52:04,830 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-10 06:52:04,833 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-10 06:52:04,834 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-10 06:52:04,835 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-10 06:52:04,841 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-10 06:52:04,843 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-10 06:52:04,845 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-10 06:52:04,846 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-10 06:52:04,848 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-10 06:52:04,849 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-10 06:52:04,849 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-10 06:52:04,853 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-10 06:52:04,857 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-10 06:52:04,858 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-10 06:52:04,859 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-10 06:52:04,866 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-10 06:52:04,867 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-10 06:52:04,870 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-10 06:52:04,873 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-10 06:52:04,876 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-10 06:52:04,895 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-10 06:52:04,905 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-10 06:52:04,906 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-10 06:52:04,907 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-10 06:52:04,907 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-10 06:52:04,908 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-10 06:52:04,909 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-10 06:52:04,910 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-10 06:52:04,917 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-10 06:52:04,921 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-10 06:52:04,922 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-10 06:52:04,952 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-10 06:52:04,958 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-10 06:52:04,959 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-10 06:52:04,960 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-10 06:52:04,963 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-10 06:52:04,964 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-10 06:52:04,969 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-10 06:52:04,969 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-10 06:52:04,973 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-10 06:52:04,973 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-10 06:52:04,976 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-10 06:52:04,979 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-10 06:52:04,984 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-10 06:52:04,989 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-10 06:52:08,398 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-10 06:52:08,400 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-10 06:52:08,402 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-10 06:52:08,403 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-10 06:52:08,403 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-10 06:52:08,404 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-10 06:52:08,405 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-10 06:52:08,406 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-10 06:52:08,407 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-10 06:52:08,407 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-10 06:52:08,408 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-10 06:52:08,409 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-10 06:52:08,409 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-10 06:52:08,410 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-10 06:52:08,411 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-10 06:52:08,412 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-10 06:52:08,413 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-10 06:52:08,415 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-10 06:52:08,416 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-10 06:52:08,417 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-10 06:52:08,418 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-10 06:52:08,419 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-10 06:52:08,425 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-10 06:52:08,425 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-10 06:52:08,426 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-10 06:52:08,427 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-10 06:52:08,427 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-10 06:52:08,428 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-10 06:52:08,429 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-10 06:52:08,429 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-10 06:52:08,431 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-10 06:52:08,432 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-10 06:52:08,432 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-10 06:52:08,444 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-10 06:52:08,445 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-10 06:52:08,446 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-10 06:52:08,446 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-10 06:52:08,447 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-10 06:52:08,448 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-10 06:52:08,449 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-10 06:52:08,449 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-10 06:52:08,450 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-10 06:52:08,450 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-10 06:52:08,452 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-10 06:52:08,453 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-10 06:52:08,454 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-10 06:52:08,455 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-10 06:52:11,946 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-10 06:52:11,948 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-10 06:52:11,950 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-10 06:52:11,951 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-10 06:52:11,952 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-10 06:52:11,953 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-10 06:52:11,954 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-10 06:52:11,955 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-10 06:52:11,956 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-10 06:52:11,957 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-10 06:52:11,957 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-10 06:52:11,958 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-10 06:52:11,958 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-10 06:52:11,959 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-10 06:52:11,961 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-10 06:52:11,962 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-10 06:52:11,962 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-10 06:52:11,964 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-10 06:52:11,965 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-10 06:52:11,966 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-10 06:52:11,967 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-10 06:52:11,968 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-10 06:52:11,975 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-10 06:52:11,975 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-10 06:52:11,976 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-10 06:52:11,977 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-10 06:52:11,977 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-10 06:52:11,978 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-10 06:52:11,979 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-10 06:52:11,979 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-10 06:52:11,981 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-10 06:52:11,982 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-10 06:52:11,982 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-10 06:52:11,994 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-10 06:52:11,995 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-10 06:52:11,996 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-10 06:52:11,997 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-10 06:52:11,997 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-10 06:52:11,998 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-10 06:52:11,999 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-10 06:52:12,000 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-10 06:52:12,001 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-10 06:52:12,001 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-10 06:52:12,002 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-10 06:52:12,003 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-10 06:52:12,005 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-10 06:52:12,006 PIL.Image    DEBUG    Importing XVThumbImagePlugin
+2019-07-10 06:52:12,719 PIL.Image    DEBUG    Importing BlpImagePlugin
+2019-07-10 06:52:12,721 PIL.Image    DEBUG    Importing BmpImagePlugin
+2019-07-10 06:52:12,723 PIL.Image    DEBUG    Importing BufrStubImagePlugin
+2019-07-10 06:52:12,723 PIL.Image    DEBUG    Importing CurImagePlugin
+2019-07-10 06:52:12,724 PIL.Image    DEBUG    Importing DcxImagePlugin
+2019-07-10 06:52:12,726 PIL.Image    DEBUG    Importing DdsImagePlugin
+2019-07-10 06:52:12,726 PIL.Image    DEBUG    Importing EpsImagePlugin
+2019-07-10 06:52:12,728 PIL.Image    DEBUG    Importing FitsStubImagePlugin
+2019-07-10 06:52:12,728 PIL.Image    DEBUG    Importing FliImagePlugin
+2019-07-10 06:52:12,729 PIL.Image    DEBUG    Importing FpxImagePlugin
+2019-07-10 06:52:12,730 PIL.Image    DEBUG    Image: failed to import FpxImagePlugin: No module named 'olefile'
+2019-07-10 06:52:12,731 PIL.Image    DEBUG    Importing FtexImagePlugin
+2019-07-10 06:52:12,731 PIL.Image    DEBUG    Importing GbrImagePlugin
+2019-07-10 06:52:12,732 PIL.Image    DEBUG    Importing GifImagePlugin
+2019-07-10 06:52:12,734 PIL.Image    DEBUG    Importing GribStubImagePlugin
+2019-07-10 06:52:12,734 PIL.Image    DEBUG    Importing Hdf5StubImagePlugin
+2019-07-10 06:52:12,735 PIL.Image    DEBUG    Importing IcnsImagePlugin
+2019-07-10 06:52:12,737 PIL.Image    DEBUG    Importing IcoImagePlugin
+2019-07-10 06:52:12,738 PIL.Image    DEBUG    Importing ImImagePlugin
+2019-07-10 06:52:12,739 PIL.Image    DEBUG    Importing ImtImagePlugin
+2019-07-10 06:52:12,740 PIL.Image    DEBUG    Importing IptcImagePlugin
+2019-07-10 06:52:12,741 PIL.Image    DEBUG    Importing JpegImagePlugin
+2019-07-10 06:52:12,747 PIL.Image    DEBUG    Importing Jpeg2KImagePlugin
+2019-07-10 06:52:12,748 PIL.Image    DEBUG    Importing McIdasImagePlugin
+2019-07-10 06:52:12,748 PIL.Image    DEBUG    Importing MicImagePlugin
+2019-07-10 06:52:12,749 PIL.Image    DEBUG    Image: failed to import MicImagePlugin: No module named 'olefile'
+2019-07-10 06:52:12,750 PIL.Image    DEBUG    Importing MpegImagePlugin
+2019-07-10 06:52:12,751 PIL.Image    DEBUG    Importing MpoImagePlugin
+2019-07-10 06:52:12,751 PIL.Image    DEBUG    Importing MspImagePlugin
+2019-07-10 06:52:12,752 PIL.Image    DEBUG    Importing PalmImagePlugin
+2019-07-10 06:52:12,754 PIL.Image    DEBUG    Importing PcdImagePlugin
+2019-07-10 06:52:12,754 PIL.Image    DEBUG    Importing PcxImagePlugin
+2019-07-10 06:52:12,755 PIL.Image    DEBUG    Importing PdfImagePlugin
+2019-07-10 06:52:12,767 PIL.Image    DEBUG    Importing PixarImagePlugin
+2019-07-10 06:52:12,768 PIL.Image    DEBUG    Importing PngImagePlugin
+2019-07-10 06:52:12,769 PIL.Image    DEBUG    Importing PpmImagePlugin
+2019-07-10 06:52:12,769 PIL.Image    DEBUG    Importing PsdImagePlugin
+2019-07-10 06:52:12,770 PIL.Image    DEBUG    Importing SgiImagePlugin
+2019-07-10 06:52:12,771 PIL.Image    DEBUG    Importing SpiderImagePlugin
+2019-07-10 06:52:12,772 PIL.Image    DEBUG    Importing SunImagePlugin
+2019-07-10 06:52:12,773 PIL.Image    DEBUG    Importing TgaImagePlugin
+2019-07-10 06:52:12,773 PIL.Image    DEBUG    Importing TiffImagePlugin
+2019-07-10 06:52:12,774 PIL.Image    DEBUG    Importing WebPImagePlugin
+2019-07-10 06:52:12,775 PIL.Image    DEBUG    Importing WmfImagePlugin
+2019-07-10 06:52:12,776 PIL.Image    DEBUG    Importing XbmImagePlugin
+2019-07-10 06:52:12,778 PIL.Image    DEBUG    Importing XpmImagePlugin
+2019-07-10 06:52:12,779 PIL.Image    DEBUG    Importing XVThumbImagePlugin

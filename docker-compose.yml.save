@@ -3,7 +3,7 @@ services:
   db:
     image: mariadb:latest
     ports:
-      - "3306:3306"
+      - "3000:3306"
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
@@ -22,7 +22,7 @@ services:
     volumes:
       - .:/code
     ports:
-      - "3000:3000"
+      - "80:8000"
     command: ["./docker/entry.sh"]
     depends_on:
       - db
