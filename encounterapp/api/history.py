@@ -71,7 +71,7 @@ class PatientHistoryUpdateView(APIView):
         if History.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
             history_obj = History.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
             encounter_obj = Encounter.objects.get(uid=encounter_id)
-            if today_date.timestamp() < encounter_obj.update_date.timestamp():
+            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
                 serializer = PatientHistorySerializer(history_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():

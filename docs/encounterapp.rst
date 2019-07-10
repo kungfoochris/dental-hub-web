@@ -25,6 +25,12 @@ POST:
 
 **Body_Content**
 
+- id : string()
+
+- activityarea_id : string(required)
+
+- geography_id: string(required)
+
 - encounter_type: ChoiceField(required)
 choice field are (screeing,pain,check,treatment)
 

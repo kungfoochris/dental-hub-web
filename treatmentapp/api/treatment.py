@@ -53,32 +53,32 @@ class PatientTreatmentView(APIView):
         logger.error("patient does not exists.") 
         return Response({"message":"patient does not exists."},status=400)
 
-# class PatientReferUpdateView(APIView):
-#     permission_classes = (IsPostOrIsAuthenticated,)
-#     serializer_class = PatientReferSerializer
+class PatientTreatmentUpdateView(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = PatientTreatmentSerializer
 
-#     def get(self, request, encounter_id, format=None):
-#         if Refer.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():    
-#             refer_obj = Refer.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
-#             serializer = PatientReferSerializer(refer_obj, many=False, \
-#                 context={'request': request})
-#             return Response(serializer.data)
-#         return Response({"message":"content not found."},status=400)
+    def get(self, request, encounter_id, format=None):
+        if Treatment.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():    
+            treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
+            serializer = PatientTreatmentSerializer(treatment_obj, many=False, \
+                context={'request': request})
+            return Response(serializer.data)
+        return Response({"message":"content not found."},status=400)
 
-#     def put(self, request, encounter_id, format=None):
-#         today_date = datetime.now()
-#         if Refer.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
-#             refer_obj = Refer.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
-#             encounter_obj = Encounter.objects.get(uid=encounter_id)
-#             if today_date.timestamp() < encounter_obj.update_date.timestamp():
-#                 serializer = PatientReferSerializer(refer_obj,data=request.data,\
-#                     context={'request': request},partial=True)
-#                 if serializer.is_valid():
-#                     serializer.save()
-#                     return Response({"message":"refer encounter update"},status=200)
-#                 logger.error(serializer.errors)
-#                 return Response({'message':serializer.errors}, status=400)
-#             logger.error("update allow upto 24 hour only")
-#             return Response({"message":"update allow upto 24 hour only"},status=400)
-#         logger.error("history encounter id do not match")
-#         return Response({"message":"id do not match"},status=400)     
+    def put(self, request, encounter_id, format=None):
+        today_date = datetime.now()
+        if Treatment.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
+            refer_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
+            encounter_obj = Encounter.objects.get(uid=encounter_id)
+            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
+                serializer = PatientTreatmentSerializer(encounter_obj,data=request.data,\
+                    context={'request': request},partial=True)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response({"message":"treatment encounter update"},status=200)
+                logger.error(serializer.errors)
+                return Response({'message':serializer.errors}, status=400)
+            logger.error("update allow upto 24 hour only")
+            return Response({"message":"update allow upto 24 hour only"},status=400)
+        logger.error("history encounter id do not match")
+        return Response({"message":"id do not match"},status=400)     

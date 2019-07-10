@@ -56,7 +56,7 @@ class UserListView(APIView):
                     text_content = 'Account is successful created'
                     template_name = "email/activation.html"
                     emailsend(user_obj.id,text_content,template_name,password)
-                    return Response({"message":"User create successfully."},status=200)
+                    return Response(serializer.data,status=200)
                 return Response({'message':serializer.errors}, status=400)
             logger.error("This email already exists.")     
             return Response({'message':'This email already exists.'},status=400)

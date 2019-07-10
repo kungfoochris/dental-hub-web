@@ -2,10 +2,10 @@
 View all Appser and Register
 ==============================
 
-1. **URL:** `View all Appuser and Register <http://localhost/api/v1/users>`_
+1. **URL:** `View all Appuser and Register <http://api/v1/users>`_
 ::
 
-    http://localhost/api/v1/users
+    http://api/v1/users
 
 2. **METHOD:**
 GET:
@@ -33,10 +33,10 @@ POST:
 ===============
 ForgetPassword
 ===============
-1. **URL:** `ForgetPassword <http://localhost/api/v1/users/forgetpassword>`_
+1. **URL:** `ForgetPassword <http://api/v1/users/forgetpassword>`_
 ::
 
-    http://localhost/api/v1/users/forgetpassword
+    http://api/v1/users/forgetpassword
 
 
 2. **METHOD:**
@@ -54,10 +54,10 @@ POST:
 ================
 ResetPassword
 ================
-1. **URL:** `Resetpassword <http://localhost/api/v1/users/resetpassword>`_
+1. **URL:** `Resetpassword <http://api/v1/users/resetpassword>`_
 ::
 
-    http://localhost/api/v1/users/resetpassword
+    http://api/v1/users/resetpassword
 
 
 2. **METHOD:**
@@ -78,10 +78,10 @@ POST:
 Profile
 =========
 
-1. **URL:** `profile of user <http://localhost/api/v1/profile>`_
+1. **URL:** `profile of user <http://api/v1/profile>`_
 ::
 
-    http://localhost/api/v1/profile
+    http://api/v1/profile
 
 2. **METHOD:**
 GET:
@@ -94,10 +94,10 @@ GET:
 UpdateAppuser
 ==============
 
-1. **URL:** `update user profile <http://localhost/api/v1/profile/update>`_
+1. **URL:** `update user profile <http://api/v1/profile/update>`_
 ::
 
-    http://localhost/api/v1/profile/update
+    http://api/v1/profile/update
 
 
 2. **METHOD:**
@@ -116,10 +116,10 @@ POST:
 ChangePassword
 ===============
 
-1. **URL:** `View all Appuser and Register <http://localhost/api/v1/users>`_
+1. **URL:** `View all Appuser and Register <http://api/v1/users>`_
 ::
 
-    http://localhost/api/v1/users/changepassword
+    http://api/v1/users/changepassword
 
 
 3. **METHOD:**

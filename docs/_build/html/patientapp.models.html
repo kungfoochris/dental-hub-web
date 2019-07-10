@@ -40,7 +40,7 @@
 <span id="patientapp-models-patient-module"></span><h2>patientapp.models.patient module<a class="headerlink" href="#module-patientapp.models.patient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="patientapp.models.patient.Patient">
-<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>street_address</em>, <em>id</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>marital_status</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>street_address</em>, <em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>marital_status</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>ward</em>, <em>activity_area</em>, <em>geography</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="addressapp.models.html#addressapp.models.address.Address" title="addressapp.models.address.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">addressapp.models.address.Address</span></code></a></p>
 <dl class="exception">
 <dt id="patientapp.models.patient.Patient.DoesNotExist">
@@ -52,6 +52,26 @@
 <dt id="patientapp.models.patient.Patient.MultipleObjectsReturned">
 <em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#patientapp.models.patient.Patient.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.activity_area">
+<code class="descname">activity_area</code><a class="headerlink" href="#patientapp.models.patient.Patient.activity_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.activity_area_id">
+<code class="descname">activity_area_id</code><a class="headerlink" href="#patientapp.models.patient.Patient.activity_area_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -132,6 +152,26 @@ object the first time, the query is executed.</p>
 <dl class="attribute">
 <dt id="patientapp.models.patient.Patient.gender">
 <code class="descname">gender</code><a class="headerlink" href="#patientapp.models.patient.Patient.gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.geography">
+<code class="descname">geography</code><a class="headerlink" href="#patientapp.models.patient.Patient.geography" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.geography_id">
+<code class="descname">geography_id</code><a class="headerlink" href="#patientapp.models.patient.Patient.geography_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -228,6 +268,13 @@ control the saving process.</p>
 <p>The ‘force_insert’ and ‘force_update’ parameters can be used to insist
 that the “save” must be an SQL insert or update (or equivalent for
 non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.uid">
+<code class="descname">uid</code><a class="headerlink" href="#patientapp.models.patient.Patient.uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">

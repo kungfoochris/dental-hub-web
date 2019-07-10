@@ -33,8 +33,8 @@ class PatientScreeingView(APIView):
 
 
     def get(self, request, encounter_id,format=None):
-        if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
-            screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
+        if Screeing.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
+            screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
             serializer = PatientScreeingSerializer(screeing_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
@@ -44,24 +44,11 @@ class PatientScreeingView(APIView):
     def post(self, request, encounter_id, format=None):
         serializer = PatientScreeingSerializer(data=request.data,\
             context={'request': request})
-        if Encounter.objects.filter(id=encounter_id).exists():
-            encounter_obj = Encounter.objects.get(id=encounter_id)
+        if Encounter.objects.filter(uid=encounter_id).exists():
+            encounter_obj = Encounter.objects.get(uid=encounter_id)
             if Screeing.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
-                # screeing_obj = Screeing()
-                # screeing_obj.caries_risk = serializer.validated_data['caries_risk']
-                # screeing_obj.primary_teeth = serializer.validated_data['primary_teeth']
-                # screeing_obj.permanent_teeth = serializer.validated_data['permanent_teeth']
-                # screeing_obj.postiror_teeth = serializer.validated_data['postiror_teeth']
-                # screeing_obj.anterior_teeth = serializer.validated_data['anterior_teeth']
-                # screeing_obj.infection = serializer.validated_data['infection']
-                # screeing_obj.reversible_pulpitis = serializer.validated_data['reversible_pulpitis']
-                # screeing_obj.art = serializer.validated_data['art']
-                # screeing_obj.extraction = serializer.validated_data['extraction']
-                # screeing_obj.refernal_kdh = serializer.validated_data['refernal_kdh']
-                # screeing_obj.encounter_id = encounter_obj
-                # screeing_obj.save()
                 serializer.save(encounter_id=encounter_obj)
                 return Response(serializer.data,status=200)
             logger.error(serializer.errors) 
@@ -75,8 +62,8 @@ class PatientScreeingUpdateView(APIView):
     serializer_class = PatientScreeingSerializer
 
     def get(self, request, encounter_id, format=None):
-        if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
-            screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
+        if Screeing.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():    
+            screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
             serializer = PatientScreeingSerializer(screeing_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
@@ -84,10 +71,10 @@ class PatientScreeingUpdateView(APIView):
 
     def put(self, request, encounter_id, format=None):
         today_date = datetime.now()
-        if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
-            screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
-            encounter_obj = Encounter.objects.get(id=encounter_id)
-            if today_date.timestamp() < encounter_obj.update_date.timestamp():
+        if Screeing.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
+            screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
+            encounter_obj = Encounter.objects.get(uid=encounter_id)
+            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
                 serializer = PatientScreeingSerializer(screeing_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
