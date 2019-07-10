@@ -2,10 +2,10 @@
 View all Patients and Register
 ==============================
 
-1. **URL:** `View all Patients and Register <http://localhost/api/v1/patients>`_
+1. **URL:** `View all Patients and Register <http://api/v1/patients>`_
 ::
 
-    http://localhost/api/v1/patients
+    http://api/v1/patients
 
 2. **METHOD:**
 GET:
@@ -20,6 +20,9 @@ POST:
 - This method is used to register a patients:
 
     **Body_Content**
+- id : string()
+- activityarea_id : string(required)
+- geography_id: string(required)
 - first_name: string(required)
 - last_name: string(required)
 - middle_name: string()

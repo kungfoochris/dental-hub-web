@@ -11,6 +11,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 from userapp.models import User
 from patientapp.models import Patient
+from addressapp.models import Geography, ActivityArea
 
 pytestmark = pytest.mark.django_db
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -34,10 +35,12 @@ class TestPatientListView(TestCase):
         assert response.status_code == 200, 'patients list'
 
     def test_post_patient(self):
+        activityarea_obj = mixer.blend(ActivityArea)
+        geography_obj = mixer.blend(Geography)
         client = APIClient()
 
         # un authorized access by user
-        response = client.get('/api/v1/patients')
+        response = client.post('/api/v1/patients')
         assert response.status_code == 401, 'Un authorized access denied.'
 
         # authorized user
@@ -51,7 +54,13 @@ class TestPatientListView(TestCase):
             'phone':"2312164654",'education':'bachelor',\
             'author':str(user_obj),'latitude':'12',\
             'longitude':'21','country':fake.name(),\
-            'city':fake.name(),'state':fake.name(),'street_address':fake.name(),'ward':12},format='json')
+            'city':fake.name(),'state':fake.name(),\
+            'street_address':fake.name(),'ward':12,\
+            'activityarea_id':str(activityarea_obj.id),\
+            'geography_id':str(geography_obj.id),
+            'id':fake.name(),
+            'middle_name':fake.name(),
+            'marital_status':'single'},format='json')
         assert response.status_code == 200, 'patients created'
 
 

@@ -46,14 +46,6 @@ class PatientReferView(APIView):
             if Refer.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
-                # refer_obj = Refer()
-                # refer_obj.no_referal = serializer.validated_data['no_referal']
-                # refer_obj.health_post = serializer.validated_data['health_post']
-                # refer_obj.dentist = serializer.validated_data['dentist']
-                # refer_obj.physician = serializer.validated_data['physician']
-                # refer_obj.hygienist = serializer.validated_data['hygienist']
-                # refer_obj.encounter_id = encounter_obj
-                # refer_obj.save()
                 serializer.save(encounter_id=encounter_obj)
                 return Response(serializer.data,status=200)
             logger.error(serializer.errors)
@@ -78,7 +70,7 @@ class PatientReferUpdateView(APIView):
         if Refer.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
             refer_obj = Refer.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
             encounter_obj = Encounter.objects.get(uid=encounter_id)
-            if today_date.timestamp() < encounter_obj.update_date.timestamp():
+            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
                 serializer = PatientReferSerializer(refer_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():

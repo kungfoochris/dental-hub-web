@@ -70,7 +70,7 @@ class EncounterUpdateView(APIView):
     serializer_class = EncounterSerializer
 
     def get(self, request, patient_id, encounter_id, format=None):
-        if Encounter.objects.select_related('patient').filter(patient__uid=patient_id).exists():    
+        if Encounter.objects.select_related('patient').filter(uid=encounter_id,patient__uid=patient_id).exists():    
             encounter_obj = Encounter.objects.get(uid=encounter_id)
             serializer = EncounterSerializer(encounter_obj, many=False, \
                 context={'request': request})
@@ -80,9 +80,9 @@ class EncounterUpdateView(APIView):
 
     def put(self, request, patient_id, encounter_id, format=None):
         today_date = datetime.now()
-        if Encounter.objects.select_related('patient').filter(patient__uid=patient_id).exists():
+        if Encounter.objects.select_related('patient').filter(uid=encounter_id,patient__uid=patient_id).exists():
             encounter_obj = Encounter.objects.get(uid=encounter_id)
-            if today_date.timestamp() < encounter_obj.update_date.timestamp():
+            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
                 serializer = EncounterSerializer(encounter_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
