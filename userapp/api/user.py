@@ -12,7 +12,7 @@ from userapp.models import User
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
- PasswordChangeSerializer, CheckUSerializer
+ PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer
 from userapp.emailsend import emailsend
 from random import randint
 
@@ -169,4 +169,34 @@ class AdminUserCheckView(APIView):
                     return Response({"status":"true"},status=200)
                 return Response({"message":"Invalid username/password"},status=400)
             return Response({"message":"Invalid username/password."},status=400)
-        return Response({'message':serializer.errors}, status=400) 
+        return Response({'message':serializer.errors}, status=400)
+
+
+
+
+class UpdateUserDataView(APIView):
+    serializer_class = UpdateUserDataSerializer
+    permission_classes = (IsPostOrIsAuthenticated,)
+    def get(self, request,pk,format=None):
+        if request.user.admin:
+            user = User.objects.get(id=pk)
+            serializer = UpdateUserDataSerializer(user, \
+                context={'request': request})
+            return Response(serializer.data,status=200)
+        return response({"message":"only admin can see"},status=400)
+
+    def put(self, request, pk, format=None):
+        if request.user.admin:
+            user_obj = User.objects.get(id=pk)
+            serializer = UpdateUserDataSerializer(user_obj,\
+                data=request.data,context={'request': request}, partial=True)
+            if serializer.is_valid():
+                user_obj.first_name = serializer.validated_data['first_name']
+                user_obj.middle_name = serializer.validated_data['middle_name']
+                user_obj.last_name = serializer.validated_data['last_name']
+                user_obj.email = serializer.validated_data['email']
+                user_obj.update_password = False
+                user_obj.save()
+                return Response({"message":"Update data successful"},status=200)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return response({"message":"only admin can add"},status=400)

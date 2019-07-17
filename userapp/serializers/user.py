@@ -53,3 +53,9 @@ class CheckUSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ('email',)
+
+
+class UpdateUserDataSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ('first_name','last_name','middle_name','email')
