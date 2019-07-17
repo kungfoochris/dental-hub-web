@@ -32,7 +32,7 @@ class UserListView(APIView):
 
     def get(self, request, format=None):
         if request.user.admin:
-            user=User.objects.all().exclude(admin=True)
+            user=User.objects.filter(active=True).exclude(admin=True)
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
             return Response(serializer.data)
@@ -179,7 +179,7 @@ class UpdateUserDataView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request,pk,format=None):
         if request.user.admin:
-            if User.objects.filter(id=pk,staff=True,active=True).exists():
+            if User.objects.filter(id=pk,active=True).exists():
                 user = User.objects.get(id=pk)
                 serializer = UpdateUserDataSerializer(user, \
                     context={'request': request})
@@ -205,9 +205,11 @@ class UpdateUserDataView(APIView):
 
     def delete(self, request, pk, format=None):
         if request.user.admin:
-            user_obj = User.objects.get(pk=pk)
-            user_obj.active = False
-            user_obj.staff = False
-            user_obj.save()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response({'errors': 'Permission Denied'},status=550)
+            if User.objects.filter(id=pk,active=True).exists():
+                user_obj = User.objects.get(id=pk)
+                user_obj.active = False
+                user_obj.staff = False
+                user_obj.save()
+                return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response({"message":"no content found"},status=400)
+        return Response({'errors': 'Permission Denied'},status=400)
