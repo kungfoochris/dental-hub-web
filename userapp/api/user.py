@@ -12,7 +12,7 @@ from userapp.models import User
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
- PasswordChangeSerializer, CheckUSerializer
+ PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer
 from userapp.emailsend import emailsend
 from random import randint
 
@@ -32,7 +32,7 @@ class UserListView(APIView):
 
     def get(self, request, format=None):
         if request.user.admin:
-            user=User.objects.all().exclude(admin=True)
+            user=User.objects.filter(active=True,staff=True).exclude(admin=True)
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
             return Response(serializer.data)
@@ -67,7 +67,7 @@ class UserListView(APIView):
 class UserForgetPassword(APIView):
     serializer_class = ForgetPasswordSerializer
     def post(self, request, format=None):
-        if User.objects.filter(email=request.data['email']):
+        if User.objects.filter(email=request.data['email'],staff=True).exists():
             user_obj = User.objects.get(email=request.data['email'])
             text_content = 'Password Reset Email'
             template_name = "email/forgetpassword.html"
@@ -91,7 +91,7 @@ class UserResetPassword(APIView):
             context={'request': request})
         if request.data['password'] == request.data['confirm_password']:
             if serializer.is_valid():
-                if User.objects.filter(token = serializer.validated_data['token']).exists():
+                if User.objects.filter(token = serializer.validated_data['token'],staff=True).exists():
                     user_obj = User.objects.get(token = serializer.validated_data['token'])
                     user_obj.active = True
                     user_obj.password = serializer.validated_data['password']
@@ -169,4 +169,45 @@ class AdminUserCheckView(APIView):
                     return Response({"status":"true"},status=200)
                 return Response({"message":"Invalid username/password"},status=400)
             return Response({"message":"Invalid username/password."},status=400)
-        return Response({'message':serializer.errors}, status=400) 
+        return Response({'message':serializer.errors}, status=400)
+
+
+
+
+class UpdateUserDataView(APIView):
+    serializer_class = UpdateUserDataSerializer
+    permission_classes = (IsPostOrIsAuthenticated,)
+    def get(self, request,pk,format=None):
+        if request.user.admin:
+            if User.objects.filter(id=pk,staff=True,active=True).exists():
+                user = User.objects.get(id=pk)
+                serializer = UpdateUserDataSerializer(user, \
+                    context={'request': request})
+                return Response(serializer.data,status=200)
+            return Response({"message":"content not found"},status=400)
+        return response({"message":"only admin can see"},status=400)
+
+    def put(self, request, pk, format=None):
+        if request.user.admin:
+            user_obj = User.objects.get(id=pk)
+            serializer = UpdateUserDataSerializer(user_obj,\
+                data=request.data,context={'request': request}, partial=True)
+            if serializer.is_valid():
+                user_obj.first_name = serializer.validated_data['first_name']
+                user_obj.middle_name = serializer.validated_data['middle_name']
+                user_obj.last_name = serializer.validated_data['last_name']
+                user_obj.email = serializer.validated_data['email']
+                user_obj.update_password = False
+                user_obj.save()
+                return Response({"message":"Update data successful"},status=200)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return response({"message":"only admin can add"},status=400)
+
+    def delete(self, request, pk, format=None):
+        if request.user.admin:
+            user_obj = User.objects.get(pk=pk)
+            user_obj.active = False
+            user_obj.staff = False
+            user_obj.save()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({'errors': 'Permission Denied'},status=550)

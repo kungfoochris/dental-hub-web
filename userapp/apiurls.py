@@ -3,7 +3,7 @@ from django.conf.urls import include
 from django.urls import path
 from userapp.api.user import UserListView, UserForgetPassword,\
 UserResetPassword, ProfileListView, UpdateUserView,\
- UserChangepassword, AdminUserCheckView
+ UserChangepassword, AdminUserCheckView, UpdateUserDataView
 from rest_framework.urlpatterns import format_suffix_patterns
 
 # from userapp.api.staticpage import StaticPageView
@@ -18,5 +18,6 @@ urlpatterns = [
 	path('profile', ProfileListView.as_view()),
 	path('profile/update',UpdateUserView.as_view()),
 	path('checkuser', AdminUserCheckView.as_view()),
+	path('users/<pk>',UpdateUserDataView.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)
