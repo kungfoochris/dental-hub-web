@@ -32,7 +32,7 @@ class UserListView(APIView):
 
     def get(self, request, format=None):
         if request.user.admin:
-            user=User.objects.filter(active=True,staff=True).exclude(admin=True)
+            user=User.objects.all().exclude(admin=True)
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
             return Response(serializer.data)
@@ -67,7 +67,7 @@ class UserListView(APIView):
 class UserForgetPassword(APIView):
     serializer_class = ForgetPasswordSerializer
     def post(self, request, format=None):
-        if User.objects.filter(email=request.data['email'],staff=True).exists():
+        if User.objects.filter(email=request.data['email']).exists():
             user_obj = User.objects.get(email=request.data['email'])
             text_content = 'Password Reset Email'
             template_name = "email/forgetpassword.html"
@@ -91,7 +91,7 @@ class UserResetPassword(APIView):
             context={'request': request})
         if request.data['password'] == request.data['confirm_password']:
             if serializer.is_valid():
-                if User.objects.filter(token = serializer.validated_data['token'],staff=True).exists():
+                if User.objects.filter(token = serializer.validated_data['token']).exists():
                     user_obj = User.objects.get(token = serializer.validated_data['token'])
                     user_obj.active = True
                     user_obj.password = serializer.validated_data['password']
