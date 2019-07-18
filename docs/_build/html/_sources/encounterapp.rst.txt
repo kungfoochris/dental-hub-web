@@ -174,4 +174,46 @@ PUT:
 
 
 
+====================
+Encounter Treatment
+====================
+1. **URL:**
+::
+
+   Get and Post : /api/v1/encounter/<encounter_id>/treatment
+   Put : /api/v1/encounter/<encounter_id>/treatment/update
+
+   - encounter_id: CharField(as a parameter)
+
+2. **METHOD:**
+GET:
+::
+
+    - This method list all the encounter treatment:
+
+
+3. **METHOD:**
+POST:
+::
+
+- This Method is used for add a treatment encounter:
+
+**Body_Content**
+
+- teeth1: ChoiceField()
+    choice field are (SDF,SEAL,ART,'EXO','UNTR','None')
+- teeth should be from 1 to 32
+- fluoride_varnish: BooleanField()
+- treatment_complete: BooleanField()
+- note: TextField()
+
+4. **METHOD:**
+PUT:
+::
+
+    - This method is used to update a screeing encounter:
+
+
+
+
 
