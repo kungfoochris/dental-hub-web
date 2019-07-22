@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from .address import Address
 
 class Geography(Address):
-	pass
+	status = models.BooleanField(default=True)
 	
 
 
