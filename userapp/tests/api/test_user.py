@@ -373,3 +373,24 @@ class ChangePassword():
             {'old_password' : user_obj.password, 'new_password' : fake_password, \
                 'confirm_password' : fake.password()}, format='json')
         assert response.status_code == 400, 'password donot match'
+
+
+        # password donot match
+        user_obj = mixer.blend(User,password='iam100good')
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        response = client.post('/api/v1/users/changepassword', \
+            {'old_password' : "12345jdhsd", 'new_password' : "iam100bad", \
+                'confirm_password' : "iam100bad"}, format='json')
+        assert response.status_code == 400, 'old password donot match'
+
+        # serializer donot match
+        user_obj = mixer.blend(User,password='iam100good')
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        response = client.post('/api/v1/users/changepassword', \
+            {'new_password' : "iam100bad", \
+                'confirm_password' : "iam100bad"}, format='json')
+        assert response.status_code == 400, 'serializer error'
