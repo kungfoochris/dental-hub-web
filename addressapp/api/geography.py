@@ -15,8 +15,8 @@ from rest_framework import filters
 class IsPostOrIsAuthenticated(permissions.BasePermission):        
 
     def has_permission(self, request, view):
-        if request.method == 'GET':
-            return True
+        # if request.method == 'GET':
+        #     return True
         return request.user and request.user.is_authenticated
 
 
@@ -25,10 +25,16 @@ class GeographyListView(APIView):
     serializer_class = GeographySerializer
 
     def get(self, request, format=None):
-        geography_obj = Geography.objects.filter(status=True)
-        serializer = GeographySerializer(geography_obj, many=True, \
-            context={'request': request})
-        return Response(serializer.data)
+        if request.user.admin:
+            geography_obj = Geography.objects.filter(status=True)
+            serializer = GeographySerializer(geography_obj, many=True, \
+                context={'request': request})
+            return Response(serializer.data)
+        else:
+            geography_obj = Geography.objects.filter(user=request.user)
+            serializer = GeographySerializer(geography_obj, many=True, \
+                context={'request': request})
+            return Response(serializer.data)
 
     def post(self, request, format=None):
         if request.user.admin:

@@ -15,6 +15,7 @@ PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
  PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer
 from userapp.emailsend import emailsend
 from random import randint
+from addressapp.models import Geography
 
 import logging
 # Get an instance of a logger
@@ -199,6 +200,8 @@ class UpdateUserDataView(APIView):
                 user_obj.email = serializer.validated_data['email']
                 user_obj.update_password = False
                 user_obj.save()
+                for i in serializer.validated_data['location']:
+                    user_obj.location.add(i)
                 return Response({"message":"Update data successful"},status=200)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return response({"message":"only admin can add"},status=400)

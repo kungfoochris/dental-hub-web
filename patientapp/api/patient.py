@@ -30,10 +30,19 @@ class PatientListView(APIView):
     search_fields = ('first_name', 'last_name','full_name')
 
     def get(self, request, format=None):
-        patient_obj = Patient.objects.all().order_by("-date")
-        serializer = PatientSerializer(patient_obj, many=True, \
-            context={'request': request})
-        return Response(serializer.data)
+        if request.user.admin:
+            patient_obj = Patient.objects.all().order_by("-date")
+            serializer = PatientSerializer(patient_obj, many=True, \
+                context={'request': request})
+            return Response(serializer.data)
+        else:
+            geography = Geography.objects.filter(user=request.user)
+            print(geography)
+            for i in geography:
+                patient_obj = Patient.objects.select_related('geography').filter(geography=i).order_by("-date")
+                serializer = PatientSerializer(patient_obj, many=True, \
+                    context={'request': request})
+                return Response(serializer.data)
 
     def post(self, request, format=None):
         serializer = PatientSerializer(data=request.data,\

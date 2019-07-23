@@ -17,3 +17,8 @@ class Address(models.Model):
     @property
     def address(self):
         return "%s, %s" %(self.street_address, self.city)
+
+
+    @property
+    def location(self):
+        return "%s, %s, %s" %(self.street_address, self.city, self.state)

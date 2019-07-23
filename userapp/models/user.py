@@ -5,6 +5,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 
+from addressapp.models import Geography
+
 def keygenerator():
     uid = uuid4()
     return uid.hex.upper()
@@ -44,6 +46,7 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=100)
     image = models.FileField(upload_to='profile',default="profile/default-avatar.png")
     token = models.CharField(max_length=6,null=True)
+    location = models.ManyToManyField(Geography)
     USERNAME_FIELD = 'email'
     update_password=True
 

@@ -3,14 +3,24 @@ from django.contrib.auth.models import Group, Permission
 from rest_framework import serializers
 
 from userapp.models import User
+from addressapp.models import Geography
+
+class LocationPKField(serializers.PrimaryKeyRelatedField):
+    def get_queryset(self):
+    	try:
+    		queryset = Geography.objects.all()
+    		return queryset
+    	except:
+    		print('hello')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id','first_name', 'middle_name', 'last_name', 'email', 'active', 
-            'staff', 'admin','full_name')
-        read_only_fields = ('active','staff','admin','full_name')
+	location = LocationPKField(many=True)
+	class Meta:
+		model = User
+		fields = ('id','first_name', 'middle_name', 'last_name', 'email', 'active',
+			'staff', 'admin','full_name','location')
+		read_only_fields = ('active','staff','admin','full_name')
 
 
 class ForgetPasswordSerializer(serializers.ModelSerializer):
@@ -56,6 +66,7 @@ class CheckUSerializer(serializers.ModelSerializer):
 
 
 class UpdateUserDataSerializer(serializers.ModelSerializer):
+	location = LocationPKField(many=True)
 	class Meta:
 		model = User
-		fields = ('first_name','last_name','middle_name','email')
+		fields = ('first_name','last_name','middle_name','email','location')

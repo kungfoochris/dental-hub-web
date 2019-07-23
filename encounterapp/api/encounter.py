@@ -32,12 +32,22 @@ class EncounterView(APIView):
 
 
     def get(self, request,patient_id, format=None):
-        patient_obj = Patient.objects.get(uid=patient_id)
-        encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
-        serializer = AllEncounterSerializer(encounter_obj, many=True, \
-            context={'request': request})
-        return Response(serializer.data)
-
+        if request.user.admin:
+            patient_obj = Patient.objects.get(uid=patient_id)
+            encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
+            serializer = AllEncounterSerializer(encounter_obj, many=True, \
+                context={'request': request})
+            return Response(serializer.data)
+        else:
+            geography = Geography.objects.filter(user=request.user)
+            print(geography)
+            for i in geography:
+                patient_obj = Patient.objects.get(uid=patient_id)
+                encounter_obj = Encounter.objects.select_related('patient',\
+                    'geography').filter(patient=patient_obj,geography=i)
+                serializer = AllEncounterSerializer(encounter_obj, many=True, \
+                    context={'request': request})
+                return Response(serializer.data)
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
             context={'request': request})
