@@ -54,6 +54,8 @@ class UserListView(APIView):
                     user_obj.last_name=serializer.validated_data['last_name']
                     user_obj.middle_name = serializer.validated_data['middle_name']
                     user_obj.save()
+                    for i in serializer.validated_data['location']:
+                        user_obj.location.add(i)
                     text_content = 'Account is successful created'
                     template_name = "email/activation.html"
                     emailsend(user_obj.id,text_content,template_name,password)
