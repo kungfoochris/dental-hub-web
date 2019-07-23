@@ -5,7 +5,7 @@ from rest_framework import serializers
 from userapp.models import User
 from addressapp.models import Geography
 
-class LocationPKField(serializers.PrimaryKeyRelatedField):
+class LocationPKField(serializers.StringRelatedField):
     def get_queryset(self):
     	try:
     		queryset = Geography.objects.all()
@@ -16,6 +16,7 @@ class LocationPKField(serializers.PrimaryKeyRelatedField):
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	location = LocationPKField(many=True)
+	# location = serializers.StringRelatedField()
 	class Meta:
 		model = User
 		fields = ('id','first_name', 'middle_name', 'last_name', 'email', 'active',
