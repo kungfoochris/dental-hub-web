@@ -41,8 +41,19 @@ class GeographyListView(APIView):
             serializer = GeographySerializer(data=request.data,\
                 context={'request': request})
             if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data,status=200)
+                if re.match("^[a-zA-Z]+$", serializer.validated_data['street_address']):
+                    if Geography.objects.filter(state=serializer.validated_data['state'],\
+                        city=serializer.validated_data['city'],\
+                        street_address=serializer.validated_data['street_address']).exists():
+                        return Response({"message":"This location already exists"},status=400)
+                    geography_obj = Geography()
+                    geography_obj.state = serializer.validated_data['state']
+                    geography_obj.city = serializer.validated_data['city']
+                    geography_obj.street_address = serializer.validated_data['street_address']. capitalize()
+                    geography_obj.country = serializer.validated_data['country']
+                    geography_obj.save()
+                    return Response({"message":"Geography location added."},status=200)
+                return Response({"message":"Street Address should only contain String With out space"},status=400)
             return Response({'message':serializer.errors}, status=400)
         return Response({"message":"only admin can add"},status=400)
 
@@ -68,12 +79,18 @@ class GeographyUpdateView(APIView):
                 serializer = GeographySerializer(geography_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
-                    geography_obj.city = serializer.validated_data['city']
-                    geography_obj.state = serializer.validated_data['state']
-                    geography_obj.country = serializer.validated_data['country']
-                    geography_obj.street_address = serializer.validated_data['street_address']
-                    geography_obj.save()
-                    return Response({"message":"geography update"},status=200)
+                    if re.match("^[a-zA-Z]+$", serializer.validated_data['street_address']):
+                        if Geography.objects.filter(state=serializer.validated_data['state'],\
+                            city=serializer.validated_data['city'],\
+                            street_address=serializer.validated_data['street_address']).exists():
+                            return Response({"message":"This location already exists"},status=400)
+                        geography_obj.city = serializer.validated_data['city']
+                        geography_obj.state = serializer.validated_data['state']
+                        geography_obj.country = serializer.validated_data['country']
+                        geography_obj.street_address = serializer.validated_data['street_address'].capitalize()
+                        geography_obj.save()
+                        return Response({"message":"geography update"},status=200)
+                    return Response({"message":"Street Address should only contain String With out space"},status=400)
                 logger.error(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
             logger.error("content not found")

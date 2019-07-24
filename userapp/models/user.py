@@ -88,6 +88,7 @@ class User(AbstractBaseUser):
     @property
     def is_active(self):
         return self.active
+    
 
 
 

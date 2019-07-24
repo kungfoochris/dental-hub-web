@@ -5,7 +5,7 @@ from rest_framework import serializers
 from userapp.models import User
 from addressapp.models import Geography
 
-class LocationPKField(serializers.StringRelatedField):
+class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
     	try:
     		queryset = Geography.objects.all()
