@@ -22,3 +22,15 @@ def seed(request):
 			mixer.blend(Geography)
 	return HttpResponse("it works")
 
+
+
+# def productionseed(request):
+# 	try:
+# 		User.objects.create_superuser(email='info@abhiyantrik.com',password='dental123')
+# 		User.objects.create(email='ram@gmail.com',password='dental123',first_name="Ram",last_name="Karki")
+# 		User.objects.create(email='hari@gmail.com',password='dental123',first_name="Hari",last_name="Karki")
+# 		User.objects.create(email='kabi@gmail.com',password='dental123',first_name="Kabi",last_name="Karki")
+# 		User.objects.create(email='saurav@gmail.com',password='dental123',first_name="Saurav",last_name="Karki")
+# 		User.objects.create(email='bimu@gmail.com',password='dental123',first_name="Bishal",last_name="Karki")
+
+

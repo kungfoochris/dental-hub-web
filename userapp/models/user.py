@@ -75,7 +75,11 @@ class User(AbstractBaseUser):
 
     @property
     def full_name(self):
-        return "%s %s %s" %(self.first_name, self.middle_name,self.last_name)
+        if self.last_name:
+            return "%s %s %s" %(self.first_name, self.middle_name,self.last_name)
+        else:
+            return "%s %s" %(self.first_name,self.last_name)
+
 
     @property
     def is_admin(self):
