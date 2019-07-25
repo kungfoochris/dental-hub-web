@@ -49,7 +49,7 @@ class GeographyListView(APIView):
                     geography_obj = Geography()
                     geography_obj.state = serializer.validated_data['state']
                     geography_obj.city = serializer.validated_data['city']
-                    geography_obj.street_address = serializer.validated_data['street_address']. capitalize()
+                    geography_obj.street_address = serializer.validated_data['street_address'].capitalize()
                     geography_obj.country = serializer.validated_data['country']
                     geography_obj.save()
                     return Response({"message":"Geography location added."},status=200)
@@ -79,6 +79,7 @@ class GeographyUpdateView(APIView):
                 serializer = GeographySerializer(geography_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
+                    print(serializer)
                     if re.match("^[a-zA-Z]+$", serializer.validated_data['street_address']):
                         if Geography.objects.filter(state=serializer.validated_data['state'],\
                             city=serializer.validated_data['city'],\
@@ -91,11 +92,12 @@ class GeographyUpdateView(APIView):
                         geography_obj.save()
                         return Response({"message":"geography update"},status=200)
                     return Response({"message":"Street Address should only contain String With out space"},status=400)
-                logger.error(serializer.errors)
+                # logger.error(serializer.errors)
+                print(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
-            logger.error("content not found")
+            # logger.error("content not found")
             return Response({"message":"content not found"},status=204)
-        logger.error("only admin can edit")
+        # logger.error("only admin can edit")
         return Response({"message":"only admin can edit"},status=400)
 
 

@@ -21,8 +21,12 @@ class TestUserModel():
 
     def test_full_name(self):
         user_obj = mixer.blend(User)
-        assert user_obj.full_name == '%s %s %s' %(str(user_obj.first_name),str(user_obj.middle_name),str(user_obj.last_name)),\
-        'full name is matched'
+        if user_obj.middle_name is None:
+            assert user_obj.full_name == '%s %s' %(str(user_obj.first_name),str(user_obj.last_name)),\
+            'full name is matched'
+        else:
+            assert user_obj.full_name == '%s %s %s' %(str(user_obj.first_name),str(user_obj.middle_name),str(user_obj.last_name)),\
+            'full name is matched'
 
     def test_staff_admin_superuser(self):
         user_obj = mixer.blend(User)

@@ -10,6 +10,7 @@ from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from userapp.models import User
+from addressapp.models import Geography
 
 pytestmark = pytest.mark.django_db
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -65,12 +66,13 @@ class TestUserListView(TestCase):
 
         # authorized user with  admin
         user_obj = mixer.blend(User,admin=True)
+        location_obj = mixer.blend(Geography)
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
         response = client.post('/api/v1/users',\
-            {'first_name':fake.name(),'last_name':fake.name(),\
-            'email':fake.email(),'middle_name':fake.name()},format='json')
+            {'first_name':"pk",'last_name':"karki",\
+            'email':fake.email(),'location':[str(location_obj.id)],'middle_name':"hello"},format='json')
         assert response.status_code == 200,'user created successfully'
 
 
@@ -217,180 +219,364 @@ class TestUserListView(TestCase):
 #             {'token' : activate_user.token}, format='json')
 #         assert response.status_code == 401, 'Token has expired.'
 
-class TestPasswordManage():
-    '''
-    for UserForgetPassword
-    '''
-    def test_forget_password(self):
-        client = APIClient()
-        fake_email = fake.email()
-        user_obj = mixer.blend(User, email=fake_email)
-        # for correct registered email
-        response = client.post('/api/v1/users/forgetpassword',\
-            {'email' : fake_email}, format='json')
-        assert response.status_code == 200, 'password reset successfully'
+# class TestPasswordManage(TestCase):
+#     '''
+#     for UserForgetPassword
+#     '''
+#     def test_forget_password(self):
+#         client = APIClient()
+#         fake_email = fake.email()
+#         user_obj = mixer.blend(User, email=fake_email)
+#         # for correct registered email
+#         response = client.post('/api/v1/users/forgetpassword',\
+#             {'email' : fake_email}, format='json')
+#         assert response.status_code == 200, 'password reset successfully'
 
-        # for not registered email
-        response = client.post('/api/v1/users/forgetpassword',\
+#         # for not registered email
+#         response = client.post('/api/v1/users/forgetpassword',\
+#             {'email' : fake.email()}, format='json')
+#         assert response.status_code == 400, 'email not registered.'
+
+
+#     '''
+#     for UserResetPassword Test case for Reset Password
+#     '''    
+#     def test_reset_password(self):
+#         fake_password = fake.name()
+#         client = APIClient()
+
+
+#         # reset password without token
+#         response = client.post('/api/v1/users/resetpassword',\
+#             {'token' : "3398", 'password' : fake_password,\
+#                 'confirm_password' : fake_password}, format='json')
+#         assert response.status_code == 400, 'token do not match'
+
+#         # reset password with different password and confirm_passowrd
+#         user_obj = mixer.blend(User,token="1234")
+#         response = client.post('/api/v1/users/resetpassword',\
+#             {'token' :str(1234), 'password' : fake_password,\
+#                 'confirm_password' : fake.name()}, format='json')
+#         assert response.status_code == 400, 'password do not'
+
+#         # reset password success
+#         user_obj = mixer.blend(User,token="2565")
+#         response = client.post('/api/v1/users/resetpassword',\
+#             {'token' :str(2565), 'password' : fake_password,\
+#                 'confirm_password' :fake_password}, format='json')
+#         assert response.status_code == 200, 'password reset success'
+
+#         # serializer error 
+#         user_obj = mixer.blend(User,token="2565")
+#         response = client.post('/api/v1/users/resetpassword',\
+#             {'token' :'', 'password' : fake_password,\
+#                 'confirm_password' :fake_password}, format='json')
+#         assert response.status_code == 400, 'serializer error'
+
+#         user_obj = mixer.blend(User,token="2565")
+#         response = client.post('/api/v1/users/resetpassword',\
+#             {'token' :'2565', 'password' : fake_password,\
+#                 'confirm_password' :''}, format='json')
+#         assert response.status_code == 400, 'serializer error'
+
+#         user_obj = mixer.blend(User,token="2565")
+#         response = client.post('/api/v1/users/resetpassword',\
+#             {'token' :'2565', 'password' : '',\
+#                 'confirm_password' :fake_password}, format='json')
+#         assert response.status_code == 400, 'serializer error'
+
+
+
+
+# class TestProfile(TestCase):
+#     def test_profile(self):
+#         client = APIClient()
+#         # without authenticated user
+#         response = client.get('/api/v1/profile', format='json')
+#         assert response.status_code == 401, 'Unauthenticated user.'
+
+#         # by using authenticated user
+#         user_obj = mixer.blend(User)
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.get('/api/v1/profile',format='json')
+#         assert response.status_code == 200, 'profile update.'
+
+
+# class ProfileUpdate(TestCase):
+#     def test_getupdateprofile(self):
+#         client = APIClient()
+#         # without authenticated user
+#         response = client.get('/api/v1/profile/update', format='json')
+#         assert response.status_code == 401, 'Unauthenticated user.'
+
+#         # by using authenticated user
+#         user_obj = User.objects.create(email=fake.email(),first_name=fake.name(),last_name=fake.name())
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.get('/api/v1/profile/update', format='json')
+#         assert response.status_code == 200, 'show profile of  user.'
+
+#     def test_updateprofile(self):
+#         client = APIClient()
+#         newPhoto = SimpleUploadedFile(name='default-avatar.png',\
+#             content=open(MEDIA_ROOT+'/profile/default-avatar.png', 'rb').read(),\
+#             content_type='image/png')
+#         # without authenticated user
+#         response = client.put('/api/v1/profile/update', {'image':newPhoto},format='json')
+#         assert response.status_code == 401, 'Unauthenticated user.'
+
+#         # by using authenticated user
+#         user_obj = User.objects.create(email=fake.email(),first_name=fake.name(),last_name=fake.name())
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.put('/api/v1/profile/update', {'image':newPhoto},format='json')
+#         assert response.status_code == 200, 'show profile of  user.'
+
+
+# class ChangePassword(TestCase):
+
+#     '''
+#     for UserChangepassword http://localhost/api/v1/users/changepassword
+#     '''
+#     def test_change_passwrod_post(self):
+#         client = APIClient()
+#         old_password = fake.password()
+#         fake_password = fake.password()
+
+#         # unauthenticated user
+#         response = client.post('/api/v1/users/changepassword', \
+#             {'old_password' : fake.password(), 'new_password' : fake_password, \
+#                 'confirm_password' : fake_password}, format='json')
+#         assert response.status_code == 400, 'old password is wrong'
+
+
+
+#         # authenticated user
+#         user_obj = mixer.blend(User,password='iam100good')
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.post('/api/v1/users/changepassword', \
+#             {'old_password' : user_obj.password, 'new_password' : fake_password, \
+#                 'confirm_password' : fake_password}, format='json')
+#         assert response.status_code == 200, 'password change successfully'
+
+
+#         # password donot match
+#         user_obj = mixer.blend(User,password='iam100good')
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.post('/api/v1/users/changepassword', \
+#             {'old_password' : user_obj.password, 'new_password' : fake_password, \
+#                 'confirm_password' : fake.password()}, format='json')
+#         assert response.status_code == 400, 'password donot match'
+
+
+#         # password donot match
+#         user_obj = mixer.blend(User,password='iam100good')
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.post('/api/v1/users/changepassword', \
+#             {'old_password' : "12345jdhsd", 'new_password' : "iam100bad", \
+#                 'confirm_password' : "iam100bad"}, format='json')
+#         assert response.status_code == 400, 'old password donot match'
+
+#         # serializer donot match
+#         user_obj = mixer.blend(User,password='iam100good')
+#         payload = jwt_payload_handler(user_obj)
+#         token = jwt_encode_handler(payload)
+#         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+#         response = client.post('/api/v1/users/changepassword', \
+#             {'new_password' : "iam100bad", \
+#                 'confirm_password' : "iam100bad"}, format='json')
+#         assert response.status_code == 400, 'serializer error'
+
+
+
+class AdminUserCheckView(TestCase):
+    def test_checkuser(self):
+        client = APIClient()
+        email = fake.email()
+
+        # authenticated user
+        user_obj = mixer.blend(User,email=fake.email(),admin=True)
+        response = client.post('/api/v1/checkuser', \
+            {'email' : user_obj.email}, format='json')
+        assert response.status_code == 200, 'status is true'
+
+
+        # authenticated user
+        user_obj = mixer.blend(User,email=fake.email())
+        response = client.post('/api/v1/checkuser', \
+            {'email' : user_obj.email}, format='json')
+        assert response.status_code == 400, 'invalid user'
+
+        # seriaizer error
+        user_obj = mixer.blend(User,email=email,admin=True)
+        response = client.post('/api/v1/checkuser', \
+            {'email' : fake.name()}, format='json')
+        assert response.status_code == 400, 'seriaizer error'
+
+
+        # unauthenticated user
+        response = client.post('/api/v1/checkuser', \
             {'email' : fake.email()}, format='json')
-        assert response.status_code == 400, 'email not registered.'
+        assert response.status_code == 400, 'invalid user'
 
 
-    '''
-    for UserResetPassword Test case for Reset Password
-    '''    
-    def test_reset_password(self):
-        fake_password = fake.name()
+class UpdateUserData(TestCase):
+    def test_listupdateuserdata(self):
         client = APIClient()
 
+        # unauthenticated user
+        user_obj = mixer.blend(User)
+        response = client.get('/api/v1/users/'+str(user_obj.id))
+        assert response.status_code == 401, 'unauthenticated user'
 
-        # reset password without token
-        response = client.post('/api/v1/users/resetpassword',\
-            {'token' : "3398", 'password' : fake_password,\
-                'confirm_password' : fake_password}, format='json')
-        assert response.status_code == 400, 'token do not match'
-
-        # reset password with different password and confirm_passowrd
-        user_obj = mixer.blend(User,token="1234")
-        response = client.post('/api/v1/users/resetpassword',\
-            {'token' :str(1234), 'password' : fake_password,\
-                'confirm_password' : fake.name()}, format='json')
-        assert response.status_code == 400, 'password do not'
-
-        # reset password success
-        user_obj = mixer.blend(User,token="2565")
-        response = client.post('/api/v1/users/resetpassword',\
-            {'token' :str(2565), 'password' : fake_password,\
-                'confirm_password' :fake_password}, format='json')
-        assert response.status_code == 200, 'password reset success'
-
-        # serializer error 
-        user_obj = mixer.blend(User,token="2565")
-        response = client.post('/api/v1/users/resetpassword',\
-            {'token' :'', 'password' : fake_password,\
-                'confirm_password' :fake_password}, format='json')
-        assert response.status_code == 400, 'serializer error'
-
-        user_obj = mixer.blend(User,token="2565")
-        response = client.post('/api/v1/users/resetpassword',\
-            {'token' :'2565', 'password' : fake_password,\
-                'confirm_password' :''}, format='json')
-        assert response.status_code == 400, 'serializer error'
-
-        user_obj = mixer.blend(User,token="2565")
-        response = client.post('/api/v1/users/resetpassword',\
-            {'token' :'2565', 'password' : '',\
-                'confirm_password' :fake_password}, format='json')
-        assert response.status_code == 400, 'serializer error'
-
-
-
-
-class TestProfile():
-    def test_profile(self):
-        client = APIClient()
-        # without authenticated user
-        response = client.get('/api/v1/profile', format='json')
-        assert response.status_code == 401, 'Unauthenticated user.'
-
-        # by using authenticated user
+        # authenticated user
         user_obj = mixer.blend(User)
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.get('/api/v1/profile',format='json')
-        assert response.status_code == 200, 'profile update.'
-
-
-class ProfileUpdate():
-    def test_getupdateprofile(self):
-        client = APIClient()
-        # without authenticated user
-        response = client.get('/api/v1/profile/update', format='json')
-        assert response.status_code == 401, 'Unauthenticated user.'
-
-        # by using authenticated user
-        user_obj = User.objects.create(email=fake.email(),first_name=fake.name(),last_name=fake.name())
-        payload = jwt_payload_handler(user_obj)
-        token = jwt_encode_handler(payload)
-        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.get('/api/v1/profile/update', format='json')
-        assert response.status_code == 200, 'show profile of  user.'
-
-    def test_updateprofile(self):
-        client = APIClient()
-        newPhoto = SimpleUploadedFile(name='default-avatar.png',\
-            content=open(MEDIA_ROOT+'/profile/default-avatar.png', 'rb').read(),\
-            content_type='image/png')
-        # without authenticated user
-        response = client.put('/api/v1/profile/update', {'image':newPhoto},format='json')
-        assert response.status_code == 401, 'Unauthenticated user.'
-
-        # by using authenticated user
-        user_obj = User.objects.create(email=fake.email(),first_name=fake.name(),last_name=fake.name())
-        payload = jwt_payload_handler(user_obj)
-        token = jwt_encode_handler(payload)
-        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.put('/api/v1/profile/update', {'image':newPhoto},format='json')
-        assert response.status_code == 200, 'show profile of  user.'
-
-
-class ChangePassword():
-
-    '''
-    for UserChangepassword http://localhost/api/v1/users/changepassword
-    '''
-    def test_change_passwrod_post(self):
-        client = APIClient()
-        old_password = fake.password()
-        fake_password = fake.password()
-
-        # unauthenticated user
-        response = client.post('/api/v1/users/changepassword', \
-            {'old_password' : fake.password(), 'new_password' : fake_password, \
-                'confirm_password' : fake_password}, format='json')
-        assert response.status_code == 400, 'old password is wrong'
-
+        user_obj1 = mixer.blend(User)
+        response = client.get('/api/v1/users/'+str(user_obj1.id))
+        assert response.status_code == 400, 'only admin can access'
 
 
         # authenticated user
-        user_obj = mixer.blend(User,password='iam100good')
+        user_obj = mixer.blend(User,admin=True)
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.post('/api/v1/users/changepassword', \
-            {'old_password' : user_obj.password, 'new_password' : fake_password, \
-                'confirm_password' : fake_password}, format='json')
-        assert response.status_code == 200, 'password change successfully'
+        user_obj1 = mixer.blend(User)
+        response = client.get('/api/v1/users/'+str(user_obj1.id))
+        assert response.status_code == 200, 'admin can access'
 
 
-        # password donot match
-        user_obj = mixer.blend(User,password='iam100good')
+        # authenticated user
+        user_obj = mixer.blend(User,admin=True)
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.post('/api/v1/users/changepassword', \
-            {'old_password' : user_obj.password, 'new_password' : fake_password, \
-                'confirm_password' : fake.password()}, format='json')
-        assert response.status_code == 400, 'password donot match'
+        user_obj1 = mixer.blend(User)
+        response = client.get('/api/v1/users/'+str(123164654654))
+        assert response.status_code == 204, 'content not found'
 
 
-        # password donot match
-        user_obj = mixer.blend(User,password='iam100good')
+    def test_updateuserdata(self):
+        client = APIClient()
+
+        # unauthenticated user
+        user_obj = mixer.blend(User)
+        response = client.put('/api/v1/users/'+str(user_obj.id),\
+            {'email' : fake.email()}, format='json')
+        assert response.status_code == 401, 'unauthenticated user'
+
+
+        # authenticated user
+        user_obj = mixer.blend(User)
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.post('/api/v1/users/changepassword', \
-            {'old_password' : "12345jdhsd", 'new_password' : "iam100bad", \
-                'confirm_password' : "iam100bad"}, format='json')
-        assert response.status_code == 400, 'old password donot match'
+        user_obj1 = mixer.blend(User)
+        response = client.put('/api/v1/users/'+str(user_obj1.id),\
+            {'email' : fake.email()}, format='json')
+        assert response.status_code == 400, 'only admin can update'
 
-        # serializer donot match
-        user_obj = mixer.blend(User,password='iam100good')
+
+        # authenticated user
+        user_obj = mixer.blend(User,admin=True)
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.post('/api/v1/users/changepassword', \
-            {'new_password' : "iam100bad", \
-                'confirm_password' : "iam100bad"}, format='json')
+        location_obj = mixer.blend(Geography)
+        user_obj1 = mixer.blend(User)
+        response = client.put('/api/v1/users/'+str(user_obj1.id),\
+            {'email' : fake.email(),'first_name':'pk','last_name':'pk',\
+            'middle_name':fake.name(),'location':[str(location_obj.id)]}, format='json')
+        assert response.status_code == 200, 'admin can access'
+
+
+        # authenticated user
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        location_obj = mixer.blend(Geography)
+        user_obj1 = mixer.blend(User)
+        response = client.put('/api/v1/users/'+str(user_obj1.id),\
+            {'email' : fake.email(),'first_name':fake.name(),'last_name':'pk',\
+            'middle_name':fake.name(),'location':[str(location_obj.id)]}, format='json')
+        assert response.status_code == 400, 'first_name should contain string only'
+
+
+        # authenticated user
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        location_obj = mixer.blend(Geography)
+        user_obj1 = mixer.blend(User)
+        response = client.put('/api/v1/users/'+str(user_obj1.id),\
+            {'email' : fake.email(),'first_name':'pk','last_name':fake.name(),\
+            'middle_name':fake.name(),'location':[str(location_obj.id)]}, format='json')
+        assert response.status_code == 400, 'last_name should contain string only'
+
+
+
+         # authenticated user
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        location_obj = mixer.blend(Geography)
+        user_obj1 = mixer.blend(User)
+        response = client.put('/api/v1/users/'+str(user_obj1.id),\
+            {'email' : fake.name(),'first_name':'pk','last_name':'pk',\
+            'middle_name':fake.name(),'location':[str(location_obj.id)]}, format='json')
         assert response.status_code == 400, 'serializer error'
+
+
+    def test_delete_user(self):
+        client = APIClient()
+
+        # un authorized access by user
+        user_obj = mixer.blend(User)
+        response = client.delete('/api/v1/users/'+str(user_obj.id))
+        assert response.status_code == 401, 'Permission not define'
+
+
+        #un authorized access by admin
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        user_obj1 = mixer.blend(User)
+        response = client.delete('/api/v1/users/'+str(user_obj1.id))
+        assert response.status_code == 204, 'data delete'
+
+
+        #un authorized access by admin
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        user_obj1 = mixer.blend(User)
+        response = client.delete('/api/v1/users/'+str(326545))
+        assert response.status_code == 204, 'content not found'
+
+
+        #un authorized access by admin
+        user_obj = mixer.blend(User)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        user_obj1 = mixer.blend(User)
+        response = client.delete('/api/v1/users/'+str(user_obj1.id))
+        assert response.status_code == 400, 'only admin can delete'

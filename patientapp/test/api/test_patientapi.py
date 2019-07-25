@@ -31,8 +31,18 @@ class TestPatientListView(TestCase):
         payload = jwt_payload_handler(user_obj)
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
-        response = client.get('/api/v1/patients', format='json')
-        assert response.status_code == 200, 'patients list'
+        response = client.get('/api/v1/patients',format='json')
+        print(response)
+        assert response.status_code == 204, 'patients content not found'
+
+        # authorized user
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        response = client.get('/api/v1/patients',format='json')
+        print(response)
+        assert response.status_code == 200, 'patients list for admin'
 
     def test_post_patient(self):
         activityarea_obj = mixer.blend(ActivityArea)

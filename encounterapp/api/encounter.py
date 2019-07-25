@@ -48,6 +48,7 @@ class EncounterView(APIView):
                 serializer = AllEncounterSerializer(encounter_obj, many=True, \
                     context={'request': request})
                 return Response(serializer.data)
+            return Response({"message":"content not found"},status=204)
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
             context={'request': request})

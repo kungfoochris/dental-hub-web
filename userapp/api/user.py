@@ -46,20 +46,27 @@ class UserListView(APIView):
         if request.user.admin:
             if User.objects.filter(email=request.data['email']).count()==0:
                 if serializer.is_valid():
-                    password = uuid.uuid4().hex[:8].upper()
-                    user_obj = User()
-                    user_obj.password=password
-                    user_obj.email=serializer.validated_data['email']
-                    user_obj.first_name=serializer.validated_data['first_name']
-                    user_obj.last_name=serializer.validated_data['last_name']
-                    user_obj.middle_name = serializer.validated_data['middle_name']
-                    user_obj.save()
-                    for i in serializer.validated_data['location']:
-                        user_obj.location.add(i)
-                    text_content = 'Account is successful created'
-                    template_name = "email/activation.html"
-                    emailsend(user_obj.id,text_content,template_name,password)
-                    return Response(serializer.data,status=200)
+                    if re.match("^[a-zA-Z]+$", serializer.validated_data['first_name']):
+                        if re.match("^[a-zA-Z]+$", serializer.validated_data['last_name']):
+                            password = uuid.uuid4().hex[:8].upper()
+                            user_obj = User()
+                            user_obj.password=password
+                            user_obj.email=serializer.validated_data['email']
+                            user_obj.first_name=serializer.validated_data['first_name'].capitalize()
+                            user_obj.last_name=serializer.validated_data['last_name'].capitalize()
+                            user_obj.middle_name = serializer.validated_data['middle_name']
+                            user_obj.save()
+                            for i in serializer.validated_data['area']:
+                                user_obj.location.add(i)
+                            text_content = 'Account is successful created'
+                            template_name = "email/activation.html"
+                            emailsend(user_obj.id,text_content,template_name,password)
+                            return Response({"message":"User added successfully."},status=200)
+                        logger.error("Last name should be only combination of string") 
+                        return Response({"message":"Last name should be only combination of string"},status=400)
+                    logger.error("First name should be only combination of string") 
+                    return Response({"message":"First name should be only combination of string"},status=400)
+                print(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
             logger.error("This email already exists.")     
             return Response({'message':'This email already exists.'},status=400)
@@ -187,8 +194,8 @@ class UpdateUserDataView(APIView):
                 serializer = UpdateUserDataSerializer(user, \
                     context={'request': request})
                 return Response(serializer.data,status=200)
-            return Response({"message":"content not found"},status=400)
-        return response({"message":"only admin can see"},status=400)
+            return Response({"message":"content not found"},status=204)
+        return Response({"message":"only admin can see"},status=400)
 
     def put(self, request, pk, format=None):
         if request.user.admin:
@@ -196,17 +203,23 @@ class UpdateUserDataView(APIView):
             serializer = UpdateUserDataSerializer(user_obj,\
                 data=request.data,context={'request': request}, partial=True)
             if serializer.is_valid():
-                user_obj.first_name = serializer.validated_data['first_name']
-                user_obj.middle_name = serializer.validated_data['middle_name']
-                user_obj.last_name = serializer.validated_data['last_name']
-                user_obj.email = serializer.validated_data['email']
-                user_obj.update_password = False
-                user_obj.save()
-                for i in serializer.validated_data['location']:
-                    user_obj.location.add(i)
-                return Response({"message":"Update data successful"},status=200)
+                if re.match("^[a-zA-Z]+$", serializer.validated_data['first_name']):
+                    if re.match("^[a-zA-Z]+$", serializer.validated_data['last_name']):
+                        user_obj.first_name = serializer.validated_data['first_name'].capitalize()
+                        user_obj.middle_name = serializer.validated_data['middle_name']
+                        user_obj.last_name = serializer.validated_data['last_name'].capitalize()
+                        user_obj.email = serializer.validated_data['email']
+                        user_obj.update_password = False
+                        user_obj.save()
+                        for i in serializer.validated_data['area']:
+                            user_obj.location.add(i)
+                        return Response({"message":"Update data successful"},status=200)
+                    logger.error("Last name should be only combination of string") 
+                    return Response({"message":"Last name should be only combination of string"},status=400)
+                logger.error("First name should be only combination of string") 
+                return Response({"message":"First name should be only combination of string"},status=400)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        return response({"message":"only admin can add"},status=400)
+        return Response({"message":"only admin can add"},status=400)
 
     def delete(self, request, pk, format=None):
         if request.user.admin:
@@ -216,5 +229,5 @@ class UpdateUserDataView(APIView):
                 user_obj.staff = False
                 user_obj.save()
                 return Response(status=status.HTTP_204_NO_CONTENT)
-            return Response({"message":"no content found"},status=400)
+            return Response({"message":"no content found"},status=204)
         return Response({'errors': 'Permission Denied'},status=400)

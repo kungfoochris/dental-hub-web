@@ -43,6 +43,7 @@ class PatientListView(APIView):
                 serializer = PatientSerializer(patient_obj, many=True, \
                     context={'request': request})
                 return Response(serializer.data)
+            return Response({"message":"content not found"},status=204)
 
     def post(self, request, format=None):
         serializer = PatientSerializer(data=request.data,\

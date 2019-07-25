@@ -7,20 +7,22 @@ from addressapp.models import Geography
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
-    	try:
-    		queryset = Geography.objects.all()
-    		return queryset
-    	except:
-    		print('hello')
+    	queryset = Geography.objects.all()
+    	return queryset
 
+
+class AreaPKField(serializers.StringRelatedField):
+    def get_queryset(self):
+    	queryset = Geography.objects.all()
+    	return queryset
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-	location = LocationPKField(many=True)
-	# location = serializers.StringRelatedField()
+	area = LocationPKField(many=True,write_only=True)
+	location = AreaPKField(many=True,read_only=True)
 	class Meta:
 		model = User
 		fields = ('id','first_name', 'middle_name', 'last_name', 'email', 'active',
-			'staff', 'admin','full_name','location')
+			'staff', 'admin','full_name','location','area')
 		read_only_fields = ('active','staff','admin','full_name')
 
 
@@ -67,7 +69,8 @@ class CheckUSerializer(serializers.ModelSerializer):
 
 
 class UpdateUserDataSerializer(serializers.ModelSerializer):
-	location = LocationPKField(many=True)
+	area = LocationPKField(many=True,write_only=True)
+	location = AreaPKField(many=True,read_only=True)
 	class Meta:
 		model = User
-		fields = ('first_name','last_name','middle_name','email','location')
+		fields = ('first_name','last_name','middle_name','email','location','area')

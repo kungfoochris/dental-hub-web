@@ -15,8 +15,8 @@ from rest_framework import filters
 class IsPostOrIsAuthenticated(permissions.BasePermission):        
 
     def has_permission(self, request, view):
-        if request.method == 'GET':
-            return True
+        # if request.method == 'GET':
+        #     return True
         return request.user and request.user.is_authenticated
 
 
@@ -65,11 +65,11 @@ class ActivityAreaUpdateView(APIView):
                     activity_obj.name = serializer.validated_data['name']
                     activity_obj.save()
                     return Response({"message":"activity update"},status=200)
-                logger.error(serializer.errors)
+                # logger.error(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
-            logger.error("content not found")
+            # logger.error("content not found")
             return Response({"message":"content not found"},status=204)
-        logger.error("only admin can edit")
+        # logger.error("only admin can edit")
         return Response({"message":"only admin can edit"},status=400)
 
 

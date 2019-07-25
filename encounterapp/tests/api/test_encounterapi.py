@@ -24,7 +24,7 @@ class TestPatientEncounter(TestCase):
         client = APIClient()
         # un authorized access by user
         patient_obj = mixer.blend(Patient)
-        response = client.get('/api/v1/patients/'+str(patient_obj.uid)+"/encounter")
+        response = client.get('/api/v1/patients/'+str(patient_obj.uid)+'/encounter')
         assert response.status_code == 401, 'Un authorized access denied.'
 
         # authorized user
@@ -33,8 +33,21 @@ class TestPatientEncounter(TestCase):
         token = jwt_encode_handler(payload)
         client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
         patient_obj = mixer.blend(Patient)
-        response = client.get('/api/v1/patients/'+str(patient_obj.uid)+"/encounter")
-        assert response.status_code == 200, 'patientsencounter list'
+        print("======================")
+        print(patient_obj.uid)
+        response = client.get('/api/v1/patients/'+str(patient_obj.uid)+'/encounter')
+        assert response.status_code == 204,'content not found'
+
+                # authorized user
+        user_obj = mixer.blend(User,admin=True)
+        payload = jwt_payload_handler(user_obj)
+        token = jwt_encode_handler(payload)
+        client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        patient_obj = mixer.blend(Patient)
+        print("======================")
+        print(patient_obj.uid)
+        response = client.get('/api/v1/patients/'+str(patient_obj.uid)+'/encounter')
+        assert response.status_code == 200,'encounter list for admin'
 
     def test_post_patientencounter(self):
         activityarea_obj = mixer.blend(ActivityArea)

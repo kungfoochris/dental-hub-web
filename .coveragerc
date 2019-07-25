@@ -10,4 +10,6 @@ omit =*apps.py,
   userapp/emailsend.py,
   dental/celery.py,
   dental/seed.py,
+  treatmentapp/api/visualization.py
+  treatmentapp/api/data.py
   *__init__.py
