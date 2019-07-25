@@ -15,11 +15,12 @@ def seed(request):
 		User.objects.create_superuser(email='admin@gmail.com',password='iam100good')
 		print("create superuser")
 	except:
-		for i in range(1,10):
-			user=mixer.blend(User)
-			mixer.blend(Patient)
-			mixer.blend(ActivityArea)
-			mixer.blend(Geography)
+		print("seed")
+		# for i in range(1,10):
+		# 	user=mixer.blend(User)
+		# 	mixer.blend(Patient)
+		# 	mixer.blend(ActivityArea)
+		# 	mixer.blend(Geography)
 	return HttpResponse("it works")
 
 
