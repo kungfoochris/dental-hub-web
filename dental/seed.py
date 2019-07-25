@@ -12,7 +12,7 @@ fake = Faker()
 
 def seed(request):
 	try:
-		User.objects.create_superuser(email='admin@gmail.com',password='iam100good')
+		User.objects.create_superuser(email='prabin@abhiyantrik.com',password='dental123')
 		print("create superuser")
 	except:
 		print("seed")
