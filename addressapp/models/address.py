@@ -11,7 +11,7 @@ class Address(models.Model):
         abstract = True
 
     def __str__(self):
-        return  '%s %s %s' %(self.city,self.state,self.country)
+        return "%s, %s, %s" %(self.street_address, self.city, self.state)
 
 
     @property
