@@ -16,4 +16,9 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 			'teeth19','teeth20','teeth21','teeth22','teeth23',\
 			'teeth24','teeth25','teeth26','teeth27',\
 			'teeth28','teeth29','teeth30','teeth31','teeth32',\
+			'primary_teeth1','primary_teeth2','primary_teeth3','primary_teeth4',\
+			'primary_teeth5','primary_teeth6','primary_teeth7','primary_teeth8',\
+			'primary_teeth9','primary_teeth10','primary_teeth11','primary_teeth12',\
+			'primary_teeth13','primary_teeth14','primary_teeth15','primary_teeth16',\
+			'primary_teeth17','primary_teeth18','primary_teeth19','primary_teeth20',\
 			'fluoride_varnish','treatment_complete','note','encounter_id')
