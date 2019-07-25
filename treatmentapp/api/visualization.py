@@ -54,9 +54,7 @@ class Visualization(APIView):
                 male.append(male_count)
                 total.append(total_patient)
             # width of the bars
-            print(district)
-            print(male)
-            print(female)
+            district = list(dict.fromkeys(district))
             barWidth = 0.3
             bars1 = male
             bars2 = female
@@ -95,6 +93,7 @@ class Visualization1(APIView):
                 female.append(female_count)
                 male.append(male_count)
                 total.append(total_patient)
+            district = list(dict.fromkeys(district))
             locationChart = {
             'type': 'bar',
             'data': {
