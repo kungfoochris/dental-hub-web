@@ -77,29 +77,29 @@ class Patient(Address):
 	# 	patient_obj=Patient.objects.annotate(month=TruncMonth('date')).values('month').annotate(total=Count('id'))
 	# 	return patient_obj
 
-	@property
-	def location_visualization(self):
-		a=[]
-		b=[]
-		c=[]
-		d=[]
-		thisdict =	{
-		"district": [],
-		"total":[],
-		"male": [],
-		"female": [],
-		}
-		patient_objlist=Patient.objects.all()
-		for patient_obj in patient_objlist:
-			female_count = Patient.objects.filter(gender='female',city=patient_obj.city).count()
-			male_count = Patient.objects.filter(gender='male',city=patient_obj.city).count()
-			total = Patient.objects.filter(city=patient_obj.city).count()
-			a.append(patient_obj.city)
-			b.append(female_count)
-			c.append(male_count)
-			d.append(total)
-		thisdict['female']=b
-		thisdict['male']=c
-		thisdict['district']=a
-		thisdict['total']=d
-		return thisdict
+	# @property
+	# def location_visualization(self):
+	# 	a=[]
+	# 	b=[]
+	# 	c=[]
+	# 	d=[]
+	# 	thisdict =	{
+	# 	"district": [],
+	# 	"total":[],
+	# 	"male": [],
+	# 	"female": [],
+	# 	}
+	# 	patient_objlist=Patient.objects.all()
+	# 	for patient_obj in patient_objlist:
+	# 		female_count = Patient.objects.filter(gender='female',city=patient_obj.city).count()
+	# 		male_count = Patient.objects.filter(gender='male',city=patient_obj.city).count()
+	# 		total = Patient.objects.filter(city=patient_obj.city).count()
+	# 		a.append(patient_obj.city)
+	# 		b.append(female_count)
+	# 		c.append(male_count)
+	# 		d.append(total)
+	# 	thisdict['female']=b
+	# 	thisdict['male']=c
+	# 	thisdict['district']=a
+	# 	thisdict['total']=d
+	# 	return thisdict
