@@ -52,13 +52,13 @@ class Visualization(APIView):
             print(other)
             locationChart = {
             'data': {
-            'labels': ['Male', 'Female', 'Other'],
+            'labels': ['Female', 'Male', 'Other'],
             'datasets': [{
             'label': "Total",
             'backgroundColor': ['rgba(239, 62, 54, 0.2)', 'rgba(64, 224, 208, 0.2)', 'rgba(182, 198, 73, 0.2)'],
             'borderColor': ['rgba(239, 62, 54, 1)', 'rgba(64, 224, 208, 1)', 'rgba(182, 198, 73, 1)'],
             'borderWidth': 1,
-            'data': [male,female,other]},
+            'data': [female,male,other]},
             ]},
             'options': {
             'aspectRatio': 1.5,
