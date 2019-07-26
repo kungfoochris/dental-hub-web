@@ -55,8 +55,8 @@ class Visualization(APIView):
             'labels': ['Male', 'Female', 'Other'],
             'datasets': [{
             'label': "Total",
-            'backgroundColor': ['rgba(255, 206, 86, 0.2)', 'rgba(125, 54, 21, 0.2)', 'rgba(254, 654, 23, 0.2)'],
-            'borderColor': ['rgba(255, 206, 86, 1)', 'rgba(125, 54, 21, 1)', 'rgba(254, 654, 23, 1)'],
+            'backgroundColor': ['rgba(239, 62, 54, 0.2)', 'rgba(64, 224, 208, 0.2)', 'rgba(182, 198, 73, 0.2)'],
+            'borderColor': ['rgba(239, 62, 54, 1)', 'rgba(64, 224, 208, 1)', 'rgba(182, 198, 73, 1)'],
             'borderWidth': 1,
             'data': [male,female,other]},
             ]},
