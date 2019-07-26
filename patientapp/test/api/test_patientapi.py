@@ -44,6 +44,18 @@ class TestPatientListView(TestCase):
         print(response)
         assert response.status_code == 200, 'patients list for admin'
 
+        # # authorized user
+        # user_obj = mixer.blend(User)
+        # geography_obj = mixer.blend(Geography)
+        # activityarea_obj = mixer.blend(ActivityArea)
+        # patients_obj = mixer.blend(Patient,author=user_obj,geography=geography_obj,activity_area=activityarea_obj)
+        # payload = jwt_payload_handler(user_obj)
+        # token = jwt_encode_handler(payload)
+        # client.credentials(HTTP_AUTHORIZATION='JWT ' + token)
+        # response = client.get('/api/v1/patients',format='json')
+        # print(response)
+        # assert response.status_code == 200, 'patients list for users'
+
     def test_post_patient(self):
         activityarea_obj = mixer.blend(ActivityArea)
         geography_obj = mixer.blend(Geography)

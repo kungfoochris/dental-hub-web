@@ -42,7 +42,7 @@ class PatientListView(APIView):
                 patient_obj = Patient.objects.select_related('geography').filter(geography=i).order_by("-date")
                 serializer = PatientSerializer(patient_obj, many=True, \
                     context={'request': request})
-                return Response(serializer.data)
+                return Response(serializer.data,status=200)
             return Response({"message":"content not found"},status=204)
 
     def post(self, request, format=None):

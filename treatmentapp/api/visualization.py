@@ -120,14 +120,16 @@ class Visualization1(APIView):
             female=[]
             patient_objlist=Patient.objects.all()
             for patient_obj in patient_objlist:
-                female_count = Patient.objects.filter(gender='female',city=patient_obj.city).count()
-                male_count = Patient.objects.filter(gender='male',city=patient_obj.city).count()
-                total_patient = Patient.objects.filter(city=patient_obj.city).count()
                 district.append(patient_obj.city)
+            district = list(dict.fromkeys(district))
+            for dist in district:
+                female_count = Patient.objects.filter(gender='female',city=dist).count()
+                male_count = Patient.objects.filter(gender='male',city=dist).count()
+                total_patient = Patient.objects.filter(city=dist).count()
                 female.append(female_count)
                 male.append(male_count)
                 total.append(total_patient)
-            district = list(dict.fromkeys(district))
+            
             locationChart = {
             'data': {
             'labels': district,
