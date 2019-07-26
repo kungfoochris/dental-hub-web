@@ -204,11 +204,17 @@ POST:</p>
 <p><strong>Body_Content</strong></p>
 <ul class="simple">
 <li><dl class="first docutils">
-<dt>teeth1: ChoiceField()</dt>
+<dt>teeth: ChoiceField()</dt>
 <dd>choice field are (SDF,SEAL,ART,’EXO’,’UNTR’,’None’)</dd>
 </dl>
 </li>
 <li>teeth should be from 1 to 32</li>
+<li><dl class="first docutils">
+<dt>primary_teeth: ChoiceField()</dt>
+<dd>choice field are (SDF,SEAL,ART,’EXO’,’UNTR’,’None’)</dd>
+</dl>
+</li>
+<li>primary_teeth should be from 1 to 20</li>
 <li>fluoride_varnish: BooleanField()</li>
 <li>treatment_complete: BooleanField()</li>
 <li>note: TextField()</li>

@@ -200,9 +200,13 @@ POST:
 
 **Body_Content**
 
-- teeth1: ChoiceField()
+- teeth: ChoiceField()
     choice field are (SDF,SEAL,ART,'EXO','UNTR','None')
 - teeth should be from 1 to 32
+
+- primary_teeth: ChoiceField()
+    choice field are (SDF,SEAL,ART,'EXO','UNTR','None')
+- primary_teeth should be from 1 to 20
 - fluoride_varnish: BooleanField()
 - treatment_complete: BooleanField()
 - note: TextField()
