@@ -80,32 +80,11 @@ class Visualization(APIView):
             'labels': {
             'usePointStyle': 'true',
             'padding': 20,
-            'fontFamily': "'Maven Pro', sans-serif"
-            }
-            }
-            }
+            'fontFamily': "'Maven Pro', sans-serif"}
+                    }
+                }
             }
             return JsonResponse({"locationChart":locationChart})
-            # district=[]
-            # total=[]
-            # male=[]
-            # female=[]
-            # patient_objlist=Patient.objects.all()
-            # for patient_obj in patient_objlist:
-            #     female_count = Patient.objects.filter(gender='female',city=patient_obj.city).count()
-            #     male_count = Patient.objects.filter(gender='male',city=patient_obj.city).count()
-            #     total_patient = Patient.objects.filter(city=patient_obj.city).count()
-            #     district.append(patient_obj.city)
-            #     female.append(female_count)
-            #     male.append(male_count)
-            #     total.append(total_patient)
-            # return JsonResponse({'district':district,'labels':[{'total':'Total',
-            #     'male':'Male','female':'Female'}],'datasets':[
-            #     {'total':[3+4, 5+7, 6+3, 12+6, 3+10, 5+7,12,45,14,0],
-            #     'male': [3, 5, 6, 12, 5,1,3,12,0,1],
-            #     'female': [4, 7, 3, 10, 7,12,1,0,1,0]}]
-            #     },status=200)
-
         return Response({"message":"only admin can create"},status=400)
 
 
@@ -118,6 +97,7 @@ class Visualization1(APIView):
             total=[]
             male=[]
             female=[]
+            other=[]
             patient_objlist=Patient.objects.all()
             for patient_obj in patient_objlist:
                 district.append(patient_obj.city)
@@ -125,10 +105,12 @@ class Visualization1(APIView):
             for dist in district:
                 female_count = Patient.objects.filter(gender='female',city=dist).count()
                 male_count = Patient.objects.filter(gender='male',city=dist).count()
+                other_count = Patient.objects.filter(gender='other',city=dist).count()
                 total_patient = Patient.objects.filter(city=dist).count()
                 female.append(female_count)
                 male.append(male_count)
                 total.append(total_patient)
+                other.append(other_count)
             
             locationChart = {
             'data': {
@@ -141,16 +123,22 @@ class Visualization1(APIView):
             'data': total},
             {
             'label': "Female",
-            'backgroundColor': 'rgba(255, 113, 91, 0.2)',
-            'borderColor': 'rgba(255, 113, 91, 1)',
+            'backgroundColor': 'rgba(239, 62, 54, 0.2)',
+            'borderColor': 'rgba(239, 62, 54, 1)',
             'borderWidth': 1,
             'data': female},
             {
             'label': "Male",
-            'backgroundColor': 'rgba(54, 162, 235, 0.2)',
-            'borderColor': 'rgba(54, 162, 235, 1)',
+            'backgroundColor': 'rgba(64, 224, 208, 0.2)',
+            'borderColor': 'rgba(64, 224, 208, 1)',
             'borderWidth': 1,
-            'data': male}]
+            'data': male},
+            {
+            'label': "Other",
+            'backgroundColor': 'rgba(182, 198, 73, 0.2)',
+            'borderColor': 'rgba(182, 198, 73, 1)',
+            'borderWidth': 1,
+            'data': other}]
             },
             'options': {
             'aspectRatio': 1.5,
