@@ -41,17 +41,18 @@ class Visualization(APIView):
             other=[]
             male=[]
             female=[]
-            patient_objlist=Patient.objects.all()
-            for patient_obj in patient_objlist:
-                female_count = Patient.objects.filter(gender='female').count()
-                male_count = Patient.objects.filter(gender='male').count()
-                other_count = Patient.objects.filter(gender='other').count()
-                female.append(female_count)
-                male.append(male_count)
-                other.append(other_count)
+            female_count = Patient.objects.filter(gender='female').count()
+            male_count = Patient.objects.filter(gender='male').count()
+            other_count = Patient.objects.filter(gender='other').count()
+            female.append(female_count)
+            male.append(male_count)
+            other.append(other_count)
+            print(male)
+            print(female)
+            print(other)
             locationChart = {
             'data': {
-            'labels': ['Male','Female','Other'],
+            'labels': ['Male', 'Female', 'Other'],
             'datasets': [{
             'label': "Total",
             'backgroundColor': ['rgba(255, 206, 86, 0.2)', 'rgba(125, 54, 21, 0.2)', 'rgba(254, 654, 23, 0.2)'],
@@ -69,7 +70,7 @@ class Visualization(APIView):
             },
             'title': {
             'display': 'true',
-            'text': "Gender-wise Patients",
+            'text': "Gender-wise Patients Distribution",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"
             },
