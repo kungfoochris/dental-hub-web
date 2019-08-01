@@ -15,10 +15,6 @@ from rest_framework import filters
 
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-
 from django.conf import settings
 from dental.settings import MEDIA_ROOT
 import os
@@ -166,26 +162,6 @@ class Visualization1(APIView):
   }
             }
             return JsonResponse({"locationChart":locationChart})
-            # district=[]
-            # total=[]
-            # male=[]
-            # female=[]
-            # patient_objlist=Patient.objects.all()
-            # for patient_obj in patient_objlist:
-            #     female_count = Patient.objects.filter(gender='female',city=patient_obj.city).count()
-            #     male_count = Patient.objects.filter(gender='male',city=patient_obj.city).count()
-            #     total_patient = Patient.objects.filter(city=patient_obj.city).count()
-            #     district.append(patient_obj.city)
-            #     female.append(female_count)
-            #     male.append(male_count)
-            #     total.append(total_patient)
-            # return JsonResponse({'district':district,'labels':[{'total':'Total',
-            #     'male':'Male','female':'Female'}],'datasets':[
-            #     {'total':[3+4, 5+7, 6+3, 12+6, 3+10, 5+7,12,45,14,0],
-            #     'male': [3, 5, 6, 12, 5,1,3,12,0,1],
-            #     'female': [4, 7, 3, 10, 7,12,1,0,1,0]}]
-            #     },status=200)
-
         return Response({"message":"only admin can create"},status=400)
 
 

@@ -24,6 +24,7 @@ from rest_framework_jwt.views import (obtain_jwt_token, refresh_jwt_token,
         verify_jwt_token)
 
 from .seed import seed
+from .views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,7 +34,9 @@ urlpatterns = [
     path('api/v1/token/refresh', refresh_jwt_token),
     path('api/v1/token/verify', verify_jwt_token),
     path('api/v1/',include('dental.apiurls')),
-    path('seed', seed,name='seed')
+    path('seed', seed,name='seed'),
+    path('', home,name='home')
 ]
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns+=static(settings.DOCS_URL, document_root=settings.DOCS_ROOT)

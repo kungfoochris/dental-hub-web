@@ -11,7 +11,7 @@ app_name = 'addressapp'
 
 urlpatterns = [
 	path('geography', GeographyListView.as_view()),
-	path('geography/<pk>', GeographyUpdateView.as_view()),
+	path('geography/<pk>', GeographyUpdateView.as_view(),name="geography-detail"),
 	path('activities', ActivityAreaListView.as_view()),
 	path('activities/<pk>', ActivityAreaUpdateView.as_view()),
     ]

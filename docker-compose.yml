@@ -15,15 +15,32 @@ services:
   redis:
     image: "redis:alpine"
 
-  web:
-    build: 
+  frontend:
+    build:
       context: ./
-      dockerfile: docker/app.Dockerfile
+      dockerfile: docker/frontend/frontend.Dockerfile
     volumes:
-      - .:/code
+      - ./static/admin:/usr/share/nginx/html/admin
+      - ./static/rest_framework:/usr/share/nginx/html/rest_framework
+      - ./static/django_extension:/usr/share/nginx/html/django_extension
+      - ./static/django_toolbar:/usr/share/nginx/html/django_toolbar
+      - ./media:/usr/share/nginx/html/media    
+      - ./vue:/usr/share/nginx/html
+    restart: "always"
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./
+      dockerfile: docker/backend/backend.Dockerfile
+    command: ["./docker/entry.sh"]
+    restart: "always"
     ports:
       - "3000:3000"
-    command: ["./docker/entry.sh"]
+    volumes:
+      - .:/code
     depends_on:
       - db
       - redis

@@ -56,7 +56,9 @@ class UserListView(APIView):
                             user_obj.last_name=serializer.validated_data['last_name'].capitalize()
                             user_obj.middle_name = serializer.validated_data['middle_name']
                             user_obj.save()
+                            user_obj.location.clear()
                             for i in serializer.validated_data['area']:
+                                print(i)
                                 user_obj.location.add(i)
                             text_content = 'Account is successful created'
                             template_name = "email/activation.html"
@@ -211,7 +213,9 @@ class UpdateUserDataView(APIView):
                         user_obj.email = serializer.validated_data['email']
                         user_obj.update_password = False
                         user_obj.save()
+                        user_obj.location.clear()
                         for i in serializer.validated_data['area']:
+                            print(i)
                             user_obj.location.add(i)
                         return Response({"message":"Update data successful"},status=200)
                     logger.error("Last name should be only combination of string") 

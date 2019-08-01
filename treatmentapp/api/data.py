@@ -15,9 +15,9 @@ from rest_framework import filters
 
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+# import matplotlib
+# import matplotlib.pyplot as plt
+# import numpy as np
 
 from django.conf import settings
 from dental.settings import MEDIA_ROOT

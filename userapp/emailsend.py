@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 from celery import shared_task
 
-# @shared_task
+@shared_task
 def emailsend(user_id,text_content,template_name,password):
 	try:
 		user=User.objects.get(id = user_id)

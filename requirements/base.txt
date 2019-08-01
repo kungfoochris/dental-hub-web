@@ -1,7 +1,7 @@
-Pillow==5.2.0  # https://github.com/python-pillow/Pillow
-
 #Django
 django==2.0  # https://www.djangoproject.com/
+
+Pillow==5.2.0  # https://github.com/python-pillow/Pillow
 
 # Django REST Framework
 djangorestframework==3.8.2  # https://github.com/encode/django-rest-framework

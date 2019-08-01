@@ -32,7 +32,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gxv4z_s*7$mx96ul7v)06nn=y&_@-1fq7m7_jpp*8oq^%#fykb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -189,12 +189,19 @@ JWT_AUTH = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+DOCS_URL = '/docs/'
+
+
+STATIC_ROOT = os.path.join((BASE_DIR),"static")
+# STATICFILES_DIRS = [
+# os.path.join((BASE_DIR),"static"),
+# ]
+
 MEDIA_ROOT = os.path.join((BASE_DIR),"media")
 
-DOCS_URL = '/docs/'
 DOCS_ROOT = os.path.join((BASE_DIR),"docs","_build","html")
 
 
