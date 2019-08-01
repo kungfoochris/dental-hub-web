@@ -20,10 +20,7 @@ services:
       context: ./
       dockerfile: docker/frontend/frontend.Dockerfile
     volumes:
-      - ./static/static/admin:/usr/share/nginx/html/static/admin
-      - ./static/static/rest_framework:/usr/share/nginx/html/static/rest_framework
-      - ./static/static/django_extensions:/usr/share/nginx/html/static/django_extensions
-      - ./static/static/django_toolbar:/usr/share/nginx/html/static/django_toolbar
+      - ./static/static:/usr/share/nginx/html/static
       - ./media:/usr/share/nginx/html/media    
       - ./vue:/usr/share/nginx/html
     restart: "always"
