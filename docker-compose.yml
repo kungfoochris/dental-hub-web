@@ -21,9 +21,9 @@ services:
       dockerfile: docker/frontend/frontend.Dockerfile
     volumes:
       - ./static/static/admin:/usr/share/nginx/html/static/admin
-      - ./static/rest_framework:/usr/share/nginx/html/static/rest_framework
-      - ./static/django_extensions:/usr/share/nginx/html/static/django_extensions
-      - ./static/django_toolbar:/usr/share/nginx/html/static/django_toolbar
+      - ./static/static/rest_framework:/usr/share/nginx/html/static/rest_framework
+      - ./static/static/django_extensions:/usr/share/nginx/html/static/django_extensions
+      - ./static/static/django_toolbar:/usr/share/nginx/html/static/django_toolbar
       - ./media:/usr/share/nginx/html/media    
       - ./vue:/usr/share/nginx/html
     restart: "always"
