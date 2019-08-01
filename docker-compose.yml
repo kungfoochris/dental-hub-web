@@ -28,7 +28,7 @@ services:
       - ./vue:/usr/share/nginx/html
     restart: "always"
     ports:
-      - "80:80"
+      - "5000:5000"
     depends_on:
       - backend
   backend:
