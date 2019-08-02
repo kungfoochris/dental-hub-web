@@ -16,9 +16,15 @@ class AreaPKField(serializers.StringRelatedField):
     	queryset = Geography.objects.all()
     	return queryset
 
+class GeographySerializeronly(serializers.ModelSerializer):
+    class Meta:
+        model = Geography
+        fields = ('id','location')
+        read_only_fields = ('location',)
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	area = LocationPKField(many=True,write_only=True)
-	location = AreaPKField(many=True,read_only=True)
+	location = GeographySerializeronly(read_only=True,many=True)
 	class Meta:
 		model = User
 		fields = ('id','first_name', 'middle_name', 'last_name', 'email', 'active',
@@ -66,6 +72,8 @@ class CheckUSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ('email',)
+
+
 
 
 class UpdateUserDataSerializer(serializers.ModelSerializer):
