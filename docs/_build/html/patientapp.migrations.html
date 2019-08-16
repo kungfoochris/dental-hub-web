@@ -44,7 +44,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
 <dl class="attribute">
 <dt id="patientapp.migrations.0001_initial.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = [('userapp', '__first__')]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dependencies</code><em class="property"> = [('addressapp', '0001_initial'), ('userapp', '__first__')]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -54,7 +54,7 @@
 
 <dl class="attribute">
 <dt id="patientapp.migrations.0001_initial.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Patient', fields=[('city', &lt;django.db.models.fields.CharField&gt;), ('state', &lt;django.db.models.fields.CharField&gt;), ('country', &lt;django.db.models.fields.CharField&gt;), ('street_address', &lt;django.db.models.fields.CharField&gt;), ('id', &lt;django.db.models.fields.CharField&gt;), ('uid', &lt;django.db.models.fields.CharField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('gender', &lt;django.db.models.fields.CharField&gt;), ('dob', &lt;django.db.models.fields.DateField&gt;), ('age', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('phone', &lt;django.db.models.fields.CharField&gt;), ('marital_status', &lt;django.db.models.fields.CharField&gt;), ('education', &lt;django.db.models.fields.CharField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('latitude', &lt;django.db.models.fields.DecimalField&gt;), ('longitude', &lt;django.db.models.fields.DecimalField&gt;), ('ward', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('author', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'abstract': False}&gt;]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Patient', fields=[('id', &lt;django.db.models.fields.CharField&gt;), ('uid', &lt;django.db.models.fields.CharField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('gender', &lt;django.db.models.fields.CharField&gt;), ('dob', &lt;django.db.models.fields.DateField&gt;), ('age', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('phone', &lt;django.db.models.fields.CharField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('latitude', &lt;django.db.models.fields.DecimalField&gt;), ('longitude', &lt;django.db.models.fields.DecimalField&gt;), ('district', &lt;django.db.models.fields.CharField&gt;), ('municipality', &lt;django.db.models.fields.CharField&gt;), ('municipality_type', &lt;django.db.models.fields.CharField&gt;), ('ward', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('activity_area', &lt;django.db.models.fields.related.ForeignKey&gt;), ('author', &lt;django.db.models.fields.related.ForeignKey&gt;), ('geography', &lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;]</em><a class="headerlink" href="#patientapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -108,6 +108,9 @@
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#geography">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">

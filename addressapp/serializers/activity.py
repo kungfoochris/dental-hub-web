@@ -8,4 +8,4 @@ from addressapp.models import ActivityArea
 class ActivityAreaSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActivityArea
-        fields = ('id','name')
+        fields = ('id','area','name')

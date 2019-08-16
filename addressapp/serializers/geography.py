@@ -8,5 +8,4 @@ from addressapp.models import Geography
 class GeographySerializer(serializers.ModelSerializer):
     class Meta:
         model = Geography
-        fields = ('id','country', 'city', 'state', 'street_address','address','location')
-        read_only_fields = ('address','location')
+        fields = ('id','district', 'municipality','ward','location')

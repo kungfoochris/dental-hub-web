@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Address" href="addressapp.html" />
     <link rel="prev" title="View all Patients and Register" href="patientapp.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -36,6 +37,7 @@
 <h1>Encounter<a class="headerlink" href="#encounter" title="Permalink to this headline">¶</a></h1>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span><span class="o">/&lt;</span><span class="n">patient_id</span><span class="o">&gt;/</span><span class="n">encounter</span>
+
 <span class="n">Put</span> <span class="p">:</span> <span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span><span class="o">/&lt;</span><span class="n">patient_id</span><span class="o">&gt;/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;</span>
 
 <span class="o">-</span> <span class="n">patient_id</span><span class="p">:</span> <span class="n">CharField</span> <span class="p">(</span><span class="n">patient_id</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span><span class="p">)</span>
@@ -55,8 +57,6 @@ POST:</p>
 <p><strong>Body_Content</strong></p>
 <ul class="simple">
 <li>id : string()</li>
-<li>activityarea_id : string(required)</li>
-<li>geography_id: string(required)</li>
 <li>encounter_type: ChoiceField(required)</li>
 </ul>
 <p>choice field are (screeing,pain,check,treatment)</p>
@@ -133,6 +133,8 @@ POST:</p>
 <li>physician: BooleanField()</li>
 <li>hygienist: BooleanField()</li>
 <li>other: CharField()</li>
+<li>time : timefield(),format:12:23:00</li>
+<li>date : DateTimeField(required)</li>
 </ul>
 <p>4. <strong>METHOD:</strong>
 PUT:</p>
@@ -257,6 +259,9 @@ PUT:</p>
 <li class="toctree-l1"><a class="reference internal" href="#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#geography">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">
@@ -264,6 +269,7 @@ PUT:</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="patientapp.html" title="previous chapter">View all Patients and Register</a></li>
+      <li>Next: <a href="addressapp.html" title="next chapter">Address</a></li>
   </ul></li>
 </ul>
 </div>

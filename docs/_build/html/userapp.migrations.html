@@ -44,7 +44,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
 <dl class="attribute">
 <dt id="userapp.migrations.0001_initial.Migration.dependencies">
-<code class="descname">dependencies</code><em class="property"> = []</em><a class="headerlink" href="#userapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dependencies</code><em class="property"> = [('addressapp', '0001_initial')]</em><a class="headerlink" href="#userapp.migrations.0001_initial.Migration.dependencies" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -54,7 +54,7 @@
 
 <dl class="attribute">
 <dt id="userapp.migrations.0001_initial.Migration.operations">
-<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='User', fields=[('password', &lt;django.db.models.fields.CharField&gt;), ('last_login', &lt;django.db.models.fields.DateTimeField&gt;), ('id', &lt;django.db.models.fields.CharField&gt;), ('email', &lt;django.db.models.fields.EmailField&gt;), ('active', &lt;django.db.models.fields.BooleanField&gt;), ('staff', &lt;django.db.models.fields.BooleanField&gt;), ('admin', &lt;django.db.models.fields.BooleanField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('image', &lt;django.db.models.fields.files.FileField&gt;), ('token', &lt;django.db.models.fields.CharField&gt;)], options={'abstract': False}&gt;]</em><a class="headerlink" href="#userapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='User', fields=[('password', &lt;django.db.models.fields.CharField&gt;), ('last_login', &lt;django.db.models.fields.DateTimeField&gt;), ('id', &lt;django.db.models.fields.CharField&gt;), ('username', &lt;django.db.models.fields.CharField&gt;), ('active', &lt;django.db.models.fields.BooleanField&gt;), ('staff', &lt;django.db.models.fields.BooleanField&gt;), ('admin', &lt;django.db.models.fields.BooleanField&gt;), ('first_name', &lt;django.db.models.fields.CharField&gt;), ('middle_name', &lt;django.db.models.fields.CharField&gt;), ('last_name', &lt;django.db.models.fields.CharField&gt;), ('image', &lt;django.db.models.fields.files.FileField&gt;), ('email', &lt;django.db.models.fields.EmailField&gt;), ('token', &lt;django.db.models.fields.CharField&gt;)], options={'abstract': False}&gt;, &lt;CreateModel  name='Role', fields=[('id', &lt;django.db.models.fields.CharField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='CustomUser', fields=[('user_ptr', &lt;django.db.models.fields.related.OneToOneField&gt;), ('location', &lt;django.db.models.fields.related.ManyToManyField&gt;), ('role', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'abstract': False}, bases=('userapp.user',)&gt;]</em><a class="headerlink" href="#userapp.migrations.0001_initial.Migration.operations" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -96,6 +96,8 @@
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">

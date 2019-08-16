@@ -2,12 +2,12 @@ from django.contrib.auth.models import Group, Permission
 
 from rest_framework import serializers
 
-from userapp.models import User
+from userapp.models import User, Role, CustomUser
 from addressapp.models import Geography
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
-    	queryset = Geography.objects.all()
+    	queryset = Geography.objects.filter(status=True)
     	return queryset
 
 
@@ -16,19 +16,27 @@ class AreaPKField(serializers.StringRelatedField):
     	queryset = Geography.objects.all()
     	return queryset
 
+
 class GeographySerializeronly(serializers.ModelSerializer):
     class Meta:
         model = Geography
         fields = ('id','location')
         read_only_fields = ('location',)
 
+class RolePKField(serializers.PrimaryKeyRelatedField):
+    def get_queryset(self):
+    	queryset = Role.objects.all()
+    	return queryset
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	area = LocationPKField(many=True,write_only=True)
 	location = GeographySerializeronly(read_only=True,many=True)
+	password = serializers.CharField(max_length=250,write_only=True,min_length=8)
+	role = RolePKField(many=False)
 	class Meta:
-		model = User
-		fields = ('id','first_name', 'middle_name', 'last_name', 'email', 'active',
-			'staff', 'admin','full_name','location','area')
+		model = CustomUser
+		fields = ('id','first_name', 'middle_name', 'last_name', 'username', 'active',
+			'staff', 'admin','full_name','password', 'role','location','area')
 		read_only_fields = ('active','staff','admin','full_name')
 
 
@@ -80,5 +88,5 @@ class UpdateUserDataSerializer(serializers.ModelSerializer):
 	area = LocationPKField(many=True,write_only=True)
 	location = AreaPKField(many=True,read_only=True)
 	class Meta:
-		model = User
-		fields = ('first_name','last_name','middle_name','email','location','area')
+		model = CustomUser
+		fields = ('first_name','last_name','middle_name','username','location','area')

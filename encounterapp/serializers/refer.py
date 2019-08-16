@@ -10,4 +10,4 @@ class PatientReferSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Refer
 		fields = ('uid','id','no_referal','health_post','dentist','physician',\
-			'hygienist','other','encounter_id')
+			'hygienist','other','encounter_id','time','date')

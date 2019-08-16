@@ -61,9 +61,9 @@ THIRD_PARTY_APPS = [
 
 # All apps developed at AmejPay goes here
 DEV_APPS = [
+    "addressapp",
     "userapp",
     "patientapp",
-    "addressapp",
     "encounterapp",
     "treatmentapp",
     ]

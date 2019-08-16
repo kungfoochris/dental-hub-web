@@ -1,46 +1,93 @@
-addressapp package
-==================
+==========
+Address
+==========
+1. **METHOD:**
+GET:
+::
+	api/v1/addresses
 
-Subpackages
------------
-
-.. toctree::
-
-    addressapp.migrations
-    addressapp.models
-
-Submodules
-----------
-
-addressapp.admin module
------------------------
-
-.. automodule:: addressapp.admin
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-addressapp.apiurls module
--------------------------
-
-.. automodule:: addressapp.apiurls
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-addressapp.apps module
-----------------------
-
-.. automodule:: addressapp.apps
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    - This method list all the address related to district ,municipality and ward:
 
 
-Module contents
----------------
+==========
+Geography
+==========
+1. **URL:**
+::
 
-.. automodule:: addressapp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    Get and Post:api/v1/geography
+
+    Put : api/v1/geography/<geography_id>
+
+
+
+2. **METHOD:**
+GET:
+::
+
+    - This method list all the Geography:
+
+
+3. **METHOD:**
+POST:
+::
+
+- This Method is used for adding a Geography:
+
+**Body_Content**
+
+
+- district: ChoiceField(required)
+- municipality: ChoiceField(required)
+- ward: PositiveIntegerField()
+
+
+4. **Put:**
+POST:
+::
+
+- This Method is used for updating a geography:
+
+
+
+==========
+Activities
+==========
+1. **URL:**
+::
+
+    Get and Post:api/v1/activities
+
+    Put : api/v1/activities/<activities_id>
+
+    - activities_id: CharField (activities_id as a parameter)
+
+
+2. **METHOD:**
+GET:
+::
+
+    - This method list all the activities:
+
+
+3. **METHOD:**
+POST:
+::
+
+- This Method is used for adding a activities:
+
+**Body_Content**
+
+
+- area: ChoiceField(required)
+choice field are (Health Post,School Seminar,Community Outreach,Training)
+
+- name: String()
+
+
+4. **Put:**
+POST:
+::
+
+- This Method is used for updating a activities:
+

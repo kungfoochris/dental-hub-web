@@ -6,6 +6,8 @@ UserResetPassword, ProfileListView, UpdateUserView,\
  UserChangepassword, AdminUserCheckView, UpdateUserDataView
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from userapp.api.role import RoleListView
+
 # from userapp.api.staticpage import StaticPageView
 
 app_name = 'userapp'
@@ -19,5 +21,7 @@ urlpatterns = [
 	path('profile/update',UpdateUserView.as_view()),
 	path('checkuser', AdminUserCheckView.as_view()),
 	path('users/<pk>',UpdateUserDataView.as_view()),
+	path('roles', RoleListView.as_view()),
+	# path('login',AppUserListView.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -25,7 +25,7 @@ POST:
 - first_name: string(required)
 - last_name: string(required)
 - middle_name: string()
-- email: EmailField(required)
+- username: String(required)
 - image: ImageField(required)
 - password:CharField(required)
 

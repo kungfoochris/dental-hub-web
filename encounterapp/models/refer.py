@@ -20,3 +20,5 @@ class Refer(models.Model):
 	hygienist = models.BooleanField(default=False)
 	other = models.CharField(max_length=255,blank=True)
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='refer')
+	time = models.TimeField(null=True) 
+	date = models.DateField(null=True)

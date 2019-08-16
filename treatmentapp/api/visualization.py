@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from userapp.models import User
+from userapp.models import User, CustomUser
 from patientapp.models import Patient
 from treatmentapp.serializers.visualization import VisualizatioSerializer
 
@@ -33,7 +33,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 class Visualization(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request, format=None):
-        if request.user.admin:
+        if User.objects.get(id=request.user.id,admin=True):
             other=[]
             male=[]
             female=[]
@@ -88,25 +88,33 @@ class Visualization(APIView):
 class Visualization1(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request, format=None):
-        if request.user.admin:
-            district=[]
+        if User.objects.get(id=request.user.id,admin=True):
+            district=['Kids', 'Adults', 'Other Adults']
             total=[]
             male=[]
             female=[]
-            other=[]
             patient_objlist=Patient.objects.all()
-            for patient_obj in patient_objlist:
-                district.append(patient_obj.city)
-            district = list(dict.fromkeys(district))
-            for dist in district:
-                female_count = Patient.objects.filter(gender='female',city=dist).count()
-                male_count = Patient.objects.filter(gender='male',city=dist).count()
-                other_count = Patient.objects.filter(gender='other',city=dist).count()
-                total_patient = Patient.objects.filter(city=dist).count()
-                female.append(female_count)
-                male.append(male_count)
-                total.append(total_patient)
-                other.append(other_count)
+            # for patient_obj in patient_objlist:
+            #     district.append(patient_obj.city)
+            # district = list(dict.fromkeys(district))
+            female_count = Patient.objects.filter(gender='female',age__lt=18).count()
+            male_count = Patient.objects.filter(gender='male',age__lt=18).count()
+            total_patient = Patient.objects.filter(age__lt=18).count()
+            female.append(female_count)
+            male.append(male_count)
+            total.append(total_patient)
+            female_count = Patient.objects.filter(gender='female',age__range=(19, 60)).count()
+            male_count = Patient.objects.filter(gender='male',age__range=(19, 60)).count()
+            total_patient = Patient.objects.filter(age__range=(19, 60)).count()
+            female.append(female_count)
+            male.append(male_count)
+            total.append(total_patient)
+            female_count = Patient.objects.filter(gender='female',age__gt=60).count()
+            male_count = Patient.objects.filter(gender='male',age__gt=60).count()
+            total_patient = Patient.objects.filter(age__gt=60).count()
+            female.append(female_count)
+            male.append(male_count)
+            total.append(total_patient)
             
             locationChart = {
             'data': {
@@ -128,13 +136,7 @@ class Visualization1(APIView):
             'backgroundColor': 'rgba(64, 224, 208, 0.2)',
             'borderColor': 'rgba(64, 224, 208, 1)',
             'borderWidth': 1,
-            'data': male},
-            {
-            'label': "Other",
-            'backgroundColor': 'rgba(182, 198, 73, 0.2)',
-            'borderColor': 'rgba(182, 198, 73, 1)',
-            'borderWidth': 1,
-            'data': other}]
+            'data': male}]
             },
             'options': {
             'aspectRatio': 1.5,
@@ -146,7 +148,7 @@ class Visualization1(APIView):
             },
             'title': {
             'display': 'true',
-            'text': "Location-wise Gender Distribution",
+            'text': "Age-wise Gender Distribution",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"
             },
@@ -203,4 +205,85 @@ class Visualization1(APIView):
 #             # plt.tight_layout()
 #             plt.savefig(os.path.join('media/location.png'), bbox_inches='tight')
 #             return Response({"message":"data created"},status=200)
+#         return Response({"message":"only admin can create"},status=400)
+
+
+
+# class Visualization1(APIView):
+#     permission_classes = (IsPostOrIsAuthenticated,)
+#     def get(self, request, format=None):
+#         if request.user.admin:
+#             district=['Kids', 'Teens', 'Adults', 'Other Adults']
+#             total=[5, 3, 8, 6]
+#             male=[3, 1, 4, 1]
+#             female=[2, 2, 4, 5]
+#             other=[]
+#             patient_objlist=Patient.objects.all()
+#             for patient_obj in patient_objlist:
+#                 district.append(patient_obj.city)
+#             district = list(dict.fromkeys(district))
+#             for dist in district:
+#                 female_count = Patient.objects.filter(gender='female',city=dist).count()
+#                 male_count = Patient.objects.filter(gender='male',city=dist).count()
+#                 other_count = Patient.objects.filter(gender='other',city=dist).count()
+#                 total_patient = Patient.objects.filter(city=dist).count()
+#                 female.append(female_count)
+#                 male.append(male_count)
+#                 total.append(total_patient)
+#                 other.append(other_count)
+            
+#             locationChart = {
+#             'data': {
+#             'labels': district,
+#             'datasets': [{
+#             'label': "Total",
+#             'backgroundColor': 'rgba(255, 206, 86, 0.2)',
+#             'borderColor': 'rgba(255, 206, 86, 1)',
+#             'borderWidth': 1,
+#             'data': total},
+#             {
+#             'label': "Female",
+#             'backgroundColor': 'rgba(239, 62, 54, 0.2)',
+#             'borderColor': 'rgba(239, 62, 54, 1)',
+#             'borderWidth': 1,
+#             'data': female},
+#             {
+#             'label': "Male",
+#             'backgroundColor': 'rgba(64, 224, 208, 0.2)',
+#             'borderColor': 'rgba(64, 224, 208, 1)',
+#             'borderWidth': 1,
+#             'data': male},
+#             {
+#             'label': "Other",
+#             'backgroundColor': 'rgba(182, 198, 73, 0.2)',
+#             'borderColor': 'rgba(182, 198, 73, 1)',
+#             'borderWidth': 1,
+#             'data': other}]
+#             },
+#             'options': {
+#             'aspectRatio': 1.5,
+#             'scales': {
+#             'yAxes': [{
+#             'ticks': {
+#             'beginAtZero':'true'}
+#             }]
+#             },
+#             'title': {
+#             'display': 'true',
+#             'text': "Age-wise Gender Distribution",
+#             'fontSize': 18,
+#             'fontFamily': "'Palanquin', sans-serif"
+#             },
+#             'legend': {
+#             'display': 'true',
+#             'position': 'bottom',
+#             'labels': {
+#             'usePointStyle': 'true',
+#             'padding': 20,
+#             'fontFamily': "'Maven Pro', sans-serif"
+#       }
+#     }
+#   }
+#             }
+#             return JsonResponse({"locationChart":locationChart})
 #         return Response({"message":"only admin can create"},status=400)

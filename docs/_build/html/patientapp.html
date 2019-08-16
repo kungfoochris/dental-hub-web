@@ -35,47 +35,64 @@
             
   <div class="section" id="view-all-patients-and-register">
 <h1>View all Patients and Register<a class="headerlink" href="#view-all-patients-and-register" title="Permalink to this headline">¶</a></h1>
-<p>1. <strong>URL:</strong> <a class="reference external" href="http://api/v1/patients">View all Patients and Register</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span>
+<p>1. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span>
+
+<span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">patients</span><span class="p">:</span>
 </pre></div>
 </div>
 <p>2. <strong>METHOD:</strong>
 GET:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">patients</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span><span class="o">/&lt;</span><span class="n">geography_id</span><span class="o">&gt;</span>
+
+<span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">patients</span> <span class="n">of</span> <span class="n">the</span> <span class="n">required</span> <span class="n">geography</span> <span class="n">area</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">geography_id</span> <span class="n">must</span> <span class="n">be</span> <span class="k">as</span> <span class="n">a</span> <span class="n">parameter</span>
 </pre></div>
 </div>
 <p>3. <strong>METHOD:</strong>
 POST:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">register</span> <span class="n">a</span> <span class="n">patients</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span>
 </pre></div>
 </div>
+<ul>
+<li><p class="first">This method is used to register a patients:</p>
 <blockquote>
-<div><strong>Body_Content</strong></div></blockquote>
-<ul class="simple">
-<li>id : string()</li>
-<li>activityarea_id : string(required)</li>
-<li>geography_id: string(required)</li>
-<li>first_name: string(required)</li>
-<li>last_name: string(required)</li>
-<li>middle_name: string()</li>
-<li>gender: choicefield(required)
-male, female. other</li>
-<li>dob(date of birth): DateTimeField(required)</li>
-<li>phone(phone number):CharField(required)</li>
-<li>education : Charfield(required)</li>
-<li>author : ForeignRelationship()</li>
-<li>date : autofield()</li>
-<li>latitude: DecimalField(required)</li>
-<li>longitude: DecimalField(required)</li>
-<li>marital_status: choicefield(required)</li>
-<li>ward : PositiveIntegerField(required)</li>
-<li>city : CharField(required)</li>
-<li>state: CharField(required)</li>
-<li>country: CharField(required)</li>
-<li><dl class="first docutils">
-<dt>street_address: CharField(required)</dt>
-<dd>(single , married)</dd>
-</dl>
+<div><p><strong>Body_Content</strong></p>
+</div></blockquote>
+</li>
+<li><p class="first">id : string()</p>
+</li>
+<li><p class="first">geography_id: string(required)</p>
+</li>
+<li><p class="first">activityarea_id : string(required)</p>
+</li>
+<li><p class="first">first_name: string(required)</p>
+</li>
+<li><p class="first">last_name: string(required)</p>
+</li>
+<li><p class="first">middle_name: string()</p>
+</li>
+<li><p class="first">gender: choicefield(required)
+male, female. other</p>
+</li>
+<li><p class="first">dob(date of birth): DateTimeField(required)</p>
+</li>
+<li><p class="first">phone(phone number):CharField(required)</p>
+</li>
+<li><p class="first">author : ForeignRelationship()</p>
+</li>
+<li><p class="first">date : autofield()</p>
+</li>
+<li><p class="first">latitude: DecimalField(required)</p>
+</li>
+<li><p class="first">longitude: DecimalField(required)</p>
+</li>
+<li><p class="first">ward : PositiveIntegerField(required)</p>
+</li>
+<li><p class="first">municipality : CharField(required)</p>
+</li>
+<li><p class="first">district: CharField(required)</p>
 </li>
 </ul>
 </div>
@@ -111,6 +128,8 @@ male, female. other</li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">

@@ -15,7 +15,6 @@ class PatientSerializer(serializers.ModelSerializer):
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	class Meta:
 		model = Patient
-		fields = ('uid','id','activityarea_id','geography_id','first_name', 'middle_name', 'last_name', 'full_name',\
-         'gender', 'dob', 'age', 'marital_status', 'phone', 'education', 'country', 'city', 'state',\
-         'street_address', 'ward', 'author', 'latitude' ,'longitude', 'date','geography','activity_area')
+		fields = ('uid','id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
+         'gender', 'dob', 'age', 'phone','municipality','district', 'ward', 'author', 'latitude' ,'longitude', 'date','geography','activity_area')
 		read_only_fields = ('author','full_name','date','age')

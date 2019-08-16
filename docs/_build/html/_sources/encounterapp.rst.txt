@@ -5,6 +5,7 @@ Encounter
 ::
 
     Get and Post:api/v1/patients/<patient_id>/encounter
+
     Put : api/v1/patients/<patient_id>/encounter/<encounter_id>
 
     - patient_id: CharField (patient_id as a parameter)
@@ -26,11 +27,6 @@ POST:
 **Body_Content**
 
 - id : string()
-
-- activityarea_id : string(required)
-
-- geography_id: string(required)
-
 - encounter_type: ChoiceField(required)
 choice field are (screeing,pain,check,treatment)
 
@@ -118,6 +114,8 @@ POST:
 - physician: BooleanField()
 - hygienist: BooleanField()
 - other: CharField()
+- time : timefield(),format:12:23:00 
+- date : DateTimeField(required)
 
 4. **METHOD:**
 PUT:

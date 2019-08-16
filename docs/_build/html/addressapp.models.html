@@ -40,17 +40,18 @@
 <span id="addressapp-models-address-module"></span><h2>addressapp.models.address module<a class="headerlink" href="#module-addressapp.models.address" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="addressapp.models.address.Address">
-<em class="property">class </em><code class="descclassname">addressapp.models.address.</code><code class="descname">Address</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.Address" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">addressapp.models.address.</code><code class="descname">Address</code><span class="sig-paren">(</span><em>id</em>, <em>district</em>, <em>municipality</em>, <em>municipality_type</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.Address" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
-<dl class="class">
-<dt id="addressapp.models.address.Address.Meta">
-<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#addressapp.models.address.Address.Meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="addressapp.models.address.Address.Meta.abstract">
-<code class="descname">abstract</code><em class="property"> = False</em><a class="headerlink" href="#addressapp.models.address.Address.Meta.abstract" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="exception">
+<dt id="addressapp.models.address.Address.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#addressapp.models.address.Address.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
 
+<dl class="exception">
+<dt id="addressapp.models.address.Address.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#addressapp.models.address.Address.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
 </dd></dl>
 
 <dl class="attribute">
@@ -59,39 +60,51 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="addressapp.models.address.Address.city">
-<code class="descname">city</code><a class="headerlink" href="#addressapp.models.address.Address.city" title="Permalink to this definition">¶</a></dt>
+<dt id="addressapp.models.address.Address.district">
+<code class="descname">district</code><a class="headerlink" href="#addressapp.models.address.Address.district" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="addressapp.models.address.Address.country">
-<code class="descname">country</code><a class="headerlink" href="#addressapp.models.address.Address.country" title="Permalink to this definition">¶</a></dt>
+<dt id="addressapp.models.address.Address.id">
+<code class="descname">id</code><a class="headerlink" href="#addressapp.models.address.Address.id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="addressapp.models.address.Address.location">
-<code class="descname">location</code><a class="headerlink" href="#addressapp.models.address.Address.location" title="Permalink to this definition">¶</a></dt>
+<dt id="addressapp.models.address.Address.municipality">
+<code class="descname">municipality</code><a class="headerlink" href="#addressapp.models.address.Address.municipality" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="addressapp.models.address.Address.municipality_type">
+<code class="descname">municipality_type</code><a class="headerlink" href="#addressapp.models.address.Address.municipality_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="addressapp.models.address.Address.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#addressapp.models.address.Address.objects" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="addressapp.models.address.Address.state">
-<code class="descname">state</code><a class="headerlink" href="#addressapp.models.address.Address.state" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="addressapp.models.address.Address.street_address">
-<code class="descname">street_address</code><a class="headerlink" href="#addressapp.models.address.Address.street_address" title="Permalink to this definition">¶</a></dt>
+<dt id="addressapp.models.address.Address.ward">
+<code class="descname">ward</code><a class="headerlink" href="#addressapp.models.address.Address.ward" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="function">
+<dt id="addressapp.models.address.keygenerator">
+<code class="descclassname">addressapp.models.address.</code><code class="descname">keygenerator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.keygenerator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-addressapp.models">
@@ -130,6 +143,8 @@ object the first time, the query is executed.</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">

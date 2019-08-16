@@ -40,8 +40,8 @@
 <span id="patientapp-models-patient-module"></span><h2>patientapp.models.patient module<a class="headerlink" href="#module-patientapp.models.patient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="patientapp.models.patient.Patient">
-<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>city</em>, <em>state</em>, <em>country</em>, <em>street_address</em>, <em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>marital_status</em>, <em>education</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>ward</em>, <em>activity_area</em>, <em>geography</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="addressapp.models.html#addressapp.models.address.Address" title="addressapp.models.address.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">addressapp.models.address.Address</span></code></a></p>
+<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>activity_area</em>, <em>geography</em>, <em>district</em>, <em>municipality</em>, <em>municipality_type</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <dl class="exception">
 <dt id="patientapp.models.patient.Patient.DoesNotExist">
 <em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#patientapp.models.patient.Patient.DoesNotExist" title="Permalink to this definition">¶</a></dt>
@@ -109,15 +109,15 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="patientapp.models.patient.Patient.dob">
-<code class="descname">dob</code><a class="headerlink" href="#patientapp.models.patient.Patient.dob" title="Permalink to this definition">¶</a></dt>
+<dt id="patientapp.models.patient.Patient.district">
+<code class="descname">district</code><a class="headerlink" href="#patientapp.models.patient.Patient.district" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="patientapp.models.patient.Patient.education">
-<code class="descname">education</code><a class="headerlink" href="#patientapp.models.patient.Patient.education" title="Permalink to this definition">¶</a></dt>
+<dt id="patientapp.models.patient.Patient.dob">
+<code class="descname">dob</code><a class="headerlink" href="#patientapp.models.patient.Patient.dob" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -182,11 +182,6 @@ object the first time, the query is executed.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="patientapp.models.patient.Patient.get_marital_status_display">
-<code class="descname">get_marital_status_display</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.CharField: marital_status&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_marital_status_display" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="patientapp.models.patient.Patient.get_next_by_date">
 <code class="descname">get_next_by_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient.get_next_by_date" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -235,15 +230,22 @@ object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="patientapp.models.patient.Patient.marital_status">
-<code class="descname">marital_status</code><a class="headerlink" href="#patientapp.models.patient.Patient.marital_status" title="Permalink to this definition">¶</a></dt>
+<dt id="patientapp.models.patient.Patient.middle_name">
+<code class="descname">middle_name</code><a class="headerlink" href="#patientapp.models.patient.Patient.middle_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="patientapp.models.patient.Patient.middle_name">
-<code class="descname">middle_name</code><a class="headerlink" href="#patientapp.models.patient.Patient.middle_name" title="Permalink to this definition">¶</a></dt>
+<dt id="patientapp.models.patient.Patient.municipality">
+<code class="descname">municipality</code><a class="headerlink" href="#patientapp.models.patient.Patient.municipality" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.municipality_type">
+<code class="descname">municipality_type</code><a class="headerlink" href="#patientapp.models.patient.Patient.municipality_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -328,6 +330,8 @@ object the first time, the query is executed.</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">

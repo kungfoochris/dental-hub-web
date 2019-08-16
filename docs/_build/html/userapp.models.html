@@ -40,7 +40,7 @@
 <span id="userapp-models-user-module"></span><h2>userapp.models.user module<a class="headerlink" href="#module-userapp.models.user" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="userapp.models.user.User">
-<em class="property">class </em><code class="descclassname">userapp.models.user.</code><code class="descname">User</code><span class="sig-paren">(</span><em>password</em>, <em>last_login</em>, <em>id</em>, <em>email</em>, <em>active</em>, <em>staff</em>, <em>admin</em>, <em>first_name</em>, <em>middle_name</em>, <em>last_name</em>, <em>image</em>, <em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.User" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">userapp.models.user.</code><code class="descname">User</code><span class="sig-paren">(</span><em>password</em>, <em>last_login</em>, <em>id</em>, <em>username</em>, <em>active</em>, <em>staff</em>, <em>admin</em>, <em>first_name</em>, <em>middle_name</em>, <em>last_name</em>, <em>image</em>, <em>email</em>, <em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.base_user.AbstractBaseUser</span></code></p>
 <dl class="exception">
 <dt id="userapp.models.user.User.DoesNotExist">
@@ -56,7 +56,7 @@
 
 <dl class="attribute">
 <dt id="userapp.models.user.User.USERNAME_FIELD">
-<code class="descname">USERNAME_FIELD</code><em class="property"> = 'email'</em><a class="headerlink" href="#userapp.models.user.User.USERNAME_FIELD" title="Permalink to this definition">¶</a></dt>
+<code class="descname">USERNAME_FIELD</code><em class="property"> = 'username'</em><a class="headerlink" href="#userapp.models.user.User.USERNAME_FIELD" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -99,6 +99,19 @@ many-to-one relation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
 <p>Most of the implementation is delegated to a dynamically defined manager
 class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="userapp.models.user.User.customuser">
+<code class="descname">customuser</code><a class="headerlink" href="#userapp.models.user.User.customuser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the reverse side of a one-to-one
+relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Restaurant</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">place</span> <span class="o">=</span> <span class="n">OneToOneField</span><span class="p">(</span><span class="n">Place</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;restaurant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Place.restaurant</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseOneToOneDescriptor</span></code> instance.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -189,31 +202,10 @@ The class bool is a subclass of the class int, and cannot be subclassed.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="userapp.models.user.User.is_superuser">
-<code class="descname">is_superuser</code><a class="headerlink" href="#userapp.models.user.User.is_superuser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="userapp.models.user.User.last_name">
 <code class="descname">last_name</code><a class="headerlink" href="#userapp.models.user.User.last_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="userapp.models.user.User.location">
-<code class="descname">location</code><a class="headerlink" href="#userapp.models.user.User.location" title="Permalink to this definition">¶</a></dt>
-<dd><p>Accessor to the related objects manager on the forward and reverse sides of
-a many-to-many relation.</p>
-<p>In the example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
-instances.</p>
-<p>Most of the implementation is delegated to a dynamically defined manager
-class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -272,6 +264,13 @@ object the first time, the query is executed.</p>
 <code class="descname">update_password</code><em class="property"> = True</em><a class="headerlink" href="#userapp.models.user.User.update_password" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="userapp.models.user.User.username">
+<code class="descname">username</code><a class="headerlink" href="#userapp.models.user.User.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -279,18 +278,13 @@ object the first time, the query is executed.</p>
 <em class="property">class </em><code class="descclassname">userapp.models.user.</code><code class="descname">UserManager</code><a class="headerlink" href="#userapp.models.user.UserManager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.base_user.BaseUserManager</span></code></p>
 <dl class="method">
-<dt id="userapp.models.user.UserManager.create_staffuser">
-<code class="descname">create_staffuser</code><span class="sig-paren">(</span><em>email</em>, <em>password=None</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.UserManager.create_staffuser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="userapp.models.user.UserManager.create_superuser">
-<code class="descname">create_superuser</code><span class="sig-paren">(</span><em>email</em>, <em>password=None</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.UserManager.create_superuser" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_superuser</code><span class="sig-paren">(</span><em>username</em>, <em>email</em>, <em>password=None</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.UserManager.create_superuser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="userapp.models.user.UserManager.create_user">
-<code class="descname">create_user</code><span class="sig-paren">(</span><em>email</em>, <em>password=None</em>, <em>is_active=True</em>, <em>is_staff=False</em>, <em>is_admin=False</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.UserManager.create_user" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_user</code><span class="sig-paren">(</span><em>username</em>, <em>email</em>, <em>password=None</em>, <em>is_active=True</em>, <em>is_staff=False</em>, <em>is_admin=False</em><span class="sig-paren">)</span><a class="headerlink" href="#userapp.models.user.UserManager.create_user" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -337,6 +331,8 @@ object the first time, the query is executed.</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 
 <div class="relations">

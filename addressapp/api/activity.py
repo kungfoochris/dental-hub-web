@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from userapp.models import User
+from userapp.models import User, CustomUser
 
 from addressapp.serializers.activity import ActivityAreaSerializer
 from addressapp.models import ActivityArea
@@ -31,7 +31,7 @@ class ActivityAreaListView(APIView):
         return Response(serializer.data)
 
     def post(self, request, format=None):
-        if request.user.admin:
+        if request.user:
             serializer = ActivityAreaSerializer(data=request.data,\
                 context={'request': request})
             if serializer.is_valid():

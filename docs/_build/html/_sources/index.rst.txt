@@ -14,6 +14,7 @@ Welcome to Dental Hub's documentation!
    userapp
    patientapp
    encounterapp
+   addressapp
 
 Indices and tables
 ==================

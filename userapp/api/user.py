@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from userapp.models import User
+from userapp.models import User, CustomUser
 
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
@@ -32,38 +32,37 @@ class UserListView(APIView):
     serializer_class = UserSerializer
 
     def get(self, request, format=None):
-        if request.user.admin:
-            user=User.objects.filter(active=True).exclude(admin=True)
+        if User.objects.filter(id=request.user.id,admin=True).exists():
+            user=CustomUser.objects.filter(active=True).exclude(admin=True)
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
             return Response(serializer.data)
-        logger.error("Access is denied.")
+            logger.error("Access is denied.")
         return Response({"message":"Access is denied."},status=400)
 
     def post(self, request, format=None):
         serializer = UserSerializer(data=request.data,\
             context={'request': request})
-        if request.user.admin:
-            if User.objects.filter(email=request.data['email']).count()==0:
+        if User.objects.filter(id=request.user.id).exists():
+            if CustomUser.objects.filter(username=request.data['username']).count()==0:
                 if serializer.is_valid():
                     if re.match("^[a-zA-Z]+$", serializer.validated_data['first_name']):
                         if re.match("^[a-zA-Z]+$", serializer.validated_data['last_name']):
-                            password = uuid.uuid4().hex[:8].upper()
-                            user_obj = User()
+                            user_obj = CustomUser()
+                            password = serializer.validated_data['password']
                             user_obj.password=password
-                            user_obj.email=serializer.validated_data['email']
+                            user_obj.username=serializer.validated_data['username']
                             user_obj.first_name=serializer.validated_data['first_name'].capitalize()
                             user_obj.last_name=serializer.validated_data['last_name'].capitalize()
                             user_obj.middle_name = serializer.validated_data['middle_name']
                             user_obj.save()
                             user_obj.location.clear()
                             for i in serializer.validated_data['area']:
-                                print(i)
                                 user_obj.location.add(i)
-                            text_content = 'Account is successful created'
-                            template_name = "email/activation.html"
-                            emailsend(user_obj.id,text_content,template_name,password)
-                            return Response({"message":"User added successfully."},status=200)
+                            # text_content = 'Account is successful created'
+                            # template_name = "email/activation.html"
+                            # emailsend(request.user.id,text_content,template_name,password)
+                            return Response({"message":"User added successfully.","full_name":user_obj.full_name,"username":user_obj.username},status=200)
                         logger.error("Last name should be only combination of string") 
                         return Response({"message":"Last name should be only combination of string"},status=400)
                     logger.error("First name should be only combination of string") 
@@ -71,7 +70,7 @@ class UserListView(APIView):
                 print(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)
             logger.error("This email already exists.")     
-            return Response({'message':'This email already exists.'},status=400)
+            return Response({'message':'This username already exists.'},status=400)
         logger.error("Access is denied.")
         return Response({"message":"Access is denied."},status=400)
 
@@ -175,11 +174,9 @@ class AdminUserCheckView(APIView):
         serializer = CheckUSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
-            if User.objects.filter(email=serializer.validated_data['email']).exists():
-                email = serializer.validated_data['email']
-                if User.objects.filter(email=email,admin=True).exists():
-                    return Response({"status":"true"},status=200)
-                return Response({"message":"Invalid username/password"},status=400)
+            if User.objects.filter(email=serializer.validated_data['email'],admin=True).exists():
+                adminuser_obj=User.objects.get(email=serializer.validated_data['email'],admin=True)
+                return Response({"username":adminuser_obj.username},status=200)
             return Response({"message":"Invalid username/password."},status=400)
         return Response({'message':serializer.errors}, status=400)
 
@@ -190,9 +187,9 @@ class UpdateUserDataView(APIView):
     serializer_class = UpdateUserDataSerializer
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request,pk,format=None):
-        if request.user.admin:
-            if User.objects.filter(id=pk,active=True).exists():
-                user = User.objects.get(id=pk)
+        if User.objects.filter(id=request.user.id,admin=True):
+            if CustomUser.objects.filter(id=pk,active=True).exists():
+                user = CustomUser.objects.get(id=pk)
                 serializer = UpdateUserDataSerializer(user, \
                     context={'request': request})
                 return Response(serializer.data,status=200)
@@ -200,8 +197,8 @@ class UpdateUserDataView(APIView):
         return Response({"message":"only admin can see"},status=400)
 
     def put(self, request, pk, format=None):
-        if request.user.admin:
-            user_obj = User.objects.get(id=pk)
+        if User.objects.filter(id=request.user.id,admin=True):
+            user_obj = CustomUser.objects.get(id=pk)
             serializer = UpdateUserDataSerializer(user_obj,\
                 data=request.data,context={'request': request}, partial=True)
             if serializer.is_valid():
@@ -210,7 +207,7 @@ class UpdateUserDataView(APIView):
                         user_obj.first_name = serializer.validated_data['first_name'].capitalize()
                         user_obj.middle_name = serializer.validated_data['middle_name']
                         user_obj.last_name = serializer.validated_data['last_name'].capitalize()
-                        user_obj.email = serializer.validated_data['email']
+                        user_obj.username = serializer.validated_data['username']
                         user_obj.update_password = False
                         user_obj.save()
                         user_obj.location.clear()
@@ -227,8 +224,8 @@ class UpdateUserDataView(APIView):
 
     def delete(self, request, pk, format=None):
         if request.user.admin:
-            if User.objects.filter(id=pk,active=True).exists():
-                user_obj = User.objects.get(id=pk)
+            if CustomUser.objects.filter(id=pk,active=True).exists():
+                user_obj = CustomUser.objects.get(id=pk)
                 user_obj.active = False
                 user_obj.staff = False
                 user_obj.save()

@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from userapp.models import User
+from userapp.models import User,CustomUser
 
 from addressapp.serializers.geography import GeographySerializer
 from addressapp.models import Geography
@@ -25,37 +25,29 @@ class GeographyListView(APIView):
     serializer_class = GeographySerializer
 
     def get(self, request, format=None):
-        if request.user.admin:
+        if User.objects.filter(id=request.user.id,admin=True).exists():
             geography_obj = Geography.objects.filter(status=True)
             serializer = GeographySerializer(geography_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
-        else:
-            geography_obj = Geography.objects.filter(user=request.user)
+        elif User.objects.filter(id=request.user.id).exists():
+            geography_obj = Geography.objects.filter(customuser=request.user)
             serializer = GeographySerializer(geography_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
+        # else:
+        #     return Response({'errors': 'Permission Denied'},status=400)  
+
 
     def post(self, request, format=None):
-        if request.user.admin:
+        if User.objects.filter(id=request.user.id,admin=True).exists():
             serializer = GeographySerializer(data=request.data,\
                 context={'request': request})
             if serializer.is_valid():
-                if re.match("^[a-zA-Z]+$", serializer.validated_data['street_address']):
-                    if Geography.objects.filter(state=serializer.validated_data['state'],\
-                        city=serializer.validated_data['city'],\
-                        street_address=serializer.validated_data['street_address']).exists():
-                        return Response({"message":"This location already exists"},status=400)
-                    geography_obj = Geography()
-                    geography_obj.state = serializer.validated_data['state']
-                    geography_obj.city = serializer.validated_data['city']
-                    geography_obj.street_address = serializer.validated_data['street_address'].capitalize()
-                    geography_obj.country = serializer.validated_data['country']
-                    geography_obj.save()
-                    return Response({"message":"Geography location added."},status=200)
-                return Response({"message":"Street Address should only contain String With out space"},status=400)
+                serializer.save()
+                return Response(serializer.data)
             return Response({'message':serializer.errors}, status=400)
-        return Response({"message":"only admin can add"},status=400)
+        return Response({'errors': 'Permission Denied'},status=400)  
 
 
 class GeographyUpdateView(APIView):
@@ -79,21 +71,8 @@ class GeographyUpdateView(APIView):
                 serializer = GeographySerializer(geography_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
-                    print(serializer)
-                    if re.match("^[a-zA-Z]+$", serializer.validated_data['street_address']):
-                        if Geography.objects.filter(state=serializer.validated_data['state'],\
-                            city=serializer.validated_data['city'],\
-                            street_address=serializer.validated_data['street_address']).exists():
-                            return Response({"message":"This location already exists"},status=400)
-                        geography_obj.city = serializer.validated_data['city']
-                        geography_obj.state = serializer.validated_data['state']
-                        geography_obj.country = serializer.validated_data['country']
-                        geography_obj.street_address = serializer.validated_data['street_address'].capitalize()
-                        geography_obj.save()
-                        return Response({"message":"geography update"},status=200)
-                    return Response({"message":"Street Address should only contain String With out space"},status=400)
-                # logger.error(serializer.errors)
-                print(serializer.errors)
+                    serializer.save()
+                    return Response(serializer.data)
                 return Response({'message':serializer.errors}, status=400)
             # logger.error("content not found")
             return Response({"message":"content not found"},status=204)

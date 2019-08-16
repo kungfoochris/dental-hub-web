@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from userapp.models import User
+from userapp.models import User, CustomUser
 from encounterapp.models import Encounter, Refer, History
 from patientapp.models import Patient
 from encounterapp.serializers.encounter import EncounterSerializer,AllEncounterSerializer
@@ -32,45 +32,34 @@ class EncounterView(APIView):
 
 
     def get(self, request,patient_id, format=None):
-        if request.user.admin:
+        if User.objects.filter(id=request.user.id,admin=True):
             patient_obj = Patient.objects.get(uid=patient_id)
             encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
             serializer = AllEncounterSerializer(encounter_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
-        else:
-            geography = Geography.objects.filter(user=request.user)
-            print(geography)
-            for i in geography:
-                patient_obj = Patient.objects.get(uid=patient_id)
-                encounter_obj = Encounter.objects.select_related('patient',\
-                    'geography').filter(patient=patient_obj,geography=i)
-                serializer = AllEncounterSerializer(encounter_obj, many=True, \
-                    context={'request': request})
-                return Response(serializer.data)
-            return Response({"message":"content not found"},status=204)
+        elif CustomUser.objects.filter(id=request.user.id):
+            patient_obj = Patient.objects.get(uid=patient_id)
+            encounter_obj = Encounter.objects.select_related('geography').filter(geography=patient_obj.geography)
+            serializer = AllEncounterSerializer(encounter_obj, many=True,\
+                context={'request': request})
+            return Response(serializer.data)
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
             context={'request': request})
         if Patient.objects.filter(uid=patient_id).exists():
             patient_obj = Patient.objects.get(uid=patient_id)
             if serializer.is_valid():
-                if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
-                    if ActivityArea.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
-                        activity_area_obj = ActivityArea.objects.get(id=serializer.validated_data['activityarea_id'])
-                        geography_obj = Geography.objects.get(id=serializer.validated_data['geography_id'])
-                        encounter_obj = Encounter()
-                        encounter_obj.encounter_type = serializer.validated_data['encounter_type']
-                        encounter_obj.activity_area = activity_area_obj
-                        encounter_obj.geography = geography_obj
-                        encounter_obj.patient = patient_obj
-                        encounter_obj.author = request.user
-                        encounter_obj.save()
-                        return Response(serializer.data,status=200)
-                    logger.error("ActivityArea id does not exists")
-                    return Response({"message":"ActivityArea id does not exists"}, status=400)
-                logger.error("Geography id does not exists")
-                return Response({"message":"Geography id does not exists"}, status=400)
+                activity_area_obj = ActivityArea.objects.get(id=patient_obj.activity_area.id)
+                geography_obj = Geography.objects.get(id=patient_obj.geography.id)
+                encounter_obj = Encounter()
+                encounter_obj.encounter_type = serializer.validated_data['encounter_type']
+                encounter_obj.activity_area = activity_area_obj
+                encounter_obj.geography = geography_obj
+                encounter_obj.patient = patient_obj
+                encounter_obj.author = request.user
+                encounter_obj.save()
+                return Response(serializer.data,status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.error('patient does not exists')
