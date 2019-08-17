@@ -47,6 +47,7 @@
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -98,6 +99,8 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="addressapp.models.html#addressapp.models.address.Municipality.category">category (addressapp.models.address.Municipality attribute)</a>
+</li>
       <li><a href="userapp.models.html#userapp.models.user.UserManager.create_superuser">create_superuser() (userapp.models.user.UserManager method)</a>
 </li>
   </ul></td>
@@ -124,8 +127,6 @@
 </li>
       <li><a href="dental.html#module-dental.urls">dental.urls (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="dental.html#module-dental.wsgi">dental.wsgi (module)</a>
 </li>
       <li><a href="patientapp.migrations.html#patientapp.migrations.0001_initial.Migration.dependencies">dependencies (patientapp.migrations.0001_initial.Migration attribute)</a>
@@ -134,10 +135,26 @@
         <li><a href="userapp.migrations.html#userapp.migrations.0001_initial.Migration.dependencies">(userapp.migrations.0001_initial.Migration attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="addressapp.models.html#addressapp.models.address.Address.district">district (addressapp.models.address.Address attribute)</a>
 
       <ul>
-        <li><a href="patientapp.models.html#patientapp.models.patient.Patient.district">(patientapp.models.patient.Patient attribute)</a>
+        <li><a href="addressapp.models.html#addressapp.models.address.Municipality.district">(addressapp.models.address.Municipality attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="addressapp.models.html#addressapp.models.address.District">District (class in addressapp.models.address)</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.district">district (patientapp.models.patient.Patient attribute)</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.District.DoesNotExist">District.DoesNotExist</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.District.MultipleObjectsReturned">District.MultipleObjectsReturned</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Municipality.district_id">district_id (addressapp.models.address.Municipality attribute)</a>
+
+      <ul>
+        <li><a href="patientapp.models.html#patientapp.models.patient.Patient.district_id">(patientapp.models.patient.Patient attribute)</a>
 </li>
       </ul></li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.dob">dob (patientapp.models.patient.Patient attribute)</a>
@@ -223,15 +240,21 @@
       <li><a href="addressapp.models.html#addressapp.models.address.Address.id">id (addressapp.models.address.Address attribute)</a>
 
       <ul>
+        <li><a href="addressapp.models.html#addressapp.models.address.District.id">(addressapp.models.address.District attribute)</a>
+</li>
+        <li><a href="addressapp.models.html#addressapp.models.address.Municipality.id">(addressapp.models.address.Municipality attribute)</a>
+</li>
+        <li><a href="addressapp.models.html#addressapp.models.address.Ward.id">(addressapp.models.address.Ward attribute)</a>
+</li>
         <li><a href="patientapp.models.html#patientapp.models.patient.Patient.id">(patientapp.models.patient.Patient attribute)</a>
 </li>
         <li><a href="userapp.models.html#userapp.models.user.User.id">(userapp.models.user.User attribute)</a>
 </li>
       </ul></li>
-      <li><a href="userapp.models.html#userapp.models.user.User.image">image (userapp.models.user.User attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="userapp.models.html#userapp.models.user.User.image">image (userapp.models.user.User attribute)</a>
+</li>
       <li><a href="patientapp.migrations.html#patientapp.migrations.0001_initial.Migration.initial">initial (patientapp.migrations.0001_initial.Migration attribute)</a>
 
       <ul>
@@ -298,18 +321,42 @@
         <li><a href="userapp.migrations.html#userapp.migrations.0001_initial.Migration">(class in userapp.migrations.0001_initial)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="addressapp.models.html#addressapp.models.address.Address.municipality">municipality (addressapp.models.address.Address attribute)</a>
 
       <ul>
-        <li><a href="patientapp.models.html#patientapp.models.patient.Patient.municipality">(patientapp.models.patient.Patient attribute)</a>
+        <li><a href="addressapp.models.html#addressapp.models.address.Ward.municipality">(addressapp.models.address.Ward attribute)</a>
 </li>
       </ul></li>
-      <li><a href="addressapp.models.html#addressapp.models.address.Address.municipality_type">municipality_type (addressapp.models.address.Address attribute)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="addressapp.models.html#addressapp.models.address.Municipality">Municipality (class in addressapp.models.address)</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.municipality">municipality (patientapp.models.patient.Patient attribute)</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Municipality.DoesNotExist">Municipality.DoesNotExist</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Municipality.MultipleObjectsReturned">Municipality.MultipleObjectsReturned</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Ward.municipality_id">municipality_id (addressapp.models.address.Ward attribute)</a>
 
       <ul>
-        <li><a href="patientapp.models.html#patientapp.models.patient.Patient.municipality_type">(patientapp.models.patient.Patient attribute)</a>
+        <li><a href="patientapp.models.html#patientapp.models.patient.Patient.municipality_id">(patientapp.models.patient.Patient attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="addressapp.models.html#addressapp.models.address.District.municipality_set">municipality_set (addressapp.models.address.District attribute)</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Address.municipality_type">municipality_type (addressapp.models.address.Address attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="addressapp.models.html#addressapp.models.address.District.name">name (addressapp.models.address.District attribute)</a>
+
+      <ul>
+        <li><a href="addressapp.models.html#addressapp.models.address.Municipality.name">(addressapp.models.address.Municipality attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -321,6 +368,12 @@
       <li><a href="addressapp.models.html#addressapp.models.address.Address.objects">objects (addressapp.models.address.Address attribute)</a>
 
       <ul>
+        <li><a href="addressapp.models.html#addressapp.models.address.District.objects">(addressapp.models.address.District attribute)</a>
+</li>
+        <li><a href="addressapp.models.html#addressapp.models.address.Municipality.objects">(addressapp.models.address.Municipality attribute)</a>
+</li>
+        <li><a href="addressapp.models.html#addressapp.models.address.Ward.objects">(addressapp.models.address.Ward attribute)</a>
+</li>
         <li><a href="patientapp.models.html#patientapp.models.patient.Patient.objects">(patientapp.models.patient.Patient attribute)</a>
 </li>
         <li><a href="userapp.models.html#userapp.models.user.User.objects">(userapp.models.user.User attribute)</a>
@@ -352,6 +405,14 @@
 </li>
       <li><a href="patientapp.models.html#patientapp.models.patient.Patient.MultipleObjectsReturned">Patient.MultipleObjectsReturned</a>
 </li>
+      <li><a href="addressapp.models.html#addressapp.models.address.District.patient_set">patient_set (addressapp.models.address.District attribute)</a>
+
+      <ul>
+        <li><a href="addressapp.models.html#addressapp.models.address.Municipality.patient_set">(addressapp.models.address.Municipality attribute)</a>
+</li>
+        <li><a href="addressapp.models.html#addressapp.models.address.Ward.patient_set">(addressapp.models.address.Ward attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="patientapp.migrations.html#module-patientapp.migrations">patientapp.migrations (module)</a>
@@ -431,9 +492,23 @@
       <li><a href="addressapp.models.html#addressapp.models.address.Address.ward">ward (addressapp.models.address.Address attribute)</a>
 
       <ul>
-        <li><a href="patientapp.models.html#patientapp.models.patient.Patient.ward">(patientapp.models.patient.Patient attribute)</a>
+        <li><a href="addressapp.models.html#addressapp.models.address.Ward.ward">(addressapp.models.address.Ward attribute)</a>
 </li>
       </ul></li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Ward">Ward (class in addressapp.models.address)</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.ward">ward (patientapp.models.patient.Patient attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="addressapp.models.html#addressapp.models.address.Ward.DoesNotExist">Ward.DoesNotExist</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Ward.MultipleObjectsReturned">Ward.MultipleObjectsReturned</a>
+</li>
+      <li><a href="patientapp.models.html#patientapp.models.patient.Patient.ward_id">ward_id (patientapp.models.patient.Patient attribute)</a>
+</li>
+      <li><a href="addressapp.models.html#addressapp.models.address.Municipality.ward_set">ward_set (addressapp.models.address.Municipality attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 

@@ -40,7 +40,7 @@
 <span id="patientapp-models-patient-module"></span><h2>patientapp.models.patient module<a class="headerlink" href="#module-patientapp.models.patient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="patientapp.models.patient.Patient">
-<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>activity_area</em>, <em>geography</em>, <em>district</em>, <em>municipality</em>, <em>municipality_type</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>activity_area</em>, <em>geography</em>, <em>district</em>, <em>municipality</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <dl class="exception">
 <dt id="patientapp.models.patient.Patient.DoesNotExist">
@@ -111,6 +111,19 @@ object the first time, the query is executed.</p>
 <dl class="attribute">
 <dt id="patientapp.models.patient.Patient.district">
 <code class="descname">district</code><a class="headerlink" href="#patientapp.models.patient.Patient.district" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.district_id">
+<code class="descname">district_id</code><a class="headerlink" href="#patientapp.models.patient.Patient.district_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -239,13 +252,19 @@ object the first time, the query is executed.</p>
 <dl class="attribute">
 <dt id="patientapp.models.patient.Patient.municipality">
 <code class="descname">municipality</code><a class="headerlink" href="#patientapp.models.patient.Patient.municipality" title="Permalink to this definition">¶</a></dt>
-<dd><p>A wrapper for a deferred-loading field. When the value is read from this
-object the first time, the query is executed.</p>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="patientapp.models.patient.Patient.municipality_type">
-<code class="descname">municipality_type</code><a class="headerlink" href="#patientapp.models.patient.Patient.municipality_type" title="Permalink to this definition">¶</a></dt>
+<dt id="patientapp.models.patient.Patient.municipality_id">
+<code class="descname">municipality_id</code><a class="headerlink" href="#patientapp.models.patient.Patient.municipality_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -282,6 +301,19 @@ object the first time, the query is executed.</p>
 <dl class="attribute">
 <dt id="patientapp.models.patient.Patient.ward">
 <code class="descname">ward</code><a class="headerlink" href="#patientapp.models.patient.Patient.ward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.ward_id">
+<code class="descname">ward_id</code><a class="headerlink" href="#patientapp.models.patient.Patient.ward_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>
@@ -330,7 +362,8 @@ object the first time, the query is executed.</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Geography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#geography">Geography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
 </ul>
 

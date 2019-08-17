@@ -27,13 +27,22 @@ class District(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	name = models.CharField(max_length=50)
 
+	def __str__(self):
+		return self.name
+
 class Municipality(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	district = models.ForeignKey(District,on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
 	category = models.CharField(max_length=50)
 
+	def __str__(self):
+		return self.name
+
 class Ward(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE)
 	ward = models.PositiveIntegerField(_('ward_number'),validators=[MaxValueValidator(99)])
+
+	def __str__(self):
+		return str(self.ward)

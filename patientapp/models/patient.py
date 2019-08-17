@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from userapp.models import User
-from addressapp.models import Address
+from addressapp.models import Address, District, Municipality ,Ward
 from datetime import date 
 from django.core.validators import MaxValueValidator
 from addressapp.models import Geography, ActivityArea
@@ -44,10 +44,9 @@ class Patient(models.Model):
 	longitude = models.DecimalField(help_text='author longitude',max_digits=12, decimal_places=8,default=12)
 	activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='patient_area')
 	geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='patient_geography')
-	district = models.CharField(max_length=50)
-	municipality = models.CharField(max_length=50)
-	municipality_type = models.CharField(max_length=50)
-	ward = models.PositiveIntegerField(_('ward_number'),validators=[MaxValueValidator(99)])
+	district = models.ForeignKey(District,on_delete=models.CASCADE,null=True)
+	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE,null=True)
+	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,null=True)
 
 
 

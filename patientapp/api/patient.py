@@ -12,6 +12,7 @@ from patientapp.serializers.patient import PatientSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from addressapp.models import Geography, ActivityArea
+from addressapp.models import Address,Ward,Municipality,District
 
 import logging
 # Get an instance of a logger
@@ -67,9 +68,9 @@ class PatientAdd(APIView):
                     patient_obj.phone = serializer.validated_data['phone']
                     patient_obj.latitude = serializer.validated_data['latitude']
                     patient_obj.longitude = serializer.validated_data['longitude']
-                    patient_obj.ward = serializer.validated_data['ward']
-                    patient_obj.municipality = serializer.validated_data['municipality']
-                    patient_obj.district = serializer.validated_data['district']
+                    patient_obj.ward = serializer.validated_data['ward_id']
+                    patient_obj.municipality = serializer.validated_data['municipality_id']
+                    patient_obj.district = serializer.validated_data['district_id']
                     patient_obj.author = request.user
                     patient_obj.activity_area = activity_area_obj
                     patient_obj.geography = geography_obj
