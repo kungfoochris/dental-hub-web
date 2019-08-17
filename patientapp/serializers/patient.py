@@ -59,5 +59,5 @@ class PatientSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Patient
 		fields = ('uid','id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
-         'gender', 'dob', 'age', 'phone','district','municipality', 'ward', 'district_id','municipality_id', 'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area')
+         'gender', 'dob', 'age', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id', 'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area')
 		read_only_fields = ('author','full_name','date','age')

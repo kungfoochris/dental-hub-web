@@ -40,7 +40,7 @@
 <span id="patientapp-models-patient-module"></span><h2>patientapp.models.patient module<a class="headerlink" href="#module-patientapp.models.patient" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="patientapp.models.patient.Patient">
-<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>activity_area</em>, <em>geography</em>, <em>district</em>, <em>municipality</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">patientapp.models.patient.</code><code class="descname">Patient</code><span class="sig-paren">(</span><em>id</em>, <em>uid</em>, <em>first_name</em>, <em>last_name</em>, <em>middle_name</em>, <em>gender</em>, <em>dob</em>, <em>age</em>, <em>phone</em>, <em>author</em>, <em>date</em>, <em>latitude</em>, <em>longitude</em>, <em>activity_area</em>, <em>geography</em>, <em>district</em>, <em>municipality</em>, <em>education</em>, <em>ward</em><span class="sig-paren">)</span><a class="headerlink" href="#patientapp.models.patient.Patient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <dl class="exception">
 <dt id="patientapp.models.patient.Patient.DoesNotExist">
@@ -131,6 +131,13 @@ object the first time, the query is executed.</p>
 <dl class="attribute">
 <dt id="patientapp.models.patient.Patient.dob">
 <code class="descname">dob</code><a class="headerlink" href="#patientapp.models.patient.Patient.dob" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="patientapp.models.patient.Patient.education">
+<code class="descname">education</code><a class="headerlink" href="#patientapp.models.patient.Patient.education" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a deferred-loading field. When the value is read from this
 object the first time, the query is executed.</p>
 </dd></dl>

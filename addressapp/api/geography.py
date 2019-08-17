@@ -43,10 +43,12 @@ class GeographyListView(APIView):
         if User.objects.filter(id=request.user.id,admin=True).exists():
             serializer = GeographySerializer(data=request.data,\
                 context={'request': request})
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response({'message':serializer.errors}, status=400)
+            if Geography.objects.filter(district=request.data['district'],municipality=request.data['municipality'],ward=request.data['ward']).count()==0:
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data)
+                return Response({'message':serializer.errors}, status=400)
+            return Response({"message":"This geography address already exists."},status=400)
         return Response({'errors': 'Permission Denied'},status=400)  
 
 
@@ -70,10 +72,12 @@ class GeographyUpdateView(APIView):
                 geography_obj = Geography.objects.get(id=pk)
                 serializer = GeographySerializer(geography_obj,data=request.data,\
                     context={'request': request},partial=True)
-                if serializer.is_valid():
-                    serializer.save()
-                    return Response(serializer.data)
-                return Response({'message':serializer.errors}, status=400)
+                if Geography.objects.filter(district=request.data['district'],municipality=request.data['municipality'],ward=request.data['ward']).count()==0:
+                    if serializer.is_valid():
+                        serializer.save()
+                        return Response(serializer.data)
+                    return Response({'message':serializer.errors}, status=400)
+                return Response({"message":"This geography address already exists."},status=400)
             # logger.error("content not found")
             return Response({"message":"content not found"},status=204)
         # logger.error("only admin can edit")

@@ -33,7 +33,7 @@ class Patient(models.Model):
 	uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	first_name = models.CharField(max_length=60)
 	last_name = models.CharField(max_length=60)
-	middle_name = models.CharField(max_length=60,blank=True)
+	middle_name = models.CharField(max_length=60,blank=True,null=True)
 	gender = models.CharField(choices=REQUEST_CHOICES,max_length=30)
 	dob = models.DateField(_("date of birth"))
 	age = models.PositiveIntegerField(editable=False,null=True)
@@ -46,6 +46,7 @@ class Patient(models.Model):
 	geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='patient_geography')
 	district = models.ForeignKey(District,on_delete=models.CASCADE,null=True)
 	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE,null=True)
+	education = models.CharField(max_length=50,null=True)
 	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,null=True)
 
 
