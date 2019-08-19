@@ -3,23 +3,23 @@ from django.contrib.auth.models import Group, Permission
 from rest_framework import serializers
 
 from userapp.models import User, Role, CustomUser
-from addressapp.models import Geography
+from addressapp.models import Geography, Ward
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
-    	queryset = Geography.objects.filter(status=True)
+    	queryset = Ward.objects.all()
     	return queryset
 
 
 class AreaPKField(serializers.StringRelatedField):
     def get_queryset(self):
-    	queryset = Geography.objects.all()
+    	queryset = Ward.objects.all()
     	return queryset
 
 
 class GeographySerializeronly(serializers.ModelSerializer):
     class Meta:
-        model = Geography
+        model = Ward
         fields = ('id','location')
         read_only_fields = ('location',)
 

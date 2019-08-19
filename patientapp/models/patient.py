@@ -43,7 +43,7 @@ class Patient(models.Model):
 	latitude = models.DecimalField(help_text='author latitude',max_digits=12, decimal_places=8,default=12)
 	longitude = models.DecimalField(help_text='author longitude',max_digits=12, decimal_places=8,default=12)
 	activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='patient_area')
-	geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='patient_geography')
+	geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='patient_geography')
 	district = models.ForeignKey(District,on_delete=models.CASCADE,null=True)
 	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE,null=True)
 	education = models.CharField(max_length=50,null=True)

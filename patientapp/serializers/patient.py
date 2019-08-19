@@ -48,7 +48,7 @@ class DistrictField(serializers.StringRelatedField):
 class PatientSerializer(serializers.ModelSerializer):
 	activity_area = serializers.StringRelatedField(many=False,read_only=True)
 	geography = serializers.StringRelatedField(many=False,read_only=True)
-	activityarea_id = serializers.CharField(max_length=250,write_only=True,required=True)
+	activityarea_id = serializers.CharField(write_only=True,required=True)
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	district_id = DistrictPkField(many=False,write_only=True)
 	municipality_id = MunicipalityPKField(many=False,write_only=True)

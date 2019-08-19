@@ -21,4 +21,4 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 			'primary_teeth9','primary_teeth10','primary_teeth11','primary_teeth12',\
 			'primary_teeth13','primary_teeth14','primary_teeth15','primary_teeth16',\
 			'primary_teeth17','primary_teeth18','primary_teeth19','primary_teeth20',\
-			'fluoride_varnish','treatment_complete','note','encounter_id')
+			'whole_mouth','fluoride_varnish','treatment_complete','note','encounter_id')

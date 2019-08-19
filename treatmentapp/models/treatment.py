@@ -77,3 +77,4 @@ class Treatment(models.Model):
     treatment_complete = models.BooleanField(_('treatment complete'),default=False)
     note = models.TextField(blank=True)
     encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='treatment')
+    whole_mouth = models.BooleanField(default=False)

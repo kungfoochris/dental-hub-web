@@ -14,13 +14,13 @@ from addressapp.serializers.geography import GeographySerializer
 class EncounterSerializer(serializers.ModelSerializer):
 	activity_area = serializers.StringRelatedField(many=False,read_only=True)
 	geography = serializers.StringRelatedField(many=False,read_only=True)
-	# activityarea_id = serializers.CharField(max_length=250,write_only=True,required=True)
-	# geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
+	activityarea_id = serializers.CharField(max_length=250,write_only=True,required=True)
+	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	author = serializers.StringRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	class Meta:
 		model = Encounter
-		fields = ('uid','id','geography','activity_area', 'date', 'author','encounter_type','patient')
+		fields = ('uid','id','geography_id','activityarea_id','geography','activity_area', 'date', 'author','encounter_type','patient')
 
 class AllEncounterSerializer(serializers.ModelSerializer):
 	activity_area = serializers.StringRelatedField(many=False,read_only=True)

@@ -4,7 +4,7 @@ from uuid import uuid4
 from patientapp.models import Patient
 from userapp.models import User
 from datetime import datetime, timedelta
-from addressapp.models import Geography, ActivityArea
+from addressapp.models import Geography, ActivityArea, Ward
 
 REQUEST_CHOICES = (
     ("screeing", _("Screeing")),
@@ -33,4 +33,4 @@ class Encounter(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=default_time)
     activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='encounter_area',null=True)
-    geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
+    geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
