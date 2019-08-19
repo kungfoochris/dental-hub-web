@@ -67,6 +67,7 @@ DEV_APPS = [
     "patientapp",
     "encounterapp",
     "treatmentapp",
+    "visualizationapp",
     ]
 
 INSTALLED_APPS = INTERNAL_APPS + THIRD_PARTY_APPS + DEV_APPS

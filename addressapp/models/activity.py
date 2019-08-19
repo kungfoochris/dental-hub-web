@@ -8,8 +8,8 @@ from uuid import uuid4
 REQUEST_CHOICES = (
     ("Health Post", _("Health Post")),
     ("School Seminar", _("School Seminar")),
-    ("Community Outreach, ", _("Community Outreach")),
-    ("Training, ", _("Training ")),
+    ("Community Outreach", _("Community Outreach")),
+    ("Training", _("Training")),
 )
 
 def keygenerator():
