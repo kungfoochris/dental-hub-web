@@ -21,3 +21,8 @@ mysql
 mock
 redis==3.2.0
 celery==4.2.1
+
+
+pytz
+nepali
+

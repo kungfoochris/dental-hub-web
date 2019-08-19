@@ -57,6 +57,7 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'corsheaders',
     'django_filters',
+    'nepali',
     ]
 
 # All apps developed at AmejPay goes here

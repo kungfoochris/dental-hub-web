@@ -47,6 +47,13 @@ class Ward(models.Model):
 
 	def __str__(self):
 		return "%s , %s - %s" %(self.municipality.district.name,self.municipality.name, self.ward)
+
+	@property
+	def district(self):
+		return self.municipality.district.name
+	
+	
+
 	@property
 	def location(self):
 		return "%s , %s - %s" %(self.municipality.district.name,self.municipality.name, self.ward)

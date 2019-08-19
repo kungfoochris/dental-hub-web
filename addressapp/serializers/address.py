@@ -22,10 +22,17 @@ class DistrictSerializer(serializers.ModelSerializer):
 		model = District
 		fields = ['id','name','municipalities']
 
+class MunicipalitySerializer1(serializers.ModelSerializer):
+	class Meta:
+		model = Municipality
+		fields = ['name',]
+
+
 class GeoSerializer(serializers.ModelSerializer):
+	municipality = MunicipalitySerializer1(read_only=True)
 	class Meta:
 		model = Ward
-		fields = ['id','ward','location']
+		fields = ['id','district','municipality','ward','location']
 
 # class DistrictSerializer(serializers.ModelSerializer):
 # 	class Meta:

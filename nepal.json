@@ -703,27 +703,27 @@
             {
                 "name": "pokhara",
                 "type": "urban",
-                "wards": 3
+                "wards": 28
             },
             {
                 "name": "annapurna",
                 "type": "rural",
-                "wards" :12
+                "wards" :11
             },
             {
                 "name": "machhapuchhre",
                 "type": "rural",
-                "wards" :4
+                "wards" :9
             },
             {
                 "name": "madi",
                 "type": "rural",
-                "wards" :9
+                "wards" :13
             },
             {
                 "name": "rupa",
                 "type": "rural",
-                "wards" :8
+                "wards" :15
             }
         ]
     },
@@ -733,12 +733,12 @@
             {
                 "name": "budanilkantha",
                 "type": "urban",
-                "wards" :0
+                "wards" :9
             },
             {
                 "name": "chandragiri",
                 "type": "urban",
-                "wards" :0
+                "wards" :23
             },
             {
                 "name": "dakshinkali",

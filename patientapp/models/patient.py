@@ -12,6 +12,7 @@ from addressapp.models import Geography, ActivityArea
 
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
+from nepali.datetime import NepaliDate
 
 
 REQUEST_CHOICES = (
@@ -49,7 +50,13 @@ class Patient(models.Model):
 	education = models.CharField(max_length=50,null=True)
 	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,null=True)
 
-
+	# def save(self, *args, **kwargs):
+	# 	today = NepaliDate()
+	# 	dob = self.dob
+	# 	age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
+	# 	self.age=age
+	# 	print(age)
+	# 	super(Patient, self).save(*args, **kwargs)
 
 	def save(self, *args, **kwargs):
 		today = date.today()
