@@ -14,8 +14,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 app_name = 'encounterapp'
 
 urlpatterns = [
-	path('patients/<patient_id>/encounter', EncounterView.as_view()),
-	path('patients/<patient_id>/encounter/<encounter_id>', EncounterUpdateView.as_view()),
+	path('patients/<patient_id>/encounters', EncounterView.as_view()),
+	path('patients/<patient_id>/encounters/<encounter_id>', EncounterUpdateView.as_view()),
 	path('encounter/<encounter_id>/history', PatientHistoryView.as_view()),
 	path('encounter/<encounter_id>/history/update', PatientHistoryUpdateView.as_view()),
 	path('encounter/<encounter_id>/refer', PatientReferView.as_view()),

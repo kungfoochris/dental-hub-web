@@ -4,9 +4,9 @@ Encounter
 1. **URL:**
 ::
 
-    Get and Post:api/v1/patients/<patient_id>/encounter
+    Get and Post:api/v1/patients/<patient_id>/encounters
 
-    Put : api/v1/patients/<patient_id>/encounter/<encounter_id>
+    Put : api/v1/patients/<patient_id>/encounters/<encounter_id>
 
     - patient_id: CharField (patient_id as a parameter)
     - encounter_id:CharField (encounter_id ad a parameter)
