@@ -91,3 +91,16 @@ POST:
 
 - This Method is used for updating a activities:
 
+
+==========
+Recall
+==========
+1. **METHOD:**
+GET:
+::
+	api/v1/recalls/<geography_id>
+
+    - This method list all the recall for the patients:
+    - this screen should be show only when health post is click in acticities section:
+
+

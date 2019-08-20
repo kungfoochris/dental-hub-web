@@ -4,6 +4,7 @@ from rest_framework import serializers
 
 from userapp.models import User, Role, CustomUser
 from addressapp.models import Geography, Ward
+from addressapp.serializers.address import GeoSerializer
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
@@ -53,9 +54,10 @@ class PasswordResetSerializer(serializers.ModelSerializer):
 		fields = ('token', 'password','confirm_password')
 
 class ProfileSerializer(serializers.ModelSerializer):
+	location=GeoSerializer(many=True)
 	class Meta:
-		model = User
-		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image')
+		model = CustomUser
+		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image','location')
 		# read_only_fields = ('notification_count','qrcode')
 
 
@@ -81,13 +83,15 @@ class CheckUSerializer(serializers.ModelSerializer):
 		model = User
 		fields = ('email',)
 
-
+class WardSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = User
+		fields = ('username',)
 
 
 class UpdateUserDataSerializer(serializers.ModelSerializer):
 	area = LocationPKField(many=True,write_only=True)
 	location = AreaPKField(many=True,read_only=True)
-	role = RolePKField(many=False)
 	class Meta:
 		model = CustomUser
-		fields = ('first_name','last_name','middle_name','username','role','location','area')
+		fields = ('first_name','last_name','middle_name','username','location','area')

@@ -8,6 +8,8 @@ from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdate
 
 
 
+
+
 from rest_framework.urlpatterns import format_suffix_patterns
 
 

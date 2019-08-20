@@ -12,7 +12,7 @@ from userapp.models import User, CustomUser
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
- PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer
+ PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer,WardSerializer
 from userapp.emailsend import emailsend
 from random import randint
 from addressapp.models import Geography
@@ -121,7 +121,7 @@ class ProfileListView(APIView):
     serializer_class = ProfileSerializer
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request,format=None):
-        user_obj = User.objects.get(id=request.user.id)
+        user_obj = CustomUser.objects.get(id=request.user.id)
         serializers = ProfileSerializer(user_obj, many=False,\
             context={'request': request})
         return Response(serializers.data,status=200)
@@ -181,7 +181,14 @@ class AdminUserCheckView(APIView):
             return Response({"message":"Invalid username/password."},status=400)
         return Response({'message':serializer.errors}, status=400)
 
-
+class WardCheckView(APIView):
+    serializer_class = CheckUSerializer
+    def post(self, request, format=None):
+        serializer = WardSerializer(data=request.data,\
+            context={'request': request})
+        if CustomUser.objects.select_related('role').filter(role__name='warduser',username=request.data['username']).exists():
+            return Response({"message":'ward user login'},status=200)
+        return Response({"message":"Invalid username/password."},status=400)
 
 
 class UpdateUserDataView(APIView):
@@ -209,7 +216,6 @@ class UpdateUserDataView(APIView):
                         user_obj.middle_name = serializer.validated_data['middle_name']
                         user_obj.last_name = serializer.validated_data['last_name'].capitalize()
                         user_obj.username = serializer.validated_data['username']
-                        user_obj.role = serializer.validated_data['role']
                         user_obj.update_password = False
                         user_obj.save()
                         user_obj.location.clear()

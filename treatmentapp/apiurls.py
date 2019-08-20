@@ -7,6 +7,9 @@ from treatmentapp.api.treatment import PatientTreatmentView, PatientTreatmentUpd
 
 from treatmentapp.api.data import BarGraphData, PICHartGraphData
 
+from treatmentapp.api.recall import Recall
+
+
 
 app_name = 'treatmentapp'
 
@@ -17,5 +20,6 @@ urlpatterns = [
 	path('encounter/<encounter_id>/treatment/update', PatientTreatmentUpdateView.as_view()),
 	path('bargraphdata',BarGraphData.as_view()),
 	path('paichartgraphdata', PICHartGraphData.as_view()),
+	path('recalls/<geography_id>',Recall.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)
