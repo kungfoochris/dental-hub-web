@@ -160,11 +160,11 @@ POST:
 - permanent_teeth: IntegerField(required)
 - postiror_teeth: BooleanField()
 - anterior_teeth: BooleanField()
-- infection: BooleanField()
+- need_sealant: BooleanField()
 - reversible_pulpitis: BooleanField()
 - art: BooleanField()
 - extraction: BooleanField()
-- refernal_kdh: BooleanField()
+- need_sdf: BooleanField()
 
 4. **METHOD:**
 PUT:
