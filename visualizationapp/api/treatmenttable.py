@@ -12,6 +12,7 @@ from userapp.models import User, CustomUser
 import os
 from django.http import JsonResponse
 from treatmentapp.models import Treatment
+from encounterapp.models import Screeing
 
 import logging
 # Get an instance of a logger
@@ -30,5 +31,32 @@ class TreatmentTableVisualization(APIView):
                   treatment_obj = Treatment.objects.all().count()
                   treatment_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male').count()
                   treatment_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female').count()
-                  return Response({"treatment_obj":treatment_obj,'treatment_male':treatment_male,'treatment_female':treatment_female})
+                  treatment_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__lt=18).count()
+                  treatment_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__range=(19, 60)).count()
+                  treatment_old = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__gt=60).count()
+
+                  female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True).count()
+                  male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True).count()
+                  child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__lt=18,fluoride_varnish=True).count()
+                  adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__range=(19, 60),fluoride_varnish=True).count()
+                  old__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__gt=60,fluoride_varnish=True).count()
+
+                  sealant_male = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',need_sealant=True).count()
+                  sealant_female = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',need_sealant=True).count()
+                  sealant_child = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__age__lt=18,need_sealant=True).count()
+                  sealant_adult = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__age__range=(19, 60),need_sealant=True).count()
+                  sealant_old = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__age__gt=60,need_sealant=True).count()
+
+                  cavities_prevented_male = 0.2*male_patients_receiving_FV+0.1*sealant_male
+                  cavities_prevented_female = 0.2*female_patients_receiving_FV+0.1*sealant_female
+                  cavities_prevented_child = 0.2*child__patients_receiving_FV+0.1*sealant_child
+                  cavities_prevented_adult = 0.2*adult__patients_receiving_FV+0.1*sealant_adult
+                  cavities_prevented_old = 0.2*old__patients_receiving_FV+0.1*sealant_old
+
+
+                  return Response({"cavities_prevented_male":cavities_prevented_male,\
+                    'cavities_prevented_female':cavities_prevented_female,\
+                    'cavities_prevented_child':cavities_prevented_child,\
+                    'cavities_prevented_adult':cavities_prevented_adult,\
+                    'cavities_prevented_old':cavities_prevented_old})
             return Response({"treatment_obj":"do not have a permission"},status=400)
