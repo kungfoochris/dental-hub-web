@@ -7,10 +7,10 @@ from datetime import datetime, timedelta
 from addressapp.models import Geography, ActivityArea, Ward
 
 REQUEST_CHOICES = (
-    ("screeing", _("Screeing")),
+    ("screeing", _("Checkup/Screeing")),
     ("pain", _("Relief of pain")),
-    ("check", _("Routine check")),
-    ("treatment", _("Ongoing treatment")),
+    ("treatment plan", _("Continuation of treatment plan")),
+    ("other", _("Other Problem")),
 )
 
 
