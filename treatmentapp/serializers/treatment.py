@@ -9,16 +9,16 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	class Meta:
 		model = Treatment
-		fields = ('uid','id','teeth1','teeth2','teeth3','teeth4',\
-			'teeth5','teeth6','teeth7','teeth8','teeth9',\
-			'teeth10','teeth11','teeth12','teeth13','teeth14',\
-			'teeth15','teeth16','teeth17','teeth18',\
-			'teeth19','teeth20','teeth21','teeth22','teeth23',\
-			'teeth24','teeth25','teeth26','teeth27',\
-			'teeth28','teeth29','teeth30','teeth31','teeth32',\
-			'primary_teeth1','primary_teeth2','primary_teeth3','primary_teeth4',\
-			'primary_teeth5','primary_teeth6','primary_teeth7','primary_teeth8',\
-			'primary_teeth9','primary_teeth10','primary_teeth11','primary_teeth12',\
-			'primary_teeth13','primary_teeth14','primary_teeth15','primary_teeth16',\
-			'primary_teeth17','primary_teeth18','primary_teeth19','primary_teeth20',\
+		fields = ('uid','id','tooth18','tooth17','tooth16','tooth15',\
+			'tooth14','tooth13','tooth12','tooth11','tooth21',\
+			'tooth22','tooth23','tooth24','tooth25','tooth26',\
+			'tooth27','tooth28','tooth48','tooth47',\
+			'tooth46','tooth45','tooth44','tooth43','tooth42',\
+			'tooth41','tooth31','tooth32','tooth33',\
+			'tooth34','tooth35','tooth36','tooth37','tooth38',\
+			'tooth55','tooth54','tooth53','tooth52',\
+			'tooth51','tooth61','tooth62','tooth63',\
+			'tooth64','tooth65','tooth85','tooth84',\
+			'tooth83','tooth82','tooth81','tooth71',\
+			'tooth72','tooth73','tooth74','tooth75',\
 			'whole_mouth','fluoride_varnish','treatment_complete','note','encounter_id')
