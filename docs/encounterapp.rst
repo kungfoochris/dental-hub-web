@@ -64,13 +64,16 @@ POST:
     
     **Body_Content**
 - bleeding: BooleanField()
-- diabete: BooleanField()
+- diabetes: BooleanField()
 - fever: BooleanField()
 - liver: BooleanField()
 - seizures:BooleanField()
 - hepatitis: BooleanField()
 - hiv:BooleanField()
-- allergic:BooleanField()
+- no_allergies:BooleanField()
+- allergies: String()
+- no_underlying_medical:BoolenField()
+- not_taking_medication: BoolenField()
 - other: CharField()
 - medication:CharField()
 - no_medication:BooleanField()
@@ -199,15 +202,16 @@ POST:
 **Body_Content**
 
 - teeth: ChoiceField()
-    choice field are (SDF,SEAL,ART,'EXO','UNTR','None')
+    choice field are (SMART,SDF,SEAL,ART,'EXO','UNTR','None')
 - teeth should be from 1 to 32
 
 - primary_teeth: ChoiceField()
-    choice field are (SDF,SEAL,ART,'EXO','UNTR','None')
+    choice field are (SMART,SDF,SEAL,ART,'EXO','UNTR','None')
 - primary_teeth should be from 1 to 20
 - fluoride_varnish: BooleanField()
 - treatment_complete: BooleanField()
 - note: TextField()
+- whole_mouth:BoolenField()
 
 4. **METHOD:**
 PUT:

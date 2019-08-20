@@ -9,6 +9,6 @@ class PatientHistorySerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	class Meta:
 		model = History
-		fields = ('uid','id','bleeding','diabete','liver','fever',\
-			'seizures','hepatitis','hiv','allergic','other',\
-			'medication', 'no_medication', 'encounter_id')
+		fields = ('uid','id','bleeding','diabetes','liver','fever',\
+			'seizures','hepatitis','hiv','no_allergies','allergies','other',\
+			'medication', 'no_medication','no_underlying_medical','not_taking_medication', 'encounter_id')
