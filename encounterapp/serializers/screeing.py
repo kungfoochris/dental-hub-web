@@ -10,5 +10,5 @@ class PatientScreeingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Screeing
 		fields = ('uid','id','caries_risk','primary_teeth','permanent_teeth','postiror_teeth',\
-			'anterior_teeth','infection','reversible_pulpitis','art','extraction',\
-			'refernal_kdh','encounter_id')
+			'anterior_teeth','need_sealant','reversible_pulpitis','art','extraction',\
+			'need_sdf','encounter_id')
