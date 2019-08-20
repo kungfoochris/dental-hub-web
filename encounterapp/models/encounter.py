@@ -7,10 +7,10 @@ from datetime import datetime, timedelta
 from addressapp.models import Geography, ActivityArea, Ward
 
 REQUEST_CHOICES = (
-    ("screeing", _("Checkup/Screeing")),
-    ("pain", _("Relief of pain")),
-    ("treatment plan", _("Continuation of treatment plan")),
-    ("other", _("Other Problem")),
+    ("Checkup / Screening", _("Checkup / Screening")),
+    ("Relief of pain", _("Relief of pain")),
+    ("Continuation of treatment plan", _("Continuation of treatment plan")),
+    ("Other Problem", _("Other Problem")),
 )
 
 
@@ -29,7 +29,7 @@ class Encounter(models.Model):
     uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
     date = models.DateTimeField(auto_now=True)
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
-    encounter_type = models.CharField(_('encounter type'),choices=REQUEST_CHOICES,max_length=30)
+    encounter_type = models.CharField(_('encounter type'),choices=REQUEST_CHOICES,max_length=150)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=default_time)
     activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='encounter_area',null=True)

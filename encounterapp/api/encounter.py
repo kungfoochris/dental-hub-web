@@ -61,7 +61,7 @@ class EncounterView(APIView):
                         encounter_obj.patient = patient_obj
                         encounter_obj.author = request.user
                         encounter_obj.save()
-                        return Response(serializer.data,status=200)
+                        return Response({"message":"Encounter added","uid":encounter_obj.uid},status=200)
                     logger.error("Geography id does not exists.")
                     return Response({"message":"Geography id does not exists."},status=400)
                 logger.error("ActivityArea id does not exists.")
