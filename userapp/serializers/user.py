@@ -87,6 +87,7 @@ class CheckUSerializer(serializers.ModelSerializer):
 class UpdateUserDataSerializer(serializers.ModelSerializer):
 	area = LocationPKField(many=True,write_only=True)
 	location = AreaPKField(many=True,read_only=True)
+	role = RolePKField(many=False)
 	class Meta:
 		model = CustomUser
-		fields = ('first_name','last_name','middle_name','username','location','area')
+		fields = ('first_name','last_name','middle_name','username','role','location','area')

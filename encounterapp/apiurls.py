@@ -20,7 +20,7 @@ urlpatterns = [
 	path('encounter/<encounter_id>/history/update', PatientHistoryUpdateView.as_view()),
 	path('encounter/<encounter_id>/refer', PatientReferView.as_view()),
 	path('encounter/<encounter_id>/refer/update', PatientReferUpdateView.as_view()),
-	path('encounter/<encounter_id>/screeing', PatientScreeingView.as_view()),
-	path('encounter/<encounter_id>/screeing/update', PatientScreeingUpdateView.as_view()),
+	path('encounter/<encounter_id>/screening', PatientScreeingView.as_view()),
+	path('encounter/<encounter_id>/screening/update', PatientScreeingUpdateView.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)

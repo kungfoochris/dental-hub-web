@@ -16,6 +16,7 @@ REQUEST_CHOICES = (
     ("ART", _("ART")),
     ("EXO", _("EXO")),
     ("UNTR", _("UNTR")),
+    ("SMART", _("SMART")),
 )
 
 class Treatment(models.Model):

@@ -55,6 +55,7 @@ class UserListView(APIView):
                             user_obj.first_name=serializer.validated_data['first_name'].capitalize()
                             user_obj.last_name=serializer.validated_data['last_name'].capitalize()
                             user_obj.middle_name = serializer.validated_data['middle_name']
+                            user_obj.role = serializer.validated_data['role']
                             user_obj.save()
                             user_obj.location.clear()
                             for i in serializer.validated_data['area']:
@@ -208,6 +209,7 @@ class UpdateUserDataView(APIView):
                         user_obj.middle_name = serializer.validated_data['middle_name']
                         user_obj.last_name = serializer.validated_data['last_name'].capitalize()
                         user_obj.username = serializer.validated_data['username']
+                        user_obj.role = serializer.validated_data['role']
                         user_obj.update_password = False
                         user_obj.save()
                         user_obj.location.clear()

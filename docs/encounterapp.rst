@@ -131,8 +131,8 @@ Encounter Screeing
 1. **URL:**
 ::
 
-   Get and Post : /api/v1/encounter/<encounter_id>/screeing
-   Put : /api/v1/encounter/<encounter_id>/screeing/update
+   Get and Post : /api/v1/encounter/<encounter_id>/screening
+   Put : /api/v1/encounter/<encounter_id>/screening/update
 
    - encounter_id: CharField(as a parameter)
 
