@@ -12,7 +12,8 @@ from userapp.models import User, CustomUser
 
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
- PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer,WardSerializer
+ PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer,WardSerializer,\
+ UserStatusSerializer
 from userapp.emailsend import emailsend
 from random import randint
 from addressapp.models import Geography
@@ -33,7 +34,7 @@ class UserListView(APIView):
 
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id,admin=True).exists():
-            user=CustomUser.objects.filter(active=True).exclude(admin=True)
+            user=CustomUser.objects.all().exclude(admin=True)
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
             return Response(serializer.data)
@@ -240,3 +241,27 @@ class UpdateUserDataView(APIView):
                 return Response(status=status.HTTP_204_NO_CONTENT)
             return Response({"message":"no content found"},status=204)
         return Response({'errors': 'Permission Denied'},status=400)
+
+class UserStatus(APIView):
+    serializer_class = UserStatusSerializer
+    def post(self, request, user_id, format=None):
+        if request.user.admin:
+            if CustomUser.objects.filter(id=user_id):
+                serializer = UserStatusSerializer(data=request.data,\
+                    context={'request': request})
+                customuser_obj = CustomUser.objects.get(id=user_id)
+                print(type(request.data['status_obj']))
+                if request.data['status_obj'] is False:
+                    customuser_obj.active=True
+                    customuser_obj.update_password=False
+                    customuser_obj.save()
+                    print("status true")
+                    return Response({"message":"User status update successfully.","data":True},status=200)
+                else:
+                    customuser_obj.active=False
+                    customuser_obj.update_password=False
+                    customuser_obj.save()
+                    print("status false")
+                    return Response({"message":"User status update successfully.","data":False},status=200)
+            return Response({"message":"User ID does not exist."},status=400)
+        return Response({"message":"only admin can do "},status=400)

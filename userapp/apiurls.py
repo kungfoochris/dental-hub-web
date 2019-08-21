@@ -4,7 +4,7 @@ from django.urls import path
 from userapp.api.user import UserListView, UserForgetPassword,\
 UserResetPassword, ProfileListView, UpdateUserView,\
  UserChangepassword, AdminUserCheckView, UpdateUserDataView,\
- WardCheckView
+ WardCheckView,UserStatus
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from userapp.api.role import RoleListView
@@ -24,6 +24,7 @@ urlpatterns = [
 	path('users/<pk>',UpdateUserDataView.as_view()),
 	path('roles', RoleListView.as_view()),
 	path('checkwarduser',WardCheckView.as_view()),
+	path('userstatus/<user_id>',UserStatus.as_view()),
 	# path('login',AppUserListView.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)

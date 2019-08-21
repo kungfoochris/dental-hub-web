@@ -95,3 +95,9 @@ class UpdateUserDataSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = CustomUser
 		fields = ('first_name','last_name','middle_name','username','location','area')
+
+class UserStatusSerializer(serializers.ModelSerializer):
+	status_obj=serializers.CharField(max_length=7,write_only=True,required=True)
+	class Meta:
+		model = CustomUser
+		fields = ('status_obj',)
