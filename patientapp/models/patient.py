@@ -50,21 +50,21 @@ class Patient(models.Model):
 	education = models.CharField(max_length=50,null=True)
 	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,null=True)
 
-	# def save(self, *args, **kwargs):
-	# 	today = NepaliDate()
-	# 	dob = self.dob
-	# 	age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
-	# 	self.age=age
-	# 	print(age)
-	# 	super(Patient, self).save(*args, **kwargs)
-
 	def save(self, *args, **kwargs):
-		today = date.today()
+		today = NepaliDate()
 		dob = self.dob
-		age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+		age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
 		self.age=age
 		print(age)
 		super(Patient, self).save(*args, **kwargs)
+
+	# def save(self, *args, **kwargs):
+	# 	today = date.today()
+	# 	dob = self.dob
+	# 	age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+	# 	self.age=age
+	# 	print(age)
+	# 	super(Patient, self).save(*args, **kwargs)
 
 	@property
 	def full_name(self):

@@ -12,7 +12,7 @@ from userapp.models import User, CustomUser
 import os
 from django.http import JsonResponse
 from treatmentapp.models import Treatment
-from encounterapp.models import Screeing
+from encounterapp.models import Screeing,Encounter
 
 import logging
 # Get an instance of a logger
@@ -53,10 +53,13 @@ class TreatmentTableVisualization(APIView):
                   cavities_prevented_adult = 0.2*adult__patients_receiving_FV+0.1*sealant_adult
                   cavities_prevented_old = 0.2*old__patients_receiving_FV+0.1*sealant_old
 
+                  contact_male = Encounter.objects.select_related('patient').filter(patient__gender='male').count()
+                  contact_female = Encounter.objects.select_related('patient').filter(patient__gender='female').count()
+                  contact_child = Encounter.objects.select_related('patient').filter(patient__age__lt=18).count()
+                  contact_adult = Encounter.objects.select_related('patient').filter(patient__age__range=(19, 60)).count()
+                  contact_old= Encounter.objects.select_related('patient').filter(patient__age__gt=60).count()
 
-                  return Response({"cavities_prevented_male":cavities_prevented_male,\
-                    'cavities_prevented_female':cavities_prevented_female,\
-                    'cavities_prevented_child':cavities_prevented_child,\
-                    'cavities_prevented_adult':cavities_prevented_adult,\
-                    'cavities_prevented_old':cavities_prevented_old})
+
+                  return Response({"cavities_prevented":["Number of Cavities Prevented",cavities_prevented_male,cavities_prevented_female,cavities_prevented_child,cavities_prevented_adult,cavities_prevented_old],\
+                    'contact':["Contacts", contact_male,contact_female,contact_child,contact_adult,contact_old]})
             return Response({"treatment_obj":"do not have a permission"},status=400)
