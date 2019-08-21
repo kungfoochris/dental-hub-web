@@ -28,4 +28,5 @@ class Screeing(models.Model):
 	art = models.BooleanField(_('Atraumatic restorative treatment'),default=False)
 	extraction = models.BooleanField(_('need extraction'),default=False)
 	need_sdf = models.BooleanField(_('need sdf'),default=False)
+	active_infection = models.BooleanField(default=False)
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='screeing')

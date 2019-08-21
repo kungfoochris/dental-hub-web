@@ -13,7 +13,7 @@ from userapp.models import User, CustomUser
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
  PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer,WardSerializer,\
- UserStatusSerializer
+ UserStatusSerializer, AdminPasswordResetSerializer
 from userapp.emailsend import emailsend
 from random import randint
 from addressapp.models import Geography
@@ -265,3 +265,23 @@ class UserStatus(APIView):
                     return Response({"message":"User status update successfully.","data":False},status=200)
             return Response({"message":"User ID does not exist."},status=400)
         return Response({"message":"only admin can do "},status=400)
+
+
+
+class AdminPasswordRest(APIView):
+    serializer_class = AdminPasswordResetSerializer
+    def post(self, request, format=None):
+        serializer = AdminPasswordResetSerializer(data=request.data,\
+            context={'request': request})
+        if request.user.admin:
+            if request.data['new_password'] == request.data['confirm_password']:
+                if serializer.is_valid():
+                    if CustomUser.objects.filter(username = serializer.validated_data['username'],active=True).exists():
+                        user_obj = User.objects.get(username = serializer.validated_data['username'])
+                        user_obj.password = serializer.validated_data['new_password']
+                        user_obj.save()
+                        return Response({'message':'Password is successful reset'},status=200)
+                    return Response({'message':'Username does not exist or User is in active'},status=400) 
+                return Response({'message':serializer.errors}, status=400)
+            return Response({'message':'Your new password and confirmation password do not match.'},status=400)
+        return Response({"message":"only admin can add"},status=400)

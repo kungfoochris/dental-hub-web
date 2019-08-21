@@ -101,3 +101,11 @@ class UserStatusSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = CustomUser
 		fields = ('status_obj',)
+
+class AdminPasswordResetSerializer(serializers.ModelSerializer):
+	username = serializers.CharField(max_length=50,write_only=True,required=True)
+	new_password = serializers.CharField(max_length=50,write_only=True,required=True)
+	confirm_password = serializers.CharField(max_length=50,write_only=True,required=True)
+	class Meta:
+		model = CustomUser
+		fields = ("username","new_password","confirm_password")
