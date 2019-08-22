@@ -50,7 +50,7 @@ class PatientScreeingView(APIView):
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
-                return Response(serializer.data,status=200)
+                return Response({"message":"screeing data added successfully"},status=200)
             logger.error(serializer.errors) 
             return Response({'message':serializer.errors}, status=400)
         logger.error("patient does not exists.") 
