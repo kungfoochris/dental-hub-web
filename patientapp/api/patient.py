@@ -11,7 +11,7 @@ from patientapp.serializers.patient import PatientSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
-from addressapp.models import Geography, ActivityArea, Ward
+from addressapp.models import Geography, ActivityArea, Ward, Activity
 from addressapp.models import Address,Ward,Municipality,District
 
 import logging
@@ -54,10 +54,10 @@ class PatientAdd(APIView):
         serializer = PatientSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
-            if Geography.objects.filter(id=int(serializer.validated_data['geography_id'])).exists():
+            if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
                 if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
                     activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
-                    geography_obj = Geography.objects.get(id=int(serializer.validated_data['geography_id']))
+                    geography_obj = Geography.objects.get(id=serializer.validated_data['geography_id'])
                     patient_obj = Patient()
                     patient_obj.id = serializer.validated_data['id']
                     patient_obj.first_name = serializer.validated_data['first_name']

@@ -34,4 +34,4 @@ class Encounter(models.Model):
     updated_at = models.DateTimeField(default=default_time)
     activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='encounter_area',null=True)
     other_detail = models.CharField(max_length=150, null = True, blank = True)
-    geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
+    geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
