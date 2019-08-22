@@ -8,7 +8,7 @@ from userapp.models import User
 from addressapp.models import Address, District, Municipality ,Ward
 from datetime import date 
 from django.core.validators import MaxValueValidator
-from addressapp.models import Geography, ActivityArea
+from addressapp.models import Geography, Activity
 
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
@@ -43,7 +43,7 @@ class Patient(models.Model):
 	date = models.DateTimeField(_('register_date'),auto_now=True)
 	latitude = models.DecimalField(help_text='author latitude',max_digits=12, decimal_places=8,default=12)
 	longitude = models.DecimalField(help_text='author longitude',max_digits=12, decimal_places=8,default=12)
-	activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='patient_area')
+	activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='patient_area')
 	geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='patient_geography')
 	district = models.ForeignKey(District,on_delete=models.CASCADE,null=True)
 	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE,null=True)

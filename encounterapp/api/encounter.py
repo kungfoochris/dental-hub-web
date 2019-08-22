@@ -14,7 +14,7 @@ from encounterapp.serializers.encounter import EncounterSerializer,AllEncounterS
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
-from addressapp.models import Geography, ActivityArea, Ward
+from addressapp.models import Geography, ActivityArea, Ward, Activity
 
 import logging
 # Get an instance of a logger
@@ -50,9 +50,9 @@ class EncounterView(APIView):
         if Patient.objects.filter(uid=patient_id).exists():
             patient_obj = Patient.objects.get(uid=patient_id)
             if serializer.is_valid():
-                if ActivityArea.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
+                if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
                     if Ward.objects.filter(id=int(serializer.validated_data['geography_id'])).exists():
-                        activity_area_obj = ActivityArea.objects.get(id=serializer.validated_data['activityarea_id'])
+                        activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
                         geography_obj = Ward.objects.get(id=int(serializer.validated_data['geography_id']))
                         encounter_obj = Encounter()
                         encounter_obj.encounter_type = serializer.validated_data['encounter_type']
@@ -64,8 +64,8 @@ class EncounterView(APIView):
                         return Response({"message":"Encounter added","uid":encounter_obj.uid},status=200)
                     logger.error("Geography id does not exists.")
                     return Response({"message":"Geography id does not exists."},status=400)
-                logger.error("ActivityArea id does not exists.")
-                return Response({"message":"ActivityArea id does not exists."},status=400)
+                logger.error("Activity id does not exists.")
+                return Response({"message":"Activity id does not exists."},status=400)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.error('patient does not exists')

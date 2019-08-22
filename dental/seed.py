@@ -9,12 +9,18 @@ from django_seed import Seed
 from faker import Faker
 from mixer.backend.django  import mixer
 from addressapp.models import Address, District, Municipality ,Ward
+from addressapp.models import Activity
 import json
 fake = Faker()
 
 def seed(request):
 	try:
+		User.objects.create(username='Jevaia',email='dentalhub@jevaia.org',password='Jevaia12345',first_name='dental',last_name='hub',admin=True,staff=True)
 		User.objects.create(username='abhiyantrik',email='prabin@abhiyantrik.com',password='dental123',first_name='admin',last_name='user',admin=True,staff=True)
+		Activity.objects.create(name="Health Post")
+		Activity.objects.create(name="School Seminar")
+		Activity.objects.create(name="Community Outreach")
+		Activity.objects.create(name="Training")
 		with open('./nepal.json') as write_file:
 			data=json.load(write_file)
 		for data_obj in data:

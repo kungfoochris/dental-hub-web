@@ -4,7 +4,7 @@ from uuid import uuid4
 from patientapp.models import Patient
 from userapp.models import User
 from datetime import datetime, timedelta
-from addressapp.models import Geography, ActivityArea, Ward
+from addressapp.models import Geography, ActivityArea, Ward, Activity
 
 REQUEST_CHOICES = (
     ("Checkup / Screening", _("Checkup / Screening")),
@@ -32,5 +32,6 @@ class Encounter(models.Model):
     encounter_type = models.CharField(_('encounter type'),choices=REQUEST_CHOICES,max_length=150)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=default_time)
-    activity_area = models.ForeignKey(ActivityArea,on_delete=models.CASCADE,related_name='encounter_area',null=True)
+    activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='encounter_area',null=True)
+    other_detail = models.CharField(max_length=150, null = True, blank = True)
     geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography',null=True)

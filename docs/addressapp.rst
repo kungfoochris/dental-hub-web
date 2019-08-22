@@ -50,9 +50,26 @@ POST:
 
 
 
-==========
-Activities
-==========
+==============
+Activitie
+==============
+1. **URL:**
+::
+
+    Get:api/v1/events
+
+2. **METHOD:**
+GET:
+::
+
+    - This method list all the activitie:
+
+
+
+
+==============
+ActivitieArea
+==============
 1. **URL:**
 ::
 
@@ -67,21 +84,19 @@ Activities
 GET:
 ::
 
-    - This method list all the activities:
+    - This method list all the activitiearea:
 
 
 3. **METHOD:**
 POST:
 ::
 
-- This Method is used for adding a activities:
+- This Method is used for adding a activitiearea:
 
 **Body_Content**
 
 
-- area: ChoiceField(required)
-choice field are (Health Post,School Seminar,Community Outreach,Training)
-
+- activity id : ForeignKey(required) ie Activity id
 - name: String()
 
 

@@ -25,7 +25,7 @@ services:
       - ./vue:/usr/share/nginx/html
     restart: "always"
     ports:
-      - "5000:5000"
+      - "6062:6062"
     depends_on:
       - backend
   backend:
@@ -35,7 +35,7 @@ services:
     command: ["./docker/entry.sh"]
     restart: "always"
     ports:
-      - "3000:3000"
+      - "6061:6061"
     volumes:
       - .:/code
     depends_on:

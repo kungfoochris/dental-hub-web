@@ -29,6 +29,7 @@ POST:
 - id : string()
 - encounter_type: ChoiceField(required)
 choice field are ({screeing:Checkup/Screeing,pain:Relief of pain,treatment plan: Continuation of treatment plan,other:Other Problem})
+- other_detail: String()
 
 
 4. **Put:**

@@ -279,22 +279,6 @@ class built by <code class="docutils literal notranslate"><span class="pre">crea
 </dd></dl>
 
 <dl class="attribute">
-<dt id="addressapp.models.address.Ward.customuser_set">
-<code class="descname">customuser_set</code><a class="headerlink" href="#addressapp.models.address.Ward.customuser_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Accessor to the related objects manager on the forward and reverse sides of
-a many-to-many relation.</p>
-<p>In the example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Pizza</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">toppings</span> <span class="o">=</span> <span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Topping</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;pizzas&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">Pizza.toppings</span></code> and <code class="docutils literal notranslate"><span class="pre">Topping.pizzas</span></code> are <code class="docutils literal notranslate"><span class="pre">ManyToManyDescriptor</span></code>
-instances.</p>
-<p>Most of the implementation is delegated to a dynamically defined manager
-class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="addressapp.models.address.Ward.district">
 <code class="descname">district</code><a class="headerlink" href="#addressapp.models.address.Ward.district" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -441,7 +425,9 @@ object the first time, the query is executed.</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#geography">Geography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitie">Activitie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitiearea">ActivitieArea</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#recall">Recall</a></li>
 </ul>
 
 <div class="relations">

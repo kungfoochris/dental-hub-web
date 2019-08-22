@@ -72,8 +72,20 @@ POST:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="activities">
-<h1>Activities<a class="headerlink" href="#activities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="activitie">
+<h1>Activitie<a class="headerlink" href="#activitie" title="Permalink to this headline">¶</a></h1>
+<p>1. <strong>URL:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">events</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+GET:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">activitie</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="activitiearea">
+<h1>ActivitieArea<a class="headerlink" href="#activitiearea" title="Permalink to this headline">¶</a></h1>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">activities</span>
 
@@ -84,20 +96,17 @@ POST:</p>
 </div>
 <p>2. <strong>METHOD:</strong>
 GET:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">activities</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">method</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">activitiearea</span><span class="p">:</span>
 </pre></div>
 </div>
 <p>3. <strong>METHOD:</strong>
 POST:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">activities</span><span class="p">:</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">activitiearea</span><span class="p">:</span>
 </pre></div>
 </div>
 <p><strong>Body_Content</strong></p>
 <ul class="simple">
-<li>area: ChoiceField(required)</li>
-</ul>
-<p>choice field are (Health Post,School Seminar,Community Outreach,Training)</p>
-<ul class="simple">
+<li>activity id : ForeignKey(required) ie Activity id</li>
 <li>name: String()</li>
 </ul>
 <p>4. <strong>Put:</strong>
@@ -151,7 +160,8 @@ GET:</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Address</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#geography">Geography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#activities">Activities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#activitie">Activitie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#activitiearea">ActivitieArea</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#recall">Recall</a></li>
 </ul>
 

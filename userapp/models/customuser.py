@@ -14,7 +14,7 @@ def keygenerator():
 
 
 class CustomUser(User):
-	location = models.ManyToManyField(Ward)
+	location = models.ManyToManyField(Geography)
 	role = models.ForeignKey(Role,on_delete=models.CASCADE,related_name='role',null=True)
 
 

@@ -23,17 +23,17 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 class GeographyListView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = GeoSerializer
+    serializer_class = GeographySerializer
 
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id,admin=True).exists():
-            geography_obj = Ward.objects.filter(status=True)
-            serializer = GeoSerializer(geography_obj, many=True, \
+            geography_obj = Geography.objects.filter(status=True)
+            serializer = GeographySerializer(geography_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
         elif User.objects.filter(id=request.user.id).exists():
-            geography_obj = Ward.objects.filter(customuser=request.user)
-            serializer = GeoSerializer(geography_obj, many=True, \
+            geography_obj = Geography.objects.filter(customuser=request.user)
+            serializer = GeographySerializer(geography_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
         # else:

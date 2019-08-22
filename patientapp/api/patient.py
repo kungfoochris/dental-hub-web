@@ -55,8 +55,8 @@ class PatientAdd(APIView):
             context={'request': request})
         if serializer.is_valid():
             if Ward.objects.filter(id=int(serializer.validated_data['geography_id'])).exists():
-                if ActivityArea.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
-                    activity_area_obj = ActivityArea.objects.get(id=serializer.validated_data['activityarea_id'])
+                if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
+                    activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
                     geography_obj = Ward.objects.get(id=int(serializer.validated_data['geography_id']))
                     patient_obj = Patient()
                     patient_obj.id = serializer.validated_data['id']
@@ -78,7 +78,7 @@ class PatientAdd(APIView):
                     patient_obj.save()
                     return Response({"message":"Patient created successfully","uid":patient_obj.uid},status=200)
                 logger.error("ActivityArea id does not exists")
-                return Response({"message":"ActivityArea id does not exists"}, status=400)
+                return Response({"message":"Activity id does not exists"}, status=400)
             logger.error("Geography id does not exists")
             return Response({"message":"Geography id does not exists"}, status=400)
         logger.error(serializer.errors)

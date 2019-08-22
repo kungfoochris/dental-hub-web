@@ -64,7 +64,7 @@ class UserListView(APIView):
                             # text_content = 'Account is successful created'
                             # template_name = "email/activation.html"
                             # emailsend(request.user.id,text_content,template_name,password)
-                            return Response({"message":"User added successfully.","full_name":user_obj.full_name,"username":user_obj.username},status=200)
+                            return Response({"message":"User added successfully.","full_name":user_obj.full_name,"username":user_obj.username,"active":user_obj.active},status=200)
                         logger.error("Last name should be only combination of string") 
                         return Response({"message":"Last name should be only combination of string"},status=400)
                     logger.error("First name should be only combination of string") 
