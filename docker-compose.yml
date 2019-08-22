@@ -7,7 +7,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: 'dental_db'
+      MYSQL_DATABASE: 'dentalhub_db'
       MYSQL_USER: 'dental'
       MYSQL_PASSWORD: 'dental_password'
       MYSQL_ROOT_PASSWORD: 'dental_root_password'
