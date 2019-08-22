@@ -8,7 +8,7 @@ services:
       - ./tmp/db:/var/lib/mysql
     environment:
       MYSQL_DATABASE: 'dentalhub_db'
-      MYSQL_USER: 'dental'
+      MYSQL_USER: 'dentalhub'
       MYSQL_PASSWORD: 'dental_password'
       MYSQL_ROOT_PASSWORD: 'dental_root_password'
 
@@ -45,8 +45,8 @@ services:
       SECRET_KEY: 'tg7703_ddewirye6t0d^mam7-=42&!k&wv5dhi$$(35kouzi3ks'
       DATABASE_ENGINE: django.db.backends.mysql
       DATABASE_HOST: db
-      DATABASE_NAME: dental_db
-      DATABASE_USER: dental
+      DATABASE_NAME: dentalhub_db
+      DATABASE_USER: dentalhub
       DATABASE_PASSWORD: dental_root_password
       DATABASE_PORT: 3306
   celery:

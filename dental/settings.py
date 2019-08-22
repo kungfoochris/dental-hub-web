@@ -122,7 +122,7 @@ DATABASES = {
     'default':{
         'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
         'NAME': os.environ.get('DATABASE_NAME', 'dentalhub_db'),
-        'USER': os.environ.get('DATABASE_USER', 'dental'),
+        'USER': os.environ.get('DATABASE_USER', 'dentalhub'),
         'HOST': os.environ.get('DATABASE_HOST', 'db'),
         'PORT': os.environ.get('DATABASE_PORT', 3306),
         'PASSWORD':os.environ.get('POSTGRES_PASSWORD','dental_password'),
