@@ -28,10 +28,10 @@ class LoginVisualization(APIView):
             school_seminar=[]
             community=[]
             training=[]
-            health_count = Patient.objects.select_related('activity_area').filter(activity_area__area='Health Post').count()
-            school_count = Patient.objects.select_related('activity_area').filter(activity_area__area='School Seminar').count()
-            community_count = Patient.objects.select_related('activity_area').filter(activity_area__area='Community Outreach').count()
-            training_count = Patient.objects.select_related('activity_area').filter(activity_area__area='Training').count()
+            health_count = Patient.objects.select_related('activity_area').filter(activity_area__name='Health Post').count()
+            school_count = Patient.objects.select_related('activity_area').filter(activity_area__name='School Seminar').count()
+            community_count = Patient.objects.select_related('activity_area').filter(activity_area__name='Community Outreach').count()
+            training_count = Patient.objects.select_related('activity_area').filter(activity_area__name='Training').count()
             health_post.append(health_count)
             school_seminar.append(school_count)
             community.append(community_count)
@@ -82,10 +82,10 @@ class WardVisualization(APIView):
             school_seminar=[]
             community=[]
             training=[]
-            health_count = Patient.objects.select_related('activity_area').filter(activity_area__area='Health Post').count()
-            school_count = Patient.objects.select_related('activity_area').filter(activity_area__area='School Seminar').count()
-            community_count = Patient.objects.select_related('activity_area').filter(activity_area__area='Community Outreach').count()
-            training_count = Patient.objects.select_related('activity_area').filter(activity_area__area='Training').count()
+            health_count = Patient.objects.select_related('activity_area').filter(activity_area__name='Health Post').count()
+            school_count = Patient.objects.select_related('activity_area').filter(activity_area__name='School Seminar').count()
+            community_count = Patient.objects.select_related('activity_area').filter(activity_area__name='Community Outreach').count()
+            training_count = Patient.objects.select_related('activity_area').filter(activity_area__name='Training').count()
             health_post.append(health_count)
             school_seminar.append(school_count)
             community.append(community_count)
