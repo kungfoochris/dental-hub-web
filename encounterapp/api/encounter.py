@@ -51,9 +51,9 @@ class EncounterView(APIView):
             patient_obj = Patient.objects.get(uid=patient_id)
             if serializer.is_valid():
                 if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
-                    if Ward.objects.filter(id=int(serializer.validated_data['geography_id'])).exists():
+                    if Geography.objects.filter(id=int(serializer.validated_data['geography_id'])).exists():
                         activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
-                        geography_obj = Ward.objects.get(id=int(serializer.validated_data['geography_id']))
+                        geography_obj = Geography.objects.get(id=int(serializer.validated_data['geography_id']))
                         encounter_obj = Encounter()
                         encounter_obj.encounter_type = serializer.validated_data['encounter_type']
                         encounter_obj.activity_area = activity_area_obj
