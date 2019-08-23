@@ -160,7 +160,7 @@ class UserChangepassword(APIView):
             confirm_password = serializer.validated_data['confirm_password']
             if new_password == confirm_password:
                 user_obj=User.objects.get(id=request.user.id)
-                user = authenticate(email=user_obj.email, password=old_password)
+                user = authenticate(username=user_obj.username, password=old_password)
                 if user:
                     dj_login(request, user)
                     user_obj.password=confirm_password

@@ -25,4 +25,4 @@ class Geography(models.Model):
 
 	@property
 	def location(self):
-		return "%s , %s - %s" %(self.district,self.municipality, self.ward)
+		return "%s, %s-%s, %s" %(self.tole,self.municipality, self.ward, self.district)

@@ -32,18 +32,22 @@ class EncounterView(APIView):
 
 
     def get(self, request,patient_id, format=None):
-        if User.objects.filter(id=request.user.id,admin=True):
-            patient_obj = Patient.objects.get(uid=patient_id)
-            encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
-            serializer = AllEncounterSerializer(encounter_obj, many=True, \
-                context={'request': request})
-            return Response(serializer.data)
-        elif CustomUser.objects.filter(id=request.user.id):
-            patient_obj = Patient.objects.get(uid=patient_id)
-            encounter_obj = Encounter.objects.select_related('geography').filter(geography=patient_obj.geography)
-            serializer = AllEncounterSerializer(encounter_obj, many=True,\
-                context={'request': request})
-            return Response(serializer.data)
+        if CustomUser.objects.filter(id=request.user.id):
+            if Patient.objects.filter(uid=patient_id):
+                patient_obj = Patient.objects.get(uid=patient_id)
+                encounter_obj = Encounter.objects.select_related('geography').filter(geography=patient_obj.geography)
+                serializer = AllEncounterSerializer(encounter_obj, many=True,\
+                    context={'request': request})
+                return Response(serializer.data)
+            return Response({"message":"patient id does not exist."},status=400)
+        return Response({"message":"permission not allowed"},status=400)
+        # if User.objects.filter(id=request.user.id,admin=True):
+        #     patient_obj = Patient.objects.get(uid=patient_id)
+        #     encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
+        #     serializer = AllEncounterSerializer(encounter_obj, many=True, \
+        #         context={'request': request})
+        #     return Response(serializer.data)
+
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
             context={'request': request})
@@ -60,6 +64,7 @@ class EncounterView(APIView):
                         encounter_obj.geography = geography_obj
                         encounter_obj.patient = patient_obj
                         encounter_obj.author = request.user
+                        encounter_obj.other_detail = serializer.validated_data['other_detail']
                         encounter_obj.save()
                         return Response({"message":"Encounter added","uid":encounter_obj.uid},status=200)
                     logger.error("Geography id does not exists.")

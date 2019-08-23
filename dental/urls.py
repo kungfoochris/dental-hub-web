@@ -26,8 +26,12 @@ from rest_framework_jwt.views import (obtain_jwt_token, refresh_jwt_token,
 from .seed import seed
 from .views import home
 
+admin.site.site_header = "Dental Hub  @Abhiyantrik"
+admin.site.site_title = "DentalHub Admin Portal"
+admin.site.index_title = "Welcome to DentalHub Admin Portal"
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('maintainer/', admin.site.urls),
     path('api/v1/auth', include('rest_framework.urls', namespace='rest_framework')),
     # path('api/v1/devices', FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
     path('api/v1/token/obtain', obtain_jwt_token),
