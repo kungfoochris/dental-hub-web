@@ -34,10 +34,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 	location = GeographySerializeronly(read_only=True,many=True)
 	password = serializers.CharField(max_length=250,write_only=True,min_length=8)
 	role = RolePKField(many=False)
+	confirm_password = serializers.CharField(max_length=250,write_only=True,min_length=8)
 	class Meta:
 		model = CustomUser
 		fields = ('id','first_name', 'middle_name', 'last_name', 'username', 'active',
-			'staff', 'admin','full_name','password', 'role','location','area')
+			'staff', 'admin','full_name','password', 'confirm_password','role','location','area')
 		read_only_fields = ('active','staff','admin','full_name')
 
 

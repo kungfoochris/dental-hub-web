@@ -46,31 +46,33 @@ class UserListView(APIView):
             context={'request': request})
         if User.objects.filter(id=request.user.id).exists():
             if CustomUser.objects.filter(username=request.data['username']).count()==0:
-                if serializer.is_valid():
-                    if re.match("^[a-zA-Z]+$", serializer.validated_data['first_name']):
-                        if re.match("^[a-zA-Z]+$", serializer.validated_data['last_name']):
-                            user_obj = CustomUser()
-                            password = serializer.validated_data['password']
-                            user_obj.password=password
-                            user_obj.username=serializer.validated_data['username']
-                            user_obj.first_name=serializer.validated_data['first_name'].capitalize()
-                            user_obj.last_name=serializer.validated_data['last_name'].capitalize()
-                            user_obj.middle_name = serializer.validated_data['middle_name']
-                            user_obj.role = serializer.validated_data['role']
-                            user_obj.save()
-                            user_obj.location.clear()
-                            for i in serializer.validated_data['area']:
-                                user_obj.location.add(i)
-                            # text_content = 'Account is successful created'
-                            # template_name = "email/activation.html"
-                            # emailsend(request.user.id,text_content,template_name,password)
-                            return Response({"message":"User added successfully.","full_name":user_obj.full_name,"username":user_obj.username,"active":user_obj.active},status=200)
-                        logger.error("Last name should be only combination of string") 
-                        return Response({"message":"Last name should be only combination of string"},status=400)
-                    logger.error("First name should be only combination of string") 
-                    return Response({"message":"First name should be only combination of string"},status=400)
-                print(serializer.errors)
-                return Response({'message':serializer.errors}, status=400)
+                if request.data['password'] == request.data['confirm_password']:
+                    if serializer.is_valid():
+                        if re.match("^[a-zA-Z]+$", serializer.validated_data['first_name']):
+                            if re.match("^[a-zA-Z]+$", serializer.validated_data['last_name']):
+                                user_obj = CustomUser()
+                                password = serializer.validated_data['password']
+                                user_obj.password=password
+                                user_obj.username=serializer.validated_data['username']
+                                user_obj.first_name=serializer.validated_data['first_name'].capitalize()
+                                user_obj.last_name=serializer.validated_data['last_name'].capitalize()
+                                user_obj.middle_name = serializer.validated_data['middle_name']
+                                user_obj.role = serializer.validated_data['role']
+                                user_obj.save()
+                                user_obj.location.clear()
+                                for i in serializer.validated_data['area']:
+                                    user_obj.location.add(i)
+                                # text_content = 'Account is successful created'
+                                # template_name = "email/activation.html"
+                                # emailsend(request.user.id,text_content,template_name,password)
+                                return Response({"message":"User added successfully.","full_name":user_obj.full_name,"username":user_obj.username,"active":user_obj.active},status=200)
+                            logger.error("Last name should be only combination of string") 
+                            return Response({"message":"Last name should be only combination of string"},status=400)
+                        logger.error("First name should be only combination of string") 
+                        return Response({"message":"First name should be only combination of string"},status=400)
+                    print(serializer.errors)
+                    return Response({'message':serializer.errors}, status=400)
+                return Response({"message":"password do not match"},status=400)
             logger.error("This email already exists.")     
             return Response({'message':'This username already exists.'},status=400)
         logger.error("Access is denied.")
