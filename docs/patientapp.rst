@@ -45,3 +45,27 @@ POST:
 - municipality_id: foreignkey(required)
 - district_id: foreignkey(required)
 - education: CharField(required)
+
+
+3. **PUT:**
+POST:
+::
+	http://api/v1/patient/<patient_id>
+
+
+- This method is used to update a patients:
+
+    **Body_Content**
+
+- id : string()
+- first_name: string(required)
+- last_name: string(required)
+- middle_name: string()
+- gender: choicefield(required)
+  male, female. other
+- dob(date of birth): DateTimeField(required)
+- phone(phone number):CharField(required)
+- ward_id : foreignkey(required) 
+- municipality_id: foreignkey(required)
+- district_id: foreignkey(required)
+- education: CharField(required)

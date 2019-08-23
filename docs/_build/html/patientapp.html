@@ -97,6 +97,41 @@ male, female. other</p>
 <li><p class="first">education: CharField(required)</p>
 </li>
 </ul>
+<p>3. <strong>PUT:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patient</span><span class="o">/&lt;</span><span class="n">patient_id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">This method is used to update a patients:</p>
+<blockquote>
+<div><p><strong>Body_Content</strong></p>
+</div></blockquote>
+</li>
+<li><p class="first">id : string()</p>
+</li>
+<li><p class="first">first_name: string(required)</p>
+</li>
+<li><p class="first">last_name: string(required)</p>
+</li>
+<li><p class="first">middle_name: string()</p>
+</li>
+<li><p class="first">gender: choicefield(required)
+male, female. other</p>
+</li>
+<li><p class="first">dob(date of birth): DateTimeField(required)</p>
+</li>
+<li><p class="first">phone(phone number):CharField(required)</p>
+</li>
+<li><p class="first">ward_id : foreignkey(required)</p>
+</li>
+<li><p class="first">municipality_id: foreignkey(required)</p>
+</li>
+<li><p class="first">district_id: foreignkey(required)</p>
+</li>
+<li><p class="first">education: CharField(required)</p>
+</li>
+</ul>
 </div>
 
 
@@ -132,7 +167,9 @@ male, female. other</p>
 <li class="toctree-l1"><a class="reference internal" href="encounterapp.html#encounter-treatment">Encounter Treatment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#geography">Geography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activities">Activities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitie">Activitie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitiearea">ActivitieArea</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addressapp.html#recall">Recall</a></li>
 </ul>
 
 <div class="relations">
