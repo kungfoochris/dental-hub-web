@@ -18,7 +18,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated

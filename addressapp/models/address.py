@@ -15,7 +15,7 @@ class Address(models.Model):
 	municipality = models.CharField(max_length=50)
 	municipality_type = models.CharField(max_length=50)
 	ward = models.PositiveIntegerField(_('ward_number'),validators=[MaxValueValidator(99)])
-	
+
 	def __str__(self):
 		return "%s, %s - %s" %(self.district, self.geo_type, self.ward)
 
@@ -24,11 +24,9 @@ class Address(models.Model):
 		return "%s, %s - %s" %(self.district, self.geo_type, self.ward)
 
 class District(models.Model):
-	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-	name = models.CharField(max_length=50)
-
-	def __str__(self):
-		return self.name
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
 
 class Municipality(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
@@ -37,7 +35,7 @@ class Municipality(models.Model):
 	category = models.CharField(max_length=50)
 
 	def __str__(self):
-		return self.name
+		return "%s, %s" %(self.name,self.district.name)
 
 class Ward(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
@@ -51,8 +49,8 @@ class Ward(models.Model):
 	@property
 	def district(self):
 		return self.municipality.district.name
-	
-	
+
+
 
 	@property
 	def location(self):
