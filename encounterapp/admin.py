@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class EncounterAdmin(admin.ModelAdmin):
 	list_display = ('id','uid', 'date', 'patient', 'encounter_type','author','activity_area','geography')
+	list_filter = ('date',)
 
 admin.site.register(Encounter, EncounterAdmin)
 

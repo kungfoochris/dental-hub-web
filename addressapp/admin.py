@@ -11,13 +11,13 @@ class AdminGeographyapp(admin.ModelAdmin):
 admin.site.register(Geography, AdminGeographyapp)
 
 class AdminDistrict(admin.ModelAdmin):
-	list_display = ('id', 'name')
+	list_display = ('id', 'name','status')
 
 admin.site.register(District, AdminDistrict)
 
 
 class AdminMunicipality(admin.ModelAdmin):
-	list_display = ('id', 'district', 'name','category')
+	list_display = ('id', 'district', 'name','category','status')
 
 admin.site.register(Municipality, AdminMunicipality)
 

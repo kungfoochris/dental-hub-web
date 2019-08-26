@@ -10,6 +10,7 @@ class AdminUserapp(admin.ModelAdmin):
 	(_("Personal info"),{'fields':('username', 'first_name', 'middle_name','last_name', 'image','active')}),
 	)
 	readonly_fields = ('password',)
+	search_fields = ('username', )
 
 admin.site.register(User, AdminUserapp)
 

@@ -18,7 +18,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 class AddressList(APIView):
     def get(self, request, format=None):
-        address_obj = District.objects.all().order_by('name')
+        address_obj = District.objects.filter(status=True).order_by('name')
         serializer = DistrictSerializer(address_obj, many=True, \
             context={'request': request})
         return Response(serializer.data)

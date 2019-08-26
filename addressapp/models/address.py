@@ -25,6 +25,7 @@ class Address(models.Model):
 
 class District(models.Model):
     name = models.CharField(max_length=50)
+    status=models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
@@ -33,6 +34,7 @@ class Municipality(models.Model):
 	district = models.ForeignKey(District,on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
 	category = models.CharField(max_length=50)
+	status = models.BooleanField(default=True)
 
 	def __str__(self):
 		return "%s, %s" %(self.name,self.district.name)
