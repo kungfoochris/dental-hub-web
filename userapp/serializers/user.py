@@ -55,10 +55,9 @@ class PasswordResetSerializer(serializers.ModelSerializer):
 		fields = ('token', 'password','confirm_password')
 
 class ProfileSerializer(serializers.ModelSerializer):
-	location=GeoSerializer(many=True)
 	class Meta:
-		model = CustomUser
-		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image','location')
+		model = User
+		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image')
 		# read_only_fields = ('notification_count','qrcode')
 
 

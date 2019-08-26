@@ -124,7 +124,7 @@ class ProfileListView(APIView):
     serializer_class = ProfileSerializer
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request,format=None):
-        user_obj = CustomUser.objects.get(id=request.user.id)
+        user_obj = User.objects.get(id=request.user.id)
         serializers = ProfileSerializer(user_obj, many=False,\
             context={'request': request})
         return Response(serializers.data,status=200)
