@@ -169,7 +169,7 @@ POST:</p>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>caries_risk: ChoiceField(required)</dt>
-<dd>choice field are (low,high,medium)</dd>
+<dd>choice field are (Low,High,Medium)</dd>
 </dl>
 </li>
 <li>primary_teeth: IntegerField(required)</li>
@@ -177,10 +177,12 @@ POST:</p>
 <li>postiror_teeth: BooleanField()</li>
 <li>anterior_teeth: BooleanField()</li>
 <li>need_sealant: BooleanField()</li>
-<li>reversible_pulpitis: BooleanField()</li>
+<li>reversible_pulpitis: Bool:eanField()</li>
 <li>art: BooleanField()</li>
 <li>extraction: BooleanField()</li>
 <li>need_sdf: BooleanField()</li>
+<li>blood_pressure:ChoiceField()
+choice field are (Low,High,Normal)</li>
 </ul>
 <p>4. <strong>METHOD:</strong>
 PUT:</p>

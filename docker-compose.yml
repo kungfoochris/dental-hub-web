@@ -12,8 +12,8 @@ services:
       MYSQL_PASSWORD: 'dental_password'
       MYSQL_ROOT_PASSWORD: 'dental_root_password'
 
-  redis:
-    image: "redis:alpine"
+  # redis:
+  #   image: "redis:alpine"
 
   frontend:
     build:
@@ -40,7 +40,7 @@ services:
       - .:/code
     depends_on:
       - db
-      - redis
+      # - redis
     environment:
       SECRET_KEY: 'tg7703_ddewirye6t0d^mam7-=42&!k&wv5dhi$$(35kouzi3ks'
       DATABASE_ENGINE: django.db.backends.mysql
@@ -49,24 +49,24 @@ services:
       DATABASE_USER: dentalhub
       DATABASE_PASSWORD: dental_root_password
       DATABASE_PORT: 3306
-  celery:
-    build: 
-      context: ./
-      dockerfile: docker/app.Dockerfile
-    command: celery -A dental worker -l info
-    volumes:
-      - .:/code
-    depends_on:
-      - db
-      - redis
-  celery-beat:
-    build: 
-      context: ./
-      dockerfile: docker/app.Dockerfile
-    command: celery -A dental beat -l info
-    volumes:
-      - .:/code
-    depends_on:
-      - db
-      - redis
+  # celery:
+  #   build: 
+  #     context: ./
+  #     dockerfile: docker/app.Dockerfile
+  #   command: celery -A dental worker -l info
+  #   volumes:
+  #     - .:/code
+  #   depends_on:
+  #     - db
+  #     - redis
+  # celery-beat:
+  #   build: 
+  #     context: ./
+  #     dockerfile: docker/app.Dockerfile
+  #   command: celery -A dental beat -l info
+  #   volumes:
+  #     - .:/code
+  #   depends_on:
+  #     - db
+  #     - redis
 

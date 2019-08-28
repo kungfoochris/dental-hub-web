@@ -9,6 +9,13 @@ REQUEST_CHOICES = (
     ("Medium", _("Medium")),
 )
 
+REQUEST_CHOICES1 = (
+	("Normal", _("Normal")),
+    ("Low", _("Low")),
+    ("High", _("High")),
+)
+
+
 
 def keygenerator():
     uid = uuid4()
@@ -29,4 +36,5 @@ class Screeing(models.Model):
 	extraction = models.BooleanField(_('need extraction'),default=False)
 	need_sdf = models.BooleanField(_('need sdf'),default=False)
 	active_infection = models.BooleanField(default=False)
+	blood_pressure = models.CharField(max_length=15,choices=REQUEST_CHOICES1,default='Normal')
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='screeing')

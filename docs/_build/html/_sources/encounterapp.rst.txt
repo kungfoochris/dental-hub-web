@@ -156,16 +156,18 @@ POST:
 **Body_Content**
 
 - caries_risk: ChoiceField(required)
-	choice field are (low,high,medium)
+	choice field are (Low,High,Medium)
 - primary_teeth: IntegerField(required)
 - permanent_teeth: IntegerField(required)
 - postiror_teeth: BooleanField()
 - anterior_teeth: BooleanField()
 - need_sealant: BooleanField()
-- reversible_pulpitis: BooleanField()
+- reversible_pulpitis: Bool:eanField()
 - art: BooleanField()
 - extraction: BooleanField()
 - need_sdf: BooleanField()
+- blood_pressure:ChoiceField()
+  choice field are (Low,High,Normal)
 
 4. **METHOD:**
 PUT:

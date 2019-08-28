@@ -103,7 +103,7 @@ object the first time, the query is executed.</p>
 
 <dl class="class">
 <dt id="addressapp.models.address.District">
-<em class="property">class </em><code class="descclassname">addressapp.models.address.</code><code class="descname">District</code><span class="sig-paren">(</span><em>id</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.District" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">addressapp.models.address.</code><code class="descname">District</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.District" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <dl class="exception">
 <dt id="addressapp.models.address.District.DoesNotExist">
@@ -166,11 +166,18 @@ many-to-one relation.</p>
 class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="addressapp.models.address.District.status">
+<code class="descname">status</code><a class="headerlink" href="#addressapp.models.address.District.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="addressapp.models.address.Municipality">
-<em class="property">class </em><code class="descclassname">addressapp.models.address.</code><code class="descname">Municipality</code><span class="sig-paren">(</span><em>id</em>, <em>district</em>, <em>name</em>, <em>category</em><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.Municipality" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">addressapp.models.address.</code><code class="descname">Municipality</code><span class="sig-paren">(</span><em>id</em>, <em>district</em>, <em>name</em>, <em>category</em>, <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#addressapp.models.address.Municipality" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
 <dl class="exception">
 <dt id="addressapp.models.address.Municipality.DoesNotExist">
@@ -243,6 +250,13 @@ many-to-one relation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
 <p>Most of the implementation is delegated to a dynamically defined manager
 class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="addressapp.models.address.Municipality.status">
+<code class="descname">status</code><a class="headerlink" href="#addressapp.models.address.Municipality.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
 </dd></dl>
 
 <dl class="attribute">
