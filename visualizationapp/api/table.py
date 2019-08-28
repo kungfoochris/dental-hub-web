@@ -478,8 +478,8 @@ class VisualizationSetting(APIView):
             'data': art_data},
             {
             'label': "SEAL",
-            'backgroundColor': 'rgba(224, 54, 22, 0.2)',
-            'borderColor': 'rgba(224, 54, 22, 1)',
+            'backgroundColor': 'rgba(16, 152, 247, 0.2)',
+            'borderColor': 'rgba(16, 152, 247, 1)',
             'borderWidth': 1,
             'data': seal_data},
             {
