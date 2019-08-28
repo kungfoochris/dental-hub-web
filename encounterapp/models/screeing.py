@@ -36,5 +36,7 @@ class Screeing(models.Model):
 	extraction = models.BooleanField(_('need extraction'),default=False)
 	need_sdf = models.BooleanField(_('need sdf'),default=False)
 	active_infection = models.BooleanField(default=False)
-	blood_pressure = models.CharField(max_length=15,choices=REQUEST_CHOICES1,default='Normal')
+	high_blood_pressure = models.BooleanField(default=False)
+	low_blood_pressure = models.BooleanField(default=False)
+	thyroid = models.BooleanField(default=False)
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='screeing')

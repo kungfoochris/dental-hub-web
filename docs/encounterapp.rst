@@ -166,8 +166,9 @@ POST:
 - art: BooleanField()
 - extraction: BooleanField()
 - need_sdf: BooleanField()
-- blood_pressure:ChoiceField()
-  choice field are (Low,High,Normal)
+- high_blood_pressure:BooleanField()
+- low_blood_pressure:BooleanField()
+- thyroid:BooleanField()
 
 4. **METHOD:**
 PUT:
