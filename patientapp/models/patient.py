@@ -38,7 +38,7 @@ class Patient(models.Model):
 	gender = models.CharField(choices=REQUEST_CHOICES,max_length=30)
 	dob = models.DateField(_("date of birth"))
 	age = models.PositiveIntegerField(editable=False,null=True)
-	phone = models.CharField(_("phone number"),max_length=17,unique=True)
+	phone = models.CharField(_("phone number"),max_length=17)
 	author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='author_obj')
 	date = models.DateTimeField(_('register_date'),auto_now=True)
 	latitude = models.DecimalField(help_text='author latitude',max_digits=12, decimal_places=8,default=12)
