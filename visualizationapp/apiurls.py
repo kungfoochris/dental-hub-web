@@ -12,6 +12,8 @@ from visualizationapp.api.treatmentbargraph import TreatMentBarGraph
 from visualizationapp.api.table import TreatmentTable1Visualization, TreatmentTable2Visualization,\
 Table3Visualization,Table4Visualization, VisualizationSetting
 
+from visualizationapp.api.wardvisualization import WardVisualization1,WardTreatmentTableVisualization1,\
+WardTableVisualization2,WardSettingVisualization, WardTreatmentVisualization
 
 
 app_name = 'visualizationapp'
@@ -25,5 +27,10 @@ urlpatterns = [
 	path('table2',Table3Visualization.as_view()),
 	path('table3',Table4Visualization.as_view()),
 	path('settingsgraph',VisualizationSetting.as_view()),
-    ]
+	path('wardvisualization',WardVisualization1.as_view()),
+	path('wardtablevisualization',WardTreatmentTableVisualization1.as_view()),
+	path('wardtreatmenttablevisualizaation',WardTableVisualization2.as_view()),
+	path('wardsettingsgraph',WardSettingVisualization.as_view()),
+	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
+	]
 urlpatterns = format_suffix_patterns(urlpatterns)

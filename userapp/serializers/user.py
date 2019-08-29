@@ -21,7 +21,7 @@ class AreaPKField(serializers.StringRelatedField):
 class GeographySerializeronly(serializers.ModelSerializer):
     class Meta:
         model = Geography
-        fields = ('id','location','tole')
+        fields = ('id','location','tole','district','municipality','ward')
         read_only_fields = ('location',)
 
 class RolePKField(serializers.PrimaryKeyRelatedField):
@@ -58,6 +58,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
 		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image')
+		# read_only_fields = ('notification_count','qrcode')
+
+class ProfileSerializer1(serializers.ModelSerializer):
+	location=GeographySerializeronly(many=True)
+	class Meta:
+		model = CustomUser
+		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image','location')
 		# read_only_fields = ('notification_count','qrcode')
 
 

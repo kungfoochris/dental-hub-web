@@ -13,7 +13,7 @@ from userapp.models import User, CustomUser
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
  PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer,WardSerializer,\
- UserStatusSerializer, AdminPasswordResetSerializer
+ UserStatusSerializer, AdminPasswordResetSerializer,ProfileSerializer1
 from userapp.emailsend import emailsend
 from random import randint
 from addressapp.models import Geography
@@ -124,10 +124,17 @@ class ProfileListView(APIView):
     serializer_class = ProfileSerializer
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request,format=None):
-        user_obj = User.objects.get(id=request.user.id)
-        serializers = ProfileSerializer(user_obj, many=False,\
-            context={'request': request})
-        return Response(serializers.data,status=200)
+        if User.objects.filter(id=request.user.id,admin=True):
+            user_obj = User.objects.get(id=request.user.id)
+            serializers = ProfileSerializer(user_obj, many=False,\
+                context={'request': request})
+            return Response(serializers.data,status=200)
+        else:
+            user_obj = CustomUser.objects.get(id=request.user.id)
+            serializers = ProfileSerializer1(user_obj, many=False,\
+                context={'request': request})
+            return Response(serializers.data,status=200)
+
 
 class UpdateUserView(APIView):
     serializer_class = UpdateUserSerializer
