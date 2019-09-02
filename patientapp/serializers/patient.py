@@ -56,11 +56,13 @@ class PatientSerializer(serializers.ModelSerializer):
 	district = DistrictField(many=False,read_only=True)
 	municipality = MunicipalityField(many=False,read_only=True)
 	ward = WardField(many=False,read_only=True)
+	updated_by = serializers.StringRelatedField()
+	author = serializers.StringRelatedField()
 	class Meta:
 		model = Patient
 		fields = ('uid','id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
          'gender', 'dob', 'age', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id',\
-         'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area')
+         'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by','updated_date')
 		read_only_fields = ('author','full_name','date','age')
 
 

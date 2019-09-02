@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from .encounter import Encounter
+from userapp.models import User
 
 REQUEST_CHOICES = (
     ("Low", _("Low")),
@@ -40,3 +41,5 @@ class Screeing(models.Model):
 	low_blood_pressure = models.BooleanField(default=False)
 	thyroid = models.BooleanField(default=False)
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='screeing')
+	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_screeing')
+	updated_date = models.DateField(null=True)

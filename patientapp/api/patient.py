@@ -13,6 +13,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from addressapp.models import Geography, ActivityArea, Ward, Activity
 from addressapp.models import Address,Ward,Municipality,District
+import datetime
 
 import logging
 # Get an instance of a logger
@@ -115,6 +116,8 @@ class PatientUpdateView(APIView):
                 patient_obj.municipality = serializer.validated_data['municipality_id']
                 patient_obj.district = serializer.validated_data['district_id']
                 patient_obj.education = serializer.validated_data['education']
+                patient_obj.updated_by = request.user
+                patient_obj.updated_date = datetime.datetime.now().date()
                 patient_obj.save()
                 serializer.save()
                 return Response({"message":"patient update"},status=200)

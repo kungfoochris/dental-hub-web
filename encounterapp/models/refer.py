@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from .encounter import Encounter
+from userapp.models import User
 
 
 
@@ -22,3 +23,5 @@ class Refer(models.Model):
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='refer')
 	time = models.TimeField(null=True) 
 	date = models.DateField(null=True)
+	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_refer')
+	updated_date = models.DateField(null=True)

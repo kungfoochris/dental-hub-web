@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from addressapp.models import Geography,District, Municipality ,Ward
+from addressapp.models import Geography,District, Municipality ,Ward, ActivityArea, Activity
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -26,6 +26,17 @@ class AdminWard(admin.ModelAdmin):
 	list_display = ('id', 'municipality', 'ward','status')
 
 admin.site.register(Ward, AdminWard)
+
+class AdminActivity(admin.ModelAdmin):
+	list_display = ('id', 'name')
+
+admin.site.register(Activity, AdminActivity)
+
+
+class AdminActivityArea(admin.ModelAdmin):
+	list_display = ('id', 'activity', 'area','status')
+
+admin.site.register(ActivityArea, AdminActivityArea)
 
 
 

@@ -8,7 +8,8 @@ from rest_framework import permissions
 from userapp.models import User, CustomUser
 from encounterapp.models import Encounter, Refer, History
 from patientapp.models import Patient
-from encounterapp.serializers.encounter import EncounterSerializer,AllEncounterSerializer
+from encounterapp.serializers.encounter import EncounterSerializer,\
+AllEncounterSerializer,EncounterUpdateSerializer
 
 
 
@@ -78,7 +79,7 @@ class EncounterView(APIView):
 
 class EncounterUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = EncounterSerializer
+    serializer_class = EncounterUpdateSerializer
 
     def get(self, request, patient_id, encounter_id, format=None):
         if Encounter.objects.select_related('patient').filter(uid=encounter_id,patient__uid=patient_id).exists():    
@@ -87,17 +88,17 @@ class EncounterUpdateView(APIView):
                 context={'request': request})
             return Response(serializer.data)
         logger.error('encounter content not found.')
-        return Response({"message":"content not found."},status=400)
+        return Response({"message":"content not found or parameter not match."},status=400)
 
     def put(self, request, patient_id, encounter_id, format=None):
         today_date = datetime.now()
         if Encounter.objects.select_related('patient').filter(uid=encounter_id,patient__uid=patient_id).exists():
             encounter_obj = Encounter.objects.get(uid=encounter_id)
             if today_date.timestamp() < encounter_obj.updated_at.timestamp():
-                serializer = EncounterSerializer(encounter_obj,data=request.data,\
+                serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
                     context={'request': request},partial=True)
-                if serializer.is_valid():
-                    serializer.save()
+                if serializer.is_valid(): 
+                    serializer.save(updated_by=request.user,updated_date=datetime.datetime.now().date())
                     return Response({"message":"encounter update"},status=200)
                 logger.error(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)

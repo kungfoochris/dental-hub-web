@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from .encounter import Encounter
+from userapp.models import User
 
 
 def keygenerator():
@@ -27,3 +28,5 @@ class History(models.Model):
 	medication = models.CharField(max_length=255,blank=True)
 	no_medication = models.BooleanField(default=False)
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='history')
+	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_history')
+	updated_date = models.DateField(null=True)

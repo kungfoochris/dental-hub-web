@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.validators import MaxValueValidator
 from encounterapp.models import Encounter
 from uuid import uuid4
+from userapp.models import User
 
 def keygenerator():
     uid = uuid4()
@@ -79,3 +80,5 @@ class Treatment(models.Model):
     note = models.TextField(blank=True)
     encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='treatment')
     whole_mouth = models.BooleanField(default=False)
+    updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_treatment')
+    updated_date = models.DateField(null=True)

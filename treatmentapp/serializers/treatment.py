@@ -7,6 +7,7 @@ from treatmentapp.models import Treatment
 
 class PatientTreatmentSerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	updated_by = serializers.StringRelatedField()
 	class Meta:
 		model = Treatment
 		fields = ('uid','id','tooth18','tooth17','tooth16','tooth15',\
@@ -21,4 +22,5 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 			'tooth64','tooth65','tooth85','tooth84',\
 			'tooth83','tooth82','tooth81','tooth71',\
 			'tooth72','tooth73','tooth74','tooth75',\
-			'whole_mouth','fluoride_varnish','treatment_complete','note','encounter_id')
+			'whole_mouth','fluoride_varnish','treatment_complete',\
+			'note','encounter_id','updated_by','updated_date')
