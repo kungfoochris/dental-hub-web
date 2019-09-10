@@ -46,16 +46,16 @@ class DistrictField(serializers.StringRelatedField):
 
 
 class PatientSerializer(serializers.ModelSerializer):
-	activity_area = serializers.StringRelatedField(many=False,read_only=True)
-	geography = serializers.StringRelatedField(many=False,read_only=True)
+	activity_area = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	geography = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	activityarea_id = serializers.CharField(write_only=True,required=True)
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	district_id = DistrictPkField(many=False,write_only=True)
 	municipality_id = MunicipalityPKField(many=False,write_only=True)
 	ward_id = WardPKField(many=False,write_only=True)
-	district = DistrictField(many=False,read_only=True)
-	municipality = MunicipalityField(many=False,read_only=True)
-	ward = WardField(many=False,read_only=True)
+	district = serializers.PrimaryKeyRelatedField(read_only=True)
+	municipality = serializers.PrimaryKeyRelatedField(read_only=True)
+	ward = serializers.PrimaryKeyRelatedField(read_only=True)
 	updated_by = serializers.StringRelatedField()
 	author = serializers.StringRelatedField()
 	class Meta:
