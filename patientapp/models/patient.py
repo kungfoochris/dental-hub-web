@@ -51,7 +51,7 @@ class Patient(models.Model):
 	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,null=True)
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_patient')
 	updated_at = models.DateField(null=True)
-	created_at = models.DateField(null= True)
+	created_at = models.DateField(null= True,blank=True)
 
 
 	def __str__(self):
