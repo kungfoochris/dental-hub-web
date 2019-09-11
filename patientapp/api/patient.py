@@ -44,12 +44,12 @@ class PatientAdd(APIView):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('first_name', 'last_name','full_name')
     def get(self, request,format=None):
-        if User.objects.filter(id=request.user.id,admin=True).exists():
+        if User.objects.filter(id=request.user.id).exists():
             patient_obj = Patient.objects.all().order_by("-date")
             serializer = PatientSerializer(patient_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
-        return Response({"message":"only admin can see this"},status=400)
+        return Response({"message":"do not have a permission"},status=400)
 
     def post(self, request,format=None):
         serializer = PatientSerializer(data=request.data,\
