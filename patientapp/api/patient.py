@@ -76,7 +76,7 @@ class PatientAdd(APIView):
                     patient_obj.activity_area = activity_area_obj
                     patient_obj.geography = geography_obj
                     patient_obj.education = serializer.validated_data['education']
-                    patient_obj.created_at = serializer.validated_data['created_at']
+                    # patient_obj.created_at = serializer.validated_data['created_at']
                     patient_obj.save()
                     return Response({"message":"Patient created successfully","uid":patient_obj.uid},status=200)
                 logger.error("ActivityArea id does not exists")
