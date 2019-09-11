@@ -57,7 +57,7 @@ class PatientSerializer(serializers.ModelSerializer):
 	municipality = serializers.PrimaryKeyRelatedField(read_only=True)
 	ward = serializers.PrimaryKeyRelatedField(read_only=True)
 	updated_by = serializers.StringRelatedField()
-	author = serializers.StringRelatedField()
+	author = serializers.PrimaryKeyRelatedField()
 	class Meta:
 		model = Patient
 		fields = ('uid','id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
