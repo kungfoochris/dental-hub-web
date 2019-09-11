@@ -12,4 +12,4 @@ class PatientReferSerializer(serializers.ModelSerializer):
 		model = Refer
 		fields = ('uid','id','no_referal','health_post','dentist','physician',\
 			'hygienist','other','encounter_id','time','date',\
-			'updated_by','updated_date')
+			'updated_by','updated_at')

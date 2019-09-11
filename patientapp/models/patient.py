@@ -50,7 +50,9 @@ class Patient(models.Model):
 	education = models.CharField(max_length=50,null=True)
 	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,null=True)
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_patient')
-	updated_date = models.DateField(null=True)
+	updated_at = models.DateField(null=True)
+	created_at = models.DateField(null= True)
+
 
 	def __str__(self):
 		return "%s %s %s" %(self.first_name, self.middle_name,self.last_name)

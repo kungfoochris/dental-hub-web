@@ -7,7 +7,7 @@ from treatmentapp.models import Treatment
 
 class TreatmentAdmin(admin.ModelAdmin):
 	list_display = ('uid', 'fluoride_varnish', 'treatment_complete',\
-		'note','encounter_id','whole_mouth','updated_by','updated_date')
+		'note','encounter_id','whole_mouth','updated_by','updated_at')
 
 admin.site.register(Treatment, TreatmentAdmin)
 

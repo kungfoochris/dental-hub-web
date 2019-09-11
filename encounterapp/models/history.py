@@ -29,4 +29,4 @@ class History(models.Model):
 	no_medication = models.BooleanField(default=False)
 	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='history')
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_history')
-	updated_date = models.DateField(null=True)
+	updated_at = models.DateField(null=True)

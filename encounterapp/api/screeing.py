@@ -78,7 +78,7 @@ class PatientScreeingUpdateView(APIView):
                 serializer = PatientScreeingSerializer(screeing_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
-                    serializer.save(updated_by = request.user,updated_date = datetime.datetime.now().date())
+                    serializer.save(updated_by = request.user,updated_at = datetime.datetime.now().date())
                     return Response({"message":"screeing encounter update"},status=200)
                 logger.error(serializer.errors)
                 return Response({'message':serializer.errors}, status=400)

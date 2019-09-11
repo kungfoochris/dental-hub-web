@@ -24,4 +24,4 @@ class Refer(models.Model):
 	time = models.TimeField(null=True) 
 	date = models.DateField(null=True)
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_refer')
-	updated_date = models.DateField(null=True)
+	updated_at = models.DateField(null=True)

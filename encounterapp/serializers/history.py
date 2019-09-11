@@ -14,4 +14,4 @@ class PatientHistorySerializer(serializers.ModelSerializer):
 			'seizures','hepatitis','hiv','no_allergies','allergies','other',\
 			'medication', 'no_medication','no_underlying_medical',\
 			'not_taking_medication', 'encounter_id',\
-			'updated_by','updated_date')
+			'updated_by','updated_at')
