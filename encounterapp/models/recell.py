@@ -10,5 +10,5 @@ def keygenerator():
 
 
 class Recell(models.Model):
-	id = models.CharField(max_length=200,blank=True)
-	uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+	# id = models.CharField(max_length=200,blank=True)
+	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)

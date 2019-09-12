@@ -22,11 +22,13 @@ urlpatterns = [
 	path('loginvisualization', LoginVisualization.as_view()),
 	path('treatment',TreatmentTableVisualization.as_view()),
 	path('treatmentnargraph',TreatMentBarGraph.as_view()),
+
 	path('table',TreatmentTable1Visualization.as_view()),
 	path('table1', TreatmentTable2Visualization.as_view()),
 	path('table2',Table3Visualization.as_view()),
 	path('table3',Table4Visualization.as_view()),
 	path('settingsgraph',VisualizationSetting.as_view()),
+
 	path('wardvisualization',WardVisualization1.as_view()),
 	path('wardtablevisualization',WardTreatmentTableVisualization1.as_view()),
 	path('wardtreatmenttablevisualizaation',WardTableVisualization2.as_view()),

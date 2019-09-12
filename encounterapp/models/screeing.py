@@ -24,8 +24,8 @@ def keygenerator():
 
 
 class Screeing(models.Model):
-	id = models.CharField(max_length=200,blank=True)
-	uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+	# id = models.CharField(max_length=200,blank=True)
+	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	caries_risk = models.CharField(_('caries risk'),choices=REQUEST_CHOICES,max_length=30)
 	primary_teeth = models.PositiveIntegerField(_('decayed primary teeth'))
 	permanent_teeth = models.PositiveIntegerField(_('decayed permanent teeth'))

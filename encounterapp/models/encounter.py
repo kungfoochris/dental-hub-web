@@ -25,8 +25,8 @@ def default_time():
 
 
 class Encounter(models.Model):
-    id = models.CharField(max_length=200,blank=True)
-    uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+    # id = models.CharField(max_length=200,blank=True)
+    id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
     date = models.DateTimeField(auto_now=True)
     patient = models.ForeignKey(Patient,on_delete=models.CASCADE)
     encounter_type = models.CharField(_('encounter type'),choices=REQUEST_CHOICES,max_length=150)

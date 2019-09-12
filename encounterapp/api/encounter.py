@@ -33,9 +33,9 @@ class EncounterView(APIView):
 
 
     def get(self, request,patient_id, format=None):
-        if CustomUser.objects.filter(id=request.user.id):
-            if Patient.objects.filter(uid=patient_id):
-                patient_obj = Patient.objects.get(uid=patient_id)
+        if User.objects.filter(id=request.user.id):
+            if Patient.objects.filter(id=patient_id):
+                patient_obj = Patient.objects.get(id=patient_id)
                 encounter_obj = Encounter.objects.select_related('geography').filter(geography=patient_obj.geography)
                 serializer = AllEncounterSerializer(encounter_obj, many=True,\
                     context={'request': request})
@@ -43,7 +43,7 @@ class EncounterView(APIView):
             return Response({"message":"patient id does not exist."},status=400)
         return Response({"message":"permission not allowed"},status=400)
         # if User.objects.filter(id=request.user.id,admin=True):
-        #     patient_obj = Patient.objects.get(uid=patient_id)
+        #     patient_obj = Patient.objects.get(id=patient_id)
         #     encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
         #     serializer = AllEncounterSerializer(encounter_obj, many=True, \
         #         context={'request': request})
@@ -52,8 +52,8 @@ class EncounterView(APIView):
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
             context={'request': request})
-        if Patient.objects.filter(uid=patient_id).exists():
-            patient_obj = Patient.objects.get(uid=patient_id)
+        if Patient.objects.filter(id=patient_id).exists():
+            patient_obj = Patient.objects.get(id=patient_id)
             if serializer.is_valid():
                 if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
                     if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
@@ -67,7 +67,7 @@ class EncounterView(APIView):
                         encounter_obj.author = request.user
                         encounter_obj.other_detail = serializer.validated_data['other_detail']
                         encounter_obj.save()
-                        return Response({"message":"Encounter added","uid":encounter_obj.uid},status=200)
+                        return Response({"message":"Encounter added","id":encounter_obj.id},status=200)
                     logger.error("Geography id does not exists.")
                     return Response({"message":"Geography id does not exists."},status=400)
                 logger.error("Activity id does not exists.")
@@ -82,8 +82,8 @@ class EncounterUpdateView(APIView):
     serializer_class = EncounterUpdateSerializer
 
     def get(self, request, patient_id, encounter_id, format=None):
-        if Encounter.objects.select_related('patient').filter(uid=encounter_id,patient__uid=patient_id).exists():    
-            encounter_obj = Encounter.objects.get(uid=encounter_id)
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__uid=patient_id).exists():    
+            encounter_obj = Encounter.objects.get(id=encounter_id)
             serializer = EncounterSerializer(encounter_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
@@ -92,8 +92,8 @@ class EncounterUpdateView(APIView):
 
     def put(self, request, patient_id, encounter_id, format=None):
         today_date = datetime.now()
-        if Encounter.objects.select_related('patient').filter(uid=encounter_id,patient__uid=patient_id).exists():
-            encounter_obj = Encounter.objects.get(uid=encounter_id)
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__uid=patient_id).exists():
+            encounter_obj = Encounter.objects.get(id=encounter_id)
             if today_date.timestamp() < encounter_obj.updated_at.timestamp():
                 serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
                     context={'request': request},partial=True)

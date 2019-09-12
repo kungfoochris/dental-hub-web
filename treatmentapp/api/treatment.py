@@ -31,8 +31,8 @@ class PatientTreatmentView(APIView):
 
 
     def get(self, request, encounter_id, format=None):
-        if Treatment.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
-            treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
+        if Treatment.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
+            treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientTreatmentSerializer(treatment_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
@@ -41,8 +41,8 @@ class PatientTreatmentView(APIView):
     def post(self, request, encounter_id, format=None):
         serializer = PatientTreatmentSerializer(data=request.data,\
             context={'request': request})
-        if Encounter.objects.filter(uid=encounter_id).exists():
-            encounter_obj = Encounter.objects.get(uid=encounter_id)
+        if Encounter.objects.filter(id=encounter_id).exists():
+            encounter_obj = Encounter.objects.get(id=encounter_id)
             if Treatment.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
@@ -58,8 +58,8 @@ class PatientTreatmentUpdateView(APIView):
     serializer_class = PatientTreatmentSerializer
 
     def get(self, request, encounter_id, format=None):
-        if Treatment.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():    
-            treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
+        if Treatment.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
+            treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientTreatmentSerializer(treatment_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
@@ -67,9 +67,9 @@ class PatientTreatmentUpdateView(APIView):
 
     def put(self, request, encounter_id, format=None):
         today_date = datetime.now()
-        if Treatment.objects.select_related('encounter_id').filter(encounter_id__uid=encounter_id).exists():
-            refer_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__uid=encounter_id)
-            encounter_obj = Encounter.objects.get(uid=encounter_id)
+        if Treatment.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
+            refer_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
+            encounter_obj = Encounter.objects.get(id=encounter_id)
             if today_date.timestamp() < encounter_obj.updated_at.timestamp():
                 serializer = PatientTreatmentSerializer(encounter_obj,data=request.data,\
                     context={'request': request},partial=True)

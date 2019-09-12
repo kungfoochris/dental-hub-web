@@ -10,6 +10,7 @@ class PatientReferSerializer(serializers.ModelSerializer):
 	updated_by = serializers.StringRelatedField()
 	class Meta:
 		model = Refer
-		fields = ('uid','id','no_referal','health_post','dentist','physician',\
+		fields = ('id','no_referal','health_post','dentist','physician',\
 			'hygienist','other','encounter_id','time','date',\
 			'updated_by','updated_at')
+		read_only_fields = ('updated_at',)

@@ -30,8 +30,8 @@ def keygenerator():
 
 
 class Patient(models.Model):
-	id = models.CharField(max_length=200,blank=True)
-	uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+	# id = models.CharField(max_length=200,blank=True)
+	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	first_name = models.CharField(max_length=60)
 	last_name = models.CharField(max_length=60)
 	middle_name = models.CharField(max_length=60,blank=True,null=True)

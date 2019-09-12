@@ -10,7 +10,7 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 	updated_by = serializers.StringRelatedField()
 	class Meta:
 		model = Treatment
-		fields = ('uid','id','tooth18','tooth17','tooth16','tooth15',\
+		fields = ('id','tooth18','tooth17','tooth16','tooth15',\
 			'tooth14','tooth13','tooth12','tooth11','tooth21',\
 			'tooth22','tooth23','tooth24','tooth25','tooth26',\
 			'tooth27','tooth28','tooth48','tooth47',\

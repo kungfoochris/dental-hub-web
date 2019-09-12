@@ -10,8 +10,9 @@ class PatientHistorySerializer(serializers.ModelSerializer):
 	updated_by = serializers.StringRelatedField()
 	class Meta:
 		model = History
-		fields = ('uid','id','bleeding','diabetes','liver','fever',\
+		fields = ('id','bleeding','diabetes','liver','fever',\
 			'seizures','hepatitis','hiv','no_allergies','allergies','other',\
 			'medication', 'no_medication','no_underlying_medical',\
 			'not_taking_medication', 'encounter_id',\
 			'updated_by','updated_at')
+		read_only_fields = ('updated_at',)

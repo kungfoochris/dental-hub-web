@@ -21,8 +21,8 @@ REQUEST_CHOICES = (
 )
 
 class Treatment(models.Model):
-    id = models.CharField(max_length=200,blank=True)
-    uid = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
+    # id = models.CharField(max_length=200,blank=True)
+    id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
     tooth18 = models.CharField(choices=REQUEST_CHOICES,default="NONE",max_length=30)
     tooth17 = models.CharField(choices=REQUEST_CHOICES,default="NONE",max_length=30)
     tooth16 = models.CharField(choices=REQUEST_CHOICES,default="NONE",max_length=30)
