@@ -68,11 +68,11 @@ class TreatmentTableVisualization(APIView):
                 treatment_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18)).count()
                 treatment_old = treatment_obj-treatment_child-treatment_adult
 
-                total_fv = Treatment.objects.filter(fluoride_varnish=True).count()
-                female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True).count()
-                male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True).count()
-                child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fluoride_varnish=True).count()
-                adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),fluoride_varnish=True).count()
+                total_fv = Treatment.objects.filter(fv_applied=True).count()
+                female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True).count()
+                male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True).count()
+                child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fv_applied=True).count()
+                adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),fv_applied=True).count()
                 old__patients_receiving_FV = total_fv-child__patients_receiving_FV-adult__patients_receiving_FV
 
                 total_need_sealant = Screeing.objects.filter(need_sealant=True).count()

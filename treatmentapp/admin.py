@@ -6,8 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from treatmentapp.models import Treatment
 
 class TreatmentAdmin(admin.ModelAdmin):
-	list_display = ('id', 'fluoride_varnish', 'treatment_complete',\
-		'note','encounter_id','whole_mouth','updated_by','updated_at')
+	list_display = ('id', 'fv_applied', 'treatment_plan_complete',\
+		'notes','encounter_id','sdf_whole_mouth','updated_by','updated_at')
 
 admin.site.register(Treatment, TreatmentAdmin)
 

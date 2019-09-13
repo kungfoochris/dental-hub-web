@@ -22,5 +22,5 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 			'tooth64','tooth65','tooth85','tooth84',\
 			'tooth83','tooth82','tooth81','tooth71',\
 			'tooth72','tooth73','tooth74','tooth75',\
-			'whole_mouth','fluoride_varnish','treatment_complete',\
-			'note','encounter_id','updated_by','updated_at')
+			'sdf_whole_mouth','fv_applied','treatment_plan_complete',\
+			'notes','encounter_id','updated_by','updated_at')

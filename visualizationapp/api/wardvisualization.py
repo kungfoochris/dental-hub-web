@@ -144,11 +144,11 @@ class WardTreatmentTableVisualization1(APIView):
                     treatment_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),encounter_id__geography=i).count()
                     treatment_old = treatment_obj-treatment_child-treatment_adult
 
-                    total_fv = Treatment.objects.filter(fluoride_varnish=True).count()
-                    female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True,encounter_id__geography=i).count()
-                    male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True,encounter_id__geography=i).count()
-                    child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fluoride_varnish=True,encounter_id__geography=i).count()
-                    adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),fluoride_varnish=True,encounter_id__geography=i).count()
+                    total_fv = Treatment.objects.filter(fv_applied=True).count()
+                    female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True,encounter_id__geography=i).count()
+                    male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True,encounter_id__geography=i).count()
+                    child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fv_applied=True,encounter_id__geography=i).count()
+                    adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),fv_applied=True,encounter_id__geography=i).count()
                     old__patients_receiving_FV = total_fv-child__patients_receiving_FV-adult__patients_receiving_FV
 
                     total_need_sealant = Screeing.objects.filter(need_sealant=True).count()
@@ -374,11 +374,11 @@ class WardTableVisualization2(APIView):
                 total_exo_old = total_exo-total_exo_child-total_exo_adult
 
 
-                total_fv = Treatment.objects.select_related('encounter_id').filter(fluoride_varnish=True,encounter_id__geography=i).count()
-                totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True,encounter_id__geography=i).count()
-                totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True,encounter_id__geography=i).count()
-                totalfv_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fluoride_varnish=True,encounter_id__geography=i).count()
-                totalfv_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60,lessthan18),fluoride_varnish=True,encounter_id__geography=i).count()
+                total_fv = Treatment.objects.select_related('encounter_id').filter(fv_applied=True,encounter_id__geography=i).count()
+                totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True,encounter_id__geography=i).count()
+                totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True,encounter_id__geography=i).count()
+                totalfv_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fv_applied=True,encounter_id__geography=i).count()
+                totalfv_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60,lessthan18),fv_applied=True,encounter_id__geography=i).count()
                 totalfv_old = total_fv-totalfv_child-totalfv_adult
 
 
@@ -561,9 +561,9 @@ class WardTreatmentVisualization(APIView):
                         |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__patient__gender='female',encounter_id__geography=i).count()
 
 
-                    total_fv = Treatment.objects.select_related('encounter_id').filter(fluoride_varnish=True,encounter_id__geography=i).count()
-                    totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True,encounter_id__geography=i).count()
-                    totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True,encounter_id__geography=i).count()
+                    total_fv = Treatment.objects.select_related('encounter_id').filter(fv_applied=True,encounter_id__geography=i).count()
+                    totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True,encounter_id__geography=i).count()
+                    totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True,encounter_id__geography=i).count()
                     male.append(total_exo_male)
                     male.append(total_art_male)
                     male.append(total_seal_male)

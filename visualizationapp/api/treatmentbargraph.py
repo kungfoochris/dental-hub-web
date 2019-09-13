@@ -32,11 +32,11 @@ class TreatMentBarGraph(APIView):
             total=[]
             male=[]
             female=[]
-            female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True).count()
-            male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True).count()
-            child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__lt=18,fluoride_varnish=True).count()
-            adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__range=(19, 60),fluoride_varnish=True).count()
-            old__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__gt=60,fluoride_varnish=True).count()
+            female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True).count()
+            male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True).count()
+            child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__lt=18,fv_applied=True).count()
+            adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__range=(19, 60),fv_applied=True).count()
+            old__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__age__gt=60,fv_applied=True).count()
 
             sealant_male = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',need_sealant=True).count()
             sealant_female = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',need_sealant=True).count()

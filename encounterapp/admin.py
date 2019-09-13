@@ -15,9 +15,9 @@ admin.site.register(Encounter, EncounterAdmin)
 
 
 class HistoryAdmin(admin.ModelAdmin):
-	list_display = ('id','bleeding','diabetes','liver','fever','seizures',\
-		'hepatitis','hiv','no_allergies','allergies','other','no_underlying_medical',\
-		'not_taking_medication','medication','no_medication','encounter_id','updated_by','updated_at')
+	list_display = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever','epilepsy_or_seizures',\
+		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
+		'not_taking_any_medications','medications','no_medications','encounter_id','updated_by','updated_at')
 
 
 admin.site.register(History, HistoryAdmin)
@@ -33,8 +33,8 @@ admin.site.register(Refer, ReferAdmin)
 
 
 class ScreeingAdmin(admin.ModelAdmin):
-	list_display = ('id','caries_risk','primary_teeth','permanent_teeth',\
-		'postiror_teeth','anterior_teeth','need_sealant','reversible_pulpitis',\
-		'art','extraction','need_sdf','active_infection','encounter_id',\
-		'updated_by','updated_at')
+	list_display = ('id','caries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
+		'cavity_permanent_postiror_teeth','cavity_permanent_anterior_teeth','need_sealant','reversible_pulpitis',\
+		'need_art_filling','need_extraction','need_sdf','active_infection','encounter_id','high_blood_pressure','low_blood_pressure',\
+		'thyroid_disorder','updated_by','updated_at')
 admin.site.register(Screeing, ScreeingAdmin)

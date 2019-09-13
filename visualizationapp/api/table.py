@@ -205,11 +205,11 @@ total_exo_adult = Treatment.objects.select_related('encounter_id').filter(Q(toot
 total_exo_old = total_exo-total_exo_child-total_exo_adult
 
 
-total_fv = Treatment.objects.filter(fluoride_varnish=True).count()
-totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fluoride_varnish=True).count()
-totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fluoride_varnish=True).count()
-totalfv_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fluoride_varnish=True).count()
-totalfv_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60,lessthan18),fluoride_varnish=True).count()
+total_fv = Treatment.objects.filter(fv_applied=True).count()
+totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True).count()
+totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True).count()
+totalfv_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fv_applied=True).count()
+totalfv_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60,lessthan18),fv_applied=True).count()
 totalfv_old = total_fv-totalfv_child-totalfv_adult
 
 
@@ -353,10 +353,10 @@ total_seal_training_obj = Treatment.objects.select_related('encounter_id').filte
     |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__activity_area__name="Training").count()
 
 
-total_fv_health_post = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='Health Post',fluoride_varnish=True).count()
-total_fv_outreach_obj = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='Community Outreach',fluoride_varnish=True).count()
-total_fv_school_obj = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='School Seminar',fluoride_varnish=True).count()
-total_fv_training_obj = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='Training',fluoride_varnish=True).count()
+total_fv_health_post = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='Health Post',fv_applied=True).count()
+total_fv_outreach_obj = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='Community Outreach',fv_applied=True).count()
+total_fv_school_obj = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='School Seminar',fv_applied=True).count()
+total_fv_training_obj = Treatment.objects.select_related('encounter_id').filter(encounter_id__activity_area__name='Training',fv_applied=True).count()
 
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
