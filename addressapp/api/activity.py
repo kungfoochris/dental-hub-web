@@ -6,7 +6,8 @@ from rest_framework import permissions
 
 from userapp.models import User, CustomUser
 
-from addressapp.serializers.activity import ActivitySerializer,ActivityAreaSerializer
+from addressapp.serializers.activity import ActivitySerializer,\
+ActivityAreaSerializer
 
 from addressapp.models import Activity, ActivityArea
 
@@ -23,7 +24,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 class ActivityListView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = ActivityAreaSerializer
+    serializer_class = ActivitySerializer
     def get(self, request, format=None):
         activity_obj = Activity.objects.all()
         serializer = ActivitySerializer(activity_obj, many=True, \
@@ -35,7 +36,7 @@ class ActivityAreaListView(APIView):
     serializer_class = ActivityAreaSerializer
 
     def get(self, request, format=None):
-        activityarea_obj = ActivityArea.objects.filter(status=True)
+        activityarea_obj = ActivityArea.objects.filter(status=True).values('area').distinct()
         serializer = ActivityAreaSerializer(activityarea_obj, many=True, \
             context={'request': request})
         return Response(serializer.data)
@@ -47,7 +48,7 @@ class ActivityAreaListView(APIView):
             if serializer.is_valid():
                 activityarea_obj=ActivityArea()
                 activityarea_obj.activity = serializer.validated_data['activity_id']
-                activityarea_obj.area = serializer.validated_data['area']
+                activityarea_obj.area = serializer.validated_data['area'].capitalize()
                 activityarea_obj.save()
                 return Response({"message":"schoolseminar area added successfully"},status=200)
             return Response({'message':serializer.errors}, status=400)
