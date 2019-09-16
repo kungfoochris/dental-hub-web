@@ -6,6 +6,7 @@ from patientapp.models import Patient
 from addressapp.models import Geography, ActivityArea
 from addressapp.serializers.activity import ActivityAreaSerializer
 from addressapp.serializers.geography import GeographySerializer
+from userapp.models import User
 
 
 from addressapp.models import Address,Ward,Municipality,District
@@ -44,6 +45,11 @@ class DistrictField(serializers.StringRelatedField):
 		queryset = District.objects.all()
 		return queryset
 
+class AuthorField(serializers.PrimaryKeyRelatedField):
+	def get_queryset(self):
+		queryset = User.objects.all()
+		return queryset
+
 
 class PatientSerializer(serializers.ModelSerializer):
 	activity_area = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
@@ -57,7 +63,7 @@ class PatientSerializer(serializers.ModelSerializer):
 	municipality = serializers.PrimaryKeyRelatedField(read_only=True)
 	ward = serializers.PrimaryKeyRelatedField(read_only=True)
 	updated_by = serializers.StringRelatedField()
-	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	author = AuthorField(many=False)
 	class Meta:
 		model = Patient
 		fields = ('id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\

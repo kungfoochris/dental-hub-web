@@ -64,7 +64,7 @@ class EncounterView(APIView):
                         encounter_obj.activity_area = activity_area_obj
                         encounter_obj.geography = geography_obj
                         encounter_obj.patient = patient_obj
-                        encounter_obj.author = request.user
+                        encounter_obj.author = patient_obj.author
                         encounter_obj.other_detail = serializer.validated_data['other_detail']
                         encounter_obj.save()
                         return Response({"message":"Encounter added","id":encounter_obj.id},status=200)

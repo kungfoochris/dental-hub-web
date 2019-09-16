@@ -55,33 +55,35 @@ class PatientAdd(APIView):
         serializer = PatientSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
-            if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
-                if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
-                    activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
-                    geography_obj = Geography.objects.get(id=serializer.validated_data['geography_id'])
-                    patient_obj = Patient()
-                    patient_obj.first_name = serializer.validated_data['first_name']
-                    patient_obj.last_name = serializer.validated_data['last_name']
-                    patient_obj.middle_name = serializer.validated_data['middle_name']
-                    patient_obj.gender = serializer.validated_data['gender']
-                    patient_obj.dob = serializer.validated_data['dob']
-                    patient_obj.phone = serializer.validated_data['phone']
-                    patient_obj.latitude = serializer.validated_data['latitude']
-                    patient_obj.longitude = serializer.validated_data['longitude']
-                    patient_obj.ward = serializer.validated_data['ward_id']
-                    patient_obj.municipality = serializer.validated_data['municipality_id']
-                    patient_obj.district = serializer.validated_data['district_id']
-                    patient_obj.author = request.user
-                    patient_obj.activity_area = activity_area_obj
-                    patient_obj.geography = geography_obj
-                    patient_obj.education = serializer.validated_data['education']
-                    patient_obj.created_at = serializer.validated_data['created_at']
-                    patient_obj.save()
-                    return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)
-                logger.error("ActivityArea id does not exists")
-                return Response({"message":"Activity id does not exists"}, status=400)
-            logger.error("Geography id does not exists")
-            return Response({"message":"Geography id does not exists"}, status=400)
+            if Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).count()==0:
+                if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
+                    if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
+                        activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
+                        geography_obj = Geography.objects.get(id=serializer.validated_data['geography_id'])
+                        patient_obj = Patient()
+                        patient_obj.first_name = serializer.validated_data['first_name']
+                        patient_obj.last_name = serializer.validated_data['last_name']
+                        patient_obj.middle_name = serializer.validated_data['middle_name']
+                        patient_obj.gender = serializer.validated_data['gender']
+                        patient_obj.dob = serializer.validated_data['dob']
+                        patient_obj.phone = serializer.validated_data['phone']
+                        patient_obj.latitude = serializer.validated_data['latitude']
+                        patient_obj.longitude = serializer.validated_data['longitude']
+                        patient_obj.ward = serializer.validated_data['ward_id']
+                        patient_obj.municipality = serializer.validated_data['municipality_id']
+                        patient_obj.district = serializer.validated_data['district_id']
+                        patient_obj.author = serializer.validated_data['author']
+                        patient_obj.activity_area = activity_area_obj
+                        patient_obj.geography = geography_obj
+                        patient_obj.education = serializer.validated_data['education']
+                        patient_obj.created_at = serializer.validated_data['created_at']
+                        patient_obj.save()
+                        return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)
+                    logger.error("ActivityArea id does not exists")
+                    return Response({"message":"Activity id does not exists"}, status=400)
+                logger.error("Geography id does not exists")
+                return Response({"message":"Geography id does not exists"}, status=400)
+            return Response({"message":"duplicate data"},status=400)
         logger.error(serializer.errors)
         return Response({'message':serializer.errors}, status=400)
 
