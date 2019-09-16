@@ -32,12 +32,12 @@ class AllEncounterSerializer(serializers.ModelSerializer):
 	author = serializers.StringRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	history = PatientHistorySerializer(read_only=True,many=True)
-	screeing = PatientScreeingSerializer(read_only=True,many=True)
-	refer = PatientReferSerializer(read_only=True,many=True)
+	screening = PatientScreeingSerializer(read_only=True,many=True)
+	referral = PatientReferSerializer(read_only=True,many=True)
 	treatment = PatientTreatmentSerializer(read_only=True,many=True)
 	class Meta:
 		model = Encounter
-		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_detail', 'updated_by','updated_at', 'history','screeing','treatment','refer')
+		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_detail', 'updated_by','updated_at', 'history','screening','treatment','referral')
 
 
 

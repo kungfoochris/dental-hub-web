@@ -20,7 +20,7 @@ class Refer(models.Model):
 	physician = models.BooleanField(_('general physician'),default=False)
 	hygienist = models.BooleanField(default=False)
 	other = models.CharField(max_length=255,blank=True)
-	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='refer')
+	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='referral')
 	time = models.TimeField(null=True) 
 	date = models.DateField(null=True)
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_refer')
