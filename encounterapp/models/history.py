@@ -27,6 +27,6 @@ class History(models.Model):
 	not_taking_any_medications = models.BooleanField(_('not taking any medications'),default=False,)
 	medications = models.CharField(max_length=255,blank=True)
 	no_medications = models.BooleanField(default=False)
-	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='history')
+	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='history')
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_history')
 	updated_at = models.DateField(null=True)

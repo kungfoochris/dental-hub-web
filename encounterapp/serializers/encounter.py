@@ -27,14 +27,14 @@ class EncounterSerializer(serializers.ModelSerializer):
 		
 
 class AllEncounterSerializer(serializers.ModelSerializer):
-	activity_area = serializers.StringRelatedField(many=False,read_only=True)
-	geography = serializers.StringRelatedField(many=False,read_only=True)
-	author = serializers.StringRelatedField(many=False,read_only=True)
+	activity_area = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	geography = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	history = PatientHistorySerializer(read_only=True,many=True)
-	screening = PatientScreeingSerializer(read_only=True,many=True)
-	referral = PatientReferSerializer(read_only=True,many=True)
-	treatment = PatientTreatmentSerializer(read_only=True,many=True)
+	history = PatientHistorySerializer(read_only=True,many=False)
+	screening = PatientScreeingSerializer(read_only=True,many=False)
+	referral = PatientReferSerializer(read_only=True,many=False)
+	treatment = PatientTreatmentSerializer(read_only=True,many=False)
 	class Meta:
 		model = Encounter
 		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_detail', 'updated_by','updated_at', 'history','screening','treatment','referral')

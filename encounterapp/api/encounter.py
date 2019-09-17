@@ -35,11 +35,12 @@ class EncounterView(APIView):
     def get(self, request,patient_id, format=None):
         if User.objects.filter(id=request.user.id):
             if Patient.objects.filter(id=patient_id):
-                patient_obj = Patient.objects.get(id=patient_id)
-                encounter_obj = Encounter.objects.select_related('geography').filter(geography=patient_obj.geography)
-                serializer = AllEncounterSerializer(encounter_obj, many=True,\
-                    context={'request': request})
-                return Response(serializer.data)
+                if Encounter.objects.select_related('patient').filter(patient__id=patient_id).exists():
+                    encounter_obj = Encounter.objects.select_related('patient').filter(patient__id=patient_id)
+                    serializer = AllEncounterSerializer(encounter_obj, many=True,\
+                        context={'request': request})
+                    return Response(serializer.data)
+                return Response({"message":'encounter not added or not found'},status=400)
             return Response({"message":"patient id does not exist."},status=400)
         return Response({"message":"permission not allowed"},status=400)
         # if User.objects.filter(id=request.user.id,admin=True):

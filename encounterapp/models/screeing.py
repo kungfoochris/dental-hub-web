@@ -40,6 +40,6 @@ class Screeing(models.Model):
 	high_blood_pressure = models.BooleanField(default=False)
 	low_blood_pressure = models.BooleanField(default=False)
 	thyroid_disorder = models.BooleanField(default=False)
-	encounter_id = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='screening')
+	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='screening')
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_screeing')
 	updated_at = models.DateField(null=True)
