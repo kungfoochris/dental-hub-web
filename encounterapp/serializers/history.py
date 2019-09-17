@@ -14,5 +14,5 @@ class PatientHistorySerializer(serializers.ModelSerializer):
 			'epilepsy_or_seizures','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
 			'medications', 'no_medications','no_underlying_medical_condition',\
 			'not_taking_any_medications', 'encounter_id',\
-			'updated_by','updated_at')
+			'updated_by','updated_at','created_at')
 		read_only_fields = ('updated_at',)

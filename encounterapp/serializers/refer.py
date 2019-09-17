@@ -12,5 +12,5 @@ class PatientReferSerializer(serializers.ModelSerializer):
 		model = Refer
 		fields = ('id','no_referal','health_post','dentist','physician',\
 			'hygienist','other','encounter_id','time','date',\
-			'updated_by','updated_at')
+			'updated_by','updated_at','created_at')
 		read_only_fields = ('updated_at',)

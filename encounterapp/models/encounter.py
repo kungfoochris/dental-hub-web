@@ -5,6 +5,7 @@ from patientapp.models import Patient
 from userapp.models import User
 from datetime import datetime, timedelta
 from addressapp.models import Geography, ActivityArea, Ward, Activity
+import datetime
 
 REQUEST_CHOICES = (
     ("Checkup / Screening", _("Checkup / Screening")),
@@ -37,6 +38,7 @@ class Encounter(models.Model):
     geography = models.ForeignKey(Geography,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
     updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_encounter')
     updated_at = models.DateField(null=True)
+    created_at = models.DateField(default=datetime.date.today)
 
 
     def __str__(self):

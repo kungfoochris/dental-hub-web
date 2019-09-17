@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from .encounter import Encounter
 from userapp.models import User
+import datetime
 
 REQUEST_CHOICES = (
     ("Low", _("Low")),
@@ -43,3 +44,4 @@ class Screeing(models.Model):
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='screening')
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_screeing')
 	updated_at = models.DateField(null=True)
+	created_at = models.DateField(default=datetime.date.today)

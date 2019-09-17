@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from .encounter import Encounter
 from userapp.models import User
+import datetime
 
 
 def keygenerator():
@@ -30,3 +31,4 @@ class History(models.Model):
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='history')
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_history')
 	updated_at = models.DateField(null=True)
+	created_at = models.DateField(default=datetime.date.today)

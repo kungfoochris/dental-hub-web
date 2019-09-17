@@ -22,7 +22,7 @@ class EncounterSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Encounter
 		fields = ('id','geography_id','activityarea_id','geography',\
-			'activity_area', 'date', 'author','encounter_type','patient','other_detail','updated_by','updated_at')
+			'activity_area', 'date', 'author','encounter_type','patient','other_detail','updated_by','updated_at','created_at')
 		read_only_fields = ('updated_at',)
 		
 
@@ -37,7 +37,7 @@ class AllEncounterSerializer(serializers.ModelSerializer):
 	treatment = PatientTreatmentSerializer(read_only=True,many=False)
 	class Meta:
 		model = Encounter
-		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_detail', 'updated_by','updated_at', 'history','screening','treatment','referral')
+		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_detail', 'created_at', 'updated_by','updated_at', 'history','screening','treatment','referral')
 
 
 
