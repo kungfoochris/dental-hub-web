@@ -14,3 +14,14 @@ class PatientReferSerializer(serializers.ModelSerializer):
 			'hygienist','other','encounter_id','time','date',\
 			'updated_by','updated_at','created_at')
 		read_only_fields = ('updated_at',)
+
+
+class PatientReferUpdateSerializer(serializers.ModelSerializer):
+	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	updated_by = serializers.StringRelatedField()
+	class Meta:
+		model = Refer
+		fields = ('id','no_referal','health_post','dentist','physician',\
+			'hygienist','other','encounter_id','time','date',\
+			'updated_by','updated_at','created_at')
+		read_only_fields = ('created_at',)

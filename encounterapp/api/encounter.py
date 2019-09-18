@@ -84,7 +84,7 @@ class EncounterUpdateView(APIView):
     serializer_class = EncounterUpdateSerializer
 
     def get(self, request, patient_id, encounter_id, format=None):
-        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__uid=patient_id).exists():    
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():    
             encounter_obj = Encounter.objects.get(id=encounter_id)
             serializer = EncounterSerializer(encounter_obj, many=False, \
                 context={'request': request})
@@ -94,17 +94,15 @@ class EncounterUpdateView(APIView):
 
     def put(self, request, patient_id, encounter_id, format=None):
         today_date = datetime.now()
-        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__uid=patient_id).exists():
-            encounter_obj = Encounter.objects.get(id=encounter_id)
-            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
-                serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
-                    context={'request': request},partial=True)
-                if serializer.is_valid(): 
-                    serializer.save(updated_by=request.user,updated_at=datetime.datetime.now().date())
-                    return Response({"message":"encounter update"},status=200)
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj=Encounter.objects.select_related('patient').get(id=encounter_id,patient__id=patient_id)
+            serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
+                context={'request': request},partial=True)
+            if serializer.is_valid(): 
+                serializer.save(updated_by=request.user)
+                return Response({"message":"encounter update"},status=200)
                 logger.error(serializer.errors)
-                return Response({'message':serializer.errors}, status=400)
+            return Response({'message':serializer.errors}, status=400)
             logger.error("update allow upto 24 hour only")
-            return Response({"message":"update allow upto 24 hour only"},status=400)
         logger.error("encounter id donot match")
         return Response({"message":"id do not match"},status=400)    

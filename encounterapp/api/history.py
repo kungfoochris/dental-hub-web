@@ -10,7 +10,7 @@ from patientapp.models import Patient
 from encounterapp.models import History, Encounter
 
 from patientapp.serializers.patient import PatientSerializer
-from encounterapp.serializers.history import PatientHistorySerializer
+from encounterapp.serializers.history import PatientHistorySerializer,PatientHistoryUpdateSerializer
 
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -56,7 +56,7 @@ class PatientHistoryView(APIView):
 
 class PatientHistoryUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = PatientHistorySerializer
+    serializer_class = PatientHistoryUpdateSerializer
 
     def get(self, request, encounter_id, format=None):
         if History.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
@@ -70,17 +70,13 @@ class PatientHistoryUpdateView(APIView):
         today_date = datetime.now()
         if History.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
             history_obj = History.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
-            encounter_obj = Encounter.objects.get(id=encounter_id)
-            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
-                serializer = PatientHistorySerializer(history_obj,data=request.data,\
-                    context={'request': request},partial=True)
-                if serializer.is_valid():
-                    serializer.save(updated_by = request.user,updated_at = datetime.datetime.now().date())
-                    return Response({"message":"history encounter update"},status=200)
-                logger.error(serializer.errors) 
-                return Response({'message':serializer.errors}, status=400)
-            logger.error("update allow upto 24 hour only") 
-            return Response({"message":"update allow upto 24 hour only"},status=400)
+            serializer = PatientHistoryUpdateSerializer(history_obj,data=request.data,\
+                context={'request': request},partial=True)
+            if serializer.is_valid():
+                serializer.save(updated_by = request.user)
+                return Response({"message":"history encounter update"},status=200)
+            logger.error(serializer.errors) 
+            return Response({'message':serializer.errors}, status=400)
         logger.error("encounter history id do not match") 
         return Response({"message":"id do not match"},status=400)     
 

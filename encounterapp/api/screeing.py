@@ -10,7 +10,7 @@ from patientapp.models import Patient
 from encounterapp.models import Screeing, Encounter
 
 from patientapp.serializers.patient import PatientSerializer
-from encounterapp.serializers.screeing import PatientScreeingSerializer
+from encounterapp.serializers.screeing import PatientScreeingSerializer,PatientScreeingUpdateSerializer
 
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -59,7 +59,7 @@ class PatientScreeingView(APIView):
 
 class PatientScreeingUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = PatientScreeingSerializer
+    serializer_class = PatientScreeingUpdateSerializer
 
     def get(self, request, encounter_id, format=None):
         if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
@@ -73,17 +73,13 @@ class PatientScreeingUpdateView(APIView):
         today_date = datetime.now()
         if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
             screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
-            encounter_obj = Encounter.objects.get(id=encounter_id)
-            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
-                serializer = PatientScreeingSerializer(screeing_obj,data=request.data,\
-                    context={'request': request},partial=True)
-                if serializer.is_valid():
-                    serializer.save(updated_by = request.user,updated_at = datetime.datetime.now().date())
-                    return Response({"message":"screeing encounter update"},status=200)
-                logger.error(serializer.errors)
-                return Response({'message':serializer.errors}, status=400)
-            logger.error("update allow upto 24 hour only")
-            return Response({"message":"update allow upto 24 hour only"},status=400)
+            serializer = PatientScreeingUpdateSerializer(screeing_obj,data=request.data,\
+                context={'request': request},partial=True)
+            if serializer.is_valid():
+                serializer.save(updated_by = request.user)
+                return Response({"message":"screeing encounter update"},status=200)
+            logger.error(serializer.errors)
+            return Response({'message':serializer.errors}, status=400)
         logger.error("screeing encounter id donot match")
         return Response({"message":"id do not match"},status=400) 
    

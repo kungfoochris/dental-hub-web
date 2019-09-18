@@ -9,7 +9,7 @@ from userapp.models import User
 from patientapp.models import Patient
 from encounterapp.models import Refer, Encounter
 
-from encounterapp.serializers.refer import PatientReferSerializer
+from encounterapp.serializers.refer import PatientReferSerializer,PatientReferUpdateSerializer
 
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -55,7 +55,7 @@ class PatientReferView(APIView):
 
 class PatientReferUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = PatientReferSerializer
+    serializer_class = PatientReferUpdateSerializer
 
     def get(self, request, encounter_id, format=None):
         if Refer.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
@@ -69,16 +69,12 @@ class PatientReferUpdateView(APIView):
         today_date = datetime.now()
         if Refer.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
             refer_obj = Refer.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
-            encounter_obj = Encounter.objects.get(uid=encounter_id)
-            if today_date.timestamp() < encounter_obj.updated_at.timestamp():
-                serializer = PatientReferSerializer(refer_obj,data=request.data,\
-                    context={'request': request},partial=True)
-                if serializer.is_valid():
-                    serializer.save(updated_by = request.user,updated_at = datetime.datetime.now().date())
-                    return Response({"message":"refer encounter update"},status=200)
-                logger.error(serializer.errors)
-                return Response({'message':serializer.errors}, status=400)
-            logger.error("update allow upto 24 hour only")
-            return Response({"message":"update allow upto 24 hour only"},status=400)
+            serializer = PatientReferUpdateSerializer(refer_obj,data=request.data,\
+                context={'request': request},partial=True)
+            if serializer.is_valid():
+                serializer.save(updated_by = request.user)
+                return Response({"message":"refer encounter update"},status=200)
+            logger.error(serializer.errors)
+            return Response({'message':serializer.errors}, status=400)
         logger.error("history encounter id do not match")
         return Response({"message":"id do not match"},status=400)     
