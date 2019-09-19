@@ -68,7 +68,8 @@ class PatientSerializer(serializers.ModelSerializer):
 		model = Patient
 		fields = ('id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
          'gender', 'dob', 'age', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id',\
-         'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by','updated_at','created_at')
+         'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by',\
+         'updated_at','created_at','recall_date','recall_time','recall_geography')
 		read_only_fields = ('author','full_name','date','age','updated_at')
 
 

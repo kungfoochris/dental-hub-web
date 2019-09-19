@@ -13,7 +13,7 @@ from addressapp.models import Geography, Activity
 from django.db.models import Count
 from django.db.models.functions import TruncMonth
 from nepali.datetime import NepaliDate
-
+import datetime
 
 REQUEST_CHOICES = (
     ("male", _("Male")),
@@ -52,6 +52,12 @@ class Patient(models.Model):
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_patient')
 	updated_at = models.DateField(null=True)
 	created_at = models.DateField(null= True,blank=True)
+	# recall_date = models.DateField(blank=True)
+	# recall_time = models.TimeField(blank=True)
+	# recall_geography = models.CharField(max_length=150,blank=True)
+	recall_date = models.DateField(default=datetime.date.today)
+	recall_time = models.TimeField(default=datetime.time(00, 00))
+	recall_geography = models.CharField(max_length=150,default='')
 
 
 	def __str__(self):
