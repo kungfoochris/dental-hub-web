@@ -37,6 +37,21 @@ class PatientListView(APIView):
             serializer = PatientSerializer(patient_obj, many=True, context={'request': request})
             return Response(serializer.data,status=200)
         return Response({"message":"content not found"},status=204)
+
+class GeographyPatientListView(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = PatientSerializer
+
+    def get(self, request,format=None):
+        if CustomUser.objects.filter(id=request.user.id):
+            user_obj = CustomUser.objects.get(id=request.user.id)
+            add_patient=Patient.objects.none()
+            for i in user_obj.location.all():
+                patient_obj = Patient.objects.select_related('geography').filter(geography=i).order_by("-date")
+                add_patient |= patient_obj
+            serializer = PatientSerializer(add_patient, many=True, context={'request': request})
+            return Response(serializer.data,status=200)
+        return Response({"message":"only app user can access"},status=400)
             
 class PatientAdd(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
