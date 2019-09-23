@@ -73,7 +73,7 @@ class WardUpdate(APIView):
                 serializer = WardSerializerUpdate(ward_obj,data=request.data,\
                     context={'request': request},partial=True)
                 if serializer.is_valid():
-                    ward_obj.ward_name=serializer.validated_data['ward_name'].capitalize()
+                    ward_obj.name=serializer.validated_data['name'].capitalize()
                     ward_obj.status=True
                     ward_obj.save()
                     return Response({"district":ward_obj.municipality.district.name,"municipality_name":ward_obj.municipality.name,"ward_number":ward_obj.ward,"ward_name":ward_obj.ward_name},status=200)
