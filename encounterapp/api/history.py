@@ -74,7 +74,7 @@ class PatientHistoryUpdateView(APIView):
             serializer = PatientHistoryUpdateSerializer(history_obj,data=request.data,\
                 context={'request': request},partial=True)
             if serializer.is_valid():
-                serializer.save(updated_by = encounter_obj.updated_by)
+                serializer.save()
                 return Response({"message":"history encounter update"},status=200)
             logger.error(serializer.errors) 
             return Response({'message':serializer.errors}, status=400)

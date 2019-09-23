@@ -23,8 +23,7 @@ class PatientTreatmentSerializer(serializers.ModelSerializer):
 			'tooth83','tooth82','tooth81','tooth71',\
 			'tooth72','tooth73','tooth74','tooth75',\
 			'sdf_whole_mouth','fv_applied','treatment_plan_complete',\
-			'notes','encounter_id','updated_by','updated_at','created_at')
-		read_only_fields = ('updated_at',)
+			'notes','encounter_id')
 
 class PatientTreatmentUpdateSerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
@@ -44,5 +43,4 @@ class PatientTreatmentUpdateSerializer(serializers.ModelSerializer):
 			'tooth83','tooth82','tooth81','tooth71',\
 			'tooth72','tooth73','tooth74','tooth75',\
 			'sdf_whole_mouth','fv_applied','treatment_plan_complete',\
-			'notes','encounter_id','updated_by','updated_at','created_at')
-		read_only_fields = ('created_at',)
+			'notes','encounter_id')

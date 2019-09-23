@@ -7,7 +7,7 @@ from treatmentapp.models import Treatment
 
 class TreatmentAdmin(admin.ModelAdmin):
 	list_display = ('id', 'fv_applied', 'treatment_plan_complete',\
-		'notes','encounter_id','sdf_whole_mouth','updated_by','updated_at')
+		'notes','encounter_id','sdf_whole_mouth')
 
 admin.site.register(Treatment, TreatmentAdmin)
 

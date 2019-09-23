@@ -8,20 +8,20 @@ from addressapp.serializers.address import GeoSerializer
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
-    	queryset = Geography.objects.all()
+    	queryset = Ward.objects.all()
     	return queryset
 
 
 class AreaPKField(serializers.StringRelatedField):
     def get_queryset(self):
-    	queryset = Geography.objects.all()
+    	queryset = Ward.objects.all()
     	return queryset
 
 
 class GeographySerializeronly(serializers.ModelSerializer):
     class Meta:
-        model = Geography
-        fields = ('id','location','tole','district','municipality','ward')
+        model = Ward
+        fields = ('id','location','ward_name','district','municipality_name','ward')
         read_only_fields = ('location',)
 
 class RolePKField(serializers.PrimaryKeyRelatedField):

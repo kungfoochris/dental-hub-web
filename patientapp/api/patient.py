@@ -71,10 +71,10 @@ class PatientAdd(APIView):
             context={'request': request})
         if serializer.is_valid():
             if Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).count()==0:
-                if Geography.objects.filter(id=serializer.validated_data['geography_id']).exists():
+                if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
                     if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():
                         activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
-                        geography_obj = Geography.objects.get(id=serializer.validated_data['geography_id'])
+                        ward_obj = Ward.objects.get(id=serializer.validated_data['geography_id'])
                         patient_obj = Patient()
                         patient_obj.first_name = serializer.validated_data['first_name']
                         patient_obj.last_name = serializer.validated_data['last_name']
@@ -84,12 +84,12 @@ class PatientAdd(APIView):
                         patient_obj.phone = serializer.validated_data['phone']
                         patient_obj.latitude = serializer.validated_data['latitude']
                         patient_obj.longitude = serializer.validated_data['longitude']
-                        patient_obj.ward = serializer.validated_data['ward_id']
+                        patient_obj.ward = serializer.validated_data['geography_id']
                         patient_obj.municipality = serializer.validated_data['municipality_id']
                         patient_obj.district = serializer.validated_data['district_id']
                         patient_obj.author = serializer.validated_data['author']
                         patient_obj.activity_area = activity_area_obj
-                        patient_obj.geography = geography_obj
+                        patient_obj.geography = ward_obj
                         patient_obj.education = serializer.validated_data['education']
                         patient_obj.created_at = serializer.validated_data['created_at']
                         patient_obj.save()
@@ -128,7 +128,7 @@ class PatientUpdateView(APIView):
                 patient_obj.gender = serializer.validated_data['gender']
                 patient_obj.dob = serializer.validated_data['dob']
                 patient_obj.phone = serializer.validated_data['phone']
-                patient_obj.ward = serializer.validated_data['ward_id']
+                patient_obj.ward = serializer.validated_data['geography_id']
                 patient_obj.municipality = serializer.validated_data['municipality_id']
                 patient_obj.district = serializer.validated_data['district_id']
                 patient_obj.education = serializer.validated_data['education']

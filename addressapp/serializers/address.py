@@ -49,4 +49,9 @@ class GeoSerializer(serializers.ModelSerializer):
 class WardSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Ward
-		fields = ('id','location','district')
+		fields = ('id','location','district','municipality_name','ward','ward_name','status')
+
+class WardSerializerUpdate(serializers.ModelSerializer):
+	class Meta:
+		model = Ward
+		fields = ('id','ward_name')
