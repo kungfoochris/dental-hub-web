@@ -46,7 +46,6 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=100)
     image = models.FileField(upload_to='profile',default="profile/default-avatar.png")
     email = models.EmailField(max_length=255, null=True)
-    token = models.CharField(max_length=6,null=True)
 
     USERNAME_FIELD = 'username'
     update_password=True

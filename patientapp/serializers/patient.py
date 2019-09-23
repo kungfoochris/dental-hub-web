@@ -62,15 +62,15 @@ class PatientSerializer(serializers.ModelSerializer):
 	district = serializers.PrimaryKeyRelatedField(read_only=True)
 	municipality = serializers.PrimaryKeyRelatedField(read_only=True)
 	ward = serializers.PrimaryKeyRelatedField(read_only=True)
-	updated_by = serializers.StringRelatedField()
+	updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
 	author = AuthorField(many=False)
 	class Meta:
 		model = Patient
 		fields = ('id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
-         'gender', 'dob', 'age', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id',\
+         'gender', 'dob', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id',\
          'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by',\
          'updated_at','created_at','recall_date','recall_time','recall_geography')
-		read_only_fields = ('author','full_name','date','age','updated_at')
+		read_only_fields = ('author','full_name','date','updated_at')
 
 
 class PatientUpdateSerializer(serializers.ModelSerializer):
@@ -82,8 +82,9 @@ class PatientUpdateSerializer(serializers.ModelSerializer):
 	district = DistrictField(many=False,read_only=True)
 	municipality = MunicipalityField(many=False,read_only=True)
 	ward = WardField(many=False,read_only=True)
+	updated_by = AuthorField(many=False)
 	class Meta:
 		model = Patient
 		fields = ('id','first_name', 'middle_name', 'last_name', 'full_name',\
 			'gender', 'dob','phone','education','district','municipality', 'ward',\
-			'district_id','municipality_id', 'ward_id','geography','activity_area','updated_at')
+			'district_id','municipality_id', 'ward_id','geography','activity_area','updated_by','updated_at')

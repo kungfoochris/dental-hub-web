@@ -11,7 +11,7 @@ class PatientReferSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Refer
 		fields = ('id','no_referal','health_post','dentist','physician',\
-			'hygienist','other','encounter_id','time','date',\
+			'hygienist','other','encounter_id',\
 			'updated_by','updated_at','created_at')
 		read_only_fields = ('updated_at',)
 
@@ -22,6 +22,6 @@ class PatientReferUpdateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Refer
 		fields = ('id','no_referal','health_post','dentist','physician',\
-			'hygienist','other','encounter_id','time','date',\
+			'hygienist','other','encounter_id',\
 			'updated_by','updated_at','created_at')
 		read_only_fields = ('created_at',)

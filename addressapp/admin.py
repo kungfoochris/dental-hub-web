@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class AdminGeographyapp(admin.ModelAdmin):
-	list_display = ('id', 'district', 'municipality','tole', 'ward','status')
+	list_display = ('id', 'tole', 'ward','status')
 
 admin.site.register(Geography, AdminGeographyapp)
 

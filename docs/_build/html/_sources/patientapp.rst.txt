@@ -45,6 +45,8 @@ POST:
 - municipality_id: foreignkey(required)
 - district_id: foreignkey(required)
 - education: CharField(required)
+- created_at: DateField(required)
+- author : Foreigne Key(User)
 
 
 3. **PUT:**
@@ -58,6 +60,8 @@ POST:
     **Body_Content**
 
 - id : string()
+- geography_id: string(required)
+- activityarea_id : string(required)
 - first_name: string(required)
 - last_name: string(required)
 - middle_name: string()
@@ -65,7 +69,13 @@ POST:
   male, female. other
 - dob(date of birth): DateTimeField(required)
 - phone(phone number):CharField(required)
+- author : ForeignRelationship()
+- date : autofield()
+- latitude: DecimalField(required)
+- longitude: DecimalField(required)
 - ward_id : foreignkey(required) 
 - municipality_id: foreignkey(required)
 - district_id: foreignkey(required)
 - education: CharField(required)
+- updated_by: DateField(required)
+- updated_by : Foreigne Key(User)

@@ -5,7 +5,7 @@ from addressapp.api.geography import GeographyListView, GeographyUpdateView
 from addressapp.api.activity import ActivityAreaListView, ActivityAreaUpdateView, ActivityListView
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from addressapp.api.address import AddressList
+from addressapp.api.address import AddressList,WardList
 
 # from userapp.api.staticpage import StaticPageView
 
@@ -18,6 +18,6 @@ urlpatterns = [
 	path('activities', ActivityAreaListView.as_view()),
 	path('activities/<pk>', ActivityAreaUpdateView.as_view()),
 	path('addresses', AddressList.as_view()),
-	# path('addresses/<district>', MunicipalityList.as_view()),
+	path('wards', WardList.as_view()),
     ]
 urlpatterns = format_suffix_patterns(urlpatterns)

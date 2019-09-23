@@ -8,7 +8,7 @@ from userapp.models import User,CustomUser
 
 from addressapp.serializers.geography import GeographySerializer
 from addressapp.serializers.address import GeoSerializer
-from addressapp.models import Geography, Ward
+from addressapp.models import Ward, Geography
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
@@ -27,7 +27,7 @@ class GeographyListView(APIView):
 
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id,admin=True).exists():
-            geography_obj = Geography.objects.filter(status=True)
+            geography_obj = Geography.objects.all()
             serializer = GeographySerializer(geography_obj, many=True, \
                 context={'request': request})
             return Response(serializer.data)
@@ -44,13 +44,16 @@ class GeographyListView(APIView):
         if User.objects.filter(id=request.user.id,admin=True).exists():
             serializer = GeographySerializer(data=request.data,\
                 context={'request': request})
-            if Geography.objects.filter(district=request.data['district'],municipality=request.data['municipality'],ward=request.data['ward']).count()==0:
-                if serializer.is_valid():
-                    serializer.save()
-                    return Response(serializer.data)
-                return Response({'message':serializer.errors}, status=400)
-            return Response({"message":"This geography address already exists."},status=400)
-        return Response({'errors': 'Permission Denied'},status=400)  
+            if serializer.is_valid():
+                geography_obj = Geography()
+                geography_obj.ward = serializer.validated_data['ward']
+                geography_obj.tole = serializer.validated_data['tole']
+                geography_obj.save()
+                return Response({"id":geography_obj.id,"district":geography_obj.district,\
+                    "municipality":geography_obj.municipality,"ward_number":geography_obj.ward_number,\
+                    "tole":geography_obj.tole},status=200)
+            return Response({'message':serializer.errors}, status=400)
+        return Response({'errors': 'Permission Denied'},status=400)   
 
 
 class GeographyUpdateView(APIView):
@@ -73,12 +76,12 @@ class GeographyUpdateView(APIView):
                 geography_obj = Geography.objects.get(id=pk)
                 serializer = GeographySerializer(geography_obj,data=request.data,\
                     context={'request': request},partial=True)
-                if Geography.objects.filter(district=request.data['district'],municipality=request.data['municipality'],ward=request.data['ward']).count()==0:
-                    if serializer.is_valid():
-                        serializer.save()
-                        return Response(serializer.data)
-                    return Response({'message':serializer.errors}, status=400)
-                return Response({"message":"This geography address already exists."},status=400)
+                if serializer.is_valid():
+                    geography_obj.ward = serializer.validated_data['ward']
+                    geography_obj.tole = serializer.validated_data['tole']
+                    geography_obj.save()
+                    return Response(serializer.data)
+                return Response({'message':serializer.errors}, status=400)
             # logger.error("content not found")
             return Response({"message":"content not found"},status=204)
         # logger.error("only admin can edit")

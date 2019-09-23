@@ -67,11 +67,12 @@ class PatientTreatmentUpdateView(APIView):
 
     def put(self, request, encounter_id, format=None):
         if Treatment.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
-            encounter_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
-            serializer = PatientTreatmentUpdateSerializer(encounter_obj,data=request.data,\
+            encounter_obj = Encounter.objects.get(id=encounter_id)
+            treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
+            serializer = PatientTreatmentUpdateSerializer(treatment_obj,data=request.data,\
                 context={'request': request},partial=True)
             if serializer.is_valid():
-                serializer.save(updated_by = request.user)
+                serializer.save(updated_by = encounter_obj.updated_by)
                 return Response({"message":"treatment encounter update"},status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)

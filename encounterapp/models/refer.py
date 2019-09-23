@@ -13,17 +13,15 @@ def keygenerator():
 
 
 class Refer(models.Model):
-	# id = models.CharField(max_length=200,blank=True)
+	# id = models.CharField(max_length=200,null=True)
 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	no_referal = models.BooleanField(_('no referal'),default=False)
 	health_post = models.BooleanField(_('health post'),default=False)
 	dentist = models.BooleanField(default=False)
 	physician = models.BooleanField(_('general physician'),default=False)
 	hygienist = models.BooleanField(default=False)
-	other = models.CharField(max_length=255,blank=True)
+	other = models.CharField(max_length=255,null=True)
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='referral')
-	time = models.TimeField(null=True) 
-	date = models.DateField(null=True)
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_refer')
 	updated_at = models.DateField(null=True)
-	created_at = models.DateField(default=datetime.date.today)
+	created_at = models.DateField()

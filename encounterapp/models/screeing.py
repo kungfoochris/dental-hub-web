@@ -25,12 +25,12 @@ def keygenerator():
 
 
 class Screeing(models.Model):
-	# id = models.CharField(max_length=200,blank=True)
+	# id = models.CharField(max_length=200,null=True)
 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-	caries_risk = models.CharField(_('caries risk'),choices=REQUEST_CHOICES,max_length=30)
+	carries_risk = models.CharField(_('caries risk'),choices=REQUEST_CHOICES,max_length=30)
 	decayed_primary_teeth = models.PositiveIntegerField(_('decayed primary teeth'))
 	decayed_permanent_teeth = models.PositiveIntegerField(_('decayed permanent teeth'))
-	cavity_permanent_postiror_teeth = models.BooleanField(_('cavity permanent postiror teeth'),default=False)
+	cavity_permanent_posterior_teeth = models.BooleanField(_('cavity permanent posterior teeth'),default=False)
 	cavity_permanent_anterior_teeth = models.BooleanField(_('cavity permanent anterior teeth'),default=False)
 	need_sealant = models.BooleanField(_('need sealant'),default=False)
 	reversible_pulpitis = models.BooleanField(_('mouth pain due to reversible pulpitis'),default=False)
@@ -44,4 +44,4 @@ class Screeing(models.Model):
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='screening')
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_screeing')
 	updated_at = models.DateField(null=True)
-	created_at = models.DateField(default=datetime.date.today)
+	created_at = models.DateField()

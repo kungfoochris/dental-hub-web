@@ -1,5 +1,5 @@
 # from fcm_django.models import FCMDevice
-from userapp.models import User
+from userapp.models import User, Role
 from patientapp.models import Patient
 from addressapp.models import Geography,ActivityArea
 from django.http import HttpResponse
@@ -21,6 +21,8 @@ def seed(request):
 		Activity.objects.create(name="School Seminar")
 		Activity.objects.create(name="Community Outreach")
 		Activity.objects.create(name="Training")
+		Role.objects.create(name='appuser')
+		Role.objects.create(name='warduser')
 		with open('./nepal.json') as write_file:
 			data=json.load(write_file)
 		for data_obj in data:

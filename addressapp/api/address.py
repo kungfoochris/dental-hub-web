@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from addressapp.serializers.address import DistrictSerializer,MunicipalitySerializer
+from addressapp.serializers.address import DistrictSerializer,MunicipalitySerializer,WardSerializer
 from addressapp.models import Address, District, Municipality ,Ward
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -33,13 +33,11 @@ class AddressList(APIView):
 #             context={'request': request})
 #         return Response(serializer.data)
 
-# class WardList(APIView):
-#     permission_classes = (IsPostOrIsAuthenticated,)
-#     serializer_class = AddressSerializer
+class WardList(APIView):
+    serializer_class = WardSerializer
 
-#     def get(self, request, municipality,format=None):
-#         if Address.objects.filters(municipality=municipality):
-#             address_obj = Address.objects.filters(municipality=municipality)
-#             serializer = AddressSerializer(address_obj, many=True, \
-#                 context={'request': request})
-#             return Response(serializer.data)
+    def get(self, request,format=None):
+    	ward_obj = Ward.objects.filter(status=True)
+    	serializer = WardSerializer(ward_obj, many=True, \
+    		context={'request': request})
+    	return Response(serializer.data)

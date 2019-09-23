@@ -83,4 +83,4 @@ class Treatment(models.Model):
     sdf_whole_mouth = models.BooleanField(default=False)
     updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_treatment')
     updated_at = models.DateField(null=True)
-    created_at = models.DateField(default=datetime.date.today)
+    created_at = models.DateField()

@@ -132,7 +132,7 @@ class PatientUpdateView(APIView):
                 patient_obj.municipality = serializer.validated_data['municipality_id']
                 patient_obj.district = serializer.validated_data['district_id']
                 patient_obj.education = serializer.validated_data['education']
-                patient_obj.updated_by = request.user
+                patient_obj.updated_by = serializer.validated_data['updated_by']
                 patient_obj.updated_at = serializer.validated_data['updated_at']
                 patient_obj.save()
                 serializer.save()

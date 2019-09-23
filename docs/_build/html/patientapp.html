@@ -96,6 +96,10 @@ male, female. other</p>
 </li>
 <li><p class="first">education: CharField(required)</p>
 </li>
+<li><p class="first">created_at: DateField(required)</p>
+</li>
+<li><p class="first">author : Foreigne Key(User)</p>
+</li>
 </ul>
 <p>3. <strong>PUT:</strong>
 POST:</p>
@@ -110,6 +114,10 @@ POST:</p>
 </li>
 <li><p class="first">id : string()</p>
 </li>
+<li><p class="first">geography_id: string(required)</p>
+</li>
+<li><p class="first">activityarea_id : string(required)</p>
+</li>
 <li><p class="first">first_name: string(required)</p>
 </li>
 <li><p class="first">last_name: string(required)</p>
@@ -123,6 +131,14 @@ male, female. other</p>
 </li>
 <li><p class="first">phone(phone number):CharField(required)</p>
 </li>
+<li><p class="first">author : ForeignRelationship()</p>
+</li>
+<li><p class="first">date : autofield()</p>
+</li>
+<li><p class="first">latitude: DecimalField(required)</p>
+</li>
+<li><p class="first">longitude: DecimalField(required)</p>
+</li>
 <li><p class="first">ward_id : foreignkey(required)</p>
 </li>
 <li><p class="first">municipality_id: foreignkey(required)</p>
@@ -130,6 +146,10 @@ male, female. other</p>
 <li><p class="first">district_id: foreignkey(required)</p>
 </li>
 <li><p class="first">education: CharField(required)</p>
+</li>
+<li><p class="first">updated_by: DateField(required)</p>
+</li>
+<li><p class="first">updated_by : Foreigne Key(User)</p>
 </li>
 </ul>
 </div>

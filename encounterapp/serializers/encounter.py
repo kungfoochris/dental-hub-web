@@ -11,14 +11,17 @@ from treatmentapp.serializers.treatment import PatientTreatmentSerializer
 from addressapp.serializers.activity import ActivityAreaSerializer
 from addressapp.serializers.geography import GeographySerializer
 
+
+from patientapp.serializers.patient import AuthorField
+
 class EncounterSerializer(serializers.ModelSerializer):
-	activity_area = serializers.StringRelatedField(many=False,read_only=True)
-	geography = serializers.StringRelatedField(many=False,read_only=True)
+	activity_area = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	geography = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	activityarea_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
-	author = serializers.StringRelatedField(many=False,read_only=True)
+	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	updated_by = serializers.StringRelatedField()
+	updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
 	class Meta:
 		model = Encounter
 		fields = ('id','geography_id','activityarea_id','geography',\
@@ -46,9 +49,9 @@ class AllEncounterSerializer(serializers.ModelSerializer):
 class EncounterUpdateSerializer(serializers.ModelSerializer):
 	activity_area = serializers.StringRelatedField(many=False,read_only=True)
 	geography = serializers.StringRelatedField(many=False,read_only=True)
-	author = serializers.StringRelatedField(many=False,read_only=True)
+	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.StringRelatedField(many=False,read_only=True)
-	updated_by = serializers.StringRelatedField()
+	updated_by = AuthorField(many=False)
 	class Meta:
 		model = Encounter
 		fields = ('id','geography',\
