@@ -23,7 +23,7 @@ admin.site.register(Municipality, AdminMunicipality)
 
 
 class AdminWard(admin.ModelAdmin):
-	list_display = ('id', 'municipality', 'ward','status')
+	list_display = ('id', 'municipality', 'ward','status','name')
 
 admin.site.register(Ward, AdminWard)
 

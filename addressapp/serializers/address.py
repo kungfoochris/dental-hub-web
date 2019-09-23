@@ -7,7 +7,7 @@ from addressapp.models import Address,Ward,Municipality,District
 class WardSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Ward
-		fields = ['id','ward']
+		fields = ['id','ward','name']
 
 
 class MunicipalitySerializer(serializers.ModelSerializer):
@@ -49,9 +49,9 @@ class GeoSerializer(serializers.ModelSerializer):
 class WardSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Ward
-		fields = ('id','location','district','municipality_name','ward','ward_name','status')
+		fields = ('id','location','district','municipality_name','ward','name','status')
 
 class WardSerializerUpdate(serializers.ModelSerializer):
 	class Meta:
 		model = Ward
-		fields = ('id','ward_name')
+		fields = ('id','name')
