@@ -7,7 +7,6 @@ from encounterapp.models import Screeing
 
 class PatientScreeingSerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	updated_by = serializers.StringRelatedField()
 	class Meta:
 		model = Screeing
 		fields = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth','cavity_permanent_posterior_teeth',\
@@ -18,7 +17,6 @@ class PatientScreeingSerializer(serializers.ModelSerializer):
 
 class PatientScreeingUpdateSerializer(serializers.ModelSerializer):
 	encounter_id = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	updated_by = serializers.StringRelatedField()
 	class Meta:
 		model = Screeing
 		fields = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth','cavity_permanent_posterior_teeth',\

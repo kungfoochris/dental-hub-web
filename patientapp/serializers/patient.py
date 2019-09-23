@@ -58,7 +58,7 @@ class PatientSerializer(serializers.ModelSerializer):
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	district_id = DistrictPkField(many=False,write_only=True)
 	municipality_id = MunicipalityPKField(many=False,write_only=True)
-	ward = WardPKField(many=False,write_only=True)
+	ward_id = WardPKField(many=False,write_only=True)
 	district = serializers.PrimaryKeyRelatedField(read_only=True)
 	municipality = serializers.PrimaryKeyRelatedField(read_only=True)
 	ward = serializers.PrimaryKeyRelatedField(read_only=True)
@@ -68,7 +68,7 @@ class PatientSerializer(serializers.ModelSerializer):
 		model = Patient
 		fields = ('id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
          'gender', 'dob', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id',\
-         'geography_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by',\
+         'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by',\
          'updated_at','created_at','recall_date','recall_time','recall_geography')
 		read_only_fields = ('author','full_name','date','updated_at')
 
@@ -78,7 +78,7 @@ class PatientUpdateSerializer(serializers.ModelSerializer):
 	geography = serializers.StringRelatedField(many=False,read_only=True)
 	district_id = DistrictPkField(many=False,write_only=True)
 	municipality_id = MunicipalityPKField(many=False,write_only=True)
-	geography_id = WardPKField(many=False,write_only=True)
+	ward_id = WardPKField(many=False,write_only=True)
 	district = DistrictField(many=False,read_only=True)
 	municipality = MunicipalityField(many=False,read_only=True)
 	ward = WardField(many=False,read_only=True)
@@ -87,4 +87,4 @@ class PatientUpdateSerializer(serializers.ModelSerializer):
 		model = Patient
 		fields = ('id','first_name', 'middle_name', 'last_name', 'full_name',\
 			'gender', 'dob','phone','education','district','municipality', 'ward',\
-			'district_id','municipality_id', 'geography_id','geography','activity_area','updated_by','updated_at')
+			'district_id','municipality_id', 'ward_id','geography','activity_area','updated_by','updated_at')
