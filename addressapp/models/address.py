@@ -61,4 +61,4 @@ class Ward(models.Model):
 
 	@property
 	def municipality_name(self):
-		return self.municipality.district.name
+		return self.municipality.name

@@ -76,7 +76,7 @@ class WardUpdate(APIView):
                     ward_obj.name=serializer.validated_data['name'].capitalize()
                     ward_obj.status=True
                     ward_obj.save()
-                    return Response({"district":ward_obj.municipality.district.name,"municipality_name":ward_obj.municipality.name,"ward_number":ward_obj.ward,"ward_name":ward_obj.ward_name},status=200)
+                    return Response({"district":ward_obj.municipality.district.name,"municipality_name":ward_obj.municipality.name,"ward_number":ward_obj.ward,"name":ward_obj.name},status=200)
                 return Response({'message':serializer.errors}, status=400)
             return Response({"message":"content not found"},status=204)
         return Response({"message":"only admin can edit"},status=400)

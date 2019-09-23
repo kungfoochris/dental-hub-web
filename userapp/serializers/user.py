@@ -21,7 +21,7 @@ class AreaPKField(serializers.StringRelatedField):
 class GeographySerializeronly(serializers.ModelSerializer):
     class Meta:
         model = Ward
-        fields = ('id','location','ward_name','district','municipality_name','ward')
+        fields = ('id','location','name','district','municipality_name','ward')
         read_only_fields = ('location',)
 
 class RolePKField(serializers.PrimaryKeyRelatedField):
