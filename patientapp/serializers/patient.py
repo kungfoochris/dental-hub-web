@@ -58,7 +58,7 @@ class PatientSerializer(serializers.ModelSerializer):
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	district_id = DistrictPkField(many=False,write_only=True)
 	municipality_id = MunicipalityPKField(many=False,write_only=True)
-	geography_id = WardPKField(many=False,write_only=True)
+	ward = WardPKField(many=False,write_only=True)
 	district = serializers.PrimaryKeyRelatedField(read_only=True)
 	municipality = serializers.PrimaryKeyRelatedField(read_only=True)
 	ward = serializers.PrimaryKeyRelatedField(read_only=True)
