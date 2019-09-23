@@ -43,7 +43,7 @@ class Ward(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE)
 	ward = models.PositiveIntegerField(_('ward_number'),validators=[MaxValueValidator(99)])
-	status = models.BooleanField(default=False)
+	status = models.BooleanField(default=True)
 
 	def __str__(self):
 		return "%s , %s - %s" %(self.municipality.district.name,self.municipality.name, self.ward)
