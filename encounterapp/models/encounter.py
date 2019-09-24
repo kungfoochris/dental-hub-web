@@ -34,7 +34,7 @@ class Encounter(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=default_time)
     activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='encounter_area')
-    other_detail = models.CharField(max_length=150, null = True)
+    other_detail = models.CharField(max_length=150,default="")
     geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography')
     updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_encounter')
     updated_at = models.DateField(null=True)

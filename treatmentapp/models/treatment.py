@@ -78,7 +78,7 @@ class Treatment(models.Model):
     tooth75 = models.CharField(choices=REQUEST_CHOICES,default="NONE",max_length=30)
     fv_applied = models.BooleanField(_('fluoride varnish'),default=False)
     treatment_plan_complete = models.BooleanField(_('treatment complete'),default=False)
-    notes = models.TextField(blank=True)
+    notes = models.TextField(default="")
     encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='treatment')
     sdf_whole_mouth = models.BooleanField(default=False)
     # updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_treatment')

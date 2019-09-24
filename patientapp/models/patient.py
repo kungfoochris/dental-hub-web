@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from uuid import uuid4
 from userapp.models import User
 from addressapp.models import Address, District, Municipality ,Ward
-from datetime import date 
+from datetime import date
 from django.core.validators import MaxValueValidator
 from addressapp.models import Geography, Activity
 
@@ -53,7 +53,7 @@ class Patient(models.Model):
 	created_at = models.DateField()
 	recall_date = models.DateField(blank=True,null=True)
 	recall_time = models.TimeField(blank=True,null=True)
-	recall_geography = models.CharField(max_length=150,blank=True,null=True)
+	recall_geography = models.CharField(max_length=150,default="")
 
 
 	def __str__(self):
