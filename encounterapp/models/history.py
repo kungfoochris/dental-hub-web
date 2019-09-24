@@ -18,7 +18,7 @@ class History(models.Model):
 	diabetes = models.BooleanField(default=False)
 	liver_problem = models.BooleanField(_('liver problem'),default=False)
 	rheumatic_fever = models.BooleanField(_('rheumatic fever'),default=False)
-	epilepsy_or_seizures = models.BooleanField(_('epilepsy or seizures'),default=False)
+	seizuers_or_epilepsy = models.BooleanField(_('epilepsy or seizures'),default=False)
 	hepatitis_b_or_c = models.BooleanField(_('hepatitis b or c'),default=False)
 	hiv = models.BooleanField(default=False)
 	no_allergies = models.BooleanField(default=False)

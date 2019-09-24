@@ -91,3 +91,8 @@ class User(AbstractBaseUser):
     @property
     def is_active(self):
         return self.active
+
+    @property
+    def notification_count(self):
+        return self.notification_set.filter(status=True).count()
+

@@ -18,7 +18,7 @@ class Refer(models.Model):
 	no_referal = models.BooleanField(_('no referal'),default=False)
 	health_post = models.BooleanField(_('health post'),default=False)
 	dentist = models.BooleanField(default=False)
-	physician = models.BooleanField(_('general physician'),default=False)
+	general_physician = models.BooleanField(_('general physician'),default=False)
 	hygienist = models.BooleanField(default=False)
 	other = models.CharField(max_length=255,null=True)
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='referral')

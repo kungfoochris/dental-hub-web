@@ -10,7 +10,7 @@ class PatientHistorySerializer(serializers.ModelSerializer):
 	class Meta:
 		model = History
 		fields = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever',\
-			'epilepsy_or_seizures','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
+			'seizuers_or_epilepsy','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
 			'medications', 'no_medications','no_underlying_medical_condition',\
 			'not_taking_any_medications', 'encounter_id')
 
@@ -20,6 +20,6 @@ class PatientHistoryUpdateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = History
 		fields = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever',\
-			'epilepsy_or_seizures','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
+			'seizuers_or_epilepsy','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
 			'medications', 'no_medications','no_underlying_medical_condition',\
 			'not_taking_any_medications', 'encounter_id')

@@ -15,7 +15,7 @@ admin.site.register(Encounter, EncounterAdmin)
 
 
 class HistoryAdmin(admin.ModelAdmin):
-	list_display = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever','epilepsy_or_seizures',\
+	list_display = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
 		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
 		'not_taking_any_medications','medications','no_medications','encounter_id')
 
@@ -25,7 +25,7 @@ admin.site.register(History, HistoryAdmin)
 
 class ReferAdmin(admin.ModelAdmin):
 	list_display = ('id','no_referal','health_post','dentist',\
-		'physician','hygienist','other','encounter_id')
+		'general_physician','hygienist','other','encounter_id')
 
 
 admin.site.register(Refer, ReferAdmin)
