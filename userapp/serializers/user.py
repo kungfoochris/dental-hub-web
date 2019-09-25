@@ -8,7 +8,7 @@ from addressapp.serializers.address import GeoSerializer
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
-    	queryset = Ward.objects.all()
+    	queryset = Ward.objects.filter(status=True)
     	return queryset
 
 
@@ -75,7 +75,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
 		fields = ('image',)
 
 
-		
+
 class PasswordChangeSerializer(serializers.ModelSerializer):
 	old_password = serializers.CharField(required=True,write_only=True)
 	new_password = serializers.CharField(required=True,write_only=True)

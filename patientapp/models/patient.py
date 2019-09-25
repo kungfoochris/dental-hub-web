@@ -53,7 +53,7 @@ class Patient(models.Model):
 	created_at = models.DateField()
 	recall_date = models.DateField(blank=True,null=True)
 	recall_time = models.TimeField(blank=True,null=True)
-	recall_geography = models.PositiveIntegerField(default=0)
+	recall_geography = models.IntegerField(blank=True,default=0)
 
 
 	def __str__(self):

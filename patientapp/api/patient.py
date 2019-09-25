@@ -76,26 +76,47 @@ class PatientAdd(APIView):
                         activity_area_obj = Activity.objects.get(id=serializer.validated_data['activityarea_id'])
                         ward_obj = Ward.objects.get(id=serializer.validated_data['geography_id'])
                         patient_obj = Patient()
-                        patient_obj.first_name = serializer.validated_data['first_name']
-                        patient_obj.last_name = serializer.validated_data['last_name']
-                        patient_obj.middle_name = serializer.validated_data['middle_name']
-                        patient_obj.gender = serializer.validated_data['gender']
-                        patient_obj.dob = serializer.validated_data['dob']
-                        patient_obj.phone = serializer.validated_data['phone']
-                        patient_obj.latitude = serializer.validated_data['latitude']
-                        patient_obj.longitude = serializer.validated_data['longitude']
-                        patient_obj.ward = serializer.validated_data['ward_id']
-                        patient_obj.municipality = serializer.validated_data['municipality_id']
-                        patient_obj.district = serializer.validated_data['district_id']
-                        patient_obj.author = serializer.validated_data['author']
-                        patient_obj.activity_area = activity_area_obj
-                        patient_obj.geography = ward_obj
-                        patient_obj.education = serializer.validated_data['education']
-                        patient_obj.created_at = serializer.validated_data['created_at']
-                        patient_obj.recall_date = serializer.validated_data['recall_date']
-                        patient_obj.recall_time = serializer.validated_data['recall_time']
-                        patient_obj.recall_geography = serializer.validated_data['recall_geography']
-                        patient_obj.save()
+                        if serializer.validated_data['recall_geography']==None:
+                            patient_obj.first_name = serializer.validated_data['first_name']
+                            patient_obj.last_name = serializer.validated_data['last_name']
+                            patient_obj.middle_name = serializer.validated_data['middle_name']
+                            patient_obj.gender = serializer.validated_data['gender']
+                            patient_obj.dob = serializer.validated_data['dob']
+                            patient_obj.phone = serializer.validated_data['phone']
+                            patient_obj.latitude = serializer.validated_data['latitude']
+                            patient_obj.longitude = serializer.validated_data['longitude']
+                            patient_obj.ward = serializer.validated_data['ward_id']
+                            patient_obj.municipality = serializer.validated_data['municipality_id']
+                            patient_obj.district = serializer.validated_data['district_id']
+                            patient_obj.author = serializer.validated_data['author']
+                            patient_obj.activity_area = activity_area_obj
+                            patient_obj.geography = ward_obj
+                            patient_obj.education = serializer.validated_data['education']
+                            patient_obj.created_at = serializer.validated_data['created_at']
+                            patient_obj.recall_date = serializer.validated_data['recall_date']
+                            patient_obj.recall_time = serializer.validated_data['recall_time']
+                            patient_obj.save()
+                        else:
+                            patient_obj.first_name = serializer.validated_data['first_name']
+                            patient_obj.last_name = serializer.validated_data['last_name']
+                            patient_obj.middle_name = serializer.validated_data['middle_name']
+                            patient_obj.gender = serializer.validated_data['gender']
+                            patient_obj.dob = serializer.validated_data['dob']
+                            patient_obj.phone = serializer.validated_data['phone']
+                            patient_obj.latitude = serializer.validated_data['latitude']
+                            patient_obj.longitude = serializer.validated_data['longitude']
+                            patient_obj.ward = serializer.validated_data['ward_id']
+                            patient_obj.municipality = serializer.validated_data['municipality_id']
+                            patient_obj.district = serializer.validated_data['district_id']
+                            patient_obj.author = serializer.validated_data['author']
+                            patient_obj.activity_area = activity_area_obj
+                            patient_obj.geography = ward_obj
+                            patient_obj.education = serializer.validated_data['education']
+                            patient_obj.created_at = serializer.validated_data['created_at']
+                            patient_obj.recall_date = serializer.validated_data['recall_date']
+                            patient_obj.recall_time = serializer.validated_data['recall_time']
+                            patient_obj.recall_geography = serializer.validated_data['recall_geography']
+                            patient_obj.save()
                         return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)
                     logger.error("ActivityArea id does not exists")
                     return Response({"message":"Activity id does not exists"}, status=400)

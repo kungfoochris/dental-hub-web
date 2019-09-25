@@ -64,6 +64,7 @@ class PatientSerializer(serializers.ModelSerializer):
 	ward = serializers.PrimaryKeyRelatedField(read_only=True)
 	updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
 	author = AuthorField(many=False)
+	recall_geography = serializers.IntegerField(default=0)
 	class Meta:
 		model = Patient
 		fields = ('id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
