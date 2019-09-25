@@ -19,7 +19,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -52,7 +52,7 @@ class GeographyPatientListView(APIView):
             serializer = PatientSerializer(add_patient, many=True, context={'request': request})
             return Response(serializer.data,status=200)
         return Response({"message":"only app user can access"},status=400)
-            
+
 class PatientAdd(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = PatientSerializer
@@ -92,6 +92,9 @@ class PatientAdd(APIView):
                         patient_obj.geography = ward_obj
                         patient_obj.education = serializer.validated_data['education']
                         patient_obj.created_at = serializer.validated_data['created_at']
+                        patient_obj.recall_date = serializer.validated_data['recall_date']
+                        patient_obj.recall_time = serializer.validated_data['recall_time']
+                        patient_obj.recall_geography = serializer.validated_data['recall_geography']
                         patient_obj.save()
                         return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)
                     logger.error("ActivityArea id does not exists")
@@ -108,7 +111,7 @@ class PatientUpdateView(APIView):
     serializer_class = PatientUpdateSerializer
 
     def get(self, request, patient_id, format=None):
-        if Patient.objects.filter(id=patient_id).exists():    
+        if Patient.objects.filter(id=patient_id).exists():
             patient_obj = Patient.objects.get(id=patient_id)
             serializer = PatientSerializer(patient_obj, many=False, \
                 context={'request': request})
@@ -140,4 +143,4 @@ class PatientUpdateView(APIView):
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.error("encounter id donot match")
-        return Response({"message":"id do not match"},status=400)          
+        return Response({"message":"id do not match"},status=400)

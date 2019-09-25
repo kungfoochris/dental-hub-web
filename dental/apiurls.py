@@ -10,5 +10,5 @@ urlpatterns = [
     path('', include('patientapp.apiurls')),
     path('', include('encounterapp.apiurls')),
     path('', include('treatmentapp.apiurls')),
-    # path('',include('visualizationapp.apiurls')),
+    path('',include('visualizationapp.apiurls')),
 ]
