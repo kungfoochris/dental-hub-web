@@ -14,7 +14,7 @@ from django.http import JsonResponse
 from treatmentapp.models import Treatment
 from encounterapp.models import Screeing,Encounter,Refer
 
-from nepali.datetime import NepaliDate  
+from nepali.datetime import NepaliDate
 from django.db.models import DurationField, F, ExpressionWrapper
 import datetime
 from django.db.models import Q
@@ -376,7 +376,7 @@ class TreatmentTable1Visualization(APIView):
                 referhealth_post_female = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',health_post=True).count()
                 referhealth_post_child = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,health_post=True).count()
                 referhealth_post_adult = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),health_post=True).count()
-                referhealth_post_old = total_refer-referhealth_post_child-referhealth_post_adult
+                referhealth_post_old = total_health_post-referhealth_post_child-referhealth_post_adult
 
 
                 total_hygienist = Refer.objects.filter(hygienist=True).count()
@@ -384,7 +384,7 @@ class TreatmentTable1Visualization(APIView):
                 referhygienist_female = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',hygienist=True).count()
                 referhygienist_child = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,hygienist=True).count()
                 referhygienist_adult = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),hygienist=True).count()
-                referhygienist_old = total_refer-referhygienist_child-referhygienist_adult
+                referhygienist_old = total_hygienist-referhygienist_child-referhygienist_adult
 
 
                 total_dentist = Refer.objects.filter(dentist=True).count()
@@ -392,20 +392,37 @@ class TreatmentTable1Visualization(APIView):
                 referdentist_female = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',dentist=True).count()
                 referdentist_child = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,dentist=True).count()
                 referdentist_adult = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),dentist=True).count()
-                referdentist_old = total_refer-referdentist_child-referdentist_adult
+                referdentist_old = total_dentist-referdentist_child-referdentist_adult
 
 
-                total_physician = Refer.objects.filter(physician=True).count()
-                referphysician_male = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',physician=True).count()
-                referphysician_female = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',physician=True).count()
-                referphysician_child = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,physician=True).count()
-                referphysician_adult = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),physician=True).count()
-                referphysician_old = total_refer-referphysician_child-referphysician_adult
+                total_physician = Refer.objects.filter(general_physician=True).count()
+                referphysician_male = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',general_physician=True).count()
+                referphysician_female = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',general_physician=True).count()
+                referphysician_child = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,general_physician=True).count()
+                referphysician_adult = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),general_physician=True).count()
+                referphysician_old = total_physician-referphysician_child-referphysician_adult
 
-                return Response([["Kids",0,total_exo_child,total_art_child,total_seal_child,total_sdf_child,totalfv_child,referhealth_post_child, referhygienist_child, referdentist_child, referphysician_child,1],\
-                    ["Adults",0,total_exo_adult,total_art_adult,total_seal_adult,total_sdf_adult,totalfv_adult,referhealth_post_adult, referhygienist_adult, referdentist_adult, referphysician_adult, 1],\
-                    ["Older Adults",0,total_exo_old,total_art_old,total_seal_old,total_sdf_old,totalfv_old,referhealth_post_old, referhygienist_old, referdentist_old, referphysician_old,1],\
-                    ["Total",0,total_exo,total_art,total_seal,total_sdf,total_fv,total_health_post, total_hygienist, total_dentist, total_physician,1]])
+
+                total_refer_other  = Refer.objects.all().values('other').annotate(Count('other')).count()
+                total_refer_male = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male').values('other').annotate(Count('other')).count()
+                total_refer_female = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female').values('other').annotate(Count('other')).count()
+                total_refer_child = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18).values('other').annotate(Count('other')).count()
+                total_refer_adult = Refer.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18)).values('other').annotate(Count('other')).count()
+                total_refer_old = total_refer_other-total_refer_child-total_refer_adult
+
+
+                total_encounter = Encounter.objects.all().count()
+                total_encounter_male = Encounter.objects.select_related('patient').filter(patient__gender='male').count()
+                total_encounter_female = Encounter.objects.select_related('patient').filter(patient__gender='female').count()
+                total_encounter_child = Encounter.objects.select_related('patient').filter(patient__dob__gt=lessthan18).count()
+                total_encounter_adult = Encounter.objects.select_related('patient').filter(patient__dob__range=(greaterthan60, lessthan18)).count()
+                total_encounter_old = total_encounter-total_encounter_child-total_encounter_adult
+
+
+                return Response([["Kids",total_encounter_child,total_exo_child,total_art_child,total_seal_child,total_sdf_child,totalfv_child,referhealth_post_child, referhygienist_child, referdentist_child, referphysician_child,total_refer_child],\
+                    ["Adults",total_encounter_adult,total_exo_adult,total_art_adult,total_seal_adult,total_sdf_adult,totalfv_adult,referhealth_post_adult, referhygienist_adult, referdentist_adult, referphysician_adult, total_refer_adult],\
+                    ["Older Adults",total_encounter_old,total_exo_old,total_art_old,total_seal_old,total_sdf_old,totalfv_old,referhealth_post_old, referhygienist_old, referdentist_old, referphysician_old,total_refer_old],\
+                    ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf,total_fv,total_health_post, total_hygienist, total_dentist, total_physician,total_refer_other]])
             return Response({"treatment_obj":"do not have a permission"},status=400)
 
 class TreatmentTable2Visualization(APIView):
@@ -434,9 +451,100 @@ class Table4Visualization(APIView):
       permission_classes = (IsPostOrIsAuthenticated,)
       def get(self, request, format=None):
             if User.objects.filter(id=request.user.id).exists():
-                return Response([["Preventive Ratio",0, 0, 0, 0, 0,0],\
-                    ["Early Intervention Ratio",0, 0, 0, 0, 0,0],\
-                    ["% Recall",0, 0, 0, 0, 0,0]])
+                total_encounter = Encounter.objects.all().count()
+                encounter_male = Encounter.objects.filter(patient__gender='male').count()
+                encounter_female = Encounter.objects.filter(patient__gender='female').count()
+                encounter_child = Encounter.objects.filter(patient__dob__gt=lessthan18).count()
+                encounter_adult = Encounter.objects.filter(patient__dob__range=(greaterthan60, lessthan18)).count()
+                encounter_old = total_encounter-encounter_child-encounter_adult
+                total_refer = Refer.objects.filter(health_post=True).count()
+                refer_male = Refer.objects.filter(encounter_id__patient__gender='male',health_post=True).count()
+                refer_female = Refer.objects.filter(encounter_id__patient__gender='female',health_post=True).count()
+                refer_child = Refer.objects.filter(encounter_id__patient__dob__gt=lessthan18,health_post=True).count()
+                refer_adult = Refer.objects.filter(encounter_id__patient__dob__range=(greaterthan60,lessthan18),health_post=True).count()
+                refer_old = total_refer-refer_child-refer_adult
+                try:
+                    preventive_ratio_male = (total_seal_male*totalfv_male)/(total_exo_male*total_art_male*total_sdf_male)
+                except:
+                    preventive_ratio_male=0
+                try:
+                    preventive_ratio_female = (total_seal_female*totalfv_female)/(total_exo_female*total_art_female*total_sdf_female)
+                except:
+                    preventive_ratio_female=0
+                try:
+                    preventive_ratio_child = (total_seal_child*totalfv_child)/(total_exo_child*total_art_child*total_sdf_child)
+                except:
+                    preventive_ratio_child=0
+                try:
+                    preventive_ratio_adult = (total_seal_child*totalfv_adult)/(total_exo_adult*total_art_adult*total_sdf_adult)
+                except:
+                    preventive_ratio_adult=0
+                try:
+                    preventive_ratio_old = (total_seal_old*totalfv_old)/(total_exo_old*total_art_old*total_sdf_old)
+                except:
+                    preventive_ratio_old=0
+
+                preventive_ratio_total = preventive_ratio_male+preventive_ratio_female+preventive_ratio_child+preventive_ratio_old
+
+
+                try:
+                    early_intervention_ratio_male = (total_art_male*total_sdf_male)/total_exo_male
+                except:
+                    early_intervention_ratio_male=0
+
+                try:
+                    early_intervention_ratio_female = (total_art_female*total_sdf_female)/total_exo_female
+                except:
+                    early_intervention_ratio_female=0
+
+                try:
+                    early_intervention_ratio_child = (total_art_child*total_sdf_child)/total_exo_child
+                except:
+                    early_intervention_ratio_child=0
+
+                try:
+                    early_intervention_ratio_adult = (total_art_adult*total_sdf_adult)/total_exo_adult
+                except:
+                    early_intervention_ratio_adult=0
+
+                try:
+                    early_intervention_ratio_old = (total_art_old*total_sdf_old)/total_exo_old
+                except:
+                    early_intervention_ratio_old=0
+
+                early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female+early_intervention_ratio_child+early_intervention_ratio_adult+early_intervention_ratio_old
+
+                try:
+                    recall_percent_male = encounter_male/refer_male
+                except:
+                    recall_percent_male=0
+
+                try:
+                    recall_percent_female = encounter_female/refer_female
+                except:
+                    recall_percent_female=0
+
+                try:
+                    recall_percent_child = encounter_child/refer_child
+                except:
+                    recall_percent_child=0
+
+                try:
+                    recall_percent_adult = encounter_adult/refer_adult
+                except:
+                    recall_percent_adult=0
+
+                try:
+                    recall_percent_old = encounter_old/refer_old
+                except:
+                    recall_percent_old=0
+
+                recall_percent_total = recall_percent_male+recall_percent_female+recall_percent_child+recall_percent_adult+recall_percent_old
+
+
+                return Response([["Preventive Ratio",preventive_ratio_male, preventive_ratio_female, preventive_ratio_child, preventive_ratio_adult, preventive_ratio_old,preventive_ratio_total],\
+                    ["Early Intervention Ratio",early_intervention_ratio_male, early_intervention_ratio_female, early_intervention_ratio_child, early_intervention_ratio_adult, early_intervention_ratio_old,early_intervention_ratio_total],\
+                    ["% Recall",recall_percent_male, recall_percent_female, recall_percent_child, recall_percent_adult, recall_percent_old,recall_percent_total]])
             return Response({"treatment_obj":"do not have a permission"},status=400)
 
 
@@ -445,7 +553,7 @@ class VisualizationSetting(APIView):
     def get(self, request, format=None):
         if User.objects.get(id=request.user.id):
             district=['Health Post', 'School Seminar', 'Community Outreach', 'Training']
-            
+
             exo_data=[total_exo_health_post,total_exo_school_obj,total_exo_outreach_obj,total_exo_training_obj]
 
             fv_data=[total_fv_health_post,total_fv_school_obj,total_fv_outreach_obj,total_fv_training_obj]
@@ -454,7 +562,7 @@ class VisualizationSetting(APIView):
             sdf_data=[total_sdf_health_post,total_sdf_school_obj,total_sdf_outreach_obj,total_sdf_training_obj]
 
 
-            
+
             locationChart = {
             'data': {
             'labels': district,
@@ -516,3 +624,64 @@ class VisualizationSetting(APIView):
             }
             return JsonResponse({"locationChart":locationChart})
         return Response({"message":"only admin can create"},status=400)
+
+
+
+
+
+class TreatmentVisualizationLineChart(APIView):
+      def get(self, request, format=None):
+        if User.objects.filter(id=request.user.id).exists():
+            total_encounter=Encounter.objects.all().count()
+            total_recall=Refer.objects.filter(health_post=True).count()
+            try:
+                preventive_ratio = (total_seal*total_fv)/(total_exo*total_art,total_sdf)
+            except:
+                preventive_ratio=0
+
+            try:
+                early_intervention_ratio = (total_art*total_sdf)/total_exo
+            except:
+                early_intervention_ratio=0
+            try:
+                recall = total_encounter/total_recall
+            except:
+                recall=0
+            user_obj = User.objects.all()
+            labels_data=["Preventive Ratio","Early Intervention Ratio","% Recall"]
+            data_data=[]
+            locationChart = {
+            'data': {
+            'labels': labels_data,
+            'datasets': [
+            {
+            'label': "Total",
+            'backgroundColor': 'rgba(255, 206, 86, 0.2)',
+            'borderColor': 'rgba(255, 206, 86, 1)',
+            'borderWidth': 1,
+            'data': [preventive_ratio,early_intervention_ratio,recall]
+            },]},
+            'options': {
+            'aspectRatio': 2.2,
+            'scales': {
+            'yAxes': [{
+            'ticks': {
+            'beginAtZero': 'true'
+            }
+            }]},
+            'title': {
+            'display': 'true',
+            #'text': "Location Chart",
+            'fontSize': 18,
+            'fontFamily': "'Palanquin', sans-serif"
+            },
+            'legend': {
+            'display': 'true',
+            'position': 'bottom',
+            'labels': {
+            'usePointStyle': 'true',
+            'padding': 20,
+            'fontFamily': "'Maven Pro', sans-serif"
+            }}}}
+            return JsonResponse({"locationChart":locationChart})
+        return Response({"message":"only admin can see"},status=400)

@@ -10,10 +10,19 @@ from visualizationapp.api.treatmenttable import TreatmentTableVisualization
 
 from visualizationapp.api.treatmentbargraph import TreatMentBarGraph
 from visualizationapp.api.table import TreatmentTable1Visualization, TreatmentTable2Visualization,\
-Table3Visualization,Table4Visualization, VisualizationSetting
+Table3Visualization,Table4Visualization, VisualizationSetting,TreatmentVisualizationLineChart
 
 from visualizationapp.api.wardvisualization import WardVisualization1,WardTreatmentTableVisualization1,\
 WardTableVisualization2,WardSettingVisualization, WardTreatmentVisualization
+
+
+from visualizationapp.api.filtervisualization import OverviewVisualization,\
+TreatmentVisualizationFilter
+
+from visualizationapp.api.crosssectional import SectionalVisualization
+
+
+from visualizationapp.api.wardlinechart import WardlineVisualization
 
 
 app_name = 'visualizationapp'
@@ -34,5 +43,10 @@ urlpatterns = [
 	path('wardtreatmenttablevisualizaation',WardTableVisualization2.as_view()),
 	path('wardsettingsgraph',WardSettingVisualization.as_view()),
 	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
+	path('overviewvisualization/<start_date>/<end_date>/<location_id>/<healthpost_id>/<seminar_id>',OverviewVisualization.as_view()),
+	path('treatmentvisualization/<ward_id>',TreatmentVisualizationFilter.as_view()),
+	path('sectional',SectionalVisualization.as_view()),
+	path('treatmentvisualizationlinechart',TreatmentVisualizationLineChart.as_view()),
+	path('wardlineVisualization',WardlineVisualization.as_view()),
 	]
 urlpatterns = format_suffix_patterns(urlpatterns)

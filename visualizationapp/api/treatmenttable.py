@@ -14,7 +14,7 @@ from django.http import JsonResponse
 from treatmentapp.models import Treatment
 from encounterapp.models import Screeing,Encounter
 
-from nepali.datetime import NepaliDate  
+from nepali.datetime import NepaliDate
 from django.db.models import DurationField, F, ExpressionWrapper
 import datetime
 # from datetime import datetime
@@ -47,7 +47,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 #             # old_patient=Patient.objects.annotate(diff=ExpressionWrapper(d - F('dob'), output_field=DurationField())).filter(diff__gt=datetime.timedelta(365*60)).count()
 #             # adult_patient=Patient.objects.annotate(diff=ExpressionWrapper(d - F('dob'), output_field=DurationField())).filter(diff__range=(datetime.timedelta(365*18),datetime.timedelta(365*60))).count()
 #             # child_patient=Patient.objects.annotate(diff=ExpressionWrapper(d - F('dob'), output_field=DurationField())).filter(diff__lt=datetime.timedelta(1)).count()
-            
+
 #             return Response({"child_patient":child_patient,"adult_patient":adult_patient,"old_patient":old_patient})
 
 
@@ -96,8 +96,6 @@ class TreatmentTableVisualization(APIView):
                 contact_adult = Encounter.objects.select_related('patient').filter(patient__dob__range=(greaterthan60, lessthan18)).count()
                 contact_old= total_encounter-contact_child-contact_adult
 
-                return Response([["Number of Cavities Prevented",cavities_prevented_male, cavities_prevented_female, cavities_prevented_child, cavities_prevented_adult, cavities_prevented_old,total_cavities],\
+                return Response([["Number of Cavities Prevented",round(cavities_prevented_male,2), round(cavities_prevented_female,2), round(cavities_prevented_child,2), round(cavities_prevented_adult,2), round(cavities_prevented_old,2),round(total_cavities,2)],\
                     ["Contacts", contact_male, contact_female, contact_child, contact_adult, contact_old, total_encounter]])
             return Response({"treatment_obj":"do not have a permission"},status=400)
-
-

@@ -24,7 +24,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -43,9 +43,6 @@ class Visualization(APIView):
             female.append(female_count)
             male.append(male_count)
             other.append(other_count)
-            print(male)
-            print(female)
-            print(other)
             locationChart = {
             'data': {
             'labels': ['Female', 'Male', 'Other'],
@@ -115,7 +112,7 @@ class Visualization1(APIView):
             female.append(female_count)
             male.append(male_count)
             total.append(total_patient)
-            
+
             locationChart = {
             'data': {
             'labels': district,
@@ -231,7 +228,7 @@ class Visualization1(APIView):
 #                 male.append(male_count)
 #                 total.append(total_patient)
 #                 other.append(other_count)
-            
+
 #             locationChart = {
 #             'data': {
 #             'labels': district,
