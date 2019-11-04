@@ -22,7 +22,7 @@ class WardlineVisualization(APIView):
                 if Patient.objects.filter(geography__id=i.id).exists():
                     total_patient = Patient.objects.filter(geography__id=i.id).count()
                     geography.append(i.name)
-                    geography_patient.append(total_patient)
+                    geography_patient.append(round(total_patient,2))
             labels_data=["Preventive Ratio","Early Intervention Ratio","% Recall"]
             data_data=[]
             locationChart = {

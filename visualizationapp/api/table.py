@@ -542,9 +542,9 @@ class Table4Visualization(APIView):
                 recall_percent_total = recall_percent_male+recall_percent_female+recall_percent_child+recall_percent_adult+recall_percent_old
 
 
-                return Response([["Preventive Ratio",preventive_ratio_male, preventive_ratio_female, preventive_ratio_child, preventive_ratio_adult, preventive_ratio_old,preventive_ratio_total],\
-                    ["Early Intervention Ratio",early_intervention_ratio_male, early_intervention_ratio_female, early_intervention_ratio_child, early_intervention_ratio_adult, early_intervention_ratio_old,early_intervention_ratio_total],\
-                    ["% Recall",recall_percent_male, recall_percent_female, recall_percent_child, recall_percent_adult, recall_percent_old,recall_percent_total]])
+                return Response([["Preventive Ratio",round(preventive_ratio_male,2), round(preventive_ratio_female,2), round(preventive_ratio_child,2), round(preventive_ratio_adult,2), round(preventive_ratio_old,2),round(preventive_ratio_total,2)],\
+                    ["Early Intervention Ratio",round(early_intervention_ratio_male,2), round(early_intervention_ratio_female,2), round(early_intervention_ratio_child,2), round(early_intervention_ratio_adult,2), round(early_intervention_ratio_old,2),round(early_intervention_ratio_total,2)],\
+                    ["% Recall",round(recall_percent_male,2), round(recall_percent_female,2), round(recall_percent_child,2), round(recall_percent_adult,2), round(recall_percent_old,2),round(recall_percent_total,2)]])
             return Response({"treatment_obj":"do not have a permission"},status=400)
 
 
