@@ -158,7 +158,7 @@ class TreatmentVisualizationLineChart1(APIView):
             'datasets': datasets1
             },
             'options': {
-            'aspectRatio': 0.5,
+            'aspectRatio': 1.1,
             'maintainAspectRatio': "false",
             'title': {
                 'display': '"true"',
@@ -250,7 +250,7 @@ class TreatmentVisualizationLineChart2(APIView):
             'datasets': datasets1
             },
             'options': {
-            'aspectRatio': 0.5,
+            'aspectRatio': 1.1,
             'maintainAspectRatio': "false",
             'title': {
                 'display': '"true"',
