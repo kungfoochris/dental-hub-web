@@ -11,12 +11,14 @@ from rest_framework import filters
 from userapp.models import User
 import os
 from django.http import JsonResponse
+from treatmentapp.models import Treatment
+from encounterapp.models import Encounter
 
 import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -74,3 +76,10 @@ class LoginVisualization(APIView):
             'fontFamily': "'Maven Pro', sans-serif"}
             }}}
             return JsonResponse({"locationChart":locationChart})
+
+
+class LoginVisualization1(APIView):
+    def get(self, request, format=None):
+        total_encounter = Encounter.objects.all().count()
+        total_patient = Patient.objects.all().count()
+        return Response({'total_encounter':total_encounter,'total_patient':total_patient})
