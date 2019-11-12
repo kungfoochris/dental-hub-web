@@ -3,14 +3,14 @@ services:
   db:
     image: mariadb:latest
     ports:
-      - "3366:3306"
+      - "3306:3306"
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: 'demodentalhub_db'
-      MYSQL_USER: 'demodentalhub'
-      MYSQL_PASSWORD: 'demodental_password'
-      MYSQL_ROOT_PASSWORD: 'demodental_root_password'
+      MYSQL_DATABASE: 'dentalhub_db'
+      MYSQL_USER: 'dentalhub'
+      MYSQL_PASSWORD: 'dental_password'
+      MYSQL_ROOT_PASSWORD: 'dental_root_password'
 
   # redis:
   #   image: "redis:alpine"
@@ -25,7 +25,7 @@ services:
       - ./vue:/usr/share/nginx/html
     restart: "always"
     ports:
-      - "6064:6064"
+      - "6062:6062"
     depends_on:
       - backend
   backend:
@@ -35,7 +35,7 @@ services:
     command: ["./docker/entry.sh"]
     restart: "always"
     ports:
-      - "6065:6065"
+      - "6061:6061"
     volumes:
       - .:/code
     depends_on:
@@ -45,9 +45,9 @@ services:
       SECRET_KEY: 'tg7703_ddewirye6t0d^mam7-=42&!k&wv5dhi$$(35kouzi3ks'
       DATABASE_ENGINE: django.db.backends.mysql
       DATABASE_HOST: db
-      DATABASE_NAME: demodentalhub_db
-      DATABASE_USER: demodentalhub
-      DATABASE_PASSWORD: demodental_root_password
+      DATABASE_NAME: dentalhub_db
+      DATABASE_USER: dentalhub
+      DATABASE_PASSWORD: dental_root_password
       DATABASE_PORT: 3306
   # celery:
   #   build:
