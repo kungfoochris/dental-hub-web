@@ -22,7 +22,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -33,7 +33,7 @@ class UserListView(APIView):
     serializer_class = UserSerializer
 
     def get(self, request, format=None):
-        if User.objects.filter(id=request.user.id,admin=True).exists():
+        if User.objects.filter(id=request.user.id).exists():
             user=CustomUser.objects.all().exclude(admin=True)
             serializer = UserSerializer(user, many=True, \
                 context={'request': request})
@@ -66,14 +66,14 @@ class UserListView(APIView):
                                 # template_name = "email/activation.html"
                                 # emailsend(request.user.id,text_content,template_name,password)
                                 return Response({"message":"User added successfully.","full_name":user_obj.full_name,"username":user_obj.username,"active":user_obj.active},status=200)
-                            logger.error("Last name should be only combination of string") 
+                            logger.error("Last name should be only combination of string")
                             return Response({"message":"Last name should be only combination of string"},status=400)
-                        logger.error("First name should be only combination of string") 
+                        logger.error("First name should be only combination of string")
                         return Response({"message":"First name should be only combination of string"},status=400)
                     print(serializer.errors)
                     return Response({'message':serializer.errors}, status=400)
                 return Response({"message":"password do not match"},status=400)
-            logger.error("This email already exists.")     
+            logger.error("This email already exists.")
             return Response({'message':'This username already exists.'},status=400)
         logger.error("Access is denied.")
         return Response({"message":"Access is denied."},status=400)
@@ -113,7 +113,7 @@ class UserResetPassword(APIView):
                     user_obj.token=None
                     user_obj.save()
                     return Response({'message':'Password is successful reset'},status=200)
-                return Response({'message':'Token is expired'},status=400) 
+                return Response({'message':'Token is expired'},status=400)
             return Response({'message':serializer.errors}, status=400)
         return Response({'message':'Your new password and confirmation password do not match.'},status=400)
 
@@ -177,7 +177,7 @@ class UserChangepassword(APIView):
                     return Response({'message':'password change successfully'},status=200)
                 return Response({'message':'old password do not match'},status=400)
             return Response({'message':'Your new password and confirmation password do not match.'},status=400)
-        return Response({'message':serializer.errors}, status=400) 
+        return Response({'message':serializer.errors}, status=400)
 
 class AdminUserCheckView(APIView):
     serializer_class = CheckUSerializer
@@ -233,9 +233,9 @@ class UpdateUserDataView(APIView):
                             print(i)
                             user_obj.location.add(i)
                         return Response({"message":"Update data successful"},status=200)
-                    logger.error("Last name should be only combination of string") 
+                    logger.error("Last name should be only combination of string")
                     return Response({"message":"Last name should be only combination of string"},status=400)
-                logger.error("First name should be only combination of string") 
+                logger.error("First name should be only combination of string")
                 return Response({"message":"First name should be only combination of string"},status=400)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response({"message":"only admin can add"},status=400)
@@ -290,7 +290,7 @@ class AdminPasswordRest(APIView):
                         user_obj.password = serializer.validated_data['new_password']
                         user_obj.save()
                         return Response({'message':'Password is successful reset'},status=200)
-                    return Response({'message':'Username does not exist or User is in active'},status=400) 
+                    return Response({'message':'Username does not exist or User is in active'},status=400)
                 return Response({'message':serializer.errors}, status=400)
             return Response({'message':'Your new password and confirmation password do not match.'},status=400)
         return Response({"message":"only admin can add"},status=400)
