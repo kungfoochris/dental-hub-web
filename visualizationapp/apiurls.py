@@ -52,7 +52,7 @@ urlpatterns = [
 	path('wardtreatmenttablevisualizaation',WardTableVisualization2.as_view()),
 	path('wardsettingsgraph',WardSettingVisualization.as_view()),
 	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
-	path('overviewvisualization/<start_date>/<end_date>/<location_id>/<healthpost_id>/<seminar_id>',OverviewVisualization.as_view()),
+	path('overviewvisualization/<start_date>/<end_date>/<location_id>',OverviewVisualization.as_view()),
 	path('sectional',SectionalVisualization.as_view()),
 	path('treatmentvisualizationlinechart',TreatmentVisualizationLineChart.as_view()),
 	path('treatmentvisualizationlinechart1',TreatmentVisualizationLineChart1.as_view()),

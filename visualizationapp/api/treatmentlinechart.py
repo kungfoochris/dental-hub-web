@@ -66,7 +66,7 @@ class TreatmentVisualizationLineChart(APIView):
             'datasets': datasets1
             },
             'options': {
-            'aspectRatio': 0.5,
+            'aspectRatio': 2.1,
             'maintainAspectRatio': "false",
             'title': {
                 'display': '"true"',
