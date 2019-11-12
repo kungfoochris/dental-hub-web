@@ -121,11 +121,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 DATABASES = {
     'default':{
         'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.environ.get('DATABASE_NAME', 'dentalhub_db'),
-        'USER': os.environ.get('DATABASE_USER', 'dentalhub'),
+        'NAME': os.environ.get('DATABASE_NAME', 'd_db'),
+        'USER': os.environ.get('DATABASE_USER', 'dhub'),
         'HOST': os.environ.get('DATABASE_HOST', 'db'),
         'PORT': os.environ.get('DATABASE_PORT', 3306),
-        'PASSWORD':os.environ.get('POSTGRES_PASSWORD','dental_password'),
+        'PASSWORD':os.environ.get('POSTGRES_PASSWORD','d_password'),
     }
 }
 
