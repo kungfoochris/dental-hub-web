@@ -11,8 +11,7 @@ class PatientScreeingSerializer(serializers.ModelSerializer):
 		model = Screeing
 		fields = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth','cavity_permanent_posterior_teeth',\
 			'cavity_permanent_anterior_teeth','need_sealant','reversible_pulpitis','need_art_filling','need_extraction',\
-			'need_sdf','encounter_id','active_infection','high_blood_pressure',\
-			'low_blood_pressure','thyroid_disorder')
+			'need_sdf','encounter_id','active_infection')
 
 
 class PatientScreeingUpdateSerializer(serializers.ModelSerializer):
@@ -21,6 +20,4 @@ class PatientScreeingUpdateSerializer(serializers.ModelSerializer):
 		model = Screeing
 		fields = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth','cavity_permanent_posterior_teeth',\
 			'cavity_permanent_anterior_teeth','need_sealant','reversible_pulpitis','need_art_filling','need_extraction',\
-			'need_sdf','encounter_id','active_infection','high_blood_pressure',\
-			'low_blood_pressure','thyroid_disorder')
-
+			'need_sdf','encounter_id','active_infection')

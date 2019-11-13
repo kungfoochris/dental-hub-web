@@ -22,6 +22,10 @@ from django.db.models import Q
 from visualizationapp.models import Visualization
 from addressapp.models import Activity
 
+from visualizationapp.serializers.visualization import OverViewVisualization
+import datetime
+
+
 # from datetime import datetime
 # from datetime import timedelta
 import logging
@@ -43,64 +47,137 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 
 class OverviewVisualization1(APIView):
-      permission_classes = (IsPostOrIsAuthenticated,)
-      def get(self, request, format=None):
-            if User.objects.filter(id=request.user.id).exists():
-                total_encounter = Visualization.objects.all().count()
-                total_exo = Visualization.objects.filter(exo=True).count()
-                total_art = Visualization.objects.filter(art=True).count()
-                total_seal = Visualization.objects.filter(seal=True).count()
-                total_sdf = Visualization.objects.filter(sdf=True).count()
-                total_fv = Visualization.objects.filter(fv=True).count()
-                total_health_post = Visualization.objects.filter(refer_hp=True).count()
-                total_refer_hyg = Visualization.objects.filter(refer_hyg=True).count()
-                total_refer_dent = Visualization.objects.filter(refer_dent=True).count()
-                total_refer_dr = Visualization.objects.filter(refer_dr=True).count()
-                total_refer_other = Visualization.objects.filter(refer_other=True).count()
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = OverViewVisualization
+    def get(self, request, format=None):
+        if User.objects.filter(id=request.user.id).exists():
+            total_encounter = Visualization.objects.all().count()
+            total_exo = Visualization.objects.filter(exo=True).count()
+            total_art = Visualization.objects.filter(art=True).count()
+            total_seal = Visualization.objects.filter(seal=True).count()
+            total_sdf = Visualization.objects.filter(sdf=True).count()
+            total_fv = Visualization.objects.filter(fv=True).count()
+            total_health_post = Visualization.objects.filter(refer_hp=True).count()
+            total_refer_hyg = Visualization.objects.filter(refer_hyg=True).count()
+            total_refer_dent = Visualization.objects.filter(refer_dent=True).count()
+            total_refer_dr = Visualization.objects.filter(refer_dr=True).count()
+            total_refer_other = Visualization.objects.filter(refer_other=True).count()
 
 
-                kid_encounter = Visualization.objects.filter(age__lt=18).count()
-                kid_exo = Visualization.objects.filter(age__lt=18,exo=True).count()
-                kid_art = Visualization.objects.filter(age__lt=18,art=True).count()
-                kid_seal = Visualization.objects.filter(age__lt=18,seal=True).count()
-                kid_sdf = Visualization.objects.filter(age__lt=18,sdf=True).count()
-                kid_fv = Visualization.objects.filter(age__lt=18,fv=True).count()
-                kid_health_post = Visualization.objects.filter(age__lt=18,refer_hp=True).count()
-                kid_refer_hyg = Visualization.objects.filter(age__lt=18,refer_hyg=True).count()
-                kid_refer_dent = Visualization.objects.filter(age__lt=18,refer_dent=True).count()
-                kid_refer_dr = Visualization.objects.filter(age__lt=18,refer_dr=True).count()
-                kid_refer_other = Visualization.objects.filter(age__lt=18,refer_other=True).count()
+            kid_encounter = Visualization.objects.filter(age__lt=18).count()
+            kid_exo = Visualization.objects.filter(age__lt=18,exo=True).count()
+            kid_art = Visualization.objects.filter(age__lt=18,art=True).count()
+            kid_seal = Visualization.objects.filter(age__lt=18,seal=True).count()
+            kid_sdf = Visualization.objects.filter(age__lt=18,sdf=True).count()
+            kid_fv = Visualization.objects.filter(age__lt=18,fv=True).count()
+            kid_health_post = Visualization.objects.filter(age__lt=18,refer_hp=True).count()
+            kid_refer_hyg = Visualization.objects.filter(age__lt=18,refer_hyg=True).count()
+            kid_refer_dent = Visualization.objects.filter(age__lt=18,refer_dent=True).count()
+            kid_refer_dr = Visualization.objects.filter(age__lt=18,refer_dr=True).count()
+            kid_refer_other = Visualization.objects.filter(age__lt=18,refer_other=True).count()
 
-                adult_encounter = Visualization.objects.filter(age__range=(18,60)).count()
-                adult_exo = Visualization.objects.filter(age__range=(18,60),exo=True).count()
-                adult_art = Visualization.objects.filter(age__range=(18,60),art=True).count()
-                adult_seal = Visualization.objects.filter(age__range=(18,60),seal=True).count()
-                adult_sdf = Visualization.objects.filter(age__range=(18,60),sdf=True).count()
-                adult_fv = Visualization.objects.filter(age__range=(18,60),fv=True).count()
-                adult_health_post = Visualization.objects.filter(age__range=(18,60),refer_hp=True).count()
-                adult_refer_hyg = Visualization.objects.filter(age__range=(18,60),refer_hyg=True).count()
-                adult_refer_dent = Visualization.objects.filter(age__range=(18,60),refer_dent=True).count()
-                adult_refer_dr = Visualization.objects.filter(age__range=(18,60),refer_dr=True).count()
-                adult_refer_other = Visualization.objects.filter(age__range=(18,60),refer_other=True).count()
+            adult_encounter = Visualization.objects.filter(age__range=(18,60)).count()
+            adult_exo = Visualization.objects.filter(age__range=(18,60),exo=True).count()
+            adult_art = Visualization.objects.filter(age__range=(18,60),art=True).count()
+            adult_seal = Visualization.objects.filter(age__range=(18,60),seal=True).count()
+            adult_sdf = Visualization.objects.filter(age__range=(18,60),sdf=True).count()
+            adult_fv = Visualization.objects.filter(age__range=(18,60),fv=True).count()
+            adult_health_post = Visualization.objects.filter(age__range=(18,60),refer_hp=True).count()
+            adult_refer_hyg = Visualization.objects.filter(age__range=(18,60),refer_hyg=True).count()
+            adult_refer_dent = Visualization.objects.filter(age__range=(18,60),refer_dent=True).count()
+            adult_refer_dr = Visualization.objects.filter(age__range=(18,60),refer_dr=True).count()
+            adult_refer_other = Visualization.objects.filter(age__range=(18,60),refer_other=True).count()
 
 
-                old_encounter = Visualization.objects.filter(age__gt=60).count()
-                old_exo = Visualization.objects.filter(age__gt=60,exo=True).count()
-                old_art = Visualization.objects.filter(age__gt=60,art=True).count()
-                old_seal = Visualization.objects.filter(age__gt=60,seal=True).count()
-                old_sdf = Visualization.objects.filter(age__gt=60,sdf=True).count()
-                old_fv = Visualization.objects.filter(age__gt=60,fv=True).count()
-                old_health_post = Visualization.objects.filter(age__gt=60,refer_hp=True).count()
-                old_refer_hyg = Visualization.objects.filter(age__gt=60,refer_hyg=True).count()
-                old_refer_dent = Visualization.objects.filter(age__gt=60,refer_dent=True).count()
-                old_refer_dr = Visualization.objects.filter(age__gt=60,refer_dr=True).count()
-                old_refer_other = Visualization.objects.filter(age__gt=60,refer_other=True).count()
+            old_encounter = Visualization.objects.filter(age__gt=60).count()
+            old_exo = Visualization.objects.filter(age__gt=60,exo=True).count()
+            old_art = Visualization.objects.filter(age__gt=60,art=True).count()
+            old_seal = Visualization.objects.filter(age__gt=60,seal=True).count()
+            old_sdf = Visualization.objects.filter(age__gt=60,sdf=True).count()
+            old_fv = Visualization.objects.filter(age__gt=60,fv=True).count()
+            old_health_post = Visualization.objects.filter(age__gt=60,refer_hp=True).count()
+            old_refer_hyg = Visualization.objects.filter(age__gt=60,refer_hyg=True).count()
+            old_refer_dent = Visualization.objects.filter(age__gt=60,refer_dent=True).count()
+            old_refer_dr = Visualization.objects.filter(age__gt=60,refer_dr=True).count()
+            old_refer_other = Visualization.objects.filter(age__gt=60,refer_other=True).count()
 
-                return Response([["Kids",kid_encounter, kid_exo, kid_art, kid_seal, kid_sdf, kid_fv, kid_health_post, kid_refer_hyg, kid_refer_dent, kid_refer_dr ,kid_refer_other],\
-                    ["Adults",adult_encounter, adult_exo, adult_art, adult_seal, adult_sdf, adult_fv, adult_health_post, adult_refer_hyg, adult_refer_dent, adult_refer_dr, adult_refer_other],\
-                    ["Older Adults",old_encounter, old_exo,old_art,old_seal,old_sdf,old_fv,old_health_post, old_refer_hyg, old_refer_dent, old_refer_dr,old_refer_other],\
-                    ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf,total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
-            return Response({"treatment_obj":"do not have a permission"},status=400)
+            return Response([["Kids",kid_encounter, kid_exo, kid_art, kid_seal, kid_sdf, kid_fv, kid_health_post, kid_refer_hyg, kid_refer_dent, kid_refer_dr ,kid_refer_other],\
+                ["Adults",adult_encounter, adult_exo, adult_art, adult_seal, adult_sdf, adult_fv, adult_health_post, adult_refer_hyg, adult_refer_dent, adult_refer_dr, adult_refer_other],\
+                ["Older Adults",old_encounter, old_exo,old_art,old_seal,old_sdf,old_fv,old_health_post, old_refer_hyg, old_refer_dent, old_refer_dr,old_refer_other],\
+                ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf,total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
+        return Response({"treatment_obj":"do not have a permission"},status=400)
+    def post(self, request, format=None):
+        serializer = OverViewVisualization(data=request.data,context={'request': request})
+        if serializer.is_valid():
+            print(serializer.validated_data['start_date'])
+            print(type(serializer.validated_data['start_date']))
+            start_date = NepaliDate.from_date(serializer.validated_data['start_date'])
+            end_date = NepaliDate.from_date(serializer.validated_data['end_date'])
+            print(start_date)
+            print(end_date)
+            location = serializer.validated_data['location']
+            health_post = serializer.validated_data['health_post']
+            seminar = serializer.validated_data['seminar']
+            outreach = serializer.validated_data['outreach']
+            training = serializer.validated_data['training']
+
+            total_encounter = Visualization.objects.filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_exo = Visualization.objects.filter(exo=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_art = Visualization.objects.filter(art=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_seal = Visualization.objects.filter(seal=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_sdf = Visualization.objects.filter(sdf=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_fv = Visualization.objects.filter(fv=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_health_post = Visualization.objects.filter(refer_hp=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_refer_hyg = Visualization.objects.filter(refer_hyg=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_refer_dent = Visualization.objects.filter(refer_dent=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_refer_dr = Visualization.objects.filter(refer_dr=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_refer_other = Visualization.objects.filter(refer_other=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+
+
+            kid_encounter = Visualization.objects.filter(age__lt=18).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_exo = Visualization.objects.filter(age__lt=18,exo=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_art = Visualization.objects.filter(age__lt=18,art=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_seal = Visualization.objects.filter(age__lt=18,seal=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_sdf = Visualization.objects.filter(age__lt=18,sdf=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_fv = Visualization.objects.filter(age__lt=18,fv=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_health_post = Visualization.objects.filter(age__lt=18,refer_hp=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_refer_hyg = Visualization.objects.filter(age__lt=18,refer_hyg=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_refer_dent = Visualization.objects.filter(age__lt=18,refer_dent=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_refer_dr = Visualization.objects.filter(age__lt=18,refer_dr=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            kid_refer_other = Visualization.objects.filter(age__lt=18,refer_other=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+
+            adult_encounter = Visualization.objects.filter(age__range=(18,60)).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_exo = Visualization.objects.filter(age__range=(18,60),exo=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_art = Visualization.objects.filter(age__range=(18,60),art=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_seal = Visualization.objects.filter(age__range=(18,60),seal=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_sdf = Visualization.objects.filter(age__range=(18,60),sdf=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_fv = Visualization.objects.filter(age__range=(18,60),fv=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_health_post = Visualization.objects.filter(age__range=(18,60),refer_hp=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_refer_hyg = Visualization.objects.filter(age__range=(18,60),refer_hyg=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_refer_dent = Visualization.objects.filter(age__range=(18,60),refer_dent=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_refer_dr = Visualization.objects.filter(age__range=(18,60),refer_dr=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            adult_refer_other = Visualization.objects.filter(age__range=(18,60),refer_other=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+
+
+            old_encounter = Visualization.objects.filter(age__gt=60).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_exo = Visualization.objects.filter(age__gt=60,exo=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_art = Visualization.objects.filter(age__gt=60,art=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_seal = Visualization.objects.filter(age__gt=60,seal=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_sdf = Visualization.objects.filter(age__gt=60,sdf=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_fv = Visualization.objects.filter(age__gt=60,fv=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_health_post = Visualization.objects.filter(age__gt=60,refer_hp=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_refer_hyg = Visualization.objects.filter(age__gt=60,refer_hyg=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_refer_dent = Visualization.objects.filter(age__gt=60,refer_dent=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_refer_dr = Visualization.objects.filter(age__gt=60,refer_dr=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            old_refer_other = Visualization.objects.filter(age__gt=60,refer_other=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+
+            return Response([["Kids",kid_encounter, kid_exo, kid_art, kid_seal, kid_sdf, kid_fv, kid_health_post, kid_refer_hyg, kid_refer_dent, kid_refer_dr ,kid_refer_other],\
+                ["Adults",adult_encounter, adult_exo, adult_art, adult_seal, adult_sdf, adult_fv, adult_health_post, adult_refer_hyg, adult_refer_dent, adult_refer_dr, adult_refer_other],\
+                ["Older Adults",old_encounter, old_exo,old_art,old_seal,old_sdf,old_fv,old_health_post, old_refer_hyg, old_refer_dent, old_refer_dr,old_refer_other],\
+                ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf,total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
+            return Response({"message":"data accept is denied."},status=200)
+        return Response({"message":serializer.error},status=400)
+
 
 class TreatmentTable2Visualization(APIView):
       permission_classes = (IsPostOrIsAuthenticated,)

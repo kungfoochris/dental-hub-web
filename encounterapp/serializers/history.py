@@ -12,7 +12,8 @@ class PatientHistorySerializer(serializers.ModelSerializer):
 		fields = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever',\
 			'seizuers_or_epilepsy','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
 			'medications', 'no_medications','no_underlying_medical_condition',\
-			'not_taking_any_medications', 'encounter_id')
+			'not_taking_any_medications', 'encounter_id','high_blood_pressure',\
+			'low_blood_pressure','thyroid_disorder')
 
 
 class PatientHistoryUpdateSerializer(serializers.ModelSerializer):
@@ -22,4 +23,5 @@ class PatientHistoryUpdateSerializer(serializers.ModelSerializer):
 		fields = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever',\
 			'seizuers_or_epilepsy','hepatitis_b_or_c','hiv','no_allergies','allergies','other',\
 			'medications', 'no_medications','no_underlying_medical_condition',\
-			'not_taking_any_medications', 'encounter_id')
+			'not_taking_any_medications', 'encounter_id','high_blood_pressure',\
+			'low_blood_pressure','thyroid_disorder')

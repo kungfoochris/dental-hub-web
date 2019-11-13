@@ -102,7 +102,9 @@ class OverviewVisualization(APIView):
                         ["Older Adults",old_encounter, old_exo,old_art,old_seal,old_sdf,old_fv,old_health_post, old_refer_hyg, old_refer_dent, old_refer_dr,old_refer_other],\
                         ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf,total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
                 else:
-                    total_encounter = Visualization.objects.filter(create_at__range=[start_date,end_date],geography_id=location_id).count()
+                    print(location_id)
+                    print(type(location_id))
+                    total_encounter = Visualization.objects.filter(created_at__range=[start_date,end_date],geography_id=location_id).count()
                     total_exo = Visualization.objects.filter(exo=True).count()
                     total_art = Visualization.objects.filter(art=True).count()
                     total_seal = Visualization.objects.filter(seal=True).count()
