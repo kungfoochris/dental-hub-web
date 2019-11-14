@@ -24,3 +24,19 @@ class OverViewVisualization(serializers.ModelSerializer):
         model = Visualization
         fields = ("start_date","end_date","location","health_post",'seminar',\
         'outreach','training')
+
+
+
+class TreatMentBarGraphVisualization(serializers.ModelSerializer):
+    start_date = serializers.DateField(write_only=True,required=True)
+    end_date = serializers.DateField(write_only=True,required=True)
+    location = serializers.CharField(write_only=True,required=True)
+    class Meta:
+        model = Visualization
+        fields = ("start_date","end_date","location")
+
+class WardlineVisualizationSerializer(serializers.ModelSerializer):
+    start_date = serializers.DateField(write_only=True,required=True)
+    class Meta:
+        model = Visualization
+        fields = ("start_date",)

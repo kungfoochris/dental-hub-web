@@ -40,7 +40,7 @@ class User(AbstractBaseUser):
     username = models.CharField(max_length=255, unique=True)
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
-    admin = models.BooleanField(default=False) 
+    admin = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100,default='admin')
     middle_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100)
@@ -95,4 +95,3 @@ class User(AbstractBaseUser):
     @property
     def notification_count(self):
         return self.notification_set.filter(status=True).count()
-
