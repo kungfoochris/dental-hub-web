@@ -56,7 +56,7 @@ class SectionalVisualization(APIView):
               total_active_infection_12=Visualization.objects.filter(age=12,active_infection=True).count()
               total_active_infection_15=Visualization.objects.filter(age=15,active_infection=True).count()
               total_active_infection_child=Visualization.objects.filter(age__lt=18,active_infection=True).count()
-              total_active_infection_adult=Visualization.objects.filter(age__range=[60,18],active_infection=True).count()
+              total_active_infection_adult=Visualization.objects.filter(age__range=(18,60),active_infection=True).count()
               total_active_infection_old=Visualization.objects.filter(age__gt=60,active_infection=True).count()
 
               total_carries_risk=Visualization.objects.all().values('carries_risk').annotate(Count('carries_risk')).count()
@@ -64,7 +64,7 @@ class SectionalVisualization(APIView):
               total_carries_risk_12=Visualization.objects.filter(age=12).values('carries_risk').annotate(Count('carries_risk')).count()
               total_carries_risk_15=Visualization.objects.filter(age=15).values('carries_risk').annotate(Count('carries_risk')).count()
               total_carries_risk_child=Visualization.objects.filter(age__lt=18).values('carries_risk').annotate(Count('carries_risk')).count()
-              total_carries_risk_adult=Visualization.objects.filter(age__range=[60,18]).values('carries_risk').annotate(Count('carries_risk')).count()
+              total_carries_risk_adult=Visualization.objects.filter(age__range=(18,60)).values('carries_risk').annotate(Count('carries_risk')).count()
               total_carries_risk_old=Visualization.objects.filter(age__gt=60).values('carries_risk').annotate(Count('carries_risk')).count()
 
               otal_decayed_primary_teeth=Visualization.objects.filter(decayed_primary_teeth=True).count()
@@ -72,7 +72,7 @@ class SectionalVisualization(APIView):
               total_decayed_primary_teeth_12=Visualization.objects.filter(age=12,decayed_primary_teeth=True).count()
               total_decayed_primary_teeth_15=Visualization.objects.filter(age=15,decayed_primary_teeth=True).count()
               total_decayed_primary_teeth_child=Visualization.objects.filter(age__lt=18,decayed_primary_teeth=True).count()
-              total_decayed_primary_teeth_adult=Visualization.objects.filter(age__range=[60,18],decayed_primary_teeth=True).count()
+              total_decayed_primary_teeth_adult=Visualization.objects.filter(age__range=(18,60),decayed_primary_teeth=True).count()
               total_decayed_primary_teeth_old=Visualization.objects.filter(age__gt=60,decayed_primary_teeth=True).count()
 
 
@@ -81,7 +81,7 @@ class SectionalVisualization(APIView):
               total_decayed_permanent_teeth_12=Visualization.objects.filter(age=12,decayed_permanent_teeth=True).count()
               total_decayed_permanent_teeth_15=Visualization.objects.filter(age=15,decayed_permanent_teeth=True).count()
               total_decayed_permanent_teeth_child=Visualization.objects.filter(age__lt=18,decayed_permanent_teeth=True).count()
-              total_decayed_permanent_teeth_adult=Visualization.objects.filter(age__range=[60,18],decayed_permanent_teeth=True).count()
+              total_decayed_permanent_teeth_adult=Visualization.objects.filter(age__range=(18,60),decayed_permanent_teeth=True).count()
               total_decayed_permanent_teeth_old=Visualization.objects.filter(age__gt=60,decayed_permanent_teeth=True).count()
 
 
@@ -90,7 +90,7 @@ class SectionalVisualization(APIView):
               total_cavity_permanent_posterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_posterior_teeth=True).count()
               total_cavity_permanent_posterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_posterior_teeth=True).count()
               total_cavity_permanent_posterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_posterior_teeth=True).count()
-              total_cavity_permanent_posterior_teeth_adult=Visualization.objects.filter(age__range=[60,18],cavity_permanent_posterior_teeth=True).count()
+              total_cavity_permanent_posterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_posterior_teeth=True).count()
               total_cavity_permanent_posterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_posterior_teeth=True).count()
 
               total_cavity_permanent_anterior_teeth=Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
@@ -98,14 +98,14 @@ class SectionalVisualization(APIView):
               total_cavity_permanent_anterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_anterior_teeth=True).count()
               total_cavity_permanent_anterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_anterior_teeth=True).count()
               total_cavity_permanent_anterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_anterior_teeth=True).count()
-              total_cavity_permanent_anterior_teeth_adult=Visualization.objects.filter(age__range=[60,18],cavity_permanent_anterior_teeth=True).count()
+              total_cavity_permanent_anterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_anterior_teeth=True).count()
               total_cavity_permanent_anterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_anterior_teeth=True).count()
               total_reversible_pulpitis=Visualization.objects.filter(reversible_pulpitis=True).count()
               total_reversible_pulpitis_6=Visualization.objects.filter(age=6,reversible_pulpitis=True).count()
               total_reversible_pulpitis_12=Visualization.objects.filter(age=12,reversible_pulpitis=True).count()
               total_reversible_pulpitis_15=Visualization.objects.filter(age=15,reversible_pulpitis=True).count()
               total_reversible_pulpitis_child=Visualization.objects.filter(age__lt=18,reversible_pulpitis=True).count()
-              total_reversible_pulpitis_adult=Visualization.objects.filter(age__range=[60,18],reversible_pulpitis=True).count()
+              total_reversible_pulpitis_adult=Visualization.objects.filter(age__range=(18,60),reversible_pulpitis=True).count()
               total_reversible_pulpitis_old=Visualization.objects.filter(age__gt=60,reversible_pulpitis=True).count()
 
               total_need_art_filling=Visualization.objects.filter(need_art_filling=True).count()
@@ -113,7 +113,7 @@ class SectionalVisualization(APIView):
               total_need_art_filling_12=Visualization.objects.filter(age=12,need_art_filling=True).count()
               total_need_art_filling_15=Visualization.objects.filter(age=15,need_art_filling=True).count()
               total_need_art_filling_child=Visualization.objects.filter(age__lt=18,need_art_filling=True).count()
-              total_need_art_filling_adult=Visualization.objects.filter(age__range=[60,18],need_art_filling=True).count()
+              total_need_art_filling_adult=Visualization.objects.filter(age__range=(18,60),need_art_filling=True).count()
               total_need_art_filling_old=Visualization.objects.filter(age__gt=60,need_art_filling=True).count()
 
               total_need_sdf=Visualization.objects.filter(need_sdf=True).count()
@@ -121,7 +121,7 @@ class SectionalVisualization(APIView):
               total_need_sdf_12=Visualization.objects.filter(age=12,need_sdf=True).count()
               total_need_sdf_15=Visualization.objects.filter(age=15,need_sdf=True).count()
               total_need_sdf_child=Visualization.objects.filter(age__lt=18,need_sdf=True).count()
-              total_need_sdf_adult=Visualization.objects.filter(age__range=[60,18],need_sdf=True).count()
+              total_need_sdf_adult=Visualization.objects.filter(age__range=(18,60),need_sdf=True).count()
               total_need_sdf_old=Visualization.objects.filter(age__gt=60,need_sdf=True).count()
 
               total_need_extraction=Visualization.objects.filter(need_extraction=True).count()
@@ -129,7 +129,7 @@ class SectionalVisualization(APIView):
               total_need_extraction_12=Visualization.objects.filter(age=12,need_extraction=True).count()
               total_need_extraction_15=Visualization.objects.filter(age=15,need_extraction=True).count()
               total_need_extraction_child=Visualization.objects.filter(age__lt=18,need_extraction=True).count()
-              total_need_extraction_adult=Visualization.objects.filter(age__range=[60,18],need_extraction=True).count()
+              total_need_extraction_adult=Visualization.objects.filter(age__range=(18,60),need_extraction=True).count()
               total_need_extraction_old=Visualization.objects.filter(age__gt=60,need_extraction=True).count()
 
 
