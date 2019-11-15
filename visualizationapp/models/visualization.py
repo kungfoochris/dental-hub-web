@@ -24,7 +24,7 @@ def keygenerator():
 
 class Visualization(models.Model):
     id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-    patiend_id = models.CharField(max_length=60,unique=True)
+    patiend_id = models.CharField(max_length=60)
     encounter_id = models.CharField(max_length=60,unique=True)
     age = models.IntegerField()
     gender = models.CharField(max_length=60)
@@ -70,6 +70,8 @@ post_save.connect(create_encounter,sender=Encounter)
 
 def create_screeing(sender, **kwargs):
     if kwargs['created']:
+        print("=----")
+        print(kwargs['instance'].encounter_id.id)
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         visualization_obj.carries_risk = kwargs['instance'].carries_risk
         visualization_obj.decayed_primary_teeth = True
