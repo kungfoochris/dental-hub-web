@@ -51,6 +51,10 @@ class Visualization(models.Model):
     need_extraction = models.BooleanField(_('need extraction'),default=False)
     need_sdf = models.BooleanField(default=False)
     created_at = models.DateField(null=True,blank=True)
+    sdf_whole_mouth = models.BooleanField(default=False)
+    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),null=True,blank=True)
+    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),null=True,blank=True)
+
 
 
 def create_encounter(sender, **kwargs):
@@ -74,6 +78,8 @@ def create_screeing(sender, **kwargs):
         print(kwargs['instance'].encounter_id.id)
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         visualization_obj.carries_risk = kwargs['instance'].carries_risk
+        visualization_obj.decayed_primary_teeth_number = screeing_obj.decayed_primary_teeth
+        visualization_obj.decayed_permanent_teeth_number = screeing_obj.decayed_permanent_teeth
         visualization_obj.decayed_primary_teeth = True
         visualization_obj.decayed_permanent_teeth = True
         visualization_obj.cavity_permanent_posterior_teeth = kwargs['instance'].cavity_permanent_posterior_teeth
@@ -139,5 +145,6 @@ def create_treatment(sender, **kwargs):
             |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
             visualization_obj.art = True
         visualization_obj.fv = kwargs['instance'].fv_applied
+        visualization_obj.sdf_whole_mouth = kwargs['instance'].sdf_whole_mouth
         visualization_obj.save()
 post_save.connect(create_treatment,sender=Treatment)

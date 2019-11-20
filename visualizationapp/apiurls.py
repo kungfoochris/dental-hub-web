@@ -6,14 +6,19 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 
 from visualizationapp.api.loginvisualization import LoginVisualization,LoginVisualization1
+
 from visualizationapp.api.treatmenttable import TreatmentTableVisualization,\
-TreatmentTableVisualizationFilter
+TreatmentTableVisualizationFilter,TreatmentTableList,TreatmentStrategicDataFilter,\
+TreatmentStrategicData
+# TreatmentTableListfilter
 
 from visualizationapp.api.treatmentbargraph import TreatMentBarGraph,\
 TreatMentBarGraphFilter
-from visualizationapp.api.table import OverviewVisualization1, TreatmentTable2Visualization,\
-Table3Visualization,Table4Visualization, VisualizationSetting,VisualizationSettingFilter,\
-Table3Visualizationfilter,Table4VisualizationFilter
+
+
+from visualizationapp.api.dashboard import OverviewVisualization1,\
+TreatmentActivityList,VisualizationSetting,VisualizationSettingFilter,\
+TreatmentbyWardList
 
 from visualizationapp.api.wardvisualization import WardVisualization1,\
 WardTreatmentTableVisualization1,WardTableVisualization2,\
@@ -48,11 +53,12 @@ urlpatterns = [
 	path('treatmentnargraphfilter',TreatMentBarGraphFilter.as_view()),
 
 	path('overviewvisualization1',OverviewVisualization1.as_view()),
-	path('table1', TreatmentTable2Visualization.as_view()),
-	path('table2',Table3Visualization.as_view()),
-	path('table2filter',Table3Visualizationfilter.as_view()),
-	path('table3',Table4Visualization.as_view()),
-	path('table3filter',Table4VisualizationFilter.as_view()),
+	path('treatmentactivities', TreatmentActivityList.as_view()),
+	path('treatmenttable',TreatmentTableList.as_view()),
+	path('overviewwardtreatmenttable',TreatmentbyWardList.as_view()),
+	# path('table2filter',TreatmentTableListfilter.as_view()),
+	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
+	path('table3filter',TreatmentStrategicDataFilter.as_view()),
 	path('settingsgraph',VisualizationSetting.as_view()),
 	path('settingsgraphfilter',VisualizationSettingFilter.as_view()),
 

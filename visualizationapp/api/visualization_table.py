@@ -109,6 +109,7 @@ class TableVisualization(APIView):
 							visualization_obj.art = True
 						logger.error("Art is not click")
 						visualization_obj.fv = treatment_obj.fv_applied
+						visualization_obj.sdf_whole_mouth = treatment_obj.sdf_whole_mouth
 						visualization_obj.refer_hp = refer_obj.health_post
 						visualization_obj.refer_hyg = refer_obj.hygienist
 						visualization_obj.refer_dent = refer_obj.general_physician
@@ -116,6 +117,8 @@ class TableVisualization(APIView):
 						if Refer.objects.filter(encounter_id__id=en.id).values('other').annotate(Count('other')).count()==1:
 							visualization_obj.refer_other = True
 						visualization_obj.carries_risk=screeing_obj.carries_risk
+						visualization_obj.decayed_primary_teeth_number = screeing_obj.decayed_primary_teeth
+						visualization_obj.decayed_permanent_teeth_number = screeing_obj.decayed_permanent_teeth
 						visualization_obj.decayed_primary_teeth=True
 						visualization_obj.decayed_permanent_teeth=True
 						visualization_obj.cavity_permanent_posterior_teeth=screeing_obj.cavity_permanent_posterior_teeth
