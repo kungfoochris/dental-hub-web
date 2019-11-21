@@ -99,7 +99,9 @@ def create_refer(sender, **kwargs):
         visualization_obj.refer_hyg = kwargs['instance'].hygienist
         visualization_obj.refer_dent = kwargs['instance'].dentist
         visualization_obj.refer_dr = kwargs['instance'].general_physician
-        if Refer.objects.filter(encounter_id__id=kwargs['instance'].encounter_id.id).values('other').annotate(Count('other')).count()==1:
+        if  kwargs['instance'].other=="":
+            visualization_obj.refer_other = False
+        else:
             visualization_obj.refer_other = True
         visualization_obj.save()
         print("refer added")
