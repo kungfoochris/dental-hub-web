@@ -320,13 +320,13 @@ class VisualizationSetting(APIView):
             'aspectRatio': 1.5,
             'scales': {
             'yAxes': [{
-            'stacked': 'true',
+            # 'stacked': 'true',
             'ticks': {
             'beginAtZero':'true'}
-            }],
-            'xAxes': [{
-            'stacked': 'true',
             }]
+            # 'xAxes': [{
+            # 'stacked': 'true',
+            # }]
             },
             'title': {
             'display': 'true',
