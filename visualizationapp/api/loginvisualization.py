@@ -50,18 +50,12 @@ class LoginVisualization(APIView):
             'data': [health_post, school_seminar, community, training]
             }]},
             'options': {
-            'responsive':'true',
-            'maintainAspectRatio': 'false',
-            'aspectRatio': 1.5,
+            'aspectRatio': 2,
             # 'scales': {
             # 'yAxes': [{
-            # 'display': 'false',
-            # }],
-
-            # # 'xAxes': [{
-            # # 'display': 'false',
-            # # }]
-            # },
+            # 'ticks': {
+            # 'beginAtZero':'true'}
+            # }]},
             'title': {
             'display': 'true',
             'text': "Activity Distribution Chart",
