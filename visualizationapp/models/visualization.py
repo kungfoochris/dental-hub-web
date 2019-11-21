@@ -78,8 +78,8 @@ def create_screeing(sender, **kwargs):
         print(kwargs['instance'].encounter_id.id)
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         visualization_obj.carries_risk = kwargs['instance'].carries_risk
-        visualization_obj.decayed_primary_teeth_number = screeing_obj.decayed_primary_teeth
-        visualization_obj.decayed_permanent_teeth_number = screeing_obj.decayed_permanent_teeth
+        visualization_obj.decayed_primary_teeth_number = kwargs['instance'].decayed_primary_teeth
+        visualization_obj.decayed_permanent_teeth_number = kwargs['instance'].decayed_permanent_teeth
         visualization_obj.decayed_primary_teeth = True
         visualization_obj.decayed_permanent_teeth = True
         visualization_obj.cavity_permanent_posterior_teeth = kwargs['instance'].cavity_permanent_posterior_teeth
