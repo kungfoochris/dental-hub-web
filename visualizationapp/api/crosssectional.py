@@ -133,7 +133,7 @@ class SectionalVisualization(APIView):
               total_need_extraction_old=Visualization.objects.filter(age__gt=60,need_extraction=True).count()
 
 
-              return Response([["Career Risk",total_carries_risk_6,total_carries_risk_12,total_carries_risk_15,total_carries_risk_child,total_carries_risk_adult,total_carries_risk_old],\
+              return Response([["Carries Risk",total_carries_risk_6,total_carries_risk_12,total_carries_risk_15,total_carries_risk_child,total_carries_risk_adult,total_carries_risk_old],\
               ["Number of decayed primary teeth",total_decayed_primary_teeth_6,total_decayed_primary_teeth_12,total_decayed_primary_teeth_15,total_decayed_primary_teeth_child,total_decayed_primary_teeth_adult,total_decayed_primary_teeth_old],\
               ["Number of decayed permanent teeth",total_decayed_permanent_teeth_6,total_decayed_permanent_teeth_12,total_decayed_permanent_teeth_15,total_decayed_permanent_teeth_child,total_decayed_permanent_teeth_adult,total_decayed_permanent_teeth_old],\
               ["Cavity permanent molar or premolar",total_cavity_permanent_posterior_teeth_6,total_cavity_permanent_posterior_teeth_12,total_cavity_permanent_posterior_teeth_15,total_cavity_permanent_posterior_teeth_child,total_cavity_permanent_posterior_teeth_adult,total_cavity_permanent_posterior_teeth_old],\

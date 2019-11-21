@@ -17,7 +17,7 @@ from django.db.models import Count
 import random
 
 
-class TreatmentVisualizationLineChart(APIView):
+class TreatmentPreventionRatioVisualization(APIView):
       def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month=[1,2,3,4,5,6,7,8,9,10,11,12]
@@ -111,7 +111,7 @@ class TreatmentVisualizationLineChart(APIView):
             return JsonResponse({"locationChart":locationChart})
         return Response({"message":"only admin can see"},status=400)
 
-class TreatmentVisualizationLineChart1(APIView):
+class TreatmentEarlyIntervention(APIView):
       def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month=[1,2,3,4,5,6,7,8,9,10,11,12]
@@ -204,7 +204,7 @@ class TreatmentVisualizationLineChart1(APIView):
         return Response({"message":"only admin can see"},status=400)
 
 
-class TreatmentVisualizationLineChart2(APIView):
+class TreatmentRecallDistribution(APIView):
       def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month=[1,2,3,4,5,6,7,8,9,10,11,12]

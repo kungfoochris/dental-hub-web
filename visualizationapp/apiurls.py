@@ -7,8 +7,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from visualizationapp.api.loginvisualization import LoginVisualization,LoginVisualization1
 
-from visualizationapp.api.treatmenttable import TreatmentTableVisualization,\
-TreatmentTableVisualizationFilter,TreatmentTableList,TreatmentStrategicDataFilter,\
+from visualizationapp.api.treatmenttable import TreatmentTableBasicData,\
 TreatmentStrategicData
 # TreatmentTableListfilter
 
@@ -38,8 +37,8 @@ from visualizationapp.api.visualization_table import TableVisualization
 
 from visualizationapp.api.datavisualization import DataVisualization
 
-from visualizationapp.api.treatmentlinechart import TreatmentVisualizationLineChart,\
-TreatmentVisualizationLineChart1, TreatmentVisualizationLineChart2
+from visualizationapp.api.treatmentlinechart import TreatmentPreventionRatioVisualization,\
+TreatmentEarlyIntervention, TreatmentRecallDistribution
 
 
 app_name = 'visualizationapp'
@@ -47,18 +46,16 @@ app_name = 'visualizationapp'
 urlpatterns = [
 	path('loginvisualization', LoginVisualization.as_view()),
 	path('loginvisualization1', LoginVisualization1.as_view()),
-	path('treatment',TreatmentTableVisualization.as_view()),
-	path('treatmentfilter',TreatmentTableVisualizationFilter.as_view()),
+	path('treatment',TreatmentTableBasicData.as_view()),
 	path('treatmentnargraph',TreatMentBarGraph.as_view()),
 	path('treatmentnargraphfilter',TreatMentBarGraphFilter.as_view()),
 
 	path('overviewvisualization1',OverviewVisualization1.as_view()),
 	path('treatmentactivities', TreatmentActivityList.as_view()),
-	path('treatmenttable',TreatmentTableList.as_view()),
+	# path('treatmenttable',TreatmentTableList.as_view()),
 	path('overviewwardtreatmenttable',TreatmentbyWardList.as_view()),
 	# path('table2filter',TreatmentTableListfilter.as_view()),
 	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
-	path('table3filter',TreatmentStrategicDataFilter.as_view()),
 	path('settingsgraph',VisualizationSetting.as_view()),
 	path('settingsgraphfilter',VisualizationSettingFilter.as_view()),
 
@@ -70,9 +67,9 @@ urlpatterns = [
 	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
 	path('overviewvisualization/<start_date>/<end_date>/<location_id>',OverviewVisualization.as_view()),
 	path('sectional',SectionalVisualization.as_view()),
-	path('treatmentvisualizationlinechart',TreatmentVisualizationLineChart.as_view()),
-	path('treatmentvisualizationlinechart1',TreatmentVisualizationLineChart1.as_view()),
-	path('treatmentvisualizationlinechart2',TreatmentVisualizationLineChart2.as_view()),
+	path('preventionratio',TreatmentPreventionRatioVisualization.as_view()),
+	path('earlyintervention',TreatmentEarlyIntervention.as_view()),
+	path('recalldistribution',TreatmentRecallDistribution.as_view()),
 	path('wardlineVisualization',WardlineVisualization.as_view()),
 	path('wardlineVisualizationfilter',WardlineVisualizationFilter.as_view()),
 	path('tablvisualization',TableVisualization.as_view()),
