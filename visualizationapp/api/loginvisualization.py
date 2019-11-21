@@ -50,7 +50,7 @@ class LoginVisualization(APIView):
             'data': [health_post, school_seminar, community, training]
             }]},
             'options': {
-            'aspectRatio': 2,
+            'aspectRatio': 1.5,
             # 'scales': {
             # 'yAxes': [{
             # 'ticks': {
