@@ -52,8 +52,8 @@ class Visualization(models.Model):
     need_sdf = models.BooleanField(default=False)
     created_at = models.DateField(null=True,blank=True)
     sdf_whole_mouth = models.BooleanField(default=False)
-    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),null=True,blank=True)
-    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),null=True,blank=True)
+    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),default=0)
+    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),default=0)
 
 
 

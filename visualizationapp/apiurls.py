@@ -41,6 +41,9 @@ from visualizationapp.api.treatmentlinechart import TreatmentPreventionRatioVisu
 TreatmentEarlyIntervention, TreatmentRecallDistribution
 
 
+from visualizationapp.api.longitudinal import LongitudinalVisualization
+
+
 app_name = 'visualizationapp'
 
 urlpatterns = [
@@ -75,5 +78,6 @@ urlpatterns = [
 	path('tablvisualization',TableVisualization.as_view()),
 	path('data',DataVisualization.as_view()),
 	path('waruserlinechart',WardUserlineVisualization.as_view()),
+	path('longitudinal',LongitudinalVisualization.as_view()),
 	]
 urlpatterns = format_suffix_patterns(urlpatterns)

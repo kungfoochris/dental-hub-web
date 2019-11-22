@@ -112,6 +112,8 @@ class OverviewVisualization1(APIView):
                 ["Older Adults",old_encounter, old_exo,old_art,old_seal,old_sdf, old_sdf_whole_mouth,old_fv,old_health_post, old_refer_hyg, old_refer_dent, old_refer_dr,old_refer_other],\
                 ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf, total_sdf_whole_mouth, total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
         return Response({"treatment_obj":"do not have a permission"},status=400)
+
+
     def post(self, request, format=None):
         serializer = OverViewVisualization(data=request.data,context={'request': request})
         if serializer.is_valid():
