@@ -171,84 +171,82 @@ class SectionalVisualization(APIView):
             total_cavity_permanent_posterior=Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
             total_cavity_permanent_posterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(roubd((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_posterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_posterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
-
-
 
             total_cavity_permanent_anterior=Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
             total_cavity_permanent_anterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
@@ -424,40 +422,40 @@ class SectionalVisualization(APIView):
             total_cavity_permanent_posterior=Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             total_cavity_permanent_posterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_posterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_posterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
@@ -466,42 +464,42 @@ class SectionalVisualization(APIView):
             total_cavity_permanent_anterior=Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             total_cavity_permanent_anterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],geography_id=location).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
