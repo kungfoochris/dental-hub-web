@@ -78,14 +78,14 @@ class LongitudinalVisualization(APIView):
 
             total_cavity_permanent_posterior_teeth=Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth/total_patients)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth/total_patients)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_anterior_teeth=Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth/total_patients)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth/total_patients)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
@@ -120,14 +120,14 @@ class LongitudinalVisualization(APIView):
 
             total_cavity_permanent_posterior_teeth1=Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append((total_cavity_permanent_posterior_teeth1/total_patients1)*100)
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth1/total_patients1)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_anterior_teeth1=Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append((total_cavity_permanent_anterior_teeth1/total_patients1)*100)
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth1/total_patients1)*100,2))
             except:
                 cavity_permanent_anterior.append(0)
 
@@ -138,77 +138,77 @@ class LongitudinalVisualization(APIView):
             total_need_sdf1=Visualization.objects.filter(need_sdf=True).count()
             total_need_extraction1=Visualization.objects.filter(need_extraction=True).count()
             try:
-                carries_risk_low.append(carries_risk_low[1]/carries_risk_low[2])
+                carries_risk_low.append(round(carries_risk_low[1]/carries_risk_low[2],2))
             except:
                 carries_risk_low.append(0)
             try:
-                carries_risk_medium.append(carries_risk_medium[1]/carries_risk_medium[2])
+                carries_risk_medium.append(round(carries_risk_medium[1]/carries_risk_medium[2],2))
             except:
                 carries_risk_medium.append(0)
 
             try:
-                carries_risk_high.append(carries_risk_high[1]/carries_risk_high[2])
+                carries_risk_high.append(round(carries_risk_high[1]/carries_risk_high[2],2))
             except:
                 carries_risk_high.append(0)
 
             try:
-                decayed_permanent_teeth.append(decayed_permanent_teeth[1]/decayed_permanent_teeth[2])
+                decayed_permanent_teeth.append(round(decayed_permanent_teeth[1]/decayed_permanent_teeth[2],2))
             except:
                 decayed_permanent_teeth.append(0)
 
             try:
-                decayed_primary_teeth.append(decayed_primary_teeth[1]/decayed_primary_teeth[2])
+                decayed_primary_teeth.append(round(decayed_primary_teeth[1]/decayed_primary_teeth[2],2))
             except:
                 decayed_primary_teeth.append(0)
 
             try:
-                cavity_permanent_molar.append(cavity_permanent_molar[1]/cavity_permanent_molar[2])
+                cavity_permanent_molar.append(round(cavity_permanent_molar[1]/cavity_permanent_molar[2],2))
             except:
                 cavity_permanent_molar.append(0)
 
             try:
-                cavity_permanent_anterior.append(cavity_permanent_anterior[1]/cavity_permanent_anterior[2])
+                cavity_permanent_anterior.append(round(cavity_permanent_anterior[1]/cavity_permanent_anterior[2],2))
             except:
                 cavity_permanent_anterior.append(0)
 
             try:
-                active_real_difference = total_active_infection/total_active_infection1
+                active_real_difference = round(total_active_infection/total_active_infection1,2)
             except:
                 active_real_difference = 0
 
             try:
-                reversible_pulpitis_real_difference = total_reversible_pulpitis/total_reversible_pulpitis1
+                reversible_pulpitis_real_difference = round(total_reversible_pulpitis/total_reversible_pulpitis1,2)
             except:
                 reversible_pulpitis_real_difference = 0
 
             try:
-                art_real_difference = total_need_art_filling/total_need_art_filling1
+                art_real_difference = round(total_need_art_filling/total_need_art_filling1,2)
             except:
                 art_real_difference = 0
 
             try:
-                sdf_real_difference = total_need_sdf/total_need_sdf1
+                sdf_real_difference = round(total_need_sdf/total_need_sdf1,2)
             except:
                 sdf_real_difference = 0
 
             try:
-                extraction_real_difference = total_need_extraction/total_need_extraction1
+                extraction_real_difference = round(total_need_extraction/total_need_extraction1,2)
             except:
                 extraction_real_difference = 0
 
 
             #third
             try:
-                carries_risk_low.append(carries_risk_low[3]/carries_risk_low[1])
+                carries_risk_low.append(round(carries_risk_low[3]/carries_risk_low[1],2))
             except:
                 carries_risk_low.append(0)
             try:
-                carries_risk_medium.append(carries_risk_medium[3]/carries_risk_medium[1])
+                carries_risk_medium.append(round(carries_risk_medium[3]/carries_risk_medium[1],2))
             except:
                 carries_risk_medium.append(0)
 
             try:
-                carries_risk_high.append(carries_risk_high[3]/carries_risk_high[1])
+                carries_risk_high.append(round(carries_risk_high[3]/carries_risk_high[1],2))
             except:
                 carries_risk_high.append(0)
 
@@ -233,27 +233,27 @@ class LongitudinalVisualization(APIView):
                 cavity_permanent_anterior.append(0)
 
             try:
-                 active_proportional = active_real_difference/total_active_infection
+                 active_proportional = round(active_real_difference/total_active_infection,2)
             except:
                 active_proportional = 0
 
             try:
-                reversible_pulpitis_proportional = reversible_pulpitis_real_difference/total_reversible_pulpitis
+                reversible_pulpitis_proportional = round(reversible_pulpitis_real_difference/total_reversible_pulpitis,2)
             except:
                 reversible_pulpitis_proportional = 0
 
             try:
-                art_proportional = art_real_difference/total_need_art_filling
+                art_proportional = round(art_real_difference/total_need_art_filling,2)
             except:
                 art_proportional = 0
 
             try:
-                sdf_proportional = sdf_real_difference/total_need_sdf
+                sdf_proportional = round(sdf_real_difference/total_need_sdf,2)
             except:
                 sdf_proportional = 0
 
             try:
-                extraction_proportional = extraction_real_difference/total_need_extraction
+                extraction_proportional = round(extraction_real_difference/total_need_extraction,2)
             except:
                 extraction_proportional = 0
 

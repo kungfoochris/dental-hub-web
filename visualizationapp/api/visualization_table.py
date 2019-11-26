@@ -128,6 +128,7 @@ class TableVisualization(APIView):
 						visualization_obj.need_art_filling = screeing_obj.need_art_filling
 						visualization_obj.need_extraction = screeing_obj.need_extraction
 						visualization_obj.need_sdf = screeing_obj.need_sdf
+						visualization_obj.need_sealant  = screeing_obj.need_sealant
 						visualization_obj.save()
 					logger.error("Data is already placed in table")
 				logger.error("All Encounter is not added")

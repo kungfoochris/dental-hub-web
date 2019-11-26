@@ -17,7 +17,7 @@ TreatMentBarGraphFilter
 
 from visualizationapp.api.dashboard import OverviewVisualization1,\
 TreatmentActivityList,VisualizationSetting,VisualizationSettingFilter,\
-TreatmentbyWardList
+TreatmentbyWardList,PieChartVisualization,PieChartVisualizationFilter
 
 from visualizationapp.api.wardvisualization import WardVisualization1,\
 WardTreatmentTableVisualization1,WardTableVisualization2,\
@@ -61,6 +61,8 @@ urlpatterns = [
 	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
 	path('settingsgraph',VisualizationSetting.as_view()),
 	path('settingsgraphfilter',VisualizationSettingFilter.as_view()),
+	path('piechart',PieChartVisualization.as_view()),
+	path('piechartfilter',PieChartVisualizationFilter.as_view()),
 
 
 	path('wardvisualization',WardVisualization1.as_view()),

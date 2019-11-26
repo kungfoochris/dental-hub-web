@@ -54,6 +54,7 @@ class Visualization(models.Model):
     sdf_whole_mouth = models.BooleanField(default=False)
     decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),default=0)
     decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),default=0)
+    need_sealant = models.BooleanField(default=False)
 
 
 
@@ -88,6 +89,7 @@ def create_screeing(sender, **kwargs):
         visualization_obj.reversible_pulpitis = kwargs['instance'].reversible_pulpitis
         visualization_obj.need_art_filling = kwargs['instance'].need_art_filling
         visualization_obj.need_extraction = kwargs['instance'].need_extraction
+        visualization_obj.need_sealant = kwargs['instance'].need_sealant
         visualization_obj.save()
         print("visualization added")
 post_save.connect(create_screeing,sender=Screeing)
