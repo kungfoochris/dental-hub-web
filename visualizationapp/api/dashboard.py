@@ -28,8 +28,6 @@ import datetime
 from visualizationapp.serializers.visualization import TreatMentBarGraphVisualization
 from addressapp.models import Address, District, Municipality ,Ward
 
-# from datetime import datetime
-# from datetime import timedelta
 import logging
 # Get an instance of a logger
 from django.db.models import Count
@@ -334,74 +332,6 @@ class OverviewVisualization1(APIView):
             ['<span class="ml-4">Female</span>',old_encounter_female, old_exo_female,old_art_female, old_seal_female,old_sdf_female, old_sdf_whole_mouth_female,old_fv_female,old_health_post_female, old_refer_hyg_female, old_refer_dent_female, old_refer_dr_female,old_refer_other_female],\
             ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf, total_sdf_whole_mouth, total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
         return Response({"message":serializer.error},status=400)
-
-
-
-
-
-            # total_encounter = Visualization.objects.filter(created_at__range=[start_date,end_date],geography_id=location).count()
-            # total_exo = Visualization.objects.filter(Q(exo=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_art = Visualization.objects.filter(Q(art=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_seal = Visualization.objects.filter(Q(seal=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_sdf = Visualization.objects.filter(Q(sdf=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_fv = Visualization.objects.filter(Q(fv=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_health_post = Visualization.objects.filter(Q(refer_hp=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_refer_hyg = Visualization.objects.filter(Q(refer_hyg=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_refer_dent = Visualization.objects.filter(Q(refer_dent=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_refer_dr = Visualization.objects.filter(Q(refer_dr=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_refer_other = Visualization.objects.filter(Q(refer_other=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # total_sdf_whole_mouth = Visualization.objects.filter(Q(sdf_whole_mouth=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            #
-            #
-            # kid_encounter = Visualization.objects.filter(Q(age__lt=18,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_exo = Visualization.objects.filter(Q(age__lt=18,exo=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_art = Visualization.objects.filter(Q(age__lt=18,art=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_seal = Visualization.objects.filter(Q(age__lt=18,seal=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_sdf = Visualization.objects.filter(Q(age__lt=18,sdf=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_fv = Visualization.objects.filter(Q(age__lt=18,fv=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_health_post = Visualization.objects.filter(Q(age__lt=18,refer_hp=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_refer_hyg = Visualization.objects.filter(Q(age__lt=18,refer_hyg=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_refer_dent = Visualization.objects.filter(Q(age__lt=18,refer_dent=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_refer_dr = Visualization.objects.filter(Q(age__lt=18,refer_dr=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_refer_other = Visualization.objects.filter(Q(age__lt=18,refer_other=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # kid_sdf_whole_mouth = Visualization.objects.filter(Q(age__lt=18,sdf_whole_mouth=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            #
-            # adult_encounter = Visualization.objects.filter(Q(age__range=(18,60),created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_exo = Visualization.objects.filter(Q(age__range=(18,60),exo=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_art = Visualization.objects.filter(Q(age__range=(18,60),art=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_seal = Visualization.objects.filter(Q(age__range=(18,60),seal=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_sdf = Visualization.objects.filter(Q(age__range=(18,60),sdf=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_fv = Visualization.objects.filter(Q(age__range=(18,60),fv=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_health_post = Visualization.objects.filter(Q(age__range=(18,60),refer_hp=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_refer_hyg = Visualization.objects.filter(Q(age__range=(18,60),refer_hyg=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_refer_dent = Visualization.objects.filter(Q(age__range=(18,60),refer_dent=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_refer_dr = Visualization.objects.filter(Q(age__range=(18,60),refer_dr=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_refer_other = Visualization.objects.filter(Q(age__range=(18,60),refer_other=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # adult_sdf_whole_mouth = Visualization.objects.filter(Q(age__range=(18,60),sdf_whole_mouth=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            #
-            #
-            # old_encounter = Visualization.objects.filter(Q(age__gt=60,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_exo = Visualization.objects.filter(Q(age__gt=60,exo=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_art = Visualization.objects.filter(Q(age__gt=60,art=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_seal = Visualization.objects.filter(Q(age__gt=60,seal=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_sdf = Visualization.objects.filter(Q(age__gt=60,sdf=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_fv = Visualization.objects.filter(Q(age__gt=60,fv=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_health_post = Visualization.objects.filter(Q(age__gt=60,refer_hp=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_refer_hyg = Visualization.objects.filter(Q(age__gt=60,refer_hyg=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_refer_dent = Visualization.objects.filter(Q(age__gt=60,refer_dent=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_refer_dr = Visualization.objects.filter(Q(age__gt=60,refer_dr=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_refer_other = Visualization.objects.filter(Q(age__gt=60,refer_other=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            # old_sdf_whole_mouth = Visualization.objects.filter(Q(age__gt=60,sdf_whole_mouth=True,created_at__range=[start_date,end_date],geography_id=location)|Q(activities_id=health_post)|Q(activities_id=seminar)|Q(activities_id=outreach)|Q(activities_id=outreach)).count()
-            #
-            # return Response([["Kids",kid_encounter, kid_exo, kid_art, kid_seal, kid_sdf, kid_sdf_whole_mouth, kid_fv, kid_health_post, kid_refer_hyg, kid_refer_dent, kid_refer_dr ,kid_refer_other],\
-            #     ["Adults",adult_encounter, adult_exo, adult_art, adult_seal, adult_sdf, adult_sdf_whole_mouth, adult_fv, adult_health_post, adult_refer_hyg, adult_refer_dent, adult_refer_dr, adult_refer_other],\
-            #     ["Older Adults",old_encounter, old_exo,old_art,old_seal,old_sdf, old_sdf_whole_mouth, old_fv,old_health_post, old_refer_hyg, old_refer_dent, old_refer_dr,old_refer_other],\
-            #     ["Total",total_encounter,total_exo,total_art,total_seal,total_sdf, total_sdf_whole_mouth, total_fv,total_health_post, total_refer_hyg,total_refer_dent, total_refer_dr,total_refer_other]])
-
-
-
-
-
 
 class TreatmentActivityList(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
