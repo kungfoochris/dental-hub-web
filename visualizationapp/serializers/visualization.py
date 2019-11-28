@@ -59,10 +59,34 @@ class WardlineVisualizationSerializer(serializers.ModelSerializer):
 class SectionalVisualizationSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(write_only=True,required=True)
     end_date = serializers.DateField(write_only=True,required=True)
-    location = LocationPKField(many=False)
+    reason_for_visit = serializers.CharField(write_only=True,required=True)
+    referral_type = serializers.CharField(write_only=True,required=True)
+    health_post = serializers.CharField(allow_null=True,write_only=True)
+    seminar = serializers.CharField(allow_null=True,write_only=True)
+    outreach = serializers.CharField(allow_null=True,write_only=True)
+    training = serializers.CharField(allow_null=True,write_only=True)
     class Meta:
         model = Encounter
-        fields = ("start_date","end_date","location")
+        fields = ("start_date","end_date","reason_for_visit",'referral_type',\
+        'health_post','seminar','outreach','training')
+
+class LongitudinalVisualizationSerializer(serializers.ModelSerializer):
+    frame1_start_date = serializers.DateField(write_only=True,required=True)
+    frame1_end_date = serializers.DateField(write_only=True,required=True)
+    frame2_start_date = serializers.DateField(write_only=True,required=True)
+    frame2_end_date = serializers.DateField(write_only=True,required=True)
+    reason_for_visit = serializers.CharField(write_only=True,required=True)
+    referral_type = serializers.CharField(write_only=True,required=True)
+    health_post = serializers.CharField(allow_null=True,write_only=True)
+    seminar = serializers.CharField(allow_null=True,write_only=True)
+    outreach = serializers.CharField(allow_null=True,write_only=True)
+    training = serializers.CharField(allow_null=True,write_only=True)
+    class Meta:
+        model = Encounter
+        fields = ("frame1_start_date","frame1_end_date","frame2_start_date","frame2_end_date","reason_for_visit",'referral_type',\
+        'health_post','seminar','outreach','training')
+
+
 
 class TreatmentStrategicDataSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(write_only=True,required=True)

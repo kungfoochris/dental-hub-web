@@ -53,21 +53,20 @@ class TableVisualization(APIView):
 		if User.objects.filter(id=request.user.id,admin=True).exists():
 			encounter_obj = Encounter.objects.all()
 			for en in encounter_obj:
-				if History.objects.filter(encounter_id__id=en.id) and Screeing.objects.filter(encounter_id__id=en.id) and Treatment.objects.filter(encounter_id__id=en.id) and Refer.objects.filter(encounter_id__id=en.id):
-					history_obj = History.objects.get(encounter_id__id=en.id)
-					screeing_obj = Screeing.objects.get(encounter_id__id=en.id)
-					treatment_obj = Treatment.objects.get(encounter_id__id=en.id)
-					refer_obj = Refer.objects.get(encounter_id__id=en.id)
-					dob = en.patient.dob
-					if Visualization.objects.filter(patiend_id=en.patient.id,encounter_id=en.id).count()==0:
-						visualization_obj=Visualization()
-						visualization_obj.patiend_id = en.patient.id
-						visualization_obj.encounter_id = en.id
-						visualization_obj.age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
-						visualization_obj.gender = en.patient.gender
-						visualization_obj.activities_id = en.activity_area.id
-						visualization_obj.geography_id = en.geography.id
-						visualization_obj.created_at = en.patient.created_at
+				dob = en.patient.dob
+				if Visualization.objects.filter(patiend_id=en.patient.id,encounter_id=en.id).count()==0:
+					visualization_obj=Visualization()
+					visualization_obj.patiend_id = en.patient.id
+					visualization_obj.encounter_id = en.id
+					visualization_obj.age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
+					visualization_obj.gender = en.patient.gender
+					visualization_obj.activities_id = en.activity_area.id
+					visualization_obj.geography_id = en.geography.id
+					visualization_obj.created_at = en.patient.created_at
+					visualization_obj.reason_for_visit = en.encounter_type
+
+					if Treatment.objects.filter(encounter_id__id=en.id).exists():
+						treatment_obj = Treatment.objects.get(encounter_id__id=en.id)
 						if Treatment.objects.filter(Q(tooth11='EXO') | Q(tooth12='EXO')|Q(tooth13='EXO') | Q(tooth14='EXO')|Q(tooth15='EXO') | Q(tooth16='EXO')|Q(tooth17='EXO') | Q(tooth18='EXO')\
 							|Q(tooth21='EXO') | Q(tooth22='EXO')|Q(tooth23='EXO') | Q(tooth24='EXO')|Q(tooth25='EXO') | Q(tooth26='EXO')|Q(tooth27='EXO') | Q(tooth28='EXO')\
 							|Q(tooth31='EXO') | Q(tooth32='EXO')|Q(tooth33='EXO') | Q(tooth34='EXO')|Q(tooth35='EXO') | Q(tooth36='EXO')|Q(tooth37='EXO') | Q(tooth38='EXO')\
@@ -107,15 +106,31 @@ class TableVisualization(APIView):
 		                    |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
 		                    |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__id=en.id).count()==1:
 							visualization_obj.art = True
+
 						logger.error("Art is not click")
 						visualization_obj.fv = treatment_obj.fv_applied
 						visualization_obj.sdf_whole_mouth = treatment_obj.sdf_whole_mouth
+					if Refer.objects.filter(encounter_id__id=en.id).exists():
+						refer_obj = Refer.objects.get(encounter_id__id=en.id)
 						visualization_obj.refer_hp = refer_obj.health_post
 						visualization_obj.refer_hyg = refer_obj.hygienist
 						visualization_obj.refer_dent = refer_obj.general_physician
 						visualization_obj.refer_dr = refer_obj.dentist
-						if Refer.objects.filter(encounter_id__id=en.id).values('other').annotate(Count('other')).count()==1:
+						if refer_obj.other == " ":
+							visualization_obj.refer_other = False
+						else:
 							visualization_obj.refer_other = True
+							visualization_obj.referral_type = "Refer Other"
+						if refer_obj.health_post is True:
+							visualization_obj.referral_type = "Refer Hp"
+						if refer_obj.dentist is True:
+							visualization_obj.referral_type = "Refer Dent"
+						if  refer_obj.hygienist is True:
+							visualization_obj.referral_type = "Refer Hyg"
+						if refer_obj.general_physician is True:
+							visualization_obj.referral_type = "Refer Dr"
+					if Screeing.objects.filter(encounter_id__id=en.id).exists():
+						screeing_obj = Screeing.objects.get(encounter_id__id=en.id)
 						visualization_obj.carries_risk=screeing_obj.carries_risk
 						visualization_obj.decayed_primary_teeth_number = screeing_obj.decayed_primary_teeth
 						visualization_obj.decayed_permanent_teeth_number = screeing_obj.decayed_permanent_teeth
@@ -129,9 +144,9 @@ class TableVisualization(APIView):
 						visualization_obj.need_extraction = screeing_obj.need_extraction
 						visualization_obj.need_sdf = screeing_obj.need_sdf
 						visualization_obj.need_sealant  = screeing_obj.need_sealant
-						visualization_obj.save()
-					logger.error("Data is already placed in table")
-				logger.error("All Encounter is not added")
-			# return Response({"message":"data is added to the visualization table"},status=200)
+					if History.objects.filter(encounter_id__id=en.id):
+						history_obj = History.objects.get(encounter_id__id=en.id)
+					visualization_obj.save()
+				logger.error("Data is already placed in table")
 		logger.error("Only admin can perform the action")
 		return Response({"message":"only admin can"},status=400)

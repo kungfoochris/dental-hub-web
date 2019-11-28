@@ -55,6 +55,8 @@ class Visualization(models.Model):
     decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),default=0)
     decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),default=0)
     need_sealant = models.BooleanField(default=False)
+    reason_for_visit  = models.CharField(max_length=60,default="")
+    referral_type  = models.CharField(max_length=60,default="")
 
 
 
@@ -70,6 +72,7 @@ def create_encounter(sender, **kwargs):
         visualization_obj.activities_id = encounter_obj.activity_area.id
         visualization_obj.geography_id = encounter_obj.geography.id
         visualization_obj.created_at = encounter_obj.patient.created_at
+        visualization_obj.reason_for_visit = encounter_obj.encounter_type
         visualization_obj.save()
 post_save.connect(create_encounter,sender=Encounter)
 
@@ -105,8 +108,21 @@ def create_refer(sender, **kwargs):
             visualization_obj.refer_other = False
         else:
             visualization_obj.refer_other = True
+            visualization_obj.referral_type = "Refer Other"
+
+        if kwargs['instance'].health_post is True:
+            visualization_obj.referral_type = "Refer Hp"
+
+        if kwargs['instance'].dentist is True:
+            visualization_obj.referral_type = "Refer Dent"
+
+        if kwargs['instance'].hygienist is True:
+            visualization_obj.referral_type = "Refer Hyg"
+
+        if kwargs['instance'].general_physician is True:
+            visualization_obj.referral_type = "Refer Dr"
+
         visualization_obj.save()
-        print("refer added")
 post_save.connect(create_refer,sender=Refer)
 
 def create_treatment(sender, **kwargs):
@@ -120,7 +136,7 @@ def create_treatment(sender, **kwargs):
             |Q(tooth61='EXO') | Q(tooth62='EXO')|Q(tooth63='EXO') | Q(tooth64='EXO')|Q(tooth65='EXO')\
             |Q(tooth71='EXO') | Q(tooth72='EXO')|Q(tooth73='EXO') | Q(tooth74='EXO')|Q(tooth75='EXO')\
             |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
-            visualization_obj.ext = True
+            visualization_obj.exo = True
         if Treatment.objects.filter(Q(tooth11='SDF') | Q(tooth12='SDF')|Q(tooth13='SDF') | Q(tooth14='SDF')|Q(tooth15='SDF') | Q(tooth16='SDF')|Q(tooth17='SDF') | Q(tooth18='SDF')\
             |Q(tooth21='SDF') | Q(tooth22='SDF')|Q(tooth23='SDF') | Q(tooth24='SDF')|Q(tooth25='SDF') | Q(tooth26='SDF')|Q(tooth27='SDF') | Q(tooth28='SDF')\
             |Q(tooth31='SDF') | Q(tooth32='SDF')|Q(tooth33='SDF') | Q(tooth34='SDF')|Q(tooth35='SDF') | Q(tooth36='SDF')|Q(tooth37='SDF') | Q(tooth38='SDF')\

@@ -9,6 +9,7 @@ class EncounterAdmin(admin.ModelAdmin):
 	list_display = ('id', 'date', 'patient', 'encounter_type',\
 		'author','activity_area','geography','created_at','updated_by','updated_at','other_problem')
 	list_filter = ('date','updated_at')
+	search_fields = ['author__username','date','updated_by__username','updated_at','created_at']
 
 admin.site.register(Encounter, EncounterAdmin)
 
@@ -19,6 +20,8 @@ class HistoryAdmin(admin.ModelAdmin):
 		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
 		'not_taking_any_medications','medications','no_medications','encounter_id',\
 		'high_blood_pressure','low_blood_pressure','thyroid_disorder')
+
+
 
 
 admin.site.register(History, HistoryAdmin)
