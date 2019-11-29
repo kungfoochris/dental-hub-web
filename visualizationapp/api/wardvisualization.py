@@ -212,12 +212,12 @@ class WardTableVisualization2(APIView):
                     total_exo_adult = Visualization.objects.filter(geography_id=i.id,exo=True,age__range=(18,60)).count()
                     total_exo_old = Visualization.objects.filter(geography_id=i.id,exo=True,age__gt=60).count()
 
-                total_fv = Treatment.objects.select_related('encounter_id').filter(fv_applied=True,encounter_id__geography=i).count()
-                totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True,encounter_id__geography=i).count()
-                totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True,encounter_id__geography=i).count()
-                totalfv_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fv_applied=True,encounter_id__geography=i).count()
-                totalfv_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60,lessthan18),fv_applied=True,encounter_id__geography=i).count()
-                totalfv_old = total_fv-totalfv_child-totalfv_adult
+                    total_fv = Visualization.objects.filter(fv=True,geography_id=i.id).count()
+                    totalfv_male = Visualization.objects.filter(gender='male',fv=True,geography_id=i.id).count()
+                    totalfv_female = Visualization.objects.filter(gender='female',fv=True,geography_id=i.id).count()
+                    totalfv_child = Visualization.objects.filter(age__lt=18,fv=True,geography_id=i.id).count()
+                    totalfv_adult = Visualization.objects.filter(age__range=(18,60),fv=True,geography_id=i.id).count()
+                    totalfv_old = Visualization.objects.filter(age__gt=60,fv=True,geography_id=i.id).count()
 
 
                 return Response([["EXO",total_exo_male, total_exo_female, total_exo_child, total_exo_adult,total_exo_old,total_exo],\
@@ -288,120 +288,26 @@ class WardTreatmentVisualization(APIView):
                 male=[]
                 female=[]
                 for i in customuser_obj.location.all():
-                    total_sdf = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='SDF') | Q(tooth12='SDF')|Q(tooth13='SDF') | Q(tooth14='SDF')|Q(tooth15='SDF') | Q(tooth16='SDF')|Q(tooth17='SDF') | Q(tooth18='SDF')\
-                    |Q(tooth21='SDF') | Q(tooth22='SDF')|Q(tooth23='SDF') | Q(tooth24='SDF')|Q(tooth25='SDF') | Q(tooth26='SDF')|Q(tooth27='SDF') | Q(tooth28='SDF')\
-                    |Q(tooth31='SDF') | Q(tooth32='SDF')|Q(tooth33='SDF') | Q(tooth34='SDF')|Q(tooth35='SDF') | Q(tooth36='SDF')|Q(tooth37='SDF') | Q(tooth38='SDF')\
-                    |Q(tooth41='SDF') | Q(tooth42='SDF')|Q(tooth43='SDF') | Q(tooth44='SDF')|Q(tooth45='SDF') | Q(tooth46='SDF')|Q(tooth47='SDF') | Q(tooth48='SDF')\
-                    |Q(tooth51='SDF') | Q(tooth52='SDF')|Q(tooth53='SDF') | Q(tooth54='SDF')|Q(tooth55='SDF')\
-                    |Q(tooth61='SDF') | Q(tooth62='SDF')|Q(tooth63='SDF') | Q(tooth64='SDF')|Q(tooth65='SDF')\
-                    |Q(tooth71='SDF') | Q(tooth72='SDF')|Q(tooth73='SDF') | Q(tooth74='SDF')|Q(tooth75='SDF')\
-                    |Q(tooth81='SDF') | Q(tooth82='SDF')|Q(tooth83='SDF') | Q(tooth84='SDF')|Q(tooth85='SDF')).filter(encounter_id__geography=i).count()
-
-                    total_sdf_male = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='SDF') | Q(tooth12='SDF')|Q(tooth13='SDF') | Q(tooth14='SDF')|Q(tooth15='SDF') | Q(tooth16='SDF')|Q(tooth17='SDF') | Q(tooth18='SDF')\
-                        |Q(tooth21='SDF') | Q(tooth22='SDF')|Q(tooth23='SDF') | Q(tooth24='SDF')|Q(tooth25='SDF') | Q(tooth26='SDF')|Q(tooth27='SDF') | Q(tooth28='SDF')\
-                        |Q(tooth31='SDF') | Q(tooth32='SDF')|Q(tooth33='SDF') | Q(tooth34='SDF')|Q(tooth35='SDF') | Q(tooth36='SDF')|Q(tooth37='SDF') | Q(tooth38='SDF')\
-                        |Q(tooth41='SDF') | Q(tooth42='SDF')|Q(tooth43='SDF') | Q(tooth44='SDF')|Q(tooth45='SDF') | Q(tooth46='SDF')|Q(tooth47='SDF') | Q(tooth48='SDF')\
-                        |Q(tooth51='SDF') | Q(tooth52='SDF')|Q(tooth53='SDF') | Q(tooth54='SDF')|Q(tooth55='SDF')\
-                        |Q(tooth61='SDF') | Q(tooth62='SDF')|Q(tooth63='SDF') | Q(tooth64='SDF')|Q(tooth65='SDF')\
-                        |Q(tooth71='SDF') | Q(tooth72='SDF')|Q(tooth73='SDF') | Q(tooth74='SDF')|Q(tooth75='SDF')\
-                        |Q(tooth81='SDF') | Q(tooth82='SDF')|Q(tooth83='SDF') | Q(tooth84='SDF')|Q(tooth85='SDF')).filter(encounter_id__patient__gender='male',encounter_id__geography=i).count()
-
-                    total_sdf_female = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='SDF') | Q(tooth12='SDF')|Q(tooth13='SDF') | Q(tooth14='SDF')|Q(tooth15='SDF') | Q(tooth16='SDF')|Q(tooth17='SDF') | Q(tooth18='SDF')\
-                        |Q(tooth21='SDF') | Q(tooth22='SDF')|Q(tooth23='SDF') | Q(tooth24='SDF')|Q(tooth25='SDF') | Q(tooth26='SDF')|Q(tooth27='SDF') | Q(tooth28='SDF')\
-                        |Q(tooth31='SDF') | Q(tooth32='SDF')|Q(tooth33='SDF') | Q(tooth34='SDF')|Q(tooth35='SDF') | Q(tooth36='SDF')|Q(tooth37='SDF') | Q(tooth38='SDF')\
-                        |Q(tooth41='SDF') | Q(tooth42='SDF')|Q(tooth43='SDF') | Q(tooth44='SDF')|Q(tooth45='SDF') | Q(tooth46='SDF')|Q(tooth47='SDF') | Q(tooth48='SDF')\
-                        |Q(tooth51='SDF') | Q(tooth52='SDF')|Q(tooth53='SDF') | Q(tooth54='SDF')|Q(tooth55='SDF')\
-                        |Q(tooth61='SDF') | Q(tooth62='SDF')|Q(tooth63='SDF') | Q(tooth64='SDF')|Q(tooth65='SDF')\
-                        |Q(tooth71='SDF') | Q(tooth72='SDF')|Q(tooth73='SDF') | Q(tooth74='SDF')|Q(tooth75='SDF')\
-                        |Q(tooth81='SDF') | Q(tooth82='SDF')|Q(tooth83='SDF') | Q(tooth84='SDF')|Q(tooth85='SDF')).filter(encounter_id__patient__gender='female',encounter_id__geography=i).count()
+                    total_sdf = Visualization.objects.filter(geography_id=i.id,sdf=True).count()
+                    total_sdf_male = Visualization.objects.filter(geography_id=i.id,sdf=True,gender="male").count()
+                    total_sdf_female = Visualization.objects.filter(geography_id=i.id,sdf=True,gender="female").count()
 
 
-                    total_seal = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='SEAl') | Q(tooth12='SEAL')|Q(tooth13='SEAL') | Q(tooth14='SEAL')|Q(tooth15='SEAL') | Q(tooth16='SEAL')|Q(tooth17='SEAL') | Q(tooth18='SEAL')\
-                        |Q(tooth21='SEAL') | Q(tooth22='SEAL')|Q(tooth23='SEAL') | Q(tooth24='SEAL')|Q(tooth25='SEAL') | Q(tooth26='SEAL')|Q(tooth27='SEAL') | Q(tooth28='SEAL')\
-                        |Q(tooth31='SEAL') | Q(tooth32='SEAL')|Q(tooth33='SEAL') | Q(tooth34='SEAL')|Q(tooth35='SEAL') | Q(tooth36='SEAL')|Q(tooth37='SEAL') | Q(tooth38='SEAL')\
-                        |Q(tooth41='SEAL') | Q(tooth42='SEAL')|Q(tooth43='SEAL') | Q(tooth44='SEAL')|Q(tooth45='SEAL') | Q(tooth46='SEAL')|Q(tooth47='SEAL') | Q(tooth48='SEAL')\
-                        |Q(tooth51='SEAL') | Q(tooth52='SEAL')|Q(tooth53='SEAL') | Q(tooth54='SEAL')|Q(tooth55='SEAL')\
-                        |Q(tooth61='SEAL') | Q(tooth62='SEAL')|Q(tooth63='SEAL') | Q(tooth64='SEAL')|Q(tooth65='SEAL')\
-                        |Q(tooth71='SEAL') | Q(tooth72='SEAL')|Q(tooth73='SEAL') | Q(tooth74='SEAL')|Q(tooth75='SEAL')\
-                        |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__geography=i).count()
+                    total_seal = Visualization.objects.filter(geography_id=i.id,seal=True).count()
+                    total_seal_male = Visualization.objects.filter(geography_id=i.id,seal=True,gender="male").count()
+                    total_seal_female = Visualization.objects.filter(geography_id=i.id,seal=True,gender="female").count()
 
-                    total_seal_male = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='SEAL') | Q(tooth12='SEAL')|Q(tooth13='SEAL') | Q(tooth14='SEAL')|Q(tooth15='SEAL') | Q(tooth16='SEAL')|Q(tooth17='SEAL') | Q(tooth18='SEAL')\
-                        |Q(tooth21='SEAL') | Q(tooth22='SEAL')|Q(tooth23='SEAL') | Q(tooth24='SEAL')|Q(tooth25='SEAL') | Q(tooth26='SEAL')|Q(tooth27='SEAL') | Q(tooth28='SEAL')\
-                        |Q(tooth31='SEAL') | Q(tooth32='SEAL')|Q(tooth33='SEAL') | Q(tooth34='SEAL')|Q(tooth35='SEAL') | Q(tooth36='SEAL')|Q(tooth37='SEAL') | Q(tooth38='SEAL')\
-                        |Q(tooth41='SEAL') | Q(tooth42='SEAL')|Q(tooth43='SEAL') | Q(tooth44='SEAL')|Q(tooth45='SEAL') | Q(tooth46='SEAL')|Q(tooth47='SEAL') | Q(tooth48='SEAL')\
-                        |Q(tooth51='SEAL') | Q(tooth52='SEAL')|Q(tooth53='SEAL') | Q(tooth54='SEAL')|Q(tooth55='SEAL')\
-                        |Q(tooth61='SEAL') | Q(tooth62='SEAL')|Q(tooth63='SEAL') | Q(tooth64='SEAL')|Q(tooth65='SEAL')\
-                        |Q(tooth71='SEAL') | Q(tooth72='SEAL')|Q(tooth73='SEAL') | Q(tooth74='SEAL')|Q(tooth75='SEAL')\
-                        |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__patient__gender='male',encounter_id__geography=i).count()
+                    total_art = Visualization.objects.filter(geography_id=i.id,art=True).count()
+                    total_art_male = Visualization.objects.filter(geography_id=i.id,art=True,gender="male").count()
+                    total_art_female = Visualization.objects.filter(geography_id=i.id,art=True,gender="female").count()
 
-                    total_seal_female = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='SEAL') | Q(tooth12='SEAL')|Q(tooth13='SEAL') | Q(tooth14='SEAL')|Q(tooth15='SEAL') | Q(tooth16='SEAL')|Q(tooth17='SEAL') | Q(tooth18='SEAL')\
-                        |Q(tooth21='SEAL') | Q(tooth22='SEAL')|Q(tooth23='SEAL') | Q(tooth24='SEAL')|Q(tooth25='SEAL') | Q(tooth26='SEAL')|Q(tooth27='SEAL') | Q(tooth28='SEAL')\
-                        |Q(tooth31='SEAL') | Q(tooth32='SEAL')|Q(tooth33='SEAL') | Q(tooth34='SEAL')|Q(tooth35='SEAL') | Q(tooth36='SEAL')|Q(tooth37='SEAL') | Q(tooth38='SEAL')\
-                        |Q(tooth41='SEAL') | Q(tooth42='SEAL')|Q(tooth43='SEAL') | Q(tooth44='SEAL')|Q(tooth45='SEAL') | Q(tooth46='SEAL')|Q(tooth47='SEAL') | Q(tooth48='SEAL')\
-                        |Q(tooth51='SEAL') | Q(tooth52='SEAL')|Q(tooth53='SEAL') | Q(tooth54='SEAL')|Q(tooth55='SEAL')\
-                        |Q(tooth61='SEAL') | Q(tooth62='SEAL')|Q(tooth63='SEAL') | Q(tooth64='SEAL')|Q(tooth65='SEAL')\
-                        |Q(tooth71='SEAL') | Q(tooth72='SEAL')|Q(tooth73='SEAL') | Q(tooth74='SEAL')|Q(tooth75='SEAL')\
-                        |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__patient__gender='female',encounter_id__geography=i).count()
+                    total_exo = Visualization.objects.filter(geography_id=i.id,exo=True).count()
+                    total_exo_male = Visualization.objects.filter(geography_id=i.id,exo=True,gender="male").count()
+                    total_exo_female = Visualization.objects.filter(geography_id=i.id,exo=True,gender="female").count()
 
-                    total_art = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='ART') | Q(tooth12='ART')|Q(tooth13='ART') | Q(tooth14='ART')|Q(tooth15='ART') | Q(tooth16='ART')|Q(tooth17='ART') | Q(tooth18='ART')\
-                        |Q(tooth21='ART') | Q(tooth22='ART')|Q(tooth23='ART') | Q(tooth24='ART')|Q(tooth25='ART') | Q(tooth26='ART')|Q(tooth27='ART') | Q(tooth28='ART')\
-                        |Q(tooth31='ART') | Q(tooth32='ART')|Q(tooth33='ART') | Q(tooth34='ART')|Q(tooth35='ART') | Q(tooth36='ART')|Q(tooth37='ART') | Q(tooth38='ART')\
-                        |Q(tooth41='ART') | Q(tooth42='ART')|Q(tooth43='ART') | Q(tooth44='ART')|Q(tooth45='ART') | Q(tooth46='ART')|Q(tooth47='ART') | Q(tooth48='ART')\
-                        |Q(tooth51='ART') | Q(tooth52='ART')|Q(tooth53='ART') | Q(tooth54='ART')|Q(tooth55='ART')\
-                        |Q(tooth61='ART') | Q(tooth62='ART')|Q(tooth63='ART') | Q(tooth64='ART')|Q(tooth65='ART')\
-                        |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
-                        |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__geography=i).count()
-
-                    total_art_male = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='ART') | Q(tooth12='ART')|Q(tooth13='ART') | Q(tooth14='ART')|Q(tooth15='ART') | Q(tooth16='ART')|Q(tooth17='ART') | Q(tooth18='ART')\
-                        |Q(tooth21='ART') | Q(tooth22='ART')|Q(tooth23='ART') | Q(tooth24='ART')|Q(tooth25='ART') | Q(tooth26='ART')|Q(tooth27='ART') | Q(tooth28='ART')\
-                        |Q(tooth31='ART') | Q(tooth32='ART')|Q(tooth33='ART') | Q(tooth34='ART')|Q(tooth35='ART') | Q(tooth36='ART')|Q(tooth37='ART') | Q(tooth38='ART')\
-                        |Q(tooth41='ART') | Q(tooth42='ART')|Q(tooth43='ART') | Q(tooth44='ART')|Q(tooth45='ART') | Q(tooth46='ART')|Q(tooth47='ART') | Q(tooth48='ART')\
-                        |Q(tooth51='ART') | Q(tooth52='ART')|Q(tooth53='ART') | Q(tooth54='ART')|Q(tooth55='ART')\
-                        |Q(tooth61='ART') | Q(tooth62='ART')|Q(tooth63='ART') | Q(tooth64='ART')|Q(tooth65='ART')\
-                        |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
-                        |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__patient__gender='male',encounter_id__geography=i).count()
-
-                    total_art_female = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='ART') | Q(tooth12='ART')|Q(tooth13='ART') | Q(tooth14='ART')|Q(tooth15='ART') | Q(tooth16='ART')|Q(tooth17='ART') | Q(tooth18='ART')\
-                        |Q(tooth21='ART') | Q(tooth22='ART')|Q(tooth23='ART') | Q(tooth24='ART')|Q(tooth25='ART') | Q(tooth26='ART')|Q(tooth27='ART') | Q(tooth28='ART')\
-                        |Q(tooth31='ART') | Q(tooth32='ART')|Q(tooth33='ART') | Q(tooth34='ART')|Q(tooth35='ART') | Q(tooth36='ART')|Q(tooth37='ART') | Q(tooth38='ART')\
-                        |Q(tooth41='ART') | Q(tooth42='ART')|Q(tooth43='ART') | Q(tooth44='ART')|Q(tooth45='ART') | Q(tooth46='ART')|Q(tooth47='ART') | Q(tooth48='ART')\
-                        |Q(tooth51='ART') | Q(tooth52='ART')|Q(tooth53='ART') | Q(tooth54='ART')|Q(tooth55='ART')\
-                        |Q(tooth61='ART') | Q(tooth62='ART')|Q(tooth63='ART') | Q(tooth64='ART')|Q(tooth65='ART')\
-                        |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
-                        |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__patient__gender='female',encounter_id__geography=i).count()
-
-
-                    total_exo = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='EXO') | Q(tooth12='EXO')|Q(tooth13='EXO') | Q(tooth14='EXO')|Q(tooth15='EXO') | Q(tooth16='EXO')|Q(tooth17='EXO') | Q(tooth18='EXO')\
-                        |Q(tooth21='EXO') | Q(tooth22='EXO')|Q(tooth23='EXO') | Q(tooth24='EXO')|Q(tooth25='EXO') | Q(tooth26='EXO')|Q(tooth27='EXO') | Q(tooth28='EXO')\
-                        |Q(tooth31='EXO') | Q(tooth32='EXO')|Q(tooth33='EXO') | Q(tooth34='EXO')|Q(tooth35='EXO') | Q(tooth36='EXO')|Q(tooth37='EXO') | Q(tooth38='EXO')\
-                        |Q(tooth41='EXO') | Q(tooth42='EXO')|Q(tooth43='EXO') | Q(tooth44='EXO')|Q(tooth45='EXO') | Q(tooth46='EXO')|Q(tooth47='EXO') | Q(tooth48='EXO')\
-                        |Q(tooth51='EXO') | Q(tooth52='EXO')|Q(tooth53='EXO') | Q(tooth54='EXO')|Q(tooth55='EXO')\
-                        |Q(tooth61='EXO') | Q(tooth62='EXO')|Q(tooth63='EXO') | Q(tooth64='EXO')|Q(tooth65='EXO')\
-                        |Q(tooth71='EXO') | Q(tooth72='EXO')|Q(tooth73='EXO') | Q(tooth74='EXO')|Q(tooth75='EXO')\
-                        |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__geography=i).count()
-
-                    total_exo_male = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='EXO') | Q(tooth12='EXO')|Q(tooth13='EXO') | Q(tooth14='EXO')|Q(tooth15='EXO') | Q(tooth16='EXO')|Q(tooth17='EXO') | Q(tooth18='EXO')\
-                        |Q(tooth21='EXO') | Q(tooth22='EXO')|Q(tooth23='EXO') | Q(tooth24='EXO')|Q(tooth25='EXO') | Q(tooth26='EXO')|Q(tooth27='EXO') | Q(tooth28='EXO')\
-                        |Q(tooth31='EXO') | Q(tooth32='EXO')|Q(tooth33='EXO') | Q(tooth34='EXO')|Q(tooth35='EXO') | Q(tooth36='EXO')|Q(tooth37='EXO') | Q(tooth38='EXO')\
-                        |Q(tooth41='EXO') | Q(tooth42='EXO')|Q(tooth43='EXO') | Q(tooth44='EXO')|Q(tooth45='EXO') | Q(tooth46='EXO')|Q(tooth47='EXO') | Q(tooth48='EXO')\
-                        |Q(tooth51='EXO') | Q(tooth52='EXO')|Q(tooth53='EXO') | Q(tooth54='EXO')|Q(tooth55='EXO')\
-                        |Q(tooth61='EXO') | Q(tooth62='EXO')|Q(tooth63='EXO') | Q(tooth64='EXO')|Q(tooth65='EXO')\
-                        |Q(tooth71='EXO') | Q(tooth72='EXO')|Q(tooth73='EXO') | Q(tooth74='EXO')|Q(tooth75='EXO')\
-                        |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__patient__gender='male',encounter_id__geography=i).count()
-
-                    total_exo_female = Treatment.objects.select_related('encounter_id').filter(Q(tooth11='EXO') | Q(tooth12='EXO')|Q(tooth13='EXO') | Q(tooth14='EXO')|Q(tooth15='EXO') | Q(tooth16='EXO')|Q(tooth17='EXO') | Q(tooth18='EXO')\
-                        |Q(tooth21='EXO') | Q(tooth22='EXO')|Q(tooth23='EXO') | Q(tooth24='EXO')|Q(tooth25='EXO') | Q(tooth26='EXO')|Q(tooth27='EXO') | Q(tooth28='EXO')\
-                        |Q(tooth31='EXO') | Q(tooth32='EXO')|Q(tooth33='EXO') | Q(tooth34='EXO')|Q(tooth35='EXO') | Q(tooth36='EXO')|Q(tooth37='EXO') | Q(tooth38='EXO')\
-                        |Q(tooth41='EXO') | Q(tooth42='EXO')|Q(tooth43='EXO') | Q(tooth44='EXO')|Q(tooth45='EXO') | Q(tooth46='EXO')|Q(tooth47='EXO') | Q(tooth48='EXO')\
-                        |Q(tooth51='EXO') | Q(tooth52='EXO')|Q(tooth53='EXO') | Q(tooth54='EXO')|Q(tooth55='EXO')\
-                        |Q(tooth61='EXO') | Q(tooth62='EXO')|Q(tooth63='EXO') | Q(tooth64='EXO')|Q(tooth65='EXO')\
-                        |Q(tooth71='EXO') | Q(tooth72='EXO')|Q(tooth73='EXO') | Q(tooth74='EXO')|Q(tooth75='EXO')\
-                        |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__patient__gender='female',encounter_id__geography=i).count()
-
-
-                    total_fv = Treatment.objects.select_related('encounter_id').filter(fv_applied=True,encounter_id__geography=i).count()
-                    totalfv_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True,encounter_id__geography=i).count()
-                    totalfv_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True,encounter_id__geography=i).count()
+                    total_fv = Visualization.objects.filter(geography_id=i.id,fv=True).count()
+                    totalfv_male = Visualization.objects.filter(geography_id=i.id,fv=True,gender="male").count()
+                    totalfv_female = Visualization.objects.filter(geography_id=i.id,fv=True,gender="female").count()
                     male.append(total_exo_male)
                     male.append(total_art_male)
                     male.append(total_seal_male)
@@ -551,3 +457,133 @@ class WardUserlineVisualization(APIView):
             }
             return JsonResponse({"locationChart":locationChart})
         return Response({"message":"only admin can see"},status=400)
+
+
+class WardStrategicData(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    def get(self, request, format=None):
+        if CustomUser.objects.select_related('role').filter(id=request.user.id,role__name='warduser').exists():
+            customuser_obj = CustomUser.objects.get(id=request.user.id)
+            for i in customuser_obj.location.all():
+                encounter_male = Visualization.objects.filter(gender='male',geography_id=i.id).values('encounter_id').annotate(Count('encounter_id')).count()
+                encounter_female = Visualization.objects.filter(gender='female',geography_id=i.id).values('encounter_id').annotate(Count('encounter_id')).count()
+                encounter_child = Visualization.objects.filter(age__lt=18,geography_id=i.id).values('encounter_id').annotate(Count('encounter_id')).count()
+                encounter_adult = Visualization.objects.filter(age__range=(18, 60),geography_id=i.id).values('encounter_id').annotate(Count('encounter_id')).count()
+                encounter_old = Visualization.objects.filter(age__gt=60,geography_id=i.id).values('encounter_id').annotate(Count('encounter_id')).count()
+
+                total_refer = Visualization.objects.filter(refer_hp=True,geography_id=i.id).count()
+                refer_male = Visualization.objects.filter(gender='male',refer_hp=True,geography_id=i.id).count()
+                refer_female = Visualization.objects.filter(gender='female',refer_hp=True,geography_id=i.id).count()
+                refer_child = Visualization.objects.filter(age__lt=18,refer_hp=True,geography_id=i.id).count()
+                refer_adult = Visualization.objects.filter(age__range=(18,60),refer_hp=True,geography_id=i.id).count()
+                refer_old = Visualization.objects.filter(age__gt=60,refer_hp=True,geography_id=i.id).count()
+
+                total_refer = Visualization.objects.filter(refer_hp=True,geography_id=i.id).count()
+                total_seal_male = Visualization.objects.filter(gender='male',seal=True,geography_id=i.id).count()
+                total_seal_female = Visualization.objects.filter(gender='female',seal=True,geography_id=i.id).count()
+                total_seal_child = Visualization.objects.filter(age__lt=18,seal=True,geography_id=i.id).count()
+                total_seal_adult = Visualization.objects.filter(age__range=(18,60),seal=True,geography_id=i.id).count()
+                total_seal_old = Visualization.objects.filter(age__gt=60,seal=True,geography_id=i.id).count()
+
+                totalfv_male = Visualization.objects.filter(gender='male',fv=True,geography_id=i.id).count()
+                totalfv_female = Visualization.objects.filter(gender='female',fv=True,geography_id=i.id).count()
+                totalfv_child = Visualization.objects.filter(age__lt=18,fv=True,geography_id=i.id).count()
+                totalfv_adult = Visualization.objects.filter(age__range=(18,60),fv=True,geography_id=i.id).count()
+                totalfv_adult = Visualization.objects.filter(age__gt=60,fv=True,geography_id=i.id).count()
+
+                total_exo_male = Visualization.objects.filter(gender='male',exo=True,geography_id=i.id).count()
+                total_exo_female = Visualization.objects.filter(gender='female',exo=True,geography_id=i.id).count()
+                total_exo_child = Visualization.objects.filter(age__lt=18,exo=True,geography_id=i.id).count()
+                total_exo_adult = Visualization.objects.filter(age__range=(18,60),exo=True,geography_id=i.id).count()
+                total_exo_old = Visualization.objects.filter(age__gt=60,exo=True,geography_id=i.id).count()
+
+
+                total_art_male = Visualization.objects.filter(gender='male',art=True,geography_id=i.id).count()
+                total_art_female = Visualization.objects.filter(gender='female',art=True,geography_id=i.id).count()
+                total_art_child = Visualization.objects.filter(age__lt=18,art=True,geography_id=i.id).count()
+                total_art_adult = Visualization.objects.filter(age__range=(18,60),art=True,geography_id=i.id).count()
+                total_art_old = Visualization.objects.filter(age__gt=60,art=True,geography_id=i.id).count()
+
+                try:
+                    preventive_ratio_male = (total_seal_male*totalfv_male)/(total_exo_male*total_art_male*total_sdf_male)
+                except:
+                    preventive_ratio_male=0
+                try:
+                    preventive_ratio_female = (total_seal_female*totalfv_female)/(total_exo_female*total_art_female*total_sdf_female)
+                except:
+                    preventive_ratio_female=0
+                try:
+                    preventive_ratio_child = (total_seal_child*totalfv_child)/(total_exo_child*total_art_child*total_sdf_child)
+                except:
+                    preventive_ratio_child=0
+                try:
+                    preventive_ratio_adult = (total_seal_adult*totalfv_adult)/(total_exo_adult*total_art_adult*total_sdf_adult)
+                except:
+                    preventive_ratio_adult=0
+                try:
+                    preventive_ratio_old = (total_seal_old*totalfv_old)/(total_exo_old*total_art_old*total_sdf_old)
+                except:
+                    preventive_ratio_old=0
+
+                preventive_ratio_total = preventive_ratio_male+preventive_ratio_female+preventive_ratio_child+preventive_ratio_old
+
+
+                try:
+                    early_intervention_ratio_male = (total_art_male*total_sdf_male)/total_exo_male
+                except:
+                    early_intervention_ratio_male=0
+
+                try:
+                    early_intervention_ratio_female = (total_art_female*total_sdf_female)/total_exo_female
+                except:
+                    early_intervention_ratio_female=0
+
+                try:
+                    early_intervention_ratio_child = (total_art_child*total_sdf_child)/total_exo_child
+                except:
+                    early_intervention_ratio_child=0
+
+                try:
+                    early_intervention_ratio_adult = (total_art_adult*total_sdf_adult)/total_exo_adult
+                except:
+                    early_intervention_ratio_adult=0
+
+                try:
+                    early_intervention_ratio_old = (total_art_old*total_sdf_old)/total_exo_old
+                except:
+                    early_intervention_ratio_old=0
+
+                early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female+early_intervention_ratio_child+early_intervention_ratio_adult+early_intervention_ratio_old
+
+                try:
+                    recall_percent_male = encounter_male/refer_male
+                except:
+                    recall_percent_male=0
+
+                try:
+                    recall_percent_female = encounter_female/refer_female
+                except:
+                    recall_percent_female=0
+
+                try:
+                    recall_percent_child = encounter_child/refer_child
+                except:
+                    recall_percent_child=0
+
+                try:
+                    recall_percent_adult = encounter_adult/refer_adult
+                except:
+                    recall_percent_adult=0
+
+                try:
+                    recall_percent_old = encounter_old/refer_old
+                except:
+                    recall_percent_old=0
+
+                recall_percent_total = recall_percent_male+recall_percent_female
+
+
+            return Response([["Preventive Ratio",round(preventive_ratio_male,2), round(preventive_ratio_female,2), round(preventive_ratio_child,2), round(preventive_ratio_adult,2), round(preventive_ratio_old,2),round(preventive_ratio_total,2)],\
+                ["Early Intervention Ratio",round(early_intervention_ratio_male,2), round(early_intervention_ratio_female,2), round(early_intervention_ratio_child,2), round(early_intervention_ratio_adult,2), round(early_intervention_ratio_old,2),round(early_intervention_ratio_total,2)],\
+                ["% Recall",str(round(recall_percent_male,2))+"%", str(round(recall_percent_female,2))+"%", str(round(recall_percent_child,2))+"%", str(round(recall_percent_adult,2))+"%", str(round(recall_percent_old,2))+"%",str(round(recall_percent_total,2))+"%"]])
+        return Response({"treatment_obj":"do not have a permission"},status=400)

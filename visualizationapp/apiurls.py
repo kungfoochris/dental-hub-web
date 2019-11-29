@@ -22,7 +22,7 @@ TreatmentbyWardList,PieChartVisualization,PieChartVisualizationFilter
 from visualizationapp.api.wardvisualization import WardVisualization1,\
 WardTreatmentTableVisualization1,WardTableVisualization2,\
 WardSettingVisualization, WardTreatmentVisualization,\
-WardUserlineVisualization
+WardUserlineVisualization,WardStrategicData
 
 
 # from visualizationapp.api.filtervisualization import OverviewVisualization
@@ -81,5 +81,7 @@ urlpatterns = [
 	path('data',DataVisualization.as_view()),
 	path('waruserlinechart',WardUserlineVisualization.as_view()),
 	path('longitudinal',LongitudinalVisualization.as_view()),
+
+	path('wardstrategicdata',WardStrategicData.as_view()),
 	]
 urlpatterns = format_suffix_patterns(urlpatterns)
