@@ -174,8 +174,8 @@ class WardTreatmentTableVisualization1(APIView):
                     contact_adult = Encounter.objects.select_related('patient','geography').filter(patient__dob__range=(greaterthan60, lessthan18),geography=i).count()
                     contact_old= total_encounter-contact_child-contact_adult
 
-                    return Response([["Number of Cavities Prevented",cavities_prevented_male, cavities_prevented_female, cavities_prevented_child, cavities_prevented_adult, cavities_prevented_old,total_cavities],\
-                        ["Contacts", contact_male, contact_female, contact_child, contact_adult, contact_old, total_encounter]])
+                    return Response([["Number of Cavities Prevented",round(cavities_prevented_male,2), round(cavities_prevented_female,2), round(cavities_prevented_child,2), round(cavities_prevented_adult,2), round(cavities_prevented_old,2),round(total_cavities,2)],\
+                        ["Contacts", round(contact_male,2), round(contact_female,2), round(contact_child,2), round(contact_adult,2), round(contact_old,2), round(total_encounter,2)]])
             return Response({"treatment_obj":"do not have a permission"},status=400)
 
 class WardTableVisualization2(APIView):
