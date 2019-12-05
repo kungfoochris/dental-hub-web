@@ -8,4 +8,4 @@ db.sqlite3
 .pytest_cache/
 ngrok
 .vscode
-s
+/log/

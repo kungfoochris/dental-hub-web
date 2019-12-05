@@ -21,7 +21,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -50,10 +50,11 @@ class PatientScreeingView(APIView):
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
+                logger.error("Screeing added successfully.")
                 return Response({"message":"screeing data added successfully"},status=200)
-            logger.error(serializer.errors) 
+            logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
-        logger.error("patient does not exists.") 
+        logger.error("patient does not exists.")
         return Response({"message":"patient does not exists."},status=400)
 
 
@@ -62,7 +63,7 @@ class PatientScreeingUpdateView(APIView):
     serializer_class = PatientScreeingUpdateSerializer
 
     def get(self, request, encounter_id, format=None):
-        if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
+        if Screeing.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
             screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientScreeingSerializer(screeing_obj, many=False, \
                 context={'request': request})
@@ -78,9 +79,9 @@ class PatientScreeingUpdateView(APIView):
                 context={'request': request},partial=True)
             if serializer.is_valid():
                 serializer.save()
+                logger.error("Screeing updated successfully.")
                 return Response({"message":"screeing encounter update"},status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.error("screeing encounter id donot match")
-        return Response({"message":"id do not match"},status=400) 
-   
+        return Response({"message":"id do not match"},status=400)

@@ -69,6 +69,7 @@ class EncounterView(APIView):
                         encounter_obj.other_problem = serializer.validated_data['other_problem']
                         encounter_obj.created_at = serializer.validated_data['created_at']
                         encounter_obj.save()
+                        logger.error("Encounter added successfully.")
                         return Response({"message":"Encounter added","id":encounter_obj.id},status=200)
                     logger.error("Geography id does not exists.")
                     return Response({"message":"Geography id does not exists."},status=400)
@@ -100,6 +101,7 @@ class EncounterUpdateView(APIView):
                 context={'request': request},partial=True)
             if serializer.is_valid():
                 serializer.save()
+                logger.error("Encounter updated successfully.")
                 return Response({"message":"encounter update"},status=200)
                 logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)

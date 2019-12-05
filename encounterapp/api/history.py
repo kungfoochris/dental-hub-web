@@ -20,7 +20,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -47,10 +47,11 @@ class PatientHistoryView(APIView):
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
+                logger.error("History added successfully.")
                 return Response({"message":"encounter added"},status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
-        logger.error("patient does not exists.") 
+        logger.error("patient does not exists.")
         return Response({"message":"patient does not exists."},status=400)
 
 
@@ -59,7 +60,7 @@ class PatientHistoryUpdateView(APIView):
     serializer_class = PatientHistoryUpdateSerializer
 
     def get(self, request, encounter_id, format=None):
-        if History.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
+        if History.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
             history_obj = History.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientHistorySerializer(history_obj, many=False, \
                 context={'request': request})
@@ -75,10 +76,9 @@ class PatientHistoryUpdateView(APIView):
                 context={'request': request},partial=True)
             if serializer.is_valid():
                 serializer.save()
+                logger.error("History updated successfully.")
                 return Response({"message":"history encounter update"},status=200)
-            logger.error(serializer.errors) 
+            logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
-        logger.error("encounter history id do not match") 
-        return Response({"message":"id do not match"},status=400)     
-
-
+        logger.error("encounter history id do not match")
+        return Response({"message":"id do not match"},status=400)

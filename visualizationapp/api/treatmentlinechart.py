@@ -34,7 +34,7 @@ class TreatmentPreventionRatioVisualization(APIView):
                         total_art = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
                         total_sdf = Visualization.objects.filter(geography_id=i.id,created_at__month=x,sdf=True).count()
                         try:
-                            preventive_ratio = (total_seal*total_fv)/(total_exo*total_art,total_sdf)
+                            preventive_ratio = (total_seal+total_fv)/(total_exo+total_art+total_sdf)
                         except:
                             preventive_ratio=0
                         v.append(preventive_ratio)
@@ -126,7 +126,7 @@ class TreatmentEarlyIntervention(APIView):
                         total_art = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
                         total_sdf = Visualization.objects.filter(geography_id=i.id,created_at__month=x,sdf=True).count()
                         try:
-                            early_intervention_ratio = (total_art*total_sdf)/(total_exo)
+                            early_intervention_ratio = (total_art+total_sdf)/(total_exo)
                         except:
                             early_intervention_ratio=0
                         v.append(early_intervention_ratio)
@@ -218,7 +218,7 @@ class TreatmentRecallDistribution(APIView):
                         total_encounter = Visualization.objects.filter(geography_id=i.id,created_at__month=x).count()
                         total_recall = Visualization.objects.filter(geography_id=i.id,created_at__month=x,refer_hp=True).count()
                         try:
-                            recall = total_encounter/total_recall
+                            recall = total_recall/total_encounter
                         except:
                             recall=0
                         v.append(recall)

@@ -78,8 +78,6 @@ post_save.connect(create_encounter,sender=Encounter)
 
 def create_screeing(sender, **kwargs):
     if kwargs['created']:
-        print("=----")
-        print(kwargs['instance'].encounter_id.id)
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         visualization_obj.carries_risk = kwargs['instance'].carries_risk
         visualization_obj.decayed_primary_teeth_number = kwargs['instance'].decayed_primary_teeth
@@ -94,7 +92,6 @@ def create_screeing(sender, **kwargs):
         visualization_obj.need_extraction = kwargs['instance'].need_extraction
         visualization_obj.need_sealant = kwargs['instance'].need_sealant
         visualization_obj.save()
-        print("visualization added")
 post_save.connect(create_screeing,sender=Screeing)
 
 def create_refer(sender, **kwargs):

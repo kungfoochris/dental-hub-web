@@ -19,7 +19,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -47,10 +47,11 @@ class PatientTreatmentView(APIView):
                 return Response({"message":"encounter id is already exists."},status=400)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
+                logger.error("Treatment added successfully.")
                 return Response(serializer.data,status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
-        logger.error("patient does not exists.") 
+        logger.error("patient does not exists.")
         return Response({"message":"patient does not exists."},status=400)
 
 class PatientTreatmentUpdateView(APIView):
@@ -58,7 +59,7 @@ class PatientTreatmentUpdateView(APIView):
     serializer_class = PatientTreatmentUpdateSerializer
 
     def get(self, request, encounter_id, format=None):
-        if Treatment.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():    
+        if Treatment.objects.select_related('encounter_id').filter(encounter_id__id=encounter_id).exists():
             treatment_obj = Treatment.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientTreatmentSerializer(treatment_obj, many=False, \
                 context={'request': request})
@@ -72,9 +73,10 @@ class PatientTreatmentUpdateView(APIView):
             serializer = PatientTreatmentUpdateSerializer(treatment_obj,data=request.data,\
                 context={'request': request},partial=True)
             if serializer.is_valid():
+                logger.error("Treatment updated successfully.")
                 serializer.save()
                 return Response({"message":"treatment encounter update"},status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.error("history encounter id do not match")
-        return Response({"message":"id do not match"},status=400)     
+        return Response({"message":"id do not match"},status=400)
