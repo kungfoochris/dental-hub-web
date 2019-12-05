@@ -576,6 +576,11 @@ class TreatmentActivityList(APIView):
             health_post_sdf = Visualization.objects.filter(sdf=True,activities_id=health_post_obj.id).count()
             health_post_fv = Visualization.objects.filter(fv=True,activities_id=health_post_obj.id).count()
             health_post_sdf_whole_mouth = Visualization.objects.filter(sdf_whole_mouth=True,activities_id=health_post_obj.id).count()
+            health_post_refer_hp = Visualization.objects.filter(refer_hp=True,activities_id=health_post_obj.id).count()
+            health_post_refer_hyg = Visualization.objects.filter(refer_hyg=True,activities_id=health_post_obj.id).count()
+            health_post_refer_dent = Visualization.objects.filter(refer_dent=True,activities_id=health_post_obj.id).count()
+            health_post_refer_dr = Visualization.objects.filter(refer_dr=True,activities_id=health_post_obj.id).count()
+            health_post_refer_other = Visualization.objects.filter(refer_other=True,activities_id=health_post_obj.id).count()
 
             seminar_check = Visualization.objects.filter(activities_id=seminar_obj.id).count()
             seminar_exo = Visualization.objects.filter(exo=True,activities_id=seminar_obj.id).count()
@@ -584,6 +589,11 @@ class TreatmentActivityList(APIView):
             seminar_sdf = Visualization.objects.filter(sdf=True,activities_id=seminar_obj.id).count()
             seminar_fv = Visualization.objects.filter(fv=True,activities_id=seminar_obj.id).count()
             seminar_sdf_whole_mouth = Visualization.objects.filter(sdf_whole_mouth=True,activities_id=seminar_obj.id).count()
+            seminar_refer_hp = Visualization.objects.filter(refer_hp=True,activities_id=seminar_obj.id).count()
+            seminar_refer_hyg = Visualization.objects.filter(refer_hyg=True,activities_id=seminar_obj.id).count()
+            seminar_refer_dent = Visualization.objects.filter(refer_dent=True,activities_id=seminar_obj.id).count()
+            seminar_refer_dr = Visualization.objects.filter(refer_dr=True,activities_id=seminar_obj.id).count()
+            seminar_refer_other = Visualization.objects.filter(refer_other=True,activities_id=seminar_obj.id).count()
 
             outreach_check = Visualization.objects.filter(activities_id=outreach_obj.id).count()
             outreach_exo = Visualization.objects.filter(exo=True,activities_id=outreach_obj.id).count()
@@ -592,6 +602,11 @@ class TreatmentActivityList(APIView):
             outreach_sdf = Visualization.objects.filter(sdf=True,activities_id=outreach_obj.id).count()
             outreach_fv = Visualization.objects.filter(fv=True,activities_id=outreach_obj.id).count()
             outreach_sdf_whole_mouth = Visualization.objects.filter(sdf_whole_mouth=True,activities_id=outreach_obj.id).count()
+            outreach_refer_hp = Visualization.objects.filter(refer_hp=True,activities_id=outreach_obj.id).count()
+            outreach_refer_hyg = Visualization.objects.filter(refer_hyg=True,activities_id=outreach_obj.id).count()
+            outreach_refer_dent = Visualization.objects.filter(refer_dent=True,activities_id=outreach_obj.id).count()
+            outreach_refer_dr = Visualization.objects.filter(refer_dr=True,activities_id=outreach_obj.id).count()
+            outreach_refer_other = Visualization.objects.filter(refer_other=True,activities_id=outreach_obj.id).count()
 
             training_check = Visualization.objects.filter(activities_id=training.id).count()
             training_exo = Visualization.objects.filter(exo=True,activities_id=training.id).count()
@@ -600,12 +615,19 @@ class TreatmentActivityList(APIView):
             training_sdf = Visualization.objects.filter(sdf=True,activities_id=training.id).count()
             training_fv = Visualization.objects.filter(fv=True,activities_id=training.id).count()
             training_sdf_whole_mouth = Visualization.objects.filter(sdf_whole_mouth=True,activities_id=training.id).count()
+            training_refer_hp = Visualization.objects.filter(refer_hp=True,activities_id=training.id).count()
+            training_refer_hyg = Visualization.objects.filter(refer_hyg=True,activities_id=training.id).count()
+            training_refer_dent = Visualization.objects.filter(refer_dent=True,activities_id=training.id).count()
+            training_refer_dr = Visualization.objects.filter(refer_dr=True,activities_id=training.id).count()
+            training_refer_other = Visualization.objects.filter(refer_other=True,activities_id=training.id).count()
+
+
 
             return Response([
-            ["Clinic",health_post_check, health_post_exo, health_post_art, health_post_seal, health_post_sdf, health_post_fv, 0,0,0,0,0,0], \
-            ["Seminar",seminar_check,seminar_exo, seminar_art, seminar_seal, seminar_sdf, seminar_fv, 0,0,0,0,0,0], \
-            ["Outreach",outreach_check,outreach_exo, outreach_art, outreach_seal, outreach_sdf, outreach_fv, 0,0,0,0,0,0], \
-            ["Training",training_check, training_exo, training_art, training_seal, training_sdf, training_fv, 0,0,0,0,0,0]])
+            ["Clinic",health_post_check, health_post_exo, health_post_art, health_post_seal, health_post_sdf,health_post_sdf_whole_mouth, health_post_fv, health_post_refer_hp, health_post_refer_hyg,health_post_refer_dent,health_post_refer_dr,health_post_refer_other], \
+            ["Seminar",seminar_check,seminar_exo, seminar_art, seminar_seal, seminar_sdf, seminar_sdf_whole_mouth, seminar_fv, seminar_refer_hp, seminar_refer_hyg, seminar_refer_dent, seminar_refer_dr, seminar_refer_other], \
+            ["Outreach",outreach_check,outreach_exo, outreach_art, outreach_seal, outreach_sdf, outreach_sdf_whole_mouth, outreach_fv, outreach_refer_hp, outreach_refer_hyg, outreach_refer_dent, outreach_refer_dr, outreach_refer_other], \
+            ["Training",training_check, training_exo, training_art, training_seal, training_sdf, training_sdf_whole_mouth, training_fv, training_refer_hp, training_refer_hyg, training_refer_dent, training_refer_dr, training_refer_other]])
         return Response({"treatment_obj":"do not have a permission"},status=400)
 
 

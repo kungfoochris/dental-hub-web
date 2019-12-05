@@ -29,11 +29,13 @@ from treatmentapp.models import Treatment
 from encounterapp.models import Encounter, History, Refer, Screeing
 
 from visualizationapp.models import Visualization
+from django.db.models import Count
+from addressapp.models import Activity
 
 np_date = NepaliDate()
 d=datetime.date(np_date.npYear(),np_date.npMonth(),np_date.npDay())
-lessthan18 = d - datetime.timedelta(days=365*18)
-greaterthan60 = d - datetime.timedelta(days=365*60)
+lessthan18 = d - datetime.timedelta(days=365+18)
+greaterthan60 = d - datetime.timedelta(days=365+60)
 
 import logging
 # Get an instance of a logger
@@ -58,16 +60,16 @@ class WardVisualization1(APIView):
                 total=[]
                 male=[]
                 female=[]
-                patient_objlist=Patient.objects.all()
-                patient_female = Patient.objects.select_related('geography').filter(geography=i,gender='female').count()
-                patient_male = Patient.objects.select_related('geography').filter(geography=i,gender='male').count()
-                total_patient = Patient.objects.select_related('geography').filter(geography=i).count()
-                female_child = Patient.objects.select_related('geography').filter(geography=i,gender='female',dob__gt=lessthan18).count()
-                female_adult = Patient.objects.select_related('geography').filter(geography=i,gender='female',dob__range=(greaterthan60,lessthan18)).count()
-                male_adult = Patient.objects.select_related('geography').filter(geography=i,gender='male',dob__range=(greaterthan60,lessthan18)).count()
-                male_child = Patient.objects.select_related('geography').filter(geography=i,gender='male',dob__gt=lessthan18).count()
-                old_male = patient_male-male_adult-male_child
-                old_female = patient_female-female_child-female_adult
+                # patient_objlist=Patient.objects.all()
+                patient_female = Visualization.objects.filter(geography_id=i.id,gender='female').count()
+                patient_male = Visualization.objects.filter(geography_id=i.id,gender='male').count()
+                total_patient = Visualization.objects.filter(geography_id=i.id).count()
+                female_child = Visualization.objects.filter(geography_id=i.id,gender='female',age__lt=18).count()
+                female_adult = Visualization.objects.filter(geography_id=i.id,gender='female',age__range=(19,60)).count()
+                male_adult = Visualization.objects.filter(geography_id=i.id,gender='male',age__range=(19,60)).count()
+                male_child = Visualization.objects.filter(geography_id=i.id,gender='male',age__lt=18).count()
+                old_male = Visualization.objects.filter(geography_id=i.id,gender='male',age__gt=60).count()
+                old_female = Visualization.objects.filter(geography_id=i.id,gender='female',age__gt=60).count()
                 male.append(male_child)
                 male.append(male_adult)
                 male.append(old_male)
@@ -139,43 +141,35 @@ class WardTreatmentTableVisualization1(APIView):
             if CustomUser.objects.select_related('role').filter(id=request.user.id,role__name='warduser').exists():
                 customuser_obj = CustomUser.objects.get(id=request.user.id)
                 for i in customuser_obj.location.all():
-                    treatment_obj = Treatment.objects.all().count()
-                    treatment_male = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',encounter_id__geography=i).count()
-                    treatment_female = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',encounter_id__geography=i).count()
-                    treatment_child = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,encounter_id__geography=i).count()
-                    treatment_adult = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),encounter_id__geography=i).count()
-                    treatment_old = treatment_obj-treatment_child-treatment_adult
+                    total_treatment = Visualization.objects.values('encounter_id').annotate(Count("encounter_id")).filter(geography_id=i.id).count()
+                    treatment_male = Visualization.objects.values('encounter_id').annotate(Count("encounter_id")).filter(gender='male',geography_id=i.id).count()
+                    treatment_female = Visualization.objects.values('encounter_id').annotate(Count("encounter_id")).filter(gender='female',geography_id=i.id).count()
+                    treatment_child = Visualization.objects.values('encounter_id').annotate(Count("encounter_id")).filter(age__lt=18,geography_id=i.id).count()
+                    treatment_adult = Visualization.objects.values('encounter_id').annotate(Count("encounter_id")).filter(age__range=(18, 60),geography_id=i.id).count()
+                    treatment_old = Visualization.objects.values('encounter_id').annotate(Count("encounter_id")).filter(age__gt=60,geography_id=i.id).count()
 
-                    total_fv = Treatment.objects.filter(fv_applied=True).count()
-                    female_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',fv_applied=True,encounter_id__geography=i).count()
-                    male_patients_receiving_FV=Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',fv_applied=True,encounter_id__geography=i).count()
-                    child__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,fv_applied=True,encounter_id__geography=i).count()
-                    adult__patients_receiving_FV = Treatment.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),fv_applied=True,encounter_id__geography=i).count()
-                    old__patients_receiving_FV = total_fv-child__patients_receiving_FV-adult__patients_receiving_FV
+                    female_patients_receiving_FV=Visualization.objects.filter(gender='female',fv=True,geography_id=i.id).count()
+                    male_patients_receiving_FV=Visualization.objects.filter(gender='male',fv=True,geography_id=i.id).count()
+                    child__patients_receiving_FV = Visualization.objects.filter(age__lt=18,fv=True,geography_id=i.id).count()
+                    adult__patients_receiving_FV = Visualization.objects.filter(age__range=(18, 60),fv=True,geography_id=i.id).count()
+                    old__patients_receiving_FV = Visualization.objects.filter(age__gt=60,fv=True,geography_id=i.id).count()
 
-                    total_need_sealant = Screeing.objects.filter(need_sealant=True).count()
-                    sealant_male = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__gender='male',need_sealant=True,encounter_id__geography=i).count()
-                    sealant_female = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__gender='female',need_sealant=True,encounter_id__geography=i).count()
-                    sealant_child = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__dob__gt=lessthan18,need_sealant=True,encounter_id__geography=i).count()
-                    sealant_adult = Screeing.objects.select_related('encounter_id').filter(encounter_id__patient__dob__range=(greaterthan60, lessthan18),need_sealant=True,encounter_id__geography=i).count()
-                    sealant_old = total_need_sealant-sealant_child-sealant_adult
+                    sealant_male = Visualization.objects.filter(gender='male',need_sealant=True,geography_id=i.id).count()
+                    sealant_female = Visualization.objects.filter(gender='female',need_sealant=True,geography_id=i.id).count()
+                    sealant_child = Visualization.objects.filter(age__lt=18,need_sealant=True,geography_id=i.id).count()
+                    sealant_adult = Visualization.objects.filter(age__range=(18, 60),need_sealant=True,geography_id=i.id).count()
+                    sealant_old = Visualization.objects.filter(age__gt=60,need_sealant=True,geography_id=i.id).count()
 
-                    cavities_prevented_male = 0.2*male_patients_receiving_FV+0.1*sealant_male
-                    cavities_prevented_female = 0.2*female_patients_receiving_FV+0.1*sealant_female
-                    cavities_prevented_child = 0.2*child__patients_receiving_FV+0.1*sealant_child
-                    cavities_prevented_adult = 0.2*adult__patients_receiving_FV+0.1*sealant_adult
-                    cavities_prevented_old = 0.2*old__patients_receiving_FV+0.1*sealant_old
+                    cavities_prevented_male = 0.2+male_patients_receiving_FV+0.1+sealant_male
+                    cavities_prevented_female = 0.2+female_patients_receiving_FV+0.1+sealant_female
+                    cavities_prevented_child = 0.2+child__patients_receiving_FV+0.1+sealant_child
+                    cavities_prevented_adult = 0.2+adult__patients_receiving_FV+0.1+sealant_adult
+                    cavities_prevented_old = 0.2+old__patients_receiving_FV+0.1+sealant_old
                     total_cavities = cavities_prevented_male+cavities_prevented_female
 
-                    total_encounter = Encounter.objects.all().count()
-                    contact_male = Encounter.objects.select_related('patient','geography').filter(patient__gender='male',geography=i).count()
-                    contact_female = Encounter.objects.select_related('patient','geography').filter(patient__gender='female',geography=i).count()
-                    contact_child = Encounter.objects.select_related('patient','geography').filter(patient__dob__gt=lessthan18,geography=i).count()
-                    contact_adult = Encounter.objects.select_related('patient','geography').filter(patient__dob__range=(greaterthan60, lessthan18),geography=i).count()
-                    contact_old= total_encounter-contact_child-contact_adult
 
                     return Response([["Number of Cavities Prevented",round(cavities_prevented_male,2), round(cavities_prevented_female,2), round(cavities_prevented_child,2), round(cavities_prevented_adult,2), round(cavities_prevented_old,2),round(total_cavities,2)],\
-                        ["Contacts", round(contact_male,2), round(contact_female,2), round(contact_child,2), round(contact_adult,2), round(contact_old,2), round(total_encounter,2)]])
+                        ["Contacts", round(treatment_male,2), round(treatment_female,2), round(treatment_child,2), round(treatment_adult,2), round(treatment_old,2), round(total_treatment,2)]])
             return Response({"treatment_obj":"do not have a permission"},status=400)
 
 class WardTableVisualization2(APIView):
@@ -232,15 +226,19 @@ class WardSettingVisualization(APIView):
       def get(self, request, format=None):
         if CustomUser.objects.select_related('role').filter(id=request.user.id,role__name='warduser').exists():
             customuser_obj = CustomUser.objects.get(id=request.user.id)
+            health_post_obj = Activity.objects.get(name="Health Post")
+            seminar_obj = Activity.objects.get(name="School Seminar")
+            outreach_obj = Activity.objects.get(name="Community Outreach")
+            training_obj = Activity.objects.get(name="Training")
             for i in customuser_obj.location.all():
                 health_post=[]
                 school_seminar=[]
                 community=[]
                 training=[]
-                health_count = Patient.objects.select_related('activity_area','geography').filter(activity_area__name='Health Post',geography=i).count()
-                school_count = Patient.objects.select_related('activity_area','geography').filter(activity_area__name='School Seminar',geography=i).count()
-                community_count = Patient.objects.select_related('activity_area','geography').filter(activity_area__name='Community Outreach',geography=i).count()
-                training_count = Patient.objects.select_related('activity_area','geography').filter(activity_area__name='Training',geography=i).count()
+                health_count = Visualization.objects.filter(activities_id=health_post_obj.id,geography_id=i.id).count()
+                school_count = Visualization.objects.filter(activities_id=seminar_obj.id,geography_id=i.id).count()
+                community_count = Visualization.objects.filter(activities_id=outreach_obj.id,geography_id=i.id).count()
+                training_count = Visualization.objects.filter(activities_id=training_obj.id,geography_id=i.id).count()
                 health_post.append(health_count)
                 school_seminar.append(school_count)
                 community.append(community_count)
@@ -387,8 +385,8 @@ class WardUserlineVisualization(APIView):
             for i in customuser_obj.location.all():
                 v=[]
                 for x in month:
-                    if Patient.objects.filter(geography__id=i.id).exists():
-                        total_patient = Patient.objects.filter(geography__id=i.id,created_at__month=x).count()
+                    if Visualization.objects.filter(geography_id=i.id).exists():
+                        total_patient = Visualization.objects.filter(geography_id=i.id,created_at__month=x).count()
                         v.append(total_patient)
                 geography.append(i.name)
                 geography_patient.append(v)
@@ -504,24 +502,31 @@ class WardStrategicData(APIView):
                 total_art_adult = Visualization.objects.filter(age__range=(18,60),art=True,geography_id=i.id).count()
                 total_art_old = Visualization.objects.filter(age__gt=60,art=True,geography_id=i.id).count()
 
+
+                total_sdf_male = Visualization.objects.filter(gender='male',sdf=True,geography_id=i.id).count()
+                total_sdf_female = Visualization.objects.filter(gender='female',sdf=True,geography_id=i.id).count()
+                total_sdf_child = Visualization.objects.filter(age__lt=18,sdf=True,geography_id=i.id).count()
+                total_sdf_adult = Visualization.objects.filter(age__range=(18,60),sdf=True,geography_id=i.id).count()
+                total_sdf_old = Visualization.objects.filter(age__gt=60,sdf=True,geography_id=i.id).count()
+
                 try:
-                    preventive_ratio_male = (total_seal_male*totalfv_male)/(total_exo_male*total_art_male*total_sdf_male)
+                    preventive_ratio_male = (total_seal_male+totalfv_male)/(total_exo_male+total_art_male+total_sdf_male)
                 except:
                     preventive_ratio_male=0
                 try:
-                    preventive_ratio_female = (total_seal_female*totalfv_female)/(total_exo_female*total_art_female*total_sdf_female)
+                    preventive_ratio_female = (total_seal_female+totalfv_female)/(total_exo_female+total_art_female+total_sdf_female)
                 except:
                     preventive_ratio_female=0
                 try:
-                    preventive_ratio_child = (total_seal_child*totalfv_child)/(total_exo_child*total_art_child*total_sdf_child)
+                    preventive_ratio_child = (total_seal_child+totalfv_child)/(total_exo_child+total_art_child+total_sdf_child)
                 except:
                     preventive_ratio_child=0
                 try:
-                    preventive_ratio_adult = (total_seal_adult*totalfv_adult)/(total_exo_adult*total_art_adult*total_sdf_adult)
+                    preventive_ratio_adult = (total_seal_adult+totalfv_adult)/(total_exo_adult+total_art_adult+total_sdf_adult)
                 except:
                     preventive_ratio_adult=0
                 try:
-                    preventive_ratio_old = (total_seal_old*totalfv_old)/(total_exo_old*total_art_old*total_sdf_old)
+                    preventive_ratio_old = (total_seal_old+totalfv_old)/(total_exo_old+total_art_old+total_sdf_old)
                 except:
                     preventive_ratio_old=0
 
@@ -529,54 +534,54 @@ class WardStrategicData(APIView):
 
 
                 try:
-                    early_intervention_ratio_male = (total_art_male*total_sdf_male)/total_exo_male
+                    early_intervention_ratio_male = (total_art_male+total_sdf_male)/total_exo_male
                 except:
                     early_intervention_ratio_male=0
 
                 try:
-                    early_intervention_ratio_female = (total_art_female*total_sdf_female)/total_exo_female
+                    early_intervention_ratio_female = (total_art_female+total_sdf_female)/total_exo_female
                 except:
                     early_intervention_ratio_female=0
 
                 try:
-                    early_intervention_ratio_child = (total_art_child*total_sdf_child)/total_exo_child
+                    early_intervention_ratio_child = (total_art_child+total_sdf_child)/total_exo_child
                 except:
                     early_intervention_ratio_child=0
 
                 try:
-                    early_intervention_ratio_adult = (total_art_adult*total_sdf_adult)/total_exo_adult
+                    early_intervention_ratio_adult = (total_art_adult+total_sdf_adult)/total_exo_adult
                 except:
                     early_intervention_ratio_adult=0
 
                 try:
-                    early_intervention_ratio_old = (total_art_old*total_sdf_old)/total_exo_old
+                    early_intervention_ratio_old = (total_art_old+total_sdf_old)/total_exo_old
                 except:
                     early_intervention_ratio_old=0
 
                 early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female+early_intervention_ratio_child+early_intervention_ratio_adult+early_intervention_ratio_old
 
                 try:
-                    recall_percent_male = encounter_male/refer_male
+                    recall_percent_male = (refer_male/encounter_male)*100
                 except:
                     recall_percent_male=0
 
                 try:
-                    recall_percent_female = encounter_female/refer_female
+                    recall_percent_female = (refer_female/encounter_female)*100
                 except:
                     recall_percent_female=0
 
                 try:
-                    recall_percent_child = encounter_child/refer_child
+                    recall_percent_child = (refer_child/encounter_child)*100
                 except:
                     recall_percent_child=0
 
                 try:
-                    recall_percent_adult = encounter_adult/refer_adult
+                    recall_percent_adult = (refer_adult/encounter_adult)*100
                 except:
                     recall_percent_adult=0
 
                 try:
-                    recall_percent_old = encounter_old/refer_old
+                    recall_percent_old = (refer_old/encounter_old)*100
                 except:
                     recall_percent_old=0
 
