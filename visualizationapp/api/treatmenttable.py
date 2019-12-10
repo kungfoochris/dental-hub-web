@@ -32,6 +32,12 @@ d=datetime.date(np_date.npYear(),np_date.npMonth(),np_date.npDay())
 lessthan18 = d - datetime.timedelta(days=365+18)
 greaterthan60 = d - datetime.timedelta(days=365+60)
 
+today_date = datetime.date.today()
+last_30_days = datetime.date.today() + datetime.timedelta(-30)
+
+today_date_obj = str(NepaliDate.from_date(today_date))
+last_30_days_obj = str(NepaliDate.from_date(last_30_days))
+
 class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
@@ -45,25 +51,25 @@ class TreatmentTableBasicData(APIView):
         if User.objects.filter(id=request.user.id).exists():
             treatment_obj = Treatment.objects.all().count()
 
-            treatment_male = Visualization.objects.filter(gender='male').count()
-            treatment_female = Visualization.objects.filter(gender='female').count()
-            treatment_child = Visualization.objects.filter(age__lt=18).count()
-            treatment_adult = Visualization.objects.filter(age__range=(18,60)).count()
-            treatment_old = Visualization.objects.filter(age__gt=60).count()
+            treatment_male = Visualization.objects.filter(gender='male',created_at__range=[last_30_days_obj,today_date_obj]).count()
+            treatment_female = Visualization.objects.filter(gender='female',created_at__range=[last_30_days_obj,today_date_obj]).count()
+            treatment_child = Visualization.objects.filter(age__lt=18,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            treatment_adult = Visualization.objects.filter(age__range=(18,60),created_at__range=[last_30_days_obj,today_date_obj]).count()
+            treatment_old = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_fv = Visualization.objects.filter(fv=True).count()
-            female_patients_receiving_FV=Visualization.objects.filter(gender='female',fv=True).count()
-            male_patients_receiving_FV=Visualization.objects.filter(gender='male',fv=True).count()
-            child__patients_receiving_FV = Visualization.objects.filter(age__lt=18,fv=True).count()
-            adult__patients_receiving_FV = Visualization.objects.filter(age__range=(18,60),fv=True).count()
-            old__patients_receiving_FV = Visualization.objects.filter(age__gt=60,fv=True).count()
+            total_fv = Visualization.objects.filter(fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            female_patients_receiving_FV=Visualization.objects.filter(gender='female',fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            male_patients_receiving_FV=Visualization.objects.filter(gender='male',fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            child__patients_receiving_FV = Visualization.objects.filter(age__lt=18,fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            adult__patients_receiving_FV = Visualization.objects.filter(age__range=(18,60),fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            old__patients_receiving_FV = Visualization.objects.filter(age__gt=60,fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_need_sealant = Visualization.objects.filter(need_sealant=True).count()
-            sealant_male = Visualization.objects.filter(gender='male',need_sealant=True).count()
-            sealant_female = Visualization.objects.filter(gender='female',need_sealant=True).count()
-            sealant_child = Visualization.objects.filter(age__lt=18,need_sealant=True).count()
-            sealant_adult = Visualization.objects.filter(age__range=(18, 60),need_sealant=True).count()
-            sealant_old = Visualization.objects.filter(age__gt=60,need_sealant=True).count()
+            total_need_sealant = Visualization.objects.filter(need_sealant=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            sealant_male = Visualization.objects.filter(gender='male',need_sealant=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            sealant_female = Visualization.objects.filter(gender='female',need_sealant=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            sealant_child = Visualization.objects.filter(age__lt=18,need_sealant=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            sealant_adult = Visualization.objects.filter(age__range=(18, 60),need_sealant=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            sealant_old = Visualization.objects.filter(age__gt=60,need_sealant=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
             cavities_prevented_male = 0.2+male_patients_receiving_FV+0.1+sealant_male
             cavities_prevented_female = 0.2+female_patients_receiving_FV+0.1+sealant_female
@@ -73,11 +79,11 @@ class TreatmentTableBasicData(APIView):
             total_cavities = cavities_prevented_male+cavities_prevented_female
 
             total_encounter = Encounter.objects.all().count()
-            contact_male = Visualization.objects.filter(gender='male').count()
-            contact_female = Visualization.objects.filter(gender='female').count()
-            contact_child = Visualization.objects.filter(age__lt=18).count()
-            contact_adult = Visualization.objects.filter(age__range=(18,60)).count()
-            contact_old= Visualization.objects.filter(age__gt=60).count()
+            contact_male = Visualization.objects.filter(gender='male',created_at__range=[last_30_days_obj,today_date_obj]).count()
+            contact_female = Visualization.objects.filter(gender='female',created_at__range=[last_30_days_obj,today_date_obj]).count()
+            contact_child = Visualization.objects.filter(age__lt=18,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            contact_adult = Visualization.objects.filter(age__range=(18,60),created_at__range=[last_30_days_obj,today_date_obj]).count()
+            contact_old= Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj,today_date_obj]).count()
             total_contact = contact_male+contact_female
 
             return Response([["Number of Cavities Prevented",round(cavities_prevented_male,2), round(cavities_prevented_female,2), round(cavities_prevented_child,2), round(cavities_prevented_adult,2), round(cavities_prevented_old,2),round(total_cavities,2)],\
@@ -176,49 +182,49 @@ class TreatmentStrategicData(APIView):
     serializer_class = TreatmentStrategicDataSerializer
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
-            encounter_male = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(gender='male').count()
-            encounter_female = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(gender='female').count()
-            encounter_child = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(age__lt=18).count()
-            encounter_adult = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(age__range=(18, 60)).count()
-            encounter_old = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(age__gt=60).count()
+            encounter_male = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(gender='male',created_at__range=[last_30_days_obj,today_date_obj]).count()
+            encounter_female = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(gender='female',created_at__range=[last_30_days_obj,today_date_obj]).count()
+            encounter_child = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(age__lt=18,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            encounter_adult = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(age__range=(18, 60),created_at__range=[last_30_days_obj,today_date_obj]).count()
+            encounter_old = Visualization.objects.values('encounter_id').annotate(Count('encounter_id')).filter(age__gt=60,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_refer = Visualization.objects.filter(refer_hp=True).count()
-            refer_male = Visualization.objects.filter(gender='male',refer_hp=True).count()
-            refer_female = Visualization.objects.filter(gender='female',refer_hp=True).count()
-            refer_child = Visualization.objects.filter(age__lt=18,refer_hp=True).count()
-            refer_adult = Visualization.objects.filter(age__range=(18,60),refer_hp=True).count()
-            refer_old = Visualization.objects.filter(age__gt=60,refer_hp=True).count()
+            total_refer = Visualization.objects.filter(refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            refer_male = Visualization.objects.filter(gender='male',refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            refer_female = Visualization.objects.filter(gender='female',refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            refer_child = Visualization.objects.filter(age__lt=18,refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            refer_adult = Visualization.objects.filter(age__range=(18,60),refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            refer_old = Visualization.objects.filter(age__gt=60,refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_refer = Visualization.objects.filter(refer_hp=True).count()
-            total_seal_male = Visualization.objects.filter(gender='male',seal=True).count()
-            total_seal_female = Visualization.objects.filter(gender='female',seal=True).count()
-            total_seal_child = Visualization.objects.filter(age__lt=18,seal=True).count()
-            total_seal_adult = Visualization.objects.filter(age__range=(18,60),seal=True).count()
-            total_seal_old = Visualization.objects.filter(age__gt=60,seal=True).count()
+            total_refer = Visualization.objects.filter(refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_seal_male = Visualization.objects.filter(gender='male',seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_seal_female = Visualization.objects.filter(gender='female',seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_seal_child = Visualization.objects.filter(age__lt=18,seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_seal_adult = Visualization.objects.filter(age__range=(18,60),seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_seal_old = Visualization.objects.filter(age__gt=60,seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            totalfv_male = Visualization.objects.filter(gender='male',fv=True).count()
-            totalfv_female = Visualization.objects.filter(gender='female',fv=True).count()
-            totalfv_child = Visualization.objects.filter(age__lt=18,fv=True).count()
-            totalfv_adult = Visualization.objects.filter(age__range=(18,60),fv=True).count()
-            totalfv_old = Visualization.objects.filter(age__gt=60,fv=True).count()
+            totalfv_male = Visualization.objects.filter(gender='male',fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            totalfv_female = Visualization.objects.filter(gender='female',fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            totalfv_child = Visualization.objects.filter(age__lt=18,fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            totalfv_adult = Visualization.objects.filter(age__range=(18,60),fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            totalfv_old = Visualization.objects.filter(age__gt=60,fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_exo_male = Visualization.objects.filter(gender='male',exo=True).count()
-            total_exo_female = Visualization.objects.filter(gender='female',exo=True).count()
-            total_exo_child = Visualization.objects.filter(age__lt=18,exo=True).count()
-            total_exo_adult = Visualization.objects.filter(age__range=(18,60),exo=True).count()
-            total_exo_old = Visualization.objects.filter(age__gt=60,exo=True).count()
+            total_exo_male = Visualization.objects.filter(gender='male',exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_exo_female = Visualization.objects.filter(gender='female',exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_exo_child = Visualization.objects.filter(age__lt=18,exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_exo_adult = Visualization.objects.filter(age__range=(18,60),exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_exo_old = Visualization.objects.filter(age__gt=60,exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_art_male = Visualization.objects.filter(gender='male',art=True).count()
-            total_art_female = Visualization.objects.filter(gender='female',art=True).count()
-            total_art_child = Visualization.objects.filter(age__lt=18,art=True).count()
-            total_art_adult = Visualization.objects.filter(age__range=(18,60),art=True).count()
-            total_art_old = Visualization.objects.filter(age__gt=60,art=True).count()
+            total_art_male = Visualization.objects.filter(gender='male',art=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_art_female = Visualization.objects.filter(gender='female',art=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_art_child = Visualization.objects.filter(age__lt=18,art=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_art_adult = Visualization.objects.filter(age__range=(18,60),art=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_art_old = Visualization.objects.filter(age__gt=60,art=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
-            total_sdf_male = Visualization.objects.filter(gender='male',sdf=True).count()
-            total_sdf_female = Visualization.objects.filter(gender='female',sdf=True).count()
-            total_sdf_child = Visualization.objects.filter(age__lt=18,sdf=True).count()
-            total_sdf_adult = Visualization.objects.filter(age__range=(18,60),sdf=True).count()
-            total_sdf_old = Visualization.objects.filter(age__gt=60,sdf=True).count()
+            total_sdf_male = Visualization.objects.filter(gender='male',sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_sdf_female = Visualization.objects.filter(gender='female',sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_sdf_child = Visualization.objects.filter(age__lt=18,sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_sdf_adult = Visualization.objects.filter(age__range=(18,60),sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
+            total_sdf_old = Visualization.objects.filter(age__gt=60,sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
 
             try:
                 preventive_ratio_male = (total_seal_male+totalfv_male)/(total_exo_male+total_art_male+total_sdf_male)
@@ -241,7 +247,7 @@ class TreatmentStrategicData(APIView):
             except:
                 preventive_ratio_old=0
 
-            preventive_ratio_total = preventive_ratio_male+preventive_ratio_female+preventive_ratio_child+preventive_ratio_old
+            preventive_ratio_total = preventive_ratio_male + preventive_ratio_female
 
 
             try:
@@ -269,7 +275,7 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_ratio_old=0
 
-            early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female+early_intervention_ratio_child+early_intervention_ratio_adult+early_intervention_ratio_old
+            early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female
 
             try:
                 recall_percent_male = (refer_male/encounter_male)*100
@@ -383,7 +389,7 @@ class TreatmentStrategicData(APIView):
                 except:
                     preventive_ratio_old=0
 
-                preventive_ratio_total = preventive_ratio_male+preventive_ratio_female+preventive_ratio_child+preventive_ratio_old
+                preventive_ratio_total = preventive_ratio_male+preventive_ratio_female
 
 
                 try:
@@ -411,7 +417,7 @@ class TreatmentStrategicData(APIView):
                 except:
                     early_intervention_ratio_old=0
 
-                early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female+early_intervention_ratio_child+early_intervention_ratio_adult+early_intervention_ratio_old
+                early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female
 
                 try:
                     recall_percent_male = (refer_male/encounter_male)*100

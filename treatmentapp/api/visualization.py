@@ -37,7 +37,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 class Visualization1(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request, format=None):
-        if User.objects.get(id=request.user.id,admin=True):
+        if User.objects.get(id=request.user.id):
             district=['Kids', 'Adults', 'Other Adults']
             total=[]
             male=[]

@@ -278,6 +278,7 @@ class UserStatus(APIView):
 
 
 class AdminPasswordRest(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = AdminPasswordResetSerializer
     def post(self, request, format=None):
         serializer = AdminPasswordResetSerializer(data=request.data,\

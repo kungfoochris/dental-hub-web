@@ -70,6 +70,7 @@ class SectionalVisualization(APIView):
             carries_risk_low.append(Visualization.objects.filter(age__lt=18,carries_risk="Low").count())
             carries_risk_low.append(Visualization.objects.filter(age__range=(18,60),carries_risk="Low").count())
             carries_risk_low.append(Visualization.objects.filter(age__gt=60,carries_risk="Low").count())
+            carries_risk_low.append('secondary')
 
             carries_risk_medium.append(Visualization.objects.filter(age=6,carries_risk="Medium").count())
             carries_risk_medium.append(Visualization.objects.filter(age=12,carries_risk="Medium").count())
@@ -77,6 +78,7 @@ class SectionalVisualization(APIView):
             carries_risk_medium.append(Visualization.objects.filter(age__lt=18,carries_risk="Medium").count())
             carries_risk_medium.append(Visualization.objects.filter(age__range=(18,60),carries_risk="Medium").count())
             carries_risk_medium.append(Visualization.objects.filter(age__gt=60,carries_risk="Medium").count())
+            carries_risk_medium.append('secondary')
 
             carries_risk_high.append(Visualization.objects.filter(age=6,carries_risk="High").count())
             carries_risk_high.append(Visualization.objects.filter(age=12,carries_risk="High").count())
@@ -84,6 +86,7 @@ class SectionalVisualization(APIView):
             carries_risk_high.append(Visualization.objects.filter(age__lt=18,carries_risk="High").count())
             carries_risk_high.append(Visualization.objects.filter(age__range=(18,60),carries_risk="High").count())
             carries_risk_high.append(Visualization.objects.filter(age__gt=60,carries_risk="High").count())
+            carries_risk_high.append('secondary')
 
             decayed_primary_teeth_6=[]
             permanent_molar_teeth_6=[]
@@ -327,6 +330,7 @@ class SectionalVisualization(APIView):
             carries_risk_low.append(Visualization.objects.filter(age__lt=18,carries_risk="Low",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_low.append(Visualization.objects.filter(age__range=(18,60),carries_risk="Low",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_low.append(Visualization.objects.filter(age__gt=60,carries_risk="Low",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+            carries_risk_low.append('secondary')
 
             carries_risk_medium.append(Visualization.objects.filter(age=6,carries_risk="Medium",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_medium.append(Visualization.objects.filter(age=12,carries_risk="Medium",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
@@ -334,6 +338,7 @@ class SectionalVisualization(APIView):
             carries_risk_medium.append(Visualization.objects.filter(age__lt=18,carries_risk="Medium",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_medium.append(Visualization.objects.filter(age__range=(18,60),carries_risk="Medium",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_medium.append(Visualization.objects.filter(age__gt=60,carries_risk="Medium",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+            carries_risk_medium.append('secondary')
 
             carries_risk_high.append(Visualization.objects.filter(age=6,carries_risk="High",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_high.append(Visualization.objects.filter(age=12,carries_risk="High",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
@@ -341,6 +346,7 @@ class SectionalVisualization(APIView):
             carries_risk_high.append(Visualization.objects.filter(age__lt=18,carries_risk="High",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_high.append(Visualization.objects.filter(age__range=(18,60),carries_risk="High",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
             carries_risk_high.append(Visualization.objects.filter(age__gt=60,carries_risk="High",created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+            carries_risk_high.append('secondary')
 
             decayed_primary_teeth_6=[]
             permanent_molar_teeth_6=[]

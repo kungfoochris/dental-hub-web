@@ -530,7 +530,7 @@ class WardStrategicData(APIView):
                 except:
                     preventive_ratio_old=0
 
-                preventive_ratio_total = preventive_ratio_male+preventive_ratio_female+preventive_ratio_child+preventive_ratio_old
+                preventive_ratio_total = preventive_ratio_male+preventive_ratio_female
 
 
                 try:
@@ -558,7 +558,7 @@ class WardStrategicData(APIView):
                 except:
                     early_intervention_ratio_old=0
 
-                early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female+early_intervention_ratio_child+early_intervention_ratio_adult+early_intervention_ratio_old
+                early_intervention_ratio_total = early_intervention_ratio_male+early_intervention_ratio_female
 
                 try:
                     recall_percent_male = (refer_male/encounter_male)*100

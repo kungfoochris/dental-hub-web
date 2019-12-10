@@ -17,7 +17,8 @@ TreatMentBarGraphFilter
 
 from visualizationapp.api.dashboard import OverviewVisualization1,\
 TreatmentActivityList,VisualizationSetting,VisualizationSettingFilter,\
-TreatmentbyWardList,PieChartVisualization,PieChartVisualizationFilter
+TreatmentbyWardList,PieChartVisualization,PieChartVisualizationFilter,\
+DateReturn
 
 from visualizationapp.api.wardvisualization import WardVisualization1,\
 WardTreatmentTableVisualization1,WardTableVisualization2,\
@@ -83,5 +84,8 @@ urlpatterns = [
 	path('longitudinal',LongitudinalVisualization.as_view()),
 
 	path('wardstrategicdata',WardStrategicData.as_view()),
+
+
+	path('returndate',DateReturn.as_view()),
 	]
 urlpatterns = format_suffix_patterns(urlpatterns)
