@@ -13,24 +13,68 @@ from userapp.models import User, CustomUser
 from userapp.serializers.user import UserSerializer, ForgetPasswordSerializer,\
 PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
  PasswordChangeSerializer, CheckUSerializer, UpdateUserDataSerializer,WardSerializer,\
- UserStatusSerializer, AdminPasswordResetSerializer,ProfileSerializer1
+ UserStatusSerializer, AdminPasswordResetSerializer,ProfileSerializer1,UserTokenSerializer
 from userapp.emailsend import emailsend
 from random import randint
 from addressapp.models import Geography
 
+from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
+
 import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
+
+from rest_framework_jwt.settings import api_settings
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
 
+class CustomAuthToken(APIView):
+    # permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = UserTokenSerializer
+    def post(self, request, *args, **kwargs):
+        serializer = UserTokenSerializer(data=request.data,\
+        context={'request': request})
+        if serializer.is_valid():
+            if CustomUser.objects.filter(username=serializer.validated_data['username'],role__name='appuser').exists():
+                print("======================================")
+                user_obj = User.objects.get(username=serializer.validated_data['username'])
+                user = authenticate(username=user_obj.username, password=serializer.validated_data['password'])
+                if user is None:
+                    return Response({'message':'Invalid username/password.'},status=400)
+                jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+                jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+                payload = jwt_payload_handler(user_obj)
+                token = jwt_encode_handler(payload)
+                return Response({"token":token},status=200)
+            return Response({'message':"username does not exist"},status=400)
+        return Response(serializer.errors)
+
+    # def post(self, request, format=None):
+    #     serializer = UserTokenSerializer(data=request.data,\
+    #         context={'request': request})
+    #     if serializer.is_valid():
+    #         if User.objects.filter(username=serializer.validated_data['username']).exists():
+    #             user_obj = User.objects.get(username=serializer.validated_data['username'])
+    #             print("**************************************")
+    #             print(user_obj.username)
+    #             t = Token.objects.create(user=user_obj)
+    #             print("================")
+    #             print(t)
+    #             return Response(serializer.data)
+    #         return Response({"message":"Username do not match"},status=400)
+
+
+
+
 
 class UserListView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = UserSerializer
+
 
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():

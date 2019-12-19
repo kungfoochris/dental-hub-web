@@ -116,3 +116,10 @@ class AdminPasswordResetSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = CustomUser
 		fields = ("username","new_password","confirm_password")
+
+
+class UserTokenSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(max_length=30,write_only=True)
+    class Meta:
+        model = User
+        fields = ("username","password")

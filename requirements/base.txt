@@ -25,3 +25,4 @@ celery==4.2.1
 
 pytz
 nepali
+django-import-export

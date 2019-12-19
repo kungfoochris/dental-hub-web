@@ -30,11 +30,14 @@ admin.site.site_header = "Dental Hub  @Abhiyantrik"
 admin.site.site_title = "DentalHub Admin Portal"
 admin.site.index_title = "Welcome to DentalHub Admin Portal"
 
+from userapp.api.user import CustomAuthToken
+
 urlpatterns = [
     path('maintainer/', admin.site.urls),
     path('api/v1/auth', include('rest_framework.urls', namespace='rest_framework')),
     # path('api/v1/devices', FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
-    path('api/v1/token/obtain', obtain_jwt_token),
+    path('api/v1/token', obtain_jwt_token),
+    path('api/v1/token/obtain', CustomAuthToken.as_view()),
     path('api/v1/token/refresh', refresh_jwt_token),
     path('api/v1/token/verify', verify_jwt_token),
     path('api/v1/',include('dental.apiurls')),
