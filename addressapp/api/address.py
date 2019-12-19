@@ -11,7 +11,7 @@ from addressapp.models import Address, District, Municipality ,Ward
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
-class IsPostOrIsAuthenticated(permissions.BasePermission):        
+class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
@@ -19,7 +19,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 class AddressList(APIView):
     def get(self, request, format=None):
-        address_obj = District.objects.all().order_by('name')
+        address_obj = District.objects.all().order_by('name','municipality__ward')
         serializer = DistrictSerializer(address_obj, many=True, \
             context={'request': request})
         return Response(serializer.data)
