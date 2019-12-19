@@ -300,7 +300,8 @@ class OverviewVisualization1(APIView):
         if serializer.is_valid():
             start_date = str(NepaliDate.from_date(serializer.validated_data['start_date']))
             end_date = str(NepaliDate.from_date(serializer.validated_data['end_date']))
-            location = serializer.validated_data['location']
+            location_list = serializer.validated_data['location']
+            # location = serializer.validated_data['location']
             activities = serializer.validated_data['activities']
             total_encounter=[]
             total_exo=[]
@@ -463,21 +464,8 @@ class OverviewVisualization1(APIView):
             old_sdf_whole_mouth = []
             old_sdf_whole_mouth_male = []
             old_sdf_whole_mouth_female = []
-            if location == "All Location":
+            if not location_list:
                 for i in activities:
-                    # total_encounter.append(Visualization.objects.filter(created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_exo.append(Visualization.objects.filter(exo=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_art.append(Visualization.objects.filter(art=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_seal.append(Visualization.objects.filter(seal=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_sdf.append(Visualization.objects.filter(sdf=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_fv.append(Visualization.objects.filter(fv=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_health_post.append(Visualization.objects.filter(refer_hp=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_refer_dent.append(Visualization.objects.filter(refer_dent=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_refer_dr.append(Visualization.objects.filter(refer_dr=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_refer_other.append(Visualization.objects.filter(refer_other=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-                    # total_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
-
                     kid_encounter.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date]).filter(activities_id=i.id).count())
                     kid_encounter_male.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],gender="male").filter(activities_id=i.id).count())
                     kid_encounter_female.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],gender="female").filter(activities_id=i.id).count())
@@ -668,210 +656,538 @@ class OverviewVisualization1(APIView):
                     old_sdf_whole_mouth_male.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],gender="male").filter(activities_id=i.id).count())
                     old_sdf_whole_mouth_female.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],gender="female").filter(activities_id=i.id).count())
             else:
-                for i in activities:
-                    # total_encounter.append(Visualization.objects.filter(created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_exo.append(Visualization.objects.filter(exo=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_art.append(Visualization.objects.filter(art=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_seal.append(Visualization.objects.filter(seal=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_sdf.append(Visualization.objects.filter(sdf=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_fv.append(Visualization.objects.filter(fv=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_health_post.append(Visualization.objects.filter(refer_hp=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_refer_dent.append(Visualization.objects.filter(refer_dent=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_refer_dr.append(Visualization.objects.filter(refer_dr=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_refer_other.append(Visualization.objects.filter(refer_other=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    # total_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
+                for location in location_list:
+                    kid_encounter1=[]
+                    kid_encounter_male1=[]
+                    kid_encounter_female1=[]
+                    kid_exo1 =[]
+                    kid_exo_male1 =[]
+                    kid_exo_female1 = []
+                    kid_art1 = []
+                    kid_art_male1 = []
+                    kid_art_female1 = []
+                    kid_seal1 = []
+                    kid_seal_male1 = []
+                    kid_seal_female1 = []
+                    kid_sdf1=[]
+                    kid_sdf_male1 = []
+                    kid_sdf_female1 = []
+                    kid_fv1 = []
+                    kid_fv_male1 = []
+                    kid_fv_female1 = []
+                    kid_health_post1 = []
+                    kid_health_post_male1 = []
+                    kid_health_post_female1 = []
+                    kid_refer_hyg1 = []
+                    kid_refer_hyg_male1 = []
+                    kid_refer_hyg_female1 = []
+                    kid_refer_dent1 =[]
+                    kid_refer_dent_male1 = []
+                    kid_refer_dent_female1 = []
+                    kid_refer_dr1 = []
+                    kid_refer_dr_male1 = []
+                    kid_refer_dr_female1 = []
+                    kid_refer_other1 = []
+                    kid_refer_other_male1 = []
+                    kid_refer_other_female1 = []
+                    kid_sdf_whole_mouth1 = []
+                    kid_sdf_whole_mouth_male1 = []
+                    kid_sdf_whole_mouth_female1 = []
 
-                    kid_encounter.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_encounter_male.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_encounter_female.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                    teen_encounter1=[]
+                    teen_encounter_male1=[]
+                    teen_encounter_female1=[]
+                    teen_exo1 =[]
+                    teen_exo_male1 =[]
+                    teen_exo_female1 = []
+                    teen_art1 = []
+                    teen_art_male1 = []
+                    teen_art_female1 = []
+                    teen_seal1 = []
+                    teen_seal_male1 = []
+                    teen_seal_female1 = []
+                    teen_sdf1=[]
+                    teen_sdf_male1 = []
+                    teen_sdf_female1 = []
+                    teen_fv1 = []
+                    teen_fv_male1 = []
+                    teen_fv_female1 = []
+                    teen_health_post1 = []
+                    teen_health_post_male1 = []
+                    teen_health_post_female1 = []
+                    teen_refer_hyg1 = []
+                    teen_refer_hyg_male1 = []
+                    teen_refer_hyg_female1 = []
+                    teen_refer_dent1 =[]
+                    teen_refer_dent_male1 = []
+                    teen_refer_dent_female1 = []
+                    teen_refer_dr1 = []
+                    teen_refer_dr_male1 = []
+                    teen_refer_dr_female1 = []
+                    teen_refer_other1 = []
+                    teen_refer_other_male1 = []
+                    teen_refer_other_female1 = []
+                    teen_sdf_whole_mouth1 = []
+                    teen_sdf_whole_mouth_male1 = []
+                    teen_sdf_whole_mouth_female1 = []
 
-                    kid_exo.append(Visualization.objects.filter(exo=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_exo_male.append(Visualization.objects.filter(exo=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_exo_female.append(Visualization.objects.filter(exo=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                    adult_encounter1 = []
+                    adult_encounter_male1 = []
+                    adult_encounter_female1 = []
+                    adult_exo1 =[]
+                    adult_exo_male1 =[]
+                    adult_exo_female1 = []
+                    adult_art1 = []
+                    adult_art_male1 = []
+                    adult_art_female1 = []
+                    adult_seal1 = []
+                    adult_seal_male1 = []
+                    adult_seal_female1 = []
+                    adult_sdf1=[]
+                    adult_sdf_male1 = []
+                    adult_sdf_female1 = []
+                    adult_fv1 = []
+                    adult_fv_male1 = []
+                    adult_fv_female1 = []
+                    adult_health_post1 = []
+                    adult_health_post_male1 = []
+                    adult_health_post_female1 = []
+                    adult_refer_hyg1 = []
+                    adult_refer_hyg_male1 = []
+                    adult_refer_hyg_female1 = []
+                    adult_refer_dent1 =[]
+                    adult_refer_dent_male1 = []
+                    adult_refer_dent_female1 = []
+                    adult_refer_dr1 = []
+                    adult_refer_dr_male1 = []
+                    adult_refer_dr_female1 = []
+                    adult_refer_other1 = []
+                    adult_refer_other_male1 = []
+                    adult_refer_other_female1 = []
+                    adult_sdf_whole_mouth1 = []
+                    adult_sdf_whole_mouth_male1 = []
+                    adult_sdf_whole_mouth_female1 = []
 
-                    kid_art.append(Visualization.objects.filter(art=True,age__lt=12,created_at__range=[start_date,end_date]).filter(activities_id=i.id,geography_id=location).count())
-                    kid_art_male.append(Visualization.objects.filter(art=True,age__lt=12,created_at__range=[start_date,end_date],gender="male").filter(activities_id=i.id,geography_id=location).count())
-                    kid_art_female.append(Visualization.objects.filter(art=True,age__lt=12,created_at__range=[start_date,end_date],gender="female").filter(activities_id=i.id,geography_id=location).count())
+                    old_encounter1 = []
+                    old_encounter_male1 = []
+                    old_encounter_female1 = []
+                    old_exo1 =[]
+                    old_exo_male1 =[]
+                    old_exo_female1 = []
+                    old_art1 = []
+                    old_art_male1 = []
+                    old_art_female1 = []
+                    old_seal1 = []
+                    old_seal_male1 = []
+                    old_seal_female1 = []
+                    old_sdf1=[]
+                    old_sdf_male1 = []
+                    old_sdf_female1 = []
+                    old_fv1 = []
+                    old_fv_male1 = []
+                    old_fv_female1 = []
+                    old_health_post1 = []
+                    old_health_post_male1 = []
+                    old_health_post_female1 = []
+                    old_refer_hyg1 = []
+                    old_refer_hyg_male1 = []
+                    old_refer_hyg_female1 = []
+                    old_refer_dent1 =[]
+                    old_refer_dent_male1 = []
+                    old_refer_dent_female1 = []
+                    old_refer_dr1 = []
+                    old_refer_dr_male1 = []
+                    old_refer_dr_female1 = []
+                    old_refer_other1 = []
+                    old_refer_other_male1 = []
+                    old_refer_other_female1 = []
+                    old_sdf_whole_mouth1 = []
+                    old_sdf_whole_mouth_male1 = []
+                    old_sdf_whole_mouth_female1 = []
+                    for i in activities:
+                        kid_encounter1.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_encounter_male1.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_encounter_female1.append(Visualization.objects.filter(age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_seal.append(Visualization.objects.filter(seal=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_seal_male.append(Visualization.objects.filter(seal=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_seal_female.append(Visualization.objects.filter(seal=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_exo1.append(Visualization.objects.filter(exo=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_exo_male1.append(Visualization.objects.filter(exo=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_exo_female1.append(Visualization.objects.filter(exo=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_sdf.append(Visualization.objects.filter(sdf=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_sdf_male.append(Visualization.objects.filter(sdf=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_sdf_female.append(Visualization.objects.filter(sdf=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_art1.append(Visualization.objects.filter(art=True,age__lt=12,created_at__range=[start_date,end_date]).filter(activities_id=i.id,geography_id=location.id).count())
+                        kid_art_male1.append(Visualization.objects.filter(art=True,age__lt=12,created_at__range=[start_date,end_date],gender="male").filter(activities_id=i.id,geography_id=location.id).count())
+                        kid_art_female1.append(Visualization.objects.filter(art=True,age__lt=12,created_at__range=[start_date,end_date],gender="female").filter(activities_id=i.id,geography_id=location.id).count())
 
-                    kid_fv.append(Visualization.objects.filter(fv=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_fv_male.append(Visualization.objects.filter(fv=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_fv_female.append(Visualization.objects.filter(fv=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_seal1.append(Visualization.objects.filter(seal=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_seal_male1.append(Visualization.objects.filter(seal=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_seal_female1.append(Visualization.objects.filter(seal=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_health_post.append(Visualization.objects.filter(refer_hp=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_health_post_male.append(Visualization.objects.filter(refer_hp=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_health_post_female.append(Visualization.objects.filter(refer_hp=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_sdf1.append(Visualization.objects.filter(sdf=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_sdf_male1.append(Visualization.objects.filter(sdf=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_sdf_female1.append(Visualization.objects.filter(sdf=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_hyg_male.append(Visualization.objects.filter(refer_hyg=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_hyg_female.append(Visualization.objects.filter(refer_hyg=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_fv1.append(Visualization.objects.filter(fv=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
+                        kid_fv_male1.append(Visualization.objects.filter(fv=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_fv_female1.append(Visualization.objects.filter(fv=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_refer_dent.append(Visualization.objects.filter(refer_dent=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_dent_male.append(Visualization.objects.filter(refer_dent=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_dent_female.append(Visualization.objects.filter(refer_dent=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_health_post1.append(Visualization.objects.filter(refer_hp=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_health_post_male1.append(Visualization.objects.filter(refer_hp=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_health_post_female1.append(Visualization.objects.filter(refer_hp=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_refer_dr.append(Visualization.objects.filter(refer_dr=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_dr_male.append(Visualization.objects.filter(refer_dr=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_dr_female.append(Visualization.objects.filter(refer_dr=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_refer_hyg1.append(Visualization.objects.filter(refer_hyg=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_hyg_male1.append(Visualization.objects.filter(refer_hyg=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_hyg_female1.append(Visualization.objects.filter(refer_hyg=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_refer_other.append(Visualization.objects.filter(refer_other=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_other_male.append(Visualization.objects.filter(refer_other=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_refer_other_female.append(Visualization.objects.filter(refer_other=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_refer_dent1.append(Visualization.objects.filter(refer_dent=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_dent_male1.append(Visualization.objects.filter(refer_dent=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_dent_female1.append(Visualization.objects.filter(refer_dent=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    kid_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    kid_sdf_whole_mouth_male.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    kid_sdf_whole_mouth_female.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_refer_dr1.append(Visualization.objects.filter(refer_dr=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_dr_male1.append(Visualization.objects.filter(refer_dr=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_dr_female1.append(Visualization.objects.filter(refer_dr=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_encounter.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_encounter_male.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_encounter_female.append(Visualization.objects.filter(age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_refer_other1.append(Visualization.objects.filter(refer_other=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_other_male1.append(Visualization.objects.filter(refer_other=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_refer_other_female1.append(Visualization.objects.filter(refer_other=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_exo.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_exo_male.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_exo_female.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        kid_sdf_whole_mouth1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_sdf_whole_mouth_male1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        kid_sdf_whole_mouth_female1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_art.append(Visualization.objects.filter(art=True,age__range=(12,19),created_at__range=[start_date,end_date]).filter(activities_id=i.id,geography_id=location).count())
-                    teen_art_male.append(Visualization.objects.filter(art=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male").filter(activities_id=i.id,geography_id=location).count())
-                    teen_art_female.append(Visualization.objects.filter(art=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female").filter(activities_id=i.id,geography_id=location).count())
+                        teen_encounter1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_encounter_male1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_encounter_female1.append(Visualization.objects.filter(age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_seal.append(Visualization.objects.filter(seal=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_seal_male.append(Visualization.objects.filter(seal=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_seal_female.append(Visualization.objects.filter(seal=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_exo1.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
+                        teen_exo_male1.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
+                        teen_exo_female1.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
 
-                    teen_sdf.append(Visualization.objects.filter(sdf=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_sdf_male.append(Visualization.objects.filter(sdf=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_sdf_female.append(Visualization.objects.filter(sdf=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_art1.append(Visualization.objects.filter(art=True,age__range=(12,19),created_at__range=[start_date,end_date]).filter(activities_id=i.id,geography_id=location.id).count())
+                        teen_art_male1.append(Visualization.objects.filter(art=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male").filter(activities_id=i.id,geography_id=location.id).count())
+                        teen_art_female1.append(Visualization.objects.filter(art=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female").filter(activities_id=i.id,geography_id=location.id).count())
 
-                    teen_fv.append(Visualization.objects.filter(fv=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_fv_male.append(Visualization.objects.filter(fv=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_fv_female.append(Visualization.objects.filter(fv=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_seal1.append(Visualization.objects.filter(seal=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_seal_male1.append(Visualization.objects.filter(seal=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_seal_female1.append(Visualization.objects.filter(seal=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_health_post.append(Visualization.objects.filter(refer_hp=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_health_post_male.append(Visualization.objects.filter(refer_hp=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_health_post_female.append(Visualization.objects.filter(refer_hp=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_sdf1.append(Visualization.objects.filter(sdf=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_sdf_male1.append(Visualization.objects.filter(sdf=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_sdf_female1.append(Visualization.objects.filter(sdf=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_hyg_male.append(Visualization.objects.filter(refer_hyg=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_hyg_female.append(Visualization.objects.filter(refer_hyg=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_fv1.append(Visualization.objects.filter(fv=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_fv_male1.append(Visualization.objects.filter(fv=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_fv_female1.append(Visualization.objects.filter(fv=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_refer_dent.append(Visualization.objects.filter(refer_dent=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_dent_male.append(Visualization.objects.filter(refer_dent=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_dent_female.append(Visualization.objects.filter(refer_dent=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_health_post1.append(Visualization.objects.filter(refer_hp=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_health_post_male1.append(Visualization.objects.filter(refer_hp=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_health_post_female1.append(Visualization.objects.filter(refer_hp=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_refer_dr.append(Visualization.objects.filter(refer_dr=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_dr_male.append(Visualization.objects.filter(refer_dr=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_dr_female.append(Visualization.objects.filter(refer_dr=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_refer_hyg1.append(Visualization.objects.filter(refer_hyg=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
+                        teen_refer_hyg_male1.append(Visualization.objects.filter(refer_hyg=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_hyg_female1.append(Visualization.objects.filter(refer_hyg=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_refer_other.append(Visualization.objects.filter(refer_other=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_other_male.append(Visualization.objects.filter(refer_other=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_refer_other_female.append(Visualization.objects.filter(refer_other=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_refer_dent1.append(Visualization.objects.filter(refer_dent=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_dent_male1.append(Visualization.objects.filter(refer_dent=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_dent_female1.append(Visualization.objects.filter(refer_dent=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    teen_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    teen_sdf_whole_mouth_male.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    teen_sdf_whole_mouth_female.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_refer_dr1.append(Visualization.objects.filter(refer_dr=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_dr_male1.append(Visualization.objects.filter(refer_dr=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_dr_female1.append(Visualization.objects.filter(refer_dr=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_encounter.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_encounter_male.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_encounter_female.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_refer_other1.append(Visualization.objects.filter(refer_other=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_other_male1.append(Visualization.objects.filter(refer_other=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_refer_other_female1.append(Visualization.objects.filter(refer_other=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_exo.append(Visualization.objects.filter(exo=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_exo_male.append(Visualization.objects.filter(exo=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_exo_female.append(Visualization.objects.filter(exo=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        teen_sdf_whole_mouth1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_sdf_whole_mouth_male1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        teen_sdf_whole_mouth_female1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_art.append(Visualization.objects.filter(art=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_art_male.append(Visualization.objects.filter(art=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_art_female.append(Visualization.objects.filter(art=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_encounter1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_encounter_male1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_encounter_female1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_seal.append(Visualization.objects.filter(seal=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_seal_male.append(Visualization.objects.filter(seal=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_seal_female.append(Visualization.objects.filter(seal=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_exo1.append(Visualization.objects.filter(exo=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_exo_male1.append(Visualization.objects.filter(exo=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_exo_female1.append(Visualization.objects.filter(exo=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_sdf.append(Visualization.objects.filter(sdf=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_sdf_male.append(Visualization.objects.filter(sdf=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_sdf_female.append(Visualization.objects.filter(sdf=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_art1.append(Visualization.objects.filter(art=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_art_male1.append(Visualization.objects.filter(art=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_art_female1.append(Visualization.objects.filter(art=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_fv.append(Visualization.objects.filter(fv=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_fv_male.append(Visualization.objects.filter(fv=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_fv_female.append(Visualization.objects.filter(fv=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_seal1.append(Visualization.objects.filter(seal=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_seal_male1.append(Visualization.objects.filter(seal=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_seal_female1.append(Visualization.objects.filter(seal=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_health_post.append(Visualization.objects.filter(refer_hp=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_health_post_male.append(Visualization.objects.filter(refer_hp=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_health_post_female.append(Visualization.objects.filter(refer_hp=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_sdf1.append(Visualization.objects.filter(sdf=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_sdf_male1.append(Visualization.objects.filter(sdf=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_sdf_female1.append(Visualization.objects.filter(sdf=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_hyg_male.append(Visualization.objects.filter(refer_hyg=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_hyg_female.append(Visualization.objects.filter(refer_hyg=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_fv1.append(Visualization.objects.filter(fv=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_fv_male1.append(Visualization.objects.filter(fv=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_fv_female1.append(Visualization.objects.filter(fv=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_refer_dent.append(Visualization.objects.filter(refer_dent=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_dent_male.append(Visualization.objects.filter(refer_dent=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_dent_female.append(Visualization.objects.filter(refer_dent=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_health_post1.append(Visualization.objects.filter(refer_hp=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_health_post_male1.append(Visualization.objects.filter(refer_hp=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_health_post_female1.append(Visualization.objects.filter(refer_hp=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_refer_dr.append(Visualization.objects.filter(refer_dr=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_dr_male.append(Visualization.objects.filter(refer_dr=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_dr_female.append(Visualization.objects.filter(refer_dr=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_refer_hyg1.append(Visualization.objects.filter(refer_hyg=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_hyg_male1.append(Visualization.objects.filter(refer_hyg=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_hyg_female1.append(Visualization.objects.filter(refer_hyg=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_refer_other.append(Visualization.objects.filter(refer_other=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_other_male.append(Visualization.objects.filter(refer_other=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_refer_other_female.append(Visualization.objects.filter(refer_other=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_refer_dent1.append(Visualization.objects.filter(refer_dent=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_dent_male1.append(Visualization.objects.filter(refer_dent=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_dent_female1.append(Visualization.objects.filter(refer_dent=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    adult_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    adult_sdf_whole_mouth_male.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    adult_sdf_whole_mouth_female.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        adult_refer_dr1.append(Visualization.objects.filter(refer_dr=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_dr_male1.append(Visualization.objects.filter(refer_dr=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_dr_female1.append(Visualization.objects.filter(refer_dr=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
+
+                        adult_refer_other1.append(Visualization.objects.filter(refer_other=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_other_male1.append(Visualization.objects.filter(refer_other=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_refer_other_female1.append(Visualization.objects.filter(refer_other=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
+
+                        adult_sdf_whole_mouth1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_sdf_whole_mouth_male1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        adult_sdf_whole_mouth_female1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__range=(19,61),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
 
-                    old_encounter.append(Visualization.objects.filter(age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_encounter_male.append(Visualization.objects.filter(age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_encounter_female.append(Visualization.objects.filter(age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_encounter1.append(Visualization.objects.filter(age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_encounter_male1.append(Visualization.objects.filter(age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_encounter_female1.append(Visualization.objects.filter(age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_exo.append(Visualization.objects.filter(exo=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_exo_male.append(Visualization.objects.filter(exo=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_exo_female.append(Visualization.objects.filter(exo=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_exo1.append(Visualization.objects.filter(exo=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_exo_male1.append(Visualization.objects.filter(exo=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_exo_female1.append(Visualization.objects.filter(exo=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_art.append(Visualization.objects.filter(art=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_art_male.append(Visualization.objects.filter(art=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_art_female.append(Visualization.objects.filter(art=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_art1.append(Visualization.objects.filter(art=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_art_male1.append(Visualization.objects.filter(art=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_art_female1.append(Visualization.objects.filter(art=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_seal.append(Visualization.objects.filter(seal=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_seal_male.append(Visualization.objects.filter(seal=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_seal_female.append(Visualization.objects.filter(seal=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_seal1.append(Visualization.objects.filter(seal=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_seal_male1.append(Visualization.objects.filter(seal=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_seal_female1.append(Visualization.objects.filter(seal=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_sdf.append(Visualization.objects.filter(sdf=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_sdf_male.append(Visualization.objects.filter(sdf=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_sdf_female.append(Visualization.objects.filter(sdf=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_sdf1.append(Visualization.objects.filter(sdf=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_sdf_male1.append(Visualization.objects.filter(sdf=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_sdf_female1.append(Visualization.objects.filter(sdf=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_fv.append(Visualization.objects.filter(fv=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_fv_male.append(Visualization.objects.filter(fv=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_fv_female.append(Visualization.objects.filter(fv=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_fv1.append(Visualization.objects.filter(fv=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_fv_male1.append(Visualization.objects.filter(fv=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_fv_female1.append(Visualization.objects.filter(fv=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_health_post.append(Visualization.objects.filter(refer_hp=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_health_post_male.append(Visualization.objects.filter(refer_hp=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_health_post_female.append(Visualization.objects.filter(refer_hp=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_health_post1.append(Visualization.objects.filter(refer_hp=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_health_post_male1.append(Visualization.objects.filter(refer_hp=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_health_post_female1.append(Visualization.objects.filter(refer_hp=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_hyg_male.append(Visualization.objects.filter(refer_hyg=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_hyg_female.append(Visualization.objects.filter(refer_hyg=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_refer_hyg1.append(Visualization.objects.filter(refer_hyg=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_hyg_male1.append(Visualization.objects.filter(refer_hyg=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_hyg_female1.append(Visualization.objects.filter(refer_hyg=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_refer_dent.append(Visualization.objects.filter(refer_dent=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_dent_male.append(Visualization.objects.filter(refer_dent=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_dent_female.append(Visualization.objects.filter(refer_dent=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_dr.append(Visualization.objects.filter(refer_dr=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_dr_male.append(Visualization.objects.filter(refer_dr=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_dr_female.append(Visualization.objects.filter(refer_dr=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_other.append(Visualization.objects.filter(refer_other=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_other_male.append(Visualization.objects.filter(refer_other=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_refer_other_female.append(Visualization.objects.filter(refer_other=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_refer_dent1.append(Visualization.objects.filter(refer_dent=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_dent_male1.append(Visualization.objects.filter(refer_dent=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_dent_female1.append(Visualization.objects.filter(refer_dent=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_dr1.append(Visualization.objects.filter(refer_dr=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_dr_male1.append(Visualization.objects.filter(refer_dr=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_dr_female1.append(Visualization.objects.filter(refer_dr=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_other1.append(Visualization.objects.filter(refer_other=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_other_male1.append(Visualization.objects.filter(refer_other=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_refer_other_female1.append(Visualization.objects.filter(refer_other=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                    old_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
-                    old_sdf_whole_mouth_male.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location).filter(activities_id=i.id).count())
-                    old_sdf_whole_mouth_female.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location).filter(activities_id=i.id).count())
+                        old_sdf_whole_mouth1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                        old_sdf_whole_mouth_male1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                        old_sdf_whole_mouth_female1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__gt=60,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
+                    kid_encounter.append(sum(kid_encounter1))
+                    kid_encounter_male.append(sum(kid_encounter_male1))
+                    kid_encounter_female.append(sum(kid_encounter_female1))
+
+                    kid_exo.append(sum(kid_exo1))
+                    kid_exo_male.append(sum(kid_exo_male1))
+                    kid_exo_female.append(sum(kid_exo_female1))
+
+                    kid_art.append(sum(kid_art1))
+                    kid_art_male.append(sum(kid_art_male1))
+                    kid_art_female.append(sum(kid_art_female1))
+
+                    kid_seal.append(sum(kid_seal1))
+                    kid_seal_male.append(sum(kid_seal_male1))
+                    kid_seal_female.append(sum(kid_seal_female1))
+
+                    kid_sdf.append(sum(kid_sdf1))
+                    kid_sdf_male.append(sum(kid_sdf_male1))
+                    kid_sdf_female.append(sum(kid_sdf_female1))
+
+                    kid_sdf_whole_mouth.append(sum(kid_sdf_whole_mouth1))
+                    kid_sdf_whole_mouth_male.append(sum(kid_sdf_whole_mouth_male1))
+                    kid_sdf_whole_mouth_female.append(sum(kid_sdf_whole_mouth_female1))
+
+                    kid_fv.append(sum(kid_fv1))
+                    kid_fv_male.append(sum(kid_fv_male1))
+                    kid_fv_female.append(sum(kid_fv_female1))
+
+                    kid_health_post.append(sum(kid_health_post1))
+                    kid_health_post_male.append(sum(kid_health_post_male1))
+                    kid_health_post_female.append(sum(kid_health_post_female1))
+
+                    kid_refer_hyg.append(sum(kid_refer_hyg1))
+                    kid_refer_hyg_male.append(sum(kid_refer_hyg_male1))
+                    kid_refer_hyg_female.append(sum(kid_refer_hyg_female1))
+
+                    kid_refer_dent.append(sum(kid_refer_dent1))
+                    kid_refer_dent_male.append(sum(kid_refer_dent_male1))
+                    kid_refer_dent_female.append(sum(kid_refer_dent_female1))
+
+                    kid_refer_dr.append(sum(kid_refer_dr1))
+                    kid_refer_dr_male.append(sum(kid_refer_dr_male1))
+                    kid_refer_dr_female.append(sum(kid_refer_dr_female1))
+
+                    kid_refer_other.append(sum(kid_refer_other))
+                    kid_refer_other_male.append(sum(kid_refer_other_male1))
+                    kid_refer_other_female.append(sum(kid_refer_other_female1))
+
+
+                    teen_encounter.append(sum(kid_encounter1))
+                    teen_encounter_male.append(sum(kid_encounter_male1))
+                    teen_encounter_female.append(sum(kid_encounter_female1))
+
+                    teen_exo.append(sum(kid_exo1))
+                    teen_exo_male.append(sum(kid_exo_male1))
+                    teen_exo_female.append(sum(kid_exo_female1))
+
+                    teen_art.append(sum(kid_art1))
+                    teen_art_male.append(sum(kid_art_male1))
+                    teen_art_female.append(sum(kid_art_female1))
+
+                    teen_seal.append(sum(kid_seal1))
+                    teen_seal_male.append(sum(kid_seal_male1))
+                    teen_seal_female.append(sum(kid_seal_female1))
+
+                    teen_sdf.append(sum(kid_sdf1))
+                    teen_sdf_male.append(sum(kid_sdf_male1))
+                    teen_sdf_female.append(sum(kid_sdf_female1))
+
+                    teen_sdf_whole_mouth.append(sum(kid_sdf_whole_mouth1))
+                    teen_sdf_whole_mouth_male.append(sum(kid_sdf_whole_mouth_male1))
+                    teen_sdf_whole_mouth_female.append(sum(kid_sdf_whole_mouth_female1))
+
+                    teen_fv.append(sum(kid_fv1))
+                    teen_fv_male.append(sum(kid_fv_male1))
+                    teen_fv_female.append(sum(kid_fv_female1))
+
+                    teen_health_post.append(sum(kid_health_post1))
+                    teen_health_post_male.append(sum(kid_health_post_male1))
+                    teen_health_post_female.append(sum(kid_health_post_female1))
+
+                    teen_refer_hyg.append(sum(kid_refer_hyg1))
+                    teen_refer_hyg_male.append(sum(kid_refer_hyg_male1))
+                    teen_refer_hyg_female.append(sum(kid_refer_hyg_female1))
+
+                    teen_refer_dent.append(sum(kid_refer_dent1))
+                    teen_refer_dent_male.append(sum(kid_refer_dent_male1))
+                    teen_refer_dent_female.append(sum(kid_refer_dent_female1))
+
+                    teen_refer_dr.append(sum(kid_refer_dr1))
+                    teen_refer_dr_male.append(sum(kid_refer_dr_male1))
+                    teen_refer_dr_female.append(sum(kid_refer_dr_female1))
+
+                    teen_refer_other.append(sum(kid_refer_other))
+                    teen_refer_other_male.append(sum(kid_refer_other_male1))
+                    teen_refer_other_female.append(sum(kid_refer_other_female1))
+
+                    adult_encounter.append(sum(kid_encounter1))
+                    adult_encounter_male.append(sum(kid_encounter_male1))
+                    adult_encounter_female.append(sum(kid_encounter_female1))
+
+                    adult_exo.append(sum(kid_exo1))
+                    adult_exo_male.append(sum(kid_exo_male1))
+                    adult_exo_female.append(sum(kid_exo_female1))
+
+                    adult_art.append(sum(kid_art1))
+                    adult_art_male.append(sum(kid_art_male1))
+                    adult_art_female.append(sum(kid_art_female1))
+
+                    adult_seal.append(sum(kid_seal1))
+                    adult_seal_male.append(sum(kid_seal_male1))
+                    adult_seal_female.append(sum(kid_seal_female1))
+
+                    adult_sdf.append(sum(kid_sdf1))
+                    adult_sdf_male.append(sum(kid_sdf_male1))
+                    adult_sdf_female.append(sum(kid_sdf_female1))
+
+                    adult_sdf_whole_mouth.append(sum(kid_sdf_whole_mouth1))
+                    adult_sdf_whole_mouth_male.append(sum(kid_sdf_whole_mouth_male1))
+                    adult_sdf_whole_mouth_female.append(sum(kid_sdf_whole_mouth_female1))
+
+                    adult_fv.append(sum(kid_fv1))
+                    adult_fv_male.append(sum(kid_fv_male1))
+                    adult_fv_female.append(sum(kid_fv_female1))
+
+                    adult_health_post.append(sum(kid_health_post1))
+                    adult_health_post_male.append(sum(kid_health_post_male1))
+                    adult_health_post_female.append(sum(kid_health_post_female1))
+
+                    adult_refer_hyg.append(sum(kid_refer_hyg1))
+                    adult_refer_hyg_male.append(sum(kid_refer_hyg_male1))
+                    adult_refer_hyg_female.append(sum(kid_refer_hyg_female1))
+
+                    adult_refer_dent.append(sum(kid_refer_dent1))
+                    adult_refer_dent_male.append(sum(kid_refer_dent_male1))
+                    adult_refer_dent_female.append(sum(kid_refer_dent_female1))
+
+                    adult_refer_dr.append(sum(kid_refer_dr1))
+                    adult_refer_dr_male.append(sum(kid_refer_dr_male1))
+                    adult_refer_dr_female.append(sum(kid_refer_dr_female1))
+
+                    adult_refer_other.append(sum(kid_refer_other))
+                    adult_refer_other_male.append(sum(kid_refer_other_male1))
+                    adult_refer_other_female.append(sum(kid_refer_other_female1))
+
+                    old_encounter.append(sum(kid_encounter1))
+                    old_encounter_male.append(sum(kid_encounter_male1))
+                    old_encounter_female.append(sum(kid_encounter_female1))
+
+                    old_exo.append(sum(kid_exo1))
+                    old_exo_male.append(sum(kid_exo_male1))
+                    old_exo_female.append(sum(kid_exo_female1))
+
+                    old_art.append(sum(kid_art1))
+                    old_art_male.append(sum(kid_art_male1))
+                    old_art_female.append(sum(kid_art_female1))
+
+                    old_seal.append(sum(kid_seal1))
+                    old_seal_male.append(sum(kid_seal_male1))
+                    old_seal_female.append(sum(kid_seal_female1))
+
+                    old_sdf.append(sum(kid_sdf1))
+                    old_sdf_male.append(sum(kid_sdf_male1))
+                    old_sdf_female.append(sum(kid_sdf_female1))
+
+                    old_sdf_whole_mouth.append(sum(kid_sdf_whole_mouth1))
+                    old_sdf_whole_mouth_male.append(sum(kid_sdf_whole_mouth_male1))
+                    old_sdf_whole_mouth_female.append(sum(kid_sdf_whole_mouth_female1))
+
+                    old_fv.append(sum(kid_fv1))
+                    old_fv_male.append(sum(kid_fv_male1))
+                    old_fv_female.append(sum(kid_fv_female1))
+
+                    old_health_post.append(sum(kid_health_post1))
+                    old_health_post_male.append(sum(kid_health_post_male1))
+                    old_health_post_female.append(sum(kid_health_post_female1))
+
+                    old_refer_hyg.append(sum(kid_refer_hyg1))
+                    old_refer_hyg_male.append(sum(kid_refer_hyg_male1))
+                    old_refer_hyg_female.append(sum(kid_refer_hyg_female1))
+
+                    old_refer_dent.append(sum(kid_refer_dent1))
+                    old_refer_dent_male.append(sum(kid_refer_dent_male1))
+                    old_refer_dent_female.append(sum(kid_refer_dent_female1))
+
+                    old_refer_dr.append(sum(kid_refer_dr1))
+                    old_refer_dr_male.append(sum(kid_refer_dr_male1))
+                    old_refer_dr_female.append(sum(kid_refer_dr_female1))
+
+                    old_refer_other.append(sum(kid_refer_other))
+                    old_refer_other_male.append(sum(kid_refer_other_male1))
+                    old_refer_other_female.append(sum(kid_refer_other_female1))
+
             total_encounter.append((sum(kid_encounter)+sum(teen_encounter)+sum(adult_encounter)+sum(old_encounter)))
             total_exo.append((sum(kid_exo)+sum(teen_exo)+sum(adult_exo)+sum(old_exo)))
             total_art.append((sum(kid_art)+sum(teen_art)+sum(adult_art)+sum(old_art)))
@@ -977,11 +1293,11 @@ class TreatmentActivityList(APIView):
         if serializer.is_valid():
             start_date = str(NepaliDate.from_date(serializer.validated_data['start_date']))
             end_date = str(NepaliDate.from_date(serializer.validated_data['end_date']))
-            location = serializer.validated_data['location']
+            location_list = serializer.validated_data['location']
             activities = serializer.validated_data['activities']
 
             data=[]
-            if location == "All Location":
+            if not location_list:
                 for i in activities:
                     activities_name = []
                     activities_name.append(i.name.capitalize())
@@ -1000,21 +1316,46 @@ class TreatmentActivityList(APIView):
                     data.append(activities_name)
             else:
                 for i in activities:
-                    activities_name = []
-                    activities_name.append(i.name.capitalize())
-                    activities_name.append(Visualization.objects.filter(activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(exo=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(art=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(seal=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(sdf=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(sdf_whole_mouth=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(fv=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(refer_hp=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(refer_hyg=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(refer_dent=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(refer_dr=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    activities_name.append(Visualization.objects.filter(refer_other=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location).count())
-                    data.append(activities_name)
+                    activities_data = []
+                    activities_check = []
+                    activities_exo = []
+                    activities_art = []
+                    activities_seal = []
+                    activities_sdf = []
+                    activities_sdf_whole_mouth = []
+                    activities_fv = []
+                    activities_refer_hp = []
+                    activities_refer_hyg = []
+                    activities_refer_dent = []
+                    activities_refer_dr = []
+                    activities_refer_other = []
+                    for location in location_list:
+                        activities_check.append(Visualization.objects.filter(activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_exo.append(Visualization.objects.filter(exo=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_art.append(Visualization.objects.filter(art=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_seal.append(Visualization.objects.filter(seal=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_sdf.append(Visualization.objects.filter(sdf=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_sdf_whole_mouth.append(Visualization.objects.filter(sdf_whole_mouth=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_fv.append(Visualization.objects.filter(fv=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_refer_hp.append(Visualization.objects.filter(refer_hp=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_refer_hyg.append(Visualization.objects.filter(refer_hyg=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_refer_dent.append(Visualization.objects.filter(refer_dent=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_refer_dr.append(Visualization.objects.filter(refer_dr=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                        activities_refer_other.append(Visualization.objects.filter(refer_other=True,activities_id=i.id,created_at__range=[last_30_days_obj,today_date_obj],geography_id=location.id).count())
+                    activities_data.append(i.name.capitalize())
+                    activities_data.append(sum(activities_check))
+                    activities_data.append(sum(activities_exo))
+                    activities_data.append(sum(activities_art))
+                    activities_data.append(sum(activities_seal))
+                    activities_data.append(sum(activities_sdf))
+                    activities_data.append(sum(activities_sdf_whole_mouth))
+                    activities_data.append(sum(activities_fv))
+                    activities_data.append(sum(activities_refer_hp))
+                    activities_data.append(sum(activities_refer_hyg))
+                    activities_data.append(sum(activities_refer_dent))
+                    activities_data.append(sum(activities_refer_dr))
+                    activities_data.append(sum(activities_refer_other))
+                    data.append(activities_data)
             return Response(data)
         return Response({"treatment_obj":"do not have a permission"},status=400)
 
@@ -1427,7 +1768,7 @@ class TreatmentbyWardList(APIView):
         if serializer.is_valid():
             start_date = str(NepaliDate.from_date(serializer.validated_data['start_date']))
             end_date = str(NepaliDate.from_date(serializer.validated_data['end_date']))
-            location = serializer.validated_data['location']
+            location_list = serializer.validated_data['location']
             activities = serializer.validated_data['activities']
             list_data=[]
             check=[]
@@ -1442,7 +1783,7 @@ class TreatmentbyWardList(APIView):
             refer_dent = []
             refer_dr = []
             refer_other = []
-            if location=="All Location":
+            if not location_list:
                 for war_obj1 in Ward.objects.filter(status=True):
                     loop_data=[]
                     check_obj=[]
@@ -1487,38 +1828,48 @@ class TreatmentbyWardList(APIView):
                     list_data.append(loop_data)
 
             else:
-                if Ward.objects.filter(id=location):
-                    ward_obj = Ward.objects.get(id=location)
-
-                for i in activities:
-                    loop_data=[]
-                    check.append(Visualization.objects.filter(geography_id=location,activities_id=i.id, created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    exo.append(Visualization.objects.filter(geography_id=location, activities_id=i.id,exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    art.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,art=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    seal.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    sdf.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    fv.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    sdf_whole_mouth.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,sdf_whole_mouth=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    refer_hp.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    refer_hyg.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,refer_hyg=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    refer_dent.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,refer_dent=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    refer_dr.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,refer_dr=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    refer_other.append(Visualization.objects.filter(geography_id=location,activities_id=i.id,refer_other=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                loop_data.append(ward_obj.name.capitalize())
-                loop_data.append(sum(check))
-                loop_data.append(sum(exo))
-                loop_data.append(sum(art))
-                loop_data.append(sum(check))
-                loop_data.append(sum(seal))
-                loop_data.append(sum(sdf))
-                loop_data.append(sum(fv))
-                loop_data.append(sum(sdf_whole_mouth))
-                loop_data.append(sum(refer_hp))
-                loop_data.append(sum(refer_hyg))
-                loop_data.append(sum(refer_dent))
-                loop_data.append(sum(refer_dr))
-                loop_data.append(sum(refer_other))
-                list_data.append(loop_data)
+                for location in location_list:
+                    loop_data = []
+                    location_check = []
+                    location_exo = []
+                    location_art = []
+                    location_seal = []
+                    location_sdf = []
+                    location_sdf_whole_mouth = []
+                    location_fv = []
+                    location_refer_hp = []
+                    location_refer_hyg = []
+                    location_refer_dent = []
+                    location_refer_dr = []
+                    location_refer_other = []
+                    for i in activities:
+                        location_check.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id, created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_exo.append(Visualization.objects.filter(geography_id=location.id, activities_id=i.id,exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_art.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,art=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_seal.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_sdf.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_fv.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_sdf_whole_mouth.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,sdf_whole_mouth=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_refer_hp.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,refer_hp=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_refer_hyg.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,refer_hyg=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_refer_dent.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,refer_dent=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_refer_dr.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,refer_dr=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        location_refer_other.append(Visualization.objects.filter(geography_id=location.id,activities_id=i.id,refer_other=True,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                    loop_data.append(location.name.capitalize())
+                    loop_data.append(sum(location_check))
+                    loop_data.append(sum(location_exo))
+                    loop_data.append(sum(location_art))
+                    loop_data.append(sum(location_check))
+                    loop_data.append(sum(location_seal))
+                    loop_data.append(sum(location_sdf))
+                    loop_data.append(sum(location_sdf_whole_mouth))
+                    loop_data.append(sum(location_fv))
+                    loop_data.append(sum(location_refer_hp))
+                    loop_data.append(sum(location_refer_hyg))
+                    loop_data.append(sum(location_refer_dent))
+                    loop_data.append(sum(location_refer_dr))
+                    loop_data.append(sum(location_refer_other))
+                    list_data.append(loop_data)
             return Response(list_data)
         return Response({"treatment_obj":"do not have a permission"},status=400)
 

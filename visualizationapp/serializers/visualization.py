@@ -29,7 +29,8 @@ class DataVisualizationSerializer(serializers.ModelSerializer):
 class OverViewVisualization(serializers.ModelSerializer):
     start_date = serializers.DateField(write_only=True,required=True)
     end_date = serializers.DateField(write_only=True,required=True)
-    location = serializers.CharField(write_only=True,required=True)
+    location = LocationPKField(write_only=True, many=True,allow_null=True)
+    # location = serializers.CharField(write_only=True,required=True)
     activities = ActivityPKField(write_only=True,many=True,allow_null=True)
     # health_post = serializers.CharField(allow_null=True,write_only=True)
     # seminar = serializers.CharField(allow_null=True,write_only=True)
@@ -91,7 +92,8 @@ class LongitudinalVisualizationSerializer(serializers.ModelSerializer):
 class TreatmentStrategicDataSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(write_only=True,required=True)
     end_date = serializers.DateField(write_only=True,required=True)
-    location = serializers.CharField(write_only=True,required=True)
+    location = LocationPKField(write_only=True, many=True,allow_null=True)
+    # location = serializers.CharField(write_only=True,required=True)
     health_post = serializers.CharField(allow_null=True,write_only=True)
     seminar = serializers.CharField(allow_null=True,write_only=True)
     outreach = serializers.CharField(allow_null=True,write_only=True)
