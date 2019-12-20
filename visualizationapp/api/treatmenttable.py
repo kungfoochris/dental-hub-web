@@ -194,8 +194,8 @@ class TreatmentTableBasicData(APIView):
                 total_cavities = cavities_prevented_male+cavities_prevented_female
                 total_contact = treatment_male+treatment_female
             return Response([["Number of Cavities Prevented",round(cavities_prevented_male,2), round(cavities_prevented_female,2), round(cavities_prevented_child,2), round(cavities_prevented_adult,2), round(cavities_prevented_old,2),round(total_cavities,2)],\
-                ["Contacts", treatment_male, treatment_female, treatment_child, treatment_adult, treatment_old, total_contact]])
-        return Response(serializer.error)
+            ["Contacts", treatment_male, treatment_female, treatment_child, treatment_adult, treatment_old, total_contact]])
+        return Response({"message":serializer.errors},status=400)
 
 
 class TreatmentStrategicData(APIView):
@@ -643,4 +643,4 @@ class TreatmentStrategicData(APIView):
             return Response([["Preventive Ratio",round(preventive_ratio_male,2), round(preventive_ratio_female,2), round(preventive_ratio_child,2), round(preventive_ratio_adult,2), round(preventive_ratio_old,2),round(preventive_ratio_total,2)],\
                 ["Early Intervention Ratio",round(early_intervention_ratio_male,2), round(early_intervention_ratio_female,2), round(early_intervention_ratio_child,2), round(early_intervention_ratio_adult,2), round(early_intervention_ratio_old,2),round(early_intervention_ratio_total,2)],\
                 ["% Recall",str(round(recall_percent_male,2))+"%", str(round(recall_percent_female,2))+"%", str(round(recall_percent_child,2))+"%", str(round(recall_percent_adult,2))+"%", str(round(recall_percent_old,2))+"%",str(round(recall_percent_total,2))+"%"]])
-        return Response(serializer.error)
+        return Response({"message":serializer.errors},status=400)
