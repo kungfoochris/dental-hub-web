@@ -45,7 +45,8 @@ class OverViewVisualization(serializers.ModelSerializer):
 class TreatMentBarGraphVisualization(serializers.ModelSerializer):
     start_date = serializers.DateField(write_only=True,required=True)
     end_date = serializers.DateField(write_only=True,required=True)
-    location = serializers.CharField(write_only=True,required=True)
+    location = LocationPKField(write_only=True, many=True,allow_null=True)
+    # location = serializers.CharField(write_only=True,default="All Location")
     age_group = serializers.CharField(write_only=True,required=True)
     class Meta:
         model = Visualization

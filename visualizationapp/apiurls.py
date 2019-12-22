@@ -1,7 +1,18 @@
 # -*- coding:utf-8 -*-
 from django.conf.urls import include
 from django.urls import path
-from treatmentapp.api.visualization import Visualization, Visualization1
+
+# from treatmentapp.api.visualization import Visualization, Visualization1
+
+from visualizationapp.api.dashboard import OverviewVisualization1,\
+TreatmentActivityList,TreatmentbyWardList,DateReturn
+
+from visualizationapp.api.dashboardvisualization import VisualizationSetting,\
+VisualizationSettingFilter,PieChartVisualization,PieChartVisualizationFilter
+
+from visualizationapp.api.wardlinechart import WardlineVisualization,\
+WardlineVisualizationFilter
+
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
@@ -15,10 +26,7 @@ from visualizationapp.api.treatmentbargraph import TreatMentBarGraph,\
 TreatMentBarGraphFilter
 
 
-from visualizationapp.api.dashboard import OverviewVisualization1,\
-TreatmentActivityList,VisualizationSetting,VisualizationSettingFilter,\
-TreatmentbyWardList,PieChartVisualization,PieChartVisualizationFilter,\
-DateReturn
+
 
 from visualizationapp.api.wardvisualization import WardVisualization1,\
 WardTreatmentTableVisualization1,WardTableVisualization2,\
@@ -31,8 +39,7 @@ WardUserlineVisualization,WardStrategicData
 from visualizationapp.api.crosssectional import SectionalVisualization
 
 
-from visualizationapp.api.wardlinechart import WardlineVisualization,\
-WardlineVisualizationFilter
+
 
 from visualizationapp.api.visualization_table import TableVisualization
 
@@ -50,20 +57,31 @@ app_name = 'visualizationapp'
 urlpatterns = [
 	path('loginvisualization', LoginVisualization.as_view()),
 	path('loginvisualization1', LoginVisualization1.as_view()),
-	path('treatment',TreatmentTableBasicData.as_view()),
+
 	path('treatmentnargraph',TreatMentBarGraph.as_view()),
 	path('treatmentnargraphfilter',TreatMentBarGraphFilter.as_view()),
 
-	path('overviewvisualization1',OverviewVisualization1.as_view()),
+	path('overviewvisualization',OverviewVisualization1.as_view()),
 	path('treatmentactivities', TreatmentActivityList.as_view()),
-	# path('treatmenttable',TreatmentTableList.as_view()),
-	path('overviewwardtreatmenttable',TreatmentbyWardList.as_view()),
-	# path('table2filter',TreatmentTableListfilter.as_view()),
-	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
-	path('settingsgraph',VisualizationSetting.as_view()),
+	path('treatmentwards',TreatmentbyWardList.as_view()),
+	path('returndate',DateReturn.as_view()),
+	path('overviewbargraph',VisualizationSetting.as_view()),
 	path('settingsgraphfilter',VisualizationSettingFilter.as_view()),
-	path('piechart',PieChartVisualization.as_view()),
+	path('overviewpiechart',PieChartVisualization.as_view()),
 	path('piechartfilter',PieChartVisualizationFilter.as_view()),
+	path('dashboardlinechart',WardlineVisualization.as_view()),
+	path('wardlineVisualizationfilter',WardlineVisualizationFilter.as_view()),
+
+
+	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
+
+
+	path('treatment',TreatmentTableBasicData.as_view()),
+	path('preventionratio',TreatmentPreventionRatioVisualization.as_view()),
+	path('earlyintervention',TreatmentEarlyIntervention.as_view()),
+	path('recalldistribution',TreatmentRecallDistribution.as_view()),
+
+
 
 
 	path('wardvisualization',WardVisualization1.as_view()),
@@ -73,11 +91,8 @@ urlpatterns = [
 	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
 	# path('overviewvisualization/<start_date>/<end_date>/<location_id>',OverviewVisualization.as_view()),
 	path('sectional',SectionalVisualization.as_view()),
-	path('preventionratio',TreatmentPreventionRatioVisualization.as_view()),
-	path('earlyintervention',TreatmentEarlyIntervention.as_view()),
-	path('recalldistribution',TreatmentRecallDistribution.as_view()),
-	path('wardlineVisualization',WardlineVisualization.as_view()),
-	path('wardlineVisualizationfilter',WardlineVisualizationFilter.as_view()),
+
+
 	path('tablvisualization',TableVisualization.as_view()),
 	path('data',DataVisualization.as_view()),
 	path('waruserlinechart',WardUserlineVisualization.as_view()),
@@ -86,6 +101,6 @@ urlpatterns = [
 	path('wardstrategicdata',WardStrategicData.as_view()),
 
 
-	path('returndate',DateReturn.as_view()),
+
 	]
 urlpatterns = format_suffix_patterns(urlpatterns)
