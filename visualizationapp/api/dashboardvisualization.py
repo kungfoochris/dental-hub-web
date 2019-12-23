@@ -462,31 +462,31 @@ class VisualizationSettingFilter(APIView):
 class PieChartVisualization(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request, format=None):
-        exo=[]
-        art=[]
-        seal=[]
-        sdf=[]
-        fv=[]
-        exo_count = Visualization.objects.filter(exo=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
-        art_count = Visualization.objects.filter(art=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
-        seal_count = Visualization.objects.filter(seal=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
-        sdf_count =Visualization.objects.filter(sdf=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
-        fv_count =Visualization.objects.filter(fv=True,created_at__range=[last_30_days_obj,today_date_obj]).count()
-        exo.append(exo_count)
-        art.append(art_count)
-        seal.append(seal_count)
-        sdf.append(sdf_count)
-        fv.append(fv_count)
+        health_post_obj = Activity.objects.get(name = 'Health Post')
+        school_seminar_obj = Activity.objects.get(name = 'School Seminar')
+        community_outreach_obj = Activity.objects.get(name = 'Community Outreach')
+        training_obj = Activity.objects.get(name = 'Training')
+        data = []
+        data_label=[]
+        for activities_obj in Activity.objects.all():
+            data_label.append(activities_obj.name)
+            a=[]
+            a.append(Visualization.objects.filter(exo=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+            a.append(Visualization.objects.filter(art=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+            a.append(Visualization.objects.filter(seal=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+            a.append(Visualization.objects.filter(sdf=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+            a.append(Visualization.objects.filter(fv=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+            data.append(sum(a))
         locationChart = {
         'data': {
-        'labels': ['EXO', 'ART', 'SEAL', 'SDF','FV'],
+        'labels': data_label,
         'datasets': [
         {
         'label': "Female",
         'backgroundColor': ['rgba(84, 184, 209, 0.5)', 'rgba(91, 95, 151, 0.5)', 'rgba(255, 193, 69, 0.5)', 'rgba(96, 153, 45, 0.5)','rgba(230, 232, 230, 0.5)'],
         'borderColor': ['rgba(84, 184, 209, 1)', 'rgba(91, 95, 151, 1)', 'rgba(255, 193, 69, 1)', 'rgba(96, 153, 45, 1)','rgba(230, 232, 230, 1)'],
         'borderWidth': 1,
-        'data': [exo, art, seal, sdf,fv]
+        'data':data
         }]},
         'options': {
         'aspectRatio': 1.5,
@@ -584,7 +584,7 @@ class PieChartVisualizationFilter(APIView):
                         training_count.append(Visualization.objects.filter(fv=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
             locationChart = {
             'data': {
-            'labels': ['Health Post', 'School Seminar', 'Community Outreach', 'Training'],
+            'labels': ['Community Outreach', 'Health Post', 'School Seminar','Training'],
             'datasets': [
             {
             'label': "Female",
