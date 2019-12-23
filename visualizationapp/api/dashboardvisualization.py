@@ -551,45 +551,37 @@ class PieChartVisualizationFilter(APIView):
                     school_seminar_count.append(Visualization.objects.filter(fv=True,activities_id=school_seminar_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
                     community_outreach_count.append(Visualization.objects.filter(fv=True,activities_id=community_outreach_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
                     training_count.append(Visualization.objects.filter(fv=True,activities_id=training_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                # health_post_count = Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=health_post_obj.id).count()
-                # school_seminar_count = Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=school_seminar_obj.id).count()
-                # community_outreach_count = Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=community_outreach_obj.id).count()
-                # training_count = Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=training_obj.id).count()
             else:
                 for location in location_list:
                     if age_group=='exo':
-                        health_post_coun.append(Visualization.objects.filter(exo=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        school_seminar_coun.append(Visualization.objects.filter(exo=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        community_outreach_coun.append(Visualization.objects.filter(exo=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        training_coun.append(Visualization.objects.filter(exo=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        health_post_count.append(Visualization.objects.filter(exo=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        school_seminar_count.append(Visualization.objects.filter(exo=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        community_outreach_count.append(Visualization.objects.filter(exo=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        training_count.append(Visualization.objects.filter(exo=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
 
                     if age_group=='art':
-                        health_post_coun.append(Visualization.objects.filter(art=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        school_seminar_coun.append(Visualization.objects.filter(art=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        community_outreach_coun.append(Visualization.objects.filter(art=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        training_coun.append(Visualization.objects.filter(art=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        health_post_count.append(Visualization.objects.filter(art=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        school_seminar_count.append(Visualization.objects.filter(art=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        community_outreach_count.append(Visualization.objects.filter(art=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        training_count.append(Visualization.objects.filter(art=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
 
                     if age_group=='seal':
-                        health_post_coun.append(Visualization.objects.filter(seal=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        school_seminar_coun.append(Visualization.objects.filter(seal=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        community_outreach_coun.append(Visualization.objects.filter(sel=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        training_coun.append(Visualization.objects.filter(seal=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        health_post_count.append(Visualization.objects.filter(seal=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        school_seminar_count.append(Visualization.objects.filter(seal=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        community_outreach_count.append(Visualization.objects.filter(seal=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        training_count.append(Visualization.objects.filter(seal=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
 
                     if age_group=='sdf':
-                        health_post_coun.append(Visualization.objects.filter(sdf=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        school_seminar_coun.append(Visualization.objects.filter(sdf=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        community_outreach_coun.append(Visualization.objects.filter(sdf=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        training_coun.append(Visualization.objects.filter(sdf=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        health_post_count.append(Visualization.objects.filter(sdf=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        school_seminar_count.append(Visualization.objects.filter(sdf=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        community_outreach_count.append(Visualization.objects.filter(sdf=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        training_count.append(Visualization.objects.filter(sdf=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
 
                     if age_group=='fv':
-                        health_post_coun.append(Visualization.objects.filter(fv=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        school_seminar_coun.append(Visualization.objects.filter(fv=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        community_outreach_coun.append(Visualization.objects.filter(fv=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                        training_coun.append(Visualization.objects.filter(fv=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
-                    # health_post_coun.append(Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=health_post_obj.id,geography_id=location).count())
-                    # school_seminar_coun.append(Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=school_seminar_obj.id,geography_id=location).count())
-                    # community_outreach_coun.append(Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=community_outreach_obj.id,geography_id=location).count())
-                    # training_coun.append(Visualization.objects.values(age_group).annotate(Count(age_group)).filter(activities_id=training_obj.id,geography_id=location).count())
+                        health_post_count.append(Visualization.objects.filter(fv=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        school_seminar_count.append(Visualization.objects.filter(fv=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        community_outreach_count.append(Visualization.objects.filter(fv=True,activities_id=community_outreach_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
+                        training_count.append(Visualization.objects.filter(fv=True,activities_id=training_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
             locationChart = {
             'data': {
             'labels': ['Health Post', 'School Seminar', 'Community Outreach', 'Training'],
