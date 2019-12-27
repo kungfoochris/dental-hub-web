@@ -163,7 +163,7 @@ class VisualizationSettingFilter(APIView):
             end_date = str(NepaliDate.from_date(serializer.validated_data['end_date']))
             location_list = serializer.validated_data['location']
 
-            district=['Health Post', 'School Seminar', 'Community Outreach', 'Training']
+            district=['Community Outreach','Health Post', 'School Seminar','Training']
             health_post_obj = Activity.objects.get(name="Health Post")
             seminar_obj = Activity.objects.get(name="School Seminar")
             outreach_obj = Activity.objects.get(name="Community Outreach")
@@ -240,14 +240,6 @@ class VisualizationSettingFilter(APIView):
                 training_seal.append(Visualization.objects.filter(seal=True,activities_id=training.id).filter(created_at__range=[start_date,end_date]).count())
                 training_sdf.append(Visualization.objects.filter(sdf=True,activities_id=training.id).filter(created_at__range=[start_date,end_date]).count())
                 training_fv.append(Visualization.objects.filter(fv=True,activities_id=training.id).filter(created_at__range=[start_date,end_date]).count())
-
-                # exo_data=[health_post_exo,seminar_exo,outreach_exo,training_exo]
-                # fv_data=[health_post_fv,seminar_fv,outreach_fv,training_fv]
-                # art_data=[health_post_art,seminar_art,outreach_art,training_art]
-                # seal_data=[health_post_seal,seminar_seal,outreach_seal,training_seal]
-                # sdf_data=[health_post_sdf,seminar_sdf,outreach_sdf,training_sdf]
-
-
                 district1=['Kids','Teen','Adult', 'Old Adult']
                 kid_exo.append(Visualization.objects.filter(exo=True,age__lt=12).filter(created_at__range=[start_date,end_date]).count())
                 kid_art.append(Visualization.objects.filter(art=True,age__lt=12).filter(created_at__range=[start_date,end_date]).count())
@@ -273,11 +265,6 @@ class VisualizationSettingFilter(APIView):
                 old_adult_sdf.append(Visualization.objects.filter(sdf=True,age__gt=60).filter(created_at__range=[start_date,end_date]).count())
                 old_adult_fv.append(Visualization.objects.filter(fv=True,age__gt=60).filter(created_at__range=[start_date,end_date]).count())
 
-                # exo_data=[kid_exo, teen_exo, adult_exo, old_adult_exo]
-                # fv_data=[kid_fv, teen_fv, adult_fv, old_adult_fv]
-                # art_data=[kid_art, teen_art, adult_art, old_adult_art]
-                # seal_data=[kid_seal, teen_seal, adult_seal, old_adult_seal]
-                # sdf_data=[kid_sdf, teen_sdf, adult_sdf, old_adult_sdf]
             else:
                 for location in location_list:
                     health_post_exo.append(Visualization.objects.filter(exo=True,activities_id=health_post_obj.id).filter(created_at__range=[start_date,end_date],geography_id=location.id).count())
@@ -329,18 +316,18 @@ class VisualizationSettingFilter(APIView):
                     old_adult_sdf.append(Visualization.objects.filter(sdf=True,age__gt=60).filter(created_at__range=[start_date,end_date],geography_id=location.id).count())
                     old_adult_fv.append(Visualization.objects.filter(fv=True,age__gt=60).filter(created_at__range=[start_date,end_date],geography_id=location.id).count())
 
-            exo_data=[sum(health_post_exo),sum(seminar_exo),sum(outreach_exo),sum(training_exo)]
-            fv_data=[sum(health_post_fv),sum(seminar_fv),sum(outreach_fv),sum(training_fv)]
-            art_data=[sum(health_post_art),sum(seminar_art),sum(outreach_art),sum(training_art)]
-            seal_data=[sum(health_post_seal),sum(seminar_seal),sum(outreach_seal),sum(training_seal)]
-            sdf_data=[sum(health_post_sdf),sum(seminar_sdf),sum(outreach_sdf),sum(training_sdf)]
+            exo_data=[sum(outreach_exo),sum(health_post_exo),sum(seminar_exo),sum(training_exo)]
+            fv_data=[sum(outreach_fv),sum(health_post_fv),sum(seminar_fv),sum(training_fv)]
+            art_data=[sum(outreach_art),sum(health_post_art),sum(seminar_art),sum(training_art)]
+            seal_data=[sum(outreach_seal),sum(health_post_seal),sum(seminar_seal),sum(training_seal)]
+            sdf_data=[sum(outreach_sdf),sum(health_post_sdf),sum(seminar_sdf),sum(training_sdf)]
 
 
-            exo_data=[sum(kid_exo), sum(teen_exo), sum(adult_exo), sum(old_adult_exo)]
-            fv_data=[sum(kid_fv), sum(teen_fv), sum(adult_fv), sum(old_adult_fv)]
-            art_data=[sum(kid_art), sum(teen_art), sum(adult_art), sum(old_adult_art)]
-            seal_data=[sum(kid_seal), sum(teen_seal), sum(adult_seal), sum(old_adult_seal)]
-            sdf_data=[sum(kid_sdf), sum(teen_sdf), sum(adult_sdf), sum(old_adult_sdf)]
+            exo_data1=[sum(kid_exo), sum(teen_exo), sum(adult_exo), sum(old_adult_exo)]
+            fv_data1=[sum(kid_fv), sum(teen_fv), sum(adult_fv), sum(old_adult_fv)]
+            art_data1=[sum(kid_art), sum(teen_art), sum(adult_art), sum(old_adult_art)]
+            seal_data1=[sum(kid_seal), sum(teen_seal), sum(adult_seal), sum(old_adult_seal)]
+            sdf_data1=[sum(kid_sdf), sum(teen_sdf), sum(adult_sdf), sum(old_adult_sdf)]
             if age_group == "Age Group":
                 locationChart = {
                 'data': {
@@ -350,31 +337,31 @@ class VisualizationSettingFilter(APIView):
                 'backgroundColor': 'rgba(255, 206, 86, 0.2)',
                 'borderColor': 'rgba(255, 206, 86, 1)',
                 'borderWidth': 1,
-                'data': exo_data},
+                'data': exo_data1},
                 {
                 'label': "FV",
                 'backgroundColor': 'rgba(239, 62, 54, 0.2)',
                 'borderColor': 'rgba(239, 62, 54, 1)',
                 'borderWidth': 1,
-                'data': fv_data},
+                'data': fv_data1},
                 {
                 'label': "ART",
-                'backgroundColor': 'rgba(81, 264, 210, 0.2)',
+                'backgroundColor': 'rgba(81, 264, 289, 0.2)',
                 'borderColor': 'rgba(81, 264, 210, 1)',
                 'borderWidth': 1,
-                'data': art_data},
+                'data': art_data1},
                 {
                 'label': "SEAL",
                 'backgroundColor': 'rgba(16, 152, 247, 0.2)',
                 'borderColor': 'rgba(16, 152, 247, 1)',
                 'borderWidth': 1,
-                'data': seal_data},
+                'data': seal_data1},
                 {
                 'label': "SDF",
                 'backgroundColor': 'rgba(87, 50, 200, 0.2)',
                 'borderColor': 'rgba(87, 50, 200, 1)',
                 'borderWidth': 1,
-                'data': sdf_data}]
+                'data': sdf_data1}]
                 },
                 'options': {
                 'aspectRatio': 1.5,
@@ -416,7 +403,7 @@ class VisualizationSettingFilter(APIView):
                 'data': fv_data},
                 {
                 'label': "ART",
-                'backgroundColor': 'rgba(81, 264, 210, 0.2)',
+                'backgroundColor': 'rgba(81, 264, 289, 0.2)',
                 'borderColor': 'rgba(81, 264, 210, 1)',
                 'borderWidth': 1,
                 'data': art_data},
@@ -591,7 +578,7 @@ class PieChartVisualizationFilter(APIView):
             'backgroundColor': ['rgba(255, 206, 86, 0.5)', 'rgba(239, 62, 54, 0.5)', 'rgba(81, 264, 210, 0.5)', 'rgba(16, 152, 247, 0.5)'],
             'borderColor': ['rgba(255, 206, 86, 0.5)', 'rgba(239, 62, 54, 1)', 'rgba(81, 264, 210, 1)', 'rgba(16, 152, 247, 1)'],
             'borderWidth': 1,
-            'data': [[sum(health_post_count)], [sum(school_seminar_count)], [sum(community_outreach_count)], [sum(training_count)]]
+            'data': [[sum(community_outreach_count)],[sum(health_post_count)], [sum(school_seminar_count)], [sum(training_count)]]
             }]},
             'options': {
             'aspectRatio': 1.5,
