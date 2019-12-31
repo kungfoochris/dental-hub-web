@@ -100,12 +100,6 @@ class VisualizationSetting(APIView):
             'borderWidth': 1,
             'data': exo_data},
             {
-            'label': "FV",
-            'backgroundColor': 'rgba(239, 62, 54, 0.2)',
-            'borderColor': 'rgba(239, 62, 54, 1)',
-            'borderWidth': 1,
-            'data': fv_data},
-            {
             'label': "ART",
             'backgroundColor': 'rgba(81, 264, 210, 0.2)',
             'borderColor': 'rgba(81, 264, 210, 1)',
@@ -122,7 +116,13 @@ class VisualizationSetting(APIView):
             'backgroundColor': 'rgba(87, 50, 200, 0.2)',
             'borderColor': 'rgba(87, 50, 200, 1)',
             'borderWidth': 1,
-            'data': sdf_data}]
+            'data': sdf_data},
+            {
+            'label': "FV",
+            'backgroundColor': 'rgba(239, 62, 54, 0.2)',
+            'borderColor': 'rgba(239, 62, 54, 1)',
+            'borderWidth': 1,
+            'data': fv_data}]
             },
             'options': {
             'aspectRatio': 1.5,
@@ -503,6 +503,7 @@ class PieChartVisualizationFilter(APIView):
             age_group = serializer.validated_data['age_group']
             location_list = serializer.validated_data['location']
             label_data = ['Health Post', 'School Seminar', 'Community Outreach', 'Training']
+
             health_post_obj = Activity.objects.get(name = 'Health Post')
             school_seminar_obj = Activity.objects.get(name = 'School Seminar')
             community_outreach_obj = Activity.objects.get(name = 'Community Outreach')
@@ -513,6 +514,46 @@ class PieChartVisualizationFilter(APIView):
             community_outreach_count=[]
             training_count=[]
             if not location_list:
+                if(age_group=="alltreatment"):
+                    data = []
+                    data_label=[]
+                    for activities_obj in Activity.objects.all():
+                        data_label.append(activities_obj.name)
+                        a=[]
+                        a.append(Visualization.objects.filter(exo=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                        a.append(Visualization.objects.filter(art=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                        a.append(Visualization.objects.filter(seal=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                        a.append(Visualization.objects.filter(sdf=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                        a.append(Visualization.objects.filter(fv=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                        data.append(sum(a))
+                    locationChart = {
+                    'data': {
+                    'labels': data_label,
+                    'datasets': [
+                    {
+                    'label': "Female",
+                    'backgroundColor': ['rgba(84, 184, 209, 0.5)', 'rgba(91, 95, 151, 0.5)', 'rgba(255, 193, 69, 0.5)', 'rgba(96, 153, 45, 0.5)','rgba(230, 232, 230, 0.5)'],
+                    'borderColor': ['rgba(84, 184, 209, 1)', 'rgba(91, 95, 151, 1)', 'rgba(255, 193, 69, 1)', 'rgba(96, 153, 45, 1)','rgba(230, 232, 230, 1)'],
+                    'borderWidth': 1,
+                    'data':data
+                    }]},
+                    'options': {
+                    'aspectRatio': 1.5,
+                    'title': {
+                    'display': 'true',
+                    'text': "Activity Distribution Chart",
+                    'fontSize': 18,
+                    'fontFamily': "'Palanquin', sans-serif"},
+                    'legend': {
+                    'display': 'true',
+                    'position': 'bottom',
+                    'labels': {
+                    'usePointStyle': 'true',
+                    'padding': 20,
+                    'fontFamily': "'Maven Pro', sans-serif"}
+                    }}}
+                    return JsonResponse({"locationChart":locationChart})
+
                 if(age_group=='exo'):
                     health_post_count.append(Visualization.objects.filter(exo=True,activities_id=health_post_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
                     school_seminar_count.append(Visualization.objects.filter(exo=True,activities_id=school_seminar_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
@@ -539,7 +580,88 @@ class PieChartVisualizationFilter(APIView):
                     community_outreach_count.append(Visualization.objects.filter(fv=True,activities_id=community_outreach_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
                     training_count.append(Visualization.objects.filter(fv=True,activities_id=training_obj.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
             else:
+                if(age_group=="alltreatment"):
+                    data = []
+                    data_label=[]
+                    for activities_obj in Activity.objects.all():
+                        data_label.append(activities_obj.name)
+                        a=[]
+                        for location in location_list:
+                            a.append(Visualization.objects.filter(exo=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id,geography_id=location.id).count())
+                            a.append(Visualization.objects.filter(art=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id,geography_id=location.id).count())
+                            a.append(Visualization.objects.filter(seal=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id,geography_id=location.id).count())
+                            a.append(Visualization.objects.filter(sdf=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id,geography_id=location.id).count())
+                            a.append(Visualization.objects.filter(fv=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id,geography_id=location.id).count())
+                        data.append(sum(a))
+
+                    locationChart = {
+                    'data': {
+                    'labels': data_label,
+                    'datasets': [
+                    {
+                    'label': "Female",
+                    'backgroundColor': ['rgba(84, 184, 209, 0.5)', 'rgba(91, 95, 151, 0.5)', 'rgba(255, 193, 69, 0.5)', 'rgba(96, 153, 45, 0.5)','rgba(230, 232, 230, 0.5)'],
+                    'borderColor': ['rgba(84, 184, 209, 1)', 'rgba(91, 95, 151, 1)', 'rgba(255, 193, 69, 1)', 'rgba(96, 153, 45, 1)','rgba(230, 232, 230, 1)'],
+                    'borderWidth': 1,
+                    'data':data
+                    }]},
+                    'options': {
+                    'aspectRatio': 1.5,
+                    'title': {
+                    'display': 'true',
+                    'text': "Activity Distribution Chart",
+                    'fontSize': 18,
+                    'fontFamily': "'Palanquin', sans-serif"},
+                    'legend': {
+                    'display': 'true',
+                    'position': 'bottom',
+                    'labels': {
+                    'usePointStyle': 'true',
+                    'padding': 20,
+                    'fontFamily': "'Maven Pro', sans-serif"}
+                    }}}
+                    return JsonResponse({"locationChart":locationChart})
                 for location in location_list:
+                    if(age_group=="alltreatment"):
+                        data = []
+                        data_label=[]
+                        for activities_obj in Activity.objects.all():
+                            data_label.append(activities_obj.name)
+                            a=[]
+                            a.append(Visualization.objects.filter(exo=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                            a.append(Visualization.objects.filter(art=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                            a.append(Visualization.objects.filter(seal=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                            a.append(Visualization.objects.filter(sdf=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                            a.append(Visualization.objects.filter(fv=True,created_at__range=[last_30_days_obj,today_date_obj],activities_id=activities_obj.id).count())
+                            data.append(sum(a))
+                        locationChart = {
+                        'data': {
+                        'labels': data_label,
+                        'datasets': [
+                        {
+                        'label': "Female",
+                        'backgroundColor': ['rgba(84, 184, 209, 0.5)', 'rgba(91, 95, 151, 0.5)', 'rgba(255, 193, 69, 0.5)', 'rgba(96, 153, 45, 0.5)','rgba(230, 232, 230, 0.5)'],
+                        'borderColor': ['rgba(84, 184, 209, 1)', 'rgba(91, 95, 151, 1)', 'rgba(255, 193, 69, 1)', 'rgba(96, 153, 45, 1)','rgba(230, 232, 230, 1)'],
+                        'borderWidth': 1,
+                        'data':data
+                        }]},
+                        'options': {
+                        'aspectRatio': 1.5,
+                        'title': {
+                        'display': 'true',
+                        'text': "Activity Distribution Chart",
+                        'fontSize': 18,
+                        'fontFamily': "'Palanquin', sans-serif"},
+                        'legend': {
+                        'display': 'true',
+                        'position': 'bottom',
+                        'labels': {
+                        'usePointStyle': 'true',
+                        'padding': 20,
+                        'fontFamily': "'Maven Pro', sans-serif"}
+                        }}}
+                        return JsonResponse({"locationChart":locationChart})
+
                     if age_group=='exo':
                         health_post_count.append(Visualization.objects.filter(exo=True,activities_id=health_post_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
                         school_seminar_count.append(Visualization.objects.filter(exo=True,activities_id=school_seminar_obj.id,geography_id=location.id,created_at__range=[last_30_days_obj,today_date_obj]).count())
