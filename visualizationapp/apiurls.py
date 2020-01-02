@@ -49,7 +49,8 @@ from visualizationapp.api.treatmentlinechart import TreatmentPreventionRatioVisu
 TreatmentEarlyIntervention, TreatmentRecallDistribution
 
 
-from visualizationapp.api.longitudinal import LongitudinalVisualization
+from visualizationapp.api.longitudinal import LongitudinalVisualization,\
+LongitudinalVisualization1
 
 
 app_name = 'visualizationapp'
@@ -97,6 +98,8 @@ urlpatterns = [
 	path('data',DataVisualization.as_view()),
 	path('waruserlinechart',WardUserlineVisualization.as_view()),
 	path('longitudinal',LongitudinalVisualization.as_view()),
+	path('longitudinal1',LongitudinalVisualization1.as_view()),
+
 
 	path('wardstrategicdata',WardStrategicData.as_view()),
 
