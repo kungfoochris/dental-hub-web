@@ -840,8 +840,8 @@ class OverviewVisualization1(APIView):
                             kid_sdf_whole_mouth_male1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
                             kid_sdf_whole_mouth_female1.append(Visualization.objects.filter(sdf_whole_mouth=True,age__lt=12,created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
-                            teen_encounter1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
-                            teen_encounter_male1.append(Visualization.objects.filter(age__range=(19,61),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
+                            teen_encounter1.append(Visualization.objects.filter(age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location.id).filter(activities_id=i.id).count())
+                            teen_encounter_male1.append(Visualization.objects.filter(age__range=(12,19),created_at__range=[start_date,end_date],gender="male",geography_id=location.id).filter(activities_id=i.id).count())
                             teen_encounter_female1.append(Visualization.objects.filter(age__range=(12,19),created_at__range=[start_date,end_date],gender="female",geography_id=location.id).filter(activities_id=i.id).count())
 
                             teen_exo1.append(Visualization.objects.filter(exo=True,age__range=(12,19),created_at__range=[start_date,end_date],geography_id=location).filter(activities_id=i.id).count())
