@@ -30,7 +30,8 @@ class PatientAdmin(ImportExportActionModelAdmin):
 	'created_at','updated_at')
 	list_filter = ('date','created_at')
 	search_fields = ['first_name','author__username','date',\
-	'updated_by__username','updated_at','created_at']
+	'updated_by__username','updated_at','created_at',\
+	'activity_area__name','geography__name','municipality__name','district__name']
 
 admin.site.register(Patient, PatientAdmin)
 

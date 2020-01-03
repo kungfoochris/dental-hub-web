@@ -30,35 +30,3 @@ class ActivityArea(models.Model):
 
 	def __str__(self):
 		return  '%s %s' %(self.area,self.name)
-
-
-# class SchoolSeminar(models.Model):
-# 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-# 	activity = models.ForeignKey(Activity,on_delete=models.CASCADE,null=True)
-# 	area = models.CharField(max_length=30,null=True,blank=True)
-# 	status = models.BooleanField(default=True)
-
-# 	def __str__(self):
-# 		return  '%s %s' %(self.area,self.name)
-
-# class Community(models.Model):
-# 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-# 	activity = models.ForeignKey(Activity,on_delete=models.CASCADE,null=True)
-# 	area = models.CharField(max_length=30,null=True,blank=True)
-# 	status = models.BooleanField(default=True)
-
-# 	def __str__(self):
-# 		return  '%s %s' %(self.area,self.name)
-
-
-# class Training(models.Model):
-# 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-# 	activity = models.ForeignKey(Activity,on_delete=models.CASCADE,null=True)
-# 	area = models.CharField(max_length=30,null=True,blank=True)
-# 	status = models.BooleanField(default=True)
-
-# 	def __str__(self):
-# 		return  '%s %s' %(self.area,self.name)
-
-
-
