@@ -34,8 +34,9 @@ class AdminVisualization(ImportExportActionModelAdmin):
 	def has_add_permission(self, request):
 		return False
 	resource_class = VisualizationResource
-	list_display = ('id', 'patiend_id', 'encounter_id','activities_id','geography_id','gender')
+	list_display = ('id', 'patiend_id', 'encounter_id','activities_id','geography_id','gender','created_at')
 	list_filter = ('created_at',)
+	search_fields = ['created_at','gender']
 
 
 admin.site.register(Visualization, AdminVisualization)
