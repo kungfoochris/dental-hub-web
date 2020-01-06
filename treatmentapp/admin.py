@@ -11,6 +11,16 @@ class TreatmentAdmin(admin.ModelAdmin):
 	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__patient__first_name']
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
 admin.site.register(Treatment, TreatmentAdmin)
 
 

@@ -69,7 +69,7 @@ class WardlineVisualization(APIView):
             'aspectRatio': 2.2,
             'title': {
             'display': 'true',
-            'text': "Month-wise contact distribution",
+            # 'text': "Month-wise contact distribution",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"
             },
@@ -156,7 +156,7 @@ class WardlineVisualizationFilter(APIView):
             'aspectRatio': 2.2,
             'title': {
             'display': 'true',
-            'text': "Month-wise contact distribution",
+            # 'text': "Month-wise contact distribution",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"
             },

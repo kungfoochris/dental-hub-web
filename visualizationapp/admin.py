@@ -38,6 +38,16 @@ class AdminVisualization(ImportExportActionModelAdmin):
 	list_filter = ('created_at',)
 	search_fields = ['created_at','gender']
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
 
 admin.site.register(Visualization, AdminVisualization)
 

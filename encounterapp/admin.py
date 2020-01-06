@@ -11,6 +11,16 @@ class EncounterAdmin(admin.ModelAdmin):
 	list_filter = ('date','updated_at')
 	search_fields = ['author__username','date','updated_by__username','updated_at','created_at']
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
 admin.site.register(Encounter, EncounterAdmin)
 
 
@@ -22,6 +32,16 @@ class HistoryAdmin(admin.ModelAdmin):
 		'high_blood_pressure','low_blood_pressure','thyroid_disorder')
 	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__patient__first_name']
+
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
 
 
 
@@ -36,6 +56,17 @@ class ReferAdmin(admin.ModelAdmin):
 	search_fields = ['encounter_id__patient__first_name']
 
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+
 admin.site.register(Refer, ReferAdmin)
 
 
@@ -45,4 +76,14 @@ class ScreeingAdmin(admin.ModelAdmin):
 		'need_art_filling','need_extraction','need_sdf','active_infection','encounter_id')
 	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__patient__first_name']
+
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
 admin.site.register(Screeing, ScreeingAdmin)

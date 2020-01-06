@@ -134,7 +134,7 @@ class VisualizationSetting(APIView):
             },
             'title': {
             'display': 'true',
-            'text': "Setting-wise treatment distribution",
+            # 'text': "Setting-wise treatment distribution",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"
             },
@@ -373,7 +373,7 @@ class VisualizationSettingFilter(APIView):
                 },
                 'title': {
                 'display': 'true',
-                'text': "Setting-wise treatment distribution",
+                # 'text': "Setting-wise treatment distribution",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
                 },
@@ -430,7 +430,7 @@ class VisualizationSettingFilter(APIView):
                 },
                 'title': {
                 'display': 'true',
-                'text': "Setting-wise treatment distribution",
+                # 'text': "Setting-wise treatment distribution",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
                 },
@@ -479,7 +479,7 @@ class PieChartVisualization(APIView):
         'aspectRatio': 1.5,
         'title': {
         'display': 'true',
-        'text': "Activity Distribution Chart",
+        # 'text': "Activity Distribution Chart",
         'fontSize': 18,
         'fontFamily': "'Palanquin', sans-serif"},
         'legend': {
@@ -541,7 +541,7 @@ class PieChartVisualizationFilter(APIView):
                     'aspectRatio': 1.5,
                     'title': {
                     'display': 'true',
-                    'text': "Activity Distribution Chart",
+                    # 'text': "Activity Distribution Chart",
                     'fontSize': 18,
                     'fontFamily': "'Palanquin', sans-serif"},
                     'legend': {
@@ -609,7 +609,7 @@ class PieChartVisualizationFilter(APIView):
                     'aspectRatio': 1.5,
                     'title': {
                     'display': 'true',
-                    'text': "Activity Distribution Chart",
+                    # 'text': "Activity Distribution Chart",
                     'fontSize': 18,
                     'fontFamily': "'Palanquin', sans-serif"},
                     'legend': {
@@ -649,7 +649,7 @@ class PieChartVisualizationFilter(APIView):
                         'aspectRatio': 1.5,
                         'title': {
                         'display': 'true',
-                        'text': "Activity Distribution Chart",
+                        # 'text': "Activity Distribution Chart",
                         'fontSize': 18,
                         'fontFamily': "'Palanquin', sans-serif"},
                         'legend': {
@@ -706,7 +706,7 @@ class PieChartVisualizationFilter(APIView):
             'aspectRatio': 1.5,
             'title': {
             'display': 'true',
-            'text': "Activity Distribution Chart",
+            # 'text': "Activity Distribution Chart",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"},
             'legend': {

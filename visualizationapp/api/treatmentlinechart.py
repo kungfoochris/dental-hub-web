@@ -70,7 +70,7 @@ class TreatmentPreventionRatioVisualization(APIView):
             'maintainAspectRatio': "false",
             'title': {
                 'display': '"true"',
-                'text': "Preventive Ratio distribution by ward",
+                # 'text': "Preventive Ratio distribution by ward",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
               },
@@ -162,7 +162,7 @@ class TreatmentEarlyIntervention(APIView):
             'maintainAspectRatio': "false",
             'title': {
                 'display': '"true"',
-                'text': "Early Intervention Ratio distribution by ward",
+                # 'text': "Early Intervention Ratio distribution by ward",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
               },
@@ -254,7 +254,7 @@ class TreatmentRecallDistribution(APIView):
             'maintainAspectRatio': "false",
             'title': {
                 'display': '"true"',
-                'text': "% Recall distribution by ward",
+                # 'text': "% Recall distribution by ward",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
               },

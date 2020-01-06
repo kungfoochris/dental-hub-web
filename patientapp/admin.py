@@ -33,6 +33,16 @@ class PatientAdmin(ImportExportActionModelAdmin):
 	'updated_by__username','updated_at','created_at',\
 	'activity_area__name','geography__name','municipality__name','district__name']
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
 admin.site.register(Patient, PatientAdmin)
 
 # class PatientAdmin(admin.ModelAdmin):

@@ -14,6 +14,16 @@ from import_export.admin import ImportExportActionModelAdmin
 class AdminGeographyapp(admin.ModelAdmin):
 	list_display = ('id', 'tole', 'ward','status')
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
 admin.site.register(Geography, AdminGeographyapp)
 
 
@@ -24,39 +34,74 @@ class DistrictResource(resources.ModelResource):
 		export_order = ('id', 'name', 'status')
 
 class AdminDistrict(ImportExportActionModelAdmin):
-	def has_add_permission(self, request):
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
 		return False
 	resource_class = DistrictResource
-	# list_display = ('id', 'name','status')
-
-
-# class AdminDistrict(admin.ModelAdmin):
-# 	def has_add_permission(self, request):
-# 		return False
-# 	list_display = ('id', 'name','status')
 
 admin.site.register(District, AdminDistrict)
 
 
 class AdminMunicipality(admin.ModelAdmin):
 	list_display = ('id', 'district', 'name','category','status')
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
 
 admin.site.register(Municipality, AdminMunicipality)
 
 
 class AdminWard(admin.ModelAdmin):
 	list_display = ('id', 'municipality', 'ward','status','name')
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
 
 admin.site.register(Ward, AdminWard)
 
 class AdminActivity(admin.ModelAdmin):
 	list_display = ('id', 'name')
 
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
 admin.site.register(Activity, AdminActivity)
 
 
 class AdminActivityArea(admin.ModelAdmin):
-	def has_add_permission(self, request):
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
 		return False
 	list_display = ('id', 'activity', 'area','status')
 
@@ -78,6 +123,16 @@ class AddressResource(resources.ModelResource):
 
 class AddressAdmin(ImportExportActionModelAdmin):
 	list_display = ('id', 'district', 'municipality', 'municipality_type','ward')
+
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
 
 admin.site.register(Address, AddressAdmin)
 

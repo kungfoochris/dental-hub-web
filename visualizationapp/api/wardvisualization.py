@@ -116,7 +116,7 @@ class WardVisualization1(APIView):
                 },
                 'title': {
                 'display': 'true',
-                'text': "Age-wise Gender Distribution",
+                # 'text': "Age-wise Gender Distribution",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
                 },
@@ -260,7 +260,7 @@ class WardSettingVisualization(APIView):
                 'aspectRatio': 1.5,
                 'title': {
                 'display': 'true',
-                'text': "Activity Distribution Chart",
+                # 'text': "Activity Distribution Chart",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"},
                 'legend': {
@@ -354,7 +354,7 @@ class WardTreatmentVisualization(APIView):
                 },
                 'title': {
                 'display': 'true',
-                'text': "Treatment-wise Gender Distribution",
+                # 'text': "Treatment-wise Gender Distribution",
                 'fontSize': 18,
                 'fontFamily': "'Palanquin', sans-serif"
                 },
@@ -419,7 +419,7 @@ class WardUserlineVisualization(APIView):
             'aspectRatio': 2.2,
             'title': {
             'display': 'true',
-            'text': "Month-wise contact distribution",
+            # 'text': "Month-wise contact distribution",
             'fontSize': 18,
             'fontFamily': "'Palanquin', sans-serif"
             },
