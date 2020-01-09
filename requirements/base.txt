@@ -1,5 +1,5 @@
 #Django
-django==2.0  # https://www.djangoproject.com/
+django==2.1  # https://www.djangoproject.com/
 
 Pillow==5.2.0  # https://github.com/python-pillow/Pillow
 

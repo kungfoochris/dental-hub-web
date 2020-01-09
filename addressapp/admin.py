@@ -19,10 +19,21 @@ class AdminGeographyapp(admin.ModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
 
 admin.site.register(Geography, AdminGeographyapp)
 
@@ -39,10 +50,22 @@ class AdminDistrict(ImportExportActionModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
+
 	resource_class = DistrictResource
 
 admin.site.register(District, AdminDistrict)
@@ -55,10 +78,21 @@ class AdminMunicipality(admin.ModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
 
 admin.site.register(Municipality, AdminMunicipality)
 
@@ -70,10 +104,21 @@ class AdminWard(admin.ModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
 
 admin.site.register(Ward, AdminWard)
 
@@ -85,10 +130,21 @@ class AdminActivity(admin.ModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
 
 admin.site.register(Activity, AdminActivity)
 
@@ -99,10 +155,23 @@ class AdminActivityArea(admin.ModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
+
+
 	list_display = ('id', 'activity', 'area','status')
 
 admin.site.register(ActivityArea, AdminActivityArea)
@@ -129,10 +198,21 @@ class AddressAdmin(ImportExportActionModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
 
 admin.site.register(Address, AddressAdmin)
 

@@ -38,10 +38,22 @@ class PatientAdmin(ImportExportActionModelAdmin):
 			return True
 		return False
 
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser:
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
 			return True
-		return False
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
+
 
 admin.site.register(Patient, PatientAdmin)
 
