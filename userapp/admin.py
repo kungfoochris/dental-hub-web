@@ -4,10 +4,14 @@ from django.contrib import admin
 from userapp.models import User , CustomUser, Role
 from django.utils.translation import ugettext_lazy as _
 
+from django.contrib.auth.models import Group
+
+from rest_framework.authtoken.models import Token
+
 class AdminUserapp(admin.ModelAdmin):
 	list_display = ('id', 'email', 'username','first_name', 'middle_name','last_name' ,'active', 'admin')
-	fieldsets = ((_("Personal info"),{'fields':('username', 'first_name', 'middle_name','last_name', 'image','active')}),)
-	readonly_fields = ('password',)
+	fieldsets = ((_("Personal info"),{'fields':('username', 'first_name', 'middle_name','last_name','password', 'image','active')}),)
+	# readonly_fields = ('password',)
 	search_fields = ('username', )
 
 	def has_add_permission(self, request, obj=None):
@@ -56,5 +60,9 @@ class AdminRole(admin.ModelAdmin):
 			return True
 		elif request.user.is_staff:
 			return False
+
+admin.site.unregister(Group)
+
+admin.site.unregister(Token)
 
 admin.site.register(Role,AdminRole)
