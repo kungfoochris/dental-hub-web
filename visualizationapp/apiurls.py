@@ -28,10 +28,10 @@ TreatMentBarGraphFilter
 
 
 
-from visualizationapp.api.wardvisualization import WardVisualization1,\
+from visualizationapp.api.wardvisualization import BarGraphView,BarGraphFilterView,\
 WardTreatmentTableVisualization1,WardTableVisualization2,\
-WardSettingVisualization, WardTreatmentVisualization,\
-WardUserlineVisualization,WardStrategicData
+WardSettingVisualization, WardTreatmentVisualization,WardTreatmentVisualizationFilter,\
+WardUserlineVisualization,WardStrategicData,WardSettingVisualizationFilter
 
 
 # from visualizationapp.api.filtervisualization import OverviewVisualization
@@ -83,13 +83,17 @@ urlpatterns = [
 	path('recalldistribution',TreatmentRecallDistribution.as_view()),
 
 
-
-
-	path('wardvisualization',WardVisualization1.as_view()),
+	path('basicbargraph',BarGraphView.as_view()),
+	path('basicbargraphfilter', BarGraphFilterView.as_view()),
+	
 	path('wardtablevisualization',WardTreatmentTableVisualization1.as_view()),
 	path('wardtreatmenttablevisualizaation',WardTableVisualization2.as_view()),
+
 	path('wardsettingsgraph',WardSettingVisualization.as_view()),
+	path('wardsettingsgraphfilter', WardSettingVisualizationFilter.as_view()),
+
 	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
+	path('wardtreatmentgraphfilter',WardTreatmentVisualizationFilter.as_view()),
 	# path('overviewvisualization/<start_date>/<end_date>/<location_id>',OverviewVisualization.as_view()),
 	path('sectional',SectionalVisualization.as_view()),
 
