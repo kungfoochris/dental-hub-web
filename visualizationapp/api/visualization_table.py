@@ -106,6 +106,16 @@ class TableVisualization(APIView):
 		                    |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
 		                    |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__id=en.id).count()==1:
 							visualization_obj.art = True
+						if Treatment.objects.filter(Q(tooth11='SMART') | Q(tooth12='SMART')|Q(tooth13='SMART') | Q(tooth14='SMART')|Q(tooth15='SMART') | Q(tooth16='SMART')|Q(tooth17='SMART') | Q(tooth18='SMART')\
+		                    |Q(tooth21='SMART') | Q(tooth22='SMART')|Q(tooth23='SMART') | Q(tooth24='SMART')|Q(tooth25='SMART') | Q(tooth26='SMART')|Q(tooth27='SMART') | Q(tooth28='SMART')\
+		                    |Q(tooth31='SMART') | Q(tooth32='SMART')|Q(tooth33='SMART') | Q(tooth34='SMART')|Q(tooth35='SMART') | Q(tooth36='SMART')|Q(tooth37='SMART') | Q(tooth38='SMART')\
+		                    |Q(tooth41='SMART') | Q(tooth42='SMART')|Q(tooth43='SMART') | Q(tooth44='SMART')|Q(tooth45='SMART') | Q(tooth46='SMART')|Q(tooth47='SMART') | Q(tooth48='SMART')\
+		                    |Q(tooth51='SMART') | Q(tooth52='SMART')|Q(tooth53='SMART') | Q(tooth54='SMART')|Q(tooth55='SMART')\
+		                    |Q(tooth61='SMART') | Q(tooth62='SMART')|Q(tooth63='SMART') | Q(tooth64='SMART')|Q(tooth65='SMART')\
+		                    |Q(tooth71='SMART') | Q(tooth72='SMART')|Q(tooth73='SMART') | Q(tooth74='SMART')|Q(tooth75='SMART')\
+		                    |Q(tooth81='SMART') | Q(tooth82='SMART')|Q(tooth83='SMART') | Q(tooth84='SMART')|Q(tooth85='SMART')).filter(encounter_id__id=en.id).count()==1:
+							visualization_obj.art = True
+							visualization_obj.sdf = True
 
 						logger.error("Art is not click")
 						visualization_obj.fv = treatment_obj.fv_applied
