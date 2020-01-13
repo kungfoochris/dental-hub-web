@@ -50,7 +50,7 @@ class Patient(models.Model):
 	ward = models.ForeignKey(Ward,on_delete=models.CASCADE,)
 	updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_patient')
 	updated_at = models.DateField(blank=True,null=True)
-	created_at = models.DateField()
+	created_at = models.DateField(db_index=True)
 	recall_date = models.DateField(blank=True,null=True)
 	recall_time = models.TimeField(blank=True,null=True)
 	recall_geography = models.IntegerField(blank=True,default=0)

@@ -40,7 +40,7 @@ class Encounter(models.Model):
     geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography')
     updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_encounter')
     updated_at = models.DateField(null=True)
-    created_at = models.DateField()
+    created_at = models.DateField(db_index=True)
 
 
     def __str__(self):

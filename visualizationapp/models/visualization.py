@@ -24,39 +24,45 @@ def keygenerator():
 
 class Visualization(models.Model):
     id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-    patiend_id = models.CharField(max_length=60)
-    encounter_id = models.CharField(max_length=60,unique=True)
-    age = models.IntegerField()
-    gender = models.CharField(max_length=60)
-    activities_id = models.CharField(max_length=60)
-    geography_id = models.CharField(max_length=60)
-    exo = models.BooleanField(default=False)
-    art = models.BooleanField(default=False)
-    seal = models.BooleanField(default=False)
-    sdf = models.BooleanField(default=False)
-    fv = models.BooleanField(default=False)
-    refer_hp = models.BooleanField(default=False)
-    refer_hyg = models.BooleanField(default=False)
-    refer_dent = models.BooleanField(default=False)
-    refer_dr = models.BooleanField(default=False)
-    refer_other = models.BooleanField(default=False)
-    carries_risk = models.CharField(max_length=60,default="")
-    decayed_primary_teeth = models.BooleanField(default=False)
-    decayed_permanent_teeth = models.BooleanField(default=False)
-    cavity_permanent_posterior_teeth = models.BooleanField(default=False)
-    cavity_permanent_anterior_teeth = models.BooleanField(default=False)
-    active_infection = models.BooleanField(default=False)
-    reversible_pulpitis = models.BooleanField(default=False)
-    need_art_filling = models.BooleanField(default=False)
-    need_extraction = models.BooleanField(_('need extraction'),default=False)
-    need_sdf = models.BooleanField(default=False)
-    created_at = models.DateField(null=True,blank=True)
-    sdf_whole_mouth = models.BooleanField(default=False)
-    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),default=0)
-    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),default=0)
-    need_sealant = models.BooleanField(default=False)
-    reason_for_visit  = models.CharField(max_length=60,default="")
-    referral_type  = models.CharField(max_length=60,default="")
+    patiend_id = models.CharField(max_length=60,db_index=True)
+    encounter_id = models.CharField(max_length=60,unique=True,db_index=True)
+    age = models.IntegerField(db_index=True)
+    gender = models.CharField(max_length=60,db_index=True)
+    activities_id = models.CharField(max_length=60,db_index=True)
+    geography_id = models.CharField(max_length=60,db_index=True)
+    exo = models.BooleanField(default=False,db_index=True)
+    art = models.BooleanField(default=False,db_index=True)
+    seal = models.BooleanField(default=False,db_index=True)
+    sdf = models.BooleanField(default=False,db_index=True)
+    fv = models.BooleanField(default=False,db_index=True)
+    refer_hp = models.BooleanField(default=False,db_index=True)
+    refer_hyg = models.BooleanField(default=False,db_index=True)
+    refer_dent = models.BooleanField(default=False,db_index=True)
+    refer_dr = models.BooleanField(default=False,db_index=True)
+    refer_other = models.BooleanField(default=False,db_index=True)
+    carries_risk = models.CharField(max_length=60,default="",db_index=True)
+    decayed_primary_teeth = models.BooleanField(default=False,db_index=True)
+    decayed_permanent_teeth = models.BooleanField(default=False,db_index=True)
+    cavity_permanent_posterior_teeth = models.BooleanField(default=False,db_index=True)
+    cavity_permanent_anterior_teeth = models.BooleanField(default=False,db_index=True)
+    active_infection = models.BooleanField(default=False,db_index=True)
+    reversible_pulpitis = models.BooleanField(default=False,db_index=True)
+    need_art_filling = models.BooleanField(default=False,db_index=True)
+    need_extraction = models.BooleanField(_('need extraction'),default=False,db_index=True)
+    need_sdf = models.BooleanField(default=False,db_index=True)
+    created_at = models.DateField(null=True,blank=True,db_index=True)
+    sdf_whole_mouth = models.BooleanField(default=False,db_index=True)
+    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),default=0,db_index=True)
+    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),default=0,db_index=True)
+    need_sealant = models.BooleanField(default=False,db_index=True)
+    reason_for_visit  = models.CharField(max_length=60,default="",db_index=True)
+    referral_type  = models.CharField(max_length=60,default="",db_index=True)
+
+    # class Meta:
+    #     indexes = [
+    #     models.Index(fields=['activities_id', 'geography_id',]),
+    #     models.Index(fields=['-created_at',]),
+    #     ]
 
 
 
@@ -161,7 +167,7 @@ def create_treatment(sender, **kwargs):
             |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
             |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
             visualization_obj.art = True
-            
+
         if Treatment.objects.filter(Q(tooth11='SMART') | Q(tooth12='SMART')|Q(tooth13='SMART') | Q(tooth14='SMART')|Q(tooth15='SMART') | Q(tooth16='SMART')|Q(tooth17='SMART') | Q(tooth18='SMART')\
             |Q(tooth21='SMART') | Q(tooth22='SMART')|Q(tooth23='SMART') | Q(tooth24='SMART')|Q(tooth25='SMART') | Q(tooth26='SMART')|Q(tooth27='SMART') | Q(tooth28='SMART')\
             |Q(tooth31='SMART') | Q(tooth32='SMART')|Q(tooth33='SMART') | Q(tooth34='SMART')|Q(tooth35='SMART') | Q(tooth36='SMART')|Q(tooth37='SMART') | Q(tooth38='SMART')\

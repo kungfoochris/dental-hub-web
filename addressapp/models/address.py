@@ -24,16 +24,16 @@ class Address(models.Model):
 		return "%s, %s - %s" %(self.district, self.geo_type, self.ward)
 
 class District(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50,db_index=True)
     status=models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
 class Municipality(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-	district = models.ForeignKey(District,on_delete=models.CASCADE)
-	name = models.CharField(max_length=50)
-	category = models.CharField(max_length=50)
+	district = models.ForeignKey(District,on_delete=models.CASCADE,db_index=True)
+	name = models.CharField(max_length=50,db_index=True)
+	category = models.CharField(max_length=50,db_index=True)
 	status = models.BooleanField(default=True)
 
 	def __str__(self):
@@ -41,10 +41,10 @@ class Municipality(models.Model):
 
 class Ward(models.Model):
 	#id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE)
-	ward = models.PositiveIntegerField(_('ward_number'),validators=[MaxValueValidator(99)])
+	municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE,db_index=True)
+	ward = models.PositiveIntegerField(_('ward_number'),db_index=True,validators=[MaxValueValidator(99)])
 	status = models.BooleanField(default=False)
-	name = models.CharField(max_length=50,default='')
+	name = models.CharField(max_length=50,default='',db_index=True)
 
 	def __str__(self):
 		return "%s , %s - %s" %(self.municipality.district.name,self.municipality.name, self.ward)
