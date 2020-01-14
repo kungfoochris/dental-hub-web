@@ -41,7 +41,7 @@ class AdminVisualization(ImportExportActionModelAdmin):
 	'cavity_permanent_anterior_teeth', 'exo','art','seal','sdf',\
 	'sdf_whole_mouth','fv','referral_type','active_infection',\
 	'reversible_pulpitis','need_art_filling','need_extraction','need_sdf',\
-	'need_sealant','author')
+	'need_sealant','author','created_at')
 	list_filter = ('created_at',)
 	search_fields = ['created_at','gender','author','geography_name','activity_name']
 
