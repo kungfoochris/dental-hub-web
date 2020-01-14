@@ -19,7 +19,7 @@ class VisualizationResource(resources.ModelResource):
         'cavity_permanent_anterior_teeth', 'exo','art','seal','sdf',\
 		'sdf_whole_mouth','fv','referral_type','active_infection',\
         'reversible_pulpitis','need_art_filling','need_extraction','need_sdf',\
-        'need_sealant','author')
+        'need_sealant','author','created_at')
 		export_order = ('patiend_id','patient_name','geography_id','geography_name',\
 		'activities_id','activity_name','encounter_id','reason_for_visit',\
         'gender','age','carries_risk','decayed_primary_teeth_number',\
@@ -27,7 +27,7 @@ class VisualizationResource(resources.ModelResource):
         'cavity_permanent_anterior_teeth', 'exo','art','seal','sdf',\
 		'sdf_whole_mouth','fv','referral_type','active_infection',\
         'reversible_pulpitis','need_art_filling','need_extraction','need_sdf',\
-        'need_sealant','author')
+        'need_sealant','author','created_at')
 
 
 class AdminVisualization(ImportExportActionModelAdmin):
