@@ -64,6 +64,10 @@ class TableVisualization(APIView):
 					visualization_obj.geography_id = en.geography.id
 					visualization_obj.created_at = en.patient.created_at
 					visualization_obj.reason_for_visit = en.encounter_type
+					visualization_obj.patient_name = en.patient.full_name
+					visualization_obj.activity_name = en.activity_area.name
+					visualization_obj.geography_name = en.geography.name
+					visualization_obj.author = en.author.username
 
 					if Treatment.objects.filter(encounter_id__id=en.id).exists():
 						treatment_obj = Treatment.objects.get(encounter_id__id=en.id)

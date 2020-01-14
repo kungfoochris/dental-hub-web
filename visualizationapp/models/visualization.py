@@ -25,11 +25,14 @@ def keygenerator():
 class Visualization(models.Model):
     id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
     patiend_id = models.CharField(max_length=60,db_index=True)
+    patient_name = models.CharField(max_length=100,default="")
     encounter_id = models.CharField(max_length=60,unique=True,db_index=True)
     age = models.IntegerField(db_index=True)
     gender = models.CharField(max_length=60,db_index=True)
     activities_id = models.CharField(max_length=60,db_index=True)
+    activity_name = models.CharField(max_length=100,default="")
     geography_id = models.CharField(max_length=60,db_index=True)
+    geography_name = models.CharField(max_length=100,default="")
     exo = models.BooleanField(default=False,db_index=True)
     art = models.BooleanField(default=False,db_index=True)
     seal = models.BooleanField(default=False,db_index=True)
@@ -57,6 +60,7 @@ class Visualization(models.Model):
     need_sealant = models.BooleanField(default=False,db_index=True)
     reason_for_visit  = models.CharField(max_length=60,default="",db_index=True)
     referral_type  = models.CharField(max_length=60,default="",db_index=True)
+    author = models.CharField(max_length=60,default="")
 
     # class Meta:
     #     indexes = [
@@ -71,14 +75,18 @@ def create_encounter(sender, **kwargs):
         encounter_obj = Encounter.objects.get(id=kwargs['instance'].id)
         visualization_obj = Visualization()
         visualization_obj.patiend_id = encounter_obj.patient.id
+        visualization_obj.patient_name = encounter_obj.patient.full_name
         visualization_obj.encounter_id = kwargs['instance'].id
         visualization_obj.gender = encounter_obj.patient.gender
         dob = encounter_obj.patient.dob
         visualization_obj.age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
         visualization_obj.activities_id = encounter_obj.activity_area.id
+        visualization_obj.activity_name = encounter_obj.activity_area.name
         visualization_obj.geography_id = encounter_obj.geography.id
+        visualization_obj.geography_name = encounter_obj.geography.name
         visualization_obj.created_at = encounter_obj.patient.created_at
         visualization_obj.reason_for_visit = encounter_obj.encounter_type
+        visualization_obj.author = encounter_obj.author.username
         visualization_obj.save()
 post_save.connect(create_encounter,sender=Encounter)
 
