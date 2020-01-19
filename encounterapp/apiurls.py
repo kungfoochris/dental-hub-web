@@ -8,12 +8,6 @@ from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdate
 
 
 
-
-
-
-from rest_framework.urlpatterns import format_suffix_patterns
-
-
 app_name = 'encounterapp'
 
 urlpatterns = [
@@ -26,4 +20,3 @@ urlpatterns = [
 	path('encounter/<encounter_id>/screening', PatientScreeingView.as_view()),
 	path('encounter/<encounter_id>/screening/update', PatientScreeingUpdateView.as_view()),
     ]
-urlpatterns = format_suffix_patterns(urlpatterns)

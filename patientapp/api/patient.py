@@ -11,7 +11,7 @@ from patientapp.serializers.patient import PatientSerializer, PatientUpdateSeria
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
-from addressapp.models import Geography, ActivityArea, Ward, Activity
+from addressapp.models import ActivityArea, Ward, Activity
 from addressapp.models import Address,Ward,Municipality,District
 import datetime
 

@@ -3,9 +3,8 @@ from django.contrib.auth.models import Group, Permission
 from rest_framework import serializers
 
 from patientapp.models import Patient
-from addressapp.models import Geography, ActivityArea
+from addressapp.models import ActivityArea
 from addressapp.serializers.activity import ActivityAreaSerializer
-from addressapp.serializers.geography import GeographySerializer
 from userapp.models import User
 
 

@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group, Permission
 from rest_framework import serializers
 
 from userapp.models import User, Role, CustomUser
-from addressapp.models import Geography, Ward
+from addressapp.models import  Ward
 from addressapp.serializers.address import GeoSerializer
 
 class LocationPKField(serializers.PrimaryKeyRelatedField):

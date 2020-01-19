@@ -10,7 +10,7 @@ from django.http import JsonResponse
 from rest_framework import filters
 from visualizationapp.models import Visualization
 
-from addressapp.models import Ward, Geography
+from addressapp.models import Ward
 from patientapp.models import Patient
 from django.db.models.functions import TruncMonth
 from django.db.models import Count

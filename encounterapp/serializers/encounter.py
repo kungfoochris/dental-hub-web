@@ -9,7 +9,6 @@ from encounterapp.serializers.screeing import PatientScreeingSerializer
 from treatmentapp.serializers.treatment import PatientTreatmentSerializer
 
 from addressapp.serializers.activity import ActivityAreaSerializer
-from addressapp.serializers.geography import GeographySerializer
 
 
 from patientapp.serializers.patient import AuthorField

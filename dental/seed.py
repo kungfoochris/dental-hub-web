@@ -1,7 +1,7 @@
 # from fcm_django.models import FCMDevice
 from userapp.models import User, Role
 from patientapp.models import Patient
-from addressapp.models import Geography,ActivityArea
+from addressapp.models import ActivityArea
 from django.http import HttpResponse
 from django.db.models import Sum
 from django.db.models import Count
@@ -46,5 +46,3 @@ def seed(request):
 # 		User.objects.create(email='kabi@gmail.com',password='dental123',first_name="Kabi",last_name="Karki")
 # 		User.objects.create(email='saurav@gmail.com',password='dental123',first_name="Saurav",last_name="Karki")
 # 		User.objects.create(email='bimu@gmail.com',password='dental123',first_name="Bishal",last_name="Karki")
-
-

@@ -16,7 +16,6 @@ PasswordResetSerializer, ProfileSerializer, UpdateUserSerializer,\
  UserStatusSerializer, AdminPasswordResetSerializer,ProfileSerializer1,UserTokenSerializer
 from userapp.emailsend import emailsend
 from random import randint
-from addressapp.models import Geography
 
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken

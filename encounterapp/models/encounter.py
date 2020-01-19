@@ -4,7 +4,7 @@ from uuid import uuid4
 from patientapp.models import Patient
 from userapp.models import User
 from datetime import datetime, timedelta
-from addressapp.models import Geography, ActivityArea, Ward, Activity
+from addressapp.models import ActivityArea, Ward, Activity
 import datetime
 
 

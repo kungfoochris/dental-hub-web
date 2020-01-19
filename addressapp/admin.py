@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from addressapp.models import Geography,District, Municipality ,\
+from addressapp.models import District, Municipality ,\
 Ward, ActivityArea, Activity, Address
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,31 +11,31 @@ from import_export.admin import ImportExportActionModelAdmin
 
 
 
-class AdminGeographyapp(admin.ModelAdmin):
-	list_display = ('id', 'tole', 'ward','status')
-
-	def has_add_permission(self, request, obj=None):
-		if request.user.is_superuser:
-			return True
-		return False
-
-	def has_view_permission(self, request, obj=None):
-		if request.user.is_staff or request.user.is_superuser:
-			return True
-
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser and request.user.is_staff:
-			return True
-		elif request.user.is_staff:
-			False
-
-	def has_change_permission(self, request, obj=None):
-		if request.user.is_superuser and request.user.is_staff:
-			return True
-		elif request.user.is_staff:
-			return False
-
-admin.site.register(Geography, AdminGeographyapp)
+# class AdminGeographyapp(admin.ModelAdmin):
+# 	list_display = ('id', 'tole', 'ward','status')
+#
+# 	def has_add_permission(self, request, obj=None):
+# 		if request.user.is_superuser:
+# 			return True
+# 		return False
+#
+# 	def has_view_permission(self, request, obj=None):
+# 		if request.user.is_staff or request.user.is_superuser:
+# 			return True
+#
+# 	def has_delete_permission(self, request, obj=None):
+# 		if request.user.is_superuser and request.user.is_staff:
+# 			return True
+# 		elif request.user.is_staff:
+# 			False
+#
+# 	def has_change_permission(self, request, obj=None):
+# 		if request.user.is_superuser and request.user.is_staff:
+# 			return True
+# 		elif request.user.is_staff:
+# 			return False
+#
+# admin.site.register(Geography, AdminGeographyapp)
 
 
 class DistrictResource(resources.ModelResource):
@@ -122,31 +122,31 @@ class AdminWard(admin.ModelAdmin):
 
 admin.site.register(Ward, AdminWard)
 
-class AdminActivity(admin.ModelAdmin):
-	list_display = ('id', 'name')
-
-	def has_add_permission(self, request, obj=None):
-		if request.user.is_superuser:
-			return True
-		return False
-
-	def has_view_permission(self, request, obj=None):
-		if request.user.is_staff or request.user.is_superuser:
-			return True
-
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser and request.user.is_staff:
-			return True
-		elif request.user.is_staff:
-			False
-
-	def has_change_permission(self, request, obj=None):
-		if request.user.is_superuser and request.user.is_staff:
-			return True
-		elif request.user.is_staff:
-			return False
-
-admin.site.register(Activity, AdminActivity)
+# class AdminActivity(admin.ModelAdmin):
+# 	list_display = ('id', 'name')
+#
+# 	def has_add_permission(self, request, obj=None):
+# 		if request.user.is_superuser:
+# 			return True
+# 		return False
+#
+# 	def has_view_permission(self, request, obj=None):
+# 		if request.user.is_staff or request.user.is_superuser:
+# 			return True
+#
+# 	def has_delete_permission(self, request, obj=None):
+# 		if request.user.is_superuser and request.user.is_staff:
+# 			return True
+# 		elif request.user.is_staff:
+# 			False
+#
+# 	def has_change_permission(self, request, obj=None):
+# 		if request.user.is_superuser and request.user.is_staff:
+# 			return True
+# 		elif request.user.is_staff:
+# 			return False
+#
+# admin.site.register(Activity, AdminActivity)
 
 
 class AdminActivityArea(admin.ModelAdmin):
@@ -177,12 +177,6 @@ class AdminActivityArea(admin.ModelAdmin):
 admin.site.register(ActivityArea, AdminActivityArea)
 
 
-# class AddressAdmin(admin.ModelAdmin):
-# 	list_display = ('id', 'district', 'municipality', 'municipality_type','ward')
-
-
-
-
 class AddressResource(resources.ModelResource):
 	class Meta:
 		model = Address
@@ -190,37 +184,28 @@ class AddressResource(resources.ModelResource):
 		export_order = ('id', 'district', 'municipality', 'municipality_type','ward')
 
 
-class AddressAdmin(ImportExportActionModelAdmin):
-	list_display = ('id', 'district', 'municipality', 'municipality_type','ward')
-
-	def has_add_permission(self, request, obj=None):
-		if request.user.is_superuser:
-			return True
-		return False
-
-	def has_view_permission(self, request, obj=None):
-		if request.user.is_staff or request.user.is_superuser:
-			return True
-
-	def has_delete_permission(self, request, obj=None):
-		if request.user.is_superuser and request.user.is_staff:
-			return True
-		elif request.user.is_staff:
-			False
-
-	def has_change_permission(self, request, obj=None):
-		if request.user.is_superuser and request.user.is_staff:
-			return True
-		elif request.user.is_staff:
-			return False
-
-admin.site.register(Address, AddressAdmin)
-
-
-
-
-
-# class AdminAppUser(admin.ModelAdmin):
-# 	list_display = ('id', 'username','first_name','middle_name','last_name')
-
-# admin.site.register(AppUser,AdminAppUser)
+# class AddressAdmin(ImportExportActionModelAdmin):
+# 	list_display = ('id', 'district', 'municipality', 'municipality_type','ward')
+#
+# 	def has_add_permission(self, request, obj=None):
+# 		if request.user.is_superuser:
+# 			return True
+# 		return False
+#
+# 	def has_view_permission(self, request, obj=None):
+# 		if request.user.is_staff or request.user.is_superuser:
+# 			return True
+#
+# 	def has_delete_permission(self, request, obj=None):
+# 		if request.user.is_superuser and request.user.is_staff:
+# 			return True
+# 		elif request.user.is_staff:
+# 			False
+#
+# 	def has_change_permission(self, request, obj=None):
+# 		if request.user.is_superuser and request.user.is_staff:
+# 			return True
+# 		elif request.user.is_staff:
+# 			return False
+#
+# admin.site.register(Address, AddressAdmin)

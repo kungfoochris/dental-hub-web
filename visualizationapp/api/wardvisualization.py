@@ -8,7 +8,6 @@ from rest_framework import permissions
 from userapp.models import User, CustomUser
 from patientapp.models import Patient
 from treatmentapp.serializers.visualization import VisualizatioSerializer
-from addressapp.models import Geography
 
 
 from django_filters.rest_framework import DjangoFilterBackend

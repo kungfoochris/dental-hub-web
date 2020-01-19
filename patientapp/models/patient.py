@@ -8,7 +8,7 @@ from userapp.models import User
 from addressapp.models import Address, District, Municipality ,Ward
 from datetime import date
 from django.core.validators import MaxValueValidator
-from addressapp.models import Geography, Activity
+from addressapp.models import Activity
 
 from django.db.models import Count
 from django.db.models.functions import TruncMonth

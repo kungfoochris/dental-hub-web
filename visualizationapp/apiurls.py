@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-from django.conf.urls import include
 from django.urls import path
 
 # from treatmentapp.api.visualization import Visualization, Visualization1
@@ -10,12 +9,7 @@ TreatmentActivityList,TreatmentbyWardList,DateReturn
 from visualizationapp.api.dashboardvisualization import VisualizationSetting,\
 VisualizationSettingFilter,PieChartVisualization,PieChartVisualizationFilter
 
-from visualizationapp.api.wardlinechart import WardlineVisualization,\
-WardlineVisualizationFilter
-
-from rest_framework.urlpatterns import format_suffix_patterns
-
-
+from visualizationapp.api.wardlinechart import WardlineVisualization
 from visualizationapp.api.loginvisualization import LoginVisualization,LoginVisualization1
 
 from visualizationapp.api.treatmenttable import TreatmentTableBasicData,\
@@ -71,7 +65,6 @@ urlpatterns = [
 	path('overviewpiechart',PieChartVisualization.as_view()),
 	path('piechartfilter',PieChartVisualizationFilter.as_view()),
 	path('dashboardlinechart',WardlineVisualization.as_view()),
-	path('wardlineVisualizationfilter',WardlineVisualizationFilter.as_view()),
 
 
 	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
@@ -85,7 +78,7 @@ urlpatterns = [
 
 	path('basicbargraph',BarGraphView.as_view()),
 	path('basicbargraphfilter', BarGraphFilterView.as_view()),
-	
+
 	path('wardtablevisualization',WardTreatmentTableVisualization1.as_view()),
 	path('wardtreatmenttablevisualizaation',WardTableVisualization2.as_view()),
 
@@ -106,8 +99,4 @@ urlpatterns = [
 
 
 	path('wardstrategicdata',WardStrategicData.as_view()),
-
-
-
 	]
-urlpatterns = format_suffix_patterns(urlpatterns)
