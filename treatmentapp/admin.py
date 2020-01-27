@@ -52,7 +52,7 @@ class TreatmentResource(resources.ModelResource):
 		'tooth53','tooth52','tooth51','tooth61','tooth62','tooth63','tooth64',\
 		'tooth65','tooth85','tooth84','tooth83','tooth82','tooth81','tooth71',\
 		'tooth72','tooth73','tooth74','tooth75',\
-		'created_at','encounter_id__geography__name',\
+		'encounter_id__created_at', 'encounter_id__geography__name',\
 		'encounter_id__activity_area__name')
 		export_order = ('id','tooth18','tooth17','tooth16','tooth15','tooth14',\
 		'tooth13','tooth12', 'tooth11','tooth21',\
