@@ -146,7 +146,7 @@ def create_treatment(sender, **kwargs):
             |Q(tooth51='EXO') | Q(tooth52='EXO')|Q(tooth53='EXO') | Q(tooth54='EXO')|Q(tooth55='EXO')\
             |Q(tooth61='EXO') | Q(tooth62='EXO')|Q(tooth63='EXO') | Q(tooth64='EXO')|Q(tooth65='EXO')\
             |Q(tooth71='EXO') | Q(tooth72='EXO')|Q(tooth73='EXO') | Q(tooth74='EXO')|Q(tooth75='EXO')\
-            |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
+            |Q(tooth81='EXO') | Q(tooth82='EXO')|Q(tooth83='EXO') | Q(tooth84='EXO')|Q(tooth85='EXO')).filter(encounter_id__id=kwargs['instance'].encounter_id.id):
             visualization_obj.exo = True
         if Treatment.objects.filter(Q(tooth11='SDF') | Q(tooth12='SDF')|Q(tooth13='SDF') | Q(tooth14='SDF')|Q(tooth15='SDF') | Q(tooth16='SDF')|Q(tooth17='SDF') | Q(tooth18='SDF')\
             |Q(tooth21='SDF') | Q(tooth22='SDF')|Q(tooth23='SDF') | Q(tooth24='SDF')|Q(tooth25='SDF') | Q(tooth26='SDF')|Q(tooth27='SDF') | Q(tooth28='SDF')\
@@ -155,7 +155,7 @@ def create_treatment(sender, **kwargs):
             |Q(tooth51='SDF') | Q(tooth52='SDF')|Q(tooth53='SDF') | Q(tooth54='SDF')|Q(tooth55='SDF')\
             |Q(tooth61='SDF') | Q(tooth62='SDF')|Q(tooth63='SDF') | Q(tooth64='SDF')|Q(tooth65='SDF')\
             |Q(tooth71='SDF') | Q(tooth72='SDF')|Q(tooth73='SDF') | Q(tooth74='SDF')|Q(tooth75='SDF')\
-            |Q(tooth81='SDF') | Q(tooth82='SDF')|Q(tooth83='SDF') | Q(tooth84='SDF')|Q(tooth85='SDF')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
+            |Q(tooth81='SDF') | Q(tooth82='SDF')|Q(tooth83='SDF') | Q(tooth84='SDF')|Q(tooth85='SDF')).filter(encounter_id__id=kwargs['instance'].encounter_id.id):
             visualization_obj.sdf = True
         if Treatment.objects.filter(Q(tooth11='SEAl') | Q(tooth12='SEAL')|Q(tooth13='SEAL') | Q(tooth14='SEAL')|Q(tooth15='SEAL') | Q(tooth16='SEAL')|Q(tooth17='SEAL') | Q(tooth18='SEAL')\
             |Q(tooth21='SEAL') | Q(tooth22='SEAL')|Q(tooth23='SEAL') | Q(tooth24='SEAL')|Q(tooth25='SEAL') | Q(tooth26='SEAL')|Q(tooth27='SEAL') | Q(tooth28='SEAL')\
@@ -164,8 +164,9 @@ def create_treatment(sender, **kwargs):
             |Q(tooth51='SEAL') | Q(tooth52='SEAL')|Q(tooth53='SEAL') | Q(tooth54='SEAL')|Q(tooth55='SEAL')\
             |Q(tooth61='SEAL') | Q(tooth62='SEAL')|Q(tooth63='SEAL') | Q(tooth64='SEAL')|Q(tooth65='SEAL')\
             |Q(tooth71='SEAL') | Q(tooth72='SEAL')|Q(tooth73='SEAL') | Q(tooth74='SEAL')|Q(tooth75='SEAL')\
-            |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
+            |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__id=kwargs['instance'].encounter_id.id):
         	visualization_obj.seal = True
+
         if Treatment.objects.filter(Q(tooth11='ART') | Q(tooth12='ART')|Q(tooth13='ART') | Q(tooth14='ART')|Q(tooth15='ART') | Q(tooth16='ART')|Q(tooth17='ART') | Q(tooth18='ART')\
             |Q(tooth21='ART') | Q(tooth22='ART')|Q(tooth23='ART') | Q(tooth24='ART')|Q(tooth25='ART') | Q(tooth26='ART')|Q(tooth27='ART') | Q(tooth28='ART')\
             |Q(tooth31='ART') | Q(tooth32='ART')|Q(tooth33='ART') | Q(tooth34='ART')|Q(tooth35='ART') | Q(tooth36='ART')|Q(tooth37='ART') | Q(tooth38='ART')\
@@ -173,7 +174,7 @@ def create_treatment(sender, **kwargs):
             |Q(tooth51='ART') | Q(tooth52='ART')|Q(tooth53='ART') | Q(tooth54='ART')|Q(tooth55='ART')\
             |Q(tooth61='ART') | Q(tooth62='ART')|Q(tooth63='ART') | Q(tooth64='ART')|Q(tooth65='ART')\
             |Q(tooth71='ART') | Q(tooth72='ART')|Q(tooth73='ART') | Q(tooth74='ART')|Q(tooth75='ART')\
-            |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__id=kwargs['instance'].encounter_id.id).count()==1:
+            |Q(tooth81='ART') | Q(tooth82='ART')|Q(tooth83='ART') | Q(tooth84='ART')|Q(tooth85='ART')).filter(encounter_id__id=kwargs['instance'].encounter_id.id):
             visualization_obj.art = True
 
         if Treatment.objects.filter(Q(tooth11='SMART') | Q(tooth12='SMART')|Q(tooth13='SMART') | Q(tooth14='SMART')|Q(tooth15='SMART') | Q(tooth16='SMART')|Q(tooth17='SMART') | Q(tooth18='SMART')\
@@ -183,10 +184,10 @@ def create_treatment(sender, **kwargs):
             |Q(tooth51='SMART') | Q(tooth52='SMART')|Q(tooth53='SMART') | Q(tooth54='SMART')|Q(tooth55='SMART')\
             |Q(tooth61='SMART') | Q(tooth62='SMART')|Q(tooth63='SMART') | Q(tooth64='SMART')|Q(tooth65='SMART')\
             |Q(tooth71='SMART') | Q(tooth72='SMART')|Q(tooth73='SMART') | Q(tooth74='SMART')|Q(tooth75='SMART')\
-            |Q(tooth81='SMART') | Q(tooth82='SMART')|Q(tooth83='SMART') | Q(tooth84='SMART')|Q(tooth85='SMART')).filter(encounter_id__id=en.id).count()==1:
+            |Q(tooth81='SMART') | Q(tooth82='SMART')|Q(tooth83='SMART') | Q(tooth84='SMART')|Q(tooth85='SMART')).filter(encounter_id__id=kwargs['instance'].encounter_id.id):
             visualization_obj.art = True
             visualization_obj.sdf = True
         visualization_obj.fv = kwargs['instance'].fv_applied
         visualization_obj.sdf_whole_mouth = kwargs['instance'].sdf_whole_mouth
         visualization_obj.save()
-post_save.connect(create_treatment,sender=Treatment)
+post_save.connect(create_treatment, sender=Treatment)
