@@ -43,12 +43,6 @@ class EncounterView(APIView):
                 return Response({"message":'encounter not added or not found'},status=400)
             return Response({"message":"patient id does not exist."},status=400)
         return Response({"message":"permission not allowed"},status=400)
-        # if User.objects.filter(id=request.user.id,admin=True):
-        #     patient_obj = Patient.objects.get(id=patient_id)
-        #     encounter_obj = Encounter.objects.select_related('patient').filter(patient=patient_obj)
-        #     serializer = AllEncounterSerializer(encounter_obj, many=True, \
-        #         context={'request': request})
-        #     return Response(serializer.data)
 
     def post(self, request, patient_id, format=None):
         serializer = EncounterSerializer(data=request.data,\
@@ -69,16 +63,16 @@ class EncounterView(APIView):
                         encounter_obj.other_problem = serializer.validated_data['other_problem']
                         encounter_obj.created_at = serializer.validated_data['created_at']
                         encounter_obj.save()
-                        logger.error("Encounter added successfully.")
+                        logger.info("%s %s" %("Encounter added successfully by", request.user.full_name))
                         return Response({"message":"Encounter added","id":encounter_obj.id},status=200)
-                    logger.error("Geography id does not exists.")
+                    logger.info("Geography id does not exists in encounter section.")
                     return Response({"message":"Geography id does not exists."},status=400)
-                logger.error("Activity id does not exists.")
+                logger.info("Activity id does not exists in encounter section.")
                 return Response({"message":"Activity id does not exists."},status=400)
-            logger.error(serializer.errors)
+            logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
-        logger.error('patient does not exists')
-        return Response({"message":"patient does not exists"},status=400)
+        logger.info("%s %s" %("Patient id does not exist in encounter section:", patient_id))
+        return Response({"message":"patient does not exists"}, status=400)
 
 class EncounterUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -101,10 +95,9 @@ class EncounterUpdateView(APIView):
                 context={'request': request},partial=True)
             if serializer.is_valid():
                 serializer.save()
-                logger.error("Encounter updated successfully.")
+                logger.info("%s %s" %("Encounter update successfully by", request.user.full_name))
                 return Response({"message":"encounter update"},status=200)
-                logger.error(serializer.errors)
+            logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
-            logger.error("update allow upto 24 hour only")
-        logger.error("encounter id donot match")
+        logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
         return Response({"message":"id do not match"},status=400)

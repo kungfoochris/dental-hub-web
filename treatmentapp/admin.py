@@ -72,6 +72,7 @@ class TreatmentAdmin(ImportExportActionModelAdmin):
 	resource_class = TreatmentResource
 	list_display = ('id', 'fv_applied', 'treatment_plan_complete',\
 		'notes', 'encounter_id', 'sdf_whole_mouth')
+	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__id','encounter_id__geography__name',]
 
 	def has_add_permission(self, request, obj=None):

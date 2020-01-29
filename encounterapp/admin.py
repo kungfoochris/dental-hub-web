@@ -41,7 +41,7 @@ class HistoryAdmin(admin.ModelAdmin):
 		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
 		'not_taking_any_medications','medications','no_medications','encounter_id',\
 		'high_blood_pressure','low_blood_pressure','thyroid_disorder')
-	list_filter = ('encounter_id__id','encounter_id__date','encounter_id__updated_at')
+	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__patient__first_name']
 
 	def has_add_permission(self, request, obj=None):

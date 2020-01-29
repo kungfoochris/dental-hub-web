@@ -14,6 +14,11 @@ import os
 import datetime
 import logging
 import logging.config
+# from django.utils.log import DEFAULT_LOGGING
+
+# Disable Django's logging setup
+LOGGING_CONFIG = None
+
 
 # CELERY_BROKER_URL = 'redis://redis:6379'
 # CELERY_RESULT_BACKEND = 'redis://redis:6379'
@@ -224,13 +229,15 @@ logging.config.dictConfig({
     'disable_existing_loggers': False,
     'formatters': {
         'console': {
-            'format': '%(name)-12s %(levelname)-8s %(message)s'
+            # exact format is not important, this is the minimum information
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
         },
         'file': {
             'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
         }
     },
     'handlers': {
+        # console logs to stderr
         'console': {
             'class': 'logging.StreamHandler',
             'formatter': 'console'
@@ -239,13 +246,14 @@ logging.config.dictConfig({
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'file',
-            'filename': os.path.join((BASE_DIR),"log","debug.log")
+            'filename': os.path.join((BASE_DIR), "log", "debug.log")\
         }
     },
     'loggers': {
+        # default for all undefined Python modules
         '': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'handlers': ['console', 'file']
-        }
-    }
+        },
+    },
 })
