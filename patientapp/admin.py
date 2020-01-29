@@ -29,7 +29,7 @@ class PatientAdmin(ImportExportActionModelAdmin):
 	'author','date','activity_area','geography','ward','updated_by',\
 	'created_at','updated_at')
 	list_filter = ('date','created_at')
-	search_fields = ['first_name','author__username','date',\
+	search_fields = ['id','first_name','author__username','date',\
 	'updated_by__username','updated_at','created_at',\
 	'activity_area__name','geography__name','municipality__name','district__name']
 
