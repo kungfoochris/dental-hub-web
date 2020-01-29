@@ -45,6 +45,7 @@ class DistrictResource(resources.ModelResource):
 		export_order = ('id', 'name', 'status')
 
 class AdminDistrict(ImportExportActionModelAdmin):
+	list_display = ('id', 'name', 'status')
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:
 			return True
