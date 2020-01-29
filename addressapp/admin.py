@@ -97,7 +97,14 @@ class AdminMunicipality(admin.ModelAdmin):
 admin.site.register(Municipality, AdminMunicipality)
 
 
-class AdminWard(admin.ModelAdmin):
+
+class WardResource(resources.ModelResource):
+	class Meta:
+		model = Ward
+		fields = ('id', 'municipality__name', 'municipality__district__name', 'ward','name')
+		export_order = ('id', 'municipality__name', 'municipality__district__name', 'ward','name')
+
+class AdminWard(ImportExportActionModelAdmin):
 	list_display = ('id', 'municipality', 'ward','status','name')
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:
@@ -119,7 +126,7 @@ class AdminWard(admin.ModelAdmin):
 			return True
 		elif request.user.is_staff:
 			return False
-
+	resource_class = WardResource
 admin.site.register(Ward, AdminWard)
 
 # class AdminActivity(admin.ModelAdmin):
