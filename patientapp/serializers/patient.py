@@ -53,7 +53,7 @@ class AuthorField(serializers.PrimaryKeyRelatedField):
 class PatientSerializer(serializers.ModelSerializer):
 	activity_area = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	geography = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	activityarea_id = serializers.CharField(write_only=True,required=True)
+	activityarea_id = serializers.CharField(write_only=True,allow_null=True)
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	district_id = DistrictPkField(many=False,write_only=True)
 	municipality_id = MunicipalityPKField(many=False,write_only=True)
@@ -64,12 +64,13 @@ class PatientSerializer(serializers.ModelSerializer):
 	updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
 	author = AuthorField(many=False)
 	recall_geography = serializers.IntegerField(default=0)
+	flag = serializers.StringRelatedField()
 	class Meta:
 		model = Patient
 		fields = ('id','geography_id','activityarea_id','first_name', 'middle_name', 'last_name', 'full_name',\
          'gender', 'dob', 'phone','education','district','municipality', 'ward', 'district_id','municipality_id',\
          'ward_id','author', 'latitude' ,'longitude', 'date','geography','activity_area','updated_by',\
-         'updated_at','created_at','recall_date','recall_time','recall_geography')
+         'updated_at','created_at','recall_date','recall_time','recall_geography','flag')
 		read_only_fields = ('author','full_name','date','updated_at')
 
 

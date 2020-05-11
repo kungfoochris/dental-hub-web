@@ -17,6 +17,8 @@ REQUEST_CHOICES = (
 )
 
 
+
+
 def keygenerator():
     uid = uuid4()
     return uid.hex.upper()

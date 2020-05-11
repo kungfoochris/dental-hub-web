@@ -70,6 +70,9 @@ class PatientAdd(APIView):
         serializer = PatientSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
+            print(serializer.validated_data['district_id'].id)
+            print(serializer.validated_data['municipality_id'].id)
+            print(serializer.validated_data['ward_id'].id)
             if Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).count()==0:
                 if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
                     if Activity.objects.filter(id=serializer.validated_data['activityarea_id']).exists():

@@ -73,6 +73,7 @@ DEV_APPS = [
     "patientapp",
     "encounterapp",
     "treatmentapp",
+    "flagapp",
     "visualizationapp",
     ]
 
