@@ -8,7 +8,7 @@ GeographyPatientListView
 app_name = 'patientapp'
 
 urlpatterns = [
-	path('patients/<geography_id>', PatientListView.as_view(), name='user-list'),
+	path('patients/<int:geography_id>', PatientListView.as_view(), name='user-list'),
 	path('patients', PatientAdd.as_view()),
 	path('accesspatients',GeographyPatientListView.as_view()),
 	path('patient/<patient_id>',PatientUpdateView.as_view()),

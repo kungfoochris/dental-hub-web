@@ -32,8 +32,8 @@ class PatientListView(APIView):
     search_fields = ('first_name', 'last_name','full_name')
 
     def get(self, request, geography_id,format=None):
-        if Patient.objects.select_related('geography').filter(geography__id=geography_id):
-            patient_obj = Patient.objects.select_related('geography').filter(geography__id=geography_id).order_by("-date")
+        if Patient.objects.filter(geography__id=geography_id):
+            patient_obj = Patient.objects.filter(geography__id=geography_id).order_by("-date")
             serializer = PatientSerializer(patient_obj, many=True, context={'request': request})
             return Response(serializer.data,status=200)
         return Response({"message":"content not found"},status=204)
