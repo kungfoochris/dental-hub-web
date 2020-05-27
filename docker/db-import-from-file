@@ -1,0 +1,30 @@
+#!/bin/sh
+# vim: set ts=2 sw=2 et:
+
+set -e
+set -u
+
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+SQLFILE_FINAL="$PROJECT_ROOT/database.sql"
+
+
+
+
+echo ""
+echo "## DATABASE IMPORT (FROM FILE) TO DEVELOPMENT ENVIRONMENT (WITH DOCKER)"
+echo ""
+
+
+
+echo "Saving database to temporary file"
+{
+  if ! docker-compose exec -T db sh -c "mysql -uroot -p\$MYSQL_ROOT_PASSWORD  \$MYSQL_DATABASE" < "$SQLFILE_FINAL"
+  then
+    >&2 echo "ERROR:  Unable to import database.sql from within docker image"
+    rm -f "$SQLFILE_FINAL"
+    exit 1
+  fi
+}
+
+
+echo "Success: Import successfully completed"

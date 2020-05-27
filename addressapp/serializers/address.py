@@ -16,11 +16,26 @@ class MunicipalitySerializer(serializers.ModelSerializer):
 		model = Municipality
 		fields = ['id','name', 'category', 'wards']
 
+	@staticmethod
+	def setup_eager_loading(queryset):
+		""" Perform necessary eager loading of data. """
+		queryset = queryset.select_related('wards')
+		return queryset
+
 class DistrictSerializer(serializers.ModelSerializer):
 	municipalities = MunicipalitySerializer(source='municipality_set',many=True, read_only=True)
+
 	class Meta:
 		model = District
 		fields = ['id','name','municipalities']
+
+	@staticmethod
+	def setup_eager_loading(queryset):
+		""" Perform necessary eager loading of data. """
+		queryset = queryset.select_related('municipalities')
+		return queryset
+
+
 
 class MunicipalitySerializer1(serializers.ModelSerializer):
 	class Meta:
@@ -34,7 +49,7 @@ class GeoSerializer(serializers.ModelSerializer):
 		model = Ward
 		fields = ['id','district','municipality','ward','location']
 
-		
+
 class WardSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Ward

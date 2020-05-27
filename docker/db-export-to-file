@@ -1,0 +1,30 @@
+#!/bin/sh
+# vim: set ts=2 sw=2 et:
+
+set -e
+set -u
+
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+SQLFILE_FINAL="$PROJECT_ROOT/database.sql"
+
+
+
+
+echo ""
+echo "## DATABASE EXPORT FROM DEVELOPMENT ENVIRONMENT (WITH DOCKER) (TO FILE)"
+echo ""
+
+
+
+echo "Saving database to temporary file"
+{
+  if ! docker-compose exec -T db sh -c "mysqldump -uroot -p\$MYSQL_ROOT_PASSWORD --skip-extended-insert \$MYSQL_DATABASE" > "$SQLFILE_FINAL"
+  then
+    >&2 echo "ERROR: Unable to export database from development server"
+    rm -f "$SQLFILE_FINAL"
+    exit 1
+  fi
+}
+
+
+echo "Success: file $(basename "$SQLFILE_FINAL") written"

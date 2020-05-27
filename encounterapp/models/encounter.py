@@ -17,6 +17,8 @@ REQUEST_CHOICES = (
 )
 
 
+
+
 def keygenerator():
     uid = uuid4()
     return uid.hex.upper()
@@ -35,7 +37,7 @@ class Encounter(models.Model):
     encounter_type = models.CharField(_('encounter type'),choices=REQUEST_CHOICES,max_length=150)
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     updated_at = models.DateTimeField(default=default_time)
-    activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='encounter_area')
+    activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='encounter_area',null=True)
     other_problem = models.CharField(max_length=150,default="")
     geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography')
     updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_encounter')

@@ -29,7 +29,7 @@ class Visualization(models.Model):
     encounter_id = models.CharField(max_length=60,unique=True,db_index=True)
     age = models.IntegerField(db_index=True)
     gender = models.CharField(max_length=60,db_index=True)
-    activities_id = models.CharField(max_length=60,db_index=True)
+    activities_id = models.CharField(max_length=60,db_index=True, null=True)
     activity_name = models.CharField(max_length=100,default="")
     geography_id = models.CharField(max_length=60,db_index=True)
     geography_name = models.CharField(max_length=100,default="")
@@ -71,7 +71,7 @@ class Visualization(models.Model):
 
 
 def create_encounter(sender, **kwargs):
-    if kwargs['created']:
+    if Encounter.objects.filter(id=kwargs['instance'].id):
         encounter_obj = Encounter.objects.get(id=kwargs['instance'].id)
         visualization_obj = Visualization()
         visualization_obj.patiend_id = encounter_obj.patient.id
@@ -80,18 +80,21 @@ def create_encounter(sender, **kwargs):
         visualization_obj.gender = encounter_obj.patient.gender
         dob = encounter_obj.patient.dob
         visualization_obj.age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
-        visualization_obj.activities_id = encounter_obj.activity_area.id
-        visualization_obj.activity_name = encounter_obj.activity_area.name
+        if encounter_obj.activity_area:
+            visualization_obj.activities_id = encounter_obj.activity_area.id
+            visualization_obj.activity_name = encounter_obj.activity_area.name
         visualization_obj.geography_id = encounter_obj.geography.id
         visualization_obj.geography_name = encounter_obj.geography.name
         visualization_obj.created_at = encounter_obj.patient.created_at
         visualization_obj.reason_for_visit = encounter_obj.encounter_type
         visualization_obj.author = encounter_obj.author.username
         visualization_obj.save()
+    # if kwargs['created']:
+
 post_save.connect(create_encounter,sender=Encounter)
 
 def create_screeing(sender, **kwargs):
-    if kwargs['created']:
+    if Visualization.objects.filter(encounter_id=kwargs['instance'].encounter_id.id):
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         visualization_obj.carries_risk = kwargs['instance'].carries_risk
         visualization_obj.decayed_primary_teeth_number = kwargs['instance'].decayed_primary_teeth
@@ -106,10 +109,12 @@ def create_screeing(sender, **kwargs):
         visualization_obj.need_extraction = kwargs['instance'].need_extraction
         visualization_obj.need_sealant = kwargs['instance'].need_sealant
         visualization_obj.save()
+    # if kwargs['created']:
+
 post_save.connect(create_screeing,sender=Screeing)
 
 def create_refer(sender, **kwargs):
-    if kwargs['created']:
+    if Visualization.objects.filter(encounter_id=kwargs['instance'].encounter_id.id):
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         visualization_obj.refer_hp = kwargs['instance'].health_post
         visualization_obj.refer_hyg = kwargs['instance'].hygienist
@@ -134,14 +139,16 @@ def create_refer(sender, **kwargs):
             visualization_obj.referral_type = "Refer Dr"
 
         visualization_obj.save()
+    # if kwargs['created']:
+
 post_save.connect(create_refer,sender=Refer)
 
 def create_treatment(sender, **kwargs):
-    if kwargs['created']:
+    if Visualization.objects.filter(encounter_id=kwargs['instance'].encounter_id.id):
         visualization_obj = Visualization.objects.get(encounter_id=kwargs['instance'].encounter_id.id)
         if Treatment.objects.filter(Q(tooth11='EXO') | Q(tooth12='EXO')|Q(tooth13='EXO') | Q(tooth14='EXO')|Q(tooth15='EXO') | Q(tooth16='EXO')|Q(tooth17='EXO') | Q(tooth18='EXO')\
             |Q(tooth21='EXO') | Q(tooth22='EXO')|Q(tooth23='EXO') | Q(tooth24='EXO')|Q(tooth25='EXO') | Q(tooth26='EXO')|Q(tooth27='EXO') | Q(tooth28='EXO')\
-			|Q(tooth31='EXO') | Q(tooth32='EXO')|Q(tooth33='EXO') | Q(tooth34='EXO')|Q(tooth35='EXO') | Q(tooth36='EXO')|Q(tooth37='EXO') | Q(tooth38='EXO')\
+            |Q(tooth31='EXO') | Q(tooth32='EXO')|Q(tooth33='EXO') | Q(tooth34='EXO')|Q(tooth35='EXO') | Q(tooth36='EXO')|Q(tooth37='EXO') | Q(tooth38='EXO')\
             |Q(tooth41='EXO') | Q(tooth42='EXO')|Q(tooth43='EXO') | Q(tooth44='EXO')|Q(tooth45='EXO') | Q(tooth46='EXO')|Q(tooth47='EXO') | Q(tooth48='EXO')\
             |Q(tooth51='EXO') | Q(tooth52='EXO')|Q(tooth53='EXO') | Q(tooth54='EXO')|Q(tooth55='EXO')\
             |Q(tooth61='EXO') | Q(tooth62='EXO')|Q(tooth63='EXO') | Q(tooth64='EXO')|Q(tooth65='EXO')\
@@ -165,7 +172,7 @@ def create_treatment(sender, **kwargs):
             |Q(tooth61='SEAL') | Q(tooth62='SEAL')|Q(tooth63='SEAL') | Q(tooth64='SEAL')|Q(tooth65='SEAL')\
             |Q(tooth71='SEAL') | Q(tooth72='SEAL')|Q(tooth73='SEAL') | Q(tooth74='SEAL')|Q(tooth75='SEAL')\
             |Q(tooth81='SEAL') | Q(tooth82='SEAL')|Q(tooth83='SEAL') | Q(tooth84='SEAL')|Q(tooth85='SEAL')).filter(encounter_id__id=kwargs['instance'].encounter_id.id):
-        	visualization_obj.seal = True
+            visualization_obj.seal = True
 
         if Treatment.objects.filter(Q(tooth11='ART') | Q(tooth12='ART')|Q(tooth13='ART') | Q(tooth14='ART')|Q(tooth15='ART') | Q(tooth16='ART')|Q(tooth17='ART') | Q(tooth18='ART')\
             |Q(tooth21='ART') | Q(tooth22='ART')|Q(tooth23='ART') | Q(tooth24='ART')|Q(tooth25='ART') | Q(tooth26='ART')|Q(tooth27='ART') | Q(tooth28='ART')\
@@ -190,4 +197,6 @@ def create_treatment(sender, **kwargs):
         visualization_obj.fv = kwargs['instance'].fv_applied
         visualization_obj.sdf_whole_mouth = kwargs['instance'].sdf_whole_mouth
         visualization_obj.save()
+    # if kwargs['created']:
+
 post_save.connect(create_treatment, sender=Treatment)

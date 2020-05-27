@@ -16,7 +16,7 @@ from patientapp.serializers.patient import AuthorField
 class EncounterSerializer(serializers.ModelSerializer):
 	activity_area = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	geography = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	activityarea_id = serializers.CharField(max_length=250,write_only=True,required=True)
+	activityarea_id = serializers.CharField(max_length=250,write_only=True,allow_null=True)
 	geography_id = serializers.CharField(max_length=250,write_only=True,required=True)
 	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
