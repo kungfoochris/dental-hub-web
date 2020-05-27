@@ -1,5 +1,3 @@
--r ./base.txt
-
 # Testing
 # ------------------------------------------------------------------------------
 pytest==3.7.4  # https://github.com/pytest-dev/pytest

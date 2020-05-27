@@ -80,8 +80,9 @@ def create_encounter(sender, **kwargs):
         visualization_obj.gender = encounter_obj.patient.gender
         dob = encounter_obj.patient.dob
         visualization_obj.age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
-        visualization_obj.activities_id = encounter_obj.activity_area.id
-        visualization_obj.activity_name = encounter_obj.activity_area.name
+        if encounter_obj.activity_area:
+            visualization_obj.activities_id = encounter_obj.activity_area.id
+            visualization_obj.activity_name = encounter_obj.activity_area.name
         visualization_obj.geography_id = encounter_obj.geography.id
         visualization_obj.geography_name = encounter_obj.geography.name
         visualization_obj.created_at = encounter_obj.patient.created_at

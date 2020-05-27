@@ -45,7 +45,7 @@ class Patient(models.Model):
     date = models.DateTimeField(_('register_date'),auto_now=True)
     latitude = models.DecimalField(help_text='author latitude',max_digits=12, decimal_places=8,default=12)
     longitude = models.DecimalField(help_text='author longitude',max_digits=12, decimal_places=8,default=12)
-    activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='patient_area')
+    activity_area = models.ForeignKey(Activity,on_delete=models.CASCADE,related_name='patient_area',null=True)
     geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='patient_geography')
     district = models.ForeignKey(District,on_delete=models.CASCADE)
     municipality = models.ForeignKey(Municipality,on_delete=models.CASCADE)

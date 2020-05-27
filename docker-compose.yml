@@ -12,8 +12,11 @@ services:
       MYSQL_PASSWORD: 'dental_password'
       MYSQL_ROOT_PASSWORD: 'dental_root_password'
 
-  # redis:
-  #   image: "redis:alpine"
+  redis:
+    restart: "no"
+    image: redis:latest
+    expose:
+      - "6379"
 
   frontend:
     build:
@@ -23,7 +26,7 @@ services:
       - ./static/static:/usr/share/nginx/html/static
       - ./media:/usr/share/nginx/html/media
       - ./vue:/usr/share/nginx/html
-    restart: "always"
+    restart: "no"
     ports:
       - "6062:6062"
     depends_on:
@@ -33,14 +36,14 @@ services:
       context: ./
       dockerfile: docker/backend/backend.Dockerfile
     command: ["./docker/entry.sh"]
-    restart: "always"
+    restart: "no"
     ports:
       - "6061:6061"
     volumes:
       - .:/code
     depends_on:
       - db
-      # - redis
+      - redis
     environment:
       SECRET_KEY: 'tg7703_ddewirye6t0d^mam7-=42&!k&wv5dhi$$(35kouzi3ks'
       DATABASE_ENGINE: django.db.backends.mysql
