@@ -97,7 +97,7 @@ class PatientAdd(APIView):
                         patient_obj.geography = ward_obj
                         patient_obj.education = serializer.validated_data['education']
                         patient_obj.created_at = serializer.validated_data['created_at']
-                        patient_obj.recall_date = serializer.validated_data['recall_date']
+                        # patient_obj.recall_date = serializer.validated_data['recall_date']
                         patient_obj.recall_time = serializer.validated_data['recall_time']
                         patient_obj.save()
                     else:
@@ -117,7 +117,7 @@ class PatientAdd(APIView):
                         patient_obj.geography = ward_obj
                         patient_obj.education = serializer.validated_data['education']
                         patient_obj.created_at = serializer.validated_data['created_at']
-                        patient_obj.recall_date = serializer.validated_data['recall_date']
+                        # patient_obj.recall_date = serializer.validated_data['recall_date']
                         patient_obj.recall_time = serializer.validated_data['recall_time']
                         patient_obj.recall_geography = serializer.validated_data['recall_geography']
                         patient_obj.save()
