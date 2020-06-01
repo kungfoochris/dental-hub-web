@@ -31,7 +31,7 @@ class Visualization(models.Model):
     gender = models.CharField(max_length=60,db_index=True)
     activities_id = models.CharField(max_length=60,db_index=True, null=True)
     activity_name = models.CharField(max_length=100,default="")
-    geography_id = models.CharField(max_length=60,db_index=True)
+    geography_id = models.CharField(max_length=60,db_index=True,default="")
     geography_name = models.CharField(max_length=100,default="")
     exo = models.BooleanField(default=False,db_index=True)
     art = models.BooleanField(default=False,db_index=True)
@@ -83,8 +83,9 @@ def create_encounter(sender, **kwargs):
         if encounter_obj.activity_area:
             visualization_obj.activities_id = encounter_obj.activity_area.id
             visualization_obj.activity_name = encounter_obj.activity_area.name
-        visualization_obj.geography_id = encounter_obj.geography.id
-        visualization_obj.geography_name = encounter_obj.geography.name
+        if encounter_obj.geography:
+            visualization_obj.geography_id = encounter_obj.geography.id
+            visualization_obj.geography_name = encounter_obj.geography.name
         visualization_obj.created_at = encounter_obj.patient.created_at
         visualization_obj.reason_for_visit = encounter_obj.encounter_type
         visualization_obj.author = encounter_obj.author.username

@@ -53,21 +53,22 @@ class EncounterView(APIView):
                 activity_area_obj = serializer.validated_data['activityarea_id']
                 if Activity.objects.filter(id=activity_area_obj).exists():
                     activity_area_obj = Activity.objects.get(id=activity_area_obj)
+                geography_obj = serializer.validated_data['geography_id']
                 if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
                     geography_obj = Ward.objects.get(id=serializer.validated_data['geography_id'])
-                    encounter_obj = Encounter()
-                    encounter_obj.encounter_type = serializer.validated_data['encounter_type']
-                    encounter_obj.activity_area = activity_area_obj
-                    encounter_obj.geography = geography_obj
-                    encounter_obj.patient = patient_obj
-                    encounter_obj.author = patient_obj.author
-                    encounter_obj.other_problem = serializer.validated_data['other_problem']
-                    encounter_obj.created_at = serializer.validated_data['created_at']
-                    encounter_obj.save()
-                    logger.info("%s %s" %("Encounter added successfully by", request.user.full_name))
-                    return Response({"message":"Encounter added","id":encounter_obj.id},status=200)
-                logger.info("Geography id does not exists in encounter section.")
-                return Response({"message":"Geography id does not exists. created by="+request.user.full_name},status=400)
+                encounter_obj = Encounter()
+                encounter_obj.encounter_type = serializer.validated_data['encounter_type']
+                encounter_obj.activity_area = activity_area_obj
+                encounter_obj.geography = geography_obj
+                encounter_obj.patient = patient_obj
+                encounter_obj.author = patient_obj.author
+                encounter_obj.other_problem = serializer.validated_data['other_problem']
+                encounter_obj.created_at = serializer.validated_data['created_at']
+                encounter_obj.save()
+                logger.info("%s %s" %("Encounter added successfully by", request.user.full_name))
+                return Response({"message":"Encounter added","id":encounter_obj.id},status=200)
+                # logger.info("Geography id does not exists in encounter section.")
+                # return Response({"message":"Geography id does not exists. created by="+request.user.full_name},status=400)
                 # logger.info("Activity id does not exists in encounter section.")
                 # return Response({"message":"Activity id does not exists."},status=400)
             logger.info(serializer.errors)
