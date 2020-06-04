@@ -74,11 +74,13 @@ class PatientAdd(APIView):
             print(serializer.validated_data['municipality_id'].id)
             print(serializer.validated_data['ward_id'].id)
             if Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).count()==0:
-                # if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
+                ward_obj = serializer.validated_data['geography_id']
+                if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
+                    ward_obj = Ward.objects.get(id=serializer.validated_data['geography_id'])
                 activity_area_obj = serializer.validated_data['activityarea_id']
                 if Activity.objects.filter(id=activity_area_obj).exists():
                     activity_area_obj = Activity.objects.get(id=activity_area_obj)
-                # ward_obj = Ward.objects.get(id=serializer.validated_data['geography_id'])
+
                 patient_obj = Patient()
                 if serializer.validated_data['recall_geography']==None:
                     patient_obj.first_name = serializer.validated_data['first_name']
@@ -94,7 +96,7 @@ class PatientAdd(APIView):
                     patient_obj.district = serializer.validated_data['district_id']
                     patient_obj.author = serializer.validated_data['author']
                     patient_obj.activity_area = activity_area_obj
-                    patient_obj.geography = serializer.validated_data['geography_id']
+                    patient_obj.geography = ward_obj
                     patient_obj.education = serializer.validated_data['education']
                     patient_obj.created_at = serializer.validated_data['created_at']
                     # patient_obj.recall_date = serializer.validated_data['recall_date']
@@ -114,7 +116,7 @@ class PatientAdd(APIView):
                     patient_obj.district = serializer.validated_data['district_id']
                     patient_obj.author = serializer.validated_data['author']
                     patient_obj.activity_area = activity_area_obj
-                    patient_obj.geography = serializer.validated_data['geography_id']
+                    patient_obj.geography = ward_obj
                     patient_obj.education = serializer.validated_data['education']
                     patient_obj.created_at = serializer.validated_data['created_at']
                     # patient_obj.recall_date = serializer.validated_data['recall_date']
