@@ -12,7 +12,7 @@ today = NepaliDate()
 from django.db.models import Count
 from django.db.models import Q
 
-
+from django.dispatch import receiver
 from treatmentapp.models import Treatment
 
 
@@ -201,3 +201,16 @@ def create_treatment(sender, **kwargs):
     # if kwargs['created']:
 
 post_save.connect(create_treatment, sender=Treatment)
+
+
+
+@receiver(models.signals.pre_delete, sender=Encounter)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    """
+    Deletes file from filesystem
+    when corresponding `MediaFile` object is deleted.
+    """
+    if instance.id:
+        if Visualization.objects.filter(encounter_id=instance.id):
+            for i in Visualization.objects.filter(encounter_id=instance.id):
+                i.delete()
