@@ -48,7 +48,9 @@ class CustomAuthToken(APIView):
                 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
                 payload = jwt_payload_handler(user_obj)
                 token = jwt_encode_handler(payload)
+                logger.info("%s %s" %(request.user.full_name,"Login"))
                 return Response({"token":token},status=200)
+            logger.info("%s" %("Username does not exist"))
             return Response({'message':"username does not exist"},status=400)
         return Response(serializer.errors)
 

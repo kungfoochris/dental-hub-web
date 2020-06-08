@@ -13,7 +13,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'dental_root_password'
 
   redis:
-    restart: "no"
+    restart: "always"
     image: redis:latest
     expose:
       - "6379"
@@ -26,7 +26,7 @@ services:
       - ./static/static:/usr/share/nginx/html/static
       - ./media:/usr/share/nginx/html/media
       - ./vue:/usr/share/nginx/html
-    restart: "no"
+    restart: "always"
     ports:
       - "6062:6062"
     depends_on:
@@ -36,7 +36,7 @@ services:
       context: ./
       dockerfile: docker/backend/backend.Dockerfile
     command: ["./docker/entry.sh"]
-    restart: "no"
+    restart: "always"
     ports:
       - "6061:6061"
     volumes:
@@ -52,23 +52,3 @@ services:
       DATABASE_USER: dentalhub
       DATABASE_PASSWORD: dental_root_password
       DATABASE_PORT: 3306
-  # celery:
-  #   build:
-  #     context: ./
-  #     dockerfile: docker/app.Dockerfile
-  #   command: celery -A dental worker -l info
-  #   volumes:
-  #     - .:/code
-  #   depends_on:
-  #     - db
-  #     - redis
-  # celery-beat:
-  #   build:
-  #     context: ./
-  #     dockerfile: docker/app.Dockerfile
-  #   command: celery -A dental beat -l info
-  #   volumes:
-  #     - .:/code
-  #   depends_on:
-  #     - db
-  #     - redis

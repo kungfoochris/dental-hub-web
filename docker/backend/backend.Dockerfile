@@ -1,6 +1,5 @@
 FROM python:3.6
 ENV PYTHONUNBUFFERED 1
- RUN apt-get update -qq && apt-get install -y build-essential postgresql-client && rm -rf /var/lib/apt/lists/*
 RUN mkdir /code
 WORKDIR /code
 ADD requirements/base.txt /code/
