@@ -10,19 +10,8 @@ def keygenerator():
 
 class Role(models.Model):
     id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-    name = models.CharField(max_length=30,unique=True)  
+    name = models.CharField(max_length=30,unique=True)
 
 
     def __str__(self):
-    	return self.name  
-
-
-
-
-       
-        
-       
-       
-       
-       
-        
+    	return self.name
