@@ -35,9 +35,9 @@ logger = logging.getLogger(__name__)
 
 
 np_date = NepaliDate()
-d=datetime.date(np_date.npYear(),np_date.npMonth(),np_date.npDay())
-lessthan18 = d - datetime.timedelta(days=365*18)
-greaterthan60 = d - datetime.timedelta(days=365*60)
+# d=datetime.date(np_date.npYear(),np_date.npMonth(),np_date.npDay())
+# lessthan18 = d - datetime.timedelta(days=365*18)
+# greaterthan60 = d - datetime.timedelta(days=365*60)
 
 
 
