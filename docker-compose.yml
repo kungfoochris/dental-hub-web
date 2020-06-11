@@ -3,7 +3,7 @@ services:
   db:
     image: mariadb:latest
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
