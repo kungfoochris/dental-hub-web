@@ -103,3 +103,5 @@ class EncounterUpdateView(APIView):
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
         return Response({"message":"id do not match"},status=400)
+
+

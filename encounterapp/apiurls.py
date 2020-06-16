@@ -5,6 +5,7 @@ from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateVie
 from encounterapp.api.encounter import EncounterView, EncounterUpdateView
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
+from encounterapp.api.modifydelete import ModifyDeleteDetail
 
 
 
@@ -19,4 +20,5 @@ urlpatterns = [
 	path('encounter/<encounter_id>/refer/update', PatientReferUpdateView.as_view()),
 	path('encounter/<encounter_id>/screening', PatientScreeingView.as_view()),
 	path('encounter/<encounter_id>/screening/update', PatientScreeingUpdateView.as_view()),
+	path('modifydelete', ModifyDeleteDetail.as_view()),
     ]

@@ -50,6 +50,8 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'username'
     update_password=True
 
+    REQUIRED_FIELDS = ['email']
+
     objects = UserManager()
 
 

@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from encounterapp.models import Encounter, History, Refer, Screeing
+from encounterapp.models.modifydelete import ModifyDelete
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -132,3 +133,6 @@ class ScreeingAdmin(admin.ModelAdmin):
 			return False
 
 admin.site.register(Screeing, ScreeingAdmin)
+
+
+admin.site.register(ModifyDelete)

@@ -56,3 +56,5 @@ class EncounterUpdateSerializer(serializers.ModelSerializer):
 		model = Encounter
 		fields = ('id','geography',\
 			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','updated_at')
+
+

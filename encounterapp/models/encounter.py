@@ -17,8 +17,6 @@ REQUEST_CHOICES = (
 )
 
 
-
-
 def keygenerator():
     uid = uuid4()
     return uid.hex.upper()
@@ -47,3 +45,4 @@ class Encounter(models.Model):
 
     def __str__(self):
         return self.patient.full_name
+
