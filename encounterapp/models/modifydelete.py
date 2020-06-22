@@ -17,10 +17,15 @@ REASON_FOR_DELETION = (
     ("other", _("Other")),
 )
 
-DELETE_MODIFY_STATUS = (
+MODIFY_STATUS = (
     ("pending", _("Pending ")),
     ("approved", _("Approved")),
-    ("Deny", _("Deny")),
+    ("modified", _("Modified")),
+)
+
+DELETE_STATUS = (
+    ("pending", _("Pending ")),
+    ("deleted", _("Deleted")),
 )
 
 FLAG = (
@@ -33,11 +38,12 @@ FLAG = (
 class ModifyDelete(models.Model):
     encounter = models.ForeignKey(Encounter,on_delete=models.CASCADE,related_name='encounter_modify_delete',null=True)
     reason_for_modification = models.TextField(default="")
-    modify_status = models.CharField(max_length=100,choices = DELETE_MODIFY_STATUS,default="")
+    modify_status = models.CharField(max_length=100,choices = MODIFY_STATUS,default="")
     reason_for_deletion = models.CharField(max_length=100,choices = REASON_FOR_DELETION,default="")
     other_reason_for_deletion = models.TextField(default="")
-    delete_status = models.CharField(max_length=100,choices = DELETE_MODIFY_STATUS,default="")
+    delete_status = models.CharField(max_length=100,choices = DELETE_STATUS,default="")
     flag = models.CharField(max_length=100,choices = FLAG)
+    modify_approved_at = models.DateTimeField(null=True)
 
 
     # def __str__(self):

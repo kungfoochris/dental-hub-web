@@ -2,10 +2,10 @@
 from django.conf.urls import include
 from django.urls import path
 from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateView
-from encounterapp.api.encounter import EncounterView, EncounterUpdateView
+from encounterapp.api.encounter import EncounterView, EncounterUpdateView,EncounterUpdateMark
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
-from encounterapp.api.modifydelete import ModifyDeleteDetail
+from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus
 
 
 
@@ -14,6 +14,7 @@ app_name = 'encounterapp'
 urlpatterns = [
 	path('patients/<patient_id>/encounters', EncounterView.as_view()),
 	path('patients/<patient_id>/encounters/<encounter_id>', EncounterUpdateView.as_view()),
+	path('patientsmark/<patient_id>/encounters/<encounter_id>', EncounterUpdateMark.as_view()),
 	path('encounter/<encounter_id>/history', PatientHistoryView.as_view()),
 	path('encounter/<encounter_id>/history/update', PatientHistoryUpdateView.as_view()),
 	path('encounter/<encounter_id>/refer', PatientReferView.as_view()),
@@ -21,4 +22,6 @@ urlpatterns = [
 	path('encounter/<encounter_id>/screening', PatientScreeingView.as_view()),
 	path('encounter/<encounter_id>/screening/update', PatientScreeingUpdateView.as_view()),
 	path('modifydelete', ModifyDeleteDetail.as_view()),
+	path('encounterstatus/<id>', EncounterAdminStatus.as_view()),
+
     ]

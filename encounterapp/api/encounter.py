@@ -4,12 +4,16 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
+from dateutil import relativedelta
+import pytz
+utc=pytz.UTC
 
 from userapp.models import User, CustomUser
 from encounterapp.models import Encounter, Refer, History
 from patientapp.models import Patient
 from encounterapp.serializers.encounter import EncounterSerializer,\
 AllEncounterSerializer,EncounterUpdateSerializer
+from encounterapp.models.modifydelete import ModifyDelete
 
 
 
@@ -104,4 +108,45 @@ class EncounterUpdateView(APIView):
         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
         return Response({"message":"id do not match"},status=400)
 
+
+
+
+class EncounterUpdateMark(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = EncounterUpdateSerializer
+
+    def get(self, request, patient_id, encounter_id, format=None):
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj = Encounter.objects.get(id=encounter_id)
+            serializer = EncounterSerializer(encounter_obj, many=False, \
+                context={'request': request})
+            return Response(serializer.data)
+        logger.error('encounter content not found.')
+        return Response({"message":"content not found or parameter not match."},status=400)
+
+    def put(self, request, patient_id, encounter_id, format=None):
+        today_date = datetime.now()
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj=Encounter.objects.select_related('patient').get(id=encounter_id,patient__id=patient_id)
+            serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
+                context={'request': request},partial=True)
+
+            obj = ModifyDelete.objects.filter(encounter__id=encounter_id,modify_status='approved',flag='modify')
+            if obj:
+                obj = ModifyDelete.objects.get(encounter__id=encounter_id,modify_status='approved',flag='modify')
+                t = int(relativedelta.relativedelta( datetime.now().replace(tzinfo=utc), obj.modify_approved_at.replace(tzinfo=utc)).days)
+                if t < 7:
+                    if serializer.is_valid():
+                        obj.modify_status = "modified"
+                        obj.flag = ""
+                        obj.save()
+                        serializer.save()
+                        logger.info("%s %s" %("Encounter update successfully by", request.user.full_name))
+                        return Response({"message":"encounter update"},status=200)
+                    logger.info(serializer.errors)
+                    return Response({'message':serializer.errors}, status=400)
+                return Response("Modification time has been expired.",status=400)
+            return Response("Modification request not done or admin has not approved the request.",status=400)
+        logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
+        return Response({"message":"id do not match"},status=400)
 

@@ -18,6 +18,14 @@ class ModifyDeleteSerializer(serializers.ModelSerializer):
     delete_status = serializers.StringRelatedField()
     class Meta:
         model = ModifyDelete
-        fields = ('id', 'encounter', 'reason_for_modification', 'modify_status', 'reason_for_deletion','other_reason_for_deletion','delete_status', 'flag')
-        read_only_fields = ('modify_status','delete_status')
+        fields = ('id', 'encounter', 'reason_for_modification', 'modify_status', 'reason_for_deletion','other_reason_for_deletion','delete_status', 'flag','modify_approved_at')
+        read_only_fields = ('modify_status','delete_status','modify_approved_at')
+
+
+
+class EncounterAdminStatusSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ModifyDelete
+        fields = ('id','modify_status','delete_status')
 

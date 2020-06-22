@@ -58,3 +58,26 @@ class EncounterUpdateSerializer(serializers.ModelSerializer):
 			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','updated_at')
 
 
+
+class EncounterUpdateMarkSerializer(serializers.ModelSerializer):
+	activity_area = serializers.StringRelatedField(many=False,read_only=True)
+	geography = serializers.StringRelatedField(many=False,read_only=True)
+	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	patient = serializers.StringRelatedField(many=False,read_only=True)
+	updated_by = AuthorField(many=False)
+	modify_status = serializers.StringRelatedField(many=False,read_only=True)
+	delete_status = serializers.StringRelatedField(many=False,read_only=True)
+
+	class Meta:
+		model = Encounter
+		fields = ('id','geography',\
+			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','reason_for_modification','modify_status','delete_status','reason_for_deletion','other_reason_for_deletion','updated_at')
+
+
+class EncounterDeleteMarkSerializer(serializers.ModelSerializer):
+	# reason_for_deletion = serializers.StringRelatedField(many=False)
+	other_reason_for_deletion = serializers.CharField()
+	
+	class Meta:
+		model = Encounter
+		fields = ('id','reason_for_deletion','other_reason_for_deletion')
