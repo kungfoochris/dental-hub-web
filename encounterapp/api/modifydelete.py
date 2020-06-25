@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from encounterapp.models.modifydelete import ModifyDelete
-from encounterapp.serializers.modifydelete import ModifyDeleteSerializer,EncounterAdminStatusSerializer
+from encounterapp.serializers.modifydelete import ModifyDeleteSerializer,EncounterAdminStatusSerializer,ModifyDeleteListSerializer
 from datetime import datetime
 
 
@@ -19,7 +19,7 @@ class ModifyDeleteDetail(APIView):
 
     def get(self,request):
         modify_delete_obj = ModifyDelete.objects.all()
-        serializer = ModifyDeleteSerializer(modify_delete_obj,many=True,context={"request":request})
+        serializer = ModifyDeleteListSerializer(modify_delete_obj,many=True,context={"request":request})
         return Response(serializer.data,status=200)
 
     def post(self,request):

@@ -80,6 +80,37 @@ class EncounterView(APIView):
         logger.info("%s %s" %("Patient id does not exist in encounter section: created by="+request.user.full_name, patient_id))
         return Response({"message":"patient does not exists. created by="+request.user.full_name}, status=400)
 
+# class EncounterUpdateView(APIView):
+#     permission_classes = (IsPostOrIsAuthenticated,)
+#     serializer_class = EncounterUpdateSerializer
+
+#     def get(self, request, patient_id, encounter_id, format=None):
+#         if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+#             encounter_obj = Encounter.objects.get(id=encounter_id)
+#             serializer = EncounterSerializer(encounter_obj, many=False, \
+#                 context={'request': request})
+#             return Response(serializer.data)
+#         logger.error('encounter content not found.')
+#         return Response({"message":"content not found or parameter not match."},status=400)
+
+#     def put(self, request, patient_id, encounter_id, format=None):
+#         today_date = datetime.now()
+#         if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+#             encounter_obj=Encounter.objects.select_related('patient').get(id=encounter_id,patient__id=patient_id)
+#             serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
+#                 context={'request': request},partial=True)
+#             if serializer.is_valid():
+#                 serializer.save()
+#                 logger.info("%s %s" %("Encounter update successfully by", request.user.full_name))
+#                 return Response({"message":"encounter update"},status=200)
+#             logger.info(serializer.errors)
+#             return Response({'message':serializer.errors}, status=400)
+#         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
+#         return Response({"message":"id do not match"},status=400)
+
+
+
+
 class EncounterUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = EncounterUpdateSerializer
@@ -100,43 +131,16 @@ class EncounterUpdateView(APIView):
             serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
                 context={'request': request},partial=True)
             if serializer.is_valid():
-                serializer.save()
-                logger.info("%s %s" %("Encounter update successfully by", request.user.full_name))
-                return Response({"message":"encounter update"},status=200)
-            logger.info(serializer.errors)
-            return Response({'message':serializer.errors}, status=400)
-        logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
-        return Response({"message":"id do not match"},status=400)
-
-
-
-
-class EncounterUpdateMark(APIView):
-    permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = EncounterUpdateSerializer
-
-    def get(self, request, patient_id, encounter_id, format=None):
-        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
-            encounter_obj = Encounter.objects.get(id=encounter_id)
-            serializer = EncounterSerializer(encounter_obj, many=False, \
-                context={'request': request})
-            return Response(serializer.data)
-        logger.error('encounter content not found.')
-        return Response({"message":"content not found or parameter not match."},status=400)
-
-    def put(self, request, patient_id, encounter_id, format=None):
-        today_date = datetime.now()
-        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
-            encounter_obj=Encounter.objects.select_related('patient').get(id=encounter_id,patient__id=patient_id)
-            serializer = EncounterUpdateSerializer(encounter_obj,data=request.data,\
-                context={'request': request},partial=True)
-
-            obj = ModifyDelete.objects.filter(encounter__id=encounter_id,modify_status='approved',flag='modify')
-            if obj:
-                obj = ModifyDelete.objects.get(encounter__id=encounter_id,modify_status='approved',flag='modify')
-                t = int(relativedelta.relativedelta( datetime.now().replace(tzinfo=utc), obj.modify_approved_at.replace(tzinfo=utc)).days)
-                if t < 7:
-                    if serializer.is_valid():
+                en_obj = Encounter.objects.get(id=encounter_id,patient__id=patient_id)
+                time = int(relativedelta.relativedelta( datetime.now().replace(tzinfo=utc), en_obj.created_at.replace(tzinfo=utc)).hours)
+                if time < 24:
+                    serializer.save()
+                    return Response({"message":"encounter update"},status=200)
+                obj = ModifyDelete.objects.filter(encounter__id=encounter_id,modify_status='approved',flag='modify')
+                if obj:
+                    obj = ModifyDelete.objects.get(encounter__id=encounter_id,modify_status='approved',flag='modify')
+                    t = int(relativedelta.relativedelta( datetime.now().replace(tzinfo=utc), obj.modify_approved_at.replace(tzinfo=utc)).days)
+                    if t < 7:
                         obj.modify_status = "modified"
                         obj.flag = ""
                         obj.save()
@@ -144,9 +148,9 @@ class EncounterUpdateMark(APIView):
                         logger.info("%s %s" %("Encounter update successfully by", request.user.full_name))
                         return Response({"message":"encounter update"},status=200)
                     logger.info(serializer.errors)
-                    return Response({'message':serializer.errors}, status=400)
-                return Response("Modification time has been expired.",status=400)
-            return Response("Modification request not done or admin has not approved the request.",status=400)
+                    return Response("Modification time has been expired.",status=400)
+                return Response("Modification request not done or admin has not approved the request.",status=400)
+            return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
         return Response({"message":"id do not match"},status=400)
 

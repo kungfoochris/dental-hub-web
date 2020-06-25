@@ -1,3 +1,7 @@
+Encounterapp
+=============
+
+
 ==========
 Encounter
 ==========
@@ -307,6 +311,83 @@ PUT:
 - note: TextField()
 - sdf_whole_mouth:BoolenField()
 - updated_at: DateField()
+
+
+
+=============
+ModifyDelete:Mark for deletion
+=============
+1. **URL:**
+::
+
+    Get and Post:api/v1/modifydelete
+
+
+2. **METHOD:**
+POST:
+::
+
+- This Method is used for adding a status to the encounter:
+
+
+**Body_Content**
+
+- encounter: ForeignKey(required)
+- reason_for_modification: TextField()
+- reason_for_deletion: CharField()
+- other_reason_for_deletion: ChoiceField()
+- flag : ChoiceField()
+
+
+**Response**
+
+- For modify
+::
+
+    {
+        "encounter": "26F7939BE14D4D31B1FB25F42824B618",
+        "reason_for_modification": "i just want to",
+        "reason_for_deletion": "accidental_entry",
+        "flag": "modify"
+    }
+
+
+- For delete
+::
+
+    {
+        "encounter": "26F7939BE14D4D31B1FB25F42824B618",
+        "reason_for_deletion": "accidental_entry",
+        "flag": "delete"
+    }
+
+
+**Unsuccessful Responses**
+
+- For Modify
+::
+
+    - if delete request is sent and then user tries to send modification request to that encounter then
+    **Response:**
+    "You have sent delete request so you cannot send modify request."
+
+    -if user has not response to previous modify request i.e. if modify_status is not modified then
+    **Response:**
+    "You cannot send modify request before you response to previous request."
+
+
+- For Delete
+::
+
+    - if delete request is sent and then user again tries to send delete request
+    **Response:**
+    "You already have a delete request sent for this encounter."
+
+    - if user choose reason_for_deletion  "other" and keep other_reason_for_deletion field empty
+    **Response:**
+    "You should enter the field either reason for deletion or other reason for deletion."
+
+
 
 
 

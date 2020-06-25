@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Encounter &#8212; Dental Hub 1.0 documentation</title>
+    <title>Encounterapp &#8212; Dental Hub 1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -33,8 +33,10 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="encounter">
-<h1>Encounter<a class="headerlink" href="#encounter" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="encounterapp">
+<h1>Encounterapp<a class="headerlink" href="#encounterapp" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="encounter">
+<h2>Encounter<a class="headerlink" href="#encounter" title="Permalink to this headline">¶</a></h2>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">patients</span><span class="o">/&lt;</span><span class="n">patient_id</span><span class="o">&gt;/</span><span class="n">encounters</span>
 
@@ -76,7 +78,7 @@ choice field are ({screeing:Checkup/Screeing,pain:Relief of pain,treatment plan:
 </ul>
 </div>
 <div class="section" id="encounter-history">
-<h1>Encounter History<a class="headerlink" href="#encounter-history" title="Permalink to this headline">¶</a></h1>
+<h2>Encounter History<a class="headerlink" href="#encounter-history" title="Permalink to this headline">¶</a></h2>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">history</span>
 <span class="n">Put</span><span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">history</span><span class="o">/</span><span class="n">update</span>
@@ -142,7 +144,7 @@ PUT:</p>
 </ul>
 </div>
 <div class="section" id="encounter-refer">
-<h1>Encounter Refer<a class="headerlink" href="#encounter-refer" title="Permalink to this headline">¶</a></h1>
+<h2>Encounter Refer<a class="headerlink" href="#encounter-refer" title="Permalink to this headline">¶</a></h2>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;</span><span class="n">refer</span>
 <span class="n">Put</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;</span><span class="n">refer</span><span class="o">/</span><span class="n">update</span>
@@ -188,7 +190,7 @@ PUT:</p>
 </ul>
 </div>
 <div class="section" id="encounter-screeing">
-<h1>Encounter Screeing<a class="headerlink" href="#encounter-screeing" title="Permalink to this headline">¶</a></h1>
+<h2>Encounter Screeing<a class="headerlink" href="#encounter-screeing" title="Permalink to this headline">¶</a></h2>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">screening</span>
 <span class="n">Put</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">screening</span><span class="o">/</span><span class="n">update</span>
@@ -274,7 +276,7 @@ choice field are (Low,High,Medium)</p>
 </ul>
 </div>
 <div class="section" id="encounter-treatment">
-<h1>Encounter Treatment<a class="headerlink" href="#encounter-treatment" title="Permalink to this headline">¶</a></h1>
+<h2>Encounter Treatment<a class="headerlink" href="#encounter-treatment" title="Permalink to this headline">¶</a></h2>
 <p>1. <strong>URL:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">treatment</span>
 <span class="n">Put</span> <span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounter</span><span class="o">/&lt;</span><span class="n">encounter_id</span><span class="o">&gt;/</span><span class="n">treatment</span><span class="o">/</span><span class="n">update</span>
@@ -338,6 +340,74 @@ PUT:</p>
 <li>updated_at: DateField()</li>
 </ul>
 </div>
+<div class="section" id="modifydelete-mark-for-deletion">
+<h2>ModifyDelete:Mark for deletion<a class="headerlink" href="#modifydelete-mark-for-deletion" title="Permalink to this headline">¶</a></h2>
+<p>1. <strong>URL:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">modifydelete</span>
+</pre></div>
+</div>
+<p>2. <strong>METHOD:</strong>
+POST:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">status</span> <span class="n">to</span> <span class="n">the</span> <span class="n">encounter</span><span class="p">:</span>
+</pre></div>
+</div>
+<p><strong>Body_Content</strong></p>
+<ul class="simple">
+<li>encounter: ForeignKey(required)</li>
+<li>reason_for_modification: TextField()</li>
+<li>reason_for_deletion: CharField()</li>
+<li>other_reason_for_deletion: ChoiceField()</li>
+<li>flag : ChoiceField()</li>
+</ul>
+<p><strong>Response</strong></p>
+<ul class="simple">
+<li>For modify</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;encounter&quot;</span><span class="p">:</span> <span class="s2">&quot;26F7939BE14D4D31B1FB25F42824B618&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;reason_for_modification&quot;</span><span class="p">:</span> <span class="s2">&quot;i just want to&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;reason_for_deletion&quot;</span><span class="p">:</span> <span class="s2">&quot;accidental_entry&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="s2">&quot;modify&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>For delete</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;encounter&quot;</span><span class="p">:</span> <span class="s2">&quot;26F7939BE14D4D31B1FB25F42824B618&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;reason_for_deletion&quot;</span><span class="p">:</span> <span class="s2">&quot;accidental_entry&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Unsuccessful Responses</strong></p>
+<ul class="simple">
+<li>For Modify</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">delete</span> <span class="n">request</span> <span class="ow">is</span> <span class="n">sent</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">user</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">modification</span> <span class="n">request</span> <span class="n">to</span> <span class="n">that</span> <span class="n">encounter</span> <span class="n">then</span>
+<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
+<span class="s2">&quot;You have sent delete request so you cannot send modify request.&quot;</span>
+
+<span class="o">-</span><span class="k">if</span> <span class="n">user</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">response</span> <span class="n">to</span> <span class="n">previous</span> <span class="n">modify</span> <span class="n">request</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">modify_status</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">modified</span> <span class="n">then</span>
+<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
+<span class="s2">&quot;You cannot send modify request before you response to previous request.&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>For Delete</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">delete</span> <span class="n">request</span> <span class="ow">is</span> <span class="n">sent</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">user</span> <span class="n">again</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">delete</span> <span class="n">request</span>
+<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
+<span class="s2">&quot;You already have a delete request sent for this encounter.&quot;</span>
+
+<span class="o">-</span> <span class="k">if</span> <span class="n">user</span> <span class="n">choose</span> <span class="n">reason_for_deletion</span>  <span class="s2">&quot;other&quot;</span> <span class="ow">and</span> <span class="n">keep</span> <span class="n">other_reason_for_deletion</span> <span class="n">field</span> <span class="n">empty</span>
+<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
+<span class="s2">&quot;You should enter the field either reason for deletion or other reason for deletion.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -365,11 +435,15 @@ PUT:</p>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#updateappuser">UpdateAppuser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#changepassword">ChangePassword</a></li>
 <li class="toctree-l1"><a class="reference internal" href="patientapp.html">View all Patients and Register</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Encounter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#encounter-history">Encounter History</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#encounter-refer">Encounter Refer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#encounter-screeing">Encounter Screeing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Encounterapp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#encounter">Encounter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounter-history">Encounter History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounter-refer">Encounter Refer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounter-screeing">Encounter Screeing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounter-treatment">Encounter Treatment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modifydelete-mark-for-deletion">ModifyDelete:Mark for deletion</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#geography">Geography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitie">Activitie</a></li>
