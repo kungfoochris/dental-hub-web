@@ -20,13 +20,13 @@ class EncounterSerializer(serializers.ModelSerializer):
 	geography_id = serializers.CharField(max_length=250,write_only=True,allow_null=True)
 	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
+	# updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
 	other_problem = serializers.CharField(default="",max_length=150)
 	class Meta:
 		model = Encounter
 		fields = ('id','geography_id','activityarea_id','geography',\
-			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','updated_at','created_at')
-		read_only_fields = ('updated_at',)
+			'activity_area', 'date', 'author','encounter_type','patient','other_problem','created_at','updated_by','updated_at')
+		# read_only_fields = ('updated_at',)
 
 
 class AllEncounterSerializer(serializers.ModelSerializer):

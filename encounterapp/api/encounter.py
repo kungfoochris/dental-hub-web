@@ -68,6 +68,8 @@ class EncounterView(APIView):
                 encounter_obj.author = patient_obj.author
                 encounter_obj.other_problem = serializer.validated_data['other_problem']
                 encounter_obj.created_at = serializer.validated_data['created_at']
+                encounter_obj.updated_by = request.user
+                encounter_obj.updated_at = serializer.validated_data['updated_at']
                 encounter_obj.save()
                 logger.info("%s %s" %("Encounter added successfully by", request.user.full_name))
                 return Response({"message":"Encounter added","id":encounter_obj.id},status=200)
@@ -146,10 +148,15 @@ class EncounterUpdateView(APIView):
                         obj.save()
                         serializer.save()
                         logger.info("%s %s" %("Encounter update successfully by", request.user.full_name))
-                        return Response({"message":"encounter update"},status=200)
-                    logger.info(serializer.errors)
-                    return Response("Modification time has been expired.",status=400)
-                return Response("Modification request not done or admin has not approved the request.",status=400)
+                        return Response({"message":"encounter updated"},status=200)
+                    obj.modify_status = "expired"
+                    obj.flag = ""
+                    obj.save()
+                    logger.info("Encounter modification time expired.")
+                    return Response("Modification time has been expired. Please send a new modification request.",status=400)
+                logger.info("Modification request has not been done or admin has not approved the request.")
+                return Response("Modification request has not been done or admin has not approved the request.",status=400)
+            logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
         return Response({"message":"id do not match"},status=400)

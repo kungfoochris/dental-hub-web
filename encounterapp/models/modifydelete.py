@@ -21,6 +21,7 @@ MODIFY_STATUS = (
     ("pending", _("Pending ")),
     ("approved", _("Approved")),
     ("modified", _("Modified")),
+    ("expired", _("Expired")),
 )
 
 DELETE_STATUS = (

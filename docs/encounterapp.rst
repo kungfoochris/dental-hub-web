@@ -39,7 +39,9 @@ POST:
 POST:
 ::
 
-- This Method is used for updating a encounter for patient:
+- This Method is used for updating a encounter for patient
+- If encounter created time is more than 24 hours, user cannot update encounter directly, for this user has to send modify request
+- After admin approve modify request then user has to modify encounter before 7 days of approval
 
 - encounter_type: ChoiceField(required)
   choice field are ({screeing:Checkup/Screeing,pain:Relief of pain,treatment plan: Continuation of treatment plan,other:Other Problem})
@@ -314,9 +316,9 @@ PUT:
 
 
 
-=============
+=================================
 ModifyDelete:Mark for deletion
-=============
+=================================
 1. **URL:**
 ::
 
@@ -345,21 +347,28 @@ POST:
 ::
 
     {
+    "status": "success",
+    "data": {
         "encounter": "26F7939BE14D4D31B1FB25F42824B618",
         "reason_for_modification": "i just want to",
-        "reason_for_deletion": "accidental_entry",
         "flag": "modify"
-    }
-
+    },
+    "message": "Modify request successfully sent."
+}
 
 - For delete
 ::
 
     {
+    "status": "success",
+    "data": {
         "encounter": "26F7939BE14D4D31B1FB25F42824B618",
         "reason_for_deletion": "accidental_entry",
+        "other_reason_for_deletion": "",
         "flag": "delete"
-    }
+    },
+    "message": "Delete request successfully sent."
+}
 
 
 **Unsuccessful Responses**
@@ -388,7 +397,40 @@ POST:
     "You should enter the field either reason for deletion or other reason for deletion."
 
 
+======================
+EncounterAdminStatus
+======================
+1. **URL:**
+::
 
+    Get and Put:api/v1/encounterstatus
+
+
+2. **METHOD:**
+PUT:
+::
+
+- This Method is used for updating a status to the encounter eg. approving the modify request 
+- it can be done only by admin
+
+
+**Body_Content**
+
+- modify_status: ChoiceField()
+- delete_status: ChoiceField()
+
+
+
+**Response**
+
+- For modify and delete
+::
+
+    {
+        "modify_status": "pending",
+        "delete_status": "",
+
+    }
 
 
 

@@ -34,11 +34,11 @@ class ModifyDeleteDetail(APIView):
                     return Response("You have sent delete request so you cannot send modify request.",status=400)
                 if mod_obj:
                     mod = ModifyDelete.objects.get(encounter__id =serializer.validated_data['encounter'].id,flag='modify')
-                    if mod.modify_status != "modified":
+                    if mod.modify_status != "modified" or mod.modify_status != "expired":
                         return Response("You cannot send modify request before you response to previous request.",status=400)
                 modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
                 modify_delete_obj.modify_status = "pending"
-            
+                
             del_obj = ModifyDelete.objects.filter(flag='delete',encounter__id =serializer.validated_data['encounter'].id)
             if serializer.validated_data['flag'] == "delete":
                 if del_obj:
