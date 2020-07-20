@@ -9,7 +9,8 @@ from userapp.models import User, CustomUser
 from encounterapp.models import Encounter, Refer, History
 from patientapp.models import Patient
 
-from flagapp.serializers.flag import FlagSerializer, FlagUpdateSerializer
+from flagapp.serializers.flag import FlagSerializer, FlagUpdateSerializer,\
+    AllFlagSerializer
 from django.contrib.contenttypes.models import ContentType
 
 from flagapp.models import Flag
@@ -30,8 +31,8 @@ class FlagListView(APIView):
 
 
     def get(self, request, format=None):
-        flag_obj = Flag.objects.all()
-        serializer = FlagSerializer(flag_obj, many=True,\
+        flag_obj = Flag.objects.all().order_by('-created_at')
+        serializer = AllFlagSerializer(flag_obj, many=True,\
         context={'request': request})
         return Response(serializer.data)
 
@@ -39,7 +40,13 @@ class FlagListView(APIView):
         serializer = FlagSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
-            serializer.save(author=request.user)
+            try:
+                content_type = ContentType.objects.get(model=serializer.validated_data['content_type'])
+                content_obj = content_type.get_object_for_this_type(id=serializer.validated_data['object_id'])
+                serializer.save(author=request.user, patient_name=content_obj.full_name)
+            except:
+                return Response("object id do not match")
+
             logger.info("%s %s" %("Flag added successfully by", request.user.full_name))
             return Response(serializer.data)
         logger.info(serializer.errors)
@@ -77,3 +84,20 @@ class FlagUpdateView(APIView):
             return Response({"message":"Flag id already delete"},status=400)
         logger.info("%s %s" %("Flag id does not  exists in encounter section : ", patient_id))
         return Response({"message":"id do not match"},status=400)
+
+    def delete(self, request, flag_id, format=None):
+        if Flag.objects.filter(id=flag_id).exists():
+            flag_obj = Flag.objects.get(id=flag_id)
+            if flag_obj.status == False:
+                try:
+                    content_type = ContentType.objects.get(model=flag_obj.content_type.model)
+                    content_obj = content_type.get_object_for_this_type(id=flag_obj.object_id)
+                    content_obj.delete()
+
+                    flag_obj.status = True
+                    flag_obj.save()
+                    return Response({"message":"Flag delete successfully."}, status=200)
+                except:
+                    return Response({"message":"Sorry could not delete a flag."}, status=200)
+            return Response({"message":"This flag data is already deleted."}, status=400)
+        return Response({'errors': 'Flag id do not match.'}, status=400)

@@ -21,11 +21,13 @@ class EncounterSerializer(serializers.ModelSerializer):
 	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	# updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
-	other_problem = serializers.CharField(default="",max_length=150)
+	other_problem = serializers.CharField(default="", max_length=150)
+	created_at = serializers.DateTimeField()
 	class Meta:
 		model = Encounter
-		fields = ('id','geography_id','activityarea_id','geography',\
-			'activity_area', 'date', 'author','encounter_type','patient','other_problem','created_at','updated_by','updated_at')
+		fields = ('id', 'geography_id', 'activityarea_id', 'geography',\
+			'activity_area', 'date', 'author', 'encounter_type',\
+			'patient', 'other_problem', 'created_at', 'updated_by', 'updated_at')
 		# read_only_fields = ('updated_at',)
 
 
@@ -77,7 +79,7 @@ class EncounterUpdateMarkSerializer(serializers.ModelSerializer):
 class EncounterDeleteMarkSerializer(serializers.ModelSerializer):
 	# reason_for_deletion = serializers.StringRelatedField(many=False)
 	other_reason_for_deletion = serializers.CharField()
-	
+
 	class Meta:
 		model = Encounter
 		fields = ('id','reason_for_deletion','other_reason_for_deletion')

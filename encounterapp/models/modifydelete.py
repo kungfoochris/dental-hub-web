@@ -45,9 +45,8 @@ class ModifyDelete(models.Model):
     delete_status = models.CharField(max_length=100,choices = DELETE_STATUS,default="")
     flag = models.CharField(max_length=100,choices = FLAG)
     modify_approved_at = models.DateTimeField(null=True)
+    author = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 
     # def __str__(self):
     #     return self.encounter.patient__full_name
-
-    
