@@ -49,7 +49,7 @@ class PatientHistoryView(APIView):
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
                 logger.info("%s %s" %("History added successfully by", request.user.full_name))
-                return Response({"message":"encounter added"},status=200)
+                return Response(serializer.data,status=200)
             logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in history section : ", encounter_id))
@@ -78,7 +78,7 @@ class PatientHistoryUpdateView(APIView):
             if serializer.is_valid():
                 serializer.save()
                 logger.info("%s %s" %("History added successfully by", request.user.full_name))
-                return Response({"message":"history encounter update"},status=200)
+                return Response(serializer.data,status=200)
             logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in history section : ", encounter_id))

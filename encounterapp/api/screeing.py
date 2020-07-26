@@ -52,7 +52,7 @@ class PatientScreeingView(APIView):
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
                 logger.info("%s %s" %("Screeing added successfully by ", encounter_id))
-                return Response({"message":"screeing data added successfully"},status=200)
+                return Response(serializer.data,status=200)
             logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in screeing section : ", encounter_id))
@@ -82,7 +82,7 @@ class PatientScreeingUpdateView(APIView):
                 serializer.save()
                 logger.error("Screeing updated successfully.")
                 logger.info("%s %s" %("Screeing update by a", encounter_id))
-                return Response({"message":"screeing encounter update"},status=200)
+                return Response(serializer.data,status=200)
             logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in screeing section : ", encounter_id))

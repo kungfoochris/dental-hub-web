@@ -76,7 +76,7 @@ class PatientTreatmentUpdateView(APIView):
             if serializer.is_valid():
                 serializer.save()
                 logger.info("%s %s" %("Treatment Update successfully by a", encounter_id))
-                return Response({"message":"treatment encounter update"},status=200)
+                return Response(serializer.data,status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in treatment section : ", encounter_id))
