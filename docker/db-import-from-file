@@ -21,7 +21,6 @@ echo "Saving database to temporary file"
   if ! docker-compose exec -T db sh -c "mysql -uroot -p\$MYSQL_ROOT_PASSWORD  \$MYSQL_DATABASE" < "$SQLFILE_FINAL"
   then
     >&2 echo "ERROR:  Unable to import database.sql from within docker image"
-    rm -f "$SQLFILE_FINAL"
     exit 1
   fi
 }

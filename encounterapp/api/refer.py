@@ -78,7 +78,7 @@ class PatientReferUpdateView(APIView):
                 serializer.save()
                 logger.error("Refer updated successfully.")
                 logger.info("%s %s" %("Refer update successfully by", request.user.full_name))
-                return Response({"message":"refer encounter update"},status=200)
+                return Response(serializer.data,status=200)
             logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not match in refer section : ", encounter_id))

@@ -10,7 +10,8 @@ services:
       MYSQL_DATABASE: 'dentalhub_db'
       MYSQL_USER: 'dentalhub'
       MYSQL_PASSWORD: 'dental_password'
-      MYSQL_ROOT_PASSWORD: 'dental_root_password'
+      MYSQL_ROOT_PASSWORD: 'dental_password'
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
 
   redis:
     restart: "always"
@@ -35,7 +36,7 @@ services:
     build:
       context: ./
       dockerfile: docker/backend/backend.Dockerfile
-    command: ["./docker/entry.sh"]
+    # command: ["./docker/entry.sh"]
     restart: "always"
     ports:
       - "6071:6061"
@@ -50,5 +51,5 @@ services:
       DATABASE_HOST: db
       DATABASE_NAME: dentalhub_db
       DATABASE_USER: dentalhub
-      DATABASE_PASSWORD: dental_root_password
+      DATABASE_PASSWORD: dental_password
       DATABASE_PORT: 3306

@@ -23,7 +23,7 @@ class ModifyDeleteDetail(APIView):
         return Response(serializer.data,status=200)
 
     def post(self,request):
-        serializer = ModifyDeleteSerializer(data=request.data)              
+        serializer = ModifyDeleteSerializer(data=request.data)
         if serializer.is_valid():
             modify_delete_obj = ModifyDelete()
             modify_delete_obj.encounter = serializer.validated_data['encounter']
@@ -38,7 +38,7 @@ class ModifyDeleteDetail(APIView):
                         return Response("You cannot send modify request before you response to previous request.",status=400)
                 modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
                 modify_delete_obj.modify_status = "pending"
-                
+
             del_obj = ModifyDelete.objects.filter(flag='delete',encounter__id =serializer.validated_data['encounter'].id)
             if serializer.validated_data['flag'] == "delete":
                 if del_obj:
@@ -50,8 +50,8 @@ class ModifyDeleteDetail(APIView):
                     modify_delete_obj.other_reason_for_deletion = serializer.validated_data['other_reason_for_deletion']
                 else:
                     modify_delete_obj.reason_for_deletion = serializer.validated_data['reason_for_deletion']
-                modify_delete_obj.delete_status = 'pending'    
-            modify_delete_obj.save()
+                modify_delete_obj.delete_status = 'pending'
+            modify_delete_obj.save(author=request.user)
             return Response(serializer.data,status=200)
         return Response(serializer.errors,status=400)
 
@@ -68,18 +68,16 @@ class EncounterAdminStatus(APIView):
     def put(self,request,id):
         mod_obj = ModifyDelete.objects.get(id=id)
         serializer = EncounterAdminStatusSerializer(mod_obj,data=request.data,context={'request': request},partial=True)
-        if request.user.admin:   
+        if request.user.admin:
             if serializer.is_valid():
-                if mod_obj.delete_status == 'pending' and serializer.validated_data['delete_status']=='deleted':  
+                if mod_obj.delete_status == 'pending' and serializer.validated_data['delete_status'] == 'deleted':
                     mod_obj.delete_status = 'deleted'
                     mod_obj.save()
-                    return Response("Encounter deleted successfully.",status=200)
+                    return Response("Encounter deleted successfully.", status=200)
                 if serializer.validated_data['modify_status'] == 'approved':
-                    mod_obj.modify_approved_at = datetime.now() 
+                    mod_obj.modify_approved_at = datetime.now()
                 mod_obj.modify_status = serializer.validated_data['modify_status']
                 mod_obj.save()
-                return Response(serializer.data,status=200)
-            return Response(serializer.errors,status=400)
-        return Response("Only admin can change status.",status=401)
- 
-
+                return Response(serializer.data, status=200)
+            return Response(serializer.errors, status=400)
+        return Response("Only admin can change status.", status=401)
