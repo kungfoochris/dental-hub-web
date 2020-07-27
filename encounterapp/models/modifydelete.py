@@ -48,5 +48,7 @@ class ModifyDelete(models.Model):
     author = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 
-    # def __str__(self):
-    #     return self.encounter.patient__full_name
+    def __str__(self):
+        return self.encounter.patient.full_name
+
+

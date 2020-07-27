@@ -135,4 +135,34 @@ class ScreeingAdmin(admin.ModelAdmin):
 admin.site.register(Screeing, ScreeingAdmin)
 
 
-admin.site.register(ModifyDelete)
+
+
+class ModifyDeleteAdmin(admin.ModelAdmin):
+	list_display = ('id', 'encounter', 'reason_for_modification', 'modify_status',\
+		'reason_for_deletion','other_reason_for_deletion','delete_status','flag','modify_approved_at','author')
+	search_fields = ['id', 'encounter__id']
+
+	def has_add_permission(self, request, obj=None):
+		if request.user.is_superuser:
+			return True
+		return False
+
+	def has_view_permission(self, request, obj=None):
+		if request.user.is_staff or request.user.is_superuser:
+			return True
+
+	def has_delete_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			False
+
+	def has_change_permission(self, request, obj=None):
+		if request.user.is_superuser and request.user.is_staff:
+			return True
+		elif request.user.is_staff:
+			return False
+
+admin.site.register(ModifyDelete, ModifyDeleteAdmin)
+
+
