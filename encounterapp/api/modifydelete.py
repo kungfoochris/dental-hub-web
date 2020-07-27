@@ -26,6 +26,7 @@ class ModifyDeleteDetail(APIView):
         serializer = ModifyDeleteSerializer(data=request.data)
         if serializer.is_valid():
             modify_delete_obj = ModifyDelete()
+            modify_delete_obj.author=request.user
             modify_delete_obj.encounter = serializer.validated_data['encounter']
             mod_obj = ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='modify')
             modify_delete_obj.flag = serializer.validated_data['flag']
@@ -51,7 +52,7 @@ class ModifyDeleteDetail(APIView):
                 else:
                     modify_delete_obj.reason_for_deletion = serializer.validated_data['reason_for_deletion']
                 modify_delete_obj.delete_status = 'pending'
-            modify_delete_obj.save(author=request.user)
+            modify_delete_obj.save()
             return Response(serializer.data,status=200)
         return Response(serializer.errors,status=400)
 
