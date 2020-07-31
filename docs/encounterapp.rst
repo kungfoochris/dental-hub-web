@@ -35,8 +35,9 @@ POST:
 - created_at: DateField(required)
 
 
+
 4. **Put:**
-POST:
+PUT:
 ::
 
 - This Method is used for updating a encounter for patient
@@ -433,6 +434,38 @@ PUT:
     }
 
 
+
+======================
+EncounterFlagDead
+======================
+1. **URL:**
+::
+
+    Put:api/v1/flagdead/<id>
+
+
+2. **METHOD:**
+PUT:
+::
+
+- This Method is used for updating a status to the encounter either after user actually update the encounter or after the modify time is expired [after 7 days of approval of modify request]
+- initially the modify_status has to be approved
+
+
+**Body_Content**
+
+- modify_status: ChoiceField()
+
+
+**Response**
+
+- For modify and delete
+::
+
+    {
+        "modify_status": "modified",
+
+    }
 
 
 

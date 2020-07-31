@@ -38,6 +38,8 @@ class Encounter(models.Model):
     other_problem = models.CharField(max_length=150,default="")
     geography = models.ForeignKey(Ward,on_delete=models.CASCADE,related_name='encounter_geography',null=True)
     updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_encounter')
+    active = models.BooleanField(default=True)
+    request_counter = models.IntegerField(default=0)
     updated_at = models.DateField(null=True)
     created_at = models.DateTimeField(db_index=True)
 

@@ -5,8 +5,11 @@ from patientapp.models import Patient
 from userapp.models import User
 from datetime import datetime, timedelta
 from . encounter import Encounter
-import datetime
+from datetime import datetime, timedelta
 
+
+def default_time():
+    return datetime.now()+timedelta(minutes=5)
 
 
 REASON_FOR_DELETION = (
@@ -20,6 +23,7 @@ REASON_FOR_DELETION = (
 MODIFY_STATUS = (
     ("pending", _("Pending ")),
     ("approved", _("Approved")),
+    ("rejected", _("Rejected")),
     ("modified", _("Modified")),
     ("expired", _("Expired")),
 )
@@ -46,6 +50,10 @@ class ModifyDelete(models.Model):
     flag = models.CharField(max_length=100,choices = FLAG)
     modify_approved_at = models.DateTimeField(null=True)
     author = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    modify_expiry_date = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True)
+    restore_expiry_date = models.DateTimeField(null=True)
+    
 
 
     def __str__(self):

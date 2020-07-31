@@ -42,7 +42,7 @@ class AllEncounterSerializer(serializers.ModelSerializer):
 	treatment = PatientTreatmentSerializer(read_only=True,many=False)
 	class Meta:
 		model = Encounter
-		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_problem', 'created_at', 'updated_by','updated_at', 'history','screening','treatment','referral')
+		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_problem', 'created_at', 'updated_by','updated_at', 'history','screening','treatment','referral','active','request_counter')
 
 
 
