@@ -45,5 +45,4 @@ class Encounter(models.Model):
 
 
     def __str__(self):
-        return self.patient.full_name
-
+        return "%s, %s" %(self.patient.full_name,self.encounter_type)

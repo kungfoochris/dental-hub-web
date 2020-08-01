@@ -5,7 +5,7 @@ from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateVie
 from encounterapp.api.encounter import EncounterView, EncounterUpdateView
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
-from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus,EncounterFlagDead,EncounterRestore
+from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus,EncounterFlagDead,EncounterRestore,Recyclebin,CheckRestoreExpiry,CheckModifyExpiry
 
 
 
@@ -23,6 +23,10 @@ urlpatterns = [
 	path('modifydelete', ModifyDeleteDetail.as_view()),
 	path('encounterstatus/<id>', EncounterAdminStatus.as_view()),
 	path('flagdead/<id>', EncounterFlagDead.as_view()),
-	path('encounterrestore/<id>', EncounterRestore.as_view()),
+	path('encounterrestore/<encounter_id>', EncounterRestore.as_view()),
+	path('recyclebin', Recyclebin.as_view()),
+	path('checkmodifyexpiry', CheckModifyExpiry.as_view()),
+	path('checkrestoreexpiry', CheckRestoreExpiry.as_view()),
+	
 
     ]

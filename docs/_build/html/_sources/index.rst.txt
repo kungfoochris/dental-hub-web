@@ -15,6 +15,7 @@ Welcome to Dental Hub's documentation!
    patientapp
    encounterapp
    addressapp
+   modifydelete
 
 Indices and tables
 ==================
