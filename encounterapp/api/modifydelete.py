@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from encounterapp.models.modifydelete import ModifyDelete
 from encounterapp.models.encounter import Encounter
+from encounterapp.serializers.encounter import AllEncounterSerializer
 from encounterapp.serializers.modifydelete import ModifyDeleteSerializer,EncounterAdminStatusSerializer,ModifyDeleteListSerializer,EncounterFlagDeadSerializer
 from datetime import datetime, timedelta
 
@@ -39,6 +40,8 @@ class ModifyDeleteDetail(APIView):
                 if ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='delete') or ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='modify'):
                     return Response("You already have a request sent.",status=400)
                 if serializer.validated_data['flag'] == "modify":
+                    if serializer.validated_data['reason_for_modification'] == "":
+                        return Response("Please enter reason for modification",status=400)
                     modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
                     modify_delete_obj.modify_status = "pending"
 
@@ -120,7 +123,7 @@ class EncounterAdminStatus(APIView):
                 if mod_obj.modify_status == 'pending':
                     if serializer.validated_data['modify_status'] == 'approved':
                         mod_obj.modify_approved_at = datetime.now()
-                        mod_obj.modify_expiry_date = datetime.now()+timedelta(days=7)
+                        mod_obj.modify_expiry_date = datetime.now()+timedelta(minutes=1)
                         mod_obj.modify_status = 'approved'
                         mod_obj.save()
 
@@ -153,7 +156,7 @@ class EncounterFlagDead(APIView):
                     mod_obj.flag = ''
                     mod_obj.save()
                     return Response("Encounter modified successfully.", status=200)
-            return Response("Nothing done.", status=200)
+            return Response("Nothing done.", status=400)
         return Response(serializer.errors, status=400)
 
 
@@ -161,50 +164,65 @@ class EncounterFlagDead(APIView):
 class EncounterRestore(APIView):
     permission_classes = (IsPostOrIsAuthenticated ,)
 
-    def get(self,request,id):
-        mod_obj = ModifyDelete.objects.get(id=id,delete_status='deleted',author=request.user)
-        serializer = ModifyDeleteListSerializer(mod_obj,context={"request":request})
-        return Response(serializer.data,status=200)
-
-    def put(self,request,id):
-        mod_obj = ModifyDelete.objects.filter(id=id,delete_status='deleted',author=request.user)
-        # serializer = EncounterAdminStatusSerializer(mod_obj,data=request.data,context={'request': request},partial=True)
+    def put(self,request,encounter_id):
+        mod_obj = ModifyDelete.objects.filter(encounter=encounter_id,delete_status='deleted',author=request.user)
         if mod_obj:
-            mod_obj = ModifyDelete.objects.get(id=id,delete_status='deleted',author=request.user)
+            mod_obj = ModifyDelete.objects.get(encounter=encounter_id,delete_status='deleted',author=request.user)
             if datetime.now().timestamp() < mod_obj.restore_expiry_date.timestamp():
                 mod_obj.delete_status = ''
                 mod_obj.flag = ''
                 mod_obj.save()
 
-                encounter_obj = Encounter.objects.get(id=mod_obj.encounter.id)
+                encounter_obj = Encounter.objects.get(id=encounter_id)
                 encounter_obj.active = True
                 encounter_obj.save()
                 return Response('Encounter restored successfully.', status=200)
             return Response("Restoration time expired.",status=400)
-        return Response("No encounter deleted found.", status=401)
+        return Response("This encounter is not deleted yet.", status=400)
 
 
 
-class CheckExpiryDate(APIView):
+class CheckModifyExpiry(APIView):
     permission_classes = (IsPostOrIsAuthenticated ,)
-    serializer_class = EncounterFlagDeadSerializer
 
-    def put(self,request,id):
-        mod_obj = ModifyDelete.objects.get(id=id)
-        serializer = EncounterFlagDeadSerializer(mod_obj,data=request.data,context={'request': request},partial=True)
-        if serializer.is_valid():
-            if mod_obj.modify_status == 'approved':
-                if serializer.validated_data['modify_status'] == 'modified':
-                    mod_obj.modify_status = 'modified'
-                    mod_obj.flag = ''
-                    mod_obj.save()
-                    return Response("Encounter modified successfully.", status=200)
-                if serializer.validated_data['modify_status'] == 'expired':
-                    mod_obj.modify_status = 'expired'
-                    mod_obj.flag = ''
-                    mod_obj.save()
-                    return Response("Encounter modified successfully.", status=200)
-            return Response("Nothing done.", status=200)
-        return Response(serializer.errors, status=400)
+    def post(self,request):
+        mod_obj = ModifyDelete.objects.filter(modify_status='approved')
+        if mod_obj:
+            for i in mod_obj:
+                if datetime.now().timestamp() > i.modify_expiry_date.timestamp():
+                    i.modify_status = 'expired'
+                    i.flag = ''
+                    i.save()
+            return Response('All the encounter flags with modify date expired are killed',status=200)
+        return Response("No encounter deleted found.", status=400)
+
+
+class CheckRestoreExpiry(APIView):
+    permission_classes = (IsPostOrIsAuthenticated ,)
+
+    def post(self,request):
+        mod_obj = ModifyDelete.objects.filter(delete_status='deleted')
+        if mod_obj:
+            for i in mod_obj:
+                if datetime.now().timestamp() > i.restore_expiry_date.timestamp():
+                    encounter_obj = Encounter.objects.get(id=i.encounter.id)
+                    encounter_obj.delete()
+            return Response('All the encounter with restoration date expired are removed from recycle bin',status=200)
+        return Response("No encounter deleted found.", status=400)
+
+
+
+class Recyclebin(APIView):
+    permission_classes = (IsPostOrIsAuthenticated ,)
+    serializer_class = AllEncounterSerializer
+
+    def get(self,request):
+        encounter_obj = Encounter.objects.filter(active=False)
+        serializer = AllEncounterSerializer(encounter_obj,many=True,context={"request":request})
+        return Response(serializer.data,status=200)
+
+
+
+
 
 

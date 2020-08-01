@@ -65,7 +65,7 @@ POST:</p>
 <li>created_at: DateField(required)</li>
 </ul>
 <p>4. <strong>Put:</strong>
-POST:</p>
+PUT:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">updating</span> <span class="n">a</span> <span class="n">encounter</span> <span class="k">for</span> <span class="n">patient</span>
 <span class="o">-</span> <span class="n">If</span> <span class="n">encounter</span> <span class="n">created</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">24</span> <span class="n">hours</span><span class="p">,</span> <span class="n">user</span> <span class="n">cannot</span> <span class="n">update</span> <span class="n">encounter</span> <span class="n">directly</span><span class="p">,</span> <span class="k">for</span> <span class="n">this</span> <span class="n">user</span> <span class="n">has</span> <span class="n">to</span> <span class="n">send</span> <span class="n">modify</span> <span class="n">request</span>
 <span class="o">-</span> <span class="n">After</span> <span class="n">admin</span> <span class="n">approve</span> <span class="n">modify</span> <span class="n">request</span> <span class="n">then</span> <span class="n">user</span> <span class="n">has</span> <span class="n">to</span> <span class="n">modify</span> <span class="n">encounter</span> <span class="n">before</span> <span class="mi">7</span> <span class="n">days</span> <span class="n">of</span> <span class="n">approval</span>
@@ -342,110 +342,6 @@ PUT:</p>
 <li>updated_at: DateField()</li>
 </ul>
 </div>
-<div class="section" id="modifydelete-mark-for-deletion">
-<h2>ModifyDelete:Mark for deletion<a class="headerlink" href="#modifydelete-mark-for-deletion" title="Permalink to this headline">¶</a></h2>
-<p>1. <strong>URL:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Post</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">modifydelete</span>
-</pre></div>
-</div>
-<p>2. <strong>METHOD:</strong>
-POST:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">status</span> <span class="n">to</span> <span class="n">the</span> <span class="n">encounter</span><span class="p">:</span>
-</pre></div>
-</div>
-<p><strong>Body_Content</strong></p>
-<ul class="simple">
-<li>encounter: ForeignKey(required)</li>
-<li>reason_for_modification: TextField()</li>
-<li>reason_for_deletion: CharField()</li>
-<li>other_reason_for_deletion: ChoiceField()</li>
-<li>flag : ChoiceField()</li>
-</ul>
-<p><strong>Response</strong></p>
-<ul class="simple">
-<li>For modify</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-<span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;encounter&quot;</span><span class="p">:</span> <span class="s2">&quot;26F7939BE14D4D31B1FB25F42824B618&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;reason_for_modification&quot;</span><span class="p">:</span> <span class="s2">&quot;i just want to&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="s2">&quot;modify&quot;</span>
-<span class="p">},</span>
-<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Modify request successfully sent.&quot;</span>
-</pre></div>
-</div>
-<p>}</p>
-<ul class="simple">
-<li>For delete</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-<span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;encounter&quot;</span><span class="p">:</span> <span class="s2">&quot;26F7939BE14D4D31B1FB25F42824B618&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;reason_for_deletion&quot;</span><span class="p">:</span> <span class="s2">&quot;accidental_entry&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;other_reason_for_deletion&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span>
-<span class="p">},</span>
-<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Delete request successfully sent.&quot;</span>
-</pre></div>
-</div>
-<p>}</p>
-<p><strong>Unsuccessful Responses</strong></p>
-<ul class="simple">
-<li>For Modify</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">delete</span> <span class="n">request</span> <span class="ow">is</span> <span class="n">sent</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">user</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">modification</span> <span class="n">request</span> <span class="n">to</span> <span class="n">that</span> <span class="n">encounter</span> <span class="n">then</span>
-<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You have sent delete request so you cannot send modify request.&quot;</span>
-
-<span class="o">-</span><span class="k">if</span> <span class="n">user</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">response</span> <span class="n">to</span> <span class="n">previous</span> <span class="n">modify</span> <span class="n">request</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">modify_status</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">modified</span> <span class="n">then</span>
-<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You cannot send modify request before you response to previous request.&quot;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li>For Delete</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">delete</span> <span class="n">request</span> <span class="ow">is</span> <span class="n">sent</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">user</span> <span class="n">again</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">delete</span> <span class="n">request</span>
-<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You already have a delete request sent for this encounter.&quot;</span>
-
-<span class="o">-</span> <span class="k">if</span> <span class="n">user</span> <span class="n">choose</span> <span class="n">reason_for_deletion</span>  <span class="s2">&quot;other&quot;</span> <span class="ow">and</span> <span class="n">keep</span> <span class="n">other_reason_for_deletion</span> <span class="n">field</span> <span class="n">empty</span>
-<span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You should enter the field either reason for deletion or other reason for deletion.&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="encounteradminstatus">
-<h2>EncounterAdminStatus<a class="headerlink" href="#encounteradminstatus" title="Permalink to this headline">¶</a></h2>
-<p>1. <strong>URL:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="ow">and</span> <span class="n">Put</span><span class="p">:</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">encounterstatus</span>
-</pre></div>
-</div>
-<p>2. <strong>METHOD:</strong>
-PUT:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">This</span> <span class="n">Method</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">updating</span> <span class="n">a</span> <span class="n">status</span> <span class="n">to</span> <span class="n">the</span> <span class="n">encounter</span> <span class="n">eg</span><span class="o">.</span> <span class="n">approving</span> <span class="n">the</span> <span class="n">modify</span> <span class="n">request</span>
-<span class="o">-</span> <span class="n">it</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">only</span> <span class="n">by</span> <span class="n">admin</span>
-</pre></div>
-</div>
-<p><strong>Body_Content</strong></p>
-<ul class="simple">
-<li>modify_status: ChoiceField()</li>
-<li>delete_status: ChoiceField()</li>
-</ul>
-<p><strong>Response</strong></p>
-<ul class="simple">
-<li>For modify and delete</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;modify_status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;delete_status&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
 </div>
 
 
@@ -480,8 +376,6 @@ PUT:</p>
 <li class="toctree-l2"><a class="reference internal" href="#encounter-refer">Encounter Refer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#encounter-screeing">Encounter Screeing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#encounter-treatment">Encounter Treatment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#modifydelete-mark-for-deletion">ModifyDelete:Mark for deletion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#encounteradminstatus">EncounterAdminStatus</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html">Address</a></li>
