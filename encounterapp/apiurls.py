@@ -5,7 +5,8 @@ from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateVie
 from encounterapp.api.encounter import EncounterView, EncounterUpdateView
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
-from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus,EncounterFlagDead,EncounterRestore
+from encounterapp.api.modifydelete import ModifyDeleteDetail,\
+	EncounterAdminStatus, EncounterFlagDead, EncounterRestore
 
 
 

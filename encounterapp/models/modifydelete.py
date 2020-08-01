@@ -31,6 +31,7 @@ MODIFY_STATUS = (
 DELETE_STATUS = (
     ("pending", _("Pending ")),
     ("deleted", _("Deleted")),
+    ("rejected", _("Rejected")),
 )
 
 FLAG = (
@@ -53,10 +54,8 @@ class ModifyDelete(models.Model):
     modify_expiry_date = models.DateTimeField(null=True)
     deleted_at = models.DateTimeField(null=True)
     restore_expiry_date = models.DateTimeField(null=True)
-    
+
 
 
     def __str__(self):
         return self.encounter.patient.full_name
-
-
