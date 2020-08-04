@@ -165,8 +165,9 @@ class EncounterFlagDead(APIView):
                     mod_obj.modify_status = 'modified'
                     mod_obj.flag = ''
                     mod_obj.save()
-                    return Response("Encounter modified successfully.", status=200)
-            return Response("Nothing done.", status=400)
+                    return Response("Encounter modified successfully and flag killed.", status=200)
+                return Response("Only modify status equals to modified can kill tha flag.",status=400)
+            return Response(" modify status most be approved before killing flag.", status=400)
         return Response(serializer.errors, status=400)
 
 

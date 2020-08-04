@@ -146,11 +146,25 @@ PUT:
 
 ::
 
-    {
-        "modify_status": "modified",
 
+- if success i.e. if you pass modify_status='modified' from form
+    {
+        
+        "Encounter modified successfully and flag killed.",
+    }
+ 
+ - if fails: i.e. if you pass modify_status other than 'modified'
+    {
+        
+        "Only modify status equals to modified can kill tha flag."
     }
 
+
+ - if fails: i.e. if initially the modify_status is not equals to 'approved'
+    {
+        
+        " modify status most be approved before killing flag."
+    }
 
 
 ======================
