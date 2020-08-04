@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Address" href="addressapp.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -151,12 +152,39 @@ PUT:</p>
 <li>modify_status: ChoiceField()</li>
 </ul>
 <p><strong>Response</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;modify_status&quot;</span><span class="p">:</span> <span class="s2">&quot;modified&quot;</span><span class="p">,</span>
-
-<span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">success</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">modify_status</span><span class="o">=</span><span class="s1">&#39;modified&#39;</span> <span class="kn">from</span> <span class="nn">form</span>
 </pre></div>
 </div>
+<blockquote>
+<div><blockquote>
+<div><p>{</p>
+<blockquote>
+<div>“Encounter modified successfully and flag killed.”,</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt>if fails: i.e. if you pass modify_status other than ‘modified’</dt>
+<dd><p class="first">{</p>
+<blockquote>
+<div><p>“Only modify status equals to modified can kill tha flag.”</p>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>if fails: i.e. if initially the modify_status is not equals to ‘approved’</dt>
+<dd><p class="first">{</p>
+<blockquote>
+<div><p>” modify status most be approved before killing flag.”</p>
+</div></blockquote>
+<p class="last">}</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="encounter-restore">
 <h2>Encounter Restore<a class="headerlink" href="#encounter-restore" title="Permalink to this headline">¶</a></h2>
@@ -284,7 +312,7 @@ POST:</p>
 
 <h3>Navigation</h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="userapp.html">View all Appser and Register</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#forgetpassword">ForgetPassword</a></li>
 <li class="toctree-l1"><a class="reference internal" href="userapp.html#resetpassword">ResetPassword</a></li>
@@ -298,12 +326,23 @@ POST:</p>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitie">Activitie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#activitiearea">ActivitieArea</a></li>
 <li class="toctree-l1"><a class="reference internal" href="addressapp.html#recall">Recall</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mark For deletion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modifydelete-mark-for-deletion">ModifyDelete:Mark for deletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounteradminstatus">EncounterAdminStatus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounterflagdead">EncounterFlagDead</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encounter-restore">Encounter Restore</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recyclebin">Recyclebin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-modify-expiry">Check Modify Expiry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-restore-expiry">Check Restore Expiry</a></li>
+</ul>
+</li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="addressapp.html" title="previous chapter">Address</a></li>
   </ul></li>
 </ul>
 </div>
