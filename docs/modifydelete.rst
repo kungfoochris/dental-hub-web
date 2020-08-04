@@ -65,11 +65,11 @@ POST:
 
     - if delete request is sent and then user tries to send modification request to that encounter then
     **Response:**
-    "You have sent delete request so you cannot send modify request."
+    "message":"You have sent delete request so you cannot send modify request."
 
     -if user has not response to previous modify request i.e. if modify_status is not modified then
     **Response:**
-    "You cannot send modify request before you response to previous request."
+    "message":"You cannot send modify request before you response to previous request."
 
 
 - For Delete
@@ -77,11 +77,11 @@ POST:
 
     - if delete request is sent and then user again tries to send delete request
     **Response:**
-    "You already have a delete request sent for this encounter."
+    "message":"You already have a delete request sent for this encounter."
 
     - if user choose reason_for_deletion  "other" and keep other_reason_for_deletion field empty
     **Response:**
-    "You should enter the field either reason for deletion or other reason for deletion."
+    "message":"You should enter the field either reason for deletion or other reason for deletion."
 
 
 ======================
@@ -112,11 +112,42 @@ PUT:
 
 ::
 
-    {
-        "modify_status": "pending",
-        "delete_status": "",
 
-    }
+    -if initially  delete_status is pending and you pass delete_status='deleted'
+        {
+            "message":"Encounter deleted successfully."
+        }
+
+
+
+    -if initially  delete_status is pending and you pass delete_status='rejected'
+        {
+            "message":"Flag Delete request is rejected."
+        }
+
+
+
+    -if initially  modify_status is pending and you pass modify_status='approved'
+        {
+            "message":"Modification request approved."
+        }
+
+
+    -if initially  modify_status is pending and you pass modify_status='rejected'
+        {
+            "message":"Modification request rejected."
+        }
+
+
+
+    -if initially neither  modify_status is pending nor delete_status is 
+        {
+            "message":"Neither modify nor delete action performed"
+        }
+
+
+
+
 
 
 
@@ -147,24 +178,24 @@ PUT:
 ::
 
 
-- if success i.e. if you pass modify_status='modified' from form
-    {
-        
-        "Encounter modified successfully and flag killed.",
-    }
- 
- - if fails: i.e. if you pass modify_status other than 'modified'
-    {
-        
-        "Only modify status equals to modified can kill tha flag."
-    }
+    - if success i.e. if you pass modify_status='modified' from form
+        {
+            
+            "message":"Encounter modified successfully and flag killed.",
+        }
+    
+    - if fails: i.e. if you pass modify_status other than 'modified'
+        {
+            
+            "message":"Only modify status equals to modified can kill tha flag."
+        }
 
 
- - if fails: i.e. if initially the modify_status is not equals to 'approved'
-    {
-        
-        " modify status most be approved before killing flag."
-    }
+    - if fails: i.e. if initially the modify_status is not equals to 'approved'
+        {
+            
+            "message":" modify status most be approved before killing flag."
+        }
 
 
 ======================
@@ -192,12 +223,38 @@ PUT:
 
 ::
 
+    - if deleted encounter exists and flag with that encounter id and delete_status='deleted' and flag author is the login user
+
     {
-        'Encounter restored successfully.'
+        'messsage':'Encounter restored successfully.'
 
     }
 
+    - if restoration time is expired
+    {
+        'message':"Restoration time expired."
 
+    }
+
+    - if flag doesnt exists
+     {
+        'message':"flag doesn't exists."
+
+    }
+
+    - if no encounter is found with that entered encounter id
+    {
+        'message':"No encounter deleted found."
+    }
+
+
+
+
+
+return Response({'messsage':'Encounter restored successfully.'}, status=200)
+                return Response({'message':"Restoration time expired."}, status=400)
+            return Response({"message":"flag doesn't exists"},status=400)
+        return Response({'message':"No encounter deleted found."}, status=400)
 
 
 
@@ -301,7 +358,7 @@ POST:
 ::
 
     {
-        'All the encounter with restoration date expired are removed from recycle bin'
+        'message':'All the encounter with restoration date expired are removed from recycle bin'
 
     }
 
