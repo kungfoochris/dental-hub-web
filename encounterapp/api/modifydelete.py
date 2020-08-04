@@ -35,20 +35,20 @@ class ModifyDeleteDetail(APIView):
             if encounter_obj:
                 encounter_obj = Encounter.objects.get(id=serializer.validated_data['encounter'].id)
                 if encounter_obj.active == False:
-                    return Response("This encounter has already been deleted.", status=400)
+                    return Response({"message":"This encounter has already been deleted."}, status=400)
                 if encounter_obj.request_counter >= 3:
-                    return Response("You already have requested 3 times for modify or delete for this counter.",status=400)
+                    return Response({"message":"You already have requested 3 times for modify or delete for this counter."},status=400)
                 if ModifyDelete.objects.filter(encounter__id = serializer.validated_data['encounter'].id,flag='delete') or ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='modify'):
-                    return Response("You already have a request sent.", status=400)
+                    return Response({"message":"You already have a request sent."}, status=400)
                 if serializer.validated_data['flag'] == "modify":
                     if serializer.validated_data['reason_for_modification'] == "":
-                        return Response("Please enter reason for modification",status=400)
+                        return Response({"message":"Please enter reason for modification"},status=400)
                     modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
                     modify_delete_obj.modify_status = "pending"
 
                 if serializer.validated_data['flag'] == "delete":
                     if serializer.validated_data['reason_for_deletion'] == "other" and serializer.validated_data['other_reason_for_deletion'] =="":
-                        return Response("You should enter the field either reason for deletion or other reason for deletion.",status=400)
+                        return Response({"message":"You should enter the field either reason for deletion or other reason for deletion."},status=400)
                     if serializer.validated_data['reason_for_deletion'] == "other":
                         modify_delete_obj.other_reason_for_deletion = serializer.validated_data['other_reason_for_deletion']
                     modify_delete_obj.reason_for_deletion = serializer.validated_data['reason_for_deletion']
@@ -58,7 +58,7 @@ class ModifyDeleteDetail(APIView):
                 modify_delete_obj.flag = serializer.validated_data['flag']
                 modify_delete_obj.save()
                 return Response(serializer.data,status=200)
-            return Response("Encounter doesn't exists.",status=400)
+            return Response({"message":"Encounter doesn't exists."},status=400)
         return Response(serializer.errors,status=400)
 
     # def post(self,request):
@@ -128,7 +128,7 @@ class EncounterAdminStatus(APIView):
                     if mod_obj.delete_status == 'pending' and serializer.validated_data['delete_status'] == 'rejected':
                         mod_obj.delete_status = 'rejected'
                         mod_obj.save()
-                        return Response({"message":"Flag Delete action is rejected."}, status=200)
+                        return Response({"message":"Flag Delete request is rejected."}, status=200)
                     if mod_obj.modify_status == 'pending':
                         if serializer.validated_data['modify_status'] == 'approved':
                             mod_obj.modify_approved_at = datetime.now()
@@ -144,7 +144,7 @@ class EncounterAdminStatus(APIView):
                             mod_obj.modify_status = 'rejected'
                             mod_obj.save()
                             return Response({"message": "Modification request rejected."}, status=200)
-                    return Response({"message":"Nothing done."}, status=200)
+                    return Response({"message":"Neither modify nor delete action performed"}, status=200)
                 return Response(serializer.errors, status=400)
             return Response({"message":"Only admin can change status."}, status=401)
         return Response({"message":"Flag id do not match."}, status=400)
@@ -165,9 +165,9 @@ class EncounterFlagDead(APIView):
                     mod_obj.modify_status = 'modified'
                     mod_obj.flag = ''
                     mod_obj.save()
-                    return Response("Encounter modified successfully and flag killed.", status=200)
-                return Response("Only modify status equals to modified can kill tha flag.",status=400)
-            return Response(" modify status most be approved before killing flag.", status=400)
+                    return Response({"message":"Encounter modified successfully and flag killed."}, status=200)
+                return Response({"message":"Only modify status equals to modified can kill tha flag."},status=400)
+            return Response({"message": "modify status most be approved before killing flag."}, status=400)
         return Response(serializer.errors, status=400)
 
 
@@ -175,26 +175,24 @@ class EncounterFlagDead(APIView):
 class EncounterRestore(APIView):
     permission_classes = (IsPostOrIsAuthenticated ,)
 
-    def get(self, request, id):
-        mod_obj = ModifyDelete.objects.get(id=id, delete_status='deleted', author=request.user)
-        serializer = ModifyDeleteListSerializer(mod_obj, context={"request":request})
-        return Response(serializer.data,status=200)
+    def put(self, request,encounter_id):
+        encounter_obj = Encounter.objects.filter(id=encounter_id, active=False)
+        if encounter_obj:
+            mod_obj = ModifyDelete.objects.filter(encounter=encounter_id, delete_status='deleted', author=request.user)
+            if mod_obj:
+                mod_obj = ModifyDelete.objects.get(encounter=encounter_id, delete_status='deleted', author=request.user)
+                if datetime.now().timestamp() < mod_obj.restore_expiry_date.timestamp():
+                    mod_obj.delete_status = ''
+                    mod_obj.flag = ''
+                    mod_obj.save()
 
-    def put(self, request,id):
-        mod_obj = ModifyDelete.objects.filter(id=id, delete_status='deleted', author=request.user)
-        if mod_obj:
-            mod_obj = ModifyDelete.objects.get(id=id, delete_status='deleted', author=request.user)
-            if datetime.now().timestamp() < mod_obj.restore_expiry_date.timestamp():
-                mod_obj.delete_status = ''
-                mod_obj.flag = ''
-                mod_obj.save()
-
-                encounter_obj = Encounter.objects.get(id=encounter_id)
-                encounter_obj.active = True
-                encounter_obj.save()
-                return Response('Encounter restored successfully.', status=200)
-            return Response("Restoration time expired.", status=400)
-        return Response("No encounter deleted found.", status=401)
+                    encounter_obj = Encounter.objects.get(id=encounter_id)
+                    encounter_obj.active = True
+                    encounter_obj.save()
+                    return Response({'messsage':'Encounter restored successfully.'}, status=200)
+                return Response({'message':"Restoration time expired."}, status=400)
+            return Response({"message":"flag doesn't exists"},status=400)
+        return Response({'message':"No encounter deleted found."}, status=400)
 
 
 
@@ -209,8 +207,8 @@ class CheckModifyExpiry(APIView):
                     i.modify_status = 'expired'
                     i.flag = ''
                     i.save()
-            return Response('All the encounter flags with modify date expired are killed',status=200)
-        return Response("No encounter deleted found.", status=400)
+            return Response({'message':'All the encounter flags with modify date expired are killed'},status=200)
+        return Response({"message":"No encounter deleted found."}, status=400)
 
 
 class CheckRestoreExpiry(APIView):
@@ -223,8 +221,8 @@ class CheckRestoreExpiry(APIView):
                 if datetime.now().timestamp() > i.restore_expiry_date.timestamp():
                     encounter_obj = Encounter.objects.get(id=i.encounter.id)
                     encounter_obj.delete()
-            return Response('All the encounter with restoration date expired are removed from recycle bin',status=200)
-        return Response("No encounter deleted found.", status=400)
+            return Response({'message':'All the encounter with restoration date expired are removed from recycle bin'},status=200)
+        return Response({"message":"No encounter deleted found."}, status=400)
 
 
 

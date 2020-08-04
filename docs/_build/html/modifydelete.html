@@ -89,11 +89,11 @@ POST:</p>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">delete</span> <span class="n">request</span> <span class="ow">is</span> <span class="n">sent</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">user</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">modification</span> <span class="n">request</span> <span class="n">to</span> <span class="n">that</span> <span class="n">encounter</span> <span class="n">then</span>
 <span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You have sent delete request so you cannot send modify request.&quot;</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;You have sent delete request so you cannot send modify request.&quot;</span>
 
 <span class="o">-</span><span class="k">if</span> <span class="n">user</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">response</span> <span class="n">to</span> <span class="n">previous</span> <span class="n">modify</span> <span class="n">request</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">modify_status</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">modified</span> <span class="n">then</span>
 <span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You cannot send modify request before you response to previous request.&quot;</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;You cannot send modify request before you response to previous request.&quot;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -101,11 +101,11 @@ POST:</p>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">delete</span> <span class="n">request</span> <span class="ow">is</span> <span class="n">sent</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">user</span> <span class="n">again</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">delete</span> <span class="n">request</span>
 <span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You already have a delete request sent for this encounter.&quot;</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;You already have a delete request sent for this encounter.&quot;</span>
 
 <span class="o">-</span> <span class="k">if</span> <span class="n">user</span> <span class="n">choose</span> <span class="n">reason_for_deletion</span>  <span class="s2">&quot;other&quot;</span> <span class="ow">and</span> <span class="n">keep</span> <span class="n">other_reason_for_deletion</span> <span class="n">field</span> <span class="n">empty</span>
 <span class="o">**</span><span class="n">Response</span><span class="p">:</span><span class="o">**</span>
-<span class="s2">&quot;You should enter the field either reason for deletion or other reason for deletion.&quot;</span>
+<span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;You should enter the field either reason for deletion or other reason for deletion.&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -127,11 +127,37 @@ PUT:</p>
 <li>delete_status: ChoiceField()</li>
 </ul>
 <p><strong>Response</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;modify_status&quot;</span><span class="p">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;delete_status&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="k">if</span> <span class="n">initially</span>  <span class="n">delete_status</span> <span class="ow">is</span> <span class="n">pending</span> <span class="ow">and</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">delete_status</span><span class="o">=</span><span class="s1">&#39;deleted&#39;</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Encounter deleted successfully.&quot;</span>
+    <span class="p">}</span>
 
-<span class="p">}</span>
+
+
+<span class="o">-</span><span class="k">if</span> <span class="n">initially</span>  <span class="n">delete_status</span> <span class="ow">is</span> <span class="n">pending</span> <span class="ow">and</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">delete_status</span><span class="o">=</span><span class="s1">&#39;rejected&#39;</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Flag Delete request is rejected.&quot;</span>
+    <span class="p">}</span>
+
+
+
+<span class="o">-</span><span class="k">if</span> <span class="n">initially</span>  <span class="n">modify_status</span> <span class="ow">is</span> <span class="n">pending</span> <span class="ow">and</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">modify_status</span><span class="o">=</span><span class="s1">&#39;approved&#39;</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Modification request approved.&quot;</span>
+    <span class="p">}</span>
+
+
+<span class="o">-</span><span class="k">if</span> <span class="n">initially</span>  <span class="n">modify_status</span> <span class="ow">is</span> <span class="n">pending</span> <span class="ow">and</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">modify_status</span><span class="o">=</span><span class="s1">&#39;rejected&#39;</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Modification request rejected.&quot;</span>
+    <span class="p">}</span>
+
+
+
+<span class="o">-</span><span class="k">if</span> <span class="n">initially</span> <span class="n">neither</span>  <span class="n">modify_status</span> <span class="ow">is</span> <span class="n">pending</span> <span class="n">nor</span> <span class="n">delete_status</span> <span class="ow">is</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Neither modify nor delete action performed&quot;</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -153,38 +179,25 @@ PUT:</p>
 </ul>
 <p><strong>Response</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">success</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">modify_status</span><span class="o">=</span><span class="s1">&#39;modified&#39;</span> <span class="kn">from</span> <span class="nn">form</span>
+    <span class="p">{</span>
+
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Encounter modified successfully and flag killed.&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="o">-</span> <span class="k">if</span> <span class="n">fails</span><span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">you</span> <span class="k">pass</span> <span class="n">modify_status</span> <span class="n">other</span> <span class="n">than</span> <span class="s1">&#39;modified&#39;</span>
+    <span class="p">{</span>
+
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Only modify status equals to modified can kill tha flag.&quot;</span>
+    <span class="p">}</span>
+
+
+<span class="o">-</span> <span class="k">if</span> <span class="n">fails</span><span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="k">if</span> <span class="n">initially</span> <span class="n">the</span> <span class="n">modify_status</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">equals</span> <span class="n">to</span> <span class="s1">&#39;approved&#39;</span>
+    <span class="p">{</span>
+
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot; modify status most be approved before killing flag.&quot;</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
-<blockquote>
-<div><blockquote>
-<div><p>{</p>
-<blockquote>
-<div>“Encounter modified successfully and flag killed.”,</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<ul>
-<li><dl class="first docutils">
-<dt>if fails: i.e. if you pass modify_status other than ‘modified’</dt>
-<dd><p class="first">{</p>
-<blockquote>
-<div><p>“Only modify status equals to modified can kill tha flag.”</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>if fails: i.e. if initially the modify_status is not equals to ‘approved’</dt>
-<dd><p class="first">{</p>
-<blockquote>
-<div><p>” modify status most be approved before killing flag.”</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-</li>
-</ul>
-</div></blockquote>
 </div>
 <div class="section" id="encounter-restore">
 <h2>Encounter Restore<a class="headerlink" href="#encounter-restore" title="Permalink to this headline">¶</a></h2>
@@ -202,12 +215,41 @@ PUT:</p>
 <li>No parameters required</li>
 </ul>
 <p><strong>Response</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;Encounter restored successfully.&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">deleted</span> <span class="n">encounter</span> <span class="n">exists</span> <span class="ow">and</span> <span class="n">flag</span> <span class="k">with</span> <span class="n">that</span> <span class="n">encounter</span> <span class="nb">id</span> <span class="ow">and</span> <span class="n">delete_status</span><span class="o">=</span><span class="s1">&#39;deleted&#39;</span> <span class="ow">and</span> <span class="n">flag</span> <span class="n">author</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">login</span> <span class="n">user</span>
 
+<span class="p">{</span>
+    <span class="s1">&#39;messsage&#39;</span><span class="p">:</span><span class="s1">&#39;Encounter restored successfully.&#39;</span>
+
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="k">if</span> <span class="n">restoration</span> <span class="n">time</span> <span class="ow">is</span> <span class="n">expired</span>
+<span class="p">{</span>
+    <span class="s1">&#39;message&#39;</span><span class="p">:</span><span class="s2">&quot;Restoration time expired.&quot;</span>
+
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="k">if</span> <span class="n">flag</span> <span class="n">doesnt</span> <span class="n">exists</span>
+ <span class="p">{</span>
+    <span class="s1">&#39;message&#39;</span><span class="p">:</span><span class="s2">&quot;flag doesn&#39;t exists.&quot;</span>
+
+<span class="p">}</span>
+
+<span class="o">-</span> <span class="k">if</span> <span class="n">no</span> <span class="n">encounter</span> <span class="ow">is</span> <span class="n">found</span> <span class="k">with</span> <span class="n">that</span> <span class="n">entered</span> <span class="n">encounter</span> <span class="nb">id</span>
+<span class="p">{</span>
+    <span class="s1">&#39;message&#39;</span><span class="p">:</span><span class="s2">&quot;No encounter deleted found.&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+<dl class="docutils">
+<dt>return Response({‘messsage’:’Encounter restored successfully.’}, status=200)</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div>return Response({‘message’:”Restoration time expired.”}, status=400)</div></blockquote>
+<p>return Response({“message”:”flag doesn’t exists”},status=400)</p>
+</div></blockquote>
+<p class="last">return Response({‘message’:”No encounter deleted found.”}, status=400)</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="recyclebin">
 <h2>Recyclebin<a class="headerlink" href="#recyclebin" title="Permalink to this headline">¶</a></h2>
@@ -286,7 +328,7 @@ POST:</p>
 </ul>
 <p><strong>Response</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s1">&#39;All the encounter with restoration date expired are removed from recycle bin&#39;</span>
+    <span class="s1">&#39;message&#39;</span><span class="p">:</span><span class="s1">&#39;All the encounter with restoration date expired are removed from recycle bin&#39;</span>
 
 <span class="p">}</span>
 </pre></div>
