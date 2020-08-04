@@ -127,6 +127,7 @@ class EncounterAdminStatus(APIView):
                         return Response({"message":"Encounter deleted successfully."}, status=200)
                     if mod_obj.delete_status == 'pending' and serializer.validated_data['delete_status'] == 'rejected':
                         mod_obj.delete_status = 'rejected'
+                        mod_obj.flag = ''
                         mod_obj.save()
                         return Response({"message":"Flag Delete request is rejected."}, status=200)
                     if mod_obj.modify_status == 'pending':
@@ -142,6 +143,7 @@ class EncounterAdminStatus(APIView):
                             return Response({"message":"Modification request approved."}, status=200)
                         if serializer.validated_data['modify_status'] == 'rejected':
                             mod_obj.modify_status = 'rejected'
+                            mod_obj.flag = ''
                             mod_obj.save()
                             return Response({"message": "Modification request rejected."}, status=200)
                     return Response({"message":"Neither modify nor delete action performed"}, status=200)
@@ -197,9 +199,8 @@ class EncounterRestore(APIView):
 
 
 class CheckModifyExpiry(APIView):
-    permission_classes = (IsPostOrIsAuthenticated ,)
 
-    def post(self,request):
+    def get(self,request):
         mod_obj = ModifyDelete.objects.filter(modify_status='approved')
         if mod_obj:
             for i in mod_obj:
@@ -212,9 +213,8 @@ class CheckModifyExpiry(APIView):
 
 
 class CheckRestoreExpiry(APIView):
-    permission_classes = (IsPostOrIsAuthenticated ,)
 
-    def post(self,request):
+    def get(self,request):
         mod_obj = ModifyDelete.objects.filter(delete_status='deleted')
         if mod_obj:
             for i in mod_obj:
