@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from encounterapp.models.modifydelete import ModifyDelete
 from encounterapp.models.encounter import Encounter
+from visualizationapp.models import Visualization
 from encounterapp.serializers.encounter import AllEncounterSerializer
 from encounterapp.serializers.modifydelete import ModifyDeleteSerializer,EncounterAdminStatusSerializer,ModifyDeleteListSerializer,EncounterFlagDeadSerializer
 from datetime import datetime, timedelta
@@ -123,13 +124,17 @@ class EncounterAdminStatus(APIView):
                         encounter_obj = Encounter.objects.get(id=mod_obj.encounter.id)
                         encounter_obj.active = False
                         encounter_obj.request_counter += 1
+                        visual_obj = Visualization.objects.filter(encounter_id=encounter_obj.id)
+                        if visual_obj:
+                            visual_obj = Visualization.objects.get(encounter_id=encounter_obj.id)
+                            visual_obj.delete()
                         encounter_obj.save()
                         return Response({"message":"Encounter deleted successfully."}, status=200)
                     if mod_obj.delete_status == 'pending' and serializer.validated_data['delete_status'] == 'rejected':
                         mod_obj.delete_status = 'rejected'
                         mod_obj.flag = ''
                         mod_obj.save()
-                        return Response({"message":"Flag Delete request is rejected."}, status=200)
+                        return Response({"message":"Encounter delete request is rejected."}, status=200)
                     if mod_obj.modify_status == 'pending':
                         if serializer.validated_data['modify_status'] == 'approved':
                             mod_obj.modify_approved_at = datetime.now()
@@ -139,6 +144,11 @@ class EncounterAdminStatus(APIView):
 
                             encounter_obj = Encounter.objects.get(id=mod_obj.encounter.id)
                             encounter_obj.request_counter += 1
+
+                            visual_obj = Visualization.objects.filter(encounter_id=encounter_obj.id)
+                            if visual_obj:
+                                visual_obj = Visualization.objects.get(encounter_id=encounter_obj.id)
+                                visual_obj.delete()
                             encounter_obj.save()
                             return Response({"message":"Modification request approved."}, status=200)
                         if serializer.validated_data['modify_status'] == 'rejected':
@@ -190,6 +200,10 @@ class EncounterRestore(APIView):
 
                     encounter_obj = Encounter.objects.get(id=encounter_id)
                     encounter_obj.active = True
+                    visual_obj = Visualization.objects.filter(encounter_id=encounter_obj.id)
+                    if visual_obj:
+                        visual_obj = Visualization.objects.get(encounter_id=encounter_obj.id)
+                        visual_obj.delete()
                     encounter_obj.save()
                     return Response({'messsage':'Encounter restored successfully.'}, status=200)
                 return Response({'message':"Restoration time expired."}, status=400)
