@@ -52,37 +52,48 @@ POST:</p>
 <li>reason_for_deletion: CharField()</li>
 <li>other_reason_for_deletion: ChoiceField()</li>
 <li>flag : ChoiceField()</li>
+<li>if success:</li>
 </ul>
 <p><strong>Response</strong></p>
-<ul class="simple">
-<li>For modify</li>
-</ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-<span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;encounter&quot;</span><span class="p">:</span> <span class="s2">&quot;26F7939BE14D4D31B1FB25F42824B618&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;reason_for_modification&quot;</span><span class="p">:</span> <span class="s2">&quot;i just want to&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="s2">&quot;modify&quot;</span>
-<span class="p">},</span>
-<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Modify request successfully sent.&quot;</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Your request sent successfully.&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>}</p>
 <ul class="simple">
-<li>For delete</li>
+<li>if fails:</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
-<span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;encounter&quot;</span><span class="p">:</span> <span class="s2">&quot;26F7939BE14D4D31B1FB25F42824B618&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;reason_for_deletion&quot;</span><span class="p">:</span> <span class="s2">&quot;accidental_entry&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;other_reason_for_deletion&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="s2">&quot;delete&quot;</span>
-<span class="p">},</span>
-<span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Delete request successfully sent.&quot;</span>
+<p><strong>Response</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="k">if</span> <span class="n">user</span> <span class="n">tries</span> <span class="n">to</span> <span class="n">send</span> <span class="n">request</span> <span class="k">for</span> <span class="n">encounter</span> <span class="n">that</span> <span class="n">doesn</span><span class="s1">&#39;t exists</span>
+<span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Encounter doesn&#39;t exists.&quot;</span>
+<span class="p">}</span>
+<span class="o">-</span> <span class="k">if</span> <span class="n">active</span><span class="o">=</span><span class="kc">False</span> <span class="ow">in</span> <span class="n">encounter</span>
+<span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;This encounter has already been deleted.&quot;</span>
+<span class="p">}</span>
+
+ <span class="o">-</span> <span class="k">if</span> <span class="n">modify</span> <span class="n">delete</span> <span class="n">request</span> <span class="n">has</span> <span class="n">already</span> <span class="n">been</span> <span class="n">sent</span> <span class="mi">3</span> <span class="n">times</span>
+<span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Your request limit already reached.&quot;</span>
+<span class="p">}</span>
+
+ <span class="o">-</span> <span class="k">if</span> <span class="n">currently</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;modify&#39;</span> <span class="ow">or</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span>
+<span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;You already have a request sent.&quot;</span>
+<span class="p">}</span>
+
+ <span class="o">-</span> <span class="k">if</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;modify&#39;</span> <span class="n">chosen</span> <span class="ow">and</span> <span class="n">field</span> <span class="n">reason_for_modification</span> <span class="n">left</span> <span class="n">empty</span>
+<span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Please enter reason for modification.&quot;</span>
+<span class="p">}</span>
+
+ <span class="o">-</span> <span class="k">if</span> <span class="n">flag</span><span class="o">=</span><span class="s1">&#39;delete&#39;</span> <span class="n">chosen</span> <span class="ow">and</span> <span class="n">reason_for_deletion</span><span class="o">=</span><span class="s1">&#39;other&#39;</span> <span class="n">but</span> <span class="n">left</span> <span class="n">other_reason_for_deletion</span> <span class="n">empty</span>
+<span class="p">{</span>
+    <span class="s2">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;You should enter the field either reason for deletion or other reason for deletion.&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>}</p>
 <p><strong>Unsuccessful Responses</strong></p>
 <ul class="simple">
 <li>For Modify</li>

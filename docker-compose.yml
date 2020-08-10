@@ -39,7 +39,7 @@ services:
     # command: ["./docker/entry.sh"]
     restart: "always"
     ports:
-      - "6071:6061"
+      - "6061:6061"
     volumes:
       - .:/code
     depends_on:

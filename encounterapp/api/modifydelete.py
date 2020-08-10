@@ -38,17 +38,17 @@ class ModifyDeleteDetail(APIView):
                 if encounter_obj.active == False:
                     return Response({"message":"This encounter has already been deleted."}, status=400)
                 if encounter_obj.request_counter >= 3:
-                    return Response({"message":"You already have requested 3 times for modify or delete for this counter."},status=400)
+                    return Response({"message":"Your request limit already reached."},status=400)
                 if ModifyDelete.objects.filter(encounter__id = serializer.validated_data['encounter'].id,flag='delete') or ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='modify'):
                     return Response({"message":"You already have a request sent."}, status=400)
                 if serializer.validated_data['flag'] == "modify":
-                    if serializer.validated_data['reason_for_modification'] == "":
-                        return Response({"message":"Please enter reason for modification"},status=400)
+                    if serializer.validated_data['reason_for_modification'] == None:
+                        return Response({"message":"Please enter reason for modification."},status=400)
                     modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
                     modify_delete_obj.modify_status = "pending"
 
                 if serializer.validated_data['flag'] == "delete":
-                    if serializer.validated_data['reason_for_deletion'] == "other" and serializer.validated_data['other_reason_for_deletion'] =="":
+                    if serializer.validated_data['reason_for_deletion'] == "other" and serializer.validated_data['other_reason_for_deletion'] == None:
                         return Response({"message":"You should enter the field either reason for deletion or other reason for deletion."},status=400)
                     if serializer.validated_data['reason_for_deletion'] == "other":
                         modify_delete_obj.other_reason_for_deletion = serializer.validated_data['other_reason_for_deletion']
@@ -58,43 +58,9 @@ class ModifyDeleteDetail(APIView):
                 modify_delete_obj.encounter = serializer.validated_data['encounter']
                 modify_delete_obj.flag = serializer.validated_data['flag']
                 modify_delete_obj.save()
-                return Response(serializer.data,status=200)
+                return Response({"message":"Your request sent successfully."},status=200)
             return Response({"message":"Encounter doesn't exists."},status=400)
         return Response(serializer.errors,status=400)
-
-    # def post(self,request):
-    #     serializer = ModifyDeleteSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         modify_delete_obj = ModifyDelete()
-    #         modify_delete_obj.author=request.user
-    #         modify_delete_obj.encounter = serializer.validated_data['encounter']
-    #         mod_obj = ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='modify')
-    #         modify_delete_obj.flag = serializer.validated_data['flag']
-    #         if serializer.validated_data['flag'] == "modify":
-    #             if ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='delete'):
-    #                 return Response("You have sent delete request so you cannot send modify request.",status=400)
-    #             if mod_obj:
-    #                 mod = ModifyDelete.objects.get(encounter__id =serializer.validated_data['encounter'].id,flag='modify')
-    #                 if mod.modify_status != "modified" or mod.modify_status != "expired":
-    #                     return Response("You cannot send modify request before you response to previous request.",status=400)
-    #             modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
-    #             modify_delete_obj.modify_status = "pending"
-
-    #         del_obj = ModifyDelete.objects.filter(flag='delete',encounter__id =serializer.validated_data['encounter'].id)
-    #         if serializer.validated_data['flag'] == "delete":
-    #             if del_obj:
-    #                 return Response("You already have a delete request sent for this encounter.",status=400)
-    #             if serializer.validated_data['reason_for_deletion'] == "other" and serializer.validated_data['other_reason_for_deletion'] =="":
-    #                 return Response("You should enter the field either reason for deletion or other reason for deletion.",status=400)
-    #             if serializer.validated_data['reason_for_deletion'] == "other":
-    #                 modify_delete_obj.reason_for_deletion = serializer.validated_data['reason_for_deletion']
-    #                 modify_delete_obj.other_reason_for_deletion = serializer.validated_data['other_reason_for_deletion']
-    #             else:
-    #                 modify_delete_obj.reason_for_deletion = serializer.validated_data['reason_for_deletion']
-    #             modify_delete_obj.delete_status = 'pending'
-    #         modify_delete_obj.save()
-    #         return Response(serializer.data,status=200)
-    #     return Response(serializer.errors,status=400)
 
 
 class EncounterAdminStatus(APIView):

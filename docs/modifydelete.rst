@@ -2,7 +2,6 @@ Mark For deletion
 ====================
 
 
-
 =================================
 ModifyDelete:Mark for deletion
 =================================
@@ -28,35 +27,52 @@ POST:
 - flag : ChoiceField()
 
 
+
+
+- if success:
 **Response**
-
-- For modify
 ::
 
     {
-    "status": "success",
-    "data": {
-        "encounter": "26F7939BE14D4D31B1FB25F42824B618",
-        "reason_for_modification": "i just want to",
-        "flag": "modify"
-    },
-    "message": "Modify request successfully sent."
-}
-
-- For delete
+        "message":"Your request sent successfully."
+    }
+    
+    
+- if fails:
+**Response**
 ::
+    
 
+    - if user tries to send request for encounter that doesn't exists
     {
-    "status": "success",
-    "data": {
-        "encounter": "26F7939BE14D4D31B1FB25F42824B618",
-        "reason_for_deletion": "accidental_entry",
-        "other_reason_for_deletion": "",
-        "flag": "delete"
-    },
-    "message": "Delete request successfully sent."
-}
+        "message":"Encounter doesn't exists."
+    }
+    - if active=False in encounter
+    {
+        "message":"This encounter has already been deleted."   
+    }
 
+     - if modify delete request has already been sent 3 times
+    {
+        "message":"Your request limit already reached."
+    }
+
+     - if currently flag='modify' or flag='delete'
+    {
+        "message":"You already have a request sent."
+    }
+
+     - if flag='modify' chosen and field reason_for_modification left empty
+    {
+        "message":"Please enter reason for modification." 
+    }
+
+     - if flag='delete' chosen and reason_for_deletion='other' but left other_reason_for_deletion empty
+    {
+        "message":"You should enter the field either reason for deletion or other reason for deletion." 
+    }
+
+   
 
 **Unsuccessful Responses**
 
