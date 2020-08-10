@@ -134,7 +134,7 @@ DATABASES = {
         'USER': os.environ.get('DATABASE_USER', 'dentalhub'),
         'HOST': os.environ.get('DATABASE_HOST', 'db'),
         'PORT': os.environ.get('DATABASE_PORT', 3306),
-        'PASSWORD':os.environ.get('POSTGRES_PASSWORD','dental_password'),
+        'PASSWORD':os.environ.get('POSTGRES_PASSWORD', 'dental_password'),
     }
 }
 
@@ -185,14 +185,14 @@ USE_L10N = True
 USE_TZ = True
 
 REST_FRAMEWORK = {
-'DEFAULT_PERMISSION_CLASSES': (
+    'DEFAULT_PERMISSION_CLASSES': (
         # 'rest_framework.permissions.IsAuthenticated',
         ),
-'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    'rest_framework.authentication.SessionAuthentication',
-    'rest_framework.authentication.BasicAuthentication',
-    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        ),
 }
 
 JWT_AUTH = {
