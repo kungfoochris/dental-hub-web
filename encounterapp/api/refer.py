@@ -45,7 +45,7 @@ class PatientReferView(APIView):
             encounter_obj = Encounter.objects.get(id=encounter_id)
             if Refer.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 logger.info("%s %s" %("Encounter already exists in refer section : ", encounter_id))
-                return Response({"message":"encounter id is already exists."},status=400)
+                return Response({"message":"encounter id is already exists."},status=409)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
                 logger.info("%s %s" %("Refer added successfully by", request.user.full_name))
