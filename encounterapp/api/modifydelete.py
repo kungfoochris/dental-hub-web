@@ -23,7 +23,7 @@ class ModifyDeleteDetail(APIView):
     serializer_class = ModifyDeleteSerializer
 
     def get(self, request):
-        modify_delete_obj = ModifyDelete.objects.all().order_by("-id")
+        modify_delete_obj = ModifyDelete.objects.filter(author=request.user).order_by("-id")
         serializer = ModifyDeleteListSerializer(modify_delete_obj,\
             many=True, context={"request":request})
         return Response(serializer.data, status=200)
