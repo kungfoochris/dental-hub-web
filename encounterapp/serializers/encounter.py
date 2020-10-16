@@ -20,13 +20,15 @@ class EncounterSerializer(serializers.ModelSerializer):
 	geography_id = serializers.CharField(max_length=250,write_only=True,allow_null=True)
 	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
 	patient = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
-	updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
-	other_problem = serializers.CharField(default="",max_length=150)
+	# updated_by = serializers.PrimaryKeyRelatedField(read_only=True)
+	other_problem = serializers.CharField(default="", max_length=150)
+	created_at = serializers.DateTimeField()
 	class Meta:
 		model = Encounter
-		fields = ('id','geography_id','activityarea_id','geography',\
-			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','updated_at','created_at')
-		read_only_fields = ('updated_at',)
+		fields = ('id', 'geography_id', 'activityarea_id', 'geography',\
+			'activity_area', 'date', 'author', 'encounter_type',\
+			'patient', 'other_problem', 'created_at', 'updated_by', 'updated_at')
+		# read_only_fields = ('updated_at',)
 
 
 class AllEncounterSerializer(serializers.ModelSerializer):
@@ -40,7 +42,7 @@ class AllEncounterSerializer(serializers.ModelSerializer):
 	treatment = PatientTreatmentSerializer(read_only=True,many=False)
 	class Meta:
 		model = Encounter
-		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_problem', 'created_at', 'updated_by','updated_at', 'history','screening','treatment','referral')
+		fields = ('id','geography','activity_area','patient','author','date','encounter_type', 'other_problem', 'created_at', 'updated_by','updated_at', 'history','screening','treatment','referral','active','request_counter')
 
 
 
@@ -56,3 +58,28 @@ class EncounterUpdateSerializer(serializers.ModelSerializer):
 		model = Encounter
 		fields = ('id','geography',\
 			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','updated_at')
+
+
+
+class EncounterUpdateMarkSerializer(serializers.ModelSerializer):
+	activity_area = serializers.StringRelatedField(many=False,read_only=True)
+	geography = serializers.StringRelatedField(many=False,read_only=True)
+	author = serializers.PrimaryKeyRelatedField(many=False,read_only=True)
+	patient = serializers.StringRelatedField(many=False,read_only=True)
+	updated_by = AuthorField(many=False)
+	modify_status = serializers.StringRelatedField(many=False,read_only=True)
+	delete_status = serializers.StringRelatedField(many=False,read_only=True)
+
+	class Meta:
+		model = Encounter
+		fields = ('id','geography',\
+			'activity_area', 'date', 'author','encounter_type','patient','other_problem','updated_by','reason_for_modification','modify_status','delete_status','reason_for_deletion','other_reason_for_deletion','updated_at')
+
+
+class EncounterDeleteMarkSerializer(serializers.ModelSerializer):
+	# reason_for_deletion = serializers.StringRelatedField(many=False)
+	other_reason_for_deletion = serializers.CharField()
+
+	class Meta:
+		model = Encounter
+		fields = ('id','reason_for_deletion','other_reason_for_deletion')

@@ -23,44 +23,47 @@ def keygenerator():
 
 
 class Visualization(models.Model):
-    id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
-    patiend_id = models.CharField(max_length=60,db_index=True)
-    patient_name = models.CharField(max_length=100,default="")
-    encounter_id = models.CharField(max_length=60,unique=True,db_index=True)
+    id = models.CharField(max_length=200,\
+        primary_key=True, default=keygenerator, editable=False)
+    patiend_id = models.CharField(max_length=60, db_index=True)
+    patient_name = models.CharField(max_length=100, default="")
+    encounter_id = models.CharField(max_length=60, unique=True, db_index=True)
     age = models.IntegerField(db_index=True)
-    gender = models.CharField(max_length=60,db_index=True)
-    activities_id = models.CharField(max_length=60,db_index=True, null=True)
-    activity_name = models.CharField(max_length=100,default="")
-    geography_id = models.CharField(max_length=60,db_index=True,default="")
-    geography_name = models.CharField(max_length=100,default="")
-    exo = models.BooleanField(default=False,db_index=True)
-    art = models.BooleanField(default=False,db_index=True)
-    seal = models.BooleanField(default=False,db_index=True)
-    sdf = models.BooleanField(default=False,db_index=True)
-    fv = models.BooleanField(default=False,db_index=True)
-    refer_hp = models.BooleanField(default=False,db_index=True)
-    refer_hyg = models.BooleanField(default=False,db_index=True)
-    refer_dent = models.BooleanField(default=False,db_index=True)
-    refer_dr = models.BooleanField(default=False,db_index=True)
-    refer_other = models.BooleanField(default=False,db_index=True)
-    carries_risk = models.CharField(max_length=60,default="",db_index=True)
-    decayed_primary_teeth = models.BooleanField(default=False,db_index=True)
-    decayed_permanent_teeth = models.BooleanField(default=False,db_index=True)
-    cavity_permanent_posterior_teeth = models.BooleanField(default=False,db_index=True)
-    cavity_permanent_anterior_teeth = models.BooleanField(default=False,db_index=True)
-    active_infection = models.BooleanField(default=False,db_index=True)
-    reversible_pulpitis = models.BooleanField(default=False,db_index=True)
-    need_art_filling = models.BooleanField(default=False,db_index=True)
-    need_extraction = models.BooleanField(_('need extraction'),default=False,db_index=True)
-    need_sdf = models.BooleanField(default=False,db_index=True)
-    created_at = models.DateField(null=True,blank=True,db_index=True)
-    sdf_whole_mouth = models.BooleanField(default=False,db_index=True)
-    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),default=0,db_index=True)
-    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),default=0,db_index=True)
-    need_sealant = models.BooleanField(default=False,db_index=True)
-    reason_for_visit  = models.CharField(max_length=60,default="",db_index=True)
-    referral_type  = models.CharField(max_length=60,default="",db_index=True)
-    author = models.CharField(max_length=60,default="")
+    gender = models.CharField(max_length=60, db_index=True)
+    activities_id = models.CharField(max_length=60, db_index=True, null=True)
+    activity_name = models.CharField(max_length=100, default="")
+    geography_id = models.CharField(max_length=60, db_index=True, default="")
+    geography_name = models.CharField(max_length=100, default="")
+    exo = models.BooleanField(default=False, db_index=True)
+    art = models.BooleanField(default=False, db_index=True)
+    seal = models.BooleanField(default=False, db_index=True)
+    sdf = models.BooleanField(default=False, db_index=True)
+    fv = models.BooleanField(default=False, db_index=True)
+    refer_hp = models.BooleanField(default=False, db_index=True)
+    refer_hyg = models.BooleanField(default=False, db_index=True)
+    refer_dent = models.BooleanField(default=False, db_index=True)
+    refer_dr = models.BooleanField(default=False, db_index=True)
+    refer_other = models.BooleanField(default=False, db_index=True)
+    carries_risk = models.CharField(max_length=60, default="", db_index=True)
+    decayed_primary_teeth = models.BooleanField(default=False, db_index=True)
+    decayed_permanent_teeth = models.BooleanField(default=False, db_index=True)
+    cavity_permanent_posterior_teeth = models.BooleanField(default=False, db_index=True)
+    cavity_permanent_anterior_teeth = models.BooleanField(default=False, db_index=True)
+    active_infection = models.BooleanField(default=False, db_index=True)
+    reversible_pulpitis = models.BooleanField(default=False, db_index=True)
+    need_art_filling = models.BooleanField(default=False, db_index=True)
+    need_extraction = models.BooleanField(_('need extraction'), default=False, db_index=True)
+    need_sdf = models.BooleanField(default=False, db_index=True)
+    created_at = models.DateField(null=True, blank=True, db_index=True)
+    sdf_whole_mouth = models.BooleanField(default=False, db_index=True)
+    decayed_primary_teeth_number = models.PositiveIntegerField(_('decayed primary teeth'),\
+        default=0, db_index=True)
+    decayed_permanent_teeth_number = models.PositiveIntegerField(_('decayed permanent teeth'),\
+        default=0, db_index=True)
+    need_sealant = models.BooleanField(default=False, db_index=True)
+    reason_for_visit = models.CharField(max_length=60, default="", db_index=True)
+    referral_type = models.CharField(max_length=60, default="", db_index=True)
+    author = models.CharField(max_length=60, default="")
 
     # class Meta:
     #     indexes = [
@@ -74,10 +77,13 @@ def create_encounter(sender, **kwargs):
     if Encounter.objects.filter(id=kwargs['instance'].id):
         encounter_obj = Encounter.objects.get(id=kwargs['instance'].id)
         visualization_obj = Visualization()
+        if Visualization.objects.filter(encounter_id=encounter_obj.id):
+            print("visualization for this encounter is already exists.")
+            visualization_obj = Visualization.objects.get(encounter_id=encounter_obj.id)
         visualization_obj.patiend_id = encounter_obj.patient.id
         visualization_obj.patient_name = encounter_obj.patient.full_name
-        visualization_obj.encounter_id = kwargs['instance'].id
         visualization_obj.gender = encounter_obj.patient.gender
+        visualization_obj.encounter_id = kwargs['instance'].id
         dob = encounter_obj.patient.dob
         visualization_obj.age = today.npYear() - dob.year - ((today.npMonth(), today.npDay()) < (dob.month, dob.day))
         if encounter_obj.activity_area:
@@ -92,7 +98,7 @@ def create_encounter(sender, **kwargs):
         visualization_obj.save()
     # if kwargs['created']:
 
-post_save.connect(create_encounter,sender=Encounter)
+post_save.connect(create_encounter, sender=Encounter)
 
 def create_screeing(sender, **kwargs):
     if Visualization.objects.filter(encounter_id=kwargs['instance'].encounter_id.id):

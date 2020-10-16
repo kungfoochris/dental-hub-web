@@ -45,7 +45,7 @@ class PatientReferView(APIView):
             encounter_obj = Encounter.objects.get(id=encounter_id)
             if Refer.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 logger.info("%s %s" %("Encounter already exists in refer section : ", encounter_id))
-                return Response({"message":"encounter id is already exists."},status=400)
+                return Response({"message":"encounter id is already exists."},status=409)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
                 logger.info("%s %s" %("Refer added successfully by", request.user.full_name))
@@ -78,7 +78,7 @@ class PatientReferUpdateView(APIView):
                 serializer.save()
                 logger.error("Refer updated successfully.")
                 logger.info("%s %s" %("Refer update successfully by", request.user.full_name))
-                return Response({"message":"refer encounter update"},status=200)
+                return Response(serializer.data,status=200)
             logger.info(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not match in refer section : ", encounter_id))

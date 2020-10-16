@@ -39,14 +39,15 @@ def keygenerator():
 class Flag(models.Model):
     id = models.CharField(max_length=200, primary_key=True, default=keygenerator, editable=False)
     created_at = models.DateField(db_index=True)
-    updated_at = models.DateField(db_index=True,null=True,blank=True)
+    updated_at = models.DateField(db_index=True, null=True, blank=True)
     status = models.BooleanField(default=False)
-    reason = models.CharField(choices=ACTION_CHOICES, default="Blank",max_length=50)
-    other = models.CharField(max_length=250,default="")
+    reason = models.CharField(choices=ACTION_CHOICES, default="Blank", max_length=50)
+    other = models.CharField(max_length=250, default="")
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.CharField(max_length=200)
     content_object = GenericForeignKey()
-    author = models.ForeignKey(User,on_delete=models.CASCADE, related_name="flag_author")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="flag_author")
+    patient_name = models.CharField(max_length=120,default="")
 
     def clean(self):
         if self.reason == 'Other' and self.other == "":

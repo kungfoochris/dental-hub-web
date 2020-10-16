@@ -45,7 +45,7 @@ class PatientTreatmentView(APIView):
             encounter_obj = Encounter.objects.get(id=encounter_id)
             if Treatment.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 logger.info("%s %s" %("Encounter already exists in treatment section : ", encounter_id))
-                return Response({"message":"encounter id is already exists."},status=400)
+                return Response({"message":"encounter id is already exists."},status=409)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
                 logger.info("%s %s" %("Treatment added successfully by", encounter_id))
@@ -76,7 +76,7 @@ class PatientTreatmentUpdateView(APIView):
             if serializer.is_valid():
                 serializer.save()
                 logger.info("%s %s" %("Treatment Update successfully by a", encounter_id))
-                return Response({"message":"treatment encounter update"},status=200)
+                return Response(serializer.data,status=200)
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in treatment section : ", encounter_id))

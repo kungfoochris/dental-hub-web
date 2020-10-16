@@ -1,3 +1,7 @@
+Encounterapp
+=============
+
+
 ==========
 Encounter
 ==========
@@ -31,11 +35,14 @@ POST:
 - created_at: DateField(required)
 
 
+
 4. **Put:**
-POST:
+PUT:
 ::
 
-- This Method is used for updating a encounter for patient:
+- This Method is used for updating a encounter for patient
+- If encounter created time is more than 24 hours, user cannot update encounter directly, for this user has to send modify request
+- After admin approve modify request then user has to modify encounter before 7 days of approval
 
 - encounter_type: ChoiceField(required)
   choice field are ({screeing:Checkup/Screeing,pain:Relief of pain,treatment plan: Continuation of treatment plan,other:Other Problem})
@@ -307,9 +314,4 @@ PUT:
 - note: TextField()
 - sdf_whole_mouth:BoolenField()
 - updated_at: DateField()
-
-
-
-
-
 
