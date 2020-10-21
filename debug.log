@@ -2196,3 +2196,900 @@ AttributeError: 'method_descriptor' object has no attribute 'today'
 2020-10-18 19:00:36,026 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1315
 2020-10-18 19:00:36,099 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1317
 2020-10-18 19:00:36,269 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1315
+2020-10-21 16:40:57,859 django.server INFO     "GET /seed HTTP/1.1" 200 8
+2020-10-21 16:40:58,507 django.request WARNING  Not Found: /favicon.ico
+2020-10-21 16:40:58,509 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-10-21 16:41:03,838 django.request WARNING  Not Found: /admin
+2020-10-21 16:41:03,842 django.server WARNING  "GET /admin HTTP/1.1" 404 3365
+2020-10-21 16:41:12,214 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-10-21 16:41:12,478 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-10-21 16:41:12,666 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2020-10-21 16:41:12,797 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2020-10-21 16:41:12,798 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-10-21 16:41:12,798 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-10-21 16:41:12,934 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-10-21 16:41:13,019 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-10-21 16:41:13,020 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-10-21 16:41:24,879 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2020-10-21 16:41:24,945 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10206
+2020-10-21 16:41:25,076 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-10-21 16:41:25,205 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-10-21 16:41:25,205 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-10-21 16:41:25,215 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-10-21 16:41:30,920 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 6918
+2020-10-21 16:41:31,143 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-10-21 16:41:31,154 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-10-21 16:41:31,159 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-10-21 16:41:31,175 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:41:31,176 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-10-21 16:41:31,194 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-10-21 16:41:31,197 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-10-21 16:41:31,200 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-10-21 16:41:31,201 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-10-21 16:41:31,207 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-10-21 16:41:31,217 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2020-10-21 16:41:31,218 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-10-21 16:41:31,359 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-10-21 16:41:33,455 django.server INFO     "GET /maintainer/userapp/user/add/ HTTP/1.1" 200 6907
+2020-10-21 16:41:33,613 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2020-10-21 16:41:33,626 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2020-10-21 16:41:33,629 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2020-10-21 16:41:33,650 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:41:33,754 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2020-10-21 16:41:57,313 django.server INFO     "POST /maintainer/userapp/user/add/ HTTP/1.1" 302 0
+2020-10-21 16:41:57,400 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 7784
+2020-10-21 16:41:57,524 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:41:57,530 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-10-21 16:42:00,452 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10556
+2020-10-21 16:42:07,095 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 7571
+2020-10-21 16:42:07,291 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:42:10,122 django.server INFO     "GET /maintainer/userapp/user/FF5096AF5646433EB9DBFC1CDCEA4A36/change/ HTTP/1.1" 200 7434
+2020-10-21 16:42:10,250 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:42:13,554 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10556
+2020-10-21 16:42:17,059 django.server INFO     "GET /maintainer/userapp/role/ HTTP/1.1" 200 5000
+2020-10-21 16:42:17,192 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:42:22,794 django.server INFO     "GET /maintainer/userapp/role/7E6711C4E58E45B28F7AB189AEB770E3/change/ HTTP/1.1" 200 4314
+2020-10-21 16:42:22,923 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:42:26,224 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10556
+2020-10-21 16:42:40,690 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15245
+2020-10-21 16:42:41,092 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-10-21 16:42:41,100 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-10-21 16:42:41,104 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-10-21 16:42:41,113 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-10-21 16:42:41,120 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-10-21 16:42:41,133 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-10-21 16:42:41,136 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-10-21 16:42:41,140 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-10-21 16:42:41,145 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-10-21 16:42:41,146 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-10-21 16:42:41,474 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-10-21 16:43:04,650 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 10110
+2020-10-21 16:43:12,510 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-10-21 16:43:12,578 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2020-10-21 16:43:12,652 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-10-21 16:43:12,654 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-10-21 16:43:12,656 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2020-10-21 16:43:12,719 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-10-21 16:43:12,925 django.request WARNING  Not Found: /favicon.ico
+2020-10-21 16:43:12,926 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-10-21 16:43:12,945 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-10-21 16:43:12,993 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-10-21 16:43:13,411 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49040
+2020-10-21 16:43:13,563 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,563 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,564 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:13,569 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,572 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,574 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,582 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,590 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2020-10-21 16:43:13,593 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,605 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2020-10-21 16:43:13,606 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+2020-10-21 16:43:13,610 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2020-10-21 16:43:13,611 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2020-10-21 16:43:13,702 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-10-21 16:43:13,793 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+2020-10-21 16:43:17,916 django.server INFO     "GET /maintainer/addressapp/ward/642/change/ HTTP/1.1" 200 19338
+2020-10-21 16:43:18,067 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:18,071 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+2020-10-21 16:43:18,072 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+2020-10-21 16:43:18,076 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+2020-10-21 16:43:18,185 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2020-10-21 16:43:18,243 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+2020-10-21 16:43:18,247 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2020-10-21 16:43:23,428 django.server INFO     "POST /maintainer/addressapp/ward/642/change/ HTTP/1.1" 200 19489
+2020-10-21 16:43:23,578 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:30,884 django.server INFO     "POST /maintainer/addressapp/ward/642/change/ HTTP/1.1" 302 0
+2020-10-21 16:43:31,481 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49244
+2020-10-21 16:43:31,611 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:31,788 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+2020-10-21 16:43:31,792 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+2020-10-21 16:43:38,920 django.server INFO     "GET /maintainer/addressapp/ward/625/change/ HTTP/1.1" 200 19349
+2020-10-21 16:43:39,045 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:43,010 django.server INFO     "POST /maintainer/addressapp/ward/625/change/ HTTP/1.1" 200 19500
+2020-10-21 16:43:43,139 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:48,420 django.server INFO     "POST /maintainer/addressapp/ward/625/change/ HTTP/1.1" 302 0
+2020-10-21 16:43:49,268 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49253
+2020-10-21 16:43:49,400 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:43:54,391 django.server INFO     "GET /maintainer/addressapp/ward/559/change/ HTTP/1.1" 200 19338
+2020-10-21 16:43:54,574 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:44:00,991 django.server INFO     "POST /maintainer/addressapp/ward/559/change/ HTTP/1.1" 302 0
+2020-10-21 16:44:01,555 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49242
+2020-10-21 16:44:01,736 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:44:04,194 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11496
+2020-10-21 16:44:04,298 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+2020-10-21 16:44:10,117 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15460
+2020-10-21 16:44:24,366 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 7571
+2020-10-21 16:44:24,628 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:44:24,629 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+2020-10-21 16:44:30,925 django.server INFO     "POST /maintainer/userapp/user/ HTTP/1.1" 200 3436
+2020-10-21 16:44:31,107 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 200 410
+2020-10-21 16:44:32,554 django.server INFO     "POST /maintainer/userapp/user/ HTTP/1.1" 302 0
+2020-10-21 16:44:33,209 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 7038
+2020-10-21 16:44:33,471 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 16:45:11,122 django.server INFO     "POST /api/v1/users HTTP/1.1" 200 15654
+2020-10-21 16:45:11,234 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 16:45:11,238 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 16:45:11,249 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 16:45:11,252 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 16:45:11,253 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 16:45:11,256 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 16:45:11,262 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-10-21 16:45:11,263 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-10-21 16:45:11,267 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 16:45:11,273 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 16:45:11,402 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-10-21 16:45:13,810 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 17103
+2020-10-21 16:49:51,574 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109215
+2020-10-21 16:49:51,703 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-10-21 16:49:51,708 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-10-21 16:49:51,711 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 16:49:51,726 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 16:49:51,726 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 16:49:51,731 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 16:49:51,736 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 16:49:51,738 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 16:49:51,739 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 16:49:51,745 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 16:49:51,953 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-10-21 16:49:55,017 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/patients HTTP/1.1" 302 0
+2020-10-21 16:49:55,147 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-21 16:49:55,151 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9771
+2020-10-21 16:49:56,444 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-21 16:50:03,676 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-21 16:50:06,458 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109210
+2020-10-21 16:50:32,021 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 11103
+2020-10-21 16:51:58,546 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-21 16:52:01,714 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109344
+2020-10-21 16:52:30,770 django.request WARNING  Not Found: /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounter
+2020-10-21 16:52:30,773 django.server WARNING  "GET /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounter HTTP/1.1" 404 20892
+2020-10-21 16:52:34,381 django.request WARNING  Bad Request: /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters
+2020-10-21 16:52:34,382 django.server WARNING  "GET /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters HTTP/1.1" 400 16198
+2020-10-21 16:52:34,501 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-10-21 16:52:34,511 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 16:52:34,514 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 16:52:34,511 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 16:52:34,512 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-10-21 16:52:34,512 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 16:52:34,523 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 16:52:34,538 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 16:52:34,540 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 16:52:34,541 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 16:52:34,698 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-10-21 16:53:46,998 encounterapp.api.encounter INFO     {'created_at': [ErrorDetail(string='Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM|-HH:MM|Z].', code='invalid')]}
+2020-10-21 16:53:47,071 django.request WARNING  Bad Request: /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters
+2020-10-21 16:53:47,072 django.server WARNING  "POST /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters HTTP/1.1" 400 16340
+2020-10-21 16:54:20,556 encounterapp.api.encounter INFO     {'created_at': [ErrorDetail(string='Datetime has wrong format. Use one of these formats instead: YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM|-HH:MM|Z].', code='invalid')]}
+2020-10-21 16:54:20,810 django.request WARNING  Bad Request: /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters
+2020-10-21 16:54:20,813 django.server WARNING  "POST /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters HTTP/1.1" 400 16340
+2020-10-21 16:55:23,857 encounterapp.api.encounter INFO     Encounter added successfully by Prabin  Karki
+2020-10-21 16:55:24,061 django.server INFO     "POST /api/v1/patients/78BD1E3AC9AF412782549346DA3DBBB6/encounters HTTP/1.1" 200 16239
+2020-10-21 16:55:24,148 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-10-21 16:55:24,153 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-10-21 16:55:24,160 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 16:55:24,172 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 16:55:24,175 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 16:55:24,176 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 16:55:24,175 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 16:55:24,185 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 16:55:24,190 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 16:55:24,192 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 16:55:24,364 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-10-21 16:55:59,664 django.request WARNING  Bad Request: /api/v1/encounter/046B7787052B43C1992D9C6271AB992A/treatment
+2020-10-21 16:55:59,665 django.server WARNING  "GET /api/v1/encounter/046B7787052B43C1992D9C6271AB992A/treatment HTTP/1.1" 400 55633
+2020-10-21 16:56:22,508 treatmentapp.api.treatment INFO     Treatment added successfully by 046B7787052B43C1992D9C6271AB992A
+2020-10-21 16:56:22,775 django.server INFO     "POST /api/v1/encounter/046B7787052B43C1992D9C6271AB992A/treatment HTTP/1.1" 200 58520
+2020-10-21 17:52:36,272 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-10-21 17:52:36,385 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2004
+2020-10-21 17:52:36,525 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2020-10-21 17:52:36,527 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 304 0
+2020-10-21 17:52:36,529 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2020-10-21 17:52:36,652 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2020-10-21 17:52:45,265 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2020-10-21 17:52:45,336 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11736
+2020-10-21 17:52:45,448 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+2020-10-21 17:52:45,592 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2020-10-21 17:52:45,595 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+2020-10-21 17:52:45,600 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2020-10-21 17:52:52,104 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 9385
+2020-10-21 17:52:52,238 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+2020-10-21 17:52:52,256 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,258 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,261 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,262 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,272 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 17:52:52,283 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,300 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,304 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,305 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,306 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2020-10-21 17:52:52,444 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+2020-10-21 17:52:52,453 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+2020-10-21 17:52:57,612 django.server INFO     "POST /maintainer/patientapp/patient/ HTTP/1.1" 200 3975
+2020-10-21 17:52:57,744 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 304 0
+2020-10-21 17:52:59,483 django.server INFO     "POST /maintainer/patientapp/patient/ HTTP/1.1" 302 0
+2020-10-21 17:52:59,678 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 5317
+2020-10-21 17:52:59,905 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 17:53:00,142 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+2020-10-21 17:53:01,917 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11986
+2020-10-21 17:53:06,844 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4710
+2020-10-21 17:53:07,101 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 17:53:09,000 django.server INFO     "GET /maintainer/logout/ HTTP/1.1" 200 1234
+2020-10-21 17:53:12,312 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-21 17:53:12,313 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9771
+2020-10-21 17:53:12,487 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-10-21 17:53:12,497 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 17:53:12,502 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 17:53:12,504 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 17:53:12,523 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 17:53:12,524 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-10-21 17:53:12,535 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 17:53:12,537 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 17:53:12,540 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 17:53:12,551 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 17:53:12,683 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-10-21 17:53:14,866 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-21 17:53:23,569 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-21 17:53:26,360 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109210
+2020-10-21 17:54:15,743 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-21 17:54:18,810 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109344
+2020-10-21 17:54:40,569 django.request WARNING  Bad Request: /api/v1/patients/A19E7B7B03AE48BC93A8B24733D6553C/encounters
+2020-10-21 17:54:40,570 django.server WARNING  "GET /api/v1/patients/A19E7B7B03AE48BC93A8B24733D6553C/encounters HTTP/1.1" 400 16198
+2020-10-21 17:54:54,766 encounterapp.api.encounter INFO     Encounter added successfully by Prabin  Karki
+2020-10-21 17:54:55,016 django.server INFO     "POST /api/v1/patients/A19E7B7B03AE48BC93A8B24733D6553C/encounters HTTP/1.1" 200 16239
+2020-10-21 17:55:25,166 django.request WARNING  Bad Request: /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment
+2020-10-21 17:55:25,168 django.server WARNING  "GET /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment HTTP/1.1" 400 55633
+2020-10-21 17:55:42,306 django.request ERROR    Internal Server Error: /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/treatmentapp/api/treatment.py", line 50, in post
+    serializer.save(encounter_id=encounter_obj)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 214, in save
+    self.instance = self.create(validated_data)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 940, in create
+    instance = ModelClass.objects.create(**validated_data)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 413, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/base.py", line 717, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/base.py", line 757, in save_base
+    update_fields=update_fields, raw=raw, using=using,
+  File "/usr/local/lib/python3.7/site-packages/django/dispatch/dispatcher.py", line 175, in send
+    for receiver in self._live_receivers(sender)
+  File "/usr/local/lib/python3.7/site-packages/django/dispatch/dispatcher.py", line 175, in <listcomp>
+    for receiver in self._live_receivers(sender)
+  File "/code/visualizationapp/models/visualization.py", line 186, in create_treatment
+    if Counter(treatment_obj[0].values())['EXO'] > 0:
+KeyError: 0
+2020-10-21 17:55:42,313 django.server ERROR    "POST /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment HTTP/1.1" 500 174018
+2020-10-21 17:56:37,908 treatmentapp.api.treatment INFO     Encounter already exists in treatment section :  79B7F082189C4C2787466F0518A1E4C5
+2020-10-21 17:56:38,475 django.request WARNING  Conflict: /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment
+2020-10-21 17:56:38,476 django.server WARNING  "POST /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment HTTP/1.1" 409 55645
+2020-10-21 17:56:38,604 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 17:56:38,611 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 17:56:38,616 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 17:56:38,617 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 17:56:38,625 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 17:56:38,629 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 17:56:48,638 django.server INFO     "GET /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment/update HTTP/1.1" 200 58705
+2020-10-21 17:57:03,022 treatmentapp.api.treatment INFO     Treatment Update successfully by a 79B7F082189C4C2787466F0518A1E4C5
+2020-10-21 17:57:03,298 django.server INFO     "PUT /api/v1/encounter/79B7F082189C4C2787466F0518A1E4C5/treatment/update HTTP/1.1" 200 58705
+2020-10-21 18:40:04,592 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-10-21 18:40:04,684 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2004
+2020-10-21 18:40:04,792 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2020-10-21 18:40:04,795 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2020-10-21 18:40:04,797 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 304 0
+2020-10-21 18:40:04,880 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2020-10-21 18:40:04,917 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+2020-10-21 18:40:11,486 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2020-10-21 18:40:11,537 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11986
+2020-10-21 18:40:11,627 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+2020-10-21 18:40:11,718 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2020-10-21 18:40:11,721 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+2020-10-21 18:40:11,722 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+2020-10-21 18:40:14,253 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13013
+2020-10-21 18:40:14,341 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,353 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+2020-10-21 18:40:14,364 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,368 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,369 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,381 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,381 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,389 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,389 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:40:14,391 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,392 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2020-10-21 18:40:14,496 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+2020-10-21 18:40:14,498 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+2020-10-21 18:40:14,502 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+2020-10-21 18:41:13,770 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 110520
+2020-10-21 18:41:13,880 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 18:41:13,884 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 18:41:13,888 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-10-21 18:41:13,888 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-10-21 18:41:13,889 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 18:41:13,901 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 18:41:13,902 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 18:41:13,906 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 18:41:13,913 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 18:41:13,913 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 18:41:14,014 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-10-21 18:41:15,839 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/patients HTTP/1.1" 302 0
+2020-10-21 18:41:16,144 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-21 18:41:16,146 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9771
+2020-10-21 18:41:16,905 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-21 18:41:22,338 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-21 18:41:24,383 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 110515
+2020-10-21 18:42:03,629 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-21 18:42:05,498 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109344
+2020-10-21 18:42:13,814 django.request WARNING  Bad Request: /api/v1/patients/64ABDC0A9EA34C37962E3B0BA0884183/encounters
+2020-10-21 18:42:13,814 django.server WARNING  "GET /api/v1/patients/64ABDC0A9EA34C37962E3B0BA0884183/encounters HTTP/1.1" 400 16198
+2020-10-21 18:42:25,391 encounterapp.api.encounter INFO     Encounter added successfully by Prabin  Karki
+2020-10-21 18:42:25,436 django.server INFO     "POST /api/v1/patients/64ABDC0A9EA34C37962E3B0BA0884183/encounters HTTP/1.1" 200 16239
+2020-10-21 18:42:32,940 django.request WARNING  Bad Request: /api/v1/encounter/7F125CF597F442A385077AA3A248923F/treatment/update
+2020-10-21 18:42:32,941 django.server WARNING  "GET /api/v1/encounter/7F125CF597F442A385077AA3A248923F/treatment/update HTTP/1.1" 400 55820
+2020-10-21 18:42:36,575 django.request WARNING  Bad Request: /api/v1/encounter/7F125CF597F442A385077AA3A248923F/treatment
+2020-10-21 18:42:36,576 django.server WARNING  "GET /api/v1/encounter/7F125CF597F442A385077AA3A248923F/treatment HTTP/1.1" 400 55633
+2020-10-21 18:42:49,314 treatmentapp.api.treatment INFO     Treatment added successfully by 7F125CF597F442A385077AA3A248923F
+2020-10-21 18:42:49,501 django.server INFO     "POST /api/v1/encounter/7F125CF597F442A385077AA3A248923F/treatment HTTP/1.1" 200 58523
+2020-10-21 18:42:53,872 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2020-10-21 18:42:53,914 django.server INFO     "GET /maintainer/login/?next=/maintainer/visualizationapp/visualization/ HTTP/1.1" 200 2066
+2020-10-21 18:42:59,501 django.server INFO     "POST /maintainer/login/?next=/maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2020-10-21 18:42:59,578 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 15081
+2020-10-21 18:42:59,672 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:48:34,123 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-21 18:48:34,124 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 401 9772
+2020-10-21 18:48:34,205 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 18:48:34,207 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 18:48:34,213 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 18:48:34,216 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 18:48:34,217 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 18:48:34,222 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 18:48:35,843 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-21 18:48:40,946 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-21 18:48:42,918 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111822
+2020-10-21 18:49:16,904 patientapp.api.patient INFO     Duplicate data added in patient.created by=Prabin  Karki
+2020-10-21 18:49:18,800 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-21 18:49:18,801 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 109297
+2020-10-21 18:49:27,096 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111822
+2020-10-21 18:50:08,398 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-21 18:50:10,222 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109344
+2020-10-21 18:50:16,704 django.request WARNING  Bad Request: /api/v1/patients/145538396CD24460B72B810D946DD32C/encounters
+2020-10-21 18:50:16,705 django.server WARNING  "GET /api/v1/patients/145538396CD24460B72B810D946DD32C/encounters HTTP/1.1" 400 16198
+2020-10-21 18:50:23,581 encounterapp.api.encounter INFO     Encounter added successfully by Prabin  Karki
+2020-10-21 18:50:23,633 django.server INFO     "POST /api/v1/patients/145538396CD24460B72B810D946DD32C/encounters HTTP/1.1" 200 16239
+2020-10-21 18:50:31,087 django.request WARNING  Bad Request: /api/v1/encounter/CFF11A536EDD4BE9AE2BD36DBAA77ED2/treatment
+2020-10-21 18:50:31,088 django.server WARNING  "GET /api/v1/encounter/CFF11A536EDD4BE9AE2BD36DBAA77ED2/treatment HTTP/1.1" 400 55633
+2020-10-21 18:51:07,009 treatmentapp.api.treatment INFO     Treatment added successfully by CFF11A536EDD4BE9AE2BD36DBAA77ED2
+2020-10-21 18:51:07,204 django.server INFO     "POST /api/v1/encounter/CFF11A536EDD4BE9AE2BD36DBAA77ED2/treatment HTTP/1.1" 200 58519
+2020-10-21 18:51:46,674 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2020-10-21 18:51:46,715 django.server INFO     "GET /maintainer/login/?next=/maintainer/visualizationapp/visualization/ HTTP/1.1" 200 2066
+2020-10-21 18:51:53,452 django.server INFO     "POST /maintainer/login/?next=/maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2020-10-21 18:51:53,545 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17154
+2020-10-21 18:51:53,661 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:54:09,500 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11986
+2020-10-21 18:54:09,590 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2020-10-21 18:54:09,593 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2020-10-21 18:54:09,593 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+2020-10-21 18:54:09,679 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2020-10-21 18:54:09,712 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+2020-10-21 18:54:09,713 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2020-10-21 18:54:09,713 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+2020-10-21 18:54:14,495 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 11185
+2020-10-21 18:54:14,590 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+2020-10-21 18:54:14,605 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,608 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,608 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,622 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,622 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,624 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:54:14,624 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,631 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,632 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,640 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2020-10-21 18:54:14,720 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+2020-10-21 18:54:14,738 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+2020-10-21 18:54:17,722 django.server INFO     "POST /maintainer/patientapp/patient/ HTTP/1.1" 200 5097
+2020-10-21 18:54:17,819 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 304 0
+2020-10-21 18:54:19,189 django.server INFO     "POST /maintainer/patientapp/patient/ HTTP/1.1" 302 0
+2020-10-21 18:54:19,567 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 5318
+2020-10-21 18:54:19,762 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:54:19,924 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+2020-10-21 18:54:42,967 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-21 18:54:42,967 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9771
+2020-10-21 18:54:43,043 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-10-21 18:54:43,052 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-10-21 18:54:43,053 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-10-21 18:54:43,053 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-10-21 18:54:43,163 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-10-21 18:54:44,800 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-21 18:54:50,664 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-21 18:54:52,540 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109210
+2020-10-21 18:55:29,305 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-21 18:55:31,205 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109344
+2020-10-21 18:55:40,275 django.request WARNING  Bad Request: /api/v1/patients/119770875C0347EFADD94C5F1A7A54BB/encounters
+2020-10-21 18:55:40,276 django.server WARNING  "GET /api/v1/patients/119770875C0347EFADD94C5F1A7A54BB/encounters HTTP/1.1" 400 16198
+2020-10-21 18:55:47,344 encounterapp.api.encounter INFO     Encounter added successfully by Prabin  Karki
+2020-10-21 18:55:47,392 django.server INFO     "POST /api/v1/patients/119770875C0347EFADD94C5F1A7A54BB/encounters HTTP/1.1" 200 16239
+2020-10-21 18:55:54,090 django.request WARNING  Bad Request: /api/v1/encounter/1F66AF334D7742A98377C06F4C51B575/treatment
+2020-10-21 18:55:54,091 django.server WARNING  "GET /api/v1/encounter/1F66AF334D7742A98377C06F4C51B575/treatment HTTP/1.1" 400 55633
+2020-10-21 18:56:07,837 treatmentapp.api.treatment INFO     Treatment added successfully by 1F66AF334D7742A98377C06F4C51B575
+2020-10-21 18:56:08,042 django.server INFO     "POST /api/v1/encounter/1F66AF334D7742A98377C06F4C51B575/treatment HTTP/1.1" 200 58523
+2020-10-21 18:56:37,449 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 302 0
+2020-10-21 18:56:37,484 django.server INFO     "GET /maintainer/login/?next=/maintainer/patientapp/patient/ HTTP/1.1" 200 2042
+2020-10-21 18:56:37,558 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 304 0
+2020-10-21 18:56:47,320 django.server INFO     "POST /maintainer/login/?next=/maintainer/patientapp/patient/ HTTP/1.1" 302 0
+2020-10-21 18:56:47,409 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 9385
+2020-10-21 18:56:47,520 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:56:52,482 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12739
+2020-10-21 18:56:54,815 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13013
+2020-10-21 18:56:54,910 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-21 18:56:55,036 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 304 0
+2020-10-21 18:57:42,594 django.request WARNING  Forbidden: /api/v1/patients
+2020-10-21 18:57:42,594 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 403 9649
+2020-10-21 18:57:42,673 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-21 18:57:42,675 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-21 18:57:42,680 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-21 18:57:42,681 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-21 18:57:42,684 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-21 18:57:42,693 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-21 18:57:43,641 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-21 18:57:48,627 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-21 18:57:50,491 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 110515
+2020-10-21 18:58:27,580 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-21 18:58:29,480 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109344
+2020-10-21 18:58:44,871 django.request WARNING  Bad Request: /api/v1/patients/2343C0EFAD5E4A1BB53132C35B39EB51/encounters
+2020-10-21 18:58:44,872 django.server WARNING  "GET /api/v1/patients/2343C0EFAD5E4A1BB53132C35B39EB51/encounters HTTP/1.1" 400 16198
+2020-10-21 18:58:52,361 encounterapp.api.encounter INFO     Encounter added successfully by Prabin  Karki
+2020-10-21 18:58:52,407 django.server INFO     "POST /api/v1/patients/2343C0EFAD5E4A1BB53132C35B39EB51/encounters HTTP/1.1" 200 16239
+2020-10-21 18:58:58,956 django.request WARNING  Bad Request: /api/v1/encounter/19B336E7DFA34C05A292F798C254D798/treatment
+2020-10-21 18:58:58,957 django.server WARNING  "GET /api/v1/encounter/19B336E7DFA34C05A292F798C254D798/treatment HTTP/1.1" 400 55633
+2020-10-21 18:59:10,928 treatmentapp.api.treatment INFO     Treatment added successfully by 19B336E7DFA34C05A292F798C254D798
+2020-10-21 18:59:11,116 django.server INFO     "POST /api/v1/encounter/19B336E7DFA34C05A292F798C254D798/treatment HTTP/1.1" 200 58523
+2020-10-21 19:20:43,598 django.server INFO     "GET / HTTP/1.1" 200 1257
+2020-10-21 19:20:43,871 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
+2020-10-21 19:20:43,872 django.server WARNING  "GET /css/chunk-vendors.772fabf9.css HTTP/1.1" 404 3440
+2020-10-21 19:20:43,880 django.request WARNING  Not Found: /js/app.94e5e4ed.js
+2020-10-21 19:20:43,881 django.server WARNING  "GET /js/app.94e5e4ed.js HTTP/1.1" 404 3404
+2020-10-21 19:20:43,890 django.request WARNING  Not Found: /css/app.4f2e1db3.css
+2020-10-21 19:20:43,898 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
+2020-10-21 19:20:43,898 django.server WARNING  "GET /css/app.4f2e1db3.css HTTP/1.1" 404 3410
+2020-10-21 19:20:43,899 django.server WARNING  "GET /js/chunk-vendors.437d418e.js HTTP/1.1" 404 3434
+2020-10-21 19:20:44,181 django.request WARNING  Not Found: /css/app.4f2e1db3.css
+2020-10-21 19:20:44,186 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
+2020-10-21 19:20:44,190 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
+2020-10-21 19:20:44,191 django.server WARNING  "GET /js/chunk-vendors.437d418e.js HTTP/1.1" 404 3434
+2020-10-21 19:20:44,191 django.server WARNING  "GET /css/app.4f2e1db3.css HTTP/1.1" 404 3410
+2020-10-21 19:20:44,192 django.server WARNING  "GET /css/chunk-vendors.772fabf9.css HTTP/1.1" 404 3440
+2020-10-21 19:20:44,224 django.request WARNING  Not Found: /js/app.94e5e4ed.js
+2020-10-21 19:20:44,224 django.server WARNING  "GET /js/app.94e5e4ed.js HTTP/1.1" 404 3404
+2020-10-21 19:24:22,948 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2020-10-21 19:24:23,029 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.1" 200 61
+2020-10-21 19:24:36,567 django.server INFO     "OPTIONS /api/v1/checkuser HTTP/1.1" 200 0
+2020-10-21 19:24:36,586 django.server INFO     "POST /api/v1/checkuser HTTP/1.1" 200 26
+2020-10-21 19:24:36,609 django.server INFO     "OPTIONS /api/v1/token HTTP/1.1" 200 0
+2020-10-21 19:24:36,750 django.server INFO     "POST /api/v1/token HTTP/1.1" 200 284
+2020-10-21 19:24:37,122 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.1" 200 0
+2020-10-21 19:24:37,134 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-10-21 19:24:37,191 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 19:24:37,192 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 19:24:37,195 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 19:24:37,196 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.1" 200 0
+2020-10-21 19:24:37,199 django.server INFO     "OPTIONS /api/v1/events HTTP/1.1" 200 0
+2020-10-21 19:24:37,201 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:24:37,206 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:24:37,207 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:24:37,211 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:24:37,214 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:24:37,223 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:24:37,251 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:24:37,292 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-10-21 19:24:37,418 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 429
+2020-10-21 19:24:37,606 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:24:37,723 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 19:24:37,807 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-10-21 19:24:37,839 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:24:37,872 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:24:37,945 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:24:37,978 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:24:38,074 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:24:38,091 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:24:38,103 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:24:38,128 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:24:38,261 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:24:38,329 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:24:38,359 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:24:38,403 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:24:38,478 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:24:38,527 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:24:38,553 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:24:38,604 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:24:38,617 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:24:38,655 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:24:38,698 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:24:38,727 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:24:38,745 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:24:38,782 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:24:38,784 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:24:38,824 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:24:38,941 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:24:38,943 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:24:38,966 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:24:38,984 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:24:39,308 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:24:39,344 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:24:39,380 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:24:39,410 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:24:39,504 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:24:39,511 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:24:39,553 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:24:39,558 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:24:39,559 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:24:39,596 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:24:39,596 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:24:39,603 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:24:39,621 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:24:39,639 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:24:39,664 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:24:39,801 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:24:39,840 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:24:39,995 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:24:40,035 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:24:40,075 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:24:40,132 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:24:40,148 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:24:40,182 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:24:40,197 django.request ERROR    Internal Server Error: /api/v1/overviewvisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 844, in get
+    total_exo = kid_exo + teen_exo + adult_exo + old_exo
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+2020-10-21 19:24:40,200 django.server ERROR    "GET /api/v1/overviewvisualization HTTP/1.1" 500 15429
+2020-10-21 19:26:08,546 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-10-21 19:26:08,581 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-10-21 19:26:08,695 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 429
+2020-10-21 19:26:09,309 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 19:26:09,388 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:26:09,418 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-10-21 19:26:09,706 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:26:09,746 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:26:09,963 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:26:10,034 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:26:10,046 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:26:10,308 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:26:10,420 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:26:10,535 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:26:10,639 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:26:10,752 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:26:10,973 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:26:11,030 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:26:11,046 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:26:11,133 django.request ERROR    Internal Server Error: /api/v1/overviewvisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 846, in get
+    total_exo = kid_exo + teen_exo + adult_exo + old_exo
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+2020-10-21 19:26:11,195 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:26:11,208 django.server ERROR    "GET /api/v1/overviewvisualization HTTP/1.1" 500 15463
+2020-10-21 19:26:11,225 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:26:11,260 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:26:11,356 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:26:11,420 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:26:11,438 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:26:11,439 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:26:11,512 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:26:11,651 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:26:11,800 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:26:12,003 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:26:12,009 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:26:12,054 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:26:12,080 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:26:12,092 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:26:12,106 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:47:52,921 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.1" 200 0
+2020-10-21 19:47:52,986 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-10-21 19:47:53,015 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 19:47:53,022 django.server INFO     "OPTIONS /api/v1/events HTTP/1.1" 200 0
+2020-10-21 19:47:53,028 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 19:47:53,029 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.1" 200 0
+2020-10-21 19:47:53,032 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 19:47:53,034 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:47:53,037 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:47:53,040 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:47:53,043 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:47:53,046 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:47:53,053 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:47:53,082 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-10-21 19:47:53,203 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 429
+2020-10-21 19:47:53,464 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 19:47:53,583 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-10-21 19:47:53,645 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:47:53,702 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:47:53,707 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:47:53,755 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:47:53,782 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:47:53,883 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:47:53,912 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:47:53,995 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:47:53,999 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:47:54,039 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:47:54,039 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:47:54,083 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:47:54,110 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:47:54,266 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:47:54,303 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:47:54,306 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:47:54,333 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:47:54,352 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:47:54,370 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-10-21 19:47:54,372 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:47:54,381 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:47:54,391 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:47:54,415 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:47:54,417 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:47:54,525 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:47:54,567 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:47:54,677 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:47:54,709 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:47:54,731 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:47:54,752 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:47:54,897 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:47:54,905 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:47:55,140 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:47:55,178 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:47:55,292 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:47:55,304 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 19:47:55,310 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:47:55,324 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 19:47:55,361 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:47:55,398 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 19:47:55,415 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:47:55,436 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:47:55,453 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 19:47:55,456 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 19:47:55,489 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:47:55,562 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 19:47:55,585 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 19:47:55,695 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 19:47:55,726 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 19:47:55,872 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 19:47:55,910 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 19:47:55,980 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:47:56,043 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 19:47:56,057 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:43:37,118 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:43:37,165 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:43:37,291 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:43:37,436 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:43:37,443 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:43:37,558 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:43:37,652 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:43:37,702 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:43:37,795 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:43:37,909 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:43:37,913 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:43:37,958 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:43:37,964 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-10-21 20:43:38,043 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-10-21 20:43:38,203 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:43:38,251 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:43:38,262 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:43:38,484 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:43:38,508 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-10-21 20:43:38,523 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:43:38,816 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:43:38,867 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:43:38,938 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 429
+2020-10-21 20:43:38,987 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:43:39,133 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:43:39,133 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:43:39,207 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:43:39,369 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:43:39,506 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:43:39,525 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:43:39,533 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 20:43:39,619 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:43:39,861 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:43:40,054 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:43:40,087 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:43:40,122 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-10-21 20:43:44,150 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 20:43:44,151 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 20:43:44,152 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 20:43:44,362 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 168
+2020-10-21 20:43:44,651 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 20:43:45,375 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 800
+2020-10-21 20:44:37,923 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-10-21 20:44:37,970 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-10-21 20:44:38,013 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 429
+2020-10-21 20:44:38,265 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 20:44:38,337 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:44:38,482 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-10-21 20:44:38,582 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:44:38,590 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:44:38,813 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:44:38,932 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:44:39,010 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:44:39,012 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-10-21 20:44:39,156 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:44:39,284 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:44:39,387 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:44:39,432 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:44:39,459 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:44:39,614 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:44:39,719 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:44:39,790 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:44:39,898 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:44:39,977 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 20:44:40,044 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:44:40,060 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 20:44:40,214 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:44:40,279 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:44:40,365 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:44:40,512 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:44:40,517 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:44:40,597 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:44:40,605 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:44:40,666 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 20:44:40,743 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:44:40,760 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 20:44:40,812 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 20:44:40,852 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 20:44:46,319 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 20:44:46,327 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 20:44:46,327 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 20:44:46,587 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 168
+2020-10-21 20:44:46,814 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 20:44:47,524 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 800
+2020-10-21 21:17:36,305 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.1" 200 0
+2020-10-21 21:17:36,309 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 21:17:36,321 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 21:17:36,322 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 21:17:36,323 django.server INFO     "OPTIONS /api/v1/events HTTP/1.1" 200 0
+2020-10-21 21:17:36,330 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.1" 200 0
+2020-10-21 21:17:36,330 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 21:17:36,350 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 21:17:36,362 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 21:17:36,451 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-10-21 21:17:36,471 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-10-21 21:17:36,673 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 21:17:36,698 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 21:17:36,721 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 21:17:36,789 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 21:17:36,795 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 429
+2020-10-21 21:17:36,810 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 21:17:36,817 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 103
+2020-10-21 21:17:36,828 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 21:17:36,942 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-10-21 21:17:36,966 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 21:17:37,013 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 21:17:37,229 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 21:17:37,279 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 21:17:37,310 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 21:17:37,393 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 21:17:37,423 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 21:17:37,490 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 21:17:37,505 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 21:17:37,518 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 21:17:37,568 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 21:17:37,604 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 21:17:37,625 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 21:17:37,792 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-10-21 21:17:37,819 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 21:17:37,823 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 21:17:37,841 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 21:17:37,845 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 21:17:37,886 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 21:17:37,958 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 21:17:38,097 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 21:17:38,130 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 21:17:38,149 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 21:17:38,150 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 21:17:38,184 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 21:17:38,333 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 21:17:38,335 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 21:17:38,380 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 21:17:38,404 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 21:17:38,425 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 21:17:38,503 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 21:17:38,559 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-10-21 21:17:38,659 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 21:17:38,670 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 21:17:38,692 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-10-21 21:17:38,696 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-10-21 21:17:38,721 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 21:17:38,730 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-10-21 21:17:38,779 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-10-21 21:17:38,815 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 21:17:38,909 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 21:17:38,984 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-10-21 21:17:39,067 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1109
+2020-10-21 21:17:39,077 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2020-10-21 21:17:39,097 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-10-21 21:17:39,289 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 21:17:39,342 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 21:17:39,430 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1145
+2020-10-21 21:17:39,440 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1145
+2020-10-21 21:17:39,450 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 1147
+2020-10-21 21:18:00,608 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 21:18:00,618 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 21:18:00,619 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 21:18:00,822 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.1" 200 35
+2020-10-21 21:18:00,842 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 168
+2020-10-21 21:18:01,918 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 800
+2020-10-21 21:18:13,386 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-10-21 21:18:13,392 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-10-21 21:18:13,394 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-10-21 21:18:13,625 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 168
+2020-10-21 21:18:13,625 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.1" 200 35
+2020-10-21 21:18:14,554 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 800
