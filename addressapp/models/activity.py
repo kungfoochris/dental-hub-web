@@ -29,4 +29,4 @@ class ActivityArea(models.Model):
 	status = models.BooleanField(default=True)
 
 	def __str__(self):
-		return  '%s %s' %(self.area,self.name)
+		return  '%s' %(self.area)

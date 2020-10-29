@@ -7,6 +7,8 @@ from addressapp.models import Activity
 from django.contrib.contenttypes.fields import GenericRelation
 from flagapp.models import Flag
 
+from addressapp.models import ActivityArea
+
 REQUEST_CHOICES = (
     ("male", _("Male")),
     ("female", _("Female")),
@@ -61,6 +63,7 @@ class Patient(models.Model):
     recall_time = models.TimeField(blank=True, null=True)
     recall_geography = models.IntegerField(blank=True, default=0)
     flag = GenericRelation(Flag, related_query_name="patient")
+    area = models.ForeignKey(ActivityArea, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return "%s %s %s" % (self.first_name, self.middle_name, self.last_name)

@@ -22,16 +22,14 @@ class PatientResource(resources.ModelResource):
 		'recall_date','recall_time')
 
 class PatientAdmin(ImportExportActionModelAdmin):
-	def has_add_permission(self, request):
-		return False
 	resource_class = PatientResource
 	list_display = ('id', 'first_name', 'last_name', 'dob','phone',\
-	'author','date','activity_area','geography','ward','updated_by',\
+	'author','date','activity_area', 'area', 'geography','ward','updated_by',\
 	'created_at','updated_at')
 	list_filter = ('date','created_at')
 	search_fields = ['id','first_name','author__username','date',\
 	'updated_by__username','updated_at','created_at',\
-	'activity_area__name','geography__name','municipality__name','district__name']
+	'activity_area__name','geography__name','municipality__name','district__name', 'area']
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:

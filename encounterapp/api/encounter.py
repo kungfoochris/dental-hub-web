@@ -92,6 +92,7 @@ class EncounterView(APIView):
                 encounter_obj.created_at = serializer.validated_data["created_at"]
                 encounter_obj.updated_by = request.user
                 encounter_obj.updated_at = serializer.validated_data["updated_at"]
+                encounter_obj.area = serializer.validated_data["area"]
                 encounter_obj.save()
                 logger.info(
                     "%s %s"
