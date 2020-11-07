@@ -29,7 +29,7 @@ class PatientAdmin(ImportExportActionModelAdmin):
 	list_filter = ('date','created_at')
 	search_fields = ['id','first_name','author__username','date',\
 	'updated_by__username','updated_at','created_at',\
-	'activity_area__name','geography__name','municipality__name','district__name', 'area']
+	'activity_area__name','geography__name','municipality__name','district__name', 'area__area']
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:

@@ -5184,3 +5184,346 @@ KeyError: 'sdf__sum'
 2020-10-29 19:27:18,108 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
 2020-10-29 19:27:18,109 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
 2020-10-29 19:27:21,681 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 14486
+2020-10-31 20:21:15,692 django.request WARNING  Method Not Allowed: /api/v1/token
+2020-10-31 20:21:15,693 django.server WARNING  "GET /api/v1/token HTTP/1.1" 405 12307
+2020-10-31 20:21:15,811 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-10-31 20:21:15,814 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-10-31 20:21:15,817 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-31 20:21:15,818 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-10-31 20:21:15,819 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-31 20:21:15,822 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-10-31 20:21:15,902 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-31 20:21:15,907 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-31 20:21:15,910 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-31 20:21:15,913 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-31 20:21:15,937 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-10-31 20:21:22,183 django.request WARNING  Method Not Allowed: /api/v1/token/obtain
+2020-10-31 20:21:22,184 django.server WARNING  "GET /api/v1/token/obtain HTTP/1.1" 405 12207
+2020-10-31 20:21:22,394 django.request WARNING  Not Found: /favicon.ico
+2020-10-31 20:21:57,224 django.server INFO     "POST /api/v1/token/obtain?username=abhiyantrik&password=dental123 HTTP/1.1" 200 79
+2020-10-31 20:22:27,154 userapp.api.user INFO     Username does not exist
+2020-10-31 20:22:27,154 django.request WARNING  Bad Request: /api/v1/token/obtain
+2020-10-31 20:22:27,155 django.server WARNING  "POST /api/v1/token/obtain?username=abhiyantrik&password=dental123 HTTP/1.1" 400 37
+2020-10-31 20:22:42,214 userapp.api.user INFO     prabin Login
+2020-10-31 20:22:42,215 django.server INFO     "POST /api/v1/token/obtain?username=abhiyantrik&password=dental123 HTTP/1.1" 200 251
+2020-10-31 20:23:27,747 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-31 20:23:27,748 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 401 58
+2020-10-31 20:24:02,028 patientapp.api.patient INFO     {'geography_id': [ErrorDetail(string='This field is required.', code='required')], 'activityarea_id': [ErrorDetail(string='This field is required.', code='required')], 'first_name': [ErrorDetail(string='This field is required.', code='required')], 'last_name': [ErrorDetail(string='This field is required.', code='required')], 'gender': [ErrorDetail(string='This field is required.', code='required')], 'dob': [ErrorDetail(string='This field is required.', code='required')], 'phone': [ErrorDetail(string='This field is required.', code='required')], 'education': [ErrorDetail(string='This field is required.', code='required')], 'district_id': [ErrorDetail(string='This field is required.', code='required')], 'municipality_id': [ErrorDetail(string='This field is required.', code='required')], 'ward_id': [ErrorDetail(string='This field is required.', code='required')], 'author': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:24:02,029 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:24:02,030 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 534
+2020-10-31 20:24:15,898 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-31 20:24:15,898 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9771
+2020-10-31 20:24:18,200 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-31 20:24:23,610 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-31 20:24:25,547 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113826
+2020-10-31 20:24:31,504 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 14481
+2020-10-31 20:30:49,105 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 11535
+2020-10-31 20:31:31,005 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-10-31 20:31:31,081 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-10-31 20:31:31,142 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2004
+2020-10-31 20:31:31,389 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-10-31 20:31:31,390 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2020-10-31 20:31:31,408 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-10-31 20:31:31,520 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-10-31 20:31:31,787 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-10-31 20:31:31,804 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-10-31 20:31:31,816 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-10-31 20:31:37,474 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2020-10-31 20:31:37,785 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-10-31 20:31:37,929 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-10-31 20:31:38,019 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-10-31 20:31:38,032 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-10-31 20:31:38,060 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2020-10-31 20:31:43,271 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49037
+2020-10-31 20:31:43,366 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-10-31 20:31:43,371 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-10-31 20:31:43,386 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-10-31 20:31:43,393 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-10-31 20:31:43,397 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-10-31 20:31:43,404 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-10-31 20:31:43,408 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-10-31 20:31:43,412 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:31:43,416 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2020-10-31 20:31:43,418 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-10-31 20:31:43,423 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-10-31 20:31:43,434 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-10-31 20:31:43,436 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-10-31 20:31:43,521 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-10-31 20:31:49,131 django.server INFO     "GET /maintainer/addressapp/ward/?p=6 HTTP/1.1" 200 24960
+2020-10-31 20:31:49,196 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:32:04,101 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-10-31 20:32:05,890 django.server INFO     "GET /maintainer/addressapp/district/ HTTP/1.1" 200 31432
+2020-10-31 20:32:05,962 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:32:08,693 django.server INFO     "GET /maintainer/addressapp/district/?o=1 HTTP/1.1" 200 33698
+2020-10-31 20:32:08,760 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:32:08,929 django.server INFO     "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+2020-10-31 20:32:21,155 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-10-31 20:32:31,658 django.server INFO     "GET /maintainer/addressapp/municipality/ HTTP/1.1" 200 48614
+2020-10-31 20:32:31,732 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:32:36,790 django.server INFO     "GET /maintainer/addressapp/municipality/?p=2 HTTP/1.1" 200 29883
+2020-10-31 20:32:36,865 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:32:39,740 django.server INFO     "GET /maintainer/addressapp/municipality/?o=1 HTTP/1.1" 200 51108
+2020-10-31 20:32:39,804 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:32:56,609 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-10-31 20:32:58,568 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49037
+2020-10-31 20:32:58,647 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:33:02,434 django.server INFO     "GET /maintainer/addressapp/ward/?p=6 HTTP/1.1" 200 24960
+2020-10-31 20:33:02,500 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:33:04,571 django.server INFO     "GET /maintainer/addressapp/ward/?o=1 HTTP/1.1" 200 51639
+2020-10-31 20:33:04,652 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-10-31 20:33:29,385 patientapp.api.patient INFO     {'geography_id': [ErrorDetail(string='This field is required.', code='required')], 'activityarea_id': [ErrorDetail(string='This field is required.', code='required')], 'first_name': [ErrorDetail(string='This field is required.', code='required')], 'dob': [ErrorDetail(string='This field is required.', code='required')], 'phone': [ErrorDetail(string='This field is required.', code='required')], 'district_id': [ErrorDetail(string='This field is required.', code='required')], 'ward_id': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:33:29,386 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:33:29,387 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 334
+2020-10-31 20:33:48,767 patientapp.api.patient INFO     {'geography_id': [ErrorDetail(string='This field is required.', code='required')], 'activityarea_id': [ErrorDetail(string='This field is required.', code='required')], 'first_name': [ErrorDetail(string='This field is required.', code='required')], 'dob': [ErrorDetail(string='This field is required.', code='required')], 'phone': [ErrorDetail(string='This field is required.', code='required')], 'district_id': [ErrorDetail(string='This field is required.', code='required')], 'ward_id': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:33:48,767 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:33:48,768 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 334
+2020-10-31 20:35:07,472 patientapp.api.patient INFO     {'geography_id': [ErrorDetail(string='This field is required.', code='required')], 'activityarea_id': [ErrorDetail(string='This field is required.', code='required')], 'first_name': [ErrorDetail(string='This field is required.', code='required')], 'phone': [ErrorDetail(string='This field is required.', code='required')], 'district_id': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:35:07,473 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:35:07,474 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 262
+2020-10-31 20:35:56,199 patientapp.api.patient INFO     {'first_name': [ErrorDetail(string='This field is required.', code='required')], 'phone': [ErrorDetail(string='This field is required.', code='required')], 'district_id': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:35:56,200 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:35:56,201 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 173
+2020-10-31 20:36:03,351 patientapp.api.patient INFO     {'phone': [ErrorDetail(string='This field is required.', code='required')], 'district_id': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:36:03,352 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:36:03,354 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 132
+2020-10-31 20:36:10,362 patientapp.api.patient INFO     {'district_id': [ErrorDetail(string='This field is required.', code='required')], 'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:36:10,362 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:36:10,363 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 96
+2020-10-31 20:36:16,201 patientapp.api.patient INFO     {'created_at': [ErrorDetail(string='This field is required.', code='required')]}
+2020-10-31 20:36:16,202 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:36:16,203 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 54
+2020-10-31 20:36:20,626 django.request ERROR    Internal Server Error: /api/v1/patients
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/patientapp/api/patient.py", line 106, in post
+    patient_obj.middle_name = serializer.validated_data['middle_name']
+KeyError: 'middle_name'
+2020-10-31 20:36:20,628 django.server ERROR    "POST /api/v1/patients HTTP/1.1" 500 15470
+2020-10-31 20:36:30,674 django.request ERROR    Internal Server Error: /api/v1/patients
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/patientapp/api/patient.py", line 121, in post
+    patient_obj.recall_time = serializer.validated_data['recall_time']
+KeyError: 'recall_time'
+2020-10-31 20:36:30,676 django.server ERROR    "POST /api/v1/patients HTTP/1.1" 500 15487
+2020-10-31 20:36:38,185 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-31 20:36:38,186 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2020-10-31 20:36:56,995 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10501
+2020-10-31 20:37:03,756 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 115165
+2020-10-31 20:39:27,747 django.request ERROR    Internal Server Error: /api/v1/patients
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/patientapp/api/patient.py", line 123, in post
+    patient_obj.area = serializer.validated_data['area']
+KeyError: 'area'
+2020-10-31 20:39:27,749 django.server ERROR    "POST /api/v1/patients HTTP/1.1" 500 15471
+2020-10-31 20:39:48,293 patientapp.api.patient INFO     {'area': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}
+2020-10-31 20:39:48,294 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:39:48,295 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 73
+2020-10-31 20:40:10,162 patientapp.api.patient INFO     {'area': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}
+2020-10-31 20:40:10,163 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:40:10,164 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 73
+2020-10-31 20:40:57,333 patientapp.api.patient INFO     {'area': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}
+2020-10-31 20:40:57,333 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:40:57,334 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 73
+2020-10-31 20:41:50,850 patientapp.api.patient INFO     {'area': [ErrorDetail(string='Invalid pk "0" - object does not exist.', code='does_not_exist')]}
+2020-10-31 20:41:50,850 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:41:50,851 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 66
+2020-10-31 20:42:00,310 patientapp.api.patient INFO     {'area': [ErrorDetail(string='Incorrect type. Expected pk value, received str.', code='incorrect_type')]}
+2020-10-31 20:42:00,310 django.request WARNING  Bad Request: /api/v1/patients
+2020-10-31 20:42:00,311 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 73
+2020-10-31 20:43:20,548 django.request ERROR    Internal Server Error: /api/v1/patients
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/patientapp/api/patient.py", line 123, in post
+    patient_obj.area = serializer.validated_data['area']
+KeyError: 'area'
+2020-10-31 20:43:20,551 django.server ERROR    "POST /api/v1/patients HTTP/1.1" 500 15471
+2020-10-31 20:45:49,176 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-31 20:45:49,178 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2020-10-31 20:46:21,553 django.request WARNING  Unauthorized: /api/v1/patients
+2020-10-31 20:46:21,554 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9771
+2020-10-31 20:46:21,619 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-10-31 20:46:21,626 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-10-31 20:46:21,628 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-10-31 20:46:21,629 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-10-31 20:46:21,633 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-10-31 20:46:21,637 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-10-31 20:46:23,960 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-10-31 20:46:29,881 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-10-31 20:46:31,840 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 116509
+2020-10-31 20:46:47,745 patientapp.api.patient INFO     Patient added successfully by Prabin  Karki
+2020-10-31 20:46:47,746 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2020-11-07 09:02:20,222 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-11-07 09:02:20,306 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-11-07 09:02:20,378 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2020-11-07 09:02:20,552 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-11-07 09:02:20,553 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2020-11-07 09:02:20,554 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-11-07 09:02:20,673 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-11-07 09:02:20,872 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-11-07 09:02:20,876 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-11-07 09:02:20,895 django.request WARNING  Not Found: /favicon.ico
+2020-11-07 09:02:20,896 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-11-07 09:02:28,368 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2020-11-07 09:02:28,422 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-11-07 09:02:28,495 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-11-07 09:02:28,583 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-11-07 09:02:28,587 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-11-07 09:02:28,588 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2020-11-07 09:02:28,601 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-11-07 09:02:32,972 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 14258
+2020-11-07 09:02:33,050 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-11-07 09:02:33,067 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:02:33,072 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-11-07 09:02:33,073 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-11-07 09:02:33,073 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-11-07 09:02:33,084 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-11-07 09:02:33,087 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-11-07 09:02:33,096 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-11-07 09:02:33,098 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-11-07 09:02:33,101 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-11-07 09:02:33,102 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2020-11-07 09:02:33,108 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2020-11-07 09:02:33,204 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-11-07 09:02:49,800 django.request ERROR    Internal Server Error: /maintainer/patientapp/patient/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1685, in changelist_view
+    cl = self.get_changelist_instance(request)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 745, in get_changelist_instance
+    sortable_by,
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/views/main.py", line 80, in __init__
+    self.queryset = self.get_queryset(request)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/views/main.py", line 393, in get_queryset
+    qs, search_use_distinct = self.model_admin.get_search_results(request, qs, self.query)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1029, in get_search_results
+    queryset = queryset.filter(reduce(operator.or_, or_queries))
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 841, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 859, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1281, in _add_q
+    current_negated, allow_joins, split_subq)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1087, in build_lookup
+    raise FieldError('Related Field got invalid lookup: {}'.format(lookup_name))
+django.core.exceptions.FieldError: Related Field got invalid lookup: icontains
+2020-11-07 09:02:49,804 django.server ERROR    "GET /maintainer/patientapp/patient/?q=Test1 HTTP/1.1" 500 172670
+2020-11-07 09:05:52,989 django.server INFO     "GET /maintainer/patientapp/patient/?q=Test1 HTTP/1.1" 200 10966
+2020-11-07 09:05:53,088 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+2020-11-07 09:05:53,096 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,108 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,108 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,108 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,117 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,119 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,129 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,138 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,145 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:05:53,146 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2020-11-07 09:05:53,239 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-11-07 09:05:53,243 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-11-07 09:05:53,251 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+2020-11-07 09:05:58,257 django.server INFO     "GET /maintainer/patientapp/patient/?q=Test2 HTTP/1.1" 200 14757
+2020-11-07 09:05:58,350 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:06:07,734 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-11-07 09:06:12,719 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 14258
+2020-11-07 09:06:12,801 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:06:18,201 django.server INFO     "GET /maintainer/patientapp/patient/?q=Test1 HTTP/1.1" 200 10966
+2020-11-07 09:06:18,276 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:06:20,285 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-11-07 09:06:48,206 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
+2020-11-07 09:06:56,357 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 10535
+2020-11-07 09:06:56,427 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:07:06,583 django.server INFO     "GET /maintainer/encounterapp/encounter/?q=Test1 HTTP/1.1" 200 5966
+2020-11-07 09:07:06,663 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:07:10,924 django.server INFO     "GET /maintainer/encounterapp/encounter/?q=test HTTP/1.1" 200 5952
+2020-11-07 09:07:11,005 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-07 09:07:13,435 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13214
