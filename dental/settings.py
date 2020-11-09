@@ -14,6 +14,7 @@ import os
 import datetime
 import logging
 import logging.config
+
 # from django.utils.log import DEFAULT_LOGGING
 
 # Disable Django's logging setup
@@ -34,37 +35,37 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'gxv4z_s*7$mx96ul7v)06nn=y&_@-1fq7m7_jpp*8oq^%#fykb'
+SECRET_KEY = "gxv4z_s*7$mx96ul7v)06nn=y&_@-1fq7m7_jpp*8oq^%#fykb"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
-AUTH_USER_MODEL = 'userapp.User'
+AUTH_USER_MODEL = "userapp.User"
 
 
 # Application definition
 
 INTERNAL_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 THIRD_PARTY_APPS = [
-    'rest_framework',
-    'rest_framework.authtoken',
-    'debug_toolbar',
-    'django_extensions',
-    'corsheaders',
-    'django_filters',
-    'nepali',
-    'import_export',
-    ]
+    "rest_framework",
+    "rest_framework.authtoken",
+    "debug_toolbar",
+    "django_extensions",
+    "corsheaders",
+    "django_filters",
+    "nepali",
+    "import_export",
+]
 
 # All apps developed at AmejPay goes here
 DEV_APPS = [
@@ -75,46 +76,46 @@ DEV_APPS = [
     "treatmentapp",
     "flagapp",
     "visualizationapp",
-    ]
+]
 
 INSTALLED_APPS = INTERNAL_APPS + THIRD_PARTY_APPS + DEV_APPS
 
 MIDDLEWARE = [
     # 'django.middleware.cache.UpdateCacheMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     # 'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
-ROOT_URLCONF = 'dental.urls'
+ROOT_URLCONF = "dental.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": ["templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'dental.wsgi.application'
+WSGI_APPLICATION = "dental.wsgi.application"
 
 
-#api integrantion
+# api integrantion
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Database
@@ -128,13 +129,13 @@ CORS_ORIGIN_ALLOW_ALL = True
 # }
 
 DATABASES = {
-    'default':{
-        'ENGINE': os.environ.get('DATABASE_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.environ.get('DATABASE_NAME', 'dentalhub_db'),
-        'USER': os.environ.get('DATABASE_USER', 'dentalhub'),
-        'HOST': os.environ.get('DATABASE_HOST', 'db'),
-        'PORT': os.environ.get('DATABASE_PORT', 3306),
-        'PASSWORD':os.environ.get('POSTGRES_PASSWORD', 'dental_password'),
+    "default": {
+        "ENGINE": os.environ.get("DATABASE_ENGINE", "django.db.backends.mysql"),
+        "NAME": os.environ.get("DATABASE_NAME", "dentalhub_db"),
+        "USER": os.environ.get("DATABASE_USER", "dentalhub"),
+        "HOST": os.environ.get("DATABASE_HOST", "db"),
+        "PORT": os.environ.get("DATABASE_PORT", 3306),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "dental_password"),
     }
 }
 
@@ -144,7 +145,7 @@ CACHES = {
         "LOCATION": "redis://redis:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        },
     }
 }
 
@@ -157,16 +158,16 @@ SESSION_CACHE_ALIAS = "default"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -174,9 +175,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Asia/Katmandu'
+TIME_ZONE = "Asia/Katmandu"
 
 USE_I18N = True
 
@@ -185,88 +186,78 @@ USE_L10N = True
 USE_TZ = True
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
+    "DEFAULT_PERMISSION_CLASSES": (
         # 'rest_framework.permissions.IsAuthenticated',
-        ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-        ),
+    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ),
 }
 
 JWT_AUTH = {
     # how long the original token is valid for
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=180),
-
+    "JWT_EXPIRATION_DELTA": datetime.timedelta(days=180),
     # allow refreshing of tokens
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=360),
-
+    "JWT_ALLOW_REFRESH": True,
+    "JWT_REFRESH_EXPIRATION_DELTA": datetime.timedelta(days=360),
     # this is the maximum time AFTER the token was issued that
     # it can be refreshed.  exprired tokens can't be refreshed.
-
-    }
+}
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-DOCS_URL = '/docs/'
+STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
+DOCS_URL = "/docs/"
 
 
-STATIC_ROOT = os.path.join((BASE_DIR),"static","static")
+STATIC_ROOT = os.path.join((BASE_DIR), "static", "static")
 STATICFILES_DIRS = [
-os.path.join((BASE_DIR),"static"),
+    os.path.join((BASE_DIR), "static"),
 ]
 
-MEDIA_ROOT = os.path.join((BASE_DIR),"media")
+MEDIA_ROOT = os.path.join((BASE_DIR), "media")
 
-DOCS_ROOT = os.path.join((BASE_DIR),"docs","_build","html")
+DOCS_ROOT = os.path.join((BASE_DIR), "docs", "_build", "html")
 
 
-
-DEFAULT_FROM_EMAIL = 'Dental Hub<abhiyantriktech@gmail.com>'
+DEFAULT_FROM_EMAIL = "Dental Hub<abhiyantriktech@gmail.com>"
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'abhiyantriktech@gmail.com'
-EMAIL_HOST_PASSWORD = 'admin@2018'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "abhiyantriktech@gmail.com"
+EMAIL_HOST_PASSWORD = "admin@2018"
 EMAIL_PORT = 587
 
 
-logging.config.dictConfig({
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'console': {
-            # exact format is not important, this is the minimum information
-            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+logging.config.dictConfig(
+    {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "console": {
+                # exact format is not important, this is the minimum information
+                "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
+            },
+            "file": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
         },
-        'file': {
-            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
-        }
-    },
-    'handlers': {
-        # console logs to stderr
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'console'
+        "handlers": {
+            # console logs to stderr
+            "console": {"class": "logging.StreamHandler", "formatter": "console"},
+            "file": {
+                "level": "DEBUG",
+                "class": "logging.FileHandler",
+                "formatter": "file",
+                "filename": os.path.join((BASE_DIR), "debug.log"),
+            },
         },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'file',
-            'filename': os.path.join((BASE_DIR), "log", "debug.log")\
-        }
-    },
-    'loggers': {
-        # default for all undefined Python modules
-        '': {
-            'level': 'INFO',
-            'handlers': ['console', 'file']
+        "loggers": {
+            # default for all undefined Python modules
+            "": {"level": "INFO", "handlers": ["console", "file"]},
         },
-    },
-})
+    }
+)

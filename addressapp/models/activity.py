@@ -19,7 +19,6 @@ def keygenerator():
 class Activity(models.Model):
 	name = models.CharField(max_length=250,unique=True)
 
-
 	def __str__(self):
 		return self.name
 
@@ -29,4 +28,4 @@ class ActivityArea(models.Model):
 	status = models.BooleanField(default=True)
 
 	def __str__(self):
-		return  '%s %s' %(self.area,self.name)
+		return  '%s' %(self.area)
