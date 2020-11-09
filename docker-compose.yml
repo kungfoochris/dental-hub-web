@@ -2,19 +2,18 @@ version: '3'
 services:
   db:
     image: mariadb:latest
-    expose:
-      - "3306"
+    ports:
+      - "3306:3306"
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
       MYSQL_DATABASE: 'dentalhub_db'
       MYSQL_USER: 'dentalhub'
       MYSQL_PASSWORD: 'dental_password'
-      MYSQL_ROOT_PASSWORD: 'dental_password'
-      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_ROOT_PASSWORD: 'dental_root_password'
 
   redis:
-    restart: "always"
+    restart: "no"
     image: redis:latest
     expose:
       - "6379"
@@ -27,17 +26,17 @@ services:
       - ./static/static:/usr/share/nginx/html/static
       - ./media:/usr/share/nginx/html/media
       - ./vue:/usr/share/nginx/html
-    restart: "always"
+    restart: "no"
     ports:
-      - "6072:6062"
+      - "6062:6062"
     depends_on:
       - backend
   backend:
     build:
       context: ./
       dockerfile: docker/backend/backend.Dockerfile
-    # command: ["./docker/entry.sh"]
-    restart: "always"
+    command: ["./docker/entry.sh"]
+    restart: "no"
     ports:
       - "6061:6061"
     volumes:
@@ -51,5 +50,5 @@ services:
       DATABASE_HOST: db
       DATABASE_NAME: dentalhub_db
       DATABASE_USER: dentalhub
-      DATABASE_PASSWORD: dental_password
+      DATABASE_PASSWORD: dental_root_password
       DATABASE_PORT: 3306
