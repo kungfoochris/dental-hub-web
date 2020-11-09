@@ -52,9 +52,6 @@ class CustomAuthToken(APIView):
         return Response(serializer.errors)
 
 
-
-
-
 class UserListView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = UserSerializer
