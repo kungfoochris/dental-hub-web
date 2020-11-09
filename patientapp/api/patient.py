@@ -70,11 +70,14 @@ class PatientAdd(APIView):
         serializer = PatientSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
+<<<<<<< HEAD
             print(serializer.validated_data['district_id'].id)
             print(serializer.validated_data['municipality_id'].id)
             print(serializer.validated_data['ward_id'].id)
             p = Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).first()
         
+=======
+>>>>>>> 5a65c92dd9443457b14629d75ff61b02204bf284
             if Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).count()==0:
                 ward_obj = serializer.validated_data['geography_id']
                 if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
@@ -103,6 +106,7 @@ class PatientAdd(APIView):
                     patient_obj.created_at = serializer.validated_data['created_at']
                     # patient_obj.recall_date = serializer.validated_data['recall_date']
                     patient_obj.recall_time = serializer.validated_data['recall_time']
+                    patient_obj.area = serializer.validated_data['area']
                     patient_obj.save()
                 else:
                     patient_obj.first_name = serializer.validated_data['first_name']
@@ -124,6 +128,7 @@ class PatientAdd(APIView):
                     # patient_obj.recall_date = serializer.validated_data['recall_date']
                     patient_obj.recall_time = serializer.validated_data['recall_time']
                     patient_obj.recall_geography = serializer.validated_data['recall_geography']
+                    patient_obj.area = serializer.validated_data['area']
                     patient_obj.save()
                 logger.info("%s %s, %s %s, %s %s, %s %s, %s %s, %s %s ,%s %s, %s %s, %s %s, %s %s, %s %s, %s %s" %("Patient added successfully by", request.user.full_name,"Patient id:",patient_obj.id,"first name:",patient_obj.first_name,"last name:",patient_obj.last_name,"phone:",patient_obj.phone,"dob:",patient_obj.dob,"gender:",patient_obj.gender,"ward:",patient_obj.ward.name,"Activity Area:",patient_obj.activity_area.name,"District:",patient_obj.district.name,"Geography:",patient_obj.geography.name,"Municipality:",patient_obj.municipality.name))
                 return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)

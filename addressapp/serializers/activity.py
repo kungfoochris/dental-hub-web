@@ -19,10 +19,10 @@ class ActivityPKFIeld1(serializers.StringRelatedField):
 
 class ActivityAreaSerializer(serializers.ModelSerializer):
 	activity_id = ActivityPKFIeld(many=False,write_only=True)
-	# activity = ActivityPKFIeld1(many=False,read_only=True)
+	activity = ActivityPKFIeld1(many=False,read_only=True)
 	class Meta:
 		model = ActivityArea
-		fields = ('activity_id','area')
+		fields = ('id','activity_id', 'activity', 'area')
 
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:

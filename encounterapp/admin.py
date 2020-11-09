@@ -8,9 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 
 class EncounterAdmin(admin.ModelAdmin):
 	list_display = ('id', 'date', 'patient', 'encounter_type',\
-		'author','activity_area','geography','created_at','updated_by','updated_at','other_problem')
+		'author','activity_area', 'area', 'geography','created_at','updated_by','updated_at','other_problem')
 	list_filter = ('date','updated_at')
-	search_fields = ['id', 'patient__id', 'author__username','date','updated_by__username','updated_at','created_at']
+	search_fields = ['id', 'patient__id', 'area__area', 'author__username','date','updated_by__username','updated_at','created_at']
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:

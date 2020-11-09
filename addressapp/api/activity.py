@@ -36,7 +36,8 @@ class ActivityAreaListView(APIView):
     serializer_class = ActivityAreaSerializer
 
     def get(self, request, format=None):
-        activityarea_obj = ActivityArea.objects.filter(status=True).values('area').distinct()
+        activityarea_obj = ActivityArea.objects.filter(status=True)
+        # activityarea_obj = ActivityArea.objects.filter(status=True).values('area').distinct()
         serializer = ActivityAreaSerializer(activityarea_obj, many=True, \
             context={'request': request})
         return Response(serializer.data)
@@ -50,7 +51,7 @@ class ActivityAreaListView(APIView):
                 activityarea_obj.activity = serializer.validated_data['activity_id']
                 activityarea_obj.area = serializer.validated_data['area'].capitalize()
                 activityarea_obj.save()
-                return Response({"message":"schoolseminar area added successfully"},status=200)
+                return Response({"id":activityarea_obj.id,"area":activityarea_obj.area},status=200)
             return Response({'message':serializer.errors}, status=400)
         return Response({"message":"you have to be admin"},status=400)
 
