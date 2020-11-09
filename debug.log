@@ -6005,3 +6005,24 @@ django.db.utils.OperationalError: (1054, "Unknown column 'patientapp_patient.are
 2020-11-09 20:44:19,612 patientapp.api.patient INFO      Duplicate data added in by= admin user, first name: Johnr, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
 2020-11-09 20:44:21,909 django.request WARNING  Conflict: /api/v1/patients
 2020-11-09 20:44:21,910 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109666
+2020-11-09 20:52:27,823 patientapp.api.patient INFO      Duplicate data added in by= admin user, first name: Johnr, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
+2020-11-09 20:52:30,106 django.request WARNING  Conflict: /api/v1/patients
+2020-11-09 20:52:30,107 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109666
+2020-11-09 20:53:49,651 patientapp.api.patient INFO      Duplicate data added in by= admin user, Patient ID 55AF40AD50C34931BBE49C3826BCBA0B, first name: Johnr, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
+2020-11-09 20:53:51,920 django.request WARNING  Conflict: /api/v1/patients
+2020-11-09 20:53:51,923 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109666
+2020-11-09 20:54:34,881 patientapp.api.patient INFO      Duplicate data added in by= admin user, Patient ID 55AF40AD50C34931BBE49C3826BCBA0B, first name: Johnr, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
+2020-11-09 20:54:37,172 django.request WARNING  Conflict: /api/v1/patients
+2020-11-09 20:54:37,173 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109666
+2020-11-09 20:57:31,466 patientapp.api.patient INFO     Patient added successfully by admin user, Patient id: D7D2F23805CF47A1A37A57579801BA35, first name: Johnrd, last name: Cena, phone: +9779840056968, dob: 2020-11-09 ,gender: male, ward: , Activity Area: Health Post, District: Achham, Geography: , Municipality: Mangalsen
+2020-11-09 20:57:34,245 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109718
+2020-11-09 20:57:34,285 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-11-09 20:57:34,287 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-11-09 20:57:34,300 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-11-09 20:57:34,303 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-11-09 20:57:34,355 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-11-09 20:57:34,366 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-11-09 20:57:34,369 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-11-09 20:57:34,373 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-11-09 20:57:34,375 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-11-09 20:57:34,375 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
