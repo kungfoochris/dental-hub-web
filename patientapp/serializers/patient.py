@@ -76,7 +76,6 @@ class PatientSerializer(serializers.ModelSerializer):
          'updated_at','created_at','recall_time','recall_geography','flag')
 		read_only_fields = ('author','full_name','date','updated_at')
 
-
 class PatientUpdateSerializer(serializers.ModelSerializer):
 	activity_area = serializers.StringRelatedField(many=False,read_only=True)
 	geography = serializers.StringRelatedField(many=False,read_only=True)

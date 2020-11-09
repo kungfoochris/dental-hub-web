@@ -70,6 +70,7 @@ class PatientAdd(APIView):
         serializer = PatientSerializer(data=request.data,\
             context={'request': request})
         if serializer.is_valid():
+            # p = Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).first()
             if Patient.objects.filter(first_name=serializer.validated_data['first_name'],last_name=serializer.validated_data['last_name'],phone=serializer.validated_data['phone'],dob=serializer.validated_data['dob'],gender=serializer.validated_data['gender']).count()==0:
                 ward_obj = serializer.validated_data['geography_id']
                 if Ward.objects.filter(id=serializer.validated_data['geography_id']).exists():
@@ -128,7 +129,7 @@ class PatientAdd(APIView):
                     #return Response({"message":"Activity id does not exists"}, status=400)
                 # logger.info("Geography id does not exists in patient section created by="+request.user.full_name)
                 # return Response({"message":"Geography id does not exists created by="+request.user.full_name}, status=400)
-            logger.info("%s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s " %("Duplicate data added in by=",request.user.full_name,"Patient ID",p.id,"first name:",serializer.validated_data['first_name'],"last name:",serializer.validated_data['last_name'],"phone:",serializer.validated_data['phone'],"dob:",serializer.validated_data['dob'],"gender:",serializer.validated_data['gender']))
+            logger.info(" %s %s, %s %s, %s %s, %s %s, %s %s, %s %s " %("Duplicate data added in by=",request.user.full_name,"first name:",serializer.validated_data['first_name'],"last name:",serializer.validated_data['last_name'],"phone:",serializer.validated_data['phone'],"dob:",serializer.validated_data['dob'],"gender:",serializer.validated_data['gender']))
             return Response({"message":"duplicate data created by="+request.user.full_name},status=409)
         logger.info(serializer.errors)
         return Response({'message':serializer.errors}, status=400)
