@@ -5973,3 +5973,35 @@ django.db.utils.OperationalError: (1054, "Unknown column 'patientapp_patient.are
 2020-11-09 20:35:16,993 patientapp.api.patient INFO      Duplicate data added in by= Ramesh Thapa Magar, first name: Johnnb, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
 2020-11-09 20:35:19,342 django.request WARNING  Conflict: /api/v1/patients
 2020-11-09 20:35:19,344 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109669
+2020-11-09 20:41:30,576 django.request WARNING  Unauthorized: /api/v1/patients
+2020-11-09 20:41:30,577 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 401 9840
+2020-11-09 20:41:32,980 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-11-09 20:41:50,301 django.server INFO     "GET /seed HTTP/1.1" 200 17
+2020-11-09 20:41:54,723 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-11-09 20:42:07,412 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-09 20:42:09,778 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 115004
+2020-11-09 20:42:12,539 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-11-09 20:42:55,614 patientapp.api.patient INFO     {'dob': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].', code='invalid')], 'created_at': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].', code='invalid')]}
+2020-11-09 20:42:57,873 django.request WARNING  Bad Request: /api/v1/patients
+2020-11-09 20:42:57,874 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 109904
+2020-11-09 20:42:57,919 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2020-11-09 20:42:57,929 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-11-09 20:42:57,930 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-11-09 20:42:57,937 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-11-09 20:42:57,962 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-11-09 20:42:57,967 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-11-09 20:42:57,970 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-11-09 20:42:57,978 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2020-11-09 20:42:57,978 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2020-11-09 20:42:57,984 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-11-09 20:43:12,536 patientapp.api.patient INFO      Duplicate data added in by= admin user, first name: John, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
+2020-11-09 20:43:14,883 django.request WARNING  Conflict: /api/v1/patients
+2020-11-09 20:43:14,884 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109666
+2020-11-09 20:43:59,589 patientapp.api.patient INFO     {'dob': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].', code='invalid')]}
+2020-11-09 20:44:01,903 django.request WARNING  Bad Request: /api/v1/patients
+2020-11-09 20:44:01,904 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 109762
+2020-11-09 20:44:11,096 patientapp.api.patient INFO     Patient added successfully by admin user, Patient id: 55AF40AD50C34931BBE49C3826BCBA0B, first name: Johnr, last name: Cena, phone: +9779840056968, dob: 2020-11-09 ,gender: male, ward: , Activity Area: Health Post, District: Achham, Geography: , Municipality: Mangalsen
+2020-11-09 20:44:13,385 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109718
+2020-11-09 20:44:19,612 patientapp.api.patient INFO      Duplicate data added in by= admin user, first name: Johnr, last name: Cena, phone: +9779840056968, dob: 2020-11-09, gender: male 
+2020-11-09 20:44:21,909 django.request WARNING  Conflict: /api/v1/patients
+2020-11-09 20:44:21,910 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109666
