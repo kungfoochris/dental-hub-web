@@ -165,10 +165,10 @@ class UpdateUserView(APIView):
     serializer_class = UpdateUserSerializer
     permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request,format=None):
-            user = User.objects.get(pk=request.user.id)
-            serializer = UpdateUserSerializer(user, \
-                context={'request': request})
-            return Response(serializer.data,status=200)
+        user = User.objects.get(pk=request.user.id)
+        serializer = UpdateUserSerializer(user, \
+            context={'request': request})
+        return Response(serializer.data,status=200)
 
     def put(self, request,format=None):
         user_obj = User.objects.get(id = request.user.id)
