@@ -24,6 +24,11 @@ class GeographySerializeronly(serializers.ModelSerializer):
         fields = ('id','location','name','district','municipality_name','ward')
         read_only_fields = ('location',)
 
+class RoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Role
+        fields = ('id','name')
+
 class RolePKField(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
     	queryset = Role.objects.all()
@@ -57,14 +62,15 @@ class PasswordResetSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image')
+		fields = ('id','username','first_name', 'middle_name','last_name','full_name', 'image')
 		# read_only_fields = ('notification_count','qrcode')
 
 class ProfileSerializer1(serializers.ModelSerializer):
 	location=GeographySerializeronly(many=True)
+	role = serializers.StringRelatedField()
 	class Meta:
 		model = CustomUser
-		fields = ('id','first_name', 'middle_name','last_name','full_name', 'image','location')
+		fields = ('id','username','first_name', 'middle_name','last_name','full_name','image','role','location')
 		# read_only_fields = ('notification_count','qrcode')
 
 
