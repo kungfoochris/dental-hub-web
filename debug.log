@@ -6026,3 +6026,579 @@ django.db.utils.OperationalError: (1054, "Unknown column 'patientapp_patient.are
 2020-11-09 20:57:34,373 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
 2020-11-09 20:57:34,375 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
 2020-11-09 20:57:34,375 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2020-11-09 21:03:02,540 django.request WARNING  Not Found: /api/v1/patients/D7D2F23805CF47A1A37A57579801BA35/encounter
+2020-11-09 21:03:02,541 django.server WARNING  "GET /api/v1/patients/D7D2F23805CF47A1A37A57579801BA35/encounter HTTP/1.1" 404 20892
+2020-11-09 21:03:06,268 django.request WARNING  Bad Request: /api/v1/patients/D7D2F23805CF47A1A37A57579801BA35/encounters
+2020-11-09 21:03:06,269 django.server WARNING  "GET /api/v1/patients/D7D2F23805CF47A1A37A57579801BA35/encounters HTTP/1.1" 400 16572
+2020-11-09 21:03:25,099 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2020-11-09 21:03:25,152 django.server INFO     "POST /api/v1/patients/D7D2F23805CF47A1A37A57579801BA35/encounters HTTP/1.1" 200 16613
+2020-11-09 21:03:28,635 django.server INFO     "GET /api/v1/patients/D7D2F23805CF47A1A37A57579801BA35/encounters HTTP/1.1" 200 17431
+2020-11-17 18:35:54,413 django.request WARNING  Unauthorized: /api/v1/patients
+2020-11-17 18:35:54,437 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-11-17 18:35:54,691 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-11-17 18:35:54,693 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-11-17 18:35:54,696 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-11-17 18:35:54,707 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-11-17 18:35:54,739 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-11-17 18:35:54,741 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-11-17 18:35:54,743 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-11-17 18:35:54,743 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-11-17 18:35:54,747 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-11-17 18:35:54,751 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-11-17 18:35:54,776 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-11-17 18:35:54,990 django.request WARNING  Not Found: /favicon.ico
+2020-11-17 18:35:54,992 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-11-17 18:35:57,195 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-11-17 18:41:52,581 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 18:42:51,165 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-17 18:42:53,528 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 117711
+2020-11-17 18:43:31,595 django.request WARNING  Bad Request: /api/v1/users/profile
+2020-11-17 18:43:31,596 django.server WARNING  "GET /api/v1/users/profile HTTP/1.1" 400 15598
+2020-11-17 18:43:56,645 django.request WARNING  Unauthorized: /api/v1/users/profile
+2020-11-17 18:43:56,647 django.server WARNING  "GET /api/v1/users/profile HTTP/1.1" 401 10012
+2020-11-17 18:43:56,754 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-11-17 18:43:56,757 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-11-17 18:43:56,765 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-11-17 18:43:56,770 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-11-17 18:43:56,772 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-11-17 18:43:56,772 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-11-17 18:43:56,777 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-11-17 18:43:56,793 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-11-17 18:43:56,819 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-11-17 18:43:56,826 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-11-17 18:43:56,855 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-11-17 18:43:58,527 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users/profile HTTP/1.1" 200 2723
+2020-11-17 18:44:27,091 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-17 18:44:27,153 django.server INFO     "GET /api/v1/users/profile HTTP/1.1" 200 15601
+2020-11-17 18:45:35,666 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:47:44,165 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:47:47,113 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:48:59,753 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:49:18,645 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15870
+2020-11-17 18:50:52,930 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-11-17 18:50:53,157 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10206
+2020-11-17 18:50:53,217 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-11-17 18:50:53,218 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-11-17 18:50:53,227 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-11-17 18:50:53,256 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-11-17 18:50:53,287 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-11-17 18:50:53,287 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-11-17 18:50:53,436 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-11-17 18:50:53,443 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-11-17 18:50:53,450 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-11-17 18:50:59,802 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 7575
+2020-11-17 18:50:59,851 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-11-17 18:50:59,870 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-11-17 18:50:59,887 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-11-17 18:50:59,888 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-11-17 18:50:59,890 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-11-17 18:50:59,892 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-11-17 18:50:59,893 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-11-17 18:50:59,908 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-17 18:50:59,912 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-11-17 18:50:59,915 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-11-17 18:50:59,995 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2020-11-17 18:50:59,997 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-11-17 18:51:00,020 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-11-17 18:51:00,034 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-11-17 18:51:02,331 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10206
+2020-11-17 18:51:05,190 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49040
+2020-11-17 18:51:05,247 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-17 18:51:05,269 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2020-11-17 18:52:26,097 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 18:53:53,392 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 18:53:59,446 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:54:23,671 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 18:54:30,060 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:54:52,260 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:59:05,966 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 18:59:12,376 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:59:56,582 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 18:59:59,240 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 19:00:03,120 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/fields.py", line 441, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/fields.py", line 100, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'User' object has no attribute 'location'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 156, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/fields.py", line 462, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `location` on serializer `ProfileSerializer1`.
+The serializer field might be named incorrectly and not match any attribute or key on the `User` instance.
+Original exception text was: 'User' object has no attribute 'location'.
+2020-11-17 19:00:03,123 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 119572
+2020-11-17 19:02:23,968 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:03:51,133 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 19:03:54,546 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 19:03:58,866 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/fields.py", line 441, in get_attribute
+    return get_attribute(instance, self.source_attrs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/fields.py", line 100, in get_attribute
+    instance = getattr(instance, attr)
+AttributeError: 'User' object has no attribute 'location'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 156, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 514, in to_representation
+    attribute = field.get_attribute(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/fields.py", line 462, in get_attribute
+    raise type(exc)(msg)
+AttributeError: Got AttributeError when attempting to get a value for field `location` on serializer `ProfileSerializer1`.
+The serializer field might be named incorrectly and not match any attribute or key on the `User` instance.
+Original exception text was: 'User' object has no attribute 'location'.
+2020-11-17 19:03:58,869 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 119571
+2020-11-17 19:04:19,293 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:04:26,544 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10633
+2020-11-17 19:05:19,881 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 161, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1045, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1190, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1302, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `location` is not valid for model `User`.
+2020-11-17 19:05:19,884 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 136697
+2020-11-17 19:05:47,843 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 161, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1045, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1190, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1302, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `location` is not valid for model `User`.
+2020-11-17 19:05:47,848 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 136697
+2020-11-17 19:05:55,910 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 161, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1045, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1190, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1302, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `location` is not valid for model `User`.
+2020-11-17 19:05:55,912 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 136697
+2020-11-17 19:06:51,897 django.request WARNING  Unauthorized: /api/v1/profile
+2020-11-17 19:06:51,898 django.server WARNING  "GET /api/v1/profile HTTP/1.1" 401 9833
+2020-11-17 19:06:54,384 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/profile HTTP/1.1" 200 2717
+2020-11-17 19:07:04,008 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:07:11,470 django.request WARNING  Unauthorized: /api/v1/profile
+2020-11-17 19:07:11,471 django.server WARNING  "GET /api/v1/profile HTTP/1.1" 401 9833
+2020-11-17 19:07:16,184 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/profile HTTP/1.1" 200 2717
+2020-11-17 19:08:17,984 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:08:30,899 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-17 19:08:31,034 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 161, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1045, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1190, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1302, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `location` is not valid for model `User`.
+2020-11-17 19:08:31,037 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 136884
+2020-11-17 19:09:17,511 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 161, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1045, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1190, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1302, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `location` is not valid for model `User`.
+2020-11-17 19:09:17,517 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 136698
+2020-11-17 19:09:21,278 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 161, in get
+    return Response(serializers.data,status=200)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 560, in data
+    ret = super(Serializer, self).data
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 510, in to_representation
+    fields = self._readable_fields
+  File "/usr/local/lib/python3.7/site-packages/django/utils/functional.py", line 37, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 376, in _readable_fields
+    field for field in self.fields.values()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1045, in get_fields
+    source, info, model, depth
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1190, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 1302, in build_unknown_field
+    (field_name, model_class.__name__)
+django.core.exceptions.ImproperlyConfigured: Field name `location` is not valid for model `User`.
+2020-11-17 19:09:21,280 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 136698
+2020-11-17 19:10:53,667 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 19:11:04,169 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:11:10,574 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:11:40,469 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:11:44,516 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:13:00,973 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-11-17 19:13:07,064 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 19:13:14,607 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/profile HTTP/1.1" 302 0
+2020-11-17 19:13:14,632 django.request WARNING  Unauthorized: /api/v1/profile
+2020-11-17 19:13:14,633 django.server WARNING  "GET /api/v1/profile HTTP/1.1" 401 9833
+2020-11-17 19:13:15,565 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/profile HTTP/1.1" 200 2717
+2020-11-17 19:13:35,865 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-17 19:13:35,904 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10617
+2020-11-17 19:13:50,416 django.request WARNING  Unauthorized: /api/v1/users
+2020-11-17 19:13:50,417 django.server WARNING  "GET /api/v1/users HTTP/1.1" 401 9809
+2020-11-17 19:13:53,508 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users HTTP/1.1" 200 2715
+2020-11-17 19:14:04,483 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-17 19:14:04,585 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:14:12,809 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/profile HTTP/1.1" 302 0
+2020-11-17 19:14:12,832 django.request WARNING  Unauthorized: /api/v1/profile
+2020-11-17 19:14:12,833 django.server WARNING  "GET /api/v1/profile HTTP/1.1" 401 9833
+2020-11-17 19:14:13,660 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/profile HTTP/1.1" 200 2717
+2020-11-17 19:14:40,107 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-17 19:14:40,143 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10569
+2020-11-17 19:15:33,507 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:15:55,347 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10569
+2020-11-17 19:16:10,161 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:16:16,573 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:16:22,009 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:16:57,724 django.server INFO     "POST /api/v1/users HTTP/1.1" 200 15497
+2020-11-17 19:17:01,095 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 16404
+2020-11-17 19:17:28,178 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10206
+2020-11-17 19:17:44,259 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 8228
+2020-11-17 19:17:44,333 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-17 19:17:54,309 django.server INFO     "POST /maintainer/userapp/user/ HTTP/1.1" 200 3512
+2020-11-17 19:17:54,353 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 200 410
+2020-11-17 19:17:55,579 django.server INFO     "POST /maintainer/userapp/user/ HTTP/1.1" 302 0
+2020-11-17 19:17:55,658 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 7695
+2020-11-17 19:17:55,718 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-17 19:18:01,993 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:26:16,032 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:27:18,436 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:28:00,897 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:30:39,008 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:31:32,528 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:33:38,486 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:34:06,644 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:34:17,274 django.request WARNING  Bad Request: /api/v1/roles
+2020-11-17 19:34:17,275 django.server WARNING  "GET /api/v1/roles HTTP/1.1" 400 13331
+2020-11-17 19:34:24,360 django.server INFO     "GET /api/v1/roles HTTP/1.1" 200 13530
+2020-11-17 19:36:08,479 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:36:11,508 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:36:42,967 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:37:28,802 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:48:35,638 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:49:21,007 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:49:30,117 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:50:05,151 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:50:09,075 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:50:13,479 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:50:45,597 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15865
+2020-11-17 19:50:53,346 django.request ERROR    Internal Server Error: /api/v1/profile
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 153, in get
+    user_obj = CustomUser.objects.get(id=request.user.id)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 399, in get
+    self.model._meta.object_name
+userapp.models.customuser.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+2020-11-17 19:50:53,350 django.server ERROR    "GET /api/v1/profile HTTP/1.1" 500 95961
+2020-11-17 19:51:35,787 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:54:22,712 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10706
+2020-11-17 19:54:48,022 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:55:09,429 django.server INFO     "GET /api/v1/profile/update HTTP/1.1" 200 13582
+2020-11-17 19:55:21,369 django.server INFO     "PUT /api/v1/profile/update HTTP/1.1" 200 13409
+2020-11-17 19:55:23,864 django.server INFO     "GET /api/v1/profile/update HTTP/1.1" 200 13555
+2020-11-17 19:55:57,447 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10688
+2020-11-17 19:56:11,472 django.request WARNING  Bad Request: /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7
+2020-11-17 19:56:11,473 django.server WARNING  "GET /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 400 15848
+2020-11-17 19:56:19,169 django.server INFO     "GET /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 200 16027
+2020-11-17 19:56:38,527 django.request ERROR    Internal Server Error: /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 257, in put
+    for i in serializer.validated_data['area']:
+KeyError: 'area'
+2020-11-17 19:56:38,530 django.server ERROR    "PUT /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 500 90744
+2020-11-17 19:56:44,412 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10620
+2020-11-17 19:57:22,284 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15867
+2020-11-17 19:59:44,581 django.server INFO     "GET /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 200 16029
+2020-11-17 19:59:55,563 django.server INFO     "GET /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 200 16029
+2020-11-17 20:01:36,286 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 73731
+2020-11-17 20:01:55,223 django.server INFO     "GET /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 200 73893
+2020-11-17 20:02:17,065 django.server INFO     "PUT /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 200 73712
+2020-11-17 20:02:24,273 django.server INFO     "GET /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 200 73943
+2020-11-17 20:02:33,704 django.request ERROR    Internal Server Error: /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/userapp/api/user.py", line 257, in put
+    for i in serializer.validated_data['area']:
+KeyError: 'area'
+2020-11-17 20:02:33,707 django.server ERROR    "PUT /api/v1/users/DCBA89B098144A1B94799AE2E21E9DA7 HTTP/1.1" 500 90746
+2020-11-17 20:13:22,261 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15869
+2020-11-17 20:13:28,633 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 10692
