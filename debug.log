@@ -1,0 +1,306 @@
+2020-11-24 17:27:11,810 django.server INFO     "GET / HTTP/1.1" 200 1257
+2020-11-24 17:27:12,068 django.request WARNING  Not Found: /css/app.4f2e1db3.css
+2020-11-24 17:27:12,070 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
+2020-11-24 17:27:12,075 django.server WARNING  "GET /css/app.4f2e1db3.css HTTP/1.1" 404 3410
+2020-11-24 17:27:12,077 django.server WARNING  "GET /css/chunk-vendors.772fabf9.css HTTP/1.1" 404 3440
+2020-11-24 17:27:12,093 django.request WARNING  Not Found: /js/app.94e5e4ed.js
+2020-11-24 17:27:12,094 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
+2020-11-24 17:27:12,095 django.server WARNING  "GET /js/chunk-vendors.437d418e.js HTTP/1.1" 404 3434
+2020-11-24 17:27:12,095 django.server WARNING  "GET /js/app.94e5e4ed.js HTTP/1.1" 404 3404
+2020-11-24 17:27:12,408 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
+2020-11-24 17:27:12,413 django.server WARNING  "GET /css/chunk-vendors.772fabf9.css HTTP/1.1" 404 3440
+2020-11-24 17:27:12,420 django.request WARNING  Not Found: /css/app.4f2e1db3.css
+2020-11-24 17:27:12,424 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
+2020-11-24 17:27:12,425 django.server WARNING  "GET /css/app.4f2e1db3.css HTTP/1.1" 404 3410
+2020-11-24 17:27:12,425 django.server WARNING  "GET /js/chunk-vendors.437d418e.js HTTP/1.1" 404 3434
+2020-11-24 17:27:12,441 django.request WARNING  Not Found: /js/app.94e5e4ed.js
+2020-11-24 17:27:12,442 django.server WARNING  "GET /js/app.94e5e4ed.js HTTP/1.1" 404 3404
+2020-11-24 17:27:12,503 django.request WARNING  Not Found: /favicon.ico
+2020-11-24 17:27:12,504 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-11-24 17:27:25,856 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2020-11-24 17:27:25,952 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.1" 200 61
+2020-11-24 17:27:33,606 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.1" 200 0
+2020-11-24 17:27:33,627 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-24 17:27:33,712 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.1" 200 0
+2020-11-24 17:27:33,719 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.1" 200 0
+2020-11-24 17:27:33,720 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.1" 200 0
+2020-11-24 17:27:33,723 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.1" 200 0
+2020-11-24 17:27:33,846 django.server INFO     "OPTIONS /api/v1/events HTTP/1.1" 200 0
+2020-11-24 17:27:33,869 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-11-24 17:27:33,878 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-11-24 17:27:33,905 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-11-24 17:27:33,937 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-11-24 17:27:34,120 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 1722
+2020-11-24 17:27:34,156 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 17:27:34,232 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-11-24 17:27:34,248 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-24 17:27:34,293 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-11-24 17:27:34,319 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-11-24 17:27:34,379 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-11-24 17:27:34,650 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 17:27:35,068 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-11-24 17:27:35,138 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-11-24 17:27:35,251 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 490
+2020-11-24 17:27:35,296 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-11-24 17:27:35,316 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-11-24 17:27:35,631 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 17:27:35,781 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 17:27:35,807 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-11-24 17:27:35,808 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 17:27:35,835 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-11-24 17:27:35,927 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 17:27:35,988 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-11-24 17:27:35,993 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 17:27:36,042 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-11-24 17:27:36,057 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-11-24 17:27:36,441 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 17:27:36,548 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 17:27:36,599 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-11-24 17:27:37,082 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 17:27:37,093 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-11-24 17:27:37,101 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 17:27:37,133 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-11-24 17:27:37,458 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 17:27:37,488 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 17:27:37,498 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-11-24 17:27:37,564 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 17:27:37,617 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-11-24 17:27:37,657 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 17:27:37,693 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.1" 200 0
+2020-11-24 17:27:38,033 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 17:27:38,063 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-11-24 17:27:38,432 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 17:27:38,470 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-11-24 17:27:38,902 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 17:27:38,904 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 17:27:38,930 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.1" 200 0
+2020-11-24 17:27:38,960 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-11-24 17:27:39,336 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 17:27:39,360 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-11-24 17:27:39,441 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 17:27:39,486 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.1" 200 0
+2020-11-24 17:27:39,539 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.1" 200 0
+2020-11-24 17:27:39,818 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 17:27:39,843 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.1" 200 0
+2020-11-24 17:27:40,226 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 17:27:40,254 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.1" 200 0
+2020-11-24 17:27:40,391 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 17:27:40,597 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 17:27:40,746 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 17:27:41,080 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 17:27:41,452 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 17:27:41,453 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 17:27:41,471 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:11:37,668 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:11:37,695 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:11:38,451 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 48, in get
+    for b in v:
+UnboundLocalError: local variable 'v' referenced before assignment
+2020-11-24 18:11:38,466 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 48, in get
+    for b in v:
+UnboundLocalError: local variable 'v' referenced before assignment
+2020-11-24 18:11:38,514 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 15412
+2020-11-24 18:11:38,508 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 15412
+2020-11-24 18:11:38,825 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:11:38,981 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:11:39,282 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:11:39,317 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:11:39,737 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:11:39,772 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:11:39,967 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 48, in get
+    for b in v:
+UnboundLocalError: local variable 'v' referenced before assignment
+2020-11-24 18:11:39,975 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:11:40,015 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 15413
+2020-11-24 18:11:40,084 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-24 18:11:40,446 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:11:40,522 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 1722
+2020-11-24 18:11:40,695 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 48, in get
+    for b in v:
+UnboundLocalError: local variable 'v' referenced before assignment
+2020-11-24 18:11:40,717 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-11-24 18:11:40,744 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 15412
+2020-11-24 18:11:40,796 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:11:41,069 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:11:41,279 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 48, in get
+    for b in v:
+UnboundLocalError: local variable 'v' referenced before assignment
+2020-11-24 18:11:41,282 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:11:41,302 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 15412
+2020-11-24 18:11:41,485 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:11:41,740 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:11:42,051 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:11:42,106 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:11:42,641 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:11:42,743 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 490
+2020-11-24 18:11:42,826 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:11:43,117 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:11:43,613 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:11:43,678 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:11:43,681 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-24 18:11:43,822 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:11:43,846 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-11-24 18:11:44,232 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:11:44,276 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:12:13,619 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-24 18:12:13,714 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-24 18:12:14,010 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:12:14,059 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 1722
+2020-11-24 18:12:14,212 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-11-24 18:12:14,283 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:12:14,555 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:12:15,193 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-11-24 18:12:15,272 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 490
+2020-11-24 18:12:15,283 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2579
+2020-11-24 18:12:15,432 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2579
+2020-11-24 18:12:15,482 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:12:15,709 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:12:16,345 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:12:16,490 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2579
+2020-11-24 18:12:16,626 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2579
+2020-11-24 18:12:16,632 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:12:16,801 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:12:17,649 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:12:17,779 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2579
+2020-11-24 18:12:18,388 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:12:18,508 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:12:18,740 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:12:18,788 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:12:19,164 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:12:19,341 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:12:19,462 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:12:19,776 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:12:20,012 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:12:20,087 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:12:20,435 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:12:20,525 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:12:20,550 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:12:20,936 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:12:20,944 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:12:21,091 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:15:20,263 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-24 18:15:20,291 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-24 18:15:20,559 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 1722
+2020-11-24 18:15:20,696 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:15:20,924 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 146
+2020-11-24 18:15:21,065 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:15:21,905 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 831
+2020-11-24 18:15:22,198 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.1" 200 490
+2020-11-24 18:15:22,332 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:15:22,581 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:15:23,002 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:15:23,037 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:15:23,208 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:15:23,537 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:15:23,551 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:15:24,261 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:15:24,496 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:15:24,526 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 18:15:24,675 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:15:24,927 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:15:25,040 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:15:25,111 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 18:15:25,443 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 747
+2020-11-24 18:15:25,568 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:15:25,761 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:15:26,134 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 18:15:26,428 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:15:26,850 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:15:27,113 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 1134
+2020-11-24 18:15:27,243 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 18:15:27,264 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:15:27,536 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-24 18:15:27,736 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 2575
+2020-11-24 18:15:27,790 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
+2020-11-24 18:15:28,195 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
+2020-11-24 18:15:28,286 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
