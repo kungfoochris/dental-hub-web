@@ -1,4 +1,4 @@
-from datetime import *
+import datetime
 from django.http import JsonResponse
 from nepali.datetime import NepaliDate
 
@@ -12,6 +12,10 @@ from patientapp.models import Patient
 from visualizationapp.serializers.visualization import WardlineVisualizationSerializer
 from visualizationapp.models import Visualization
 
+date = datetime.date.today()
+np_date = NepaliDate.from_date(date)
+item = np_date.month
+
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -22,6 +26,32 @@ class WardlineVisualization(APIView):
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            label_data = [
+                "Baishakh(Apr/May)",
+                "Jestha(May/Jun)",
+                "Asar(Jun/Jul)",
+                "Shrawan(Jul/Aug)",
+                "Bhadra(Aug/Sep)",
+                "Asoj(Sep/Oct)",
+                "Kartik(Oct/Nov)",
+                "Mangsir(Nov/Dec)",
+                "Poush(Dec/Jan)",
+                "Magh(Jan/Feb)",
+                "Falgun(Feb/Mar)",
+                "Chaitra(Mar/Apr)",
+            ]
+            next_month = month.index(item) + 1
+            month_obj = month[next_month:]
+            label_data_obj = label_data[next_month:]
+            for i in month[next_month:]:
+                a = month.index(i)
+                month.pop(a)
+                label_data.pop(a)
+            for b in month_obj:
+                month.insert(0, b)
+            for n in label_data_obj:
+                label_data.insert(0, n)
+
             geography = []
             geography_patient = []
             geography_obj = Ward.objects.filter(status=True)
@@ -69,20 +99,7 @@ class WardlineVisualization(APIView):
                 n += 1
             locationChart = {
                 "data": {
-                    "labels": [
-                        "Baishakh(Apr/May)",
-                        "Jestha(May/Jun)",
-                        "Asar(Jun/Jul)",
-                        "Shrawan(Jul/Aug)",
-                        "Bhadra(Aug/Sep)",
-                        "Asoj(Sep/Oct)",
-                        "Kartik(Oct/Nov)",
-                        "Mangsir(Nov/Dec)",
-                        "Poush(Dec/Jan)",
-                        "Magh(Jan/Feb)",
-                        "Falgun(Feb/Mar)",
-                        "Chaitra(Mar/Apr)",
-                    ],
+                    "labels": label_data,
                     "datasets": datasets1,
                 },
                 "options": {
