@@ -304,3 +304,753 @@ UnboundLocalError: local variable 'v' referenced before assignment
 2020-11-24 18:15:27,790 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 2677
 2020-11-24 18:15:28,195 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 2571
 2020-11-24 18:15:28,286 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 2571
+2020-11-30 17:05:48,605 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2020-11-30 17:05:48,606 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2020-11-30 17:05:48,684 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-11-30 17:05:48,688 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-11-30 17:05:48,693 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-11-30 17:05:48,694 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-11-30 17:05:48,708 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-11-30 17:05:48,722 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-11-30 17:05:48,725 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-11-30 17:05:48,726 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-11-30 17:05:48,729 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-11-30 17:05:48,734 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-11-30 17:05:48,802 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-11-30 17:05:51,348 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2020-11-30 17:05:58,447 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2980
+2020-11-30 17:06:04,806 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2980
+2020-11-30 17:06:12,532 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2986
+2020-11-30 17:06:27,542 django.request WARNING  Not Found: /api/v1/users/
+2020-11-30 17:06:27,543 django.server WARNING  "GET /api/v1/users/ HTTP/1.1" 404 20757
+2020-11-30 17:06:31,442 django.request WARNING  Unauthorized: /api/v1/users
+2020-11-30 17:06:31,443 django.server WARNING  "GET /api/v1/users HTTP/1.1" 401 9809
+2020-11-30 17:06:33,065 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users HTTP/1.1" 200 2715
+2020-11-30 17:06:38,483 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2953
+2020-11-30 17:06:42,718 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2953
+2020-11-30 17:06:52,647 django.server INFO     "GET /seed HTTP/1.1" 200 17
+2020-11-30 17:07:08,400 django.server INFO     "GET /api/v1/authlogin/ HTTP/1.1" 200 2702
+2020-11-30 17:07:14,667 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-30 17:07:14,677 django.request WARNING  Not Found: /accounts/profile/
+2020-11-30 17:07:14,681 django.server WARNING  "GET /accounts/profile/ HTTP/1.1" 404 3401
+2020-11-30 17:07:25,687 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 41194
+2020-11-30 17:09:14,490 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-11-30 17:09:14,731 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12768
+2020-11-30 17:09:14,959 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-11-30 17:09:14,960 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-11-30 17:09:14,962 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-11-30 17:09:15,048 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-11-30 17:09:15,215 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-11-30 17:09:15,225 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-11-30 17:09:15,226 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2020-11-30 17:09:15,271 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-11-30 17:09:15,274 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-11-30 17:09:15,292 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-11-30 17:09:18,286 django.server INFO     "GET /maintainer/userapp/role/ HTTP/1.1" 200 5000
+2020-11-30 17:09:18,359 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-11-30 17:09:18,365 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-11-30 17:09:18,373 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-11-30 17:09:18,383 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-11-30 17:09:18,390 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-30 17:09:18,393 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-11-30 17:09:18,395 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-11-30 17:09:18,402 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-11-30 17:09:18,403 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-11-30 17:09:18,407 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-11-30 17:09:18,515 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-11-30 17:09:35,821 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12768
+2020-11-30 17:09:37,721 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 17531
+2020-11-30 17:09:37,795 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-30 17:09:37,802 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-11-30 17:09:37,807 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2020-11-30 17:09:37,810 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-11-30 17:09:39,259 django.server INFO     "GET /maintainer/userapp/user/add/ HTTP/1.1" 200 6907
+2020-11-30 17:09:39,659 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2020-11-30 17:09:39,673 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-30 17:09:39,679 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2020-11-30 17:09:39,680 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2020-11-30 17:09:39,779 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2020-11-30 17:09:51,706 django.server INFO     "GET /maintainer/userapp/user/ HTTP/1.1" 200 17531
+2020-11-30 17:09:53,588 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12768
+2020-11-30 17:09:55,183 django.server INFO     "GET /maintainer/userapp/role/ HTTP/1.1" 200 5000
+2020-11-30 17:09:55,389 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-30 17:09:56,957 django.server INFO     "GET /maintainer/userapp/role/add/ HTTP/1.1" 200 4012
+2020-11-30 17:09:57,225 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-11-30 17:10:00,023 django.server INFO     "GET /maintainer/userapp/role/ HTTP/1.1" 200 5000
+2020-11-30 17:10:37,657 django.server INFO     "POST /api/v1/users HTTP/1.1" 200 16546
+2020-11-30 17:11:13,421 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2020-11-30 17:11:13,576 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.1" 200 61
+2020-11-30 17:11:22,458 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2020-11-30 17:11:22,527 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.1" 200 61
+2020-11-30 17:11:30,082 django.server INFO     "OPTIONS /api/v1/checkwarduser HTTP/1.1" 200 0
+2020-11-30 17:11:30,094 django.server INFO     "POST /api/v1/checkwarduser HTTP/1.1" 200 29
+2020-11-30 17:11:30,125 django.server INFO     "OPTIONS /api/v1/token HTTP/1.1" 200 0
+2020-11-30 17:11:30,217 django.server INFO     "POST /api/v1/token HTTP/1.1" 200 247
+2020-11-30 17:11:30,438 django.server INFO     "OPTIONS /api/v1/profile HTTP/1.1" 200 0
+2020-11-30 17:11:30,442 django.server INFO     "OPTIONS /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 0
+2020-11-30 17:11:30,501 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:11:30,594 django.server INFO     "OPTIONS /api/v1/wardtablevisualization HTTP/1.1" 200 0
+2020-11-30 17:11:30,595 django.server INFO     "OPTIONS /api/v1/wardstrategicdata HTTP/1.1" 200 0
+2020-11-30 17:11:30,599 django.server INFO     "OPTIONS /api/v1/events HTTP/1.1" 200 0
+2020-11-30 17:11:30,604 django.server INFO     "OPTIONS /api/v1/basicbargraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,692 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:11:30,747 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:11:30,784 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:11:30,819 django.server INFO     "OPTIONS /api/v1/wardsettingsgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,828 django.server INFO     "OPTIONS /api/v1/wardtreatmentgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,834 django.server INFO     "OPTIONS /api/v1/basicbargraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,843 django.server INFO     "OPTIONS /api/v1/waruserlinechart HTTP/1.1" 200 0
+2020-11-30 17:11:30,859 django.server INFO     "OPTIONS /api/v1/wardsettingsgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,872 django.server INFO     "OPTIONS /api/v1/basicbargraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,878 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:11:30,883 django.server INFO     "OPTIONS /api/v1/wardtreatmentgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,886 django.server INFO     "OPTIONS /api/v1/wardsettingsgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,887 django.server INFO     "OPTIONS /api/v1/wardtreatmentgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,899 django.server INFO     "OPTIONS /api/v1/waruserlinechart HTTP/1.1" 200 0
+2020-11-30 17:11:30,903 django.server INFO     "OPTIONS /api/v1/basicbargraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,906 django.server INFO     "OPTIONS /api/v1/waruserlinechart HTTP/1.1" 200 0
+2020-11-30 17:11:30,917 django.server INFO     "OPTIONS /api/v1/wardsettingsgraph HTTP/1.1" 200 0
+2020-11-30 17:11:30,918 django.server INFO     "OPTIONS /api/v1/waruserlinechart HTTP/1.1" 200 0
+2020-11-30 17:11:30,925 django.server INFO     "OPTIONS /api/v1/wardtreatmentgraph HTTP/1.1" 200 0
+2020-11-30 17:11:31,117 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:11:31,198 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:11:31,264 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:11:31,468 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:11:31,472 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:11:31,488 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:11:31,570 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:11:31,582 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:11:31,689 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:11:31,727 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:11:31,732 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:11:31,941 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:11:31,948 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:11:32,018 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:11:32,080 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:11:32,085 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:11:59,967 django.request ERROR    Internal Server Error: /api/v1/wardtablevisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 697, in get_context
+    'post_form': self.get_rendered_html_form(data, view, 'POST', request),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 518, in get_rendered_html_form
+    request, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 453, in _get_serializer
+    return serializer_class(*args, **kwargs)
+TypeError: 'tuple' object is not callable
+2020-11-30 17:11:59,969 django.server ERROR    "GET /api/v1/wardtablevisualization HTTP/1.1" 500 94202
+2020-11-30 17:12:02,774 django.request ERROR    Internal Server Error: /api/v1/wardtablevisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 697, in get_context
+    'post_form': self.get_rendered_html_form(data, view, 'POST', request),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 518, in get_rendered_html_form
+    request, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 453, in _get_serializer
+    return serializer_class(*args, **kwargs)
+TypeError: 'tuple' object is not callable
+2020-11-30 17:12:02,775 django.server ERROR    "GET /api/v1/wardtablevisualization HTTP/1.1" 500 94202
+2020-11-30 17:14:54,404 django.request ERROR    Internal Server Error: /api/v1/wardtablevisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 697, in get_context
+    'post_form': self.get_rendered_html_form(data, view, 'POST', request),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 518, in get_rendered_html_form
+    request, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 453, in _get_serializer
+    return serializer_class(*args, **kwargs)
+TypeError: 'str' object is not callable
+2020-11-30 17:14:54,408 django.server ERROR    "GET /api/v1/wardtablevisualization HTTP/1.1" 500 94227
+2020-11-30 17:15:44,080 django.request WARNING  Bad Request: /api/v1/wardtablevisualization
+2020-11-30 17:15:44,081 django.server WARNING  "GET /api/v1/wardtablevisualization HTTP/1.1" 400 12174
+2020-11-30 17:15:44,238 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-11-30 17:15:48,811 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/wardtablevisualization HTTP/1.1" 302 0
+2020-11-30 17:15:48,849 django.request WARNING  Unauthorized: /api/v1/wardtablevisualization
+2020-11-30 17:15:48,849 django.server WARNING  "GET /api/v1/wardtablevisualization HTTP/1.1" 401 10067
+2020-11-30 17:15:49,738 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtablevisualization HTTP/1.1" 200 2732
+2020-11-30 17:15:55,617 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-11-30 17:15:55,693 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 12336
+2020-11-30 17:18:10,420 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:18:10,558 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:18:10,729 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:10,871 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:11,062 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:11,093 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:11,227 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:11,325 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:11,344 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:18:11,376 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:11,408 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:11,658 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:18:11,662 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:11,826 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:11,870 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:11,930 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:11,948 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:18:11,959 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:11,993 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:12,022 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:12,050 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:36,364 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:18:36,458 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:18:36,541 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:36,653 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:18:36,748 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:36,955 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:37,018 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:37,092 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:37,342 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:37,354 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:37,556 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:18:37,628 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:37,679 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:18:37,736 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:37,750 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:18:37,875 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:37,943 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:18:37,954 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:18:38,071 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:38,087 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:38,108 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:18:50,547 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:20:41,379 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:20:41,392 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:20:41,484 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:20:41,727 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:20:41,836 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:20:41,937 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:20:41,990 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:20:42,079 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:20:42,132 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:20:42,184 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:20:42,213 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:20:42,217 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:20:42,296 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:20:42,329 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:20:42,340 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:20:42,365 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:20:42,411 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:20:42,572 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:20:42,610 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:20:42,626 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:20:42,635 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:14,522 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:21:14,565 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:21:14,671 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:21:14,701 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:14,860 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:15,145 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:15,217 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:15,227 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:15,357 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:15,379 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:15,415 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:21:15,428 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:15,534 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:15,552 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:15,586 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:15,611 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:15,643 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:21:15,698 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:15,767 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:15,845 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:15,849 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:25,206 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:21:25,233 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:21:25,285 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:25,325 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:21:25,476 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:25,536 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:25,714 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:25,825 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:25,840 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:26,040 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:21:26,046 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:26,195 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:26,309 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:21:26,350 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:26,370 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:26,444 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:26,475 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:26,512 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:26,516 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:26,519 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:26,527 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:37,286 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:21:37,309 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:21:37,452 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:37,467 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:37,537 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:21:37,638 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:37,823 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:21:37,901 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:38,027 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:38,101 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:38,155 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:21:38,203 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:38,399 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:21:38,427 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:38,493 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:38,523 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:38,537 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:21:38,573 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:21:38,590 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:38,606 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:21:38,687 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:12,582 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:22:12,719 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:12,801 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:12,868 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:12,936 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:13,040 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:13,117 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:22:13,119 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:13,126 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:22:13,155 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:13,254 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:13,331 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:13,391 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:13,467 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:13,664 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:13,714 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:13,802 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:13,913 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:14,068 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:22:14,081 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:14,115 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:22:33,287 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:22:33,322 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:33,373 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:33,434 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:33,617 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:33,711 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:33,785 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:33,910 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:33,968 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:34,058 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:34,075 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:34,127 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:34,143 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:34,188 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:34,228 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:34,355 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:34,360 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:42,985 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:22:43,023 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:22:43,099 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:43,122 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:22:43,266 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:43,387 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:43,588 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:22:43,605 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:43,706 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:43,870 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:43,928 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:43,969 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:22:43,993 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:44,119 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:44,163 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:22:44,185 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:22:44,218 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:22:44,222 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.1" 200 0
+2020-11-30 17:22:44,266 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:22:44,347 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:44,391 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:44,432 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:22:44,439 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:40,463 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:40,510 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:40,655 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:40,684 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:40,803 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:40,892 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:40,992 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:41,030 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:41,047 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:41,155 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:41,219 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:41,223 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:41,451 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:41,498 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:41,527 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:41,529 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:45,402 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:24:45,407 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:24:45,534 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:24:45,693 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:45,712 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:24:45,772 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:46,022 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:46,076 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:46,136 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:46,266 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:46,329 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:46,568 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:46,601 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:46,608 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:24:46,796 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:24:46,797 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:24:46,800 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:46,808 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:24:46,812 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:24:46,957 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:47,008 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:24:47,011 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1120
+2020-11-30 17:28:08,468 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:08,490 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:08,526 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:08,571 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:08,722 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:28:08,759 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:08,827 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:08,907 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:28:08,910 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:08,918 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:28:08,991 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:09,161 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:09,202 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:28:09,397 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:09,402 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:09,429 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15331
+2020-11-30 17:28:09,408 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:09,445 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15331
+2020-11-30 17:28:09,426 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:09,412 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:09,428 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15331
+2020-11-30 17:28:09,469 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15330
+2020-11-30 17:28:09,508 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:28:09,539 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:09,564 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:09,604 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:28:19,485 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:28:19,501 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:28:19,521 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:28:19,748 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:28:19,801 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:19,805 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:19,875 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:19,904 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15331
+2020-11-30 17:28:20,097 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:20,111 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:20,126 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15331
+2020-11-30 17:28:20,239 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:20,280 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:20,309 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:20,380 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15330
+2020-11-30 17:28:20,437 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:20,561 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:20,584 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:28:20,658 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:28:20,797 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:20,823 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 15331
+2020-11-30 17:28:20,846 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:28:20,888 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:20,943 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:28:21,002 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:21,013 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:28:28,414 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1729, in get
+    next_month = month.index(item) + 1
+NameError: name 'item' is not defined
+2020-11-30 17:28:28,415 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 87707
+2020-11-30 17:28:28,795 django.request WARNING  Not Found: /favicon.ico
+2020-11-30 17:29:12,738 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:19,464 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:29:19,541 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:29:19,574 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:29:19,634 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:29:19,860 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:29:19,934 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:29:20,280 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:20,294 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:20,311 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:20,549 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:20,591 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:20,648 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:20,714 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:20,816 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:20,816 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:21,008 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:21,031 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:21,122 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:21,145 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:21,223 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:21,247 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:21,266 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:38,119 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:38,216 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:38,387 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:38,415 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:29:38,544 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:38,574 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:38,621 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:38,653 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:29:38,709 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:29:38,795 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:38,891 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:29:39,099 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:29:39,239 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:39,351 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:29:39,357 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:39,362 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:29:39,396 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:29:39,463 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:39,519 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:39,526 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:29:39,550 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:39,567 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:29:47,838 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:31:48,317 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:31:48,381 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:31:48,411 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:31:48,451 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:31:48,554 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:31:48,689 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:31:48,704 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:31:48,751 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:31:48,778 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:31:48,828 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:31:48,858 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:31:48,917 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:31:48,981 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:31:48,998 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:31:49,030 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:31:49,078 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:31:49,274 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:31:49,416 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:31:49,484 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:31:49,517 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:31:49,555 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-11-30 17:31:49,594 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:32:22,338 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 81
+2020-11-30 17:32:22,395 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 598
+2020-11-30 17:32:22,407 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2020-11-30 17:32:22,469 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:32:22,633 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 83
+2020-11-30 17:32:22,652 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:32:22,694 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:32:22,774 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:32:22,950 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:32:22,952 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:32:23,023 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:32:23,102 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:32:23,166 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:32:23,196 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-11-30 17:32:23,306 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:32:23,350 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:32:23,396 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 777
+2020-11-30 17:32:23,529 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 101
+2020-11-30 17:32:23,615 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 950
+2020-11-30 17:32:23,627 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:32:23,638 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
+2020-11-30 17:32:23,645 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
