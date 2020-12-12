@@ -1054,3 +1054,221 @@ NameError: name 'item' is not defined
 2020-11-30 17:32:23,627 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
 2020-11-30 17:32:23,638 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 1262
 2020-11-30 17:32:23,645 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 136
+2020-12-11 17:34:10,171 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-11 17:34:10,172 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-11 17:34:10,656 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-11 17:34:10,730 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-11 17:34:10,901 django.request WARNING  Not Found: /favicon.ico
+2020-12-11 17:34:10,904 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-11 17:34:47,312 django.server INFO     "GET /seed HTTP/1.1" 200 8
+2020-12-11 17:34:59,671 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-11 17:34:59,672 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-11 17:35:02,057 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-11 17:35:09,938 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-11 17:35:12,841 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109476
+2020-12-11 17:38:09,261 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15313
+2020-12-11 17:38:38,282 django.request WARNING  Unauthorized: /api/v1/users
+2020-12-11 17:38:38,285 django.server WARNING  "GET /api/v1/users HTTP/1.1" 401 9809
+2020-12-11 17:38:38,375 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-11 17:38:38,393 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-12-11 17:38:38,395 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-12-11 17:38:38,400 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-12-11 17:38:38,401 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-11 17:38:38,416 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-12-11 17:38:38,417 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-11 17:38:38,418 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-11 17:38:38,420 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-12-11 17:38:38,437 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-12-11 17:38:38,476 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-12-11 17:38:40,603 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users HTTP/1.1" 200 2715
+2020-12-11 17:38:49,753 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-11 17:38:49,837 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15313
+2020-12-11 17:38:58,887 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-12-11 17:38:59,140 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10206
+2020-12-11 17:38:59,286 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-12-11 17:38:59,287 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-12-11 17:38:59,289 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-12-11 17:38:59,304 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-12-11 17:38:59,337 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-12-11 17:38:59,337 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-12-11 17:38:59,470 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-12-11 17:38:59,487 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-12-11 17:38:59,521 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-12-11 17:39:03,680 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49040
+2020-12-11 17:39:03,842 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-12-11 17:39:03,876 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-11 17:39:03,903 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-12-11 17:39:03,906 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-12-11 17:39:03,907 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-12-11 17:39:03,936 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-12-11 17:39:03,938 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-12-11 17:39:03,964 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-12-11 17:39:03,965 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-12-11 17:39:04,007 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-12-11 17:39:04,023 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2020-12-11 17:39:04,035 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-12-11 17:39:04,069 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-12-11 17:39:07,484 django.server INFO     "GET /maintainer/addressapp/ward/642/change/ HTTP/1.1" 200 19338
+2020-12-11 17:39:07,574 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-11 17:39:07,598 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2020-12-11 17:39:07,603 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2020-12-11 17:39:07,655 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2020-12-11 17:39:07,658 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2020-12-11 17:39:20,204 django.server INFO     "POST /maintainer/addressapp/ward/642/change/ HTTP/1.1" 302 0
+2020-12-11 17:39:20,772 django.server INFO     "GET /maintainer/addressapp/ward/add/ HTTP/1.1" 200 19316
+2020-12-11 17:39:20,824 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-11 17:39:20,958 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-12-11 17:39:27,082 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49045
+2020-12-11 17:39:27,139 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-11 17:39:30,513 django.server INFO     "GET /maintainer/addressapp/ward/641/change/ HTTP/1.1" 200 19338
+2020-12-11 17:39:30,569 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-11 17:39:41,744 django.server INFO     "POST /maintainer/addressapp/ward/641/change/ HTTP/1.1" 302 0
+2020-12-11 17:39:42,170 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49255
+2020-12-11 17:39:42,238 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-11 17:40:13,332 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109476
+2020-12-11 17:40:19,077 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 15429
+2020-12-11 17:41:04,169 django.server INFO     "POST /api/v1/users HTTP/1.1" 200 15618
+2020-12-11 17:41:12,773 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 16338
+2020-12-11 17:41:20,594 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/users HTTP/1.1" 302 0
+2020-12-11 17:41:20,621 django.request WARNING  Unauthorized: /api/v1/users
+2020-12-11 17:41:20,624 django.server WARNING  "GET /api/v1/users HTTP/1.1" 401 9809
+2020-12-11 17:41:25,020 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users HTTP/1.1" 200 2715
+2020-12-11 17:41:32,349 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2952
+2020-12-11 17:41:39,004 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-11 17:41:39,127 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 16331
+2020-12-11 17:42:17,037 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109575
+2020-12-11 17:42:35,947 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 10510
+2020-12-11 17:43:31,465 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 13985
+2020-12-11 17:43:43,008 django.server INFO     "POST /api/v1/activities HTTP/1.1" 200 14059
+2020-12-11 17:43:52,790 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 14133
+2020-12-11 17:44:00,159 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109660
+2020-12-11 17:45:53,481 patientapp.api.patient INFO     Patient added successfully by John  Cena, Patient id: 44CCFD8660F14EB49A4F0B606C8D2B46, first name: Harry, last name: Kane, phone: +9779840056968, dob: 2015-08-11 ,gender: male, ward: , Activity Area: Health Post, District: Achham, Geography: , Municipality: Mangalsen
+2020-12-11 17:45:56,541 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109794
+2020-12-11 17:46:45,175 django.request WARNING  Bad Request: /api/v1/patients/44CCFD8660F14EB49A4F0B606C8D2B46/encounters
+2020-12-11 17:46:45,176 django.server WARNING  "GET /api/v1/patients/44CCFD8660F14EB49A4F0B606C8D2B46/encounters HTTP/1.1" 400 16648
+2020-12-11 17:47:21,491 encounterapp.api.encounter INFO     Encounter added successfully by John  Cena
+2020-12-11 17:47:21,566 django.server INFO     "POST /api/v1/patients/44CCFD8660F14EB49A4F0B606C8D2B46/encounters HTTP/1.1" 200 16689
+2020-12-11 17:48:00,556 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-12-11 17:51:48,396 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111012
+2020-12-11 17:52:04,417 django.server INFO     "GET /api/v1/patients/44CCFD8660F14EB49A4F0B606C8D2B46/encounters HTTP/1.1" 200 17504
+2020-12-11 18:00:28,874 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 16338
+2020-12-11 18:01:50,570 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111012
+2020-12-11 18:05:41,284 patientapp.api.patient INFO     Patient added successfully by John  Cena, Patient id: 6DACB67C10DC4B868847BC7A630A0002, first name: Bean, last name: Raj, phone: +9779840056968, dob: 2010-01-03 ,gender: male, ward: ' ', Activity Area: Health Post, District: Achham, Geography: ' ', Municipality: Mangalsen
+2020-12-11 18:05:44,072 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109794
+2020-12-11 18:05:55,268 django.request WARNING  Bad Request: /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters
+2020-12-11 18:05:55,269 django.server WARNING  "GET /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 400 16648
+2020-12-11 18:06:27,796 encounterapp.api.encounter INFO     Encounter added successfully by John  Cena
+2020-12-11 18:06:27,870 django.server INFO     "POST /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 200 16689
+2020-12-11 18:06:33,992 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 823
+2020-12-11 18:07:11,153 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112366
+2020-12-12 12:32:23,048 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-12 12:32:23,087 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-12 12:32:24,233 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-12 12:32:24,236 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-12 12:32:24,318 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-12 12:32:25,037 django.request WARNING  Not Found: /favicon.ico
+2020-12-12 12:32:25,038 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-12 12:32:28,368 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-12 12:32:40,869 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-12 12:32:43,680 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112373
+2020-12-12 12:32:52,949 django.request WARNING  Bad Request: /api/v1/basicbargraph
+2020-12-12 12:32:52,950 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 400 10241
+2020-12-12 12:32:57,635 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/basicbargraph HTTP/1.1" 302 0
+2020-12-12 12:32:57,662 django.request WARNING  Unauthorized: /api/v1/basicbargraph
+2020-12-12 12:32:57,664 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 401 9851
+2020-12-12 12:33:00,060 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/basicbargraph HTTP/1.1" 200 2723
+2020-12-12 12:33:07,942 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-12 12:33:08,095 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 12:41:17,467 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 12:45:56,027 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 12:46:12,522 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 12:46:19,207 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112366
+2020-12-12 12:50:37,049 patientapp.api.patient INFO     Patient added successfully by John  Cena, Patient id: 7C4B6952AD174472945AA353DD668AE3, first name: Shraddha, last name: Kapoor, phone: +9779848730446, dob: 2020-12-12 ,gender: female, ward: ' ', Activity Area: Health Post, District: Achham, Geography: ' ', Municipality: Mangalsen
+2020-12-12 12:50:39,665 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109794
+2020-12-12 12:50:56,893 django.request WARNING  Bad Request: /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters
+2020-12-12 12:50:56,895 django.server WARNING  "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 400 16648
+2020-12-12 12:51:17,329 encounterapp.api.encounter INFO     Encounter added successfully by John  Cena
+2020-12-12 12:51:17,398 django.server INFO     "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 16689
+2020-12-12 12:51:22,936 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:04:36,473 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-12 13:04:36,474 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-12 13:09:22,223 django.server INFO     "POST /api/v1/basicbargraphfilter HTTP/1.1" 200 823
+2020-12-12 13:09:36,181 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-12 13:09:36,182 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-12 13:09:45,132 django.server INFO     "POST /api/v1/basicbargraphfilter HTTP/1.1" 200 823
+2020-12-12 13:09:47,540 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-12 13:09:47,542 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-12 13:27:22,958 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:28:58,379 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:29:48,148 django.request WARNING  Method Not Allowed: /api/v1/basicbargraph
+2020-12-12 13:29:48,149 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 405 12346
+2020-12-12 13:30:02,734 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:34:01,971 django.request WARNING  Method Not Allowed: /api/v1/basicbargraph
+2020-12-12 13:34:01,972 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 405 12346
+2020-12-12 13:34:16,228 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:36:17,434 django.request WARNING  Method Not Allowed: /api/v1/basicbargraph
+2020-12-12 13:36:17,435 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 405 12346
+2020-12-12 13:36:29,630 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:38:13,002 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113736
+2020-12-12 13:40:47,704 django.request WARNING  Method Not Allowed: /api/v1/basicbargraph
+2020-12-12 13:40:47,704 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 405 12346
+2020-12-12 13:41:10,650 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 2173
+2020-12-12 13:52:52,513 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19761
+2020-12-12 13:57:19,827 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19263
+2020-12-12 13:57:52,825 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19263
+2020-12-12 14:01:48,386 django.request WARNING  Method Not Allowed: /api/v1/basicbargraph
+2020-12-12 14:01:48,387 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 405 12346
+2020-12-12 14:02:20,598 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19770
+2020-12-12 14:02:57,064 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19770
+2020-12-12 14:03:34,026 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 19771
+2020-12-12 14:05:44,597 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19770
+2020-12-12 14:05:58,885 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 19771
+2020-12-12 14:11:46,619 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 19771
+2020-12-12 14:13:13,698 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 19771
+2020-12-12 14:16:17,566 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19770
+2020-12-12 14:16:34,991 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 19771
+2020-12-12 14:17:22,283 django.server INFO     "POST /api/v1/basicbargraph HTTP/1.1" 200 19771
+2020-12-12 14:25:29,983 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-12 14:25:29,984 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-12 14:50:13,393 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14721
+2020-12-12 15:02:59,349 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14721
+2020-12-12 15:29:48,979 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 753
+2020-12-12 15:31:28,028 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 12658
+2020-12-12 15:36:20,886 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113736
+2020-12-12 15:44:47,378 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 12658
+2020-12-12 15:46:14,790 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 10510
+2020-12-12 15:47:32,392 django.request WARNING  Method Not Allowed: /api/v1/wardsettingsgraphfilter
+2020-12-12 15:47:32,393 django.server WARNING  "GET /api/v1/wardsettingsgraphfilter HTTP/1.1" 405 13121
+2020-12-12 15:48:01,738 django.server INFO     "POST /api/v1/wardsettingsgraphfilter HTTP/1.1" 200 753
+2020-12-12 15:48:40,757 django.request WARNING  Method Not Allowed: /api/v1/wardsettingsgraphfilter
+2020-12-12 15:48:40,759 django.server WARNING  "GET /api/v1/wardsettingsgraphfilter HTTP/1.1" 405 13121
+2020-12-12 15:48:57,428 django.server INFO     "POST /api/v1/wardsettingsgraphfilter HTTP/1.1" 200 15378
+2020-12-12 15:50:44,529 django.request WARNING  Method Not Allowed: /api/v1/wardsettingsgraphfilter
+2020-12-12 15:50:44,530 django.server WARNING  "GET /api/v1/wardsettingsgraphfilter HTTP/1.1" 405 13121
+2020-12-12 15:50:59,070 django.server INFO     "POST /api/v1/wardsettingsgraphfilter HTTP/1.1" 200 15378
+2020-12-12 15:56:06,321 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-12 15:56:06,355 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-12 16:01:37,519 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-12 16:01:37,520 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-12 16:01:47,417 django.request WARNING  Bad Request: /api/v1/basicbargraphfilter
+2020-12-12 16:01:47,418 django.server WARNING  "POST /api/v1/basicbargraphfilter HTTP/1.1" 400 13087
+2020-12-12 16:02:02,586 django.server INFO     "POST /api/v1/basicbargraphfilter HTTP/1.1" 200 823
+2020-12-12 16:02:27,732 django.server INFO     "POST /api/v1/basicbargraphfilter HTTP/1.1" 200 15398
+2020-12-12 16:04:07,669 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14721
+2020-12-12 16:05:30,097 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 14988
+2020-12-12 16:10:00,932 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 12658
+2020-12-12 16:15:56,584 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 12655
+2020-12-12 16:18:30,993 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 16691
+2020-12-12 16:18:45,561 django.server INFO     "POST /api/v1/wardsettingsgraph HTTP/1.1" 200 16444
+2020-12-12 16:18:51,174 django.server INFO     "GET /api/v1/wardsettingsgraph HTTP/1.1" 200 16691
+2020-12-12 16:19:15,952 django.server INFO     "POST /api/v1/wardsettingsgraph HTTP/1.1" 200 16692
+2020-12-12 16:20:14,887 django.server INFO     "POST /api/v1/wardsettingsgraph HTTP/1.1" 200 16320
+2020-12-12 16:28:56,566 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 860
+2020-12-12 16:30:54,458 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 17244
+2020-12-12 16:31:13,518 django.server INFO     "POST /api/v1/wardtreatmentgraph HTTP/1.1" 200 17245
+2020-12-12 16:36:15,669 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 14720
+2020-12-12 16:37:18,441 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 981
+2020-12-12 17:20:29,059 django.server INFO     "GET /api/v1/waruserlinechart HTTP/1.1" 200 981
+2020-12-12 17:21:05,312 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15200
+2020-12-12 17:21:43,387 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15203
+2020-12-12 17:25:53,892 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15318
