@@ -28,7 +28,7 @@ from treatmentapp.models import Treatment
 from encounterapp.models import Encounter, History, Refer, Screeing
 
 
-from visualizationapp.serializers.ward import WardFilterVisualization
+from visualizationapp.serializers.ward import WardFilterVisualization,ContactAgeGenderVisualization
 
 from visualizationapp.models import Visualization
 from django.db.models import Count
@@ -55,8 +55,9 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user and request.user.is_authenticated
 
-
+# 10.2 Contacts by Age & Gender
 class BarGraphView(APIView):
+    serializer_class = ContactAgeGenderVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
 
     def get(self, request, format=None):
@@ -64,22 +65,46 @@ class BarGraphView(APIView):
             id=request.user.id, role__name="warduser"
         ):
             customuser_obj = CustomUser.objects.get(id=request.user.id)
-            district = ["Kids", "Adults", "Other Adults"]
+            district = ["Kids", "Adults", "Older Adults"]
             total = []
-            male = []
-            female = []
+            total_male = []
+            total_female = []
+
+            total_kid = []
+            male_kid = []
+            female_kid = []
+
+            total_adult = []
+            male_adult = []
+            female_adult = []
+            
+            total_older_adult = []
+            male_older_adult = []
+            female_older_adult = []
+
             for i in customuser_obj.location.all():
-                female_child = Visualization.objects.filter(
+                kid_total = Visualization.objects.filter(
+                    geography_id=i.id, age__lt=18
+                ).count()
+                kid_male = Visualization.objects.filter(
+                    geography_id=i.id, gender="male", age__lt=18
+                ).count()
+                kid_female = Visualization.objects.filter(
                     geography_id=i.id, gender="female", age__lt=18
                 ).count()
-                female_adult = Visualization.objects.filter(
-                    geography_id=i.id, gender="female", age__range=(19, 60)
+
+                adult_total = Visualization.objects.filter(
+                    geography_id=i.id,age__range=(19, 60)
                 ).count()
-                male_adult = Visualization.objects.filter(
+                adult_male = Visualization.objects.filter(
                     geography_id=i.id, gender="male", age__range=(19, 60)
                 ).count()
-                male_child = Visualization.objects.filter(
-                    geography_id=i.id, gender="male", age__lt=18
+                adult_female = Visualization.objects.filter(
+                    geography_id=i.id, gender="female", age__range=(19, 60)
+                ).count()
+
+                old_total = Visualization.objects.filter(
+                    geography_id=i.id, age__gt=60
                 ).count()
                 old_male = Visualization.objects.filter(
                     geography_id=i.id, gender="male", age__gt=60
@@ -87,15 +112,23 @@ class BarGraphView(APIView):
                 old_female = Visualization.objects.filter(
                     geography_id=i.id, gender="female", age__gt=60
                 ).count()
-                male.append(male_child)
-                male.append(male_adult)
-                male.append(old_male)
-                female.append(female_child)
-                female.append(female_adult)
-                female.append(old_female)
-                total.append(female_child + male_child)
-                total.append(female_adult + male_adult)
-                total.append(old_female + old_male)
+
+                total.append(kid_total + adult_total + old_total)
+                total_male.append(kid_male + adult_male + old_male)
+                total_female.append(kid_female + adult_female + old_female)
+
+                total_kid.append(kid_total)
+                male_kid.append(kid_male)
+                female_kid.append(kid_female)
+
+                total_adult.append(adult_total)
+                male_adult.append(adult_male)
+                female_adult.append(adult_female)
+
+                total_older_adult.append(old_total)
+                male_older_adult.append(old_male)
+                female_older_adult.append(old_female)
+
                 locationChart = {
                     "data": {
                         "labels": district,
@@ -108,19 +141,82 @@ class BarGraphView(APIView):
                                 "data": [sum(total)],
                             },
                             {
-                                "label": "Female",
+                                "label": "Total Male",
                                 "backgroundColor": "rgba(239, 62, 54, 0.2)",
                                 "borderColor": "rgba(239, 62, 54, 1)",
                                 "borderWidth": 1,
-                                "data": [sum(female)],
+                                "data": [sum(total_male)],
                             },
                             {
-                                "label": "Male",
+                                "label": "Total Female",
                                 "backgroundColor": "rgba(64, 224, 208, 0.2)",
                                 "borderColor": "rgba(64, 224, 208, 1)",
                                 "borderWidth": 1,
-                                "data": [sum(male)],
+                                "data": [sum(total_female)],
                             },
+                            {
+                                "label": "Total Kids",
+                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                "borderColor": "rgba(255, 206, 86, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(total_kid)],
+                            },
+                            {
+                                "label": "Total Male Kids",
+                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                "borderColor": "rgba(239, 62, 54, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(male_kid)],
+                            },
+                            {
+                                "label": "Total Female Kids",
+                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                "borderColor": "rgba(64, 224, 208, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(female_kid)],
+                            },
+                            {
+                                "label": "Total Adults",
+                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                "borderColor": "rgba(255, 206, 86, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(total_adult)],
+                            },
+                            {
+                                "label": "Total Male Adults",
+                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                "borderColor": "rgba(239, 62, 54, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(male_adult)],
+                            },
+                            {
+                                "label": "Total Female Adults",
+                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                "borderColor": "rgba(64, 224, 208, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(female_adult)],
+                            },
+                            {
+                                "label": "Total Older Adults",
+                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                "borderColor": "rgba(255, 206, 86, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(total_older_adult)],
+                            },
+                            {
+                                "label": "Total Male Older Adults",
+                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                "borderColor": "rgba(239, 62, 54, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(male_older_adult)],
+                            },
+                            {
+                                "label": "Total Female Older Adults",
+                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                "borderColor": "rgba(64, 224, 208, 1)",
+                                "borderWidth": 1,
+                                "data": [sum(female_older_adult)],
+                            }
                         ],
                     },
                     "options": {
@@ -143,10 +239,200 @@ class BarGraphView(APIView):
                         },
                     },
                 }
-                return JsonResponse({"locationChart": locationChart})
+                return Response({"locationChart": locationChart})
         return Response({"message": "only ward user can see"}, status=400)
 
+    def post(self, request, format=None):
+        serializer = ContactAgeGenderVisualization(data=request.data, context={"request": request})
 
+        if serializer.is_valid():
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
+            end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+
+            if CustomUser.objects.select_related("role").filter(id=request.user.id, role__name="warduser"):
+                customuser_obj = CustomUser.objects.get(id=request.user.id)
+                if end_date > start_date:
+                    district = ["Kids", "Adults", "Older Adults"]
+                    total = []
+                    total_male = []
+                    total_female = []
+
+                    total_kid = []
+                    male_kid = []
+                    female_kid = []
+
+                    total_adult = []
+                    male_adult = []
+                    female_adult = []
+                    
+                    total_older_adult = []
+                    male_older_adult = []
+                    female_older_adult = []
+
+                    for i in customuser_obj.location.all():
+                        kid_total = Visualization.objects.filter(
+                            geography_id=i.id, age__lt=18,created_at__range=[start_date, end_date]
+                        ).count()
+                        kid_male = Visualization.objects.filter(
+                            geography_id=i.id, gender="male", age__lt=18,created_at__range=[start_date, end_date]
+                        ).count()
+                        kid_female = Visualization.objects.filter(
+                            geography_id=i.id, gender="female", age__lt=18,created_at__range=[start_date, end_date]
+                        ).count()
+
+                        adult_total = Visualization.objects.filter(
+                            geography_id=i.id,age__range=(19, 60),created_at__range=[start_date, end_date]
+                        ).count()
+                        adult_male = Visualization.objects.filter(
+                            geography_id=i.id, gender="male", age__range=(19, 60),created_at__range=[start_date, end_date]
+                        ).count()
+                        adult_female = Visualization.objects.filter(
+                            geography_id=i.id, gender="female", age__range=(19, 60),created_at__range=[start_date, end_date]
+                        ).count()
+
+                        old_total = Visualization.objects.filter(
+                            geography_id=i.id, age__gt=60,created_at__range=[start_date, end_date]
+                        ).count()
+                        old_male = Visualization.objects.filter(
+                            geography_id=i.id, gender="male", age__gt=60,created_at__range=[start_date, end_date]
+                        ).count()
+                        old_female = Visualization.objects.filter(
+                            geography_id=i.id, gender="female", age__gt=60,created_at__range=[start_date, end_date]
+                        ).count()
+
+                        total.append(kid_total + adult_total + old_total)
+                        total_male.append(kid_male + adult_male + old_male)
+                        total_female.append(kid_female + adult_female + old_female)
+
+                        total_kid.append(kid_total)
+                        male_kid.append(kid_male)
+                        female_kid.append(kid_female)
+
+                        total_adult.append(adult_total)
+                        male_adult.append(adult_male)
+                        female_adult.append(adult_female)
+
+                        total_older_adult.append(old_total)
+                        male_older_adult.append(old_male)
+                        female_older_adult.append(old_female)
+
+                        locationChart = {
+                            "data": {
+                                "labels": district,
+                                "datasets": [
+                                    {
+                                        "label": "Total",
+                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                        "borderColor": "rgba(255, 206, 86, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(total)],
+                                    },
+                                    {
+                                        "label": "Total Male",
+                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                        "borderColor": "rgba(239, 62, 54, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(total_male)],
+                                    },
+                                    {
+                                        "label": "Total Female",
+                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                        "borderColor": "rgba(64, 224, 208, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(total_female)],
+                                    },
+                                    {
+                                        "label": "Total Kids",
+                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                        "borderColor": "rgba(255, 206, 86, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(total_kid)],
+                                    },
+                                    {
+                                        "label": "Total Male Kids",
+                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                        "borderColor": "rgba(239, 62, 54, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(male_kid)],
+                                    },
+                                    {
+                                        "label": "Total Female Kids",
+                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                        "borderColor": "rgba(64, 224, 208, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(female_kid)],
+                                    },
+                                    {
+                                        "label": "Total Adults",
+                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                        "borderColor": "rgba(255, 206, 86, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(total_adult)],
+                                    },
+                                    {
+                                        "label": "Total Male Adults",
+                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                        "borderColor": "rgba(239, 62, 54, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(male_adult)],
+                                    },
+                                    {
+                                        "label": "Total Female Adults",
+                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                        "borderColor": "rgba(64, 224, 208, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(female_adult)],
+                                    },
+                                    {
+                                        "label": "Total Older Adults",
+                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                        "borderColor": "rgba(255, 206, 86, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(total_older_adult)],
+                                    },
+                                    {
+                                        "label": "Total Male Older Adults",
+                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                        "borderColor": "rgba(239, 62, 54, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(male_older_adult)],
+                                    },
+                                    {
+                                        "label": "Total Female Older Adults",
+                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                        "borderColor": "rgba(64, 224, 208, 1)",
+                                        "borderWidth": 1,
+                                        "data": [sum(female_older_adult)],
+                                    }
+                                ],
+                            },
+                            "options": {
+                                "aspectRatio": 1.5,
+                                "scales": {"yAxes": [{"ticks": {"beginAtZero": "true"}}]},
+                                "title": {
+                                    "display": "true",
+                                    # 'text': "Age-wise Gender Distribution",
+                                    "fontSize": 18,
+                                    "fontFamily": "'Palanquin', sans-serif",
+                                },
+                                "legend": {
+                                    "display": "true",
+                                    "position": "bottom",
+                                    "labels": {
+                                        "usePointStyle": "true",
+                                        "padding": 20,
+                                        "fontFamily": "'Maven Pro', sans-serif",
+                                    },
+                                },
+                            },
+                        }
+                        return Response({"locationChart": locationChart})
+                return Response({"message": "End date must be greater than Start Date"}, status=400)
+            return Response({"message": "only ward user can see"}, status=400)
+        return Response({"message": serializer.errors}, status=400)
+
+
+# i think we dont need this api
 class BarGraphFilterView(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -272,13 +558,14 @@ class BarGraphFilterView(APIView):
                                 },
                             },
                         }
-                    return JsonResponse({"locationChart": locationChart})
+                    return Response({"locationChart": locationChart})
             return Response(
                 {"message": "End date must be greated then Start Date"}, status=400
             )
         return Response({"message": serializer.errors}, status=400)
 
 
+# Basic Data
 class WardTreatmentTableVisualization1(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -650,6 +937,7 @@ class WardTreatmentTableVisualization1(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
+# Overview
 class WardTableVisualization2(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -757,6 +1045,64 @@ class WardTableVisualization2(APIView):
                     age__gt=60, fv=True, geography_id=i.id
                 ).count()
 
+                total_fm_sdf = Visualization.objects.filter(
+                    sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+                total_fm_sdf_male = Visualization.objects.filter(
+                    gender="male", sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+                total_fm_sdf_female = Visualization.objects.filter(
+                    gender="female", sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+                total_fm_sdf_child = Visualization.objects.filter(
+                    age__lt=18, sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+                total_fm_sdf_adult = Visualization.objects.filter(
+                    age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+                total_fm_sdf_old = Visualization.objects.filter(
+                    age__gt=60, sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+
+                total_ref_hp = Visualization.objects.filter(
+                    refer_hp=True, geography_id=i.id
+                ).count()
+                total_ref_hp_male = Visualization.objects.filter(
+                    gender="male", refer_hp=True, geography_id=i.id
+                ).count()
+                total_ref_hp_female = Visualization.objects.filter(
+                    gender="female", refer_hp=True, geography_id=i.id
+                ).count()
+                total_ref_hp_child = Visualization.objects.filter(
+                    age__lt=18, refer_hp=True, geography_id=i.id
+                ).count()
+                total_ref_hp_adult = Visualization.objects.filter(
+                    age__range=(18, 60), refer_hp=True, geography_id=i.id
+                ).count()
+                total_ref_hp_old = Visualization.objects.filter(
+                    age__gt=60, refer_hp=True, geography_id=i.id
+                ).count()
+
+
+                total_ref_other = Visualization.objects.filter(
+                    refer_other=True, geography_id=i.id
+                ).count()
+                total_ref_other_male = Visualization.objects.filter(
+                    gender="male", refer_other=True, geography_id=i.id
+                ).count()
+                total_ref_other_female = Visualization.objects.filter(
+                    gender="female", refer_other=True, geography_id=i.id
+                ).count()
+                total_ref_other_child = Visualization.objects.filter(
+                    age__lt=18, refer_other=True, geography_id=i.id
+                ).count()
+                total_ref_other_adult = Visualization.objects.filter(
+                    age__range=(18, 60), refer_other=True, geography_id=i.id
+                ).count()
+                total_ref_other_old = Visualization.objects.filter(
+                    age__gt=60, refer_other=True, geography_id=i.id
+                ).count()
+
             return Response(
                 [
                     [
@@ -803,6 +1149,33 @@ class WardTableVisualization2(APIView):
                         totalfv_adult,
                         totalfv_old,
                         total_fv,
+                    ],
+                    [
+                        "SDF Whole Mouth",
+                        total_fm_sdf_male,
+                        total_fm_sdf_female,
+                        total_fm_sdf_child,
+                        total_fm_sdf_adult,
+                        total_fm_sdf_old,
+                        total_fm_sdf
+                    ],
+                    [
+                        "Ref HP",
+                        total_ref_hp_male,
+                        total_ref_hp_female,
+                        total_ref_hp_child,
+                        total_ref_hp_adult,
+                        total_ref_hp_old,
+                        total_ref_hp
+                    ],
+                    [
+                        "Ref Other",
+                        total_ref_other_male,
+                        total_ref_other_female,
+                        total_ref_other_child,
+                        total_ref_other_adult,
+                        total_ref_other_old,
+                        total_ref_other
                     ],
                 ]
             )
@@ -1182,7 +1555,10 @@ class WardTableVisualization2(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
+# 10.4 Contacts by Setting
 class WardSettingVisualization(APIView):
+    serializer_class = WardFilterVisualization
+    permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request, format=None):
         if (
             CustomUser.objects.select_related("role")
@@ -1207,7 +1583,7 @@ class WardSettingVisualization(APIView):
                         "labels": activities_name,
                         "datasets": [
                             {
-                                "label": "Female",
+                                "label": "All",
                                 "backgroundColor": [
                                     "rgba(84, 184, 209, 0.5)",
                                     "rgba(91, 95, 151, 0.5)",
@@ -1246,23 +1622,15 @@ class WardSettingVisualization(APIView):
                         },
                     },
                 }
-            return JsonResponse({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
         return Response({"message": "only ward user can see"}, status=400)
-
-
-class WardSettingVisualizationFilter(APIView):
-    serializer_class = WardFilterVisualization
-    permission_classes = (IsPostOrIsAuthenticated,)
-
+    
     def post(self, request, format=None):
-        serializer = WardFilterVisualization(
-            data=request.data, context={"request": request}
-        )
+        serializer = WardFilterVisualization(data=request.data, context={"request": request})
         if serializer.is_valid():
-            start_date = str(
-                NepaliDate.from_date(serializer.validated_data["start_date"])
-            )
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+
             activities_list = serializer.validated_data["activities"]
             if end_date > start_date:
                 if CustomUser.objects.select_related("role").filter(
@@ -1288,7 +1656,7 @@ class WardSettingVisualizationFilter(APIView):
                                 "labels": activities_name,
                                 "datasets": [
                                     {
-                                        "label": "Female",
+                                        "label": "All",
                                         "backgroundColor": [
                                             "rgba(84, 184, 209, 0.5)",
                                             "rgba(91, 95, 151, 0.5)",
@@ -1327,16 +1695,99 @@ class WardSettingVisualizationFilter(APIView):
                                 },
                             },
                         }
-                    return JsonResponse({"locationChart": locationChart})
+                    return Response({"locationChart": locationChart})
             return Response(
                 {"message": "End date must be greated then Start Date"}, status=400
             )
         return Response({"message": serializer.errors}, status=400)
 
 
-class WardTreatmentVisualization(APIView):
+# we dont need this api post done in above api
+class WardSettingVisualizationFilter(APIView):
+    serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
 
+    def post(self, request, format=None):
+        serializer = WardFilterVisualization(data=request.data, context={"request": request})
+        if serializer.is_valid():
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
+            end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+
+            activities_list = serializer.validated_data["activities"]
+            if end_date > start_date:
+                if CustomUser.objects.select_related("role").filter(
+                    id=request.user.id, role__name="warduser"
+                ):
+                    customuser_obj = CustomUser.objects.get(id=request.user.id)
+                    activities_data = []
+                    activities_name = []
+                    for activities in activities_list:
+                        activities_name.append(activities.name)
+                        count_list = []
+                        for i in customuser_obj.location.all():
+                            count_list.append(
+                                Visualization.objects.filter(
+                                    activities_id=activities.id,
+                                    geography_id=i.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                        activities_data.append(count_list)
+                        locationChart = {
+                            "data": {
+                                "labels": activities_name,
+                                "datasets": [
+                                    {
+                                        "label": "All",
+                                        "backgroundColor": [
+                                            "rgba(84, 184, 209, 0.5)",
+                                            "rgba(91, 95, 151, 0.5)",
+                                            "rgba(255, 193, 69, 0.5)",
+                                            "rgba(96, 153, 45, 0.5)",
+                                        ],
+                                        "borderColor": [
+                                            "rgba(84, 184, 209, 1)",
+                                            "rgba(91, 95, 151, 1)",
+                                            "rgba(255, 193, 69, 1)",
+                                            "rgba(96, 153, 45, 1)",
+                                        ],
+                                        "borderWidth": 1,
+                                        "data": activities_data,
+                                    }
+                                ],
+                            },
+                            "options": {
+                                "responsive": "true",
+                                "maintainAspectRatio": "false",
+                                "aspectRatio": 1.5,
+                                "title": {
+                                    "display": "true",
+                                    # 'text': "Activity Distribution Chart",
+                                    "fontSize": 18,
+                                    "fontFamily": "'Palanquin', sans-serif",
+                                },
+                                "legend": {
+                                    "display": "true",
+                                    "position": "bottom",
+                                    "labels": {
+                                        "usePointStyle": "true",
+                                        "padding": 20,
+                                        "fontFamily": "'Maven Pro', sans-serif",
+                                    },
+                                },
+                            },
+                        }
+                    return Response({"locationChart": locationChart})
+            return Response(
+                {"message": "End date must be greated then Start Date"}, status=400
+            )
+        return Response({"message": serializer.errors}, status=400)
+
+
+# 10.3 Treatments by Age & Gender
+class WardTreatmentVisualization(APIView):
+    serializer_class = WardFilterVisualization
+    permission_classes = (IsPostOrIsAuthenticated,)
     def get(self, request, format=None):
         if (
             CustomUser.objects.select_related("role")
@@ -1460,10 +1911,255 @@ class WardTreatmentVisualization(APIView):
                     },
                 },
             }
-            return JsonResponse({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
         return Response({"message": "only admin can create"}, status=400)
+    
+    def post(self, request, format=None):
+        serializer = WardFilterVisualization(
+            data=request.data, context={"request": request}
+        )
+        if serializer.is_valid():
+            start_date = str(
+                NepaliDate.from_date(serializer.validated_data["start_date"])
+            )
+            end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+            activities_list = serializer.validated_data["activities"]
+            if end_date > start_date:
+                if CustomUser.objects.select_related("role").filter(
+                    id=request.user.id, role__name="warduser"
+                ):
+                    customuser_obj = CustomUser.objects.get(id=request.user.id)
+                    district = ["EXO", "ART", "SEAL", "SDF", "FV"]
+                    total = []
+                    male = []
+                    female = []
+                    for activities in activities_list:
+                        total_sdf = []
+                        total_sdf_male = []
+                        total_sdf_female = []
+
+                        total_seal = []
+                        total_seal_male = []
+                        total_seal_female = []
+
+                        total_art = []
+                        total_art_male = []
+                        total_art_female = []
+
+                        total_exo = []
+                        total_exo_male = []
+                        total_exo_female = []
+
+                        total_fv = []
+                        totalfv_male = []
+                        totalfv_female = []
+
+                        for i in customuser_obj.location.all():
+                            total_sdf.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    sdf=True,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_sdf_male.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    sdf=True,
+                                    gender="male",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_sdf_female.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    sdf=True,
+                                    gender="female",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+
+                            total_seal.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    seal=True,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_seal_male.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    seal=True,
+                                    gender="male",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_seal_female.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    seal=True,
+                                    gender="female",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+
+                            total_art.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    art=True,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_art_male.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    art=True,
+                                    gender="male",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_art_female.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    art=True,
+                                    gender="female",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+
+                            total_exo.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    exo=True,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_exo_male.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    exo=True,
+                                    gender="male",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_exo_female.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    exo=True,
+                                    gender="female",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+
+                            total_fv.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    fv=True,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            totalfv_male.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    fv=True,
+                                    gender="male",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            totalfv_female.append(
+                                Visualization.objects.filter(
+                                    geography_id=i.id,
+                                    fv=True,
+                                    gender="female",
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+
+                        male.append(sum(total_exo_male))
+                        male.append(sum(total_art_male))
+                        male.append(sum(total_seal_male))
+                        male.append(sum(total_sdf_male))
+                        male.append(sum(totalfv_male))
+                        female.append(sum(total_exo_female))
+                        female.append(sum(total_art_female))
+                        female.append(sum(total_seal_female))
+                        female.append(sum(total_sdf_female))
+                        female.append(sum(totalfv_female))
+                        total.append(sum(total_exo))
+                        total.append(sum(total_art))
+                        total.append(sum(total_seal))
+                        total.append(sum(total_sdf))
+                        total.append(sum(total_fv))
+                    locationChart = {
+                        "data": {
+                            "labels": district,
+                            "datasets": [
+                                {
+                                    "label": "Total",
+                                    "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                    "borderColor": "rgba(255, 206, 86, 1)",
+                                    "borderWidth": 1,
+                                    "data": total,
+                                },
+                                {
+                                    "label": "Female",
+                                    "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                    "borderColor": "rgba(239, 62, 54, 1)",
+                                    "borderWidth": 1,
+                                    "data": female,
+                                },
+                                {
+                                    "label": "Male",
+                                    "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                    "borderColor": "rgba(64, 224, 208, 1)",
+                                    "borderWidth": 1,
+                                    "data": male,
+                                },
+                            ],
+                        },
+                        "options": {
+                            "aspectRatio": 1.5,
+                            "scales": {"yAxes": [{"ticks": {"beginAtZero": "true"}}]},
+                            "title": {
+                                "display": "true",
+                                # 'text': "Treatment-wise Gender Distribution",
+                                "fontSize": 18,
+                                "fontFamily": "'Palanquin', sans-serif",
+                            },
+                            "legend": {
+                                "display": "true",
+                                "position": "bottom",
+                                "labels": {
+                                    "usePointStyle": "true",
+                                    "padding": 20,
+                                    "fontFamily": "'Maven Pro', sans-serif",
+                                },
+                            },
+                        },
+                    }
+                    return Response({"locationChart": locationChart})
+            return Response(
+                {"message": "End date must be greated then Start Date"}, status=400
+            )
+        return Response({"message": serializer.errors}, status=400)
 
 
+# dont need this api, post done in above api
 class WardTreatmentVisualizationFilter(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -1833,7 +2529,7 @@ class WardUserlineVisualization(APIView):
             return JsonResponse({"locationChart": locationChart})
         return Response({"message": "only admin can see"}, status=400)
 
-
+# Strategic Data
 class WardStrategicData(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)

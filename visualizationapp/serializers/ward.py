@@ -23,3 +23,11 @@ class WardFilterVisualization(serializers.ModelSerializer):
     class Meta:
         model = Encounter
         fields = ("start_date","end_date","activities")
+
+
+class ContactAgeGenderVisualization(serializers.ModelSerializer):
+    start_date = serializers.DateField(write_only=True,required=True)
+    end_date = serializers.DateField(write_only=True,required=True)
+    class Meta:
+        model = Encounter
+        fields = ("start_date","end_date")
