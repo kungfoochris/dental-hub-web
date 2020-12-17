@@ -65,22 +65,10 @@ class BarGraphView(APIView):
             id=request.user.id, role__name="warduser"
         ):
             customuser_obj = CustomUser.objects.get(id=request.user.id)
-            district = ["Kids", "Adults", "Older Adults"]
+            district = ["Kids", "Adult", "Older Adults"]
             total = []
             total_male = []
             total_female = []
-
-            total_kid = []
-            male_kid = []
-            female_kid = []
-
-            total_adult = []
-            male_adult = []
-            female_adult = []
-            
-            total_older_adult = []
-            male_older_adult = []
-            female_older_adult = []
 
             for i in customuser_obj.location.all():
                 kid_total = Visualization.objects.filter(
@@ -113,21 +101,17 @@ class BarGraphView(APIView):
                     geography_id=i.id, gender="female", age__gt=60
                 ).count()
 
-                total.append(kid_total + adult_total + old_total)
-                total_male.append(kid_male + adult_male + old_male)
-                total_female.append(kid_female + adult_female + old_female)
+                total.append(kid_total)
+                total.append(adult_total)
+                total.append(old_total)
 
-                total_kid.append(kid_total)
-                male_kid.append(kid_male)
-                female_kid.append(kid_female)
+                total_male.append(kid_male)
+                total_male.append(adult_male)
+                total_male.append(old_male)
 
-                total_adult.append(adult_total)
-                male_adult.append(adult_male)
-                female_adult.append(adult_female)
-
-                total_older_adult.append(old_total)
-                male_older_adult.append(old_male)
-                female_older_adult.append(old_female)
+                total_female.append(kid_female)
+                total_female.append(adult_female)
+                total_female.append(old_female)
 
                 locationChart = {
                     "data": {
@@ -138,84 +122,21 @@ class BarGraphView(APIView):
                                 "backgroundColor": "rgba(255, 206, 86, 0.2)",
                                 "borderColor": "rgba(255, 206, 86, 1)",
                                 "borderWidth": 1,
-                                "data": [sum(total)],
+                                "data": total,
                             },
                             {
-                                "label": "Total Male",
+                                "label": "Male",
                                 "backgroundColor": "rgba(239, 62, 54, 0.2)",
                                 "borderColor": "rgba(239, 62, 54, 1)",
                                 "borderWidth": 1,
-                                "data": [sum(total_male)],
+                                "data": total_male,
                             },
                             {
-                                "label": "Total Female",
+                                "label": "Female",
                                 "backgroundColor": "rgba(64, 224, 208, 0.2)",
                                 "borderColor": "rgba(64, 224, 208, 1)",
                                 "borderWidth": 1,
-                                "data": [sum(total_female)],
-                            },
-                            {
-                                "label": "Total Kids",
-                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                "borderColor": "rgba(255, 206, 86, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(total_kid)],
-                            },
-                            {
-                                "label": "Total Male Kids",
-                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                "borderColor": "rgba(239, 62, 54, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(male_kid)],
-                            },
-                            {
-                                "label": "Total Female Kids",
-                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                "borderColor": "rgba(64, 224, 208, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(female_kid)],
-                            },
-                            {
-                                "label": "Total Adults",
-                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                "borderColor": "rgba(255, 206, 86, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(total_adult)],
-                            },
-                            {
-                                "label": "Total Male Adults",
-                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                "borderColor": "rgba(239, 62, 54, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(male_adult)],
-                            },
-                            {
-                                "label": "Total Female Adults",
-                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                "borderColor": "rgba(64, 224, 208, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(female_adult)],
-                            },
-                            {
-                                "label": "Total Older Adults",
-                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                "borderColor": "rgba(255, 206, 86, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(total_older_adult)],
-                            },
-                            {
-                                "label": "Total Male Older Adults",
-                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                "borderColor": "rgba(239, 62, 54, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(male_older_adult)],
-                            },
-                            {
-                                "label": "Total Female Older Adults",
-                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                "borderColor": "rgba(64, 224, 208, 1)",
-                                "borderWidth": 1,
-                                "data": [sum(female_older_adult)],
+                                "data": total_female,
                             }
                         ],
                     },
@@ -257,17 +178,6 @@ class BarGraphView(APIView):
                     total_male = []
                     total_female = []
 
-                    total_kid = []
-                    male_kid = []
-                    female_kid = []
-
-                    total_adult = []
-                    male_adult = []
-                    female_adult = []
-                    
-                    total_older_adult = []
-                    male_older_adult = []
-                    female_older_adult = []
 
                     for i in customuser_obj.location.all():
                         kid_total = Visualization.objects.filter(
@@ -300,21 +210,17 @@ class BarGraphView(APIView):
                             geography_id=i.id, gender="female", age__gt=60,created_at__range=[start_date, end_date]
                         ).count()
 
-                        total.append(kid_total + adult_total + old_total)
-                        total_male.append(kid_male + adult_male + old_male)
-                        total_female.append(kid_female + adult_female + old_female)
+                        total.append(kid_total)
+                        total.append(adult_total)
+                        total.append(old_total)
 
-                        total_kid.append(kid_total)
-                        male_kid.append(kid_male)
-                        female_kid.append(kid_female)
+                        total_male.append(kid_male)
+                        total_male.append(adult_male)
+                        total_male.append(old_male)
 
-                        total_adult.append(adult_total)
-                        male_adult.append(adult_male)
-                        female_adult.append(adult_female)
-
-                        total_older_adult.append(old_total)
-                        male_older_adult.append(old_male)
-                        female_older_adult.append(old_female)
+                        total_female.append(kid_female)
+                        total_female.append(adult_female)
+                        total_female.append(old_female)
 
                         locationChart = {
                             "data": {
@@ -325,84 +231,21 @@ class BarGraphView(APIView):
                                         "backgroundColor": "rgba(255, 206, 86, 0.2)",
                                         "borderColor": "rgba(255, 206, 86, 1)",
                                         "borderWidth": 1,
-                                        "data": [sum(total)],
+                                        "data": total,
                                     },
                                     {
-                                        "label": "Total Male",
+                                        "label": "Male",
                                         "backgroundColor": "rgba(239, 62, 54, 0.2)",
                                         "borderColor": "rgba(239, 62, 54, 1)",
                                         "borderWidth": 1,
-                                        "data": [sum(total_male)],
+                                        "data": total_male,
                                     },
                                     {
-                                        "label": "Total Female",
+                                        "label": "Female",
                                         "backgroundColor": "rgba(64, 224, 208, 0.2)",
                                         "borderColor": "rgba(64, 224, 208, 1)",
                                         "borderWidth": 1,
-                                        "data": [sum(total_female)],
-                                    },
-                                    {
-                                        "label": "Total Kids",
-                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                        "borderColor": "rgba(255, 206, 86, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(total_kid)],
-                                    },
-                                    {
-                                        "label": "Total Male Kids",
-                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                        "borderColor": "rgba(239, 62, 54, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(male_kid)],
-                                    },
-                                    {
-                                        "label": "Total Female Kids",
-                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                        "borderColor": "rgba(64, 224, 208, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(female_kid)],
-                                    },
-                                    {
-                                        "label": "Total Adults",
-                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                        "borderColor": "rgba(255, 206, 86, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(total_adult)],
-                                    },
-                                    {
-                                        "label": "Total Male Adults",
-                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                        "borderColor": "rgba(239, 62, 54, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(male_adult)],
-                                    },
-                                    {
-                                        "label": "Total Female Adults",
-                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                        "borderColor": "rgba(64, 224, 208, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(female_adult)],
-                                    },
-                                    {
-                                        "label": "Total Older Adults",
-                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                        "borderColor": "rgba(255, 206, 86, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(total_older_adult)],
-                                    },
-                                    {
-                                        "label": "Total Male Older Adults",
-                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                        "borderColor": "rgba(239, 62, 54, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(male_older_adult)],
-                                    },
-                                    {
-                                        "label": "Total Female Older Adults",
-                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                        "borderColor": "rgba(64, 224, 208, 1)",
-                                        "borderWidth": 1,
-                                        "data": [sum(female_older_adult)],
+                                        "data": total_female,
                                     }
                                 ],
                             },

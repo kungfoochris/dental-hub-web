@@ -1272,3 +1272,115 @@ NameError: name 'item' is not defined
 2020-12-12 17:21:05,312 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15200
 2020-12-12 17:21:43,387 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15203
 2020-12-12 17:25:53,892 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15318
+2020-12-14 17:29:43,001 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-14 17:29:43,028 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-14 17:29:44,245 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-12-14 17:29:44,304 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-14 17:29:44,377 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-12-14 17:29:44,377 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-12-14 17:29:44,516 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-12-14 17:29:44,518 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-12-14 17:29:44,522 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-12-14 17:29:44,523 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-14 17:29:44,525 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-14 17:29:44,538 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-14 17:29:44,540 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-12-14 17:29:45,031 django.request WARNING  Not Found: /favicon.ico
+2020-12-14 17:29:45,032 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-14 17:29:59,875 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-14 17:30:08,913 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-14 17:30:12,327 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113736
+2020-12-14 17:31:22,854 django.request WARNING  Method Not Allowed: /api/v1/basicbargraphfilter
+2020-12-14 17:31:22,855 django.server WARNING  "GET /api/v1/basicbargraphfilter HTTP/1.1" 405 12995
+2020-12-14 17:35:30,959 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19770
+2020-12-14 17:42:28,390 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17745
+2020-12-14 18:21:25,389 django.request WARNING  Unauthorized: /api/v1/basicbargraph
+2020-12-14 18:21:25,585 django.server WARNING  "GET /api/v1/basicbargraph HTTP/1.1" 401 9857
+2020-12-14 18:21:31,564 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/basicbargraph HTTP/1.1" 200 2723
+2020-12-14 18:21:44,239 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-14 18:21:44,982 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 19770
+2020-12-16 13:00:18,694 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-16 13:00:18,755 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-16 13:00:19,756 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-16 13:00:19,758 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-16 13:00:19,776 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-16 13:00:19,842 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-16 13:00:20,691 django.request WARNING  Not Found: /favicon.ico
+2020-12-16 13:00:20,694 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-16 13:01:39,483 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-12-16 13:01:39,580 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2020-12-16 13:01:39,865 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2020-12-16 13:01:40,185 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2020-12-16 13:01:40,185 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-12-16 13:01:40,213 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-12-16 13:01:40,254 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-12-16 13:01:40,610 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-12-16 13:01:40,618 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-12-16 13:01:51,889 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2020-12-16 13:01:52,069 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10890
+2020-12-16 13:01:52,150 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-12-16 13:01:52,179 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-12-16 13:01:52,243 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-12-16 13:01:52,244 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-12-16 13:01:55,268 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6283
+2020-12-16 13:01:55,416 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-12-16 13:01:55,427 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-16 13:01:55,501 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-12-16 13:01:55,503 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-12-16 13:01:55,503 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-12-16 13:01:55,510 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-12-16 13:01:55,522 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-12-16 13:01:55,534 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-12-16 13:01:55,534 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-12-16 13:01:55,549 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-12-16 13:01:55,591 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2020-12-16 13:01:55,600 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-12-16 13:01:55,621 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-12-16 13:01:55,648 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-12-16 13:02:00,736 django.server INFO     "GET /maintainer/userapp/customuser/add/ HTTP/1.1" 200 45186
+2020-12-16 13:02:00,801 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-16 13:02:00,817 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2020-12-16 13:02:00,848 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2020-12-16 13:02:00,854 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2020-12-16 13:02:00,856 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2020-12-16 13:03:00,912 django.server INFO     "POST /maintainer/userapp/customuser/add/ HTTP/1.1" 302 0
+2020-12-16 13:03:01,004 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 7166
+2020-12-16 13:03:01,065 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-16 13:03:24,064 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2020-12-16 13:03:27,518 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/patients HTTP/1.1" 302 0
+2020-12-16 13:03:27,549 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-16 13:03:27,550 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-16 13:03:28,750 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-16 13:03:37,491 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-16 13:03:40,432 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113844
+2020-12-16 13:04:08,455 django.server INFO     "GET /maintainer/userapp/customuser/add/ HTTP/1.1" 302 0
+2020-12-16 13:04:08,492 django.server INFO     "GET /maintainer/login/?next=/maintainer/userapp/customuser/add/ HTTP/1.1" 200 2049
+2020-12-16 13:04:24,932 django.server INFO     "POST /maintainer/login/?next=/maintainer/userapp/customuser/add/ HTTP/1.1" 200 2216
+2020-12-16 13:04:31,205 django.server INFO     "POST /maintainer/login/?next=/maintainer/userapp/customuser/add/ HTTP/1.1" 302 0
+2020-12-16 13:04:33,634 django.server INFO     "GET /maintainer/userapp/customuser/add/ HTTP/1.1" 200 45186
+2020-12-16 13:04:33,709 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-16 13:04:55,876 django.server INFO     "GET /maintainer/login/?next=/maintainer/userapp/customuser/add/ HTTP/1.1" 302 0
+2020-12-16 13:04:55,944 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11219
+2020-12-16 13:05:00,283 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11219
+2020-12-16 13:05:03,439 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2020-12-16 13:05:03,502 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-16 13:05:08,123 django.server INFO     "GET /maintainer/userapp/customuser/B5D352C570DC4BB498A36737987536AD/change/ HTTP/1.1" 200 45709
+2020-12-16 13:05:08,176 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-16 13:05:11,860 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2020-12-16 16:45:32,119 django.request WARNING  Not Found: /api/v1/school
+2020-12-16 16:45:32,155 django.server WARNING  "GET /api/v1/school HTTP/1.1" 404 20757
+2020-12-17 17:43:36,592 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-17 17:43:36,609 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-17 17:43:37,565 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-17 17:43:37,567 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-17 17:43:37,586 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-17 17:43:37,594 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-17 17:43:38,270 django.request WARNING  Not Found: /favicon.ico
+2020-12-17 17:43:38,271 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-17 17:43:39,933 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-17 17:43:48,361 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-17 17:43:52,368 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113843
+2020-12-17 17:43:58,818 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 16079
+2020-12-17 17:45:25,463 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 17244
+2020-12-17 17:47:44,757 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 16241
+2020-12-17 17:48:33,813 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 16241
