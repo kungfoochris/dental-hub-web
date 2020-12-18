@@ -10,7 +10,7 @@ from rest_framework.authtoken.models import Token
 
 class AdminUserapp(admin.ModelAdmin):
 	list_display = ('id', 'email', 'username','first_name', 'middle_name','last_name' ,'active', 'admin')
-	fieldsets = ((_("Personal info"),{'fields':('username', 'first_name', 'middle_name','last_name','password', 'image','active')}),)
+	fieldsets = ((_("Personal info"),{'fields':('username', 'first_name', 'middle_name','last_name','password', 'image','role','location','active')}),)
 	# readonly_fields = ('password',)
 	search_fields = ('username', )
 
@@ -35,7 +35,7 @@ class AdminUserapp(admin.ModelAdmin):
 		elif request.user.is_staff:
 			return False
 
-admin.site.register(User, AdminUserapp)
+admin.site.register(CustomUser, AdminUserapp)
 
 class AdminRole(admin.ModelAdmin):
 	list_display = ('id', 'name')
