@@ -1384,3 +1384,214 @@ NameError: name 'item' is not defined
 2020-12-17 17:45:25,463 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 17244
 2020-12-17 17:47:44,757 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 16241
 2020-12-17 17:48:33,813 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 16241
+2020-12-18 16:55:23,023 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-18 16:55:23,040 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-18 16:55:23,598 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2020-12-18 16:55:23,615 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2020-12-18 16:55:23,620 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2020-12-18 16:55:23,649 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2020-12-18 16:55:23,650 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2020-12-18 16:55:23,654 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2020-12-18 16:55:23,663 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-18 16:55:23,664 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-18 16:55:23,685 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-18 16:55:23,693 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-18 16:55:23,831 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2020-12-18 16:55:23,965 django.request WARNING  Not Found: /favicon.ico
+2020-12-18 16:55:23,966 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-18 16:55:27,194 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-18 16:55:49,872 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2955
+2020-12-18 16:56:03,646 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2957
+2020-12-18 16:56:31,397 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-18 16:56:34,343 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113843
+2020-12-18 16:56:39,723 django.server INFO     "GET /api/v1/basicbargraph HTTP/1.1" 200 16241
+2020-12-18 16:57:10,758 django.request WARNING  Not Found: /api/v1/basicbargr
+2020-12-18 16:57:10,759 django.server WARNING  "GET /api/v1/basicbargr HTTP/1.1" 404 20769
+2020-12-18 16:57:52,926 django.server INFO     "GET /api/v1/wardtreatmentgraph HTTP/1.1" 200 17244
+2020-12-29 14:27:41,472 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-29 14:27:41,488 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-29 14:27:41,883 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2020-12-29 14:27:41,885 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2020-12-29 14:27:41,888 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2020-12-29 14:27:41,897 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2020-12-29 14:27:41,930 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-29 14:27:41,931 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-29 14:27:41,931 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2020-12-29 14:27:41,933 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2020-12-29 14:27:41,934 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-29 14:27:41,941 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-29 14:27:41,990 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2020-12-29 14:27:42,293 django.request WARNING  Not Found: /favicon.ico
+2020-12-29 14:27:42,294 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-29 14:31:07,576 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-29 14:31:16,025 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2020-12-29 14:31:24,347 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-29 14:31:27,285 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2020-12-29 14:32:49,625 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2020-12-29 14:32:49,626 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2020-12-29 14:33:22,870 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2020-12-29 14:33:22,871 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2020-12-29 14:33:29,272 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2020-12-29 14:33:29,273 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2020-12-29 14:34:28,581 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2020-12-29 14:34:28,856 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11219
+2020-12-29 14:34:28,991 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2020-12-29 14:34:28,993 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2020-12-29 14:34:29,003 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2020-12-29 14:34:29,039 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2020-12-29 14:34:29,063 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2020-12-29 14:34:29,074 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2020-12-29 14:34:29,240 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2020-12-29 14:34:29,253 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2020-12-29 14:34:29,255 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2020-12-29 14:34:34,795 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2020-12-29 14:34:34,956 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-29 14:34:34,958 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2020-12-29 14:34:34,976 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2020-12-29 14:34:35,019 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2020-12-29 14:34:35,022 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2020-12-29 14:34:35,024 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2020-12-29 14:34:35,025 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2020-12-29 14:34:35,030 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2020-12-29 14:34:35,045 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2020-12-29 14:34:35,058 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2020-12-29 14:34:35,094 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2020-12-29 14:34:35,118 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2020-12-29 14:34:35,121 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2020-12-29 14:34:35,145 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2020-12-29 14:34:44,659 django.server INFO     "GET /maintainer/userapp/customuser/382982F570AC4D7DBF02CCEAAF084E1A/change/ HTTP/1.1" 200 45714
+2020-12-29 14:34:44,717 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-29 14:34:44,726 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2020-12-29 14:34:44,743 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2020-12-29 14:34:44,765 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2020-12-29 14:34:44,766 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2020-12-29 14:34:52,090 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2020-12-29 14:34:57,387 django.server INFO     "GET /maintainer/userapp/customuser/B5D352C570DC4BB498A36737987536AD/change/ HTTP/1.1" 200 45709
+2020-12-29 14:34:57,446 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-29 14:35:19,026 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2020-12-29 14:35:23,283 django.server INFO     "GET /maintainer/userapp/customuser/382982F570AC4D7DBF02CCEAAF084E1A/change/ HTTP/1.1" 200 45714
+2020-12-29 14:35:23,337 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2020-12-29 14:35:26,325 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 302 0
+2020-12-29 14:35:26,355 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2020-12-29 14:35:26,356 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2020-12-29 14:35:27,900 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2020-12-29 14:35:35,183 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-29 14:35:35,472 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15319
+2020-12-29 15:38:24,480 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15319
+2020-12-29 15:40:02,105 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15349
+2020-12-29 15:43:33,324 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15349
+2020-12-29 15:46:17,272 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15349
+2020-12-29 15:46:43,347 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17746
+2020-12-29 15:47:47,388 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113844
+2020-12-29 15:48:14,134 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15349
+2020-12-29 15:52:42,820 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15026
+2020-12-29 16:05:28,358 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15350
+2020-12-29 16:05:46,944 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113844
+2020-12-29 16:09:30,572 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 14134
+2020-12-29 16:10:30,829 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15349
+2020-12-29 17:28:08,875 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 990, in get
+    total_fv_male.append(fv_male)
+NameError: name 'total_fv_male' is not defined
+2020-12-29 17:28:08,908 django.server ERROR    "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 102435
+2020-12-29 17:30:37,149 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 990, in get
+    total_fv_male.append(fv_male)
+NameError: name 'total_fv_male' is not defined
+2020-12-29 17:30:37,155 django.server ERROR    "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 102439
+2020-12-29 17:31:12,064 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1095, in get
+    totalfv_male,
+NameError: name 'totalfv_male' is not defined
+2020-12-29 17:31:12,068 django.server ERROR    "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 105972
+2020-12-29 17:33:35,881 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 17419
+2020-12-29 17:34:23,204 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 17380
+2020-12-29 17:43:24,508 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 17380
+2020-12-29 17:43:41,548 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15313
+2020-12-29 17:45:18,673 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113844
+2020-12-29 17:47:43,843 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15313
+2020-12-29 17:49:18,431 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 17573
+2020-12-29 17:50:21,520 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113844
+2020-12-29 17:50:44,158 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/patients HTTP/1.1" 302 0
+2020-12-29 17:50:44,198 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-29 17:50:44,199 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-29 17:50:47,132 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-29 17:50:59,505 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-29 17:51:03,063 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113843
+2020-12-29 17:51:10,043 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15312
+2020-12-29 17:56:53,826 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1517, in post
+    sum(total_male),
+TypeError: 'int' object is not iterable
+2020-12-29 17:56:53,831 django.server ERROR    "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 100763
+2020-12-29 18:00:32,889 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15313
+2020-12-29 18:12:40,199 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15312
+2020-12-29 18:14:43,332 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15313

@@ -113,54 +113,54 @@ class BarGraphView(APIView):
                 total_female.append(adult_female)
                 total_female.append(old_female)
 
-                locationChart = {
-                    "data": {
-                        "labels": district,
-                        "datasets": [
-                            {
-                                "label": "Total",
-                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                "borderColor": "rgba(255, 206, 86, 1)",
-                                "borderWidth": 1,
-                                "data": total,
-                            },
-                            {
-                                "label": "Male",
-                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                "borderColor": "rgba(239, 62, 54, 1)",
-                                "borderWidth": 1,
-                                "data": total_male,
-                            },
-                            {
-                                "label": "Female",
-                                "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                "borderColor": "rgba(64, 224, 208, 1)",
-                                "borderWidth": 1,
-                                "data": total_female,
-                            }
-                        ],
-                    },
-                    "options": {
-                        "aspectRatio": 1.5,
-                        "scales": {"yAxes": [{"ticks": {"beginAtZero": "true"}}]},
-                        "title": {
-                            "display": "true",
-                            # 'text': "Age-wise Gender Distribution",
-                            "fontSize": 18,
-                            "fontFamily": "'Palanquin', sans-serif",
+            locationChart = {
+                "data": {
+                    "labels": district,
+                    "datasets": [
+                        {
+                            "label": "Total",
+                            "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                            "borderColor": "rgba(255, 206, 86, 1)",
+                            "borderWidth": 1,
+                            "data": total,
                         },
-                        "legend": {
-                            "display": "true",
-                            "position": "bottom",
-                            "labels": {
-                                "usePointStyle": "true",
-                                "padding": 20,
-                                "fontFamily": "'Maven Pro', sans-serif",
-                            },
+                        {
+                            "label": "Male",
+                            "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                            "borderColor": "rgba(239, 62, 54, 1)",
+                            "borderWidth": 1,
+                            "data": total_male,
+                        },
+                        {
+                            "label": "Female",
+                            "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                            "borderColor": "rgba(64, 224, 208, 1)",
+                            "borderWidth": 1,
+                            "data": total_female,
+                        }
+                    ],
+                },
+                "options": {
+                    "aspectRatio": 1.5,
+                    "scales": {"yAxes": [{"ticks": {"beginAtZero": "true"}}]},
+                    "title": {
+                        "display": "true",
+                        # 'text': "Age-wise Gender Distribution",
+                        "fontSize": 18,
+                        "fontFamily": "'Palanquin', sans-serif",
+                    },
+                    "legend": {
+                        "display": "true",
+                        "position": "bottom",
+                        "labels": {
+                            "usePointStyle": "true",
+                            "padding": 20,
+                            "fontFamily": "'Maven Pro', sans-serif",
                         },
                     },
-                }
-                return Response({"locationChart": locationChart})
+                },
+            }
+            return Response({"locationChart": locationChart})
         return Response({"message": "only ward user can see"}, status=400)
 
     def post(self, request, format=None):
@@ -222,54 +222,54 @@ class BarGraphView(APIView):
                         total_female.append(adult_female)
                         total_female.append(old_female)
 
-                        locationChart = {
-                            "data": {
-                                "labels": district,
-                                "datasets": [
-                                    {
-                                        "label": "Total",
-                                        "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                        "borderColor": "rgba(255, 206, 86, 1)",
-                                        "borderWidth": 1,
-                                        "data": total,
-                                    },
-                                    {
-                                        "label": "Male",
-                                        "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                        "borderColor": "rgba(239, 62, 54, 1)",
-                                        "borderWidth": 1,
-                                        "data": total_male,
-                                    },
-                                    {
-                                        "label": "Female",
-                                        "backgroundColor": "rgba(64, 224, 208, 0.2)",
-                                        "borderColor": "rgba(64, 224, 208, 1)",
-                                        "borderWidth": 1,
-                                        "data": total_female,
-                                    }
-                                ],
-                            },
-                            "options": {
-                                "aspectRatio": 1.5,
-                                "scales": {"yAxes": [{"ticks": {"beginAtZero": "true"}}]},
-                                "title": {
-                                    "display": "true",
-                                    # 'text': "Age-wise Gender Distribution",
-                                    "fontSize": 18,
-                                    "fontFamily": "'Palanquin', sans-serif",
+                    locationChart = {
+                        "data": {
+                            "labels": district,
+                            "datasets": [
+                                {
+                                    "label": "Total",
+                                    "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                    "borderColor": "rgba(255, 206, 86, 1)",
+                                    "borderWidth": 1,
+                                    "data": total,
                                 },
-                                "legend": {
-                                    "display": "true",
-                                    "position": "bottom",
-                                    "labels": {
-                                        "usePointStyle": "true",
-                                        "padding": 20,
-                                        "fontFamily": "'Maven Pro', sans-serif",
-                                    },
+                                {
+                                    "label": "Male",
+                                    "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                    "borderColor": "rgba(239, 62, 54, 1)",
+                                    "borderWidth": 1,
+                                    "data": total_male,
+                                },
+                                {
+                                    "label": "Female",
+                                    "backgroundColor": "rgba(64, 224, 208, 0.2)",
+                                    "borderColor": "rgba(64, 224, 208, 1)",
+                                    "borderWidth": 1,
+                                    "data": total_female,
+                                }
+                            ],
+                        },
+                        "options": {
+                            "aspectRatio": 1.5,
+                            "scales": {"yAxes": [{"ticks": {"beginAtZero": "true"}}]},
+                            "title": {
+                                "display": "true",
+                                # 'text': "Age-wise Gender Distribution",
+                                "fontSize": 18,
+                                "fontFamily": "'Palanquin', sans-serif",
+                            },
+                            "legend": {
+                                "display": "true",
+                                "position": "bottom",
+                                "labels": {
+                                    "usePointStyle": "true",
+                                    "padding": 20,
+                                    "fontFamily": "'Maven Pro', sans-serif",
                                 },
                             },
-                        }
-                        return Response({"locationChart": locationChart})
+                        },
+                    }
+                    return Response({"locationChart": locationChart})
                 return Response({"message": "End date must be greater than Start Date"}, status=400)
             return Response({"message": "only ward user can see"}, status=400)
         return Response({"message": serializer.errors}, status=400)
@@ -780,6 +780,8 @@ class WardTreatmentTableVisualization1(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
+
+
 # Overview
 class WardTableVisualization2(APIView):
     serializer_class = WardFilterVisualization
@@ -791,235 +793,371 @@ class WardTableVisualization2(APIView):
             .filter(id=request.user.id, role__name="warduser")
             .exists()
         ):
+
+            total_male = []
+            total_exo_male = []
+            total_art_male = []
+            total_seal_male = []
+            total_sdf_male = []
+            total_fv_male = []
+            total_fm_sdf_male = []
+            total_ref_hp_male = []
+            total_ref_other_male = []
+
+            total_female = []
+            total_exo_female = []
+            total_art_female = []
+            total_seal_female = []
+            total_sdf_female = []
+            total_fv_female = []
+            total_fm_sdf_female = []
+            total_ref_hp_female = []
+            total_ref_other_female = []
+
+            total_children = []
+            total_exo_child = []
+            total_art_child = []
+            total_seal_child = []
+            total_sdf_child = []
+            total_fv_child = []
+            total_fm_sdf_child = []
+            total_ref_hp_child = []
+            total_ref_other_child = []
+
+            total_adult = []
+            total_exo_adult = []
+            total_art_adult = []
+            total_seal_adult = []
+            total_sdf_adult = []
+            total_fv_adult = []
+            total_fm_sdf_adult = []
+            total_ref_hp_adult = []
+            total_ref_other_adult = []
+
+            total_older_adult = []
+            total_exo_old = []
+            total_art_old = []
+            total_seal_old = []
+            total_sdf_old = []
+            total_fv_old = []
+            total_fm_sdf_old = []
+            total_ref_hp_old = []
+            total_ref_other_old = []
+
+            total_encounter = []
+            total_exo = []
+            total_art = []
+            total_seal = []
+            total_sdf = []
+            total_fv = []
+            total_fm_sdf = []
+            total_ref_hp = []
+            total_ref_other = []
+
+
             customuser_obj = CustomUser.objects.get(id=request.user.id)
             for i in customuser_obj.location.all():
-                total_sdf = Visualization.objects.filter(
+                male = Visualization.objects.filter(
+                    gender="male",geography_id=i.id
+                ).count()
+                total_male.append(male)
+                female = Visualization.objects.filter(
+                    gender="female",geography_id=i.id
+                ).count()
+                total_female.append(female)
+                children = Visualization.objects.filter(
+                    age__lt=18,geography_id=i.id
+                ).count()
+                total_children.append(children)
+                adult = Visualization.objects.filter(
+                    age__range=(18, 60),geography_id=i.id
+                ).count()
+                total_adult.append(adult)
+                older_adult = Visualization.objects.filter(
+                    age__gt=60,geography_id=i.id
+                ).count()
+                total_older_adult.append(older_adult)
+                encounter = male + female
+                total_encounter.append(encounter)
+
+                sdf = Visualization.objects.filter(
                     geography_id=i.id, sdf=True
                 ).count()
-                total_sdf_male = Visualization.objects.filter(
+                total_sdf.append(sdf)
+                sdf_male = Visualization.objects.filter(
                     geography_id=i.id, sdf=True, gender="male"
                 ).count()
-                total_sdf_female = Visualization.objects.filter(
+                total_sdf_male.append(sdf_male)
+                sdf_female = Visualization.objects.filter(
                     geography_id=i.id, sdf=True, gender="female"
                 ).count()
-                total_sdf_child = Visualization.objects.filter(
+                total_sdf_female.append(sdf_female)
+                sdf_child = Visualization.objects.filter(
                     geography_id=i.id, sdf=True, age__lt=18
                 ).count()
-                total_sdf_adult = Visualization.objects.filter(
+                total_sdf_child.append(sdf_child)
+                sdf_adult = Visualization.objects.filter(
                     geography_id=i.id, sdf=True, age__range=(18, 60)
                 ).count()
-                total_sdf_old = Visualization.objects.filter(
+                total_sdf_adult.append(sdf_adult)
+                sdf_old = Visualization.objects.filter(
                     geography_id=i.id, sdf=True, age__gt=60
                 ).count()
+                total_sdf_old.append(sdf_old)
 
-                total_seal = Visualization.objects.filter(
+                seal = Visualization.objects.filter(
                     geography_id=i.id, seal=True
                 ).count()
-                total_seal_male = Visualization.objects.filter(
+                total_seal.append(seal)
+                seal_male = Visualization.objects.filter(
                     geography_id=i.id, seal=True, gender="male"
                 ).count()
-                total_seal_female = Visualization.objects.filter(
+                total_seal_male.append(seal_male)
+                seal_female = Visualization.objects.filter(
                     geography_id=i.id, seal=True, gender="female"
                 ).count()
-                total_seal_child = Visualization.objects.filter(
+                total_seal_female.append(seal_female)
+                seal_child = Visualization.objects.filter(
                     geography_id=i.id, seal=True, age__lt=18
                 ).count()
-                total_seal_adult = Visualization.objects.filter(
+                total_seal_child.append(seal_child)
+                seal_adult = Visualization.objects.filter(
                     geography_id=i.id, seal=True, age__range=(18, 60)
                 ).count()
-                total_seal_old = Visualization.objects.filter(
+                total_seal_adult.append(seal_adult)
+                seal_old = Visualization.objects.filter(
                     geography_id=i.id, seal=True, age__gt=60
                 ).count()
+                total_seal_old.append(seal_old)
 
-                total_art = Visualization.objects.filter(
+                art = Visualization.objects.filter(
                     geography_id=i.id, art=True
                 ).count()
-                total_art_male = Visualization.objects.filter(
+                total_art.append(art)
+                art_male = Visualization.objects.filter(
                     geography_id=i.id, art=True, gender="male"
                 ).count()
-                total_art_female = Visualization.objects.filter(
+                total_art_male.append(art_male)
+                art_female = Visualization.objects.filter(
                     geography_id=i.id, art=True, gender="female"
                 ).count()
-                total_art_child = Visualization.objects.filter(
+                total_art_female.append(art_female)
+                art_child = Visualization.objects.filter(
                     geography_id=i.id, art=True, age__lt=18
                 ).count()
-                total_art_adult = Visualization.objects.filter(
+                total_art_child.append(art_child)
+                art_adult = Visualization.objects.filter(
                     geography_id=i.id, art=True, age__range=(18, 60)
                 ).count()
-                total_art_old = Visualization.objects.filter(
+                total_art_adult.append(art_adult)
+                art_old = Visualization.objects.filter(
                     geography_id=i.id, art=True, age__gt=60
                 ).count()
+                total_art_old.append(art_old)
 
-                total_exo = Visualization.objects.filter(
+                exo = Visualization.objects.filter(
                     geography_id=i.id, exo=True
                 ).count()
-                total_exo_male = Visualization.objects.filter(
+                total_exo.append(exo)
+                exo_male = Visualization.objects.filter(
                     geography_id=i.id, exo=True, gender="male"
                 ).count()
-                total_exo_female = Visualization.objects.filter(
+                total_exo_male.append(exo_male)
+                exo_female = Visualization.objects.filter(
                     geography_id=i.id, exo=True, gender="female"
                 ).count()
-                total_exo_child = Visualization.objects.filter(
+                total_exo_female.append(exo_female)
+                exo_child = Visualization.objects.filter(
                     geography_id=i.id, exo=True, age__lt=18
                 ).count()
-                total_exo_adult = Visualization.objects.filter(
+                total_exo_child.append(exo_child)
+                exo_adult = Visualization.objects.filter(
                     geography_id=i.id, exo=True, age__range=(18, 60)
                 ).count()
-                total_exo_old = Visualization.objects.filter(
+                total_exo_adult.append(exo_adult)
+                exo_old = Visualization.objects.filter(
                     geography_id=i.id, exo=True, age__gt=60
                 ).count()
+                total_exo_old.append(exo_old)
 
-                total_fv = Visualization.objects.filter(
+                fv = Visualization.objects.filter(
                     fv=True, geography_id=i.id
                 ).count()
-                totalfv_male = Visualization.objects.filter(
+                total_fv.append(fv)
+                fv_male = Visualization.objects.filter(
                     gender="male", fv=True, geography_id=i.id
                 ).count()
-                totalfv_female = Visualization.objects.filter(
+                total_fv_male.append(fv_male)
+                fv_female = Visualization.objects.filter(
                     gender="female", fv=True, geography_id=i.id
                 ).count()
-                totalfv_child = Visualization.objects.filter(
+                total_fv_female.append(fv_female)
+                fv_child = Visualization.objects.filter(
                     age__lt=18, fv=True, geography_id=i.id
                 ).count()
-                totalfv_adult = Visualization.objects.filter(
+                total_fv_child.append(fv_child)
+                fv_adult = Visualization.objects.filter(
                     age__range=(18, 60), fv=True, geography_id=i.id
                 ).count()
-                totalfv_old = Visualization.objects.filter(
+                total_fv_adult.append(fv_adult)
+                fv_old = Visualization.objects.filter(
                     age__gt=60, fv=True, geography_id=i.id
                 ).count()
+                total_fv_old.append(fv_old)
 
-                total_fm_sdf = Visualization.objects.filter(
+                fm_sdf = Visualization.objects.filter(
                     sdf_whole_mouth=True, geography_id=i.id
                 ).count()
-                total_fm_sdf_male = Visualization.objects.filter(
+                total_fm_sdf.append(fm_sdf)
+                fm_sdf_male = Visualization.objects.filter(
                     gender="male", sdf_whole_mouth=True, geography_id=i.id
                 ).count()
-                total_fm_sdf_female = Visualization.objects.filter(
+                total_fm_sdf_male.append(fm_sdf_male)
+                fm_sdf_female = Visualization.objects.filter(
                     gender="female", sdf_whole_mouth=True, geography_id=i.id
                 ).count()
-                total_fm_sdf_child = Visualization.objects.filter(
+                total_fm_sdf_female.append(fm_sdf_female)
+                fm_sdf_child = Visualization.objects.filter(
                     age__lt=18, sdf_whole_mouth=True, geography_id=i.id
                 ).count()
-                total_fm_sdf_adult = Visualization.objects.filter(
+                total_fm_sdf_child.append(fm_sdf_child)
+                fm_sdf_adult = Visualization.objects.filter(
                     age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id
                 ).count()
-                total_fm_sdf_old = Visualization.objects.filter(
+                total_fm_sdf_adult.append(fm_sdf_adult)
+                fm_sdf_old = Visualization.objects.filter(
                     age__gt=60, sdf_whole_mouth=True, geography_id=i.id
                 ).count()
+                total_fm_sdf_old.append(fm_sdf_old)
 
-                total_ref_hp = Visualization.objects.filter(
+                ref_hp = Visualization.objects.filter(
                     refer_hp=True, geography_id=i.id
                 ).count()
-                total_ref_hp_male = Visualization.objects.filter(
+                total_ref_hp.append(ref_hp)
+                ref_hp_male = Visualization.objects.filter(
                     gender="male", refer_hp=True, geography_id=i.id
                 ).count()
-                total_ref_hp_female = Visualization.objects.filter(
+                total_ref_hp_male.append(ref_hp_male)
+                ref_hp_female = Visualization.objects.filter(
                     gender="female", refer_hp=True, geography_id=i.id
                 ).count()
-                total_ref_hp_child = Visualization.objects.filter(
+                total_ref_hp_female.append(ref_hp_female)
+                ref_hp_child = Visualization.objects.filter(
                     age__lt=18, refer_hp=True, geography_id=i.id
                 ).count()
-                total_ref_hp_adult = Visualization.objects.filter(
+                total_ref_hp_child.append(ref_hp_child)
+                ref_hp_adult = Visualization.objects.filter(
                     age__range=(18, 60), refer_hp=True, geography_id=i.id
                 ).count()
-                total_ref_hp_old = Visualization.objects.filter(
+                total_ref_hp_adult.append(ref_hp_adult)
+                ref_hp_old = Visualization.objects.filter(
                     age__gt=60, refer_hp=True, geography_id=i.id
                 ).count()
+                total_ref_hp_old.append(ref_hp_old)
 
 
-                total_ref_other = Visualization.objects.filter(
+                ref_other = Visualization.objects.filter(
                     refer_other=True, geography_id=i.id
                 ).count()
-                total_ref_other_male = Visualization.objects.filter(
+                total_ref_other.append(ref_other)
+                ref_other_male = Visualization.objects.filter(
                     gender="male", refer_other=True, geography_id=i.id
                 ).count()
-                total_ref_other_female = Visualization.objects.filter(
+                total_ref_other_male.append(ref_other_male)
+                ref_other_female = Visualization.objects.filter(
                     gender="female", refer_other=True, geography_id=i.id
                 ).count()
-                total_ref_other_child = Visualization.objects.filter(
+                total_ref_other_female.append(ref_other_female)
+                ref_other_child = Visualization.objects.filter(
                     age__lt=18, refer_other=True, geography_id=i.id
                 ).count()
-                total_ref_other_adult = Visualization.objects.filter(
+                total_ref_other_child.append(ref_other_child)
+                ref_other_adult = Visualization.objects.filter(
                     age__range=(18, 60), refer_other=True, geography_id=i.id
                 ).count()
-                total_ref_other_old = Visualization.objects.filter(
+                total_ref_other_adult.append(ref_other_adult)
+                ref_other_old = Visualization.objects.filter(
                     age__gt=60, refer_other=True, geography_id=i.id
                 ).count()
+                total_ref_other_old.append(ref_other_old)
+
+
 
             return Response(
                 [
                     [
-                        "EXO",
-                        total_exo_male,
-                        total_exo_female,
-                        total_exo_child,
-                        total_exo_adult,
-                        total_exo_old,
-                        total_exo,
+                        "Male",
+                        sum(total_male),
+                        sum(total_exo_male),
+                        sum(total_art_male),
+                        sum(total_seal_male),
+                        sum(total_sdf_male),
+                        sum(total_fv_male),
+                        sum(total_fm_sdf_male),
+                        sum(total_ref_hp_male),
+                        sum(total_ref_other_male),
                     ],
                     [
-                        "ART",
-                        total_art_male,
-                        total_art_female,
-                        total_art_child,
-                        total_art_adult,
-                        total_art_old,
-                        total_art,
+                        "Female",
+                        sum(total_female),
+                        sum(total_exo_female),
+                        sum(total_art_female),
+                        sum(total_seal_female),
+                        sum(total_sdf_female),
+                        sum(total_fv_female),
+                        sum(total_fm_sdf_female),
+                        sum(total_ref_hp_female),
+                        sum(total_ref_other_female),
                     ],
                     [
-                        "SEAL",
-                        total_seal_male,
-                        total_seal_female,
-                        total_seal_child,
-                        total_seal_adult,
-                        total_seal_old,
-                        total_seal,
+                        "Children",
+                        sum(total_children),
+                        sum(total_exo_child),
+                        sum(total_art_child),
+                        sum(total_seal_child),
+                        sum(total_sdf_child),
+                        sum(total_fv_child),
+                        sum(total_fm_sdf_child),
+                        sum(total_ref_hp_child),
+                        sum(total_ref_other_child),
                     ],
                     [
-                        "SDF",
-                        total_sdf_male,
-                        total_sdf_female,
-                        total_sdf_child,
-                        total_sdf_adult,
-                        total_sdf_old,
-                        total_sdf,
+                        "Adults",
+                        sum(total_adult),
+                        sum(total_exo_adult),
+                        sum(total_art_adult),
+                        sum(total_seal_adult),
+                        sum(total_sdf_adult),
+                        sum(total_fv_adult),
+                        sum(total_fm_sdf_adult),
+                        sum(total_ref_hp_adult),
+                        sum(total_ref_other_adult)
                     ],
                     [
-                        "FV",
-                        totalfv_male,
-                        totalfv_female,
-                        totalfv_child,
-                        totalfv_adult,
-                        totalfv_old,
-                        total_fv,
+                        "Older Adults",
+                        sum(total_older_adult),
+                        sum(total_exo_old),
+                        sum(total_art_old),
+                        sum(total_seal_old),
+                        sum(total_sdf_old),
+                        sum(total_fv_old),
+                        sum(total_fm_sdf_old),
+                        sum(total_ref_hp_old),
+                        sum(total_ref_other_old),
                     ],
                     [
-                        "SDF Whole Mouth",
-                        total_fm_sdf_male,
-                        total_fm_sdf_female,
-                        total_fm_sdf_child,
-                        total_fm_sdf_adult,
-                        total_fm_sdf_old,
-                        total_fm_sdf
-                    ],
-                    [
-                        "Ref HP",
-                        total_ref_hp_male,
-                        total_ref_hp_female,
-                        total_ref_hp_child,
-                        total_ref_hp_adult,
-                        total_ref_hp_old,
-                        total_ref_hp
-                    ],
-                    [
-                        "Ref Other",
-                        total_ref_other_male,
-                        total_ref_other_female,
-                        total_ref_other_child,
-                        total_ref_other_adult,
-                        total_ref_other_old,
-                        total_ref_other
-                    ],
+                        "Total",
+                        sum(total_encounter),
+                        sum(total_exo),
+                        sum(total_art),
+                        sum(total_seal),
+                        sum(total_sdf),
+                        sum(total_fv),
+                        sum(total_fm_sdf),
+                        sum(total_ref_hp),
+                        sum(total_ref_other)
+                    ]
+
                 ]
             )
         return Response({"treatment_obj": "do not have a permission"}, status=400)
@@ -1039,363 +1177,1098 @@ class WardTableVisualization2(APIView):
                     id=request.user.id, role__name="warduser"
                 ):
                     customuser_obj = CustomUser.objects.get(id=request.user.id)
-                    total_sdf = []
-                    total_sdf_male = []
-                    total_sdf_female = []
-                    total_sdf_child = []
-                    total_sdf_adult = []
-                    total_sdf_old = []
 
-                    total_seal = []
-                    total_seal_male = []
-                    total_seal_female = []
-                    total_seal_child = []
-                    total_seal_adult = []
-                    total_seal_old = []
-
-                    total_art = []
-                    total_art_male = []
-                    total_art_female = []
-                    total_art_child = []
-                    total_art_adult = []
-                    total_art_old = []
-
-                    total_exo = []
+                    total_male = []
                     total_exo_male = []
-                    total_exo_female = []
-                    total_exo_child = []
-                    total_exo_adult = []
-                    total_exo_old = []
+                    total_art_male = []
+                    total_seal_male = []
+                    total_sdf_male = []
+                    total_fv_male = []
+                    total_fm_sdf_male = []
+                    total_ref_hp_male = []
+                    total_ref_other_male = []
 
+                    total_female = []
+                    total_exo_female = []
+                    total_art_female = []
+                    total_seal_female = []
+                    total_sdf_female = []
+                    total_fv_female = []
+                    total_fm_sdf_female = []
+                    total_ref_hp_female = []
+                    total_ref_other_female = []
+
+                    total_children = []
+                    total_exo_child = []
+                    total_art_child = []
+                    total_seal_child = []
+                    total_sdf_child = []
+                    total_fv_child = []
+                    total_fm_sdf_child = []
+                    total_ref_hp_child = []
+                    total_ref_other_child = []
+
+                    total_adult = []
+                    total_exo_adult = []
+                    total_art_adult = []
+                    total_seal_adult = []
+                    total_sdf_adult = []
+                    total_fv_adult = []
+                    total_fm_sdf_adult = []
+                    total_ref_hp_adult = []
+                    total_ref_other_adult = []
+
+                    total_older_adult = []
+                    total_exo_old = []
+                    total_art_old = []
+                    total_seal_old = []
+                    total_sdf_old = []
+                    total_fv_old = []
+                    total_fm_sdf_old = []
+                    total_ref_hp_old = []
+                    total_ref_other_old = []
+
+                    total_encounter = []
+                    total_exo = []
+                    total_art = []
+                    total_seal = []
+                    total_sdf = []
                     total_fv = []
-                    totalfv_male = []
-                    totalfv_female = []
-                    totalfv_child = []
-                    totalfv_adult = []
-                    totalfv_old = []
+                    total_fm_sdf = []
+                    total_ref_hp = []
+                    total_ref_other = []
 
                     for i in customuser_obj.location.all():
                         for activities in activities_list:
-                            total_sdf.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    sdf=True,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_sdf_male.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    sdf=True,
-                                    gender="male",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_sdf_female.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    sdf=True,
-                                    gender="female",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_sdf_child.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    sdf=True,
-                                    age__lt=18,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_sdf_adult.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    sdf=True,
-                                    age__range=(18, 60),
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_sdf_old.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    sdf=True,
-                                    age__gt=60,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
+                            male = Visualization.objects.filter(
+                                gender="male",geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_male.append(male)
+                            female = Visualization.objects.filter(
+                                gender="female",geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_female.append(female)
+                            children = Visualization.objects.filter(
+                                age__lt=18,geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_children.append(children)
+                            adult = Visualization.objects.filter(
+                                age__range=(18, 60),geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_adult.append(adult)
+                            older_adult = Visualization.objects.filter(
+                                age__gt=60,geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_older_adult.append(older_adult)
+                            encounter = male + female
+                            total_encounter.append(encounter)
 
-                            total_seal.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id, seal=True
-                                ).count()
-                            )
-                            total_seal_male.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    seal=True,
-                                    gender="male",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_seal_female.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    seal=True,
-                                    gender="female",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_seal_child.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    seal=True,
-                                    age__lt=18,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_seal_adult.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    seal=True,
-                                    age__range=(18, 60),
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_seal_old.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    seal=True,
-                                    age__gt=60,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
+                            sdf = Visualization.objects.filter(
+                                geography_id=i.id, sdf=True,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf.append(sdf)
+                            sdf_male = Visualization.objects.filter(
+                                geography_id=i.id, sdf=True, gender="male",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf_male.append(sdf_male)
+                            sdf_female = Visualization.objects.filter(
+                                geography_id=i.id, sdf=True, gender="female",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf_female.append(sdf_female)
+                            sdf_child = Visualization.objects.filter(
+                                geography_id=i.id, sdf=True, age__lt=18,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf_child.append(sdf_child)
+                            sdf_adult = Visualization.objects.filter(
+                                geography_id=i.id, sdf=True, age__range=(18, 60),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf_adult.append(sdf_adult)
+                            sdf_old = Visualization.objects.filter(
+                                geography_id=i.id, sdf=True, age__gt=60,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf_old.append(sdf_old)
 
-                            total_art.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    art=True,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_art_male.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    art=True,
-                                    gender="male",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_art_female.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    art=True,
-                                    gender="female",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_art_child.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    art=True,
-                                    age__lt=18,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_art_adult.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    art=True,
-                                    age__range=(18, 60),
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_art_old.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    art=True,
-                                    age__gt=60,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
+                            seal = Visualization.objects.filter(
+                                geography_id=i.id, seal=True,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal.append(seal)
+                            seal_male = Visualization.objects.filter(
+                                geography_id=i.id, seal=True, gender="male",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal_male.append(seal_male)
+                            seal_female = Visualization.objects.filter(
+                                geography_id=i.id, seal=True, gender="female",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal_female.append(seal_female)
+                            seal_child = Visualization.objects.filter(
+                                geography_id=i.id, seal=True, age__lt=18,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal_child.append(seal_child)
+                            seal_adult = Visualization.objects.filter(
+                                geography_id=i.id, seal=True, age__range=(18, 60),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal_adult.append(seal_adult)
+                            seal_old = Visualization.objects.filter(
+                                geography_id=i.id, seal=True, age__gt=60,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal_old.append(seal_old)
 
-                            total_exo.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    exo=True,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_exo_male.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    exo=True,
-                                    gender="male",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_exo_female.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    exo=True,
-                                    gender="female",
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_exo_child.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    exo=True,
-                                    age__lt=18,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_exo_adult.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    exo=True,
-                                    age__range=(18, 60),
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            total_exo_old.append(
-                                Visualization.objects.filter(
-                                    geography_id=i.id,
-                                    exo=True,
-                                    age__gt=60,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
+                            art = Visualization.objects.filter(
+                                geography_id=i.id, art=True,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art.append(art)
+                            art_male = Visualization.objects.filter(
+                                geography_id=i.id, art=True, gender="male",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art_male.append(art_male)
+                            art_female = Visualization.objects.filter(
+                                geography_id=i.id, art=True, gender="female",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art_female.append(art_female)
+                            art_child = Visualization.objects.filter(
+                                geography_id=i.id, art=True, age__lt=18,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art_child.append(art_child)
+                            art_adult = Visualization.objects.filter(
+                                geography_id=i.id, art=True, age__range=(18, 60),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art_adult.append(art_adult)
+                            art_old = Visualization.objects.filter(
+                                geography_id=i.id, art=True, age__gt=60,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art_old.append(art_old)
 
-                            total_fv.append(
-                                Visualization.objects.filter(
-                                    fv=True,
-                                    geography_id=i.id,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            totalfv_male.append(
-                                Visualization.objects.filter(
-                                    gender="male",
-                                    fv=True,
-                                    geography_id=i.id,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            totalfv_female.append(
-                                Visualization.objects.filter(
-                                    gender="female",
-                                    fv=True,
-                                    geography_id=i.id,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            totalfv_child.append(
-                                Visualization.objects.filter(
-                                    age__lt=18,
-                                    fv=True,
-                                    geography_id=i.id,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            totalfv_adult.append(
-                                Visualization.objects.filter(
-                                    age__range=(18, 60),
-                                    fv=True,
-                                    geography_id=i.id,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                            totalfv_old.append(
-                                Visualization.objects.filter(
-                                    age__gt=60,
-                                    fv=True,
-                                    geography_id=i.id,
-                                    activities_id=activities.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
+                            exo = Visualization.objects.filter(
+                                geography_id=i.id, exo=True
+                            ).count()
+                            total_exo.append(exo)
+                            exo_male = Visualization.objects.filter(
+                                geography_id=i.id, exo=True, gender="male",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_exo_male.append(exo_male)
+                            exo_female = Visualization.objects.filter(
+                                geography_id=i.id, exo=True, gender="female",
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_exo_female.append(exo_female)
+                            exo_child = Visualization.objects.filter(
+                                geography_id=i.id, exo=True, age__lt=18,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_exo_child.append(exo_child)
+                            exo_adult = Visualization.objects.filter(
+                                geography_id=i.id, exo=True, age__range=(18, 60),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_exo_adult.append(exo_adult)
+                            exo_old = Visualization.objects.filter(
+                                geography_id=i.id, exo=True, age__gt=60,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_exo_old.append(exo_old)
 
-                    return Response(
-                        [
+                            fv = Visualization.objects.filter(
+                                fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv.append(fv)
+                            fv_male = Visualization.objects.filter(
+                                gender="male", fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv_male.append(fv_male)
+                            fv_female = Visualization.objects.filter(
+                                gender="female", fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv_female.append(fv_female)
+                            fv_child = Visualization.objects.filter(
+                                age__lt=18, fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv_child.append(fv_child)
+                            fv_adult = Visualization.objects.filter(
+                                age__range=(18, 60), fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv_adult.append(fv_adult)
+                            fv_old = Visualization.objects.filter(
+                                age__gt=60, fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv_old.append(fv_old)
+
+                            fm_sdf = Visualization.objects.filter(
+                                sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf.append(fm_sdf)
+                            fm_sdf_male = Visualization.objects.filter(
+                                gender="male", sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf_male.append(fm_sdf_male)
+                            fm_sdf_female = Visualization.objects.filter(
+                                gender="female", sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf_female.append(fm_sdf_female)
+                            fm_sdf_child = Visualization.objects.filter(
+                                age__lt=18, sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf_child.append(fm_sdf_child)
+                            fm_sdf_adult = Visualization.objects.filter(
+                                age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf_adult.append(fm_sdf_adult)
+                            fm_sdf_old = Visualization.objects.filter(
+                                age__gt=60, sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf_old.append(fm_sdf_old)
+
+                            ref_hp = Visualization.objects.filter(
+                                refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp.append(ref_hp)
+                            ref_hp_male = Visualization.objects.filter(
+                                gender="male", refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp_male.append(ref_hp_male)
+                            ref_hp_female = Visualization.objects.filter(
+                                gender="female", refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp_female.append(ref_hp_female)
+                            ref_hp_child = Visualization.objects.filter(
+                                age__lt=18, refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp_child.append(ref_hp_child)
+                            ref_hp_adult = Visualization.objects.filter(
+                                age__range=(18, 60), refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp_adult.append(ref_hp_adult)
+                            ref_hp_old = Visualization.objects.filter(
+                                age__gt=60, refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp_old.append(ref_hp_old)
+
+
+                            ref_other = Visualization.objects.filter(
+                                refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other.append(ref_other)
+                            ref_other_male = Visualization.objects.filter(
+                                gender="male", refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other_male.append(ref_other_male)
+                            ref_other_female = Visualization.objects.filter(
+                                gender="female", refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other_female.append(ref_other_female)
+                            ref_other_child = Visualization.objects.filter(
+                                age__lt=18, refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other_child.append(ref_other_child)
+                            ref_other_adult = Visualization.objects.filter(
+                                age__range=(18, 60), refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other_adult.append(ref_other_adult)
+                            ref_other_old = Visualization.objects.filter(
+                                age__gt=60, refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other_old.append(ref_other_old)
+
+                        return Response(
                             [
-                                "EXO",
-                                sum(total_exo_male),
-                                sum(total_exo_female),
-                                sum(total_exo_child),
-                                sum(total_exo_adult),
-                                sum(total_exo_old),
-                                sum(total_exo),
-                            ],
-                            [
-                                "ART",
-                                sum(total_art_male),
-                                sum(total_art_female),
-                                sum(total_art_child),
-                                sum(total_art_adult),
-                                sum(total_art_old),
-                                sum(total_art),
-                            ],
-                            [
-                                "SEAL",
-                                sum(total_seal_male),
-                                sum(total_seal_female),
-                                sum(total_seal_child),
-                                sum(total_seal_adult),
-                                sum(total_seal_old),
-                                sum(total_seal),
-                            ],
-                            [
-                                "SDF",
-                                sum(total_sdf_male),
-                                sum(total_sdf_female),
-                                sum(total_sdf_child),
-                                sum(total_sdf_adult),
-                                sum(total_sdf_old),
-                                sum(total_sdf),
-                            ],
-                            [
-                                "FV",
-                                sum(totalfv_male),
-                                sum(totalfv_female),
-                                sum(totalfv_child),
-                                sum(totalfv_adult),
-                                sum(totalfv_old),
-                                sum(total_fv),
-                            ],
-                        ]
+                                [
+                                    "Male",
+                                    sum(total_male),
+                                    sum(total_exo_male),
+                                    sum(total_art_male),
+                                    sum(total_seal_male),
+                                    sum(total_sdf_male),
+                                    sum(total_fv_male),
+                                    sum(total_fm_sdf_male),
+                                    sum(total_ref_hp_male),
+                                    sum(total_ref_other_male),
+                                ],
+                                [
+                                    "Female",
+                                    sum(total_female),
+                                    sum(total_exo_female),
+                                    sum(total_art_female),
+                                    sum(total_seal_female),
+                                    sum(total_sdf_female),
+                                    sum(total_fv_female),
+                                    sum(total_fm_sdf_female),
+                                    sum(total_ref_hp_female),
+                                    sum(total_ref_other_female),
+                                ],
+                                [
+                                    "Children",
+                                    sum(total_children),
+                                    sum(total_exo_child),
+                                    sum(total_art_child),
+                                    sum(total_seal_child),
+                                    sum(total_sdf_child),
+                                    sum(total_fv_child),
+                                    sum(total_fm_sdf_child),
+                                    sum(total_ref_hp_child),
+                                    sum(total_ref_other_child),
+                                ],
+                                [
+                                    "Adults",
+                                    sum(total_adult),
+                                    sum(total_exo_adult),
+                                    sum(total_art_adult),
+                                    sum(total_seal_adult),
+                                    sum(total_sdf_adult),
+                                    sum(total_fv_adult),
+                                    sum(total_fm_sdf_adult),
+                                    sum(total_ref_hp_adult),
+                                    sum(total_ref_other_adult)
+                                ],
+                                [
+                                    "Older Adults",
+                                    sum(total_older_adult),
+                                    sum(total_exo_old),
+                                    sum(total_art_old),
+                                    sum(total_seal_old),
+                                    sum(total_sdf_old),
+                                    sum(total_fv_old),
+                                    sum(total_fm_sdf_old),
+                                    sum(total_ref_hp_old),
+                                    sum(total_ref_other_old),
+                                ],
+                                [
+                                    "Total",
+                                    sum(total_encounter),
+                                    sum(total_exo),
+                                    sum(total_art),
+                                    sum(total_seal),
+                                    sum(total_sdf),
+                                    sum(total_fv),
+                                    sum(total_fm_sdf),
+                                    sum(total_ref_hp),
+                                    sum(total_ref_other)
+                                ]
+
+                            ]
                     )
             return Response(
-                {"message": "End date must be greated then Start Date"}, status=400
+                {"message": "End date must be greater then Start Date"}, status=400
             )
         return Response({"message": serializer.errors}, status=400)
+
+
+
+# Overview
+# class WardTableVisualization2(APIView):
+#     serializer_class = WardFilterVisualization
+#     permission_classes = (IsPostOrIsAuthenticated,)
+
+#     def get(self, request, format=None):
+#         if (
+#             CustomUser.objects.select_related("role")
+#             .filter(id=request.user.id, role__name="warduser")
+#             .exists()
+#         ):
+#             customuser_obj = CustomUser.objects.get(id=request.user.id)
+#             for i in customuser_obj.location.all():
+#                 total_sdf = Visualization.objects.filter(
+#                     geography_id=i.id, sdf=True
+#                 ).count()
+#                 total_sdf_male = Visualization.objects.filter(
+#                     geography_id=i.id, sdf=True, gender="male"
+#                 ).count()
+#                 total_sdf_female = Visualization.objects.filter(
+#                     geography_id=i.id, sdf=True, gender="female"
+#                 ).count()
+#                 total_sdf_child = Visualization.objects.filter(
+#                     geography_id=i.id, sdf=True, age__lt=18
+#                 ).count()
+#                 total_sdf_adult = Visualization.objects.filter(
+#                     geography_id=i.id, sdf=True, age__range=(18, 60)
+#                 ).count()
+#                 total_sdf_old = Visualization.objects.filter(
+#                     geography_id=i.id, sdf=True, age__gt=60
+#                 ).count()
+
+#                 total_seal = Visualization.objects.filter(
+#                     geography_id=i.id, seal=True
+#                 ).count()
+#                 total_seal_male = Visualization.objects.filter(
+#                     geography_id=i.id, seal=True, gender="male"
+#                 ).count()
+#                 total_seal_female = Visualization.objects.filter(
+#                     geography_id=i.id, seal=True, gender="female"
+#                 ).count()
+#                 total_seal_child = Visualization.objects.filter(
+#                     geography_id=i.id, seal=True, age__lt=18
+#                 ).count()
+#                 total_seal_adult = Visualization.objects.filter(
+#                     geography_id=i.id, seal=True, age__range=(18, 60)
+#                 ).count()
+#                 total_seal_old = Visualization.objects.filter(
+#                     geography_id=i.id, seal=True, age__gt=60
+#                 ).count()
+
+#                 total_art = Visualization.objects.filter(
+#                     geography_id=i.id, art=True
+#                 ).count()
+#                 total_art_male = Visualization.objects.filter(
+#                     geography_id=i.id, art=True, gender="male"
+#                 ).count()
+#                 total_art_female = Visualization.objects.filter(
+#                     geography_id=i.id, art=True, gender="female"
+#                 ).count()
+#                 total_art_child = Visualization.objects.filter(
+#                     geography_id=i.id, art=True, age__lt=18
+#                 ).count()
+#                 total_art_adult = Visualization.objects.filter(
+#                     geography_id=i.id, art=True, age__range=(18, 60)
+#                 ).count()
+#                 total_art_old = Visualization.objects.filter(
+#                     geography_id=i.id, art=True, age__gt=60
+#                 ).count()
+
+#                 total_exo = Visualization.objects.filter(
+#                     geography_id=i.id, exo=True
+#                 ).count()
+#                 total_exo_male = Visualization.objects.filter(
+#                     geography_id=i.id, exo=True, gender="male"
+#                 ).count()
+#                 total_exo_female = Visualization.objects.filter(
+#                     geography_id=i.id, exo=True, gender="female"
+#                 ).count()
+#                 total_exo_child = Visualization.objects.filter(
+#                     geography_id=i.id, exo=True, age__lt=18
+#                 ).count()
+#                 total_exo_adult = Visualization.objects.filter(
+#                     geography_id=i.id, exo=True, age__range=(18, 60)
+#                 ).count()
+#                 total_exo_old = Visualization.objects.filter(
+#                     geography_id=i.id, exo=True, age__gt=60
+#                 ).count()
+
+#                 total_fv = Visualization.objects.filter(
+#                     fv=True, geography_id=i.id
+#                 ).count()
+#                 totalfv_male = Visualization.objects.filter(
+#                     gender="male", fv=True, geography_id=i.id
+#                 ).count()
+#                 totalfv_female = Visualization.objects.filter(
+#                     gender="female", fv=True, geography_id=i.id
+#                 ).count()
+#                 totalfv_child = Visualization.objects.filter(
+#                     age__lt=18, fv=True, geography_id=i.id
+#                 ).count()
+#                 totalfv_adult = Visualization.objects.filter(
+#                     age__range=(18, 60), fv=True, geography_id=i.id
+#                 ).count()
+#                 totalfv_old = Visualization.objects.filter(
+#                     age__gt=60, fv=True, geography_id=i.id
+#                 ).count()
+
+#                 total_fm_sdf = Visualization.objects.filter(
+#                     sdf_whole_mouth=True, geography_id=i.id
+#                 ).count()
+#                 total_fm_sdf_male = Visualization.objects.filter(
+#                     gender="male", sdf_whole_mouth=True, geography_id=i.id
+#                 ).count()
+#                 total_fm_sdf_female = Visualization.objects.filter(
+#                     gender="female", sdf_whole_mouth=True, geography_id=i.id
+#                 ).count()
+#                 total_fm_sdf_child = Visualization.objects.filter(
+#                     age__lt=18, sdf_whole_mouth=True, geography_id=i.id
+#                 ).count()
+#                 total_fm_sdf_adult = Visualization.objects.filter(
+#                     age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id
+#                 ).count()
+#                 total_fm_sdf_old = Visualization.objects.filter(
+#                     age__gt=60, sdf_whole_mouth=True, geography_id=i.id
+#                 ).count()
+
+#                 total_ref_hp = Visualization.objects.filter(
+#                     refer_hp=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_hp_male = Visualization.objects.filter(
+#                     gender="male", refer_hp=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_hp_female = Visualization.objects.filter(
+#                     gender="female", refer_hp=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_hp_child = Visualization.objects.filter(
+#                     age__lt=18, refer_hp=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_hp_adult = Visualization.objects.filter(
+#                     age__range=(18, 60), refer_hp=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_hp_old = Visualization.objects.filter(
+#                     age__gt=60, refer_hp=True, geography_id=i.id
+#                 ).count()
+
+
+#                 total_ref_other = Visualization.objects.filter(
+#                     refer_other=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_other_male = Visualization.objects.filter(
+#                     gender="male", refer_other=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_other_female = Visualization.objects.filter(
+#                     gender="female", refer_other=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_other_child = Visualization.objects.filter(
+#                     age__lt=18, refer_other=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_other_adult = Visualization.objects.filter(
+#                     age__range=(18, 60), refer_other=True, geography_id=i.id
+#                 ).count()
+#                 total_ref_other_old = Visualization.objects.filter(
+#                     age__gt=60, refer_other=True, geography_id=i.id
+#                 ).count()
+
+#             return Response(
+#                 [
+#                     [
+#                         "EXO",
+#                         total_exo_male,
+#                         total_exo_female,
+#                         total_exo_child,
+#                         total_exo_adult,
+#                         total_exo_old,
+#                         total_exo,
+#                     ],
+#                     [
+#                         "ART",
+#                         total_art_male,
+#                         total_art_female,
+#                         total_art_child,
+#                         total_art_adult,
+#                         total_art_old,
+#                         total_art,
+#                     ],
+#                     [
+#                         "SEAL",
+#                         total_seal_male,
+#                         total_seal_female,
+#                         total_seal_child,
+#                         total_seal_adult,
+#                         total_seal_old,
+#                         total_seal,
+#                     ],
+#                     [
+#                         "SDF",
+#                         total_sdf_male,
+#                         total_sdf_female,
+#                         total_sdf_child,
+#                         total_sdf_adult,
+#                         total_sdf_old,
+#                         total_sdf,
+#                     ],
+#                     [
+#                         "FV",
+#                         totalfv_male,
+#                         totalfv_female,
+#                         totalfv_child,
+#                         totalfv_adult,
+#                         totalfv_old,
+#                         total_fv,
+#                     ],
+#                     [
+#                         "SDF Whole Mouth",
+#                         total_fm_sdf_male,
+#                         total_fm_sdf_female,
+#                         total_fm_sdf_child,
+#                         total_fm_sdf_adult,
+#                         total_fm_sdf_old,
+#                         total_fm_sdf
+#                     ],
+#                     [
+#                         "Ref HP",
+#                         total_ref_hp_male,
+#                         total_ref_hp_female,
+#                         total_ref_hp_child,
+#                         total_ref_hp_adult,
+#                         total_ref_hp_old,
+#                         total_ref_hp
+#                     ],
+#                     [
+#                         "Ref Other",
+#                         total_ref_other_male,
+#                         total_ref_other_female,
+#                         total_ref_other_child,
+#                         total_ref_other_adult,
+#                         total_ref_other_old,
+#                         total_ref_other
+#                     ],
+#                 ]
+#             )
+#         return Response({"treatment_obj": "do not have a permission"}, status=400)
+
+#     def post(self, request, format=None):
+#         serializer = WardFilterVisualization(
+#             data=request.data, context={"request": request}
+#         )
+#         if serializer.is_valid():
+#             start_date = str(
+#                 NepaliDate.from_date(serializer.validated_data["start_date"])
+#             )
+#             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+#             activities_list = serializer.validated_data["activities"]
+#             if end_date > start_date:
+#                 if CustomUser.objects.select_related("role").filter(
+#                     id=request.user.id, role__name="warduser"
+#                 ):
+#                     customuser_obj = CustomUser.objects.get(id=request.user.id)
+#                     total_sdf = []
+#                     total_sdf_male = []
+#                     total_sdf_female = []
+#                     total_sdf_child = []
+#                     total_sdf_adult = []
+#                     total_sdf_old = []
+
+#                     total_seal = []
+#                     total_seal_male = []
+#                     total_seal_female = []
+#                     total_seal_child = []
+#                     total_seal_adult = []
+#                     total_seal_old = []
+
+#                     total_art = []
+#                     total_art_male = []
+#                     total_art_female = []
+#                     total_art_child = []
+#                     total_art_adult = []
+#                     total_art_old = []
+
+#                     total_exo = []
+#                     total_exo_male = []
+#                     total_exo_female = []
+#                     total_exo_child = []
+#                     total_exo_adult = []
+#                     total_exo_old = []
+
+#                     total_fv = []
+#                     totalfv_male = []
+#                     totalfv_female = []
+#                     totalfv_child = []
+#                     totalfv_adult = []
+#                     totalfv_old = []
+
+#                     for i in customuser_obj.location.all():
+#                         for activities in activities_list:
+#                             total_sdf.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     sdf=True,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_sdf_male.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     sdf=True,
+#                                     gender="male",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_sdf_female.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     sdf=True,
+#                                     gender="female",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_sdf_child.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     sdf=True,
+#                                     age__lt=18,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_sdf_adult.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     sdf=True,
+#                                     age__range=(18, 60),
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_sdf_old.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     sdf=True,
+#                                     age__gt=60,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+
+#                             total_seal.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id, seal=True
+#                                 ).count()
+#                             )
+#                             total_seal_male.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     seal=True,
+#                                     gender="male",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_seal_female.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     seal=True,
+#                                     gender="female",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_seal_child.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     seal=True,
+#                                     age__lt=18,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_seal_adult.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     seal=True,
+#                                     age__range=(18, 60),
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_seal_old.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     seal=True,
+#                                     age__gt=60,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+
+#                             total_art.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     art=True,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_art_male.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     art=True,
+#                                     gender="male",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_art_female.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     art=True,
+#                                     gender="female",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_art_child.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     art=True,
+#                                     age__lt=18,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_art_adult.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     art=True,
+#                                     age__range=(18, 60),
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_art_old.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     art=True,
+#                                     age__gt=60,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+
+#                             total_exo.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     exo=True,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_exo_male.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     exo=True,
+#                                     gender="male",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_exo_female.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     exo=True,
+#                                     gender="female",
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_exo_child.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     exo=True,
+#                                     age__lt=18,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_exo_adult.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     exo=True,
+#                                     age__range=(18, 60),
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             total_exo_old.append(
+#                                 Visualization.objects.filter(
+#                                     geography_id=i.id,
+#                                     exo=True,
+#                                     age__gt=60,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+
+#                             total_fv.append(
+#                                 Visualization.objects.filter(
+#                                     fv=True,
+#                                     geography_id=i.id,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             totalfv_male.append(
+#                                 Visualization.objects.filter(
+#                                     gender="male",
+#                                     fv=True,
+#                                     geography_id=i.id,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             totalfv_female.append(
+#                                 Visualization.objects.filter(
+#                                     gender="female",
+#                                     fv=True,
+#                                     geography_id=i.id,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             totalfv_child.append(
+#                                 Visualization.objects.filter(
+#                                     age__lt=18,
+#                                     fv=True,
+#                                     geography_id=i.id,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             totalfv_adult.append(
+#                                 Visualization.objects.filter(
+#                                     age__range=(18, 60),
+#                                     fv=True,
+#                                     geography_id=i.id,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+#                             totalfv_old.append(
+#                                 Visualization.objects.filter(
+#                                     age__gt=60,
+#                                     fv=True,
+#                                     geography_id=i.id,
+#                                     activities_id=activities.id,
+#                                     created_at__range=[start_date, end_date],
+#                                 ).count()
+#                             )
+
+#                     return Response(
+#                         [
+#                             [
+#                                 "EXO",
+#                                 sum(total_exo_male),
+#                                 sum(total_exo_female),
+#                                 sum(total_exo_child),
+#                                 sum(total_exo_adult),
+#                                 sum(total_exo_old),
+#                                 sum(total_exo),
+#                             ],
+#                             [
+#                                 "ART",
+#                                 sum(total_art_male),
+#                                 sum(total_art_female),
+#                                 sum(total_art_child),
+#                                 sum(total_art_adult),
+#                                 sum(total_art_old),
+#                                 sum(total_art),
+#                             ],
+#                             [
+#                                 "SEAL",
+#                                 sum(total_seal_male),
+#                                 sum(total_seal_female),
+#                                 sum(total_seal_child),
+#                                 sum(total_seal_adult),
+#                                 sum(total_seal_old),
+#                                 sum(total_seal),
+#                             ],
+#                             [
+#                                 "SDF",
+#                                 sum(total_sdf_male),
+#                                 sum(total_sdf_female),
+#                                 sum(total_sdf_child),
+#                                 sum(total_sdf_adult),
+#                                 sum(total_sdf_old),
+#                                 sum(total_sdf),
+#                             ],
+#                             [
+#                                 "FV",
+#                                 sum(totalfv_male),
+#                                 sum(totalfv_female),
+#                                 sum(totalfv_child),
+#                                 sum(totalfv_adult),
+#                                 sum(totalfv_old),
+#                                 sum(total_fv),
+#                             ],
+#                         ]
+#                     )
+#             return Response(
+#                 {"message": "End date must be greater then Start Date"}, status=400
+#             )
+#         return Response({"message": serializer.errors}, status=400)
+
 
 
 # 10.4 Contacts by Setting
