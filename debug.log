@@ -1595,3 +1595,91 @@ TypeError: 'int' object is not iterable
 2020-12-29 18:00:32,889 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15313
 2020-12-29 18:12:40,199 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15312
 2020-12-29 18:14:43,332 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15313
+2020-12-31 16:35:54,596 django.request WARNING  Unauthorized: /api/v1/patients
+2020-12-31 16:35:54,615 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2020-12-31 16:35:55,279 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2020-12-31 16:35:55,290 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2020-12-31 16:35:55,291 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2020-12-31 16:35:55,298 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2020-12-31 16:35:55,682 django.request WARNING  Not Found: /favicon.ico
+2020-12-31 16:35:55,683 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2020-12-31 16:35:57,423 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2020-12-31 16:36:04,088 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-31 16:36:07,473 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113843
+2020-12-31 16:36:14,373 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15312
+2020-12-31 16:36:29,057 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15312
+2020-12-31 16:36:44,825 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17745
+2020-12-31 17:58:15,470 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2020-12-31 17:58:15,499 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2020-12-31 17:58:18,724 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2020-12-31 17:58:25,494 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2980
+2020-12-31 17:58:34,806 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2020-12-31 17:58:35,245 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1102, in get
+    isActive: true,
+NameError: name 'isActive' is not defined
+2020-12-31 17:58:35,249 django.server ERROR    "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 105878
+2020-12-31 17:59:02,160 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1102, in get
+    "isActive": true,
+NameError: name 'true' is not defined
+2020-12-31 17:59:02,166 django.server ERROR    "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 105716
+2020-12-31 17:59:19,204 django.request ERROR    Internal Server Error: /api/v1/wardtreatmenttablevisualizaation
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 1103, in get
+    Type:"Male",
+NameError: name 'Type' is not defined
+2020-12-31 17:59:19,209 django.server ERROR    "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 500 105748
+2020-12-31 18:00:00,773 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15149
+2020-12-31 18:13:30,009 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 16710
+2020-12-31 18:17:03,699 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 16711
