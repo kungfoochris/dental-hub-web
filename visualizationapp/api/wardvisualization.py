@@ -1081,23 +1081,22 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_ref_other_old.append(ref_other_old)
 
-#  {
-#           isActive: true,
-#           type: "Total",
-#           Check: 40,
-#           EXO: 4,
-#           ART: 9,
-#           SEAL: 3,
-#           SDF: 2,
-#           "FM-SDF": 2,
-#           FV: 1,
-#           Ref_HP: 9,
-#           Ref_Other: 4,
-#         },
-
 
             return Response(
                 [
+                    {   
+                        "isActive": "true",
+                        "Type":"Total",
+                        "Check":sum(total_encounter),
+                        "Exo":sum(total_exo),
+                        "ART":sum(total_art),
+                        "SEAL":sum(total_seal),
+                        "SDF":sum(total_sdf),
+                        "FM-SDF":sum(total_fm_sdf),
+                        "FV":sum(total_fv),
+                        "Ref_HP":sum(total_ref_hp),
+                        "Ref_Other":sum(total_ref_other)
+                    },
                     {
                         "isActive": "true",
                         "Type":"Male",
@@ -1110,6 +1109,17 @@ class WardTableVisualization2(APIView):
                         "FV":sum(total_fv_male),
                         "Ref_HP":sum(total_ref_hp_male),
                         "Ref_Other":sum(total_ref_other_male),
+                        "_cellVariants": {
+                                "Check": "info",
+                                "EXO": "info",
+                                "ART": "info",
+                                "SEAL": "info",
+                                "SDF": "info",
+                                "FM-SDF": "info",
+                                "FV": "info",
+                                "Ref_HP": "info",
+                                "Ref_Other": "info",
+                            }
                     },
                     {   
                         "isActive": "true",
@@ -1123,6 +1133,17 @@ class WardTableVisualization2(APIView):
                         "FV":sum(total_fv_female),
                         "Ref_HP":sum(total_ref_hp_female),
                         "Ref_Other":sum(total_ref_other_female),
+                        "_cellVariants": {
+                                "Check": "info",
+                                "EXO": "info",
+                                "ART": "info",
+                                "SEAL": "info",
+                                "SDF": "info",
+                                "FM-SDF": "info",
+                                "FV": "info",
+                                "Ref_HP": "info",
+                                "Ref_Other": "info",
+                        }
                     },
                     {   
                         "isActive": "true",
@@ -1136,6 +1157,17 @@ class WardTableVisualization2(APIView):
                         "FV":sum(total_fv_child),
                         "Ref_HP":sum(total_ref_hp_child),
                         "Ref_Other":sum(total_ref_other_child),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        },
                     },
                     {   
                         "isActive": "true",
@@ -1148,7 +1180,19 @@ class WardTableVisualization2(APIView):
                         "FM-SDF":sum(total_fm_sdf_adult),
                         "FV":sum(total_fv_adult),
                         "Ref_HP":sum(total_ref_hp_adult),
-                        "Ref_Other":sum(total_ref_other_adult)
+                        "Ref_Other":sum(total_ref_other_adult),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                        
                     },
                     {   
                         "isActive": "true",
@@ -1162,21 +1206,18 @@ class WardTableVisualization2(APIView):
                         "FV":sum(total_fv_old),
                         "Ref_HP":sum(total_ref_hp_old),
                         "Ref_Other":sum(total_ref_other_old),
-                    },
-                    {   
-                        "isActive": "true",
-                        "Type":"Total",
-                        "Check":sum(total_encounter),
-                        "Exo":sum(total_exo),
-                        "ART":sum(total_art),
-                        "SEAL":sum(total_seal),
-                        "SDF":sum(total_sdf),
-                        "FM-SDF":sum(total_fm_sdf),
-                        "FV":sum(total_fv),
-                        "Ref_HP":sum(total_ref_hp),
-                        "Ref_Other":sum(total_ref_other)
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
                     }
-
                 ]
             )
         return Response({"treatment_obj": "do not have a permission"}, status=400)
@@ -1589,6 +1630,19 @@ class WardTableVisualization2(APIView):
 
                         return Response(
                             [
+                                {   
+                                    "isActive": "true",
+                                    "Type":"Total",
+                                    "Check":sum(total_encounter),
+                                    "Exo":sum(total_exo),
+                                    "ART":sum(total_art),
+                                    "SEAL":sum(total_seal),
+                                    "SDF":sum(total_sdf),
+                                    "FM-SDF":sum(total_fm_sdf),
+                                    "FV":sum(total_fv),
+                                    "Ref_HP":sum(total_ref_hp),
+                                    "Ref_Other":sum(total_ref_other)
+                                },
                                 {
                                     "isActive": "true",
                                     "Type":"Male",
@@ -1601,6 +1655,17 @@ class WardTableVisualization2(APIView):
                                     "FV":sum(total_fv_male),
                                     "Ref_HP":sum(total_ref_hp_male),
                                     "Ref_Other":sum(total_ref_other_male),
+                                    "_cellVariants": {
+                                            "Check": "info",
+                                            "EXO": "info",
+                                            "ART": "info",
+                                            "SEAL": "info",
+                                            "SDF": "info",
+                                            "FM-SDF": "info",
+                                            "FV": "info",
+                                            "Ref_HP": "info",
+                                            "Ref_Other": "info",
+                                        }
                                 },
                                 {   
                                     "isActive": "true",
@@ -1614,6 +1679,17 @@ class WardTableVisualization2(APIView):
                                     "FV":sum(total_fv_female),
                                     "Ref_HP":sum(total_ref_hp_female),
                                     "Ref_Other":sum(total_ref_other_female),
+                                    "_cellVariants": {
+                                            "Check": "info",
+                                            "EXO": "info",
+                                            "ART": "info",
+                                            "SEAL": "info",
+                                            "SDF": "info",
+                                            "FM-SDF": "info",
+                                            "FV": "info",
+                                            "Ref_HP": "info",
+                                            "Ref_Other": "info",
+                                    }
                                 },
                                 {   
                                     "isActive": "true",
@@ -1627,6 +1703,17 @@ class WardTableVisualization2(APIView):
                                     "FV":sum(total_fv_child),
                                     "Ref_HP":sum(total_ref_hp_child),
                                     "Ref_Other":sum(total_ref_other_child),
+                                    "_cellVariants": {
+                                        "Check": "success",
+                                        "EXO": "success",
+                                        "ART": "success",
+                                        "SEAL": "success",
+                                        "SDF": "success",
+                                        "FM-SDF": "success",
+                                        "FV": "success",
+                                        "Ref_HP": "success",
+                                        "Ref_Other": "success",
+                                    },
                                 },
                                 {   
                                     "isActive": "true",
@@ -1639,7 +1726,19 @@ class WardTableVisualization2(APIView):
                                     "FM-SDF":sum(total_fm_sdf_adult),
                                     "FV":sum(total_fv_adult),
                                     "Ref_HP":sum(total_ref_hp_adult),
-                                    "Ref_Other":sum(total_ref_other_adult)
+                                    "Ref_Other":sum(total_ref_other_adult),
+                                    "_cellVariants": {
+                                        "Check": "success",
+                                        "EXO": "success",
+                                        "ART": "success",
+                                        "SEAL": "success",
+                                        "SDF": "success",
+                                        "FM-SDF": "success",
+                                        "FV": "success",
+                                        "Ref_HP": "success",
+                                        "Ref_Other": "success",
+                                    }
+                                    
                                 },
                                 {   
                                     "isActive": "true",
@@ -1653,19 +1752,17 @@ class WardTableVisualization2(APIView):
                                     "FV":sum(total_fv_old),
                                     "Ref_HP":sum(total_ref_hp_old),
                                     "Ref_Other":sum(total_ref_other_old),
-                                },
-                                {   
-                                    "isActive": "true",
-                                    "Type":"Total",
-                                    "Check":sum(total_encounter),
-                                    "Exo":sum(total_exo),
-                                    "ART":sum(total_art),
-                                    "SEAL":sum(total_seal),
-                                    "SDF":sum(total_sdf),
-                                    "FM-SDF":sum(total_fm_sdf),
-                                    "FV":sum(total_fv),
-                                    "Ref_HP":sum(total_ref_hp),
-                                    "Ref_Other":sum(total_ref_other)
+                                    "_cellVariants": {
+                                        "Check": "success",
+                                        "EXO": "success",
+                                        "ART": "success",
+                                        "SEAL": "success",
+                                        "SDF": "success",
+                                        "FM-SDF": "success",
+                                        "FV": "success",
+                                        "Ref_HP": "success",
+                                        "Ref_Other": "success",
+                                    }
                                 }
 
                             ]

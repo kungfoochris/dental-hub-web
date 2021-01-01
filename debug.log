@@ -1683,3 +1683,13 @@ NameError: name 'Type' is not defined
 2020-12-31 18:00:00,773 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 15149
 2020-12-31 18:13:30,009 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 16710
 2020-12-31 18:17:03,699 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 16711
+2021-01-01 10:52:19,932 django.request WARNING  Unauthorized: /api/v1/patients
+2021-01-01 10:52:19,950 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-01-01 10:52:21,175 django.request WARNING  Not Found: /favicon.ico
+2021-01-01 10:52:21,176 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-01-01 10:52:38,433 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2021-01-01 10:52:38,435 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2021-01-01 10:52:40,963 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2021-01-01 10:52:49,462 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2980
+2021-01-01 10:53:03,849 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-01-01 10:53:04,163 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19211
