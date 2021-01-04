@@ -8,5 +8,5 @@ db.sqlite3
 .pytest_cache/
 ngrok
 .vscode
-/log/
+/log
 *.log
