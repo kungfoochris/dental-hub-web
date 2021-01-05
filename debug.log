@@ -1693,3 +1693,4 @@ NameError: name 'Type' is not defined
 2021-01-01 10:52:49,462 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2980
 2021-01-01 10:53:03,849 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2021-01-01 10:53:04,163 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19211
+2021-01-01 11:01:49,718 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19212

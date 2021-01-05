@@ -1086,7 +1086,7 @@ class WardTableVisualization2(APIView):
                 [
                     {   
                         "isActive": "true",
-                        "Type":"Total",
+                        "type":"Total",
                         "Check":sum(total_encounter),
                         "Exo":sum(total_exo),
                         "ART":sum(total_art),
@@ -1099,7 +1099,7 @@ class WardTableVisualization2(APIView):
                     },
                     {
                         "isActive": "true",
-                        "Type":"Male",
+                        "type":"Male",
                         "Check":sum(total_male),
                         "Exo":sum(total_exo_male),
                         "ART":sum(total_art_male),
@@ -1123,7 +1123,7 @@ class WardTableVisualization2(APIView):
                     },
                     {   
                         "isActive": "true",
-                        "Type":"Female",
+                        "type":"Female",
                         "Check":sum(total_female),
                         "Exo":sum(total_exo_female),
                         "ART":sum(total_art_female),
@@ -1147,7 +1147,7 @@ class WardTableVisualization2(APIView):
                     },
                     {   
                         "isActive": "true",
-                        "Type":"Children",
+                        "type":"Children(<18)",
                         "Check":sum(total_children),
                         "Exo":sum(total_exo_child),
                         "ART":sum(total_art_child),
@@ -1171,7 +1171,7 @@ class WardTableVisualization2(APIView):
                     },
                     {   
                         "isActive": "true",
-                        "Type":"Adults",
+                        "type":"Adults(19-60)",
                         "Check":sum(total_adult),
                         "Exo":sum(total_exo_adult),
                         "ART":sum(total_art_adult),
@@ -1196,7 +1196,7 @@ class WardTableVisualization2(APIView):
                     },
                     {   
                         "isActive": "true",
-                        "Type":"Older Adults",
+                        "type":"Older Adults(>60)",
                         "Check":sum(total_older_adult),
                         "Exo":sum(total_exo_old),
                         "ART":sum(total_art_old),
@@ -1632,7 +1632,7 @@ class WardTableVisualization2(APIView):
                             [
                                 {   
                                     "isActive": "true",
-                                    "Type":"Total",
+                                    "type":"Total",
                                     "Check":sum(total_encounter),
                                     "Exo":sum(total_exo),
                                     "ART":sum(total_art),
@@ -1645,7 +1645,7 @@ class WardTableVisualization2(APIView):
                                 },
                                 {
                                     "isActive": "true",
-                                    "Type":"Male",
+                                    "type":"Male",
                                     "Check":sum(total_male),
                                     "Exo":sum(total_exo_male),
                                     "ART":sum(total_art_male),
@@ -1669,7 +1669,7 @@ class WardTableVisualization2(APIView):
                                 },
                                 {   
                                     "isActive": "true",
-                                    "Type":"Female",
+                                    "type":"Female",
                                     "Check":sum(total_female),
                                     "Exo":sum(total_exo_female),
                                     "ART":sum(total_art_female),
@@ -1693,7 +1693,7 @@ class WardTableVisualization2(APIView):
                                 },
                                 {   
                                     "isActive": "true",
-                                    "Type":"Children",
+                                    "type":"Children(<18)",
                                     "Check":sum(total_children),
                                     "Exo":sum(total_exo_child),
                                     "ART":sum(total_art_child),
@@ -1717,7 +1717,7 @@ class WardTableVisualization2(APIView):
                                 },
                                 {   
                                     "isActive": "true",
-                                    "Type":"Adults",
+                                    "type":"Adults(19-60)",
                                     "Check":sum(total_adult),
                                     "Exo":sum(total_exo_adult),
                                     "ART":sum(total_art_adult),
@@ -1742,7 +1742,7 @@ class WardTableVisualization2(APIView):
                                 },
                                 {   
                                     "isActive": "true",
-                                    "Type":"Older Adults",
+                                    "type":"Older Adults(>60)",
                                     "Check":sum(total_older_adult),
                                     "Exo":sum(total_exo_old),
                                     "ART":sum(total_art_old),
