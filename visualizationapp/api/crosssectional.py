@@ -174,7 +174,7 @@ class SectionalVisualization(APIView):
             total_cavity_permanent_posterior=Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
             total_cavity_permanent_posterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(roubd((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,2))
             except:
                 cavity_permanent_molar.append(0)
 
