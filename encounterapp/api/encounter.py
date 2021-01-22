@@ -59,17 +59,43 @@ class EncounterView(APIView):
         )
         if Patient.objects.filter(id=patient_id).exists():
             patient_obj = Patient.objects.get(id=patient_id)
-            # check More then two encounter can not crated for same patient on same date.
-            if Encounter.objects.filter(
-                patient_id=patient_id, server_date=today_encounter_date
-            ):
-                return Response(
-                    {
-                        "message": "More then two encounter can not crated for same patient on same date."
-                    },
-                    status=400,
-                )
+            # # check More then two encounter can not crated for same patient on same date.
+            # if Encounter.objects.filter(
+            #     patient__id=patient_id, created_at=today_encounter_date
+            # ).count() > 1:
+            #     return Response(
+            #         {
+            #             "message": "More then two encounter can not crated for same patient on same date."
+            #         },
+            #         status=400,
+            #     )
+            
             if serializer.is_valid():
+                date = serializer.validated_data["created_at"].date()
+                print(date)
+                # check More than two encounter can not created for same patient on same date.
+                if Encounter.objects.filter(
+                    patient__id=patient_id, created_at__date=date
+                ).count() > 1:
+                    logger.info("%s %s" % ("Attempted to create more than one encounter for same patient on same date with patient id:", patient_id))
+                    return Response(
+                        {
+                            "message": "More then two encounter can not be created for same patient on same date."
+                        },
+                        status=400,
+                    )
+                
+                if Encounter.objects.filter(
+                    patient__id=patient_id, created_at__date=date,author=request.user
+                ).count() > 0:
+                    logger.info("%s %s" % ("Attempted to create more than one encounter for same patient by same author on same date with patient id:", patient_id))
+                    return Response(
+                        {
+                            "message": "More than one encounter can not be created for same patient by same author on same date."
+                        },
+                        status=400,
+                    )
+
                 activity_area_obj = serializer.validated_data["activityarea_id"]
                 if Activity.objects.filter(id=activity_area_obj).exists():
                     activity_area_obj = Activity.objects.get(id=activity_area_obj)
