@@ -1694,3 +1694,104 @@ NameError: name 'Type' is not defined
 2021-01-01 10:53:03,849 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2021-01-01 10:53:04,163 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19211
 2021-01-01 11:01:49,718 django.server INFO     "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19212
+2021-01-22 12:29:21,568 django.request WARNING  Unauthorized: /api/v1/patients
+2021-01-22 12:29:21,587 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-01-22 12:29:21,850 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-01-22 12:29:21,858 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-01-22 12:29:21,862 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-01-22 12:29:21,872 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-01-22 12:29:21,897 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-01-22 12:29:21,897 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-01-22 12:29:21,898 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-01-22 12:29:21,901 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-01-22 12:29:21,905 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-01-22 12:29:21,907 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-01-22 12:29:21,970 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-01-22 12:29:22,231 django.request WARNING  Not Found: /favicon.ico
+2021-01-22 12:29:22,231 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-01-22 12:29:24,332 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-01-22 12:29:32,763 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-01-22 12:30:10,894 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-01-22 12:30:14,037 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-01-22 12:30:31,724 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 17620
+2021-01-22 12:31:08,061 django.request ERROR    Internal Server Error: /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/encounterapp/api/encounter.py", line 72, in post
+    date = serializer.validated_data["created_at"].date()
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/serializers.py", line 280, in validated_data
+    raise AssertionError(msg)
+AssertionError: You must call `.is_valid()` before accessing `.validated_data`.
+2021-01-22 12:31:08,065 django.server ERROR    "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 500 98319
+2021-01-22 12:31:36,312 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 17620
+2021-01-22 12:31:52,046 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2021-01-22 12:31:52,115 django.server INFO     "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 16803
+2021-01-22 12:32:35,113 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2021-01-22 12:32:35,180 django.server INFO     "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 16803
+2021-01-22 12:33:13,392 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2021-01-22 12:33:13,470 django.server INFO     "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 16803
+2021-01-22 12:33:17,134 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 20424
+2021-01-22 12:35:10,475 django.request WARNING  Bad Request: /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters
+2021-01-22 12:35:10,475 django.server WARNING  "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 400 16800
+2021-01-22 12:48:00,716 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 20424
+2021-01-22 12:48:09,845 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-01-22 12:48:13,888 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-01-22 12:48:25,353 django.server INFO     "GET /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 200 17621
+2021-01-22 12:48:52,848 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2021-01-22 12:48:52,986 django.server INFO     "POST /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 200 16803
+2021-01-22 12:49:13,898 django.request WARNING  Bad Request: /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters
+2021-01-22 12:49:13,899 django.server WARNING  "POST /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 400 16819
+2021-01-22 12:55:21,244 django.server INFO     "GET /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 200 18557
+2021-01-22 12:55:37,855 encounterapp.api.encounter INFO     Attempted to create more than one encounter for same patient by same author on same date with patient id: 6DACB67C10DC4B868847BC7A630A0002
+2021-01-22 12:55:37,935 django.request WARNING  Bad Request: /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters
+2021-01-22 12:55:37,936 django.server WARNING  "POST /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 400 16819
+2021-01-22 13:07:03,107 django.server INFO     "GET /api/v1/patients/6DACB67C10DC4B868847BC7A630A0002/encounters HTTP/1.1" 200 18557
+2021-01-22 13:07:14,265 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-01-22 13:07:14,500 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 11219
+2021-01-22 13:07:14,834 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-01-22 13:07:14,835 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-01-22 13:07:14,837 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-01-22 13:07:14,857 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-01-22 13:07:14,903 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-01-22 13:07:14,907 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-01-22 13:07:15,091 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-01-22 13:07:15,110 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-01-22 13:07:15,113 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-01-22 13:07:24,343 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 14798
+2021-01-22 13:07:24,490 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-01-22 13:07:24,518 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-01-22 13:07:24,533 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-01-22 13:07:24,533 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-01-22 13:07:24,538 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-01-22 13:07:24,539 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-01-22 13:07:24,579 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-01-22 13:07:24,580 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-01-22 13:07:24,608 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-01-22 13:07:24,653 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-01-22 13:07:24,752 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-01-22 13:07:24,792 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-01-22 13:07:24,810 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-01-22 13:07:40,590 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 302 0
+2021-01-22 13:07:40,807 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 14923
+2021-01-22 13:07:40,888 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-01-22 13:07:41,062 django.server INFO     "GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+2021-01-22 13:08:07,515 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 200 536
+2021-01-22 13:16:05,471 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
+2021-01-22 13:16:07,432 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 5614
+2021-01-22 13:16:07,484 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-01-22 13:16:12,158 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
