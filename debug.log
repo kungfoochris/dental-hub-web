@@ -1795,3 +1795,38 @@ AssertionError: You must call `.is_valid()` before accessing `.validated_data`.
 2021-01-22 13:16:07,432 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 5614
 2021-01-22 13:16:07,484 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-01-22 13:16:12,158 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
+2021-01-25 14:40:05,261 django.request WARNING  Bad Request: /api/v1/dashboardlinechart
+2021-01-25 14:40:05,279 django.server WARNING  "GET /api/v1/dashboardlinechart HTTP/1.1" 400 10129
+2021-01-25 14:40:05,731 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-01-25 14:40:05,734 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-01-25 14:40:05,738 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-01-25 14:40:05,741 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-01-25 14:40:05,745 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-01-25 14:40:05,749 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-01-25 14:40:05,760 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-01-25 14:40:05,782 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-01-25 14:40:05,799 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-01-25 14:40:05,800 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-01-25 14:40:05,843 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-01-25 14:40:06,212 django.request WARNING  Not Found: /favicon.ico
+2021-01-25 14:40:06,213 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-01-25 14:40:08,853 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/dashboardlinechart HTTP/1.1" 200 2728
+2021-01-25 14:40:24,948 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2966
+2021-01-25 14:41:09,719 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-01-25 14:41:09,887 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 1112
+2021-01-25 14:41:55,788 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-02 17:45:57,305 django.request WARNING  Unauthorized: /api/v1/patients
+2021-02-02 17:45:57,345 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-02-02 17:45:57,648 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-02-02 17:45:57,649 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-02-02 17:45:57,652 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-02-02 17:45:57,874 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-02-02 17:45:57,886 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-02-02 17:45:57,889 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-02-02 17:45:57,929 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-02-02 17:45:57,930 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-02-02 17:45:58,029 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-02-02 17:45:58,030 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-02-02 17:45:58,630 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-02-02 17:45:58,977 django.request WARNING  Not Found: /favicon.ico
+2021-02-02 17:45:58,978 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383

@@ -138,7 +138,7 @@ class WardlineVisualization(APIView):
                     },
                 },
             }
-            return JsonResponse({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
         return Response({"message": "only admin can see"}, status=400)
 
 

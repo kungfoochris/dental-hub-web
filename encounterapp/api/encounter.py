@@ -12,6 +12,7 @@ from encounterapp.serializers.encounter import (
     EncounterSerializer,
     AllEncounterSerializer,
     EncounterUpdateSerializer,
+    EncounterSerializer1,
 )
 from encounterapp.models.modifydelete import ModifyDelete
 from addressapp.models import Ward, Activity
@@ -177,6 +178,32 @@ class EncounterView(APIView):
 #             return Response({'message':serializer.errors}, status=400)
 #         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
 #         return Response({"message":"id do not match"},status=400)
+
+
+
+class EncounterUpdate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = EncounterSerializer1
+
+    def get(self, request, patient_id, encounter_id, format=None):
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj = Encounter.objects.get(id=encounter_id)
+            serializer = EncounterSerializer1(encounter_obj, many=False,context={'request': request})
+            return Response(serializer.data)
+        return Response({"message":"content not found or parameter not match."},status=400)
+
+    def put(self, request, patient_id, encounter_id, format=None):
+        today_date = datetime.date.today()
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj=Encounter.objects.select_related('patient').get(id=encounter_id,patient__id=patient_id)
+            serializer = EncounterSerializer1(encounter_obj,data=request.data,context={'request': request},partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({"message":"encounter update"},status=200)
+            return Response({'message':serializer.errors}, status=400)
+        return Response({"message":"patient id or encounter id do not match"},status=400)
+
+
 
 
 class EncounterUpdateView(APIView):
