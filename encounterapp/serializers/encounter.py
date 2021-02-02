@@ -71,7 +71,6 @@ class EncounterSerializer1(serializers.ModelSerializer):
             "encounter_type",
             "patient",
             "other_problem",
-            "created_at",
             "updated_by",
             "updated_at",
         )
