@@ -16,13 +16,17 @@ from encounterapp.serializers.encounter import (
 )
 from encounterapp.models.modifydelete import ModifyDelete
 from addressapp.models import Ward, Activity
-
+from rest_framework.pagination import PageNumberPagination
+from encounterapp.pagination import PaginationHandlerMixin
 
 today_encounter_date = datetime.date.today()
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 utc = pytz.UTC
 
+
+class BasicPagination(PageNumberPagination):
+    page_size = 20
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -203,6 +207,20 @@ class EncounterUpdate(APIView):
             return Response({'message':serializer.errors}, status=400)
         return Response({"message":"patient id or encounter id do not match"},status=400)
 
+
+
+class EncounterList(APIView,PaginationHandlerMixin):
+    pagination_class = BasicPagination
+    
+    def get(self, request, format=None, *args, **kwargs):
+        encounter_obj = Encounter.objects.all()
+        page = self.paginate_queryset(encounter_obj)
+        if page is not None:
+            serializer = self.get_paginated_response(AllEncounterSerializer(page,\
+                many=True, context={"request":request}).data)
+        else:
+            serializer = AllEncounterSerializer(encounter_obj, many=True)
+        return Response(serializer.data,status=200)
 
 
 

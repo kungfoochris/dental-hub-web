@@ -1830,3 +1830,43 @@ AssertionError: You must call `.is_valid()` before accessing `.validated_data`.
 2021-02-02 17:45:58,630 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
 2021-02-02 17:45:58,977 django.request WARNING  Not Found: /favicon.ico
 2021-02-02 17:45:58,978 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-02-03 10:38:26,628 django.request WARNING  Unauthorized: /api/v1/patients
+2021-02-03 10:38:26,646 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-02-03 10:38:27,412 django.request WARNING  Not Found: /favicon.ico
+2021-02-03 10:38:27,413 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-02-03 10:38:29,953 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-02-03 10:38:37,579 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-02-03 10:39:21,163 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-03 10:39:23,933 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-02-03 10:39:59,326 django.request ERROR    Internal Server Error: /api/v1/encounterlist
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/encounterapp/api/encounter.py", line 219, in get
+    serializer = self.get_paginated_response(ProvinceSerializer(page,\
+NameError: name 'ProvinceSerializer' is not defined
+2021-02-03 10:39:59,328 django.server ERROR    "GET /api/v1/encounterlist HTTP/1.1" 500 88756
+2021-02-03 10:40:53,376 django.server INFO     "GET /api/v1/encounterlist HTTP/1.1" 200 17438
+2021-02-03 16:53:00,272 django.request WARNING  Unauthorized: /api/v1/patients
+2021-02-03 16:53:00,296 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-02-03 16:54:54,943 django.request WARNING  Bad Request: /api/v1/dashboardlinechart
+2021-02-03 16:54:54,944 django.server WARNING  "GET /api/v1/dashboardlinechart HTTP/1.1" 400 10129
+2021-02-03 16:54:57,494 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/dashboardlinechart HTTP/1.1" 200 2728
+2021-02-03 16:55:04,293 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2966
+2021-02-03 16:55:13,601 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2972
+2021-02-03 16:55:39,947 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-03 16:55:40,071 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
