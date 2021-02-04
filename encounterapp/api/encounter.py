@@ -12,16 +12,21 @@ from encounterapp.serializers.encounter import (
     EncounterSerializer,
     AllEncounterSerializer,
     EncounterUpdateSerializer,
+    EncounterSerializer1,
 )
 from encounterapp.models.modifydelete import ModifyDelete
 from addressapp.models import Ward, Activity
-
+from rest_framework.pagination import PageNumberPagination
+from encounterapp.pagination import PaginationHandlerMixin
 
 today_encounter_date = datetime.date.today()
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 utc = pytz.UTC
 
+
+class BasicPagination(PageNumberPagination):
+    page_size = 20
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -177,6 +182,46 @@ class EncounterView(APIView):
 #             return Response({'message':serializer.errors}, status=400)
 #         logger.info("%s %s" %("Patient id does not  exists in encounter section : ", patient_id))
 #         return Response({"message":"id do not match"},status=400)
+
+
+
+class EncounterUpdate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = EncounterSerializer1
+
+    def get(self, request, patient_id, encounter_id, format=None):
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj = Encounter.objects.get(id=encounter_id)
+            serializer = EncounterSerializer1(encounter_obj, many=False,context={'request': request})
+            return Response(serializer.data)
+        return Response({"message":"content not found or parameter not match."},status=400)
+
+    def put(self, request, patient_id, encounter_id, format=None):
+        today_date = datetime.date.today()
+        if Encounter.objects.select_related('patient').filter(id=encounter_id,patient__id=patient_id).exists():
+            encounter_obj=Encounter.objects.select_related('patient').get(id=encounter_id,patient__id=patient_id)
+            serializer = EncounterSerializer1(encounter_obj,data=request.data,context={'request': request},partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({"message":"encounter update"},status=200)
+            return Response({'message':serializer.errors}, status=400)
+        return Response({"message":"patient id or encounter id do not match"},status=400)
+
+
+
+class EncounterList(APIView,PaginationHandlerMixin):
+    pagination_class = BasicPagination
+    
+    def get(self, request, format=None, *args, **kwargs):
+        encounter_obj = Encounter.objects.all()
+        page = self.paginate_queryset(encounter_obj)
+        if page is not None:
+            serializer = self.get_paginated_response(AllEncounterSerializer(page,\
+                many=True, context={"request":request}).data)
+        else:
+            serializer = AllEncounterSerializer(encounter_obj, many=True)
+        return Response(serializer.data,status=200)
+
 
 
 class EncounterUpdateView(APIView):

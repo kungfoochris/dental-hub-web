@@ -42,6 +42,41 @@ class EncounterSerializer(serializers.ModelSerializer):
         # read_only_fields = ('updated_at',)
 
 
+
+class EncounterSerializer1(serializers.ModelSerializer):
+    activity_area = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    geography = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    activityarea_id = serializers.CharField(
+        max_length=250, write_only=True, allow_null=True
+    )
+    geography_id = serializers.CharField(
+        max_length=250, write_only=True, allow_null=True
+    )
+    author = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    patient = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+    other_problem = serializers.CharField(default="", max_length=150)
+    created_at = serializers.DateTimeField()
+
+    class Meta:
+        model = Encounter
+        fields = (
+            "id",
+            "geography_id",
+            "activityarea_id",
+            "area",
+            "geography",
+            "activity_area",
+            "date",
+            "author",
+            "encounter_type",
+            "patient",
+            "other_problem",
+            "updated_by",
+            "updated_at",
+        )
+        # read_only_fields = ('updated_at',)
+
+
 class AllEncounterSerializer(serializers.ModelSerializer):
     activity_area = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
     geography = serializers.PrimaryKeyRelatedField(many=False, read_only=True)

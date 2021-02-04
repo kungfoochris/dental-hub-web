@@ -83,6 +83,16 @@ class WardlineVisualization(APIView):
                 "rgba(231, 29, 54, 1)",
                 "rgba(96, 95, 94, 1)",
                 "rgba(22, 12, 40, 1)",
+                "rgba(173, 96, 188, 1)",
+                "rgba(228, 96, 188, 1)",
+                "rgba(228, 29, 182, 1)",
+                "rgba(211, 29, 63, 1)",
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
             ]
             m = 0
             n = 0
@@ -138,7 +148,7 @@ class WardlineVisualization(APIView):
                     },
                 },
             }
-            return JsonResponse({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
         return Response({"message": "only admin can see"}, status=400)
 
 
