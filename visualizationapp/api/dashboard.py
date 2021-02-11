@@ -3365,7 +3365,7 @@ class OverviewVisualization1(APIView):
                                 .filter(activities_id=i.id)
                                 .count()
                             )
-
+# l
                             kid_refer_dr1.append(
                                 Visualization.objects.filter(
                                     refer_dr=True,

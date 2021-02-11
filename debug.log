@@ -1870,3 +1870,149 @@ NameError: name 'ProvinceSerializer' is not defined
 2021-02-03 16:55:13,601 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2972
 2021-02-03 16:55:39,947 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2021-02-03 16:55:40,071 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 10:39:43,800 django.request WARNING  Unauthorized: /api/v1/patients
+2021-02-10 10:39:43,840 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-02-10 10:39:44,692 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-02-10 10:39:44,693 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-02-10 10:39:44,699 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-02-10 10:39:44,701 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-02-10 10:39:44,703 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-02-10 10:39:44,706 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-02-10 10:39:44,736 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-02-10 10:39:44,743 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-02-10 10:39:44,745 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-02-10 10:39:44,752 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-02-10 10:39:44,869 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-02-10 10:39:45,528 django.request WARNING  Not Found: /favicon.ico
+2021-02-10 10:39:45,529 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-02-10 10:39:50,874 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-02-10 10:39:59,720 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-02-10 10:40:14,461 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2962
+2021-02-10 10:40:23,362 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-10 10:40:26,744 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-02-10 10:40:31,413 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:08:06,517 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:09:01,918 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:10:00,491 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:16:30,829 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:17:13,418 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:20:22,439 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:22:05,775 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 51, in get
+    print(month_obj.index(1))
+ValueError: 1 is not in list
+2021-02-10 11:22:05,779 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 88999
+2021-02-10 11:46:39,613 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 51, in get
+    print(month_obj.type())
+AttributeError: 'list' object has no attribute 'type'
+2021-02-10 11:46:39,633 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 89214
+2021-02-10 11:47:27,344 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:51:36,597 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 11:53:15,356 django.request ERROR    Internal Server Error: /api/v1/dashboardlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardlinechart.py", line 53, in get
+    print(y)
+UnboundLocalError: local variable 'y' referenced before assignment
+2021-02-10 11:53:15,359 django.server ERROR    "GET /api/v1/dashboardlinechart HTTP/1.1" 500 89280
+2021-02-10 11:54:12,536 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.1" 200 13877
+2021-02-10 12:35:41,178 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13864
+2021-02-10 12:48:49,769 django.request ERROR    Internal Server Error: /api/v1/waruserlinechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/wardvisualization.py", line 3285, in get
+    customuser_obj = CustomUser.objects.get(id=request.user.id)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 399, in get
+    self.model._meta.object_name
+userapp.models.customuser.CustomUser.DoesNotExist: CustomUser matching query does not exist.
+2021-02-10 12:48:49,787 django.server ERROR    "GET /api/v1/waruserlinechart HTTP/1.1" 500 98880
+2021-02-10 12:51:05,596 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13864
+2021-02-10 13:24:29,557 django.request WARNING  Bad Request: /api/v1/wardtablevisualization
+2021-02-10 13:24:29,562 django.request WARNING  Bad Request: /api/v1/wardtablevisualization
+2021-02-10 13:24:29,591 django.server WARNING  "GET /api/v1/wardtablevisualization HTTP/1.1" 400 14558
+2021-02-10 13:24:29,593 django.server WARNING  "GET /api/v1/wardtablevisualization HTTP/1.1" 400 14558
+2021-02-10 13:24:57,430 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 17579
+2021-02-10 13:25:27,683 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/users HTTP/1.1" 302 0
+2021-02-10 13:25:27,714 django.request WARNING  Unauthorized: /api/v1/users
+2021-02-10 13:25:27,717 django.server WARNING  "GET /api/v1/users HTTP/1.1" 401 9809
+2021-02-10 13:25:29,560 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users HTTP/1.1" 200 2715
+2021-02-10 13:25:37,033 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-10 13:25:37,318 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 17572
+2021-02-10 13:25:43,764 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14721
+2021-02-10 13:26:33,499 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/wardtablevisualization HTTP/1.1" 302 0
+2021-02-10 13:26:33,543 django.request WARNING  Unauthorized: /api/v1/wardtablevisualization
+2021-02-10 13:26:33,544 django.server WARNING  "GET /api/v1/wardtablevisualization HTTP/1.1" 401 10067
+2021-02-10 13:26:35,252 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtablevisualization HTTP/1.1" 200 2732
+2021-02-10 13:26:43,868 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-10 13:26:43,987 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722
+2021-02-10 13:30:07,311 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113844
+2021-02-10 13:40:33,426 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722
+2021-02-10 13:41:34,469 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722
+2021-02-10 14:11:22,472 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722

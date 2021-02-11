@@ -71,3 +71,4 @@ class Patient(models.Model):
     @property
     def full_name(self):
         return "%s %s %s" % (self.first_name, self.middle_name, self.last_name)
+

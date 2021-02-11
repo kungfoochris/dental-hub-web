@@ -47,9 +47,16 @@ class WardlineVisualization(APIView):
                 a = month.index(i)
                 month.pop(a)
                 label_data.pop(a)
-            for b in month_obj:
+            print(month_obj)
+            x=month_obj[::-1]
+            print(x)
+
+            for b in x:
                 month.insert(0, b)
-            for n in label_data_obj:
+            print(label_data_obj)
+            y=label_data_obj[::-1]
+            print(y)
+            for n in y:
                 label_data.insert(0, n)
 
             geography = []
