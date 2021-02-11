@@ -491,19 +491,19 @@ class WardTreatmentTableVisualization1(APIView):
                 ).count()
 
                 cavities_prevented_male = (
-                    0.2 + male_patients_receiving_FV + 0.1 + sealant_male
+                    0.2 * male_patients_receiving_FV + 0.1 * sealant_male
                 )
                 cavities_prevented_female = (
-                    0.2 + female_patients_receiving_FV + 0.1 + sealant_female
+                    0.2 * female_patients_receiving_FV + 0.1 * sealant_female
                 )
                 cavities_prevented_child = (
-                    0.2 + child__patients_receiving_FV + 0.1 + sealant_child
+                    0.2 * child__patients_receiving_FV + 0.1 * sealant_child
                 )
                 cavities_prevented_adult = (
-                    0.2 + adult__patients_receiving_FV + 0.1 + sealant_adult
+                    0.2 * adult__patients_receiving_FV + 0.1 * sealant_adult
                 )
                 cavities_prevented_old = (
-                    0.2 + old__patients_receiving_FV + 0.1 + sealant_old
+                    0.2 * old__patients_receiving_FV * 0.1 * sealant_old
                 )
                 total_cavities = cavities_prevented_male + cavities_prevented_female
                 return Response(
@@ -3272,9 +3272,11 @@ class WardUserlineVisualization(APIView):
                 a = month.index(i)
                 month.pop(a)
                 label_data.pop(a)
-            for b in month_obj:
+            x=month_obj[::-1]
+            for b in x:
                 month.insert(0, b)
-            for n in label_data_obj:
+            y=label_data_obj[::-1]
+            for n in y:
                 label_data.insert(0, n)
 
             # month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
