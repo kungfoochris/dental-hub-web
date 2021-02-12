@@ -2039,3 +2039,11 @@ userapp.models.customuser.CustomUser.DoesNotExist: CustomUser matching query doe
 2021-02-12 13:24:20,838 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 13990
 2021-02-12 13:27:00,142 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13864
 2021-02-12 13:30:59,111 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 14006
+2021-02-12 13:54:16,979 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-02-12 13:54:16,980 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2021-02-12 13:54:25,776 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 302 0
+2021-02-12 13:54:25,805 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2021-02-12 13:54:25,806 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2021-02-12 13:54:27,203 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2021-02-12 13:54:36,184 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-12 13:54:36,556 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235
