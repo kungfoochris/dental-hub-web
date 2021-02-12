@@ -2016,3 +2016,26 @@ userapp.models.customuser.CustomUser.DoesNotExist: CustomUser matching query doe
 2021-02-10 13:40:33,426 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722
 2021-02-10 13:41:34,469 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722
 2021-02-10 14:11:22,472 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14722
+2021-02-12 12:50:23,781 django.request WARNING  Unauthorized: /api/v1/patients
+2021-02-12 12:50:23,801 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-02-12 12:50:24,811 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-02-12 12:50:24,868 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-02-12 12:50:24,869 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-02-12 12:50:25,085 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-02-12 12:50:25,754 django.request WARNING  Not Found: /favicon.ico
+2021-02-12 12:50:25,755 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-02-12 12:50:27,718 django.request WARNING  Bad Request: /api/v1/preventionratio
+2021-02-12 12:50:27,721 django.server WARNING  "GET /api/v1/preventionratio HTTP/1.1" 400 10234
+2021-02-12 12:50:32,208 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/preventionratio HTTP/1.1" 200 2725
+2021-02-12 12:50:39,121 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2969
+2021-02-12 12:50:50,416 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2963
+2021-02-12 12:51:24,825 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-12 12:51:25,422 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 1006
+2021-02-12 12:52:20,315 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 13918
+2021-02-12 12:52:20,315 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 13918
+2021-02-12 13:13:26,929 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 14060
+2021-02-12 13:19:22,641 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 14060
+2021-02-12 13:23:55,217 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 1148
+2021-02-12 13:24:20,838 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 13990
+2021-02-12 13:27:00,142 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13864
+2021-02-12 13:30:59,111 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 14006

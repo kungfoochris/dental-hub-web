@@ -458,11 +458,12 @@ class WardTreatmentTableVisualization1(APIView):
                     .count()
                 )
 
-                female_patients_receiving_FV = Visualization.objects.filter(
-                    gender="female", fv=True, geography_id=i.id
-                ).count()
+                
                 male_patients_receiving_FV = Visualization.objects.filter(
                     gender="male", fv=True, geography_id=i.id
+                ).count()
+                female_patients_receiving_FV = Visualization.objects.filter(
+                    gender="female", fv=True, geography_id=i.id
                 ).count()
                 child__patients_receiving_FV = Visualization.objects.filter(
                     age__lt=18, fv=True, geography_id=i.id
@@ -503,7 +504,7 @@ class WardTreatmentTableVisualization1(APIView):
                     0.2 * adult__patients_receiving_FV + 0.1 * sealant_adult
                 )
                 cavities_prevented_old = (
-                    0.2 * old__patients_receiving_FV * 0.1 * sealant_old
+                    0.2 * old__patients_receiving_FV + 0.1 * sealant_old
                 )
                 total_cavities = cavities_prevented_male + cavities_prevented_female
                 return Response(
@@ -725,28 +726,28 @@ class WardTreatmentTableVisualization1(APIView):
                             )
 
                     cavities_prevented_male = (
-                        0.2 + sum(male_patients_receiving_FV) + 0.1 + sum(sealant_male)
+                        0.2 * sum(male_patients_receiving_FV) + 0.1 * sum(sealant_male)
                     )
                     cavities_prevented_female = (
                         0.2
-                        + sum(female_patients_receiving_FV)
+                        * sum(female_patients_receiving_FV)
                         + 0.1
-                        + sum(sealant_female)
+                        * sum(sealant_female)
                     )
                     cavities_prevented_child = (
                         0.2
-                        + sum(child__patients_receiving_FV)
+                        * sum(child__patients_receiving_FV)
                         + 0.1
-                        + sum(sealant_child)
+                        * sum(sealant_child)
                     )
                     cavities_prevented_adult = (
                         0.2
-                        + sum(adult__patients_receiving_FV)
+                        * sum(adult__patients_receiving_FV)
                         + 0.1
-                        + sum(sealant_adult)
+                        * sum(sealant_adult)
                     )
                     cavities_prevented_old = (
-                        0.2 + sum(old__patients_receiving_FV) + 0.1 + sum(sealant_old)
+                        0.2 * sum(old__patients_receiving_FV) + 0.1 * sum(sealant_old)
                     )
                     total_cavities = cavities_prevented_male + cavities_prevented_female
                     return Response(
@@ -3295,23 +3296,16 @@ class WardUserlineVisualization(APIView):
                 geography_patient.append(v)
             data_data = []
             datasets1 = []
-            cz = [
-                "rgba(234, 196, 53, 1)",
-                "rgba(49, 55, 21, 1)",
-                "rgba(117, 70, 104, 1)",
-                "rgba(127, 184, 0, 1)",
-                "rgba(3, 206, 164, 1)",
-                "rgba(228, 0, 102, 1)",
-                "rgba(52, 89, 149, 1)",
-                "rgba(243, 201, 139, 1)",
-                "rgba(251, 77, 61, 1)",
-                "rgba(230, 232, 230, 1)",
-                "rgba(248, 192, 200, 1)",
-                "rgba(44, 85, 48, 1)",
-                "rgba(231, 29, 54, 1)",
-                "rgba(96, 95, 94, 1)",
-                "rgba(22, 12, 40, 1)",
-            ]
+            cz=["rgba(234, 196, 53, 1)","rgba(49, 55, 21, 1)","rgba(117, 70, 104, 1)",\
+            "rgba(127, 184, 0, 1)","rgba(3, 206, 164, 1)","rgba(228, 0, 102, 1)",\
+            "rgba(52, 89, 149, 1)","rgba(243, 201, 139, 1)","rgba(251, 77, 61, 1)",\
+            "rgba(230, 232, 230, 1)","rgba(248, 192, 200, 1)","rgba(44, 85, 48, 1)",\
+            "rgba(231, 29, 54, 1)","rgba(96, 95, 94, 1)","rgba(22, 12, 40, 1)",\
+            "rgba(173, 96, 188, 1)","rgba(228, 96, 188, 1)","rgba(228, 29, 182, 1)",\
+            "rgba(211, 29, 63, 1)","rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)",\
+            "rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)","rgba(153, 102, 255, 1)",\
+            "rgba(255, 159, 64, 1)"]
+            
             m = 0
             n = 0
             for y in geography:
