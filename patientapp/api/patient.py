@@ -7,7 +7,7 @@ from rest_framework import permissions
 from userapp.models import User, CustomUser
 from patientapp.models import Patient
 
-from patientapp.serializers.patient import PatientSerializer, PatientUpdateSerializer
+from patientapp.serializers.patient import PatientSerializer, PatientUpdateSerializer,ChangePatientCreatedDateSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
@@ -174,3 +174,32 @@ class PatientUpdateView(APIView):
             return Response({'message':serializer.errors}, status=400)
         logger.info("encounter id donot match")
         return Response({"message":"id do not match"},status=400)
+
+
+
+class ChangePatientCreatedDate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = ChangePatientCreatedDateSerializer
+
+    def get(self, request, patient_id, format=None):
+        if request.user.admin:
+            if Patient.objects.filter(id=patient_id).exists():
+                patient_obj = Patient.objects.get(id=patient_id)
+                serializer = PatientSerializer(patient_obj, many=False,context={'request': request})
+                return Response(serializer.data)
+            return Response({'message':"Patient with this id doesn't exist"}, status=400)
+        return Response({"message","Only admin has access."},status=401)
+
+    def put(self, request, patient_id, format=None):
+        if request.user.admin:
+            if Patient.objects.filter(id=patient_id).exists():
+                patient_obj = Patient.objects.get(id=patient_id)
+                serializer = ChangePatientCreatedDateSerializer(patient_obj,data=request.data,context={'request': request},partial=True)
+                if serializer.is_valid():
+                    patient_obj.created_at = serializer.validated_data['created_at']
+                    patient_obj.save()
+                return Response(serializer.data, status=400)
+            return Response({'message':"Patient with this id doesn't exist"}, status=400)
+        return Response({"message","Only admin has access."},status=401)
+        
+               

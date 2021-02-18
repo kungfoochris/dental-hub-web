@@ -91,3 +91,12 @@ class PatientUpdateSerializer(serializers.ModelSerializer):
 		fields = ('id','first_name', 'middle_name', 'last_name', 'full_name',\
 			'gender', 'dob','phone','education','district','municipality', 'ward',\
 			'district_id','municipality_id', 'ward_id','geography','activity_area', 'updated_by','updated_at')
+
+
+
+class ChangePatientCreatedDateSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Patient
+		fields = ('id','created_at')
+

@@ -171,3 +171,11 @@ class EncounterDeleteMarkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Encounter
         fields = ("id", "reason_for_deletion", "other_reason_for_deletion")
+
+
+class ChangeEncounterCreatedDateSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Encounter
+		fields = ('id','created_at')
+

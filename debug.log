@@ -2047,3 +2047,60 @@ userapp.models.customuser.CustomUser.DoesNotExist: CustomUser matching query doe
 2021-02-12 13:54:27,203 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
 2021-02-12 13:54:36,184 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2021-02-12 13:54:36,556 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235
+2021-02-18 12:51:51,346 django.request WARNING  Unauthorized: /api/v1/patients
+2021-02-18 12:51:51,378 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-02-18 12:51:52,924 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-02-18 12:51:52,925 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-02-18 12:51:52,972 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-02-18 12:51:53,022 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-02-18 12:51:53,087 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-02-18 12:51:53,087 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-02-18 12:51:53,089 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-02-18 12:51:53,090 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-02-18 12:51:53,128 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-02-18 12:51:53,150 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-02-18 12:51:53,162 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-02-18 12:51:53,587 django.request WARNING  Not Found: /favicon.ico
+2021-02-18 12:51:53,587 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-02-18 12:53:20,666 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-02-18 12:53:27,833 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-02-18 12:54:05,811 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-02-18 12:54:08,774 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-02-18 12:54:24,703 django.server INFO     "GET /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 200 15017
+2021-02-18 12:54:35,657 django.request ERROR    Internal Server Error: /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/patientapp/api/patient.py", line 196, in put
+    patient_obj.create_at = serializer.validated_data['create_at']
+KeyError: 'create_at'
+2021-02-18 12:54:35,660 django.server ERROR    "PUT /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 500 89928
+2021-02-18 12:55:04,214 django.server INFO     "GET /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 200 15017
+2021-02-18 12:55:14,506 django.request WARNING  Bad Request: /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3
+2021-02-18 12:55:14,507 django.server WARNING  "PUT /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 400 13787
+2021-02-18 12:55:18,590 django.server INFO     "GET /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 200 15017
+2021-02-18 12:56:01,939 django.request WARNING  Bad Request: /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3
+2021-02-18 12:56:01,939 django.server WARNING  "PUT /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 400 13886
+2021-02-18 12:56:07,115 django.server INFO     "GET /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 200 15017
+2021-02-18 12:57:50,189 django.server INFO     "GET /api/v1/patientdatechange/7C4B6952AD174472945AA353DD668AE3 HTTP/1.1" 200 15017
+2021-02-18 13:05:53,156 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113850
+2021-02-18 13:06:06,643 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 20424
+2021-02-18 13:06:37,777 django.server INFO     "GET /api/v1/encounterdatechange/09CCAD7577B348E1962EE56C9FE3EA70 HTTP/1.1" 200 14479
+2021-02-18 13:07:30,177 django.request WARNING  Bad Request: /api/v1/encounterdatechange/09CCAD7577B348E1962EE56C9FE3EA70
+2021-02-18 13:07:30,178 django.server WARNING  "PUT /api/v1/encounterdatechange/09CCAD7577B348E1962EE56C9FE3EA70 HTTP/1.1" 400 13962
+2021-02-18 13:07:33,313 django.server INFO     "GET /api/v1/encounterdatechange/09CCAD7577B348E1962EE56C9FE3EA70 HTTP/1.1" 200 14479
+2021-02-18 13:09:41,948 django.server INFO     "GET /api/v1/encounterlist HTTP/1.1" 200 17438

@@ -2,10 +2,11 @@
 from django.conf.urls import include
 from django.urls import path
 from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateView
-from encounterapp.api.encounter import EncounterView, EncounterUpdateView,EncounterUpdate,EncounterList
+from encounterapp.api.encounter import EncounterView, EncounterUpdateView,EncounterUpdate,EncounterList,ChangeEncounterCreatedDate
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
-from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus,EncounterFlagDead,EncounterRestore,Recyclebin,CheckRestoreExpiry,CheckModifyExpiry
+from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus,\
+	EncounterFlagDead,EncounterRestore,Recyclebin,CheckRestoreExpiry,CheckModifyExpiry
 
 
 
@@ -28,6 +29,7 @@ urlpatterns = [
 	path('recyclebin', Recyclebin.as_view()),
 	path('checkmodifyexpiry', CheckModifyExpiry.as_view()),
 	path('checkrestoreexpiry', CheckRestoreExpiry.as_view()),
+	path('encounterdatechange/<encounter_id>',ChangeEncounterCreatedDate.as_view()),
 	
 
     ]
