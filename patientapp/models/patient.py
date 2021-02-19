@@ -42,7 +42,7 @@ class Patient(models.Model):
         help_text="author longitude", max_digits=12, decimal_places=8, default=12
     )
     activity_area = models.ForeignKey(
-        Activity, on_delete=models.CASCADE, related_name="patient_area", null=True
+        Activity, on_delete=models.CASCADE, related_name="patient_area", null=True,blank=True
     )
     geography = models.ForeignKey(
         Ward, on_delete=models.CASCADE, related_name="patient_geography", null=True
@@ -71,4 +71,3 @@ class Patient(models.Model):
     @property
     def full_name(self):
         return "%s %s %s" % (self.first_name, self.middle_name, self.last_name)
-

@@ -13,6 +13,7 @@ from encounterapp.serializers.encounter import (
     AllEncounterSerializer,
     EncounterUpdateSerializer,
     EncounterSerializer1,
+    ChangeEncounterCreatedDateSerializer,
 )
 from encounterapp.models.modifydelete import ModifyDelete
 from addressapp.models import Ward, Activity
@@ -321,3 +322,33 @@ class EncounterUpdateView(APIView):
             % ("Patient id does not  exists in encounter section : ", patient_id)
         )
         return Response({"message": "id do not match"}, status=400)
+
+
+
+
+class ChangeEncounterCreatedDate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = ChangeEncounterCreatedDateSerializer
+
+    def get(self, request, encounter_id, format=None):
+        if request.user.admin:
+            if Encounter.objects.filter(id=encounter_id).exists():
+                encounter_obj = Encounter.objects.get(id=encounter_id)
+                serializer = EncounterSerializer(encounter_obj, many=False,context={'request': request})
+                return Response(serializer.data)
+            return Response({'message':"Encounter with this id doesn't exist"}, status=400)
+        return Response({"message","Only admin has access."},status=401)
+
+    def put(self, request, encounter_id, format=None):
+        if request.user.admin:
+            if Encounter.objects.filter(id=encounter_id).exists():
+                encounter_obj = Encounter.objects.get(id=encounter_id)
+                serializer = ChangeEncounterCreatedDateSerializer(encounter_obj,data=request.data,context={'request': request},partial=True)
+                if serializer.is_valid():
+                    encounter_obj.created_at = serializer.validated_data['created_at']
+                    encounter_obj.save()
+                return Response(serializer.data, status=400)
+            return Response({'message':"Encounter with this id doesn't exist"}, status=400)
+        return Response({"message","Only admin has access."},status=401)
+        
+               
