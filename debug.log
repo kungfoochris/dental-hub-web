@@ -2175,3 +2175,4 @@ KeyError: 'create_at'
 2021-02-19 11:57:52,508 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-02-19 11:58:15,398 django.server INFO     "GET /maintainer/patientapp/patient/7C4B6952AD174472945AA353DD668AE3/change/ HTTP/1.1" 200 107630
 2021-02-19 11:58:15,464 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-02-19 12:00:22,385 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12575
