@@ -14,12 +14,9 @@ from django.http import JsonResponse
 from treatmentapp.models import Treatment
 from encounterapp.models import Screeing,Encounter
 from django.db.models import Q
-
 from visualizationapp.models import Visualization
-
 from visualizationapp.serializers.visualization import TreatMentBarGraphVisualization
 from nepali.datetime import NepaliDate
-
 import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)

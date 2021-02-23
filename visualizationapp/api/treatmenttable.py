@@ -420,19 +420,19 @@ class TreatmentTableBasicData(APIView):
                     )
 
                     cavities_prevented_male = (
-                        0.2 + male_patients_receiving_fv + 0.1 + sealant_male
+                        0.2 * male_patients_receiving_fv + 0.1 * sealant_male
                     )
                     cavities_prevented_female = (
-                        0.2 + female_patients_receiving_fv + 0.1 + sealant_female
+                        0.2 * female_patients_receiving_fv + 0.1 * sealant_female
                     )
                     cavities_prevented_child = (
-                        0.2 + child__patients_receiving_fv + 0.1 + sealant_child
+                        0.2 * child__patients_receiving_fv + 0.1 * sealant_child
                     )
                     cavities_prevented_adult = (
-                        0.2 + adult__patients_receiving_fv + 0.1 + sealant_adult
+                        0.2 * adult__patients_receiving_fv + 0.1 * sealant_adult
                     )
                     cavities_prevented_old = (
-                        0.2 + old__patients_receiving_fv + 0.1 + sealant_old
+                        0.2 * old__patients_receiving_fv + 0.1 * sealant_old
                     )
                     total_cavities = cavities_prevented_male + cavities_prevented_female
 
@@ -735,19 +735,19 @@ class TreatmentTableBasicData(APIView):
                     sealant_old = sum(sealant_old_list)
 
                     cavities_prevented_male = (
-                        0.2 + male_patients_receiving_fv + 0.1 + sealant_male
+                        0.2 * male_patients_receiving_fv + 0.1 * sealant_male
                     )
                     cavities_prevented_female = (
-                        0.2 + female_patients_receiving_fv + 0.1 + sealant_female
+                        0.2 * female_patients_receiving_fv + 0.1 * sealant_female
                     )
                     cavities_prevented_child = (
-                        0.2 + child__patients_receiving_fv + 0.1 + sealant_child
+                        0.2 * child__patients_receiving_fv + 0.1 * sealant_child
                     )
                     cavities_prevented_adult = (
-                        0.2 + adult__patients_receiving_fv + 0.1 + sealant_adult
+                        0.2 * adult__patients_receiving_fv + 0.1 * sealant_adult
                     )
                     cavities_prevented_old = (
-                        0.2 + old__patients_receiving_fv + 0.1 + sealant_old
+                        0.2 * old__patients_receiving_fv + 0.1 * sealant_old
                     )
                     total_cavities = cavities_prevented_male + cavities_prevented_female
                     total_contact = treatment_male + treatment_female
