@@ -11,17 +11,22 @@ from import_export.admin import ImportExportActionModelAdmin
 class EncounterResource(resources.ModelResource):
 	class Meta:
 		model = Encounter
-		fields = ('id', 'date', 'patient', 'encounter_type',\
+		fields = ('id', 'patient','date', 'encounter_type',\
 		'author','activity_area', 'area', 'geography','created_at','updated_by','updated_at','other_problem')
-		export_order = ('id', 'date', 'patient', 'encounter_type',\
+		export_order = ('id','patient', 'date', 'encounter_type',\
 		'author','activity_area', 'area', 'geography','created_at','updated_by','updated_at','other_problem')
 
 class EncounterAdmin(ImportExportActionModelAdmin):
 	resource_class = EncounterResource
-	list_display = ('id', 'date', 'patient', 'encounter_type',\
+	list_display = ('id', 'get_patient','date', 'encounter_type',\
 		'author','activity_area', 'area', 'geography','created_at','updated_by','updated_at','other_problem')
 	list_filter = ('date','updated_at')
 	search_fields = ['id', 'patient__id', 'area__area', 'author__username','date','updated_by__username','updated_at','created_at']
+
+	def get_patient(self, obj):
+		return obj.patient.id
+	get_patient.short_description = 'Patient'
+	get_patient.admin_order_field = 'patient.id'
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:
@@ -47,27 +52,40 @@ class EncounterAdmin(ImportExportActionModelAdmin):
 admin.site.register(Encounter, EncounterAdmin)
 
 
+
 class HistoryResource(resources.ModelResource):
 	class Meta:
 		model = History
-		fields = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
+		fields = ('id','encounter_id__patient','encounter_id','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
 		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
-		'not_taking_any_medications','medications','no_medications','encounter_id',\
+		'not_taking_any_medications','medications','no_medications',\
 		'high_blood_pressure','low_blood_pressure','thyroid_disorder')
-		export_order = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
+		export_order = ('id','encounter_id__patient','encounter_id','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
 		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
-		'not_taking_any_medications','medications','no_medications','encounter_id',\
+		'not_taking_any_medications','medications','no_medications',\
 		'high_blood_pressure','low_blood_pressure','thyroid_disorder')
 
+		
 
 class HistoryAdmin(ImportExportActionModelAdmin):
 	resource_class = HistoryResource
-	list_display = ('id','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
+	list_display = ('id','get_patient','get_encounter','blood_disorder','diabetes','liver_problem','rheumatic_fever','seizuers_or_epilepsy',\
 		'hepatitis_b_or_c','hiv','no_allergies','allergies','other','no_underlying_medical_condition',\
-		'not_taking_any_medications','medications','no_medications','encounter_id',\
+		'not_taking_any_medications','medications','no_medications',\
 		'high_blood_pressure','low_blood_pressure','thyroid_disorder')
 	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__patient__first_name']
+
+
+	def get_patient(self, obj):
+		return obj.encounter_id.patient.id
+	get_patient.short_description = 'Patient'
+	get_patient.admin_order_field = 'encounter_id__patient'
+
+	def get_encounter(self, obj):
+		return obj.encounter_id.id
+	get_encounter.short_description = 'Encounter'
+	get_encounter.admin_order_field = 'encounter_id.id'
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:
@@ -97,18 +115,28 @@ admin.site.register(History, HistoryAdmin)
 class ReferResource(resources.ModelResource):
 	class Meta:
 		model = Refer
-		fields = ('id','no_referal','health_post','dentist',\
-		'general_physician','hygienist','other','encounter_id')
-		export_order = ('id','no_referal','health_post','dentist',\
-		'general_physician','hygienist','other','encounter_id')
+		fields = ('id','encounter_id__patient','encounter_id','no_referal','health_post','dentist',\
+		'general_physician','hygienist','other')
+		export_order = ('id','encounter_id__patient','encounter_id','no_referal','health_post','dentist',\
+		'general_physician','hygienist','other')
 
 
 class ReferAdmin(ImportExportActionModelAdmin):
 	resource_class = ReferResource
-	list_display = ('id','no_referal','health_post','dentist',\
-		'general_physician','hygienist','other','encounter_id')
+	list_display = ('id','get_patient','get_encounter','no_referal','health_post','dentist',\
+		'general_physician','hygienist','other')
 	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__id','encounter_id__patient__first_name']
+
+	def get_patient(self, obj):
+		return obj.encounter_id.patient.id
+	get_patient.short_description = 'Patient'
+	get_patient.admin_order_field = 'encounter_id__patient'
+
+	def get_encounter(self, obj):
+		return obj.encounter_id.id
+	get_encounter.short_description = 'Encounter'
+	get_encounter.admin_order_field = 'encounter_id.id'
 
 
 	def has_add_permission(self, request, obj=None):
@@ -139,21 +167,31 @@ admin.site.register(Refer, ReferAdmin)
 class ScreeningResource(resources.ModelResource):
 	class Meta:
 		model = Screeing
-		fields = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
+		fields = ('id','encounter_id__patient','encounter_id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
 		'cavity_permanent_posterior_teeth','cavity_permanent_anterior_teeth','need_sealant','reversible_pulpitis',\
-		'need_art_filling','need_extraction','need_sdf','active_infection','encounter_id')
-		export_order = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
+		'need_art_filling','need_extraction','need_sdf','active_infection')
+		export_order = ('id','encounter_id__patient','encounter_id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
 		'cavity_permanent_posterior_teeth','cavity_permanent_anterior_teeth','need_sealant','reversible_pulpitis',\
-		'need_art_filling','need_extraction','need_sdf','active_infection','encounter_id')
+		'need_art_filling','need_extraction','need_sdf','active_infection')
 
 
 class ScreeingAdmin(ImportExportActionModelAdmin):
 	resource_class = ScreeningResource
-	list_display = ('id','carries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
+	list_display = ('id','get_patient','get_encounter','carries_risk','decayed_primary_teeth','decayed_permanent_teeth',\
 		'cavity_permanent_posterior_teeth','cavity_permanent_anterior_teeth','need_sealant','reversible_pulpitis',\
-		'need_art_filling','need_extraction','need_sdf','active_infection','encounter_id')
+		'need_art_filling','need_extraction','need_sdf','active_infection')
 	list_filter = ('encounter_id__date','encounter_id__updated_at')
 	search_fields = ['encounter_id__id','encounter_id__patient__first_name']
+
+	def get_patient(self, obj):
+		return obj.encounter_id.patient.id
+	get_patient.short_description = 'Patient'
+	get_patient.admin_order_field = 'encounter_id__patient'
+
+	def get_encounter(self, obj):
+		return obj.encounter_id.id
+	get_encounter.short_description = 'Encounter'
+	get_encounter.admin_order_field = 'encounter_id.id'
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:

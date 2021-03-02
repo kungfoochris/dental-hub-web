@@ -2176,3 +2176,613 @@ KeyError: 'create_at'
 2021-02-19 11:58:15,398 django.server INFO     "GET /maintainer/patientapp/patient/7C4B6952AD174472945AA353DD668AE3/change/ HTTP/1.1" 200 107630
 2021-02-19 11:58:15,464 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-02-19 12:00:22,385 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12575
+2021-03-02 12:15:15,884 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-02 12:15:15,904 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-02 12:15:16,211 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-03-02 12:15:16,218 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-03-02 12:15:16,224 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-03-02 12:15:16,232 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-03-02 12:15:16,242 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-03-02 12:15:16,244 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-03-02 12:15:16,246 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-03-02 12:15:16,246 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-03-02 12:15:16,247 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-03-02 12:15:16,250 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-03-02 12:15:16,278 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-03-02 12:15:16,536 django.request WARNING  Not Found: /favicon.ico
+2021-03-02 12:15:16,537 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-03-02 12:15:23,489 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-03-02 12:15:32,106 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-03-02 12:17:50,131 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-02 12:17:52,714 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-02 12:19:20,916 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2021-03-02 12:19:21,000 django.server INFO     "GET /maintainer/login/?next=/maintainer/visualizationapp/visualization/ HTTP/1.1" 200 1913
+2021-03-02 12:19:21,047 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-03-02 12:19:21,051 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-03-02 12:19:21,055 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-03-02 12:19:21,074 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-03-02 12:19:21,144 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-03-02 12:19:21,155 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-03-02 12:19:28,966 django.server INFO     "POST /maintainer/login/?next=/maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2021-03-02 12:19:29,244 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 25467
+2021-03-02 12:19:29,328 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-03-02 12:19:29,330 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-03-02 12:19:29,333 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-03-02 12:19:29,339 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-03-02 12:19:29,355 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-03-02 12:19:29,357 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-03-02 12:19:29,360 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-03-02 12:19:29,366 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-03-02 12:19:29,375 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:19:29,423 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-03-02 12:19:29,437 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-03-02 12:19:29,463 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-03-02 12:19:29,472 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2021-03-02 12:19:29,483 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-03-02 12:19:29,605 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-03-02 12:19:39,163 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12575
+2021-03-02 12:19:39,202 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-03-02 12:19:39,230 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-03-02 12:19:39,232 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-03-02 12:19:49,329 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 5614
+2021-03-02 12:19:49,404 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:19:54,530 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12575
+2021-03-02 12:20:12,686 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 20424
+2021-03-02 12:20:32,291 django.request WARNING  Bad Request: /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/history
+2021-03-02 12:20:32,292 django.server WARNING  "GET /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/history HTTP/1.1" 400 18009
+2021-03-02 12:20:44,056 encounterapp.api.history INFO     History added successfully by admin user
+2021-03-02 12:20:44,113 django.server INFO     "POST /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/history HTTP/1.1" 200 18827
+2021-03-02 12:20:47,103 django.server INFO     "GET /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/history HTTP/1.1" 200 18796
+2021-03-02 12:20:54,416 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:20:54,492 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:20:54,542 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2021-03-02 12:20:56,660 django.server INFO     "GET /maintainer/encounterapp/history/F7DA2DD54A8A40A0A4B7EE0D0FB8E6B4/change/ HTTP/1.1" 200 13537
+2021-03-02 12:20:56,705 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:20:56,705 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2021-03-02 12:20:56,737 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2021-03-02 12:20:56,741 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2021-03-02 12:20:56,764 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2021-03-02 12:20:59,662 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:23:07,437 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:23:07,511 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:23:11,566 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:23:11,614 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:30:01,059 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:30:01,131 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:47:36,705 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:47:36,819 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:50:43,600 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:50:43,656 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 12:52:02,295 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 11877
+2021-03-02 12:52:02,362 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:07:15,456 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 302 0
+2021-03-02 13:07:15,568 django.server INFO     "GET /maintainer/login/?next=/maintainer/encounterapp/history/ HTTP/1.1" 200 1893
+2021-03-02 13:07:28,484 django.server INFO     "POST /maintainer/login/?next=/maintainer/encounterapp/history/ HTTP/1.1" 302 0
+2021-03-02 13:07:28,927 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/options.py", line 564, in get_field
+    return self.fields_map[field_name]
+KeyError: 'get_patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/utils.py", line 278, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/utils.py", line 309, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/options.py", line 566, in get_field
+    raise FieldDoesNotExist("%s has no field named '%s'" % (self.object_name, field_name))
+django.core.exceptions.FieldDoesNotExist: History has no field named 'get_patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/usr/local/lib/python3.7/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/base.py", line 33, in render
+    return super().render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 341, in result_list
+    'results': list(results(cl))}
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 318, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 309, in __init__
+    super().__init__(*items)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 228, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/utils.py", line 287, in lookup_field
+    value = attr(obj)
+  File "/code/encounterapp/admin.py", line 84, in get_patient
+    return obj.encounter__id.patient
+AttributeError: 'History' object has no attribute 'encounter__id'
+2021-03-02 13:07:28,931 django.server ERROR    "GET /maintainer/encounterapp/history/ HTTP/1.1" 500 455685
+2021-03-02 13:07:59,421 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12086
+2021-03-02 13:07:59,488 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:08:32,937 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12102
+2021-03-02 13:08:32,993 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:18:39,235 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12102
+2021-03-02 13:18:39,298 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:20:30,804 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12102
+2021-03-02 13:20:30,879 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:22:13,104 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12102
+2021-03-02 13:22:13,160 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:24:20,218 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 13:24:20,279 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:27:06,374 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 13:27:06,435 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:32:48,896 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 13:32:49,020 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:32:54,751 django.server INFO     "POST /maintainer/encounterapp/history/ HTTP/1.1" 302 0
+2021-03-02 13:32:54,863 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12268
+2021-03-02 13:32:54,920 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:32:55,055 django.server INFO     "GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+2021-03-02 13:33:10,144 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1711, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1411, in response_action
+    response = func(self, request, queryset)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 558, in export_admin_action
+    export_data = self.get_export_data(file_format, queryset, request=request)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 459, in get_export_data
+    data = resource_class(**self.get_export_resource_kwargs(request)).export(queryset, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 896, in export
+    headers = self.get_export_headers()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 859, in get_export_headers
+    force_str(field.column_name) for field in self.get_export_fields()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 852, in get_export_fields
+    return self.get_fields()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in get_fields
+    return [self.fields[f] for f in self.get_export_order()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in <listcomp>
+    return [self.fields[f] for f in self.get_export_order()]
+KeyError: 'get_patient'
+2021-03-02 13:33:10,148 django.server ERROR    "POST /maintainer/encounterapp/history/ HTTP/1.1" 500 142004
+2021-03-02 13:37:51,856 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 13:37:51,925 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:38:01,046 django.server INFO     "POST /maintainer/encounterapp/history/ HTTP/1.1" 200 5247
+2021-03-02 13:41:28,373 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
+2021-03-02 13:41:31,921 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 5598
+2021-03-02 13:41:31,977 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:41:37,561 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
+2021-03-02 13:47:16,616 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12575
+2021-03-02 13:47:20,713 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 25467
+2021-03-02 13:47:20,812 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:57:23,542 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-03-02 13:57:24,827 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2021-03-02 13:58:18,211 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2021-03-02 13:58:18,296 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12575
+2021-03-02 13:58:23,056 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 13:58:23,115 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:58:58,353 django.server INFO     "POST /maintainer/encounterapp/history/ HTTP/1.1" 302 0
+2021-03-02 13:58:58,452 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12268
+2021-03-02 13:58:58,524 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 13:59:09,742 django.server INFO     "POST /maintainer/encounterapp/history/ HTTP/1.1" 200 5247
+2021-03-02 14:02:00,579 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:02:01,012 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:02:11,059 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1711, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1411, in response_action
+    response = func(self, request, queryset)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 558, in export_admin_action
+    export_data = self.get_export_data(file_format, queryset, request=request)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 459, in get_export_data
+    data = resource_class(**self.get_export_resource_kwargs(request)).export(queryset, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 896, in export
+    headers = self.get_export_headers()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 859, in get_export_headers
+    force_str(field.column_name) for field in self.get_export_fields()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 852, in get_export_fields
+    return self.get_fields()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in get_fields
+    return [self.fields[f] for f in self.get_export_order()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in <listcomp>
+    return [self.fields[f] for f in self.get_export_order()]
+KeyError: 'get_patient'
+2021-03-02 14:02:11,064 django.server ERROR    "POST /maintainer/encounterapp/history/ HTTP/1.1" 500 142004
+2021-03-02 14:06:03,062 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:06:03,145 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:06:13,238 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1711, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1411, in response_action
+    response = func(self, request, queryset)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 558, in export_admin_action
+    export_data = self.get_export_data(file_format, queryset, request=request)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 459, in get_export_data
+    data = resource_class(**self.get_export_resource_kwargs(request)).export(queryset, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 896, in export
+    headers = self.get_export_headers()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 859, in get_export_headers
+    force_str(field.column_name) for field in self.get_export_fields()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 852, in get_export_fields
+    return self.get_fields()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in get_fields
+    return [self.fields[f] for f in self.get_export_order()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in <listcomp>
+    return [self.fields[f] for f in self.get_export_order()]
+KeyError: 'get_patient'
+2021-03-02 14:06:13,243 django.server ERROR    "POST /maintainer/encounterapp/history/ HTTP/1.1" 500 142004
+2021-03-02 14:07:06,647 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:07:06,762 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:07:14,724 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1711, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1411, in response_action
+    response = func(self, request, queryset)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 558, in export_admin_action
+    export_data = self.get_export_data(file_format, queryset, request=request)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 459, in get_export_data
+    data = resource_class(**self.get_export_resource_kwargs(request)).export(queryset, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 896, in export
+    headers = self.get_export_headers()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 859, in get_export_headers
+    force_str(field.column_name) for field in self.get_export_fields()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 852, in get_export_fields
+    return self.get_fields()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in get_fields
+    return [self.fields[f] for f in self.get_export_order()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in <listcomp>
+    return [self.fields[f] for f in self.get_export_order()]
+KeyError: 'encounter_id__patient'
+2021-03-02 14:07:14,727 django.server ERROR    "POST /maintainer/encounterapp/history/ HTTP/1.1" 500 142054
+2021-03-02 14:07:42,218 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:07:42,270 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:07:51,010 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1711, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1411, in response_action
+    response = func(self, request, queryset)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 558, in export_admin_action
+    export_data = self.get_export_data(file_format, queryset, request=request)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 459, in get_export_data
+    data = resource_class(**self.get_export_resource_kwargs(request)).export(queryset, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 896, in export
+    headers = self.get_export_headers()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 859, in get_export_headers
+    force_str(field.column_name) for field in self.get_export_fields()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 852, in get_export_fields
+    return self.get_fields()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in get_fields
+    return [self.fields[f] for f in self.get_export_order()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in <listcomp>
+    return [self.fields[f] for f in self.get_export_order()]
+KeyError: 'encounter_id__patient__id'
+2021-03-02 14:07:51,014 django.server ERROR    "POST /maintainer/encounterapp/history/ HTTP/1.1" 500 142074
+2021-03-02 14:08:23,006 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:08:23,060 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:08:32,603 django.server INFO     "POST /maintainer/encounterapp/history/ HTTP/1.1" 200 5291
+2021-03-02 14:13:27,908 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:13:27,970 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:13:39,729 django.request ERROR    Internal Server Error: /maintainer/encounterapp/history/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 607, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 343, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 506, in changelist_view
+    return super().changelist_view(request, extra_context)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1711, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/options.py", line 1411, in response_action
+    response = func(self, request, queryset)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 558, in export_admin_action
+    export_data = self.get_export_data(file_format, queryset, request=request)
+  File "/usr/local/lib/python3.7/site-packages/import_export/admin.py", line 459, in get_export_data
+    data = resource_class(**self.get_export_resource_kwargs(request)).export(queryset, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 896, in export
+    headers = self.get_export_headers()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 859, in get_export_headers
+    force_str(field.column_name) for field in self.get_export_fields()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 852, in get_export_fields
+    return self.get_fields()
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in get_fields
+    return [self.fields[f] for f in self.get_export_order()]
+  File "/usr/local/lib/python3.7/site-packages/import_export/resources.py", line 296, in <listcomp>
+    return [self.fields[f] for f in self.get_export_order()]
+KeyError: 'get_patient'
+2021-03-02 14:13:39,733 django.server ERROR    "POST /maintainer/encounterapp/history/ HTTP/1.1" 500 142004
+2021-03-02 14:16:01,772 django.server INFO     "GET /maintainer/encounterapp/history/ HTTP/1.1" 200 12089
+2021-03-02 14:16:01,886 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:16:09,951 django.server INFO     "POST /maintainer/encounterapp/history/ HTTP/1.1" 200 5289
+2021-03-02 14:20:29,804 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
+2021-03-02 14:20:32,261 django.request ERROR    Internal Server Error: /maintainer/encounterapp/encounter/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/options.py", line 564, in get_field
+    return self.fields_map[field_name]
+KeyError: 'get_patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/utils.py", line 278, in lookup_field
+    f = _get_non_gfk_field(opts, name)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/utils.py", line 309, in _get_non_gfk_field
+    field = opts.get_field(name)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/options.py", line 566, in get_field
+    raise FieldDoesNotExist("%s has no field named '%s'" % (self.object_name, field_name))
+django.core.exceptions.FieldDoesNotExist: Encounter has no field named 'get_patient'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/usr/local/lib/python3.7/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/test/utils.py", line 96, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/base.py", line 33, in render
+    return super().render(context)
+  File "/usr/local/lib/python3.7/site-packages/django/template/library.py", line 214, in render
+    _dict = self.func(*resolved_args, **resolved_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 341, in result_list
+    'results': list(results(cl))}
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 318, in results
+    yield ResultList(None, items_for_result(cl, res, None))
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 309, in __init__
+    super().__init__(*items)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/templatetags/admin_list.py", line 228, in items_for_result
+    f, attr, value = lookup_field(field_name, result, cl.model_admin)
+  File "/usr/local/lib/python3.7/site-packages/django/contrib/admin/utils.py", line 287, in lookup_field
+    value = attr(obj)
+  File "/code/encounterapp/admin.py", line 27, in get_patient
+    return obj.encounter_id.patient.id
+AttributeError: 'Encounter' object has no attribute 'encounter_id'
+2021-03-02 14:20:32,265 django.server ERROR    "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 500 451212
+2021-03-02 14:23:39,111 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 14910
+2021-03-02 14:23:39,198 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-02 14:24:04,668 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 200 5774

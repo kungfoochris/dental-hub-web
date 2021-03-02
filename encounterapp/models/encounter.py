@@ -65,5 +65,4 @@ def encounter_add(sender, instance, created, **kwargs):
         encounter_obj.server_date = datetime.datetime.today().date()
         encounter_obj.save()
 
-
 post_save.connect(encounter_add, sender=Encounter)
