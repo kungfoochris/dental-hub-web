@@ -53,7 +53,7 @@ class Encounter(models.Model):
     updated_at = models.DateField(null=True)
     created_at = models.DateTimeField(db_index=True)
     server_date = models.DateField(null=True, editable=False)
-    area = models.ForeignKey(ActivityArea, on_delete=models.CASCADE, null=True)
+    area = models.ForeignKey(ActivityArea, on_delete=models.CASCADE, null=True,blank=True)
 
     def __str__(self):
         return "%s, %s" % (self.patient.full_name, self.encounter_type)
