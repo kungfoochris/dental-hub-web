@@ -2839,3 +2839,77 @@ AttributeError: 'Encounter' object has no attribute 'encounter_id'
 2021-03-02 16:02:32,918 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-03-02 16:02:39,870 django.server INFO     "GET /maintainer/patientapp/patient/7C4B6952AD174472945AA353DD668AE3/change/ HTTP/1.1" 200 107604
 2021-03-02 16:02:39,952 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 11:07:50,889 django.request WARNING  Unauthorized: /api/v1/patients/936EBA8AE43E423E9DC6E4911E0B3101/encounters
+2021-03-03 11:07:50,906 django.server WARNING  "GET /api/v1/patients/936EBA8AE43E423E9DC6E4911E0B3101/encounters HTTP/1.1" 401 10202
+2021-03-03 11:07:51,775 django.request WARNING  Not Found: /favicon.ico
+2021-03-03 11:07:51,776 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-03-03 11:07:57,306 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-03 11:07:57,306 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-03 11:08:00,280 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-03-03 11:08:06,913 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2962
+2021-03-03 11:08:11,529 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-03 11:08:14,521 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-03 11:08:20,240 django.request WARNING  Bad Request: /api/v1/patients/936EBA8AE43E423E9DC6E4911E0B3101/encounters
+2021-03-03 11:08:20,241 django.server WARNING  "GET /api/v1/patients/936EBA8AE43E423E9DC6E4911E0B3101/encounters HTTP/1.1" 400 16756
+2021-03-03 11:08:38,453 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 21434
+2021-03-03 11:08:59,002 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-03 11:09:15,477 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-03-03 11:09:15,739 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12936
+2021-03-03 11:09:15,921 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-03-03 11:09:15,922 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-03-03 11:09:15,947 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-03-03 11:09:15,948 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-03-03 11:09:16,036 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-03-03 11:09:16,037 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-03-03 11:09:16,166 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-03-03 11:09:16,181 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-03-03 11:09:16,182 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-03-03 11:09:19,316 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 25467
+2021-03-03 11:09:19,498 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-03-03 11:09:19,506 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 11:09:19,559 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-03-03 11:09:19,563 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-03-03 11:09:19,564 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-03-03 11:09:19,571 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-03-03 11:09:19,582 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-03-03 11:09:19,583 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-03-03 11:09:19,594 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-03-03 11:09:19,624 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-03-03 11:09:19,632 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-03-03 11:09:19,661 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2021-03-03 11:09:19,686 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-03-03 11:09:19,721 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-03-03 11:09:41,566 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 21434
+2021-03-03 11:09:58,199 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2021-03-03 11:09:58,261 django.server INFO     "POST /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 16803
+2021-03-03 11:10:10,766 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 27547
+2021-03-03 11:10:10,830 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:38:12,683 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-03 14:38:12,702 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-03 14:38:15,753 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-03-03 14:38:22,072 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2962
+2021-03-03 14:38:28,281 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-03 14:38:31,236 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-03 14:41:23,585 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12936
+2021-03-03 14:41:27,947 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 5630
+2021-03-03 14:41:28,448 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:41:54,662 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-03 14:41:58,971 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15369
+2021-03-03 14:43:07,633 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-03 14:43:18,533 django.server INFO     "GET /api/v1/patients/7C4B6952AD174472945AA353DD668AE3/encounters HTTP/1.1" 200 22370
+2021-03-03 14:43:29,747 django.server INFO     "GET /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/history HTTP/1.1" 200 18796
+2021-03-03 14:43:39,710 django.request WARNING  Bad Request: /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/treatment
+2021-03-03 14:43:39,711 django.server WARNING  "GET /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/treatment HTTP/1.1" 400 55706
+2021-03-03 14:43:54,865 treatmentapp.api.treatment INFO     Treatment added successfully by 09CCAD7577B348E1962EE56C9FE3EA70
+2021-03-03 14:43:55,086 django.server INFO     "POST /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/treatment HTTP/1.1" 200 58610
+2021-03-03 14:43:58,560 django.server INFO     "GET /api/v1/encounter/09CCAD7577B348E1962EE56C9FE3EA70/treatment HTTP/1.1" 200 58186
+2021-03-03 14:44:02,873 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 9034
+2021-03-03 14:44:02,948 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:46:06,423 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 9034
+2021-03-03 14:46:06,484 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:47:02,399 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 9034
+2021-03-03 14:47:02,459 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:48:06,737 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 8791
+2021-03-03 14:48:06,803 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:49:08,516 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 8791
+2021-03-03 14:49:08,581 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
