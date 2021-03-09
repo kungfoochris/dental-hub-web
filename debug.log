@@ -2913,3 +2913,81 @@ AttributeError: 'Encounter' object has no attribute 'encounter_id'
 2021-03-03 14:48:06,803 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-03-03 14:49:08,516 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 8791
 2021-03-03 14:49:08,581 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-03 14:50:06,391 django.server INFO     "POST /maintainer/treatmentapp/treatment/ HTTP/1.1" 200 5595
+2021-03-09 12:35:21,035 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-09 12:35:21,066 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-09 12:35:21,605 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-03-09 12:35:21,612 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-03-09 12:35:21,616 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-03-09 12:35:21,624 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-03-09 12:35:21,693 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-03-09 12:35:21,732 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-03-09 12:35:21,733 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-03-09 12:35:21,735 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-03-09 12:35:21,736 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-03-09 12:35:21,771 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-03-09 12:35:21,811 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-03-09 12:35:21,985 django.request WARNING  Not Found: /favicon.ico
+2021-03-09 12:35:21,986 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-03-09 12:36:29,483 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-03-09 12:36:41,581 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2962
+2021-03-09 12:38:02,395 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-09 12:38:05,120 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-09 12:39:29,265 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 12:39:29,267 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2021-03-09 12:39:43,790 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 302 0
+2021-03-09 12:39:43,821 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 12:39:43,822 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2021-03-09 12:39:45,029 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2021-03-09 12:39:52,932 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-09 12:39:53,294 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235
+2021-03-09 13:02:23,220 django.request WARNING  Not Found: /api/v1/wardtreatmenttablevisualizaation/
+2021-03-09 13:02:23,272 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation/ HTTP/1.1" 404 21530
+2021-03-09 13:02:38,804 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235
+2021-03-09 13:03:27,563 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113887
+2021-03-09 13:09:36,599 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235
+2021-03-09 13:09:45,855 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-03-09 13:09:45,980 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-03-09 13:09:46,297 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2003
+2021-03-09 13:09:46,521 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-03-09 13:09:46,530 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-03-09 13:09:46,591 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-03-09 13:09:46,591 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-03-09 13:09:46,768 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-03-09 13:09:46,788 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-03-09 13:09:46,789 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-03-09 13:10:05,068 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2021-03-09 13:10:05,431 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12936
+2021-03-09 13:10:05,542 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-03-09 13:10:05,625 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-03-09 13:10:05,626 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-03-09 13:10:12,948 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 15828
+2021-03-09 13:10:13,115 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-03-09 13:10:13,193 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-03-09 13:10:13,194 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-03-09 13:10:13,227 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-03-09 13:10:13,235 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-03-09 13:10:13,252 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-03-09 13:10:13,305 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-03-09 13:10:13,305 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-09 13:10:13,307 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-03-09 13:10:13,308 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-03-09 13:10:13,358 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-03-09 13:10:13,369 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-03-09 13:10:13,404 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-03-09 13:17:35,639 django.request WARNING  Forbidden: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:17:35,642 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 403 9945
+2021-03-09 13:17:55,023 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:17:55,024 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2021-03-09 13:18:14,004 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:18:14,005 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14569
+2021-03-09 13:18:30,628 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:18:30,630 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14569
+2021-03-09 13:18:51,442 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:18:51,443 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14569
+2021-03-09 13:21:16,088 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:21:16,100 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14569
+2021-03-09 13:22:02,155 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:22:02,155 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14569
+2021-03-09 13:23:50,573 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2021-03-09 13:23:50,583 django.server WARNING  "POST /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14569

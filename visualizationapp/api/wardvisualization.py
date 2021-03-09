@@ -1231,7 +1231,10 @@ class WardTableVisualization2(APIView):
             start_date = str(
                 NepaliDate.from_date(serializer.validated_data["start_date"])
             )
+            print("+++++++++++++++++++++++==")
+            print(start_date)
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+            print(end_date)
             activities_list = serializer.validated_data["activities"]
             if end_date > start_date:
                 if CustomUser.objects.select_related("role").filter(
