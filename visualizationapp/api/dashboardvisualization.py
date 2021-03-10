@@ -1843,7 +1843,7 @@ class PieChartVisualization(APIView):
             },
         }
         return JsonResponse({"locationChart": locationChart})
-
+# kk
 
 class PieChartVisualizationFilter(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)

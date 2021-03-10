@@ -74,21 +74,21 @@ class OverviewVisualization1(APIView):
             kid_art = Visualization.objects.filter(
                 age__lt=12,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count
+            ).count()
             # if kid_art is None:
             #     kid_art=0
             kid_art_male = Visualization.objects.filter(
                 age__lt=12,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count
+            ).count()
             # if kid_art_male is None:
             #     kid_art_male = 0
             kid_art_female = Visualization.objects.filter(
                 age__lt=12,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count
+            ).count()
             # if kid_art_female is None:
             #     kid_art_female = 0
 

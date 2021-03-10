@@ -21,13 +21,9 @@ import os
 from django.http import JsonResponse
 from nepali.datetime import NepaliDate
 import datetime
-
 from django.db.models import Q
 from treatmentapp.models import Treatment
-
 from encounterapp.models import Encounter, History, Refer, Screeing
-
-
 from visualizationapp.serializers.ward import WardFilterVisualization,ContactAgeGenderVisualization
 
 from visualizationapp.models import Visualization
