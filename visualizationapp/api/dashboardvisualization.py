@@ -2287,7 +2287,7 @@ class PieChartVisualizationFilter(APIView):
                         ).count()
                     )
                 
-                if age_group == "check":
+                if age_group == "contacts":
                     health_post_count.append(
                             Visualization.objects.filter(
                                 activities_id=health_post_obj.id,
@@ -2907,7 +2907,7 @@ class PieChartVisualizationFilter(APIView):
                             ).count()
                         )
                     
-                    if age_group == "check":
+                    if age_group == "contacts":
                         health_post_count.append(
                                 Visualization.objects.filter(
                                     activities_id=health_post_obj.id,
