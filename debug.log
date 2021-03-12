@@ -3416,3 +3416,162 @@ TypeError: unsupported operand type(s) for +: 'method' and 'int'
 2021-03-10 12:40:07,146 django.request WARNING  Bad Request: /api/v1/overviewvisualization
 2021-03-10 12:40:07,147 django.server WARNING  "POST /api/v1/overviewvisualization HTTP/1.1" 400 14974
 2021-03-10 12:40:46,687 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 17706
+2021-03-12 11:29:15,944 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-12 11:29:15,979 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-12 11:29:17,284 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-03-12 11:29:17,284 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-03-12 11:29:17,295 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-03-12 11:29:17,303 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-03-12 11:29:17,936 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-12 11:29:17,937 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-12 11:29:18,052 django.request WARNING  Not Found: /favicon.ico
+2021-03-12 11:29:18,159 django.request WARNING  Not Found: /favicon.ico
+2021-03-12 11:29:18,160 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-03-12 11:29:20,683 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-03-12 11:29:27,187 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-12 11:29:30,434 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113887
+2021-03-12 11:29:35,974 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:29:35,975 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13158
+2021-03-12 11:30:05,013 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 703
+2021-03-12 11:30:31,863 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:30:31,866 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13158
+2021-03-12 11:30:51,606 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15301
+2021-03-12 11:31:55,769 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15301
+2021-03-12 11:32:35,207 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:32:35,208 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13158
+2021-03-12 11:32:39,591 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-03-12 11:32:39,853 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2003
+2021-03-12 11:32:40,140 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-03-12 11:32:40,151 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-03-12 11:32:40,312 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-03-12 11:32:40,315 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-03-12 11:32:40,317 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-03-12 11:32:54,656 django.request WARNING  Unauthorized: /api/v1/piechartfilter
+2021-03-12 11:32:54,657 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 401 8591
+2021-03-12 11:32:54,765 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-03-12 11:32:54,777 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-03-12 11:32:54,777 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-03-12 11:32:54,781 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-03-12 11:32:54,839 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-03-12 11:32:54,841 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-03-12 11:32:54,849 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-03-12 11:32:54,851 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-03-12 11:32:54,854 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-03-12 11:32:54,856 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-03-12 11:32:54,897 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-03-12 11:33:02,746 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-03-12 11:33:02,757 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-03-12 11:33:02,795 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2021-03-12 11:33:02,861 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-03-12 11:33:02,863 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-03-12 11:33:02,874 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-03-12 11:33:02,898 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-03-12 11:33:02,999 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-03-12 11:33:03,009 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-03-12 11:33:15,023 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2012
+2021-03-12 11:33:15,136 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-03-12 11:33:22,579 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2021-03-12 11:33:22,692 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13594
+2021-03-12 11:33:22,753 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-03-12 11:33:22,816 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-03-12 11:33:22,820 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-03-12 11:33:22,821 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2021-03-12 11:33:26,819 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 15828
+2021-03-12 11:33:26,875 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-03-12 11:33:26,959 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-03-12 11:33:26,960 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-03-12 11:33:26,962 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-03-12 11:33:26,964 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-03-12 11:33:26,974 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-03-12 11:33:26,980 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 11:33:27,011 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-03-12 11:33:27,034 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-03-12 11:33:27,057 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-03-12 11:33:27,089 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-03-12 11:33:27,124 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-03-12 11:33:27,146 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-03-12 11:33:31,666 django.server INFO     "GET /maintainer/encounterapp/encounter/FA5F0E25558E4C06A88BA54AF2989E47/change/ HTTP/1.1" 200 49783
+2021-03-12 11:33:31,729 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 11:33:31,744 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2021-03-12 11:33:31,757 django.server INFO     "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+2021-03-12 11:33:31,759 django.server INFO     "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+2021-03-12 11:33:31,799 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2021-03-12 11:33:31,801 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2021-03-12 11:33:31,860 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2021-03-12 11:33:31,992 django.server INFO     "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2021-03-12 11:33:32,002 django.server INFO     "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+2021-03-12 11:34:04,809 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:34:04,812 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13158
+2021-03-12 11:36:09,976 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 745
+2021-03-12 11:36:19,518 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:36:19,519 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13158
+2021-03-12 11:36:51,733 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:36:51,734 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13158
+2021-03-12 11:37:22,782 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/piechartfilter HTTP/1.1" 302 0
+2021-03-12 11:37:22,821 django.request WARNING  Unauthorized: /api/v1/piechartfilter
+2021-03-12 11:37:22,822 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 401 8591
+2021-03-12 11:37:24,058 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/piechartfilter HTTP/1.1" 200 2724
+2021-03-12 11:37:36,602 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-12 11:37:36,753 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:37:36,758 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:37:56,989 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 11:38:07,478 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:38:07,479 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:38:17,643 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 745
+2021-03-12 11:39:09,709 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:39:09,710 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:40:38,592 django.server INFO     "POST /maintainer/encounterapp/encounter/FA5F0E25558E4C06A88BA54AF2989E47/change/ HTTP/1.1" 302 0
+2021-03-12 11:40:38,830 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 16086
+2021-03-12 11:40:38,906 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 11:40:39,010 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2021-03-12 11:41:04,224 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 11:41:12,506 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:41:12,507 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:41:52,074 django.server INFO     "GET /maintainer/encounterapp/encounter/FA5F0E25558E4C06A88BA54AF2989E47/change/ HTTP/1.1" 200 49783
+2021-03-12 11:41:52,149 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 11:42:13,033 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 11:44:13,710 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:44:13,713 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:44:36,814 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 11:47:16,619 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:47:16,621 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:47:33,672 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 11:47:40,080 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:47:40,080 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:48:03,248 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 745
+2021-03-12 11:48:14,544 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 11:48:14,545 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 11:58:24,640 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2021-03-12 12:02:13,546 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 12:02:13,553 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 12:02:29,215 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 12:02:34,236 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2021-03-12 12:02:34,238 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13157
+2021-03-12 12:02:40,097 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15300
+2021-03-12 12:03:25,399 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13665
+2021-03-12 12:04:16,614 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 27550
+2021-03-12 12:04:16,718 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:04:16,781 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2021-03-12 12:04:18,604 django.server INFO     "GET /maintainer/visualizationapp/visualization/C2557C02E06D49399BEEE5DDD057BAC8/change/ HTTP/1.1" 200 22019
+2021-03-12 12:04:18,697 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:05:04,633 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.1" 200 2642
+2021-03-12 12:05:06,477 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 27550
+2021-03-12 12:05:06,546 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:05:09,567 django.server INFO     "GET /maintainer/visualizationapp/visualization/61E145BACBD543CEBFB030A1B59097B5/change/ HTTP/1.1" 200 22054
+2021-03-12 12:05:09,631 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:22:56,519 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 27550
+2021-03-12 12:22:57,305 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:25:04,459 django.server INFO     "GET /maintainer/visualizationapp/visualization/8DA262AFCD694450B73553E04775B2D1/change/ HTTP/1.1" 200 22008
+2021-03-12 12:25:04,611 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:26:09,254 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13665
+2021-03-12 12:27:00,549 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49050
+2021-03-12 12:27:00,762 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:27:26,855 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13665
+2021-03-12 12:27:41,634 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2021-03-12 12:27:41,715 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:27:45,954 django.server INFO     "GET /maintainer/userapp/customuser/B5D352C570DC4BB498A36737987536AD/change/ HTTP/1.1" 200 45709
+2021-03-12 12:27:46,000 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:27:51,401 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2021-03-12 12:27:55,139 django.server INFO     "GET /maintainer/userapp/customuser/382982F570AC4D7DBF02CCEAAF084E1A/change/ HTTP/1.1" 200 45714
+2021-03-12 12:27:55,188 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-12 12:28:07,021 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941

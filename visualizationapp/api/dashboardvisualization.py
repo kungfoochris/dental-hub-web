@@ -1843,7 +1843,6 @@ class PieChartVisualization(APIView):
             },
         }
         return JsonResponse({"locationChart": locationChart})
-# kk
 
 class PieChartVisualizationFilter(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -1858,6 +1857,7 @@ class PieChartVisualizationFilter(APIView):
                 NepaliDate.from_date(serializer.validated_data["start_date"])
             )
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+
             age_group = serializer.validated_data["age_group"]
             location_list = serializer.validated_data["location"]
             label_data = [
@@ -2286,6 +2286,36 @@ class PieChartVisualizationFilter(APIView):
                             created_at__range=[start_date, end_date],
                         ).count()
                     )
+                
+                if age_group == "check":
+                    health_post_count.append(
+                            Visualization.objects.filter(
+                                activities_id=health_post_obj.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                    
+                    school_seminar_count.append(
+                            Visualization.objects.filter(
+                                activities_id=school_seminar_obj.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                    
+                    community_outreach_count.append(
+                            Visualization.objects.filter(
+                                activities_id=community_outreach_obj.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                    
+                    training_count.append(
+                            Visualization.objects.filter(
+                                activities_id=training_obj.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+
             else:
                 if age_group == "alltreatment":
                     data = []
@@ -2876,6 +2906,35 @@ class PieChartVisualizationFilter(APIView):
                                 created_at__range=[start_date, end_date],
                             ).count()
                         )
+                    
+                    if age_group == "check":
+                        health_post_count.append(
+                                Visualization.objects.filter(
+                                    activities_id=health_post_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                        
+                        school_seminar_count.append(
+                                Visualization.objects.filter(
+                                    activities_id=school_seminar_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                        
+                        community_outreach_count.append(
+                                Visualization.objects.filter(
+                                    activities_id=community_outreach_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                        
+                        training_count.append(
+                                Visualization.objects.filter(
+                                    activities_id=training_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
             locationChart = {
                 "data": {
                     "labels": [
@@ -2928,4 +2987,4 @@ class PieChartVisualizationFilter(APIView):
                     },
                 },
             }
-        return JsonResponse({"locationChart": locationChart})
+        return Response({"locationChart": locationChart})
