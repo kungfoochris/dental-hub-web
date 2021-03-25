@@ -3575,3 +3575,120 @@ TypeError: unsupported operand type(s) for +: 'method' and 'int'
 2021-03-12 12:27:55,139 django.server INFO     "GET /maintainer/userapp/customuser/382982F570AC4D7DBF02CCEAAF084E1A/change/ HTTP/1.1" 200 45714
 2021-03-12 12:27:55,188 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-03-12 12:28:07,021 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 6941
+2021-03-25 14:58:01,345 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-25 14:58:01,380 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-25 14:58:02,614 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-03-25 14:58:02,618 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-03-25 14:58:02,622 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-03-25 14:58:02,626 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-03-25 14:58:02,638 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-03-25 14:58:02,647 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-03-25 14:58:02,666 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-03-25 14:58:02,678 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-03-25 14:58:02,682 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-03-25 14:58:02,692 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-03-25 14:58:02,859 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-03-25 14:58:03,451 django.request WARNING  Not Found: /favicon.ico
+2021-03-25 14:58:03,451 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-03-25 14:58:05,816 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-03-25 14:58:13,466 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2962
+2021-03-25 14:58:23,891 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-03-25 14:58:26,900 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-25 15:02:43,449 django.server INFO     "GET /api/v1/wards HTTP/1.1" 200 218543
+2021-03-25 15:03:59,226 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-25 15:04:32,229 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113893
+2021-03-25 15:05:01,758 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 10517
+2021-03-25 15:06:00,789 patientapp.api.patient INFO     {'dob': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].', code='invalid')]}
+2021-03-25 15:06:03,559 django.request WARNING  Bad Request: /api/v1/patients
+2021-03-25 15:06:03,560 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 109952
+2021-03-25 15:06:40,063 patientapp.api.patient INFO     Patient added successfully by admin user, Patient id: 43EB70AF7A044310B709F25E8AF99B60, first name: Ramesh, last name: Magar, phone: +819848730446, dob: 1999-05-25 ,gender: male, ward: , Activity Area: Health Post, District: Achham, Geography: , Municipality: Mangalsen
+2021-03-25 15:06:42,939 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109908
+2021-03-25 15:07:03,281 django.request WARNING  Bad Request: /api/v1/patients/43EB70AF7A044310B709F25E8AF99B60/encounters
+2021-03-25 15:07:03,282 django.server WARNING  "GET /api/v1/patients/43EB70AF7A044310B709F25E8AF99B60/encounters HTTP/1.1" 400 16762
+2021-03-25 15:07:56,565 encounterapp.api.encounter INFO     Encounter added successfully by admin user
+2021-03-25 15:07:56,639 django.server INFO     "POST /api/v1/patients/43EB70AF7A044310B709F25E8AF99B60/encounters HTTP/1.1" 200 16803
+2021-03-25 15:10:13,237 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17752
+2021-03-25 15:10:45,748 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-03-25 15:10:46,111 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13665
+2021-03-25 15:10:46,246 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-03-25 15:10:46,247 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-03-25 15:10:46,282 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-03-25 15:10:46,283 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-03-25 15:10:46,373 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-03-25 15:10:46,376 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-03-25 15:10:46,377 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2021-03-25 15:10:46,500 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-03-25 15:10:46,506 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-03-25 15:10:46,520 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-03-25 15:10:49,401 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49050
+2021-03-25 15:10:49,608 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:10:49,613 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-03-25 15:10:49,637 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-03-25 15:10:49,662 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-03-25 15:10:49,664 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-03-25 15:10:49,665 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-03-25 15:10:49,667 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-03-25 15:10:49,674 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-03-25 15:10:49,711 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-03-25 15:10:49,737 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-03-25 15:10:49,761 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-03-25 15:10:49,872 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2021-03-25 15:10:49,873 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-03-25 15:10:49,906 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2021-03-25 15:11:00,243 django.server INFO     "GET /maintainer/addressapp/ward/?p=1 HTTP/1.1" 200 51381
+2021-03-25 15:11:00,415 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:11:09,871 django.server INFO     "GET /maintainer/addressapp/ward/?p=2 HTTP/1.1" 200 51134
+2021-03-25 15:11:09,994 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:11:29,316 django.server INFO     "GET /maintainer/addressapp/ward/394/change/?_changelist_filters=p%3D2 HTTP/1.1" 200 19415
+2021-03-25 15:11:29,392 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:11:29,397 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2021-03-25 15:11:29,458 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2021-03-25 15:11:29,471 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2021-03-25 15:11:29,564 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2021-03-25 15:11:35,129 django.server INFO     "POST /maintainer/addressapp/ward/394/change/?_changelist_filters=p%3D2 HTTP/1.1" 200 19566
+2021-03-25 15:11:35,176 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:11:41,067 django.server INFO     "POST /maintainer/addressapp/ward/394/change/?_changelist_filters=p%3D2 HTTP/1.1" 302 0
+2021-03-25 15:11:41,515 django.server INFO     "GET /maintainer/addressapp/ward/?p=2 HTTP/1.1" 200 51343
+2021-03-25 15:11:41,568 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:12:20,412 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 115247
+2021-03-25 15:12:28,044 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17839
+2021-03-25 15:12:45,168 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 17799
+2021-03-25 15:13:27,635 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17839
+2021-03-25 15:13:47,413 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 17799
+2021-03-25 15:14:40,844 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 17799
+2021-03-25 15:15:10,526 django.request ERROR    Internal Server Error: /api/v1/overviewvisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 1353, in post
+    if end_date > start_date:
+NameError: name 'end_date' is not defined
+2021-03-25 15:15:10,530 django.server ERROR    "POST /api/v1/overviewvisualization HTTP/1.1" 500 116136
+2021-03-25 15:15:32,563 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 17799
+2021-03-25 15:16:01,375 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13683
+2021-03-25 15:16:04,200 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 29633
+2021-03-25 15:16:04,312 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:16:04,339 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-03-25 15:16:10,073 django.server INFO     "GET /maintainer/visualizationapp/visualization/F64E33813DF54741A64D72118292B23B/change/ HTTP/1.1" 200 22015
+2021-03-25 15:16:10,130 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-03-25 15:16:10,229 django.server INFO     "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+2021-03-25 15:16:10,242 django.server INFO     "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+2021-03-25 15:16:10,399 django.server INFO     "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2021-03-25 15:22:44,233 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.1" 200 17799
+2021-03-25 16:17:10,927 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-03-25 16:17:12,321 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2021-03-25 16:17:12,473 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
