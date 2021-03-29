@@ -181,8 +181,8 @@ def create_treatment(sender, **kwargs):
         if Counter(treatment_obj.values())['ART'] > 0:
             visualization_obj.art = Counter(treatment_obj.values())['ART']
         if Counter(treatment_obj.values())['SMART'] > 0:
-            visualization_obj.art = Counter(treatment_obj.values())['ART']
-            visualization_obj.sdf = Counter(treatment_obj.values())['SDF']
+            visualization_obj.art = 1
+            visualization_obj.sdf = 1
         visualization_obj.fv = kwargs["instance"].fv_applied
         visualization_obj.sdf_whole_mouth = kwargs["instance"].sdf_whole_mouth
         visualization_obj.save()

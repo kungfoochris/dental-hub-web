@@ -21,13 +21,9 @@ import os
 from django.http import JsonResponse
 from nepali.datetime import NepaliDate
 import datetime
-
 from django.db.models import Q
 from treatmentapp.models import Treatment
-
 from encounterapp.models import Encounter, History, Refer, Screeing
-
-
 from visualizationapp.serializers.ward import WardFilterVisualization,ContactAgeGenderVisualization
 
 from visualizationapp.models import Visualization
@@ -1231,7 +1227,10 @@ class WardTableVisualization2(APIView):
             start_date = str(
                 NepaliDate.from_date(serializer.validated_data["start_date"])
             )
+            print("+++++++++++++++++++++++==")
+            print(start_date)
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+            print(end_date)
             activities_list = serializer.validated_data["activities"]
             if end_date > start_date:
                 if CustomUser.objects.select_related("role").filter(
