@@ -232,8 +232,12 @@ POST:</p>
 <li>created_at: DateField(required)</li>
 <li>encounter_id : Foreigne Key(Encounter)required</li>
 <li>active_infection:BooleanField()</li>
+<li>soft_issue_finding:Text()</li>
+<li>need_fv:BooleanField()</li>
+<li>need_dentist_or_hygienist:BooleanField()</li>
 </ul>
-<p>4. <strong>METHOD:</strong>
+<p>‘soft_issue_finding’,’need_fv’,’need_dentist_or_hygienist’
+4. <strong>METHOD:</strong>
 PUT:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">Body_Content</span><span class="o">**</span>
 </pre></div>
@@ -269,6 +273,12 @@ choice field are (Low,High,Medium)</p>
 <li><p class="first">updated_at: DateField()</p>
 </li>
 <li><p class="first">active_infection:BooleanField()</p>
+</li>
+<li><p class="first">soft_issue_finding:Text()</p>
+</li>
+<li><p class="first">need_fv:BooleanField()</p>
+</li>
+<li><p class="first">need_dentist_or_hygienist:BooleanField()</p>
 <blockquote>
 <div><ul class="simple">
 <li>This method is used to update a screeing encounter:</li>

@@ -3692,3 +3692,18 @@ NameError: name 'end_date' is not defined
 2021-03-25 16:17:10,927 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
 2021-03-25 16:17:12,321 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
 2021-03-25 16:17:12,473 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-03-29 14:47:18,344 django.request WARNING  Unauthorized: /api/v1/patients
+2021-03-29 14:47:18,380 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-03-29 14:47:21,125 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-03-29 14:47:21,127 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-03-29 14:47:21,129 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-03-29 14:47:21,133 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-03-29 14:47:21,136 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-03-29 14:47:21,137 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-03-29 14:47:21,149 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-03-29 14:47:21,161 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-03-29 14:47:21,163 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-03-29 14:47:21,249 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-03-29 14:47:21,548 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-03-29 14:47:24,540 django.request WARNING  Not Found: /favicon.ico
+2021-03-29 14:47:24,541 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383

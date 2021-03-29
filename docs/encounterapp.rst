@@ -221,7 +221,12 @@ POST:
 - created_at: DateField(required)
 - encounter_id : Foreigne Key(Encounter)required
 - active_infection:BooleanField() 
+- soft_issue_finding:Text()
+- need_fv:BooleanField()
+- need_dentist_or_hygienist:BooleanField()
 
+
+'soft_issue_finding','need_fv','need_dentist_or_hygienist'
 4. **METHOD:**
 PUT:
 ::
@@ -245,6 +250,9 @@ PUT:
 - thyroid_disorder:BooleanField()
 - updated_at: DateField()
 - active_infection:BooleanField() 
+- soft_issue_finding:Text()
+- need_fv:BooleanField()
+- need_dentist_or_hygienist:BooleanField()
 
     - This method is used to update a screeing encounter:
 
