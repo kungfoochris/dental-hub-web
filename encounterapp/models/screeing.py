@@ -25,7 +25,6 @@ def keygenerator():
 
 
 class Screeing(models.Model):
-	# id = models.CharField(max_length=200,null=True)
 	id = models.CharField(max_length=200,primary_key=True, default=keygenerator, editable=False)
 	carries_risk = models.CharField(_('caries risk'),choices=REQUEST_CHOICES,max_length=30)
 	decayed_primary_teeth = models.PositiveIntegerField(_('decayed primary teeth'))
@@ -41,7 +40,9 @@ class Screeing(models.Model):
 	high_blood_pressure = models.BooleanField(default=False)
 	low_blood_pressure = models.BooleanField(default=False)
 	thyroid_disorder = models.BooleanField(default=False)
+	soft_issue_finding = models.TextField(null=True)
+	need_fv = models.BooleanField(default=False)
+	need_dentist_or_hygienist = models.BooleanField(default=False)
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='screening')
-	# updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_screeing')
-	# updated_at = models.DateField(null=True)
-	# created_at = models.DateField()
+
+
