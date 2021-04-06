@@ -65,6 +65,7 @@ class Visualization(models.Model):
     reason_for_visit = models.CharField(max_length=60, default="", db_index=True)
     referral_type = models.CharField(max_length=60, default="", db_index=True)
     author = models.CharField(max_length=60, default="")
+    active = models.BooleanField(default=True)
 
 
 def create_encounter(sender, **kwargs):
@@ -93,6 +94,7 @@ def create_encounter(sender, **kwargs):
         visualization_obj.created_at = encounter_obj.patient.created_at
         visualization_obj.reason_for_visit = encounter_obj.encounter_type
         visualization_obj.author = encounter_obj.author.username
+        visualization_obj.active = encounter_obj.active
         visualization_obj.save()
     # if kwargs['created']:
 

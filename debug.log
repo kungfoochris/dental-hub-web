@@ -3707,3 +3707,48 @@ NameError: name 'end_date' is not defined
 2021-03-29 14:47:21,548 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
 2021-03-29 14:47:24,540 django.request WARNING  Not Found: /favicon.ico
 2021-03-29 14:47:24,541 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-04-06 13:50:06,965 django.request WARNING  Unauthorized: /api/v1/patients
+2021-04-06 13:50:07,035 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-04-06 13:50:08,232 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-04-06 13:50:08,237 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-04-06 13:50:08,238 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-04-06 13:50:08,244 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-04-06 13:50:08,250 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-04-06 13:50:08,252 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-04-06 13:50:08,254 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-04-06 13:50:08,255 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-04-06 13:50:08,282 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-04-06 13:50:08,382 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-04-06 13:50:08,680 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-04-06 13:50:08,905 django.request WARNING  Not Found: /favicon.ico
+2021-04-06 13:50:08,905 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-04-06 13:50:35,845 django.request ERROR    Internal Server Error: /api/v1/modifydeleteseen
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/encounterapp/api/modifydelete.py", line 185, in get
+    if mod_obj:
+NameError: name 'mod_obj' is not defined
+2021-04-06 13:50:35,850 django.server ERROR    "GET /api/v1/modifydeleteseen HTTP/1.1" 500 87120
+2021-04-06 13:51:26,740 django.request WARNING  Bad Request: /api/v1/modifydeleteseen
+2021-04-06 13:51:26,743 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
+2021-04-06 13:51:26,861 django.request WARNING  Bad Request: /api/v1/modifydeleteseen
+2021-04-06 13:51:26,862 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
+2021-04-06 13:58:12,769 django.request WARNING  Bad Request: /api/v1/modifydeleteseen
+2021-04-06 13:58:12,770 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
+2021-04-06 13:58:15,173 django.request WARNING  Bad Request: /api/v1/modifydeleteseen
+2021-04-06 13:58:15,174 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
