@@ -65,7 +65,7 @@ class WardlineVisualization(APIView):
             for i in geography_obj:
                 v = []
                 for x in month:
-                    if Visualization.objects.filter(geography_id=i.id).exists():
+                    if Visualization.objects.filter(active=True,geography_id=i.id).exists():
                         total_patient = Visualization.objects.filter(
                             geography_id=i.id, created_at__month=x
                         ).count()

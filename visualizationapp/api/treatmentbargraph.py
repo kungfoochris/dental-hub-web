@@ -33,11 +33,11 @@ class TreatMentBarGraph(APIView):
     def get(self, request, format=None):
         if User.objects.get(id=request.user.id):
             treatment=['EXO','ART','SEAL', 'SDF', 'FV']
-            total_sdf = Visualization.objects.filter(sdf=True).count()
-            total_exo = Visualization.objects.filter(exo=True).count()
-            total_art = Visualization.objects.filter(art=True).count()
-            total_seal = Visualization.objects.filter(seal=True).count()
-            total_fv = Visualization.objects.filter(fv=True).count()
+            total_sdf = Visualization.objects.filter(sdf=True,active=True).count()
+            total_exo = Visualization.objects.filter(exo=True,active=True).count()
+            total_art = Visualization.objects.filter(art=True,active=True).count()
+            total_seal = Visualization.objects.filter(seal=True,active=True).count()
+            total_fv = Visualization.objects.filter(fv=True,active=True).count()
 
             locationChart = {
             'data': {
@@ -75,7 +75,7 @@ class TreatMentBarGraph(APIView):
     }
   }
             }
-            return JsonResponse({"locationChart":locationChart})
+            return Response({"locationChart":locationChart})
         return Response({"message":"only admin can create"},status=400)
 
 class TreatMentBarGraphFilter(APIView):
@@ -89,11 +89,11 @@ class TreatMentBarGraphFilter(APIView):
             end_date = str(NepaliDate.from_date(serializer.validated_data['end_date']))
             location = serializer.validated_data['location']
             treatment=['EXO','ART','SEAL', 'SDF', 'FV']
-            total_sdf = Visualization.objects.filter(sdf=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
-            total_exo = Visualization.objects.filter(exo=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
-            total_art = Visualization.objects.filter(art=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
-            total_seal = Visualization.objects.filter(seal=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
-            total_fv = Visualization.objects.filter(fv=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_sdf = Visualization.objects.filter(sdf=True,active=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_exo = Visualization.objects.filter(exo=True,active=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_art = Visualization.objects.filter(art=True,active=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_seal = Visualization.objects.filter(seal=True,active=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
+            total_fv = Visualization.objects.filter(fv=True,active=True).filter(created_at__range=[start_date,end_date],geography_id=location).count()
 
             locationChart = {
             'data': {

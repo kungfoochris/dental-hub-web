@@ -67,33 +67,33 @@ class BarGraphView(APIView):
             total_female = []
 
             for i in customuser_obj.location.all():
-                kid_total = Visualization.objects.filter(
+                kid_total = Visualization.objects.filter(active=True,
                     geography_id=i.id, age__lt=18
                 ).count()
-                kid_male = Visualization.objects.filter(
+                kid_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, gender="male", age__lt=18
                 ).count()
-                kid_female = Visualization.objects.filter(
+                kid_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, gender="female", age__lt=18
                 ).count()
 
-                adult_total = Visualization.objects.filter(
+                adult_total = Visualization.objects.filter(active=True,
                     geography_id=i.id,age__range=(19, 60)
                 ).count()
-                adult_male = Visualization.objects.filter(
+                adult_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, gender="male", age__range=(19, 60)
                 ).count()
-                adult_female = Visualization.objects.filter(
+                adult_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, gender="female", age__range=(19, 60)
                 ).count()
 
-                old_total = Visualization.objects.filter(
+                old_total = Visualization.objects.filter(active=True,
                     geography_id=i.id, age__gt=60
                 ).count()
-                old_male = Visualization.objects.filter(
+                old_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, gender="male", age__gt=60
                 ).count()
-                old_female = Visualization.objects.filter(
+                old_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, gender="female", age__gt=60
                 ).count()
 
@@ -176,33 +176,33 @@ class BarGraphView(APIView):
 
 
                     for i in customuser_obj.location.all():
-                        kid_total = Visualization.objects.filter(
+                        kid_total = Visualization.objects.filter(active=True,
                             geography_id=i.id, age__lt=18,created_at__range=[start_date, end_date]
                         ).count()
-                        kid_male = Visualization.objects.filter(
+                        kid_male = Visualization.objects.filter(active=True,
                             geography_id=i.id, gender="male", age__lt=18,created_at__range=[start_date, end_date]
                         ).count()
-                        kid_female = Visualization.objects.filter(
+                        kid_female = Visualization.objects.filter(active=True,
                             geography_id=i.id, gender="female", age__lt=18,created_at__range=[start_date, end_date]
                         ).count()
 
-                        adult_total = Visualization.objects.filter(
+                        adult_total = Visualization.objects.filter(active=True,
                             geography_id=i.id,age__range=(19, 60),created_at__range=[start_date, end_date]
                         ).count()
-                        adult_male = Visualization.objects.filter(
+                        adult_male = Visualization.objects.filter(active=True,
                             geography_id=i.id, gender="male", age__range=(19, 60),created_at__range=[start_date, end_date]
                         ).count()
-                        adult_female = Visualization.objects.filter(
+                        adult_female = Visualization.objects.filter(active=True,
                             geography_id=i.id, gender="female", age__range=(19, 60),created_at__range=[start_date, end_date]
                         ).count()
 
-                        old_total = Visualization.objects.filter(
+                        old_total = Visualization.objects.filter(active=True,
                             geography_id=i.id, age__gt=60,created_at__range=[start_date, end_date]
                         ).count()
-                        old_male = Visualization.objects.filter(
+                        old_male = Visualization.objects.filter(active=True,
                             geography_id=i.id, gender="male", age__gt=60,created_at__range=[start_date, end_date]
                         ).count()
-                        old_female = Visualization.objects.filter(
+                        old_female = Visualization.objects.filter(active=True,
                             geography_id=i.id, gender="female", age__gt=60,created_at__range=[start_date, end_date]
                         ).count()
 
@@ -297,42 +297,42 @@ class BarGraphFilterView(APIView):
                     female = []
                     for i in customuser_obj.location.all():
                         for activities in activities_list:
-                            female_child = Visualization.objects.filter(
+                            female_child = Visualization.objects.filter(active=True,
                                 activities_id=activities.id,
                                 geography_id=i.id,
                                 gender="female",
                                 age__lt=18,
                                 created_at__range=[start_date, end_date],
                             ).count()
-                            female_adult = Visualization.objects.filter(
+                            female_adult = Visualization.objects.filter(active=True,
                                 activities_id=activities.id,
                                 geography_id=i.id,
                                 gender="female",
                                 age__range=(19, 60),
                                 created_at__range=[start_date, end_date],
                             ).count()
-                            male_adult = Visualization.objects.filter(
+                            male_adult = Visualization.objects.filter(active=True,
                                 activities_id=activities.id,
                                 geography_id=i.id,
                                 gender="male",
                                 age__range=(19, 60),
                                 created_at__range=[start_date, end_date],
                             ).count()
-                            male_child = Visualization.objects.filter(
+                            male_child = Visualization.objects.filter(active=True,
                                 activities_id=activities.id,
                                 geography_id=i.id,
                                 gender="male",
                                 age__lt=18,
                                 created_at__range=[start_date, end_date],
                             ).count()
-                            old_male = Visualization.objects.filter(
+                            old_male = Visualization.objects.filter(active=True,
                                 activities_id=activities.id,
                                 geography_id=i.id,
                                 gender="male",
                                 age__gt=60,
                                 created_at__range=[start_date, end_date],
                             ).count()
-                            old_female = Visualization.objects.filter(
+                            old_female = Visualization.objects.filter(active=True,
                                 activities_id=activities.id,
                                 geography_id=i.id,
                                 gender="female",
@@ -420,70 +420,70 @@ class WardTreatmentTableVisualization1(APIView):
                 total_treatment = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(geography_id=i.id)
+                    .filter(active=True,geography_id=i.id)
                     .count()
                 )
                 treatment_male = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(gender="male", geography_id=i.id)
+                    .filter(active=True,gender="male", geography_id=i.id)
                     .count()
                 )
                 treatment_female = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(gender="female", geography_id=i.id)
+                    .filter(active=True,gender="female", geography_id=i.id)
                     .count()
                 )
                 treatment_child = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(age__lt=18, geography_id=i.id)
+                    .filter(active=True,age__lt=18, geography_id=i.id)
                     .count()
                 )
                 treatment_adult = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(age__range=(18, 60), geography_id=i.id)
+                    .filter(active=True,age__range=(18, 60), geography_id=i.id)
                     .count()
                 )
                 treatment_old = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(age__gt=60, geography_id=i.id)
+                    .filter(active=True,age__gt=60, geography_id=i.id)
                     .count()
                 )
 
                 
-                male_patients_receiving_FV = Visualization.objects.filter(
+                male_patients_receiving_FV = Visualization.objects.filter(active=True,
                     gender="male", fv=True, geography_id=i.id
                 ).count()
-                female_patients_receiving_FV = Visualization.objects.filter(
+                female_patients_receiving_FV = Visualization.objects.filter(active=True,
                     gender="female", fv=True, geography_id=i.id
                 ).count()
-                child__patients_receiving_FV = Visualization.objects.filter(
+                child__patients_receiving_FV = Visualization.objects.filter(active=True,
                     age__lt=18, fv=True, geography_id=i.id
                 ).count()
-                adult__patients_receiving_FV = Visualization.objects.filter(
+                adult__patients_receiving_FV = Visualization.objects.filter(active=True,
                     age__range=(18, 60), fv=True, geography_id=i.id
                 ).count()
-                old__patients_receiving_FV = Visualization.objects.filter(
+                old__patients_receiving_FV = Visualization.objects.filter(active=True,
                     age__gt=60, fv=True, geography_id=i.id
                 ).count()
 
-                sealant_male = Visualization.objects.filter(
+                sealant_male = Visualization.objects.filter(active=True,
                     gender="male", need_sealant=True, geography_id=i.id
                 ).count()
-                sealant_female = Visualization.objects.filter(
+                sealant_female = Visualization.objects.filter(active=True,
                     gender="female", need_sealant=True, geography_id=i.id
                 ).count()
-                sealant_child = Visualization.objects.filter(
+                sealant_child = Visualization.objects.filter(active=True,
                     age__lt=18, need_sealant=True, geography_id=i.id
                 ).count()
-                sealant_adult = Visualization.objects.filter(
+                sealant_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), need_sealant=True, geography_id=i.id
                 ).count()
-                sealant_old = Visualization.objects.filter(
+                sealant_old = Visualization.objects.filter(active=True,
                     age__gt=60, need_sealant=True, geography_id=i.id
                 ).count()
 
@@ -566,7 +566,7 @@ class WardTreatmentTableVisualization1(APIView):
                             total_treatment.append(
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
-                                .filter(
+                                .filter(active=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
                                     created_at__range=[start_date, end_date],
@@ -576,7 +576,7 @@ class WardTreatmentTableVisualization1(APIView):
                             treatment_male.append(
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
-                                .filter(
+                                .filter(active=True,
                                     gender="male",
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -587,7 +587,7 @@ class WardTreatmentTableVisualization1(APIView):
                             treatment_female.append(
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
-                                .filter(
+                                .filter(active=True,
                                     gender="female",
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -598,7 +598,7 @@ class WardTreatmentTableVisualization1(APIView):
                             treatment_child.append(
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
-                                .filter(
+                                .filter(active=True,
                                     age__lt=18,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -609,7 +609,7 @@ class WardTreatmentTableVisualization1(APIView):
                             treatment_adult.append(
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
-                                .filter(
+                                .filter(active=True,
                                     age__range=(18, 60),
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -620,7 +620,7 @@ class WardTreatmentTableVisualization1(APIView):
                             treatment_old.append(
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
-                                .filter(
+                                .filter(active=True,
                                     age__gt=60,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -630,7 +630,7 @@ class WardTreatmentTableVisualization1(APIView):
                             )
 
                             female_patients_receiving_FV.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     fv=True,
                                     geography_id=i.id,
@@ -639,7 +639,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             male_patients_receiving_FV.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     fv=True,
                                     geography_id=i.id,
@@ -648,7 +648,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             child__patients_receiving_FV.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     fv=True,
                                     geography_id=i.id,
@@ -657,7 +657,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             adult__patients_receiving_FV.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     fv=True,
                                     geography_id=i.id,
@@ -666,7 +666,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             old__patients_receiving_FV.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     fv=True,
                                     geography_id=i.id,
@@ -676,7 +676,7 @@ class WardTreatmentTableVisualization1(APIView):
                             )
 
                             sealant_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     need_sealant=True,
                                     geography_id=i.id,
@@ -685,7 +685,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             sealant_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     need_sealant=True,
                                     geography_id=i.id,
@@ -694,7 +694,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             sealant_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     need_sealant=True,
                                     geography_id=i.id,
@@ -703,7 +703,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             sealant_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     need_sealant=True,
                                     geography_id=i.id,
@@ -712,7 +712,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 ).count()
                             )
                             sealant_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     need_sealant=True,
                                     geography_id=i.id,
@@ -854,226 +854,226 @@ class WardTableVisualization2(APIView):
 
             customuser_obj = CustomUser.objects.get(id=request.user.id)
             for i in customuser_obj.location.all():
-                male = Visualization.objects.filter(
+                male = Visualization.objects.filter(active=True,
                     gender="male",geography_id=i.id
                 ).count()
                 total_male.append(male)
-                female = Visualization.objects.filter(
+                female = Visualization.objects.filter(active=True,
                     gender="female",geography_id=i.id
                 ).count()
                 total_female.append(female)
-                children = Visualization.objects.filter(
+                children = Visualization.objects.filter(active=True,
                     age__lt=18,geography_id=i.id
                 ).count()
                 total_children.append(children)
-                adult = Visualization.objects.filter(
+                adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60),geography_id=i.id
                 ).count()
                 total_adult.append(adult)
-                older_adult = Visualization.objects.filter(
+                older_adult = Visualization.objects.filter(active=True,
                     age__gt=60,geography_id=i.id
                 ).count()
                 total_older_adult.append(older_adult)
                 encounter = male + female
                 total_encounter.append(encounter)
 
-                sdf = Visualization.objects.filter(
+                sdf = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True
                 ).count()
                 total_sdf.append(sdf)
-                sdf_male = Visualization.objects.filter(
+                sdf_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, gender="male"
                 ).count()
                 total_sdf_male.append(sdf_male)
-                sdf_female = Visualization.objects.filter(
+                sdf_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, gender="female"
                 ).count()
                 total_sdf_female.append(sdf_female)
-                sdf_child = Visualization.objects.filter(
+                sdf_child = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, age__lt=18
                 ).count()
                 total_sdf_child.append(sdf_child)
-                sdf_adult = Visualization.objects.filter(
+                sdf_adult = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, age__range=(18, 60)
                 ).count()
                 total_sdf_adult.append(sdf_adult)
-                sdf_old = Visualization.objects.filter(
+                sdf_old = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, age__gt=60
                 ).count()
                 total_sdf_old.append(sdf_old)
 
-                seal = Visualization.objects.filter(
+                seal = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True
                 ).count()
                 total_seal.append(seal)
-                seal_male = Visualization.objects.filter(
+                seal_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, gender="male"
                 ).count()
                 total_seal_male.append(seal_male)
-                seal_female = Visualization.objects.filter(
+                seal_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, gender="female"
                 ).count()
                 total_seal_female.append(seal_female)
-                seal_child = Visualization.objects.filter(
+                seal_child = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, age__lt=18
                 ).count()
                 total_seal_child.append(seal_child)
-                seal_adult = Visualization.objects.filter(
+                seal_adult = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, age__range=(18, 60)
                 ).count()
                 total_seal_adult.append(seal_adult)
-                seal_old = Visualization.objects.filter(
+                seal_old = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, age__gt=60
                 ).count()
                 total_seal_old.append(seal_old)
 
-                art = Visualization.objects.filter(
+                art = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True
                 ).count()
                 total_art.append(art)
-                art_male = Visualization.objects.filter(
+                art_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, gender="male"
                 ).count()
                 total_art_male.append(art_male)
-                art_female = Visualization.objects.filter(
+                art_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, gender="female"
                 ).count()
                 total_art_female.append(art_female)
-                art_child = Visualization.objects.filter(
+                art_child = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, age__lt=18
                 ).count()
                 total_art_child.append(art_child)
-                art_adult = Visualization.objects.filter(
+                art_adult = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, age__range=(18, 60)
                 ).count()
                 total_art_adult.append(art_adult)
-                art_old = Visualization.objects.filter(
+                art_old = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, age__gt=60
                 ).count()
                 total_art_old.append(art_old)
 
-                exo = Visualization.objects.filter(
+                exo = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True
                 ).count()
                 total_exo.append(exo)
-                exo_male = Visualization.objects.filter(
+                exo_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, gender="male"
                 ).count()
                 total_exo_male.append(exo_male)
-                exo_female = Visualization.objects.filter(
+                exo_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, gender="female"
                 ).count()
                 total_exo_female.append(exo_female)
-                exo_child = Visualization.objects.filter(
+                exo_child = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, age__lt=18
                 ).count()
                 total_exo_child.append(exo_child)
-                exo_adult = Visualization.objects.filter(
+                exo_adult = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, age__range=(18, 60)
                 ).count()
                 total_exo_adult.append(exo_adult)
-                exo_old = Visualization.objects.filter(
+                exo_old = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, age__gt=60
                 ).count()
                 total_exo_old.append(exo_old)
 
-                fv = Visualization.objects.filter(
+                fv = Visualization.objects.filter(active=True,
                     fv=True, geography_id=i.id
                 ).count()
                 total_fv.append(fv)
-                fv_male = Visualization.objects.filter(
+                fv_male = Visualization.objects.filter(active=True,
                     gender="male", fv=True, geography_id=i.id
                 ).count()
                 total_fv_male.append(fv_male)
-                fv_female = Visualization.objects.filter(
+                fv_female = Visualization.objects.filter(active=True,
                     gender="female", fv=True, geography_id=i.id
                 ).count()
                 total_fv_female.append(fv_female)
-                fv_child = Visualization.objects.filter(
+                fv_child = Visualization.objects.filter(active=True,
                     age__lt=18, fv=True, geography_id=i.id
                 ).count()
                 total_fv_child.append(fv_child)
-                fv_adult = Visualization.objects.filter(
+                fv_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), fv=True, geography_id=i.id
                 ).count()
                 total_fv_adult.append(fv_adult)
-                fv_old = Visualization.objects.filter(
+                fv_old = Visualization.objects.filter(active=True,
                     age__gt=60, fv=True, geography_id=i.id
                 ).count()
                 total_fv_old.append(fv_old)
 
-                fm_sdf = Visualization.objects.filter(
+                fm_sdf = Visualization.objects.filter(active=True,
                     sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf.append(fm_sdf)
-                fm_sdf_male = Visualization.objects.filter(
+                fm_sdf_male = Visualization.objects.filter(active=True,
                     gender="male", sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_male.append(fm_sdf_male)
-                fm_sdf_female = Visualization.objects.filter(
+                fm_sdf_female = Visualization.objects.filter(active=True,
                     gender="female", sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_female.append(fm_sdf_female)
-                fm_sdf_child = Visualization.objects.filter(
+                fm_sdf_child = Visualization.objects.filter(active=True,
                     age__lt=18, sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_child.append(fm_sdf_child)
-                fm_sdf_adult = Visualization.objects.filter(
+                fm_sdf_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_adult.append(fm_sdf_adult)
-                fm_sdf_old = Visualization.objects.filter(
+                fm_sdf_old = Visualization.objects.filter(active=True,
                     age__gt=60, sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_old.append(fm_sdf_old)
 
-                ref_hp = Visualization.objects.filter(
+                ref_hp = Visualization.objects.filter(active=True,
                     refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp.append(ref_hp)
-                ref_hp_male = Visualization.objects.filter(
+                ref_hp_male = Visualization.objects.filter(active=True,
                     gender="male", refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_male.append(ref_hp_male)
-                ref_hp_female = Visualization.objects.filter(
+                ref_hp_female = Visualization.objects.filter(active=True,
                     gender="female", refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_female.append(ref_hp_female)
-                ref_hp_child = Visualization.objects.filter(
+                ref_hp_child = Visualization.objects.filter(active=True,
                     age__lt=18, refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_child.append(ref_hp_child)
-                ref_hp_adult = Visualization.objects.filter(
+                ref_hp_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_adult.append(ref_hp_adult)
-                ref_hp_old = Visualization.objects.filter(
+                ref_hp_old = Visualization.objects.filter(active=True,
                     age__gt=60, refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_old.append(ref_hp_old)
 
 
-                ref_other = Visualization.objects.filter(
+                ref_other = Visualization.objects.filter(active=True,
                     refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other.append(ref_other)
-                ref_other_male = Visualization.objects.filter(
+                ref_other_male = Visualization.objects.filter(active=True,
                     gender="male", refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_male.append(ref_other_male)
-                ref_other_female = Visualization.objects.filter(
+                ref_other_female = Visualization.objects.filter(active=True,
                     gender="female", refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_female.append(ref_other_female)
-                ref_other_child = Visualization.objects.filter(
+                ref_other_child = Visualization.objects.filter(active=True,
                     age__lt=18, refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_child.append(ref_other_child)
-                ref_other_adult = Visualization.objects.filter(
+                ref_other_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_adult.append(ref_other_adult)
-                ref_other_old = Visualization.objects.filter(
+                ref_other_old = Visualization.objects.filter(active=True,
                     age__gt=60, refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_old.append(ref_other_old)
@@ -1300,31 +1300,31 @@ class WardTableVisualization2(APIView):
 
                     for i in customuser_obj.location.all():
                         for activities in activities_list:
-                            male = Visualization.objects.filter(
+                            male = Visualization.objects.filter(active=True,
                                 gender="male",geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_male.append(male)
-                            female = Visualization.objects.filter(
+                            female = Visualization.objects.filter(active=True,
                                 gender="female",geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_female.append(female)
-                            children = Visualization.objects.filter(
+                            children = Visualization.objects.filter(active=True,
                                 age__lt=18,geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_children.append(children)
-                            adult = Visualization.objects.filter(
+                            adult = Visualization.objects.filter(active=True,
                                 age__range=(18, 60),geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_adult.append(adult)
-                            older_adult = Visualization.objects.filter(
+                            older_adult = Visualization.objects.filter(active=True,
                                 age__gt=60,geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
@@ -1333,257 +1333,257 @@ class WardTableVisualization2(APIView):
                             encounter = male + female
                             total_encounter.append(encounter)
 
-                            sdf = Visualization.objects.filter(
+                            sdf = Visualization.objects.filter(active=True,
                                 geography_id=i.id, sdf=True,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf.append(sdf)
-                            sdf_male = Visualization.objects.filter(
+                            sdf_male = Visualization.objects.filter(active=True,
                                 geography_id=i.id, sdf=True, gender="male",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf_male.append(sdf_male)
-                            sdf_female = Visualization.objects.filter(
+                            sdf_female = Visualization.objects.filter(active=True,
                                 geography_id=i.id, sdf=True, gender="female",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf_female.append(sdf_female)
-                            sdf_child = Visualization.objects.filter(
+                            sdf_child = Visualization.objects.filter(active=True,
                                 geography_id=i.id, sdf=True, age__lt=18,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf_child.append(sdf_child)
-                            sdf_adult = Visualization.objects.filter(
+                            sdf_adult = Visualization.objects.filter(active=True,
                                 geography_id=i.id, sdf=True, age__range=(18, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf_adult.append(sdf_adult)
-                            sdf_old = Visualization.objects.filter(
+                            sdf_old = Visualization.objects.filter(active=True,
                                 geography_id=i.id, sdf=True, age__gt=60,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf_old.append(sdf_old)
 
-                            seal = Visualization.objects.filter(
+                            seal = Visualization.objects.filter(active=True,
                                 geography_id=i.id, seal=True,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal.append(seal)
-                            seal_male = Visualization.objects.filter(
+                            seal_male = Visualization.objects.filter(active=True,
                                 geography_id=i.id, seal=True, gender="male",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal_male.append(seal_male)
-                            seal_female = Visualization.objects.filter(
+                            seal_female = Visualization.objects.filter(active=True,
                                 geography_id=i.id, seal=True, gender="female",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal_female.append(seal_female)
-                            seal_child = Visualization.objects.filter(
+                            seal_child = Visualization.objects.filter(active=True,
                                 geography_id=i.id, seal=True, age__lt=18,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal_child.append(seal_child)
-                            seal_adult = Visualization.objects.filter(
+                            seal_adult = Visualization.objects.filter(active=True,
                                 geography_id=i.id, seal=True, age__range=(18, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal_adult.append(seal_adult)
-                            seal_old = Visualization.objects.filter(
+                            seal_old = Visualization.objects.filter(active=True,
                                 geography_id=i.id, seal=True, age__gt=60,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal_old.append(seal_old)
 
-                            art = Visualization.objects.filter(
+                            art = Visualization.objects.filter(active=True,
                                 geography_id=i.id, art=True,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art.append(art)
-                            art_male = Visualization.objects.filter(
+                            art_male = Visualization.objects.filter(active=True,
                                 geography_id=i.id, art=True, gender="male",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art_male.append(art_male)
-                            art_female = Visualization.objects.filter(
+                            art_female = Visualization.objects.filter(active=True,
                                 geography_id=i.id, art=True, gender="female",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art_female.append(art_female)
-                            art_child = Visualization.objects.filter(
+                            art_child = Visualization.objects.filter(active=True,
                                 geography_id=i.id, art=True, age__lt=18,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art_child.append(art_child)
-                            art_adult = Visualization.objects.filter(
+                            art_adult = Visualization.objects.filter(active=True,
                                 geography_id=i.id, art=True, age__range=(18, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art_adult.append(art_adult)
-                            art_old = Visualization.objects.filter(
+                            art_old = Visualization.objects.filter(active=True,
                                 geography_id=i.id, art=True, age__gt=60,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art_old.append(art_old)
 
-                            exo = Visualization.objects.filter(
+                            exo = Visualization.objects.filter(active=True,
                                 geography_id=i.id, exo=True
                             ).count()
                             total_exo.append(exo)
-                            exo_male = Visualization.objects.filter(
+                            exo_male = Visualization.objects.filter(active=True,
                                 geography_id=i.id, exo=True, gender="male",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_exo_male.append(exo_male)
-                            exo_female = Visualization.objects.filter(
+                            exo_female = Visualization.objects.filter(active=True,
                                 geography_id=i.id, exo=True, gender="female",
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_exo_female.append(exo_female)
-                            exo_child = Visualization.objects.filter(
+                            exo_child = Visualization.objects.filter(active=True,
                                 geography_id=i.id, exo=True, age__lt=18,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_exo_child.append(exo_child)
-                            exo_adult = Visualization.objects.filter(
+                            exo_adult = Visualization.objects.filter(active=True,
                                 geography_id=i.id, exo=True, age__range=(18, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_exo_adult.append(exo_adult)
-                            exo_old = Visualization.objects.filter(
+                            exo_old = Visualization.objects.filter(active=True,
                                 geography_id=i.id, exo=True, age__gt=60,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_exo_old.append(exo_old)
 
-                            fv = Visualization.objects.filter(
+                            fv = Visualization.objects.filter(active=True,
                                 fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv.append(fv)
-                            fv_male = Visualization.objects.filter(
+                            fv_male = Visualization.objects.filter(active=True,
                                 gender="male", fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv_male.append(fv_male)
-                            fv_female = Visualization.objects.filter(
+                            fv_female = Visualization.objects.filter(active=True,
                                 gender="female", fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv_female.append(fv_female)
-                            fv_child = Visualization.objects.filter(
+                            fv_child = Visualization.objects.filter(active=True,
                                 age__lt=18, fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv_child.append(fv_child)
-                            fv_adult = Visualization.objects.filter(
+                            fv_adult = Visualization.objects.filter(active=True,
                                 age__range=(18, 60), fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv_adult.append(fv_adult)
-                            fv_old = Visualization.objects.filter(
+                            fv_old = Visualization.objects.filter(active=True,
                                 age__gt=60, fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv_old.append(fv_old)
 
-                            fm_sdf = Visualization.objects.filter(
+                            fm_sdf = Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf.append(fm_sdf)
-                            fm_sdf_male = Visualization.objects.filter(
+                            fm_sdf_male = Visualization.objects.filter(active=True,
                                 gender="male", sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf_male.append(fm_sdf_male)
-                            fm_sdf_female = Visualization.objects.filter(
+                            fm_sdf_female = Visualization.objects.filter(active=True,
                                 gender="female", sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf_female.append(fm_sdf_female)
-                            fm_sdf_child = Visualization.objects.filter(
+                            fm_sdf_child = Visualization.objects.filter(active=True,
                                 age__lt=18, sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf_child.append(fm_sdf_child)
-                            fm_sdf_adult = Visualization.objects.filter(
+                            fm_sdf_adult = Visualization.objects.filter(active=True,
                                 age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf_adult.append(fm_sdf_adult)
-                            fm_sdf_old = Visualization.objects.filter(
+                            fm_sdf_old = Visualization.objects.filter(active=True,
                                 age__gt=60, sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf_old.append(fm_sdf_old)
 
-                            ref_hp = Visualization.objects.filter(
+                            ref_hp = Visualization.objects.filter(active=True,
                                 refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_hp.append(ref_hp)
-                            ref_hp_male = Visualization.objects.filter(
+                            ref_hp_male = Visualization.objects.filter(active=True,
                                 gender="male", refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_hp_male.append(ref_hp_male)
-                            ref_hp_female = Visualization.objects.filter(
+                            ref_hp_female = Visualization.objects.filter(active=True,
                                 gender="female", refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_hp_female.append(ref_hp_female)
-                            ref_hp_child = Visualization.objects.filter(
+                            ref_hp_child = Visualization.objects.filter(active=True,
                                 age__lt=18, refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_hp_child.append(ref_hp_child)
-                            ref_hp_adult = Visualization.objects.filter(
+                            ref_hp_adult = Visualization.objects.filter(active=True,
                                 age__range=(18, 60), refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_hp_adult.append(ref_hp_adult)
-                            ref_hp_old = Visualization.objects.filter(
+                            ref_hp_old = Visualization.objects.filter(active=True,
                                 age__gt=60, refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
@@ -1591,37 +1591,37 @@ class WardTableVisualization2(APIView):
                             total_ref_hp_old.append(ref_hp_old)
 
 
-                            ref_other = Visualization.objects.filter(
+                            ref_other = Visualization.objects.filter(active=True,
                                 refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_other.append(ref_other)
-                            ref_other_male = Visualization.objects.filter(
+                            ref_other_male = Visualization.objects.filter(active=True,
                                 gender="male", refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_other_male.append(ref_other_male)
-                            ref_other_female = Visualization.objects.filter(
+                            ref_other_female = Visualization.objects.filter(active=True,
                                 gender="female", refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_other_female.append(ref_other_female)
-                            ref_other_child = Visualization.objects.filter(
+                            ref_other_child = Visualization.objects.filter(active=True,
                                 age__lt=18, refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_other_child.append(ref_other_child)
-                            ref_other_adult = Visualization.objects.filter(
+                            ref_other_adult = Visualization.objects.filter(active=True,
                                 age__range=(18, 60), refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_other_adult.append(ref_other_adult)
-                            ref_other_old = Visualization.objects.filter(
+                            ref_other_old = Visualization.objects.filter(active=True,
                                 age__gt=60, refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
@@ -2411,7 +2411,7 @@ class WardSettingVisualization(APIView):
                 count_list = []
                 for i in customuser_obj.location.all():
                     count_list.append(
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             activities_id=activities.id, geography_id=i.id
                         ).count()
                     )
@@ -2482,7 +2482,7 @@ class WardSettingVisualization(APIView):
                         count_list = []
                         for i in customuser_obj.location.all():
                             count_list.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     activities_id=activities.id,
                                     geography_id=i.id,
                                     created_at__range=[start_date, end_date],
@@ -2564,7 +2564,7 @@ class WardSettingVisualizationFilter(APIView):
                         count_list = []
                         for i in customuser_obj.location.all():
                             count_list.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     activities_id=activities.id,
                                     geography_id=i.id,
                                     created_at__range=[start_date, end_date],
@@ -2638,53 +2638,53 @@ class WardTreatmentVisualization(APIView):
             male = []
             female = []
             for i in customuser_obj.location.all():
-                total_sdf = Visualization.objects.filter(
+                total_sdf = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True
                 ).count()
-                total_sdf_male = Visualization.objects.filter(
+                total_sdf_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, gender="male"
                 ).count()
-                total_sdf_female = Visualization.objects.filter(
+                total_sdf_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, sdf=True, gender="female"
                 ).count()
 
-                total_seal = Visualization.objects.filter(
+                total_seal = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True
                 ).count()
-                total_seal_male = Visualization.objects.filter(
+                total_seal_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, gender="male"
                 ).count()
-                total_seal_female = Visualization.objects.filter(
+                total_seal_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, seal=True, gender="female"
                 ).count()
 
-                total_art = Visualization.objects.filter(
+                total_art = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True
                 ).count()
-                total_art_male = Visualization.objects.filter(
+                total_art_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, gender="male"
                 ).count()
-                total_art_female = Visualization.objects.filter(
+                total_art_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, art=True, gender="female"
                 ).count()
 
-                total_exo = Visualization.objects.filter(
+                total_exo = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True
                 ).count()
-                total_exo_male = Visualization.objects.filter(
+                total_exo_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, gender="male"
                 ).count()
-                total_exo_female = Visualization.objects.filter(
+                total_exo_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, exo=True, gender="female"
                 ).count()
 
-                total_fv = Visualization.objects.filter(
+                total_fv = Visualization.objects.filter(active=True,
                     geography_id=i.id, fv=True
                 ).count()
-                totalfv_male = Visualization.objects.filter(
+                totalfv_male = Visualization.objects.filter(active=True,
                     geography_id=i.id, fv=True, gender="male"
                 ).count()
-                totalfv_female = Visualization.objects.filter(
+                totalfv_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, fv=True, gender="female"
                 ).count()
                 male.append(total_exo_male)
@@ -2794,7 +2794,7 @@ class WardTreatmentVisualization(APIView):
 
                         for i in customuser_obj.location.all():
                             total_sdf.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     sdf=True,
                                     activities_id=activities.id,
@@ -2802,7 +2802,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_sdf_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     sdf=True,
                                     gender="male",
@@ -2811,7 +2811,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_sdf_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     sdf=True,
                                     gender="female",
@@ -2821,7 +2821,7 @@ class WardTreatmentVisualization(APIView):
                             )
 
                             total_seal.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     seal=True,
                                     activities_id=activities.id,
@@ -2829,7 +2829,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_seal_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     seal=True,
                                     gender="male",
@@ -2838,7 +2838,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_seal_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     seal=True,
                                     gender="female",
@@ -2848,7 +2848,7 @@ class WardTreatmentVisualization(APIView):
                             )
 
                             total_art.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     art=True,
                                     activities_id=activities.id,
@@ -2856,7 +2856,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_art_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     art=True,
                                     gender="male",
@@ -2865,7 +2865,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_art_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     art=True,
                                     gender="female",
@@ -2875,7 +2875,7 @@ class WardTreatmentVisualization(APIView):
                             )
 
                             total_exo.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     exo=True,
                                     activities_id=activities.id,
@@ -2883,7 +2883,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_exo_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     exo=True,
                                     gender="male",
@@ -2892,7 +2892,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             total_exo_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     exo=True,
                                     gender="female",
@@ -2902,7 +2902,7 @@ class WardTreatmentVisualization(APIView):
                             )
 
                             total_fv.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     fv=True,
                                     activities_id=activities.id,
@@ -2910,7 +2910,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             totalfv_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     fv=True,
                                     gender="male",
@@ -2919,7 +2919,7 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
                             totalfv_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     fv=True,
                                     gender="female",
@@ -3044,7 +3044,7 @@ class WardTreatmentVisualizationFilter(APIView):
 
                         for i in customuser_obj.location.all():
                             total_sdf.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     sdf=True,
                                     activities_id=activities.id,
@@ -3052,7 +3052,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_sdf_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     sdf=True,
                                     gender="male",
@@ -3061,7 +3061,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_sdf_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     sdf=True,
                                     gender="female",
@@ -3071,7 +3071,7 @@ class WardTreatmentVisualizationFilter(APIView):
                             )
 
                             total_seal.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     seal=True,
                                     activities_id=activities.id,
@@ -3079,7 +3079,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_seal_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     seal=True,
                                     gender="male",
@@ -3088,7 +3088,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_seal_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     seal=True,
                                     gender="female",
@@ -3098,7 +3098,7 @@ class WardTreatmentVisualizationFilter(APIView):
                             )
 
                             total_art.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     art=True,
                                     activities_id=activities.id,
@@ -3106,7 +3106,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_art_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     art=True,
                                     gender="male",
@@ -3115,7 +3115,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_art_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     art=True,
                                     gender="female",
@@ -3125,7 +3125,7 @@ class WardTreatmentVisualizationFilter(APIView):
                             )
 
                             total_exo.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     exo=True,
                                     activities_id=activities.id,
@@ -3133,7 +3133,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_exo_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     exo=True,
                                     gender="male",
@@ -3142,7 +3142,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             total_exo_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     exo=True,
                                     gender="female",
@@ -3152,7 +3152,7 @@ class WardTreatmentVisualizationFilter(APIView):
                             )
 
                             total_fv.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     fv=True,
                                     activities_id=activities.id,
@@ -3160,7 +3160,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             totalfv_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     fv=True,
                                     gender="male",
@@ -3169,7 +3169,7 @@ class WardTreatmentVisualizationFilter(APIView):
                                 ).count()
                             )
                             totalfv_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     fv=True,
                                     gender="female",
@@ -3286,7 +3286,7 @@ class WardUserlineVisualization(APIView):
             for i in customuser_obj.location.all():
                 v = []
                 for x in month:
-                    if Visualization.objects.filter(geography_id=i.id).exists():
+                    if Visualization.objects.filter(active=True,geography_id=i.id).exists():
                         total_patient = Visualization.objects.filter(
                             geography_id=i.id, created_at__month=x
                         ).count()
@@ -3375,124 +3375,124 @@ class WardStrategicData(APIView):
         ):
             customuser_obj = CustomUser.objects.get(id=request.user.id)
             for i in customuser_obj.location.all():
-                total_encounter = Visualization.objects.filter(
+                total_encounter = Visualization.objects.filter(active=True,
                     geography_id=i.id
                 ).count()
-                encounter_male = Visualization.objects.filter(
+                encounter_male = Visualization.objects.filter(active=True,
                     gender="male", geography_id=i.id
                 ).count()
-                encounter_female = Visualization.objects.filter(
+                encounter_female = Visualization.objects.filter(active=True,
                     gender="female", geography_id=i.id
                 ).count()
-                encounter_child = Visualization.objects.filter(
+                encounter_child = Visualization.objects.filter(active=True,
                     age__lt=18, geography_id=i.id
                 ).count()
-                encounter_adult = Visualization.objects.filter(
+                encounter_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), geography_id=i.id
                 ).count()
-                encounter_old = Visualization.objects.filter(
+                encounter_old = Visualization.objects.filter(active=True,
                     age__gt=60, geography_id=i.id
                 ).count()
 
-                total_refer = Visualization.objects.filter(
+                total_refer = Visualization.objects.filter(active=True,
                     refer_hp=True, geography_id=i.id
                 ).count()
-                refer_male = Visualization.objects.filter(
+                refer_male = Visualization.objects.filter(active=True,
                     gender="male", refer_hp=True, geography_id=i.id
                 ).count()
-                refer_female = Visualization.objects.filter(
+                refer_female = Visualization.objects.filter(active=True,
                     gender="female", refer_hp=True, geography_id=i.id
                 ).count()
-                refer_child = Visualization.objects.filter(
+                refer_child = Visualization.objects.filter(active=True,
                     age__lt=18, refer_hp=True, geography_id=i.id
                 ).count()
-                refer_adult = Visualization.objects.filter(
+                refer_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), refer_hp=True, geography_id=i.id
                 ).count()
-                refer_old = Visualization.objects.filter(
+                refer_old = Visualization.objects.filter(active=True,
                     age__gt=60, refer_hp=True, geography_id=i.id
                 ).count()
 
-                total_refer = Visualization.objects.filter(
+                total_refer = Visualization.objects.filter(active=True,
                     refer_hp=True, geography_id=i.id
                 ).count()
-                total_seal_male = Visualization.objects.filter(
+                total_seal_male = Visualization.objects.filter(active=True,
                     gender="male", seal=True, geography_id=i.id
                 ).count()
-                total_seal_female = Visualization.objects.filter(
+                total_seal_female = Visualization.objects.filter(active=True,
                     gender="female", seal=True, geography_id=i.id
                 ).count()
-                total_seal_child = Visualization.objects.filter(
+                total_seal_child = Visualization.objects.filter(active=True,
                     age__lt=18, seal=True, geography_id=i.id
                 ).count()
-                total_seal_adult = Visualization.objects.filter(
+                total_seal_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), seal=True, geography_id=i.id
                 ).count()
-                total_seal_old = Visualization.objects.filter(
+                total_seal_old = Visualization.objects.filter(active=True,
                     age__gt=60, seal=True, geography_id=i.id
                 ).count()
 
-                totalfv_male = Visualization.objects.filter(
+                totalfv_male = Visualization.objects.filter(active=True,
                     gender="male", fv=True, geography_id=i.id
                 ).count()
-                totalfv_female = Visualization.objects.filter(
+                totalfv_female = Visualization.objects.filter(active=True,
                     gender="female", fv=True, geography_id=i.id
                 ).count()
-                totalfv_child = Visualization.objects.filter(
+                totalfv_child = Visualization.objects.filter(active=True,
                     age__lt=18, fv=True, geography_id=i.id
                 ).count()
-                totalfv_adult = Visualization.objects.filter(
+                totalfv_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), fv=True, geography_id=i.id
                 ).count()
-                totalfv_old = Visualization.objects.filter(
+                totalfv_old = Visualization.objects.filter(active=True,
                     age__gt=60, fv=True, geography_id=i.id
                 ).count()
 
-                total_exo_male = Visualization.objects.filter(
+                total_exo_male = Visualization.objects.filter(active=True,
                     gender="male", exo=True, geography_id=i.id
                 ).count()
-                total_exo_female = Visualization.objects.filter(
+                total_exo_female = Visualization.objects.filter(active=True,
                     gender="female", exo=True, geography_id=i.id
                 ).count()
-                total_exo_child = Visualization.objects.filter(
+                total_exo_child = Visualization.objects.filter(active=True,
                     age__lt=18, exo=True, geography_id=i.id
                 ).count()
-                total_exo_adult = Visualization.objects.filter(
+                total_exo_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), exo=True, geography_id=i.id
                 ).count()
-                total_exo_old = Visualization.objects.filter(
+                total_exo_old = Visualization.objects.filter(active=True,
                     age__gt=60, exo=True, geography_id=i.id
                 ).count()
 
-                total_art_male = Visualization.objects.filter(
+                total_art_male = Visualization.objects.filter(active=True,
                     gender="male", art=True, geography_id=i.id
                 ).count()
-                total_art_female = Visualization.objects.filter(
+                total_art_female = Visualization.objects.filter(active=True,
                     gender="female", art=True, geography_id=i.id
                 ).count()
-                total_art_child = Visualization.objects.filter(
+                total_art_child = Visualization.objects.filter(active=True,
                     age__lt=18, art=True, geography_id=i.id
                 ).count()
-                total_art_adult = Visualization.objects.filter(
+                total_art_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), art=True, geography_id=i.id
                 ).count()
-                total_art_old = Visualization.objects.filter(
+                total_art_old = Visualization.objects.filter(active=True,
                     age__gt=60, art=True, geography_id=i.id
                 ).count()
 
-                total_sdf_male = Visualization.objects.filter(
+                total_sdf_male = Visualization.objects.filter(active=True,
                     gender="male", sdf=True, geography_id=i.id
                 ).count()
-                total_sdf_female = Visualization.objects.filter(
+                total_sdf_female = Visualization.objects.filter(active=True,
                     gender="female", sdf=True, geography_id=i.id
                 ).count()
-                total_sdf_child = Visualization.objects.filter(
+                total_sdf_child = Visualization.objects.filter(active=True,
                     age__lt=18, sdf=True, geography_id=i.id
                 ).count()
-                total_sdf_adult = Visualization.objects.filter(
+                total_sdf_adult = Visualization.objects.filter(active=True,
                     age__range=(18, 60), sdf=True, geography_id=i.id
                 ).count()
-                total_sdf_old = Visualization.objects.filter(
+                total_sdf_old = Visualization.objects.filter(active=True,
                     age__gt=60, sdf=True, geography_id=i.id
                 ).count()
 
@@ -3696,14 +3696,14 @@ class WardStrategicData(APIView):
                     for i in customuser_obj.location.all():
                         for activities in activities_list:
                             total_encounter.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
                                     created_at__range=[start_date, end_date],
                                 ).count()
                             )
                             encounter_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3711,7 +3711,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             encounter_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3719,7 +3719,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             encounter_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3727,7 +3727,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             encounter_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3735,7 +3735,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             encounter_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3744,7 +3744,7 @@ class WardStrategicData(APIView):
                             )
 
                             total_refer.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     refer_hp=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3752,7 +3752,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             refer_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     refer_hp=True,
                                     geography_id=i.id,
@@ -3761,7 +3761,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             refer_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     refer_hp=True,
                                     geography_id=i.id,
@@ -3770,7 +3770,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             refer_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     refer_hp=True,
                                     geography_id=i.id,
@@ -3779,7 +3779,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             refer_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     refer_hp=True,
                                     geography_id=i.id,
@@ -3788,7 +3788,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             refer_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     refer_hp=True,
                                     geography_id=i.id,
@@ -3798,7 +3798,7 @@ class WardStrategicData(APIView):
                             )
 
                             total_seal.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     seal=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3806,7 +3806,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_seal_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     seal=True,
                                     geography_id=i.id,
@@ -3815,7 +3815,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_seal_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     seal=True,
                                     geography_id=i.id,
@@ -3824,7 +3824,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_seal_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     seal=True,
                                     geography_id=i.id,
@@ -3833,7 +3833,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_seal_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     seal=True,
                                     geography_id=i.id,
@@ -3842,7 +3842,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_seal_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     seal=True,
                                     geography_id=i.id,
@@ -3852,7 +3852,7 @@ class WardStrategicData(APIView):
                             )
 
                             totalfv_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     fv=True,
                                     geography_id=i.id,
@@ -3861,7 +3861,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             totalfv_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     fv=True,
                                     geography_id=i.id,
@@ -3870,7 +3870,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             totalfv_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     fv=True,
                                     geography_id=i.id,
@@ -3879,7 +3879,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             totalfv_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     fv=True,
                                     geography_id=i.id,
@@ -3888,7 +3888,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             totalfv_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     fv=True,
                                     geography_id=i.id,
@@ -3898,7 +3898,7 @@ class WardStrategicData(APIView):
                             )
 
                             total_exo_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     exo=True,
                                     geography_id=i.id,
@@ -3907,7 +3907,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_exo_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     exo=True,
                                     geography_id=i.id,
@@ -3916,7 +3916,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_exo_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     exo=True,
                                     geography_id=i.id,
@@ -3925,7 +3925,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_exo_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     exo=True,
                                     geography_id=i.id,
@@ -3934,7 +3934,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_exo_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     exo=True,
                                     geography_id=i.id,
@@ -3944,7 +3944,7 @@ class WardStrategicData(APIView):
                             )
 
                             total_art_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     art=True,
                                     geography_id=i.id,
@@ -3953,7 +3953,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_art_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     art=True,
                                     geography_id=i.id,
@@ -3962,7 +3962,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_art_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     art=True,
                                     geography_id=i.id,
@@ -3971,7 +3971,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_art_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     art=True,
                                     geography_id=i.id,
@@ -3980,7 +3980,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_art_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     art=True,
                                     geography_id=i.id,
@@ -3990,7 +3990,7 @@ class WardStrategicData(APIView):
                             )
 
                             total_sdf_male.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="male",
                                     sdf=True,
                                     geography_id=i.id,
@@ -3999,7 +3999,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_sdf_female.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     gender="female",
                                     sdf=True,
                                     geography_id=i.id,
@@ -4008,7 +4008,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_sdf_child.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__lt=18,
                                     sdf=True,
                                     geography_id=i.id,
@@ -4017,7 +4017,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_sdf_adult.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__range=(18, 60),
                                     sdf=True,
                                     geography_id=i.id,
@@ -4026,7 +4026,7 @@ class WardStrategicData(APIView):
                                 ).count()
                             )
                             total_sdf_old.append(
-                                Visualization.objects.filter(
+                                Visualization.objects.filter(active=True,
                                     age__gt=60,
                                     sdf=True,
                                     geography_id=i.id,
