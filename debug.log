@@ -3752,6 +3752,7 @@ NameError: name 'mod_obj' is not defined
 2021-04-06 13:58:12,770 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
 2021-04-06 13:58:15,173 django.request WARNING  Bad Request: /api/v1/modifydeleteseen
 2021-04-06 13:58:15,174 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
+<<<<<<< HEAD
 2021-04-06 14:01:56,960 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/modifydeleteseen HTTP/1.1" 200 2726
 2021-04-06 14:02:06,503 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2964
 2021-04-06 14:02:34,608 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
@@ -4405,3 +4406,239 @@ NameError: name 'mod_obj' is not defined
 2021-04-20 17:16:30,546 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-04-20 17:16:33,936 django.server INFO     "GET /maintainer/visualizationapp/visualization/C92AA50215304DEAAC16FFBB53B37022/change/ HTTP/1.1" 200 22419
 2021-04-20 17:16:33,985 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+=======
+2021-04-09 13:57:07,948 django.server INFO     "GET / HTTP/1.1" 200 1257
+2021-04-09 13:57:08,254 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
+2021-04-09 13:57:08,264 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
+2021-04-09 13:57:08,265 django.server WARNING  "GET /js/chunk-vendors.437d418e.js HTTP/1.1" 404 3432
+2021-04-09 13:57:08,274 django.request WARNING  Not Found: /css/app.4f2e1db3.css
+2021-04-09 13:57:08,279 django.server WARNING  "GET /css/chunk-vendors.772fabf9.css HTTP/1.1" 404 3438
+2021-04-09 13:57:08,284 django.request WARNING  Not Found: /js/app.94e5e4ed.js
+2021-04-09 13:57:08,286 django.server WARNING  "GET /css/app.4f2e1db3.css HTTP/1.1" 404 3408
+2021-04-09 13:57:08,290 django.server WARNING  "GET /js/app.94e5e4ed.js HTTP/1.1" 404 3402
+2021-04-09 13:57:08,645 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
+2021-04-09 13:57:08,653 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
+2021-04-09 13:57:08,653 django.server WARNING  "GET /css/chunk-vendors.772fabf9.css HTTP/1.1" 404 3438
+2021-04-09 13:57:08,654 django.server WARNING  "GET /js/chunk-vendors.437d418e.js HTTP/1.1" 404 3432
+2021-04-09 13:57:08,659 django.request WARNING  Not Found: /css/app.4f2e1db3.css
+2021-04-09 13:57:08,662 django.server WARNING  "GET /css/app.4f2e1db3.css HTTP/1.1" 404 3408
+2021-04-09 13:57:08,676 django.request WARNING  Not Found: /js/app.94e5e4ed.js
+2021-04-09 13:57:08,677 django.server WARNING  "GET /js/app.94e5e4ed.js HTTP/1.1" 404 3402
+2021-04-09 13:57:08,712 django.request WARNING  Not Found: /favicon.ico
+2021-04-09 13:57:08,713 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3381
+2021-04-09 13:57:23,413 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-04-09 13:57:23,514 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-04-09 13:57:23,601 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2021-04-09 13:57:23,729 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-04-09 13:57:23,729 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-04-09 13:57:23,730 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-04-09 13:57:23,746 django.request WARNING  Not Found: /favicon.ico
+2021-04-09 13:57:23,746 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-04-09 13:57:23,753 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-04-09 13:57:23,788 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-04-09 13:57:23,794 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-04-09 13:57:45,468 django.request WARNING  Unauthorized: /api/v1/patients
+2021-04-09 13:57:45,469 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9837
+2021-04-09 13:57:45,686 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-04-09 13:57:45,703 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-04-09 13:57:45,706 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-04-09 13:57:45,711 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-04-09 13:57:45,717 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-04-09 13:57:45,718 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-04-09 13:57:45,719 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-04-09 13:57:45,722 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-04-09 13:57:45,734 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-04-09 13:57:45,735 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-04-09 13:57:45,783 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-04-09 13:57:48,236 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-04-09 13:57:52,105 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-04-09 13:58:15,062 django.server INFO     "GET /seed HTTP/1.1" 200 8
+2021-04-09 14:00:25,426 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2021-04-09 14:00:25,510 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-04-09 14:00:25,517 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-04-09 14:00:25,518 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-04-09 14:00:25,543 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2021-04-09 14:00:25,557 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+2021-04-09 14:00:25,557 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+2021-04-09 14:00:29,986 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 2012
+2021-04-09 14:00:30,137 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-04-09 14:00:38,565 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-04-09 14:00:38,661 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-04-09 14:00:38,667 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-04-09 14:00:38,669 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2021-04-09 14:00:38,672 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-04-09 14:00:38,704 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-04-09 14:00:41,388 django.server INFO     "GET /api/v1/authlogin/ HTTP/1.1" 200 2702
+2021-04-09 14:00:48,172 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2940
+2021-04-09 14:01:07,293 django.server INFO     "GET /seed HTTP/1.1" 200 17
+2021-04-09 14:01:20,133 django.request WARNING  Not Found: /api/va1/patients
+2021-04-09 14:01:20,134 django.server WARNING  "GET /api/va1/patients HTTP/1.1" 404 3398
+2021-04-09 14:01:37,054 django.request WARNING  Unauthorized: /api/v1/patients
+2021-04-09 14:01:37,054 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9837
+2021-04-09 14:01:37,157 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2021-04-09 14:01:37,160 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2021-04-09 14:01:37,161 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2021-04-09 14:01:37,162 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-04-09 14:01:37,165 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-04-09 14:01:37,166 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-04-09 14:01:37,172 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2021-04-09 14:01:37,181 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2021-04-09 14:01:37,182 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2021-04-09 14:01:37,186 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2021-04-09 14:01:37,200 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2021-04-09 14:01:40,906 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-04-09 14:01:47,846 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2956
+2021-04-09 14:02:28,617 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-04-09 14:02:30,458 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109474
+2021-04-09 14:03:21,229 django.security.csrf WARNING  Forbidden (CSRF token missing or incorrect.): /api/v1/authlogin/
+2021-04-09 14:03:21,230 django.server WARNING  "POST /api/v1/authlogin/ HTTP/1.1" 403 2513
+2021-04-09 14:04:17,799 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10237
+2021-04-09 14:04:17,905 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2021-04-09 14:04:17,907 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2021-04-09 14:04:17,911 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-04-09 14:04:17,922 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2021-04-09 14:04:17,940 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-04-09 14:04:17,940 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-04-09 14:04:17,969 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+2021-04-09 14:04:17,973 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+2021-04-09 14:04:17,980 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+2021-04-09 14:22:19,472 django.server INFO     "GET /maintainer/ HTTP/1.1" 302 0
+2021-04-09 14:22:19,536 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.1" 200 1851
+2021-04-09 14:22:19,640 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-04-09 14:22:19,646 django.server INFO     "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2021-04-09 14:22:19,649 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2021-04-09 14:22:19,671 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-04-09 14:22:29,989 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.1" 302 0
+2021-04-09 14:22:30,038 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:22:30,152 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+2021-04-09 14:22:30,191 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+2021-04-09 14:22:30,192 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+2021-04-09 14:22:33,291 django.server INFO     "GET /maintainer/addressapp/district/ HTTP/1.1" 200 31427
+2021-04-09 14:22:33,435 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-04-09 14:22:33,437 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-04-09 14:22:33,441 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-04-09 14:22:33,442 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-04-09 14:22:33,448 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-04-09 14:22:33,454 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-04-09 14:22:33,457 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-04-09 14:22:33,457 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:22:33,467 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-04-09 14:22:33,473 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-04-09 14:22:33,477 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-04-09 14:22:33,485 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2021-04-09 14:22:33,549 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-04-09 14:22:42,240 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:22:44,703 django.server INFO     "GET /maintainer/addressapp/ward/ HTTP/1.1" 200 49035
+2021-04-09 14:22:44,828 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:22:50,896 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:32:33,710 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109469
+2021-04-09 14:32:33,829 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2021-04-09 14:32:33,846 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-04-09 14:32:33,853 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-04-09 14:32:33,855 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2021-04-09 14:32:33,856 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2021-04-09 14:32:33,857 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-04-09 14:32:33,858 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2021-04-09 14:32:33,868 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2021-04-09 14:32:33,873 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2021-04-09 14:32:33,876 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2021-04-09 14:32:33,901 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2021-04-09 14:38:43,694 patientapp.api.patient INFO     {'first_name': [ErrorDetail(string='This field may not be blank.', code='blank')], 'last_name': [ErrorDetail(string='This field may not be blank.', code='blank')], 'dob': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].', code='invalid')], 'phone': [ErrorDetail(string='This field may not be blank.', code='blank')], 'education': [ErrorDetail(string='This field may not be blank.', code='blank')], 'created_at': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]].', code='invalid')]}
+2021-04-09 14:38:45,498 django.request WARNING  Bad Request: /api/v1/patients
+2021-04-09 14:38:45,500 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 400 110174
+2021-04-09 14:38:45,594 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2021-04-09 14:38:45,596 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2021-04-09 14:38:45,598 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2021-04-09 14:38:45,602 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2021-04-09 14:38:45,603 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2021-04-09 14:38:45,603 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2021-04-09 14:38:45,621 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-04-09 14:38:45,622 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-04-09 14:38:45,622 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-04-09 14:38:45,624 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2021-04-09 14:38:45,654 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2021-04-09 14:39:23,640 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 5373
+2021-04-09 14:39:23,771 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,781 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:39:23,784 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,784 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,789 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,790 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,790 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,803 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 304 0
+2021-04-09 14:39:23,812 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,813 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+2021-04-09 14:39:23,814 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2021-04-09 14:39:23,818 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,819 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2021-04-09 14:39:23,823 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-04-09 14:39:23,832 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+2021-04-09 14:39:23,887 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+2021-04-09 14:39:25,515 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:39:29,498 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 5189
+2021-04-09 14:39:29,620 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:39:31,264 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:39:33,347 django.server INFO     "GET /maintainer/userapp/customuser/ HTTP/1.1" 200 3575
+2021-04-09 14:39:33,428 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:39:35,226 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:39:37,517 django.server INFO     "GET /maintainer/userapp/role/ HTTP/1.1" 200 4995
+2021-04-09 14:39:37,627 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:39:42,148 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:39:46,258 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4705
+2021-04-09 14:39:46,366 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:39:48,883 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 14:40:12,199 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2021-04-09 14:40:16,856 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2021-04-09 14:40:39,307 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109469
+2021-04-09 14:40:57,277 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 738
+2021-04-09 14:56:25,454 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.1" 200 10391
+2021-04-09 14:56:25,599 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2021-04-09 14:56:25,604 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-04-09 14:56:25,605 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-04-09 14:56:25,609 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-04-09 14:56:25,610 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-04-09 14:56:25,610 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2021-04-09 14:56:25,615 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2021-04-09 14:56:25,630 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2021-04-09 14:56:25,631 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2021-04-09 14:56:25,630 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2021-04-09 14:56:25,650 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-04-09 14:56:25,714 django.request WARNING  Not Found: /favicon.ico
+2021-04-09 14:56:43,978 django.server INFO     "GET /api/v1/treatmentnargraph HTTP/1.1" 200 624
+2021-04-09 14:56:54,257 django.request WARNING  Method Not Allowed: /api/v1/treatmentnargraphfilter
+2021-04-09 14:56:54,258 django.server WARNING  "GET /api/v1/treatmentnargraphfilter HTTP/1.1" 405 13077
+2021-04-09 14:58:12,055 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4705
+2021-04-09 14:58:12,197 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,209 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,209 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-04-09 14:58:12,211 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-04-09 14:58:12,213 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-04-09 14:58:12,220 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,221 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-04-09 14:58:12,240 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,247 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+2021-04-09 14:58:12,253 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,255 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,258 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,259 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+2021-04-09 14:58:12,261 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-04-09 14:58:12,270 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-04-09 14:58:12,317 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-04-09 14:58:15,189 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 10232
+2021-04-09 15:00:41,101 django.server INFO     "GET /api/v1/treatmentnargraph HTTP/1.1" 200 624
+2021-04-09 15:00:46,436 django.server INFO     "GET /api/v1/treatmentnargraph HTTP/1.1" 200 624
+2021-04-09 15:02:46,420 django.server INFO     "GET /api/v1/treatmentnargraph HTTP/1.1" 200 12227
+2021-04-09 15:39:17,273 django.server INFO     "GET /api/v1/treatmentnargraph HTTP/1.1" 200 12227
+2021-04-09 15:39:17,368 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-04-09 15:39:17,372 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2021-04-09 15:39:17,375 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2021-04-09 15:39:17,377 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2021-04-09 15:39:17,379 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-04-09 15:39:17,382 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-04-09 15:39:17,392 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2021-04-09 15:39:17,397 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2021-04-09 15:39:17,399 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2021-04-09 15:39:17,403 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2021-04-09 15:39:17,429 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2021-04-09 15:39:49,283 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.1" 200 12573
+>>>>>>> 413e67a9e5de6dabe21f46ae02563a559b76a2f0

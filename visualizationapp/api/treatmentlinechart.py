@@ -64,11 +64,11 @@ class TreatmentPreventionRatioVisualization(APIView):
                 v=[]
                 for x in month:
                     if Visualization.objects.filter(geography_id=i.id).exists():
-                        total_seal = Visualization.objects.filter(geography_id=i.id,created_at__month=x,seal=True).count()
-                        total_fv = Visualization.objects.filter(geography_id=i.id,created_at__month=x,fv=True).count()
-                        total_exo = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_art = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_sdf = Visualization.objects.filter(geography_id=i.id,created_at__month=x,sdf=True).count()
+                        total_seal = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,seal=True).count()
+                        total_fv = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,fv=True).count()
+                        total_exo = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_art = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_sdf = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,sdf=True).count()
                         try:
                             preventive_ratio = (total_seal+total_fv)/(total_exo+total_art+total_sdf)
                         except:
@@ -164,11 +164,11 @@ class TreatmentPreventionRatioVisualizationOriginal(APIView):
                 v=[]
                 for x in month:
                     if Visualization.objects.filter(geography_id=i.id).exists():
-                        total_seal = Visualization.objects.filter(geography_id=i.id,created_at__month=x,seal=True).count()
-                        total_fv = Visualization.objects.filter(geography_id=i.id,created_at__month=x,fv=True).count()
-                        total_exo = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_art = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_sdf = Visualization.objects.filter(geography_id=i.id,created_at__month=x,sdf=True).count()
+                        total_seal = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,seal=True).count()
+                        total_fv = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,fv=True).count()
+                        total_exo = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_art = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_sdf = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,sdf=True).count()
                         try:
                             preventive_ratio = (total_seal+total_fv)/(total_exo+total_art+total_sdf)
                         except:
@@ -291,9 +291,9 @@ class TreatmentEarlyIntervention(APIView):
                 v=[]
                 for x in month:
                     if Visualization.objects.filter(geography_id=i.id).exists():
-                        total_exo = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_art = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_sdf = Visualization.objects.filter(geography_id=i.id,created_at__month=x,sdf=True).count()
+                        total_exo = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_art = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_sdf = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,sdf=True).count()
                         try:
                             early_intervention_ratio = (total_art+total_sdf)/(total_exo)
                         except:
@@ -389,9 +389,9 @@ class TreatmentEarlyInterventionOriginal(APIView):
                 v=[]
                 for x in month:
                     if Visualization.objects.filter(geography_id=i.id).exists():
-                        total_exo = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_art = Visualization.objects.filter(geography_id=i.id,created_at__month=x,exo=True).count()
-                        total_sdf = Visualization.objects.filter(geography_id=i.id,created_at__month=x,sdf=True).count()
+                        total_exo = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_art = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,exo=True).count()
+                        total_sdf = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,sdf=True).count()
                         try:
                             early_intervention_ratio = (total_art+total_sdf)/(total_exo)
                         except:
@@ -515,8 +515,8 @@ class TreatmentRecallDistribution(APIView):
                 v=[]
                 for x in month:
                     if Visualization.objects.filter(geography_id=i.id).exists():
-                        total_encounter = Visualization.objects.filter(geography_id=i.id,created_at__month=x).count()
-                        total_recall = Visualization.objects.filter(geography_id=i.id,created_at__month=x,refer_hp=True).count()
+                        total_encounter = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x).count()
+                        total_recall = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,refer_hp=True).count()
                         try:
                             recall = total_recall/total_encounter
                         except:
@@ -613,8 +613,8 @@ class TreatmentRecallDistributionOriginal(APIView):
                 v=[]
                 for x in month:
                     if Visualization.objects.filter(geography_id=i.id).exists():
-                        total_encounter = Visualization.objects.filter(geography_id=i.id,created_at__month=x).count()
-                        total_recall = Visualization.objects.filter(geography_id=i.id,created_at__month=x,refer_hp=True).count()
+                        total_encounter = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x).count()
+                        total_recall = Visualization.objects.filter(active=True,geography_id=i.id,created_at__month=x,refer_hp=True).count()
                         try:
                             recall = total_recall/total_encounter
                         except:

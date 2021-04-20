@@ -69,7 +69,7 @@ class LoginVisualization(APIView):
             'padding': 20,
             'fontFamily': "'Maven Pro', sans-serif"}
             }}}
-            return JsonResponse({"locationChart":locationChart})
+            return Response({"locationChart":locationChart})
 
 
 class LoginVisualization1(APIView):
