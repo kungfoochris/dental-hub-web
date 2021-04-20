@@ -49,91 +49,87 @@ class OverviewVisualization1(APIView):
             kid_exo = Visualization.objects.filter(
                 age__lt=12,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # kid_exo = Visualization.objects.filter(
-            #     age__lt=12,
-            #     created_at__range=[last_30_days_obj, today_date_obj],
-            # ).aggregate(Sum('exo'))['exo__sum']
-            # if kid_exo is None:
-            #     kid_exo=0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if kid_exo is None:
+                kid_exo=0
             kid_exo_male = Visualization.objects.filter(
                 age__lt=12,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_exo_male is None:
-            #     kid_exo_male = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if kid_exo_male is None:
+                kid_exo_male = 0
             kid_exo_female = Visualization.objects.filter(
                 age__lt=12,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_exo_female is None:
-            #     kid_exo_female = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if kid_exo_female is None:
+                kid_exo_female = 0
 
             kid_art = Visualization.objects.filter(
                 age__lt=12,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_art is None:
-            #     kid_art=0
+            ).aggregate(Sum('art'))['art__sum']
+            if kid_art is None:
+                kid_art=0
             kid_art_male = Visualization.objects.filter(
                 age__lt=12,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_art_male is None:
-            #     kid_art_male = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if kid_art_male is None:
+                kid_art_male = 0
             kid_art_female = Visualization.objects.filter(
                 age__lt=12,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_art_female is None:
-            #     kid_art_female = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if kid_art_female is None:
+                kid_art_female = 0
 
             kid_seal = Visualization.objects.filter(
                 age__lt=12,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_seal is None:
-            #     kid_seal = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if kid_seal is None:
+                kid_seal = 0
             kid_seal_male = Visualization.objects.filter(
                 age__lt=12,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_seal_male is None:
-            #     kid_seal_male = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if kid_seal_male is None:
+                kid_seal_male = 0
             kid_seal_female = Visualization.objects.filter(
                 age__lt=12,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
+            ).aggregate(Sum('seal'))['seal__sum']
             if kid_seal_female is None:
                 kid_seal_female = 0
 
             kid_sdf = Visualization.objects.filter(
                 age__lt=12,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
+            ).aggregate(Sum('sdf'))['sdf__sum']
 
-            # if kid_sdf is None:
-            #     kid_sdf = 0
+            if kid_sdf is None:
+                kid_sdf = 0
             kid_sdf_male = Visualization.objects.filter(
                 age__lt=12,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_sdf_male is None:
-            #     kid_sdf_male = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if kid_sdf_male is None:
+                kid_sdf_male = 0
             kid_sdf_female = Visualization.objects.filter(
                 age__lt=12,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if kid_sdf_female is None:
-            #     kid_sdf_female = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if kid_sdf_female is None:
+                kid_sdf_female = 0
             kid_fv = Visualization.objects.filter(
                 age__lt=12,
                 fv=True,
@@ -278,86 +274,86 @@ class OverviewVisualization1(APIView):
             teen_exo = Visualization.objects.filter(
                 age__range=(12, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_exo is None:
-            #     teen_exo = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if teen_exo is None:
+                teen_exo = 0
             teen_exo_male = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_exo_male is None:
-            #     teen_exo_male = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if teen_exo_male is None:
+                teen_exo_male = 0
             teen_exo_female = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_exo_female is None:
-            #     teen_exo_female = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if teen_exo_female is None:
+                teen_exo_female = 0
 
             teen_art = Visualization.objects.filter(
                 age__range=(12, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_art is None:
-            #     teen_art = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if teen_art is None:
+                teen_art = 0
             teen_art_male = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_art_male is None:
-            #     teen_art_male = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if teen_art_male is None:
+                teen_art_male = 0
             teen_art_female = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_art_female is None:
-            #     teen_art_female = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if teen_art_female is None:
+                teen_art_female = 0
 
             teen_seal = Visualization.objects.filter(
                 age__range=(12, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_seal is None:
-            #     teen_seal = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if teen_seal is None:
+                teen_seal = 0
             teen_seal_male = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_seal_male is None:
-            #     teen_seal_male = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if teen_seal_male is None:
+                teen_seal_male = 0
             teen_seal_female = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_seal_female is None:
-            #     teen_seal_female = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if teen_seal_female is None:
+                teen_seal_female = 0
 
             teen_sdf = Visualization.objects.filter(
                 age__range=(12, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_sdf is None:
-            #     teen_sdf = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if teen_sdf is None:
+                teen_sdf = 0
             teen_sdf_male = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_sdf_male is None:
-            #     teen_sdf_male = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if teen_sdf_male is None:
+                teen_sdf_male = 0
             teen_sdf_female = Visualization.objects.filter(
                 age__range=(12, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if teen_sdf_female is None:
-            #     teen_sdf_female = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if teen_sdf_female is None:
+                teen_sdf_female = 0
 
             teen_fv = Visualization.objects.filter(
                 age__range=(12, 18),
@@ -503,86 +499,86 @@ class OverviewVisualization1(APIView):
             adult_exo = Visualization.objects.filter(
                 age__range=(19, 60),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_exo is None:
-            #     adult_exo = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if adult_exo is None:
+                adult_exo = 0
             adult_exo_male = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_exo_male is None:
-            #     adult_exo_male = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if adult_exo_male is None:
+                adult_exo_male = 0
             adult_exo_female = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_exo_female is None:
-            #     adult_exo_female = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if adult_exo_female is None:
+                adult_exo_female = 0
 
             adult_art = Visualization.objects.filter(
                 age__range=(19, 60),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_art is None:
-            #     adult_art = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if adult_art is None:
+                adult_art = 0
             adult_art_male = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_art_male is None:
-            #     adult_art_male = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if adult_art_male is None:
+                adult_art_male = 0
             adult_art_female = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
+            ).aggregate(Sum('art'))['art__sum']
             if adult_art_female is None:
                 adult_art_female = 0
 
             adult_seal = Visualization.objects.filter(
                 age__range=(19, 60),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_seal is None:
-            #     adult_seal = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if adult_seal is None:
+                adult_seal = 0
             adult_seal_male = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_seal_male is None:
-            #     adult_seal_male = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if adult_seal_male is None:
+                adult_seal_male = 0
             adult_seal_female = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_seal_female is None:
-            #     adult_seal_female = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if adult_seal_female is None:
+                adult_seal_female = 0
 
             adult_sdf = Visualization.objects.filter(
                 age__range=(19, 60),
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_sdf is None:
-            #     adult_sdf = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if adult_sdf is None:
+                adult_sdf = 0
             adult_sdf_male = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_sdf_male is None:
-            #     adult_sdf_male = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if adult_sdf_male is None:
+                adult_sdf_male = 0
             adult_sdf_female = Visualization.objects.filter(
                 age__range=(19, 60),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if adult_sdf_female is None:
-            #     adult_sdf_female = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if adult_sdf_female is None:
+                adult_sdf_female = 0
 
             adult_fv = Visualization.objects.filter(
                 age__range=(19, 60),
@@ -731,86 +727,86 @@ class OverviewVisualization1(APIView):
             old_exo = Visualization.objects.filter(
                 age__gt=60,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_exo is None:
-            #     old_exo = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if old_exo is None:
+                old_exo = 0
             old_exo_male = Visualization.objects.filter(
                 age__gt=60,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_exo_male is None:
-            #     old_exo_male = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if old_exo_male is None:
+                old_exo_male = 0
             old_exo_female = Visualization.objects.filter(
                 age__gt=60,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_exo_female is None:
-            #     old_exo_female = 0
+            ).aggregate(Sum('exo'))['exo__sum']
+            if old_exo_female is None:
+                old_exo_female = 0
 
             old_art = Visualization.objects.filter(
                 age__gt=60,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_art is None:
-            #     old_art = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if old_art is None:
+                old_art = 0
             old_art_male = Visualization.objects.filter(
                 age__gt=60,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_art_male is None:
-            #     old_art_male = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if old_art_male is None:
+                old_art_male = 0
             old_art_female = Visualization.objects.filter(
                 age__gt=60,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_art_female is None:
-            #     old_art_female = 0
+            ).aggregate(Sum('art'))['art__sum']
+            if old_art_female is None:
+                old_art_female = 0
 
             old_seal = Visualization.objects.filter(
                 age__gt=60,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_seal is None:
-            #     old_seal = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if old_seal is None:
+                old_seal = 0
             old_seal_male = Visualization.objects.filter(
                 age__gt=60,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_seal_male is None:
-            #     old_seal_male = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if old_seal_male is None:
+                old_seal_male = 0
             old_seal_female = Visualization.objects.filter(
                 age__gt=60,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_seal_female is None:
-            #     old_seal_female = 0
+            ).aggregate(Sum('seal'))['seal__sum']
+            if old_seal_female is None:
+                old_seal_female = 0
 
             old_sdf = Visualization.objects.filter(
                 age__gt=60,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_sdf is None:
-            #     old_sdf = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if old_sdf is None:
+                old_sdf = 0
             old_sdf_male = Visualization.objects.filter(
                 age__gt=60,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_sdf_male is None:
-            #     old_sdf_male = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if old_sdf_male is None:
+                old_sdf_male = 0
             old_sdf_female = Visualization.objects.filter(
                 age__gt=60,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            # if old_sdf_female is None:
-            #     old_sdf_female = 0
+            ).aggregate(Sum('sdf'))['sdf__sum']
+            if old_sdf_female is None:
+                old_sdf_female = 0
 
             old_fv = Visualization.objects.filter(
                 age__gt=60,
@@ -3369,6 +3365,7 @@ class OverviewVisualization1(APIView):
                                 .filter(activities_id=i.id)
                                 .count()
                             )
+
                             kid_refer_dr1.append(
                                 Visualization.objects.filter(
                                     refer_dr=True,
