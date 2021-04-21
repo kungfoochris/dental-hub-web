@@ -37,7 +37,7 @@ class ModifyDeleteListSerializer(serializers.ModelSerializer):
 	author = AuthorSerializer(read_only=True)
 	class Meta:
 		model = ModifyDelete
-		fields = ('id', 'encounter', 'reason_for_modification', 'modify_status', 'reason_for_deletion','other_reason_for_deletion','delete_status', 'flag','modify_approved_at','modify_expiry_date','restore_expiry_date','author')
+		fields = ('id', 'encounter', 'reason_for_modification', 'modify_status', 'reason_for_deletion','other_reason_for_deletion','delete_status', 'flag','modify_approved_at','modify_expiry_date','restore_expiry_date','deleted_at','author')
 		read_only_fields = ('modify_status', 'delete_status', 'modify_approved_at')
 
 
