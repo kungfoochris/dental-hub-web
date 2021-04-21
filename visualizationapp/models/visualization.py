@@ -65,6 +65,7 @@ class Visualization(models.Model):
     reason_for_visit = models.CharField(max_length=60, default="", db_index=True)
     referral_type = models.CharField(max_length=60, default="", db_index=True)
     author = models.CharField(max_length=60, default="")
+    active = models.BooleanField(default=True)
 
 
 def create_encounter(sender, **kwargs):
@@ -93,6 +94,7 @@ def create_encounter(sender, **kwargs):
         visualization_obj.created_at = encounter_obj.patient.created_at
         visualization_obj.reason_for_visit = encounter_obj.encounter_type
         visualization_obj.author = encounter_obj.author.username
+        visualization_obj.active = encounter_obj.active
         visualization_obj.save()
     # if kwargs['created']:
 
@@ -172,21 +174,24 @@ def create_treatment(sender, **kwargs):
             encounter_id=kwargs["instance"].encounter_id.id
         )
         treatment_obj = Treatment.objects.values('tooth11', 'tooth12', 'tooth13', 'tooth14', 'tooth15', 'tooth16', 'tooth17', 'tooth18', 'tooth21', 'tooth22', 'tooth23', 'tooth24', 'tooth25', 'tooth26', 'tooth27', 'tooth28', 'tooth31', 'tooth32', 'tooth33', 'tooth34', 'tooth35', 'tooth36', 'tooth37', 'tooth38', 'tooth41', 'tooth42', 'tooth43', 'tooth44', 'tooth45', 'tooth46', 'tooth47', 'tooth48', 'tooth51', 'tooth52', 'tooth53', 'tooth54', 'tooth55', 'tooth61', 'tooth62', 'tooth63', 'tooth64', 'tooth65', 'tooth71', 'tooth72', 'tooth73', 'tooth74', 'tooth75', 'tooth81', 'tooth82', 'tooth83', 'tooth84', 'tooth85').annotate(Count('id')).get(id=kwargs["instance"].id)
-        if Counter(treatment_obj.values())['EXO'] > 0:
-            visualization_obj.exo = Counter(treatment_obj.values())['EXO']
-        if Counter(treatment_obj.values())['SDF'] > 0:
-            visualization_obj.sdf = Counter(treatment_obj.values())['SDF']
-        if Counter(treatment_obj.values())['SEAL'] > 0:
-            visualization_obj.seal = Counter(treatment_obj.values())['SEAL']
-        if Counter(treatment_obj.values())['ART'] > 0:
-            visualization_obj.art = Counter(treatment_obj.values())['ART']
+        # if Counter(treatment_obj.values())['EXO'] > 0:
+        visualization_obj.exo = Counter(treatment_obj.values())['EXO']
+        # if Counter(treatment_obj.values())['SDF'] > 0:
+        visualization_obj.sdf = Counter(treatment_obj.values())['SDF']
+        # if Counter(treatment_obj.values())['SEAL'] > 0:
+        visualization_obj.seal = Counter(treatment_obj.values())['SEAL']
+        # if Counter(treatment_obj.values())['ART'] > 0:
+        visualization_obj.art = Counter(treatment_obj.values())['ART']
         if Counter(treatment_obj.values())['SMART'] > 0:
-            visualization_obj.art = 1
-            visualization_obj.sdf = 1
+            visualization_obj.art += Counter(treatment_obj.values())['SMART']
+            visualization_obj.sdf += Counter(treatment_obj.values())['SMART']
+        else:
+            visualization_obj.art -= Counter(treatment_obj.values())['SMART']
+            visualization_obj.sdf -= Counter(treatment_obj.values())['SMART']
+
         visualization_obj.fv = kwargs["instance"].fv_applied
         visualization_obj.sdf_whole_mouth = kwargs["instance"].sdf_whole_mouth
         visualization_obj.save()
-    # if kwargs['created']:
 
 
 post_save.connect(create_treatment, sender=Treatment)

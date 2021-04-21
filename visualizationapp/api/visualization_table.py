@@ -54,7 +54,7 @@ class TableVisualization(APIView):
 			encounter_obj = Encounter.objects.all()
 			for en in encounter_obj:
 				dob = en.patient.dob
-				if Visualization.objects.filter(patiend_id=en.patient.id,encounter_id=en.id).count()==0:
+				if Visualization.objects.filter(active=True,patiend_id=en.patient.id,encounter_id=en.id).count()==0:
 					visualization_obj=Visualization()
 					visualization_obj.patiend_id = en.patient.id
 					visualization_obj.encounter_id = en.id

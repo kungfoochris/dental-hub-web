@@ -10,8 +10,6 @@ from encounterapp.serializers.modifydelete import ModifyDeleteSerializer,Encount
 from datetime import datetime, timedelta
 
 
-
-
 class IsPostOrIsAuthenticated(permissions.BasePermission):
 
     def has_permission(self, request, view):
@@ -179,6 +177,17 @@ class EncounterRestore(APIView):
             return Response({"message":"flag doesn't exists"},status=400)
         return Response({'message':"No encounter deleted found."}, status=400)
 
+
+class ModifyDeleteSeen(APIView):
+
+    def get(self,request):
+        modify_delete_obj = ModifyDelete.objects.filter(seen=False)
+        if modify_delete_obj:
+            for i in modify_delete_obj:
+                i.seen = True
+                i.save()
+            return Response({'message':'Requests made seen.'},status=200)
+        return Response({"message":"Unseen request not found."}, status=400)
 
 
 class CheckModifyExpiry(APIView):

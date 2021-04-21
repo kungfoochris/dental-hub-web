@@ -54,6 +54,7 @@ class ModifyDelete(models.Model):
     modify_expiry_date = models.DateTimeField(null=True)
     deleted_at = models.DateTimeField(null=True)
     restore_expiry_date = models.DateTimeField(null=True)
+    seen = models.BooleanField(default=False)
 
 
 

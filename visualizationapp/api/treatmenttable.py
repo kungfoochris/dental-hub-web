@@ -56,76 +56,76 @@ class TreatmentTableBasicData(APIView):
         if User.objects.filter(id=request.user.id).exists():
             treatment_obj = Treatment.objects.all().count()
 
-            treatment_male = Visualization.objects.filter(
+            treatment_male = Visualization.objects.filter(active=True,
                 gender="male", created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            treatment_female = Visualization.objects.filter(
+            treatment_female = Visualization.objects.filter(active=True,
                 gender="female", created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            treatment_child = Visualization.objects.filter(
+            treatment_child = Visualization.objects.filter(active=True,
                 age__lt=18, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            treatment_adult = Visualization.objects.filter(
+            treatment_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            treatment_old = Visualization.objects.filter(
+            treatment_old = Visualization.objects.filter(active=True,
                 age__gt=60, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
 
-            total_fv = Visualization.objects.filter(
+            total_fv = Visualization.objects.filter(active=True,
                 fv=True, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            female_patients_receiving_fv = Visualization.objects.filter(
+            female_patients_receiving_fv = Visualization.objects.filter(active=True,
                 gender="female",
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            male_patients_receiving_fv = Visualization.objects.filter(
+            male_patients_receiving_fv = Visualization.objects.filter(active=True,
                 gender="male",
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            child__patients_receiving_fv = Visualization.objects.filter(
+            child__patients_receiving_fv = Visualization.objects.filter(active=True,
                 age__lt=18,
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            adult__patients_receiving_fv = Visualization.objects.filter(
+            adult__patients_receiving_fv = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            old__patients_receiving_fv = Visualization.objects.filter(
+            old__patients_receiving_fv = Visualization.objects.filter(active=True,
                 age__gt=60,
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            total_need_sealant = Visualization.objects.filter(
+            total_need_sealant = Visualization.objects.filter(active=True,
                 need_sealant=True, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            sealant_male = Visualization.objects.filter(
+            sealant_male = Visualization.objects.filter(active=True,
                 gender="male",
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            sealant_female = Visualization.objects.filter(
+            sealant_female = Visualization.objects.filter(active=True,
                 gender="female",
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            sealant_child = Visualization.objects.filter(
+            sealant_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            sealant_adult = Visualization.objects.filter(
+            sealant_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            sealant_old = Visualization.objects.filter(
+            sealant_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -192,7 +192,7 @@ class TreatmentTableBasicData(APIView):
             if end_date > start_date:
                 if not location_list:
                     treatment_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male", created_at__range=[start_date, end_date]
                         )
                         .filter(
@@ -204,7 +204,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     treatment_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female", created_at__range=[start_date, end_date]
                         )
                         .filter(
@@ -216,7 +216,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     treatment_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18, created_at__range=[start_date, end_date]
                         )
                         .filter(
@@ -228,7 +228,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     treatment_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             created_at__range=[start_date, end_date],
                         )
@@ -241,7 +241,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     treatment_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60, created_at__range=[start_date, end_date]
                         )
                         .filter(
@@ -254,7 +254,7 @@ class TreatmentTableBasicData(APIView):
                     )
 
                     total_fv = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             fv=True, created_at__range=[start_date, end_date]
                         )
                         .filter(
@@ -266,7 +266,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     female_patients_receiving_fv = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -280,7 +280,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     male_patients_receiving_fv = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -294,7 +294,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     child__patients_receiving_fv = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -308,7 +308,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     adult__patients_receiving_fv = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -322,7 +322,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     old__patients_receiving_fv = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -337,7 +337,7 @@ class TreatmentTableBasicData(APIView):
                     )
 
                     total_need_sealant = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             need_sealant=True, created_at__range=[start_date, end_date]
                         )
                         .filter(
@@ -349,7 +349,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     sealant_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
@@ -363,7 +363,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     sealant_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
@@ -377,7 +377,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     sealant_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
@@ -391,7 +391,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     sealant_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
@@ -405,7 +405,7 @@ class TreatmentTableBasicData(APIView):
                         .count()
                     )
                     sealant_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
@@ -459,7 +459,7 @@ class TreatmentTableBasicData(APIView):
                     sealant_old_list = []
                     for location in location_list:
                         treatment_male_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -473,7 +473,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         treatment_female_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -487,7 +487,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         treatment_child_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -501,7 +501,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         treatment_adult_lits.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -515,7 +515,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         treatment_old_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -530,7 +530,7 @@ class TreatmentTableBasicData(APIView):
                         )
 
                         total_fv_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 fv=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -544,7 +544,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         female_patients_receiving_fv_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -559,7 +559,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         male_patients_receiving_fv_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -574,7 +574,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         child__patients_receiving_fv_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -589,7 +589,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         adult__patients_receiving_fv_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -604,7 +604,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         old__patients_receiving_fv_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -620,7 +620,7 @@ class TreatmentTableBasicData(APIView):
                         )
 
                         total_need_sealant_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -634,7 +634,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         sealant_male_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
@@ -649,7 +649,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         sealant_female_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
@@ -664,7 +664,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         sealant_child_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
@@ -679,7 +679,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         sealant_adult_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
@@ -694,7 +694,7 @@ class TreatmentTableBasicData(APIView):
                             .count()
                         )
                         sealant_old_list.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
@@ -788,7 +788,7 @@ class TreatmentStrategicData(APIView):
             encounter_male = (
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
-                .filter(
+                .filter(active=True,
                     gender="male", created_at__range=[last_30_days_obj, today_date_obj]
                 )
                 .count()
@@ -796,7 +796,7 @@ class TreatmentStrategicData(APIView):
             encounter_female = (
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
-                .filter(
+                .filter(active=True,
                     gender="female",
                     created_at__range=[last_30_days_obj, today_date_obj],
                 )
@@ -805,7 +805,7 @@ class TreatmentStrategicData(APIView):
             encounter_child = (
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
-                .filter(
+                .filter(active=True,
                     age__lt=18, created_at__range=[last_30_days_obj, today_date_obj]
                 )
                 .count()
@@ -813,7 +813,7 @@ class TreatmentStrategicData(APIView):
             encounter_adult = (
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
-                .filter(
+                .filter(active=True,
                     age__range=(18, 60),
                     created_at__range=[last_30_days_obj, today_date_obj],
                 )
@@ -822,169 +822,169 @@ class TreatmentStrategicData(APIView):
             encounter_old = (
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
-                .filter(
+                .filter(active=True,
                     age__gt=60, created_at__range=[last_30_days_obj, today_date_obj]
                 )
                 .count()
             )
 
-            total_refer = Visualization.objects.filter(
+            total_refer = Visualization.objects.filter(active=True,
                 refer_hp=True, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            refer_male = Visualization.objects.filter(
+            refer_male = Visualization.objects.filter(active=True,
                 gender="male",
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            refer_female = Visualization.objects.filter(
+            refer_female = Visualization.objects.filter(active=True,
                 gender="female",
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            refer_child = Visualization.objects.filter(
+            refer_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            refer_adult = Visualization.objects.filter(
+            refer_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            refer_old = Visualization.objects.filter(
+            refer_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            total_refer = Visualization.objects.filter(
+            total_refer = Visualization.objects.filter(active=True,
                 refer_hp=True, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
-            total_seal_male = Visualization.objects.filter(
+            total_seal_male = Visualization.objects.filter(active=True,
                 gender="male",
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_seal_female = Visualization.objects.filter(
+            total_seal_female = Visualization.objects.filter(active=True,
                 gender="female",
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_seal_child = Visualization.objects.filter(
+            total_seal_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_seal_adult = Visualization.objects.filter(
+            total_seal_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_seal_old = Visualization.objects.filter(
+            total_seal_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            totalfv_male = Visualization.objects.filter(
+            totalfv_male = Visualization.objects.filter(active=True,
                 gender="male",
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            totalfv_female = Visualization.objects.filter(
+            totalfv_female = Visualization.objects.filter(active=True,
                 gender="female",
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            totalfv_child = Visualization.objects.filter(
+            totalfv_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            totalfv_adult = Visualization.objects.filter(
+            totalfv_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            totalfv_old = Visualization.objects.filter(
+            totalfv_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            total_exo_male = Visualization.objects.filter(
+            total_exo_male = Visualization.objects.filter(active=True,
                 gender="male",
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_exo_female = Visualization.objects.filter(
+            total_exo_female = Visualization.objects.filter(active=True,
                 gender="female",
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_exo_child = Visualization.objects.filter(
+            total_exo_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_exo_adult = Visualization.objects.filter(
+            total_exo_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_exo_old = Visualization.objects.filter(
+            total_exo_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            total_art_male = Visualization.objects.filter(
+            total_art_male = Visualization.objects.filter(active=True,
                 gender="male",
                 art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_art_female = Visualization.objects.filter(
+            total_art_female = Visualization.objects.filter(active=True,
                 gender="female",
                 art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_art_child = Visualization.objects.filter(
+            total_art_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_art_adult = Visualization.objects.filter(
+            total_art_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_art_old = Visualization.objects.filter(
+            total_art_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            total_sdf_male = Visualization.objects.filter(
+            total_sdf_male = Visualization.objects.filter(active=True,
                 gender="male",
                 sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_sdf_female = Visualization.objects.filter(
+            total_sdf_female = Visualization.objects.filter(active=True,
                 gender="female",
                 sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_sdf_child = Visualization.objects.filter(
+            total_sdf_child = Visualization.objects.filter(active=True,
                 age__lt=18,
                 sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_sdf_adult = Visualization.objects.filter(
+            total_sdf_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
                 sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
-            total_sdf_old = Visualization.objects.filter(
+            total_sdf_old = Visualization.objects.filter(active=True,
                 age__gt=60,
                 sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -1140,7 +1140,7 @@ class TreatmentStrategicData(APIView):
             if end_date > start_date:
                 if not location_list:
                     encounter_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male", created_at__range=[start_date, end_date]
                         )
                         .values("encounter_id")
@@ -1154,7 +1154,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     encounter_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female", created_at__range=[start_date, end_date]
                         )
                         .values("encounter_id")
@@ -1168,7 +1168,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     encounter_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18, created_at__range=[start_date, end_date]
                         )
                         .values("encounter_id")
@@ -1182,7 +1182,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     encounter_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             created_at__range=[start_date, end_date],
                         )
@@ -1197,7 +1197,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     encounter_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60, created_at__range=[start_date, end_date]
                         )
                         .values("encounter_id")
@@ -1212,7 +1212,7 @@ class TreatmentStrategicData(APIView):
                     )
 
                     refer_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
@@ -1226,7 +1226,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     refer_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
@@ -1240,7 +1240,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     refer_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
@@ -1254,7 +1254,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     refer_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
@@ -1268,7 +1268,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     refer_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
@@ -1282,7 +1282,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
 
-                    total_refer = Visualization.objects.filter(
+                    total_refer = Visualization.objects.filter(active=True,
                         refer_hp=True, created_at__range=[start_date, end_date]
                     ).count()
                     total_seal_male = (
@@ -1300,7 +1300,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_seal_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             seal=True,
                             created_at__range=[start_date, end_date],
@@ -1314,7 +1314,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_seal_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             seal=True,
                             created_at__range=[start_date, end_date],
@@ -1328,7 +1328,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_seal_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             seal=True,
                             created_at__range=[start_date, end_date],
@@ -1342,7 +1342,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_seal_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             seal=True,
                             created_at__range=[start_date, end_date],
@@ -1357,7 +1357,7 @@ class TreatmentStrategicData(APIView):
                     )
 
                     totalfv_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -1371,7 +1371,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     totalfv_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -1385,7 +1385,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     totalfv_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -1399,7 +1399,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     totalfv_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -1413,7 +1413,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     totalfv_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             fv=True,
                             created_at__range=[start_date, end_date],
@@ -1428,7 +1428,7 @@ class TreatmentStrategicData(APIView):
                     )
 
                     total_exo_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             exo=True,
                             created_at__range=[start_date, end_date],
@@ -1442,7 +1442,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_exo_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             exo=True,
                             created_at__range=[start_date, end_date],
@@ -1456,7 +1456,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_exo_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             exo=True,
                             created_at__range=[start_date, end_date],
@@ -1470,7 +1470,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_exo_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             exo=True,
                             created_at__range=[start_date, end_date],
@@ -1484,7 +1484,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_exo_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             exo=True,
                             created_at__range=[start_date, end_date],
@@ -1499,7 +1499,7 @@ class TreatmentStrategicData(APIView):
                     )
 
                     total_art_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             art=True,
                             created_at__range=[start_date, end_date],
@@ -1513,7 +1513,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_art_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             art=True,
                             created_at__range=[start_date, end_date],
@@ -1527,7 +1527,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_art_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             art=True,
                             created_at__range=[start_date, end_date],
@@ -1541,7 +1541,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_art_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             art=True,
                             created_at__range=[start_date, end_date],
@@ -1555,7 +1555,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_art_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             art=True,
                             created_at__range=[start_date, end_date],
@@ -1570,7 +1570,7 @@ class TreatmentStrategicData(APIView):
                     )
 
                     total_sdf_male = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="male",
                             sdf=True,
                             created_at__range=[start_date, end_date],
@@ -1584,7 +1584,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_sdf_female = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             gender="female",
                             sdf=True,
                             created_at__range=[start_date, end_date],
@@ -1598,7 +1598,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_sdf_child = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__lt=18,
                             sdf=True,
                             created_at__range=[start_date, end_date],
@@ -1612,7 +1612,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_sdf_adult = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             sdf=True,
                             created_at__range=[start_date, end_date],
@@ -1626,7 +1626,7 @@ class TreatmentStrategicData(APIView):
                         .count()
                     )
                     total_sdf_old = (
-                        Visualization.objects.filter(
+                        Visualization.objects.filter(active=True,
                             age__gt=60,
                             sdf=True,
                             created_at__range=[start_date, end_date],
@@ -1786,7 +1786,7 @@ class TreatmentStrategicData(APIView):
 
                     for location in location_list:
                         encounter_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -1802,7 +1802,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         encounter_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -1818,7 +1818,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         encounter_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -1834,7 +1834,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         encounter_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -1850,7 +1850,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         encounter_old.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -1867,7 +1867,7 @@ class TreatmentStrategicData(APIView):
                         )
 
                         refer_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
@@ -1882,7 +1882,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         refer_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
@@ -1897,7 +1897,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         refer_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
@@ -1912,7 +1912,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         refer_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
@@ -1927,7 +1927,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         refer_old.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
@@ -1942,7 +1942,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_refer.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -1950,7 +1950,7 @@ class TreatmentStrategicData(APIView):
                         )
 
                         total_seal_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 seal=True,
                                 created_at__range=[start_date, end_date],
@@ -1966,7 +1966,7 @@ class TreatmentStrategicData(APIView):
                         )
                         print("----------")
                         print(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 seal=True,
                                 created_at__range=[start_date, end_date],
@@ -1981,7 +1981,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_seal_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 seal=True,
                                 created_at__range=[start_date, end_date],
@@ -1996,7 +1996,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_seal_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 seal=True,
                                 created_at__range=[start_date, end_date],
@@ -2011,7 +2011,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_seal_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 seal=True,
                                 created_at__range=[start_date, end_date],
@@ -2026,7 +2026,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_seal_old.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 seal=True,
                                 created_at__range=[start_date, end_date],
@@ -2042,7 +2042,7 @@ class TreatmentStrategicData(APIView):
                         )
 
                         totalfv_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -2058,7 +2058,7 @@ class TreatmentStrategicData(APIView):
                         )
                         print("******************")
                         print(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -2073,7 +2073,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         totalfv_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -2088,7 +2088,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         totalfv_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -2103,7 +2103,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         totalfv_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -2118,7 +2118,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         totalfv_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 fv=True,
                                 created_at__range=[start_date, end_date],
@@ -2134,7 +2134,7 @@ class TreatmentStrategicData(APIView):
                         )
 
                         total_exo_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 exo=True,
                                 created_at__range=[start_date, end_date],
@@ -2149,7 +2149,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_exo_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 exo=True,
                                 created_at__range=[start_date, end_date],
@@ -2164,7 +2164,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_exo_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 exo=True,
                                 created_at__range=[start_date, end_date],
@@ -2179,7 +2179,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_exo_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 exo=True,
                                 created_at__range=[start_date, end_date],
@@ -2194,7 +2194,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_exo_old.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 exo=True,
                                 created_at__range=[start_date, end_date],
@@ -2210,7 +2210,7 @@ class TreatmentStrategicData(APIView):
                         )
 
                         total_art_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 art=True,
                                 created_at__range=[start_date, end_date],
@@ -2225,7 +2225,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_art_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 art=True,
                                 created_at__range=[start_date, end_date],
@@ -2240,7 +2240,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_art_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 art=True,
                                 created_at__range=[start_date, end_date],
@@ -2255,7 +2255,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_art_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 art=True,
                                 created_at__range=[start_date, end_date],
@@ -2270,7 +2270,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_art_old.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 art=True,
                                 created_at__range=[start_date, end_date],
@@ -2286,7 +2286,7 @@ class TreatmentStrategicData(APIView):
                         )
 
                         total_sdf_male.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
@@ -2302,7 +2302,7 @@ class TreatmentStrategicData(APIView):
                         )
                         print("+++++++++++++++++")
                         print(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="male",
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
@@ -2317,7 +2317,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_sdf_female.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 gender="female",
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
@@ -2332,7 +2332,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_sdf_child.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__lt=18,
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
@@ -2347,7 +2347,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_sdf_adult.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
@@ -2362,7 +2362,7 @@ class TreatmentStrategicData(APIView):
                             .count()
                         )
                         total_sdf_old.append(
-                            Visualization.objects.filter(
+                            Visualization.objects.filter(active=True,
                                 age__gt=60,
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
