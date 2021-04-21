@@ -156,26 +156,29 @@ class EncounterRestore(APIView):
 
     def put(self, request,encounter_id):
         encounter_obj = Encounter.objects.filter(id=encounter_id, active=False)
-        if encounter_obj:
-            mod_obj = ModifyDelete.objects.filter(encounter=encounter_id, delete_status='deleted', author=request.user)
-            if mod_obj:
-                mod_obj = ModifyDelete.objects.get(encounter=encounter_id, delete_status='deleted', author=request.user)
-                if datetime.now().timestamp() < mod_obj.restore_expiry_date.timestamp():
-                    mod_obj.delete_status = ''
-                    mod_obj.flag = ''
-                    mod_obj.save()
+        if request.user.admin:
+            if encounter_obj:
+                mod_obj = ModifyDelete.objects.filter(encounter=encounter_id, delete_status='deleted')
+                if mod_obj:
+                    mod_obj = ModifyDelete.objects.get(encounter=encounter_id, delete_status='deleted')
+                    if datetime.now().timestamp() < mod_obj.restore_expiry_date.timestamp():
+                        mod_obj.delete_status = ''
+                        mod_obj.flag = ''
+                        mod_obj.save()
 
-                    encounter_obj = Encounter.objects.get(id=encounter_id)
-                    encounter_obj.active = True
-                    visual_obj = Visualization.objects.filter(encounter_id=encounter_obj.id)
-                    if visual_obj:
-                        visual_obj = Visualization.objects.get(encounter_id=encounter_obj.id)
-                        visual_obj.delete()
-                    encounter_obj.save()
-                    return Response({'messsage':'Encounter restored successfully.'}, status=200)
-                return Response({'message':"Restoration time expired."}, status=400)
-            return Response({"message":"flag doesn't exists"},status=400)
-        return Response({'message':"No encounter deleted found."}, status=400)
+                        encounter_obj = Encounter.objects.get(id=encounter_id)
+                        encounter_obj.active = True
+                        visual_obj = Visualization.objects.filter(encounter_id=encounter_obj.id)
+                        if visual_obj:
+                            visual_obj = Visualization.objects.get(encounter_id=encounter_obj.id)
+                            visual_obj.delete()
+                        encounter_obj.save()
+                        return Response({'messsage':'Encounter restored successfully.'}, status=200)
+                    return Response({'message':"Restoration time expired."}, status=400)
+                return Response({"message":"flag doesn't exists"},status=400)
+            return Response({'message':"No encounter deleted found."}, status=400)
+        return Response({'message':"Only admin can restore encounter."}, status=401)
+        
 
 
 class ModifyDeleteSeen(APIView):
