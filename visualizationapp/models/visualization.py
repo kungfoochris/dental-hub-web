@@ -96,7 +96,6 @@ def create_encounter(sender, **kwargs):
         visualization_obj.author = encounter_obj.author.username
         visualization_obj.active = encounter_obj.active
         visualization_obj.save()
-    # if kwargs['created']:
 
 
 post_save.connect(create_encounter, sender=Encounter)
