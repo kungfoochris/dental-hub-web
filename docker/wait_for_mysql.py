@@ -23,24 +23,6 @@ for opt, arg in opts:
 	elif opt in ("-d", "--db"):
 		db = arg
 
-message = """
-	\n\n\n
-	################################
-	database connect:
-	host = %s
-	user = %s
-	password = %s
-	port = %s
-	db = %s
-	################################ \n\n\n
-""" %  (host, user, password, port, db)
-
-print(message)
-print("prabin Karki")
-print(host)
-print(user)
-print(password)
-print(port)
 
 while True:
 	try:

@@ -33,34 +33,34 @@ class OverviewVisualization1(APIView):
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             kid_encounter = Visualization.objects.filter(active=True,
-                age__lt=12, created_at__range=[last_30_days_obj, today_date_obj]
+                age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             kid_encounter_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_encounter_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_exo = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('exo'))['exo__sum']
             if kid_exo is None:
                 kid_exo=0
             kid_exo_male = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('exo'))['exo__sum']
             if kid_exo_male is None:
                 kid_exo_male = 0
             kid_exo_female = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('exo'))['exo__sum']
@@ -68,20 +68,20 @@ class OverviewVisualization1(APIView):
                 kid_exo_female = 0
 
             kid_art = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
             if kid_art is None:
                 kid_art=0
             kid_art_male = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
             if kid_art_male is None:
                 kid_art_male = 0
             kid_art_female = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
@@ -89,20 +89,20 @@ class OverviewVisualization1(APIView):
                 kid_art_female = 0
 
             kid_seal = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('seal'))['seal__sum']
             if kid_seal is None:
                 kid_seal = 0
             kid_seal_male = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('seal'))['seal__sum']
             if kid_seal_male is None:
                 kid_seal_male = 0
             kid_seal_female = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('seal'))['seal__sum']
@@ -110,182 +110,182 @@ class OverviewVisualization1(APIView):
                 kid_seal_female = 0
 
             kid_sdf = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('sdf'))['sdf__sum']
 
             if kid_sdf is None:
                 kid_sdf = 0
             kid_sdf_male = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('sdf'))['sdf__sum']
             if kid_sdf_male is None:
                 kid_sdf_male = 0
             kid_sdf_female = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('sdf'))['sdf__sum']
             if kid_sdf_female is None:
                 kid_sdf_female = 0
             kid_fv = Visualization.objects.filter(
-                age__lt=12,
+                age__lt=13,
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_fv_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 fv=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_fv_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 fv=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_health_post = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_health_post_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_hp=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_health_post_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_hp=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_refer_hyg = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_hyg=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_hyg_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_hyg=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_hyg_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_hyg=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_refer_dent = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_dent=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_dent_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_dent=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_dent_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_dent=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_refer_dr = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_dr=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_dr_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_dr=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_dr_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_dr=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_refer_other = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_other=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_other_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_other=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_refer_other_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 refer_other=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             kid_sdf_whole_mouth = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 sdf_whole_mouth=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_sdf_whole_mouth_male = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 sdf_whole_mouth=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             kid_sdf_whole_mouth_female = Visualization.objects.filter(active=True,
-                age__lt=12,
+                age__lt=13,
                 sdf_whole_mouth=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_encounter = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_encounter_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_encounter_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_exo = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('exo'))['exo__sum']
             if teen_exo is None:
                 teen_exo = 0
             teen_exo_male = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('exo'))['exo__sum']
             if teen_exo_male is None:
                 teen_exo_male = 0
             teen_exo_female = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('exo'))['exo__sum']
@@ -293,20 +293,20 @@ class OverviewVisualization1(APIView):
                 teen_exo_female = 0
 
             teen_art = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
             if teen_art is None:
                 teen_art = 0
             teen_art_male = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
             if teen_art_male is None:
                 teen_art_male = 0
             teen_art_female = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
@@ -314,20 +314,20 @@ class OverviewVisualization1(APIView):
                 teen_art_female = 0
 
             teen_seal = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('seal'))['seal__sum']
             if teen_seal is None:
                 teen_seal = 0
             teen_seal_male = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('seal'))['seal__sum']
             if teen_seal_male is None:
                 teen_seal_male = 0
             teen_seal_female = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('seal'))['seal__sum']
@@ -335,20 +335,20 @@ class OverviewVisualization1(APIView):
                 teen_seal_female = 0
 
             teen_sdf = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('sdf'))['sdf__sum']
             if teen_sdf is None:
                 teen_sdf = 0
             teen_sdf_male = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('sdf'))['sdf__sum']
             if teen_sdf_male is None:
                 teen_sdf_male = 0
             teen_sdf_female = Visualization.objects.filter(
-                age__range=(12, 18),
+                age__range=(13, 18),
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('sdf'))['sdf__sum']
@@ -356,126 +356,126 @@ class OverviewVisualization1(APIView):
                 teen_sdf_female = 0
 
             teen_fv = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_fv_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 fv=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_fv_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 fv=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_health_post = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_health_post_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_hp=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_health_post_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_hp=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_refer_hyg = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_hyg=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_hyg_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_hyg=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_hyg_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_hyg=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_refer_dent = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_dent=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_dent_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_dent=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_dent_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_dent=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_refer_dr = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_dr=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_dr_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_dr=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_dr_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_dr=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_refer_other = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_other=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_other_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_other=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_refer_other_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 refer_other=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_sdf_whole_mouth = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 sdf_whole_mouth=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_sdf_whole_mouth_male = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 sdf_whole_mouth=True,
                 gender="male",
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             teen_sdf_whole_mouth_female = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 sdf_whole_mouth=True,
                 gender="female",
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -967,14 +967,14 @@ class OverviewVisualization1(APIView):
             return Response(
                 [
                     [
-                        "Kids (< 12)",
+                        "Child ≤12 Y",
                         kid_encounter,
-                        kid_exo,
-                        kid_art,
-                        kid_seal,
-                        kid_sdf,
-                        kid_sdf_whole_mouth,
                         kid_fv,
+                        kid_sdf_whole_mouth,
+                        kid_sdf,
+                        kid_seal,
+                        kid_art,
+                        kid_exo,
                         kid_health_post,
                         kid_refer_hyg,
                         kid_refer_dent,
@@ -984,12 +984,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Male</span>',
                         kid_encounter_male,
-                        kid_exo_male,
-                        kid_art_male,
-                        kid_seal_male,
-                        kid_sdf_male,
-                        kid_sdf_whole_mouth_male,
                         kid_fv_male,
+                        kid_sdf_whole_mouth_male,
+                        kid_sdf_male,
+                        kid_seal_male,
+                        kid_art_male,
+                        kid_exo_male,
                         kid_health_post_male,
                         kid_refer_hyg_male,
                         kid_refer_dent_male,
@@ -1000,12 +1000,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Female</span>',
                         kid_encounter_female,
-                        kid_exo_female,
-                        kid_art_female,
-                        kid_seal_female,
-                        kid_sdf_female,
-                        kid_sdf_whole_mouth_female,
                         kid_fv_female,
+                        kid_sdf_whole_mouth_female,
+                        kid_sdf_female,
+                        kid_seal_female,
+                        kid_art_female,
+                        kid_exo_female,
                         kid_health_post_female,
                         kid_refer_hyg_female,
                         kid_refer_dent_female,
@@ -1014,14 +1014,14 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        "Teens (12-18)",
+                        "Teen 13-18 Y ",
                         teen_encounter,
-                        teen_exo,
-                        teen_art,
-                        teen_seal,
-                        teen_sdf,
-                        teen_sdf_whole_mouth,
                         teen_fv,
+                        teen_sdf_whole_mouth,
+                        teen_sdf,
+                        teen_seal,
+                        teen_art,
+                        teen_exo,
                         teen_health_post,
                         teen_refer_hyg,
                         teen_refer_dent,
@@ -1031,12 +1031,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Male</span>',
                         teen_encounter_male,
-                        teen_exo_male,
-                        teen_art_male,
-                        teen_seal_male,
-                        teen_sdf_male,
-                        teen_sdf_whole_mouth_male,
                         teen_fv_male,
+                        teen_sdf_whole_mouth_male,
+                        teen_sdf_male,
+                        teen_seal_male,
+                        teen_art_male,
+                        teen_exo_male,
                         teen_health_post_male,
                         teen_refer_hyg_male,
                         teen_refer_dent_male,
@@ -1047,12 +1047,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Female</span>',
                         teen_encounter_female,
-                        teen_exo_female,
-                        teen_art_female,
-                        teen_seal_female,
-                        teen_sdf_female,
-                        teen_sdf_whole_mouth_female,
                         teen_fv_female,
+                        teen_sdf_whole_mouth_female,
+                        teen_sdf_female,
+                        teen_seal_female,
+                        teen_art_female,
+                        teen_exo_female,
                         teen_health_post_female,
                         teen_refer_hyg_female,
                         teen_refer_dent_female,
@@ -1061,14 +1061,14 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        "Adults (19-60)",
+                        "Adult 19-60 Y ",
                         adult_encounter,
-                        adult_exo,
-                        adult_art,
-                        adult_seal,
-                        adult_sdf,
-                        adult_sdf_whole_mouth,
                         adult_fv,
+                        adult_sdf_whole_mouth,
+                        adult_sdf,
+                        adult_seal,
+                        adult_art,
+                        adult_exo,
                         adult_health_post,
                         adult_refer_hyg,
                         adult_refer_dent,
@@ -1078,12 +1078,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4" striped hover :basic="basic">Male</span>',
                         adult_encounter_male,
-                        adult_exo_male,
-                        adult_art_male,
-                        adult_seal_male,
-                        adult_sdf_male,
-                        adult_sdf_whole_mouth_male,
                         adult_fv_male,
+                        adult_sdf_whole_mouth_male,
+                        adult_sdf_male,
+                        adult_seal_male,
+                        adult_art_male,
+                        adult_exo_male,
                         adult_health_post_male,
                         adult_refer_hyg_male,
                         adult_refer_dent_male,
@@ -1094,12 +1094,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Female</span>',
                         adult_encounter_female,
-                        adult_exo_female,
-                        adult_art_female,
-                        adult_seal_female,
-                        adult_sdf_female,
-                        adult_sdf_whole_mouth_female,
                         adult_fv_female,
+                        adult_sdf_whole_mouth_female,
+                        adult_sdf_female,
+                        adult_seal_female,
+                        adult_art_female,
+                        adult_exo_female,
                         adult_health_post_female,
                         adult_refer_hyg_female,
                         adult_refer_dent_female,
@@ -1108,14 +1108,14 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        "Older Adults (> 60)",
+                        "Older Adult ≥61 Y ",
                         old_encounter,
-                        old_exo,
-                        old_art,
-                        old_seal,
-                        old_sdf,
-                        old_sdf_whole_mouth,
                         old_fv,
+                        old_sdf_whole_mouth,
+                        old_sdf,
+                        old_seal,
+                        old_art,
+                        old_exo,
                         old_health_post,
                         old_refer_hyg,
                         old_refer_dent,
@@ -1125,12 +1125,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Male</span>',
                         old_encounter_male,
-                        old_exo_male,
-                        old_art_male,
-                        old_seal_male,
-                        old_sdf_male,
-                        old_sdf_whole_mouth_male,
                         old_fv_male,
+                        old_sdf_whole_mouth_male,
+                        old_sdf_male,
+                        old_seal_male,
+                        old_art_male,
+                        old_exo_male,
                         old_health_post_male,
                         old_refer_hyg_male,
                         old_refer_dent_male,
@@ -1141,12 +1141,12 @@ class OverviewVisualization1(APIView):
                     [
                         '<span class="ml-4">Female</span>',
                         old_encounter_female,
-                        old_exo_female,
-                        old_art_female,
-                        old_seal_female,
-                        old_sdf_female,
-                        old_sdf_whole_mouth_female,
                         old_fv_female,
+                        old_sdf_whole_mouth_female,
+                        old_sdf_female,
+                        old_seal_female,
+                        old_art_female,
+                        old_exo_female,
                         old_health_post_female,
                         old_refer_hyg_female,
                         old_refer_dent_female,
@@ -1157,12 +1157,12 @@ class OverviewVisualization1(APIView):
                     [
                         "Total",
                         total_encounter,
-                        total_exo,
-                        total_art,
-                        total_seal,
-                        total_sdf,
-                        total_sdf_whole_mouth,
                         total_fv,
+                        total_sdf_whole_mouth,
+                        total_sdf,
+                        total_seal,
+                        total_art,
+                        total_exo,
                         total_health_post,
                         total_refer_hyg,
                         total_refer_dent,
@@ -1349,14 +1349,14 @@ class OverviewVisualization1(APIView):
                     for i in activities:
                         kid_encounter.append(
                             Visualization.objects.filter(active=True,
-                                age__lt=12, created_at__range=[start_date, end_date]
+                                age__lt=13, created_at__range=[start_date, end_date]
                             )
                             .filter(activities_id=i.id)
                             .count()
                         )
                         kid_encounter_male.append(
                             Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1365,7 +1365,7 @@ class OverviewVisualization1(APIView):
                         )
                         kid_encounter_female.append(
                             Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1373,110 +1373,110 @@ class OverviewVisualization1(APIView):
                             .count()
                         )
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                             kid_exo.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                             )
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                             kid_exo_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                             kid_exo_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                             kid_art.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                             kid_art_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                             kid_art_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                             kid_seal.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                             )
                         
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                             kid_seal_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                             kid_seal_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
@@ -1484,37 +1484,37 @@ class OverviewVisualization1(APIView):
 
                         
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                             kid_sdf.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                             kid_sdf_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
                             )
                         
                         if Visualization.objects.filter(active=True,
-                            age__lt=12,
+                            age__lt=13,
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                             kid_sdf_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
@@ -1523,7 +1523,7 @@ class OverviewVisualization1(APIView):
                         kid_fv.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1532,7 +1532,7 @@ class OverviewVisualization1(APIView):
                         kid_fv_male.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1542,7 +1542,7 @@ class OverviewVisualization1(APIView):
                         kid_fv_female.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1553,7 +1553,7 @@ class OverviewVisualization1(APIView):
                         kid_health_post.append(
                             Visualization.objects.filter(active=True,
                                 refer_hp=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1562,7 +1562,7 @@ class OverviewVisualization1(APIView):
                         kid_health_post_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_hp=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1572,7 +1572,7 @@ class OverviewVisualization1(APIView):
                         kid_health_post_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_hp=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1583,7 +1583,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_hyg.append(
                             Visualization.objects.filter(active=True,
                                 refer_hyg=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1592,7 +1592,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_hyg_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_hyg=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1602,7 +1602,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_hyg_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_hyg=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1613,7 +1613,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dent.append(
                             Visualization.objects.filter(active=True,
                                 refer_dent=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1622,7 +1622,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dent_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_dent=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1632,7 +1632,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dent_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_dent=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1643,7 +1643,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dr.append(
                             Visualization.objects.filter(active=True,
                                 refer_dr=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1652,7 +1652,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dr_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_dr=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1662,7 +1662,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dr_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_dr=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1673,7 +1673,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_other.append(
                             Visualization.objects.filter(active=True,
                                 refer_other=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1682,7 +1682,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_other_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_other=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1692,7 +1692,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_other_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_other=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1703,7 +1703,7 @@ class OverviewVisualization1(APIView):
                         kid_sdf_whole_mouth.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1712,7 +1712,7 @@ class OverviewVisualization1(APIView):
                         kid_sdf_whole_mouth_male.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1722,7 +1722,7 @@ class OverviewVisualization1(APIView):
                         kid_sdf_whole_mouth_female.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1732,7 +1732,7 @@ class OverviewVisualization1(APIView):
 
                         teen_encounter.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1740,7 +1740,7 @@ class OverviewVisualization1(APIView):
                         )
                         teen_encounter_male.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1749,7 +1749,7 @@ class OverviewVisualization1(APIView):
                         )
                         teen_encounter_female.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1758,147 +1758,147 @@ class OverviewVisualization1(APIView):
                         )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                             teen_exo.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                             teen_exo_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                             teen_exo_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                             teen_art.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                             teen_art_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                             teen_art_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                             teen_seal.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                             )
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                             teen_seal_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                             teen_seal_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                             teen_sdf.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="male",
                             ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                             teen_sdf_male.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
                             )
 
                         if Visualization.objects.filter(active=True,
-                            age__range=(12, 18),
+                            age__range=(13, 18),
                             created_at__range=[start_date, end_date],
                             gender="female",
                             ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                             teen_sdf_female.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
@@ -1907,7 +1907,7 @@ class OverviewVisualization1(APIView):
                         teen_fv.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1916,7 +1916,7 @@ class OverviewVisualization1(APIView):
                         teen_fv_male.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1926,7 +1926,7 @@ class OverviewVisualization1(APIView):
                         teen_fv_female.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1937,7 +1937,7 @@ class OverviewVisualization1(APIView):
                         teen_health_post.append(
                             Visualization.objects.filter(active=True,
                                 refer_hp=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1946,7 +1946,7 @@ class OverviewVisualization1(APIView):
                         teen_health_post_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_hp=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1956,7 +1956,7 @@ class OverviewVisualization1(APIView):
                         teen_health_post_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_hp=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1967,7 +1967,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_hyg.append(
                             Visualization.objects.filter(active=True,
                                 refer_hyg=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -1976,7 +1976,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_hyg_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_hyg=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -1986,7 +1986,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_hyg_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_hyg=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -1997,7 +1997,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_dent.append(
                             Visualization.objects.filter(active=True,
                                 refer_dent=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -2006,7 +2006,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_dent_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_dent=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -2016,7 +2016,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_dent_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_dent=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -2027,7 +2027,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_dr.append(
                             Visualization.objects.filter(active=True,
                                 refer_dr=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -2036,7 +2036,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_dr_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_dr=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -2046,7 +2046,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_dr_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_dr=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -2057,7 +2057,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_other.append(
                             Visualization.objects.filter(active=True,
                                 refer_other=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -2066,7 +2066,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_other_male.append(
                             Visualization.objects.filter(active=True,
                                 refer_other=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -2076,7 +2076,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_other_female.append(
                             Visualization.objects.filter(active=True,
                                 refer_other=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -2087,7 +2087,7 @@ class OverviewVisualization1(APIView):
                         teen_sdf_whole_mouth.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                             )
                             .filter(activities_id=i.id)
@@ -2096,7 +2096,7 @@ class OverviewVisualization1(APIView):
                         teen_sdf_whole_mouth_male.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="male",
                             )
@@ -2106,7 +2106,7 @@ class OverviewVisualization1(APIView):
                         teen_sdf_whole_mouth_female.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 gender="female",
                             )
@@ -3033,7 +3033,7 @@ class OverviewVisualization1(APIView):
                         for i in activities:
                             kid_encounter1.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3042,7 +3042,7 @@ class OverviewVisualization1(APIView):
                             )
                             kid_encounter_male1.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3052,7 +3052,7 @@ class OverviewVisualization1(APIView):
                             )
                             kid_encounter_female1.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3062,27 +3062,27 @@ class OverviewVisualization1(APIView):
                             )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                                 kid_exo1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                                 kid_exo_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3090,14 +3090,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                                 kid_exo_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3105,27 +3105,27 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                                 kid_art1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                                 kid_art_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3133,14 +3133,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                                 kid_art_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3148,27 +3148,27 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                                 kid_seal1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                                 )
                             
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                                 kid_seal_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3176,14 +3176,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                                 kid_seal_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3192,27 +3192,27 @@ class OverviewVisualization1(APIView):
 
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                                 kid_sdf1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                                 kid_sdf_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3220,14 +3220,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__lt=12,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                                 kid_sdf_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__lt=12,
+                                        age__lt=13,
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3237,7 +3237,7 @@ class OverviewVisualization1(APIView):
                             kid_fv1.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3247,7 +3247,7 @@ class OverviewVisualization1(APIView):
                             kid_fv_male1.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3258,7 +3258,7 @@ class OverviewVisualization1(APIView):
                             kid_fv_female1.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3270,7 +3270,7 @@ class OverviewVisualization1(APIView):
                             kid_health_post1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hp=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3280,7 +3280,7 @@ class OverviewVisualization1(APIView):
                             kid_health_post_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hp=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3291,7 +3291,7 @@ class OverviewVisualization1(APIView):
                             kid_health_post_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hp=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3303,7 +3303,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_hyg1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hyg=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3313,7 +3313,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_hyg_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hyg=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3324,7 +3324,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_hyg_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hyg=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3336,7 +3336,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_dent1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dent=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3346,7 +3346,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_dent_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dent=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3357,7 +3357,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_dent_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dent=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3369,7 +3369,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_dr1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dr=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3379,7 +3379,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_dr_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dr=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3390,7 +3390,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_dr_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dr=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3402,7 +3402,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_other1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_other=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3412,7 +3412,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_other_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_other=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3423,7 +3423,7 @@ class OverviewVisualization1(APIView):
                             kid_refer_other_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_other=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3435,7 +3435,7 @@ class OverviewVisualization1(APIView):
                             kid_sdf_whole_mouth1.append(
                                 Visualization.objects.filter(active=True,
                                     sdf_whole_mouth=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3445,7 +3445,7 @@ class OverviewVisualization1(APIView):
                             kid_sdf_whole_mouth_male1.append(
                                 Visualization.objects.filter(active=True,
                                     sdf_whole_mouth=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3456,7 +3456,7 @@ class OverviewVisualization1(APIView):
                             kid_sdf_whole_mouth_female1.append(
                                 Visualization.objects.filter(active=True,
                                     sdf_whole_mouth=True,
-                                    age__lt=12,
+                                    age__lt=13,
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3467,7 +3467,7 @@ class OverviewVisualization1(APIView):
 
                             teen_encounter1.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3476,7 +3476,7 @@ class OverviewVisualization1(APIView):
                             )
                             teen_encounter_male1.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3486,7 +3486,7 @@ class OverviewVisualization1(APIView):
                             )
                             teen_encounter_female1.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3496,27 +3496,27 @@ class OverviewVisualization1(APIView):
                             )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                                 teen_exo1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                                 teen_exo_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3524,14 +3524,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('exo'))['exo__sum'] is not None:
                                 teen_exo_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3539,27 +3539,27 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                                 teen_art1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                                 teen_art_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3567,14 +3567,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('art'))['art__sum'] is not None:
                                 teen_art_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3582,27 +3582,27 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                                 teen_seal1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                                 teen_seal_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3610,14 +3610,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('seal'))['seal__sum'] is not None:
                                 teen_seal_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3625,27 +3625,27 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                                 teen_sdf.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         geography_id=location.id,
                                     ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum']
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="male",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                                 teen_sdf_male1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="male",
                                         geography_id=location.id,
@@ -3653,14 +3653,14 @@ class OverviewVisualization1(APIView):
                                 )
 
                             if Visualization.objects.filter(active=True,
-                                age__range=(12, 18),
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                                 gender="female",
                                 ).filter(activities_id=i.id).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                                 teen_sdf_female1.append(
                                     Visualization.objects.filter(active=True,
-                                        age__range=(12, 18),
+                                        age__range=(13, 18),
                                         created_at__range=[start_date, end_date],
                                         gender="female",
                                         geography_id=location.id,
@@ -3671,7 +3671,7 @@ class OverviewVisualization1(APIView):
                             teen_fv1.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3681,7 +3681,7 @@ class OverviewVisualization1(APIView):
                             teen_fv_male1.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3692,7 +3692,7 @@ class OverviewVisualization1(APIView):
                             teen_fv_female1.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3704,7 +3704,7 @@ class OverviewVisualization1(APIView):
                             teen_health_post1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hp=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3714,7 +3714,7 @@ class OverviewVisualization1(APIView):
                             teen_health_post_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hp=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3725,7 +3725,7 @@ class OverviewVisualization1(APIView):
                             teen_health_post_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hp=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3737,7 +3737,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_hyg1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hyg=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location,
                                 )
@@ -3747,7 +3747,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_hyg_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hyg=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3758,7 +3758,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_hyg_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_hyg=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3770,7 +3770,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_dent1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dent=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3780,7 +3780,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_dent_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dent=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3791,7 +3791,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_dent_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dent=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3803,7 +3803,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_dr1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dr=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3813,7 +3813,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_dr_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dr=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3824,7 +3824,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_dr_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_dr=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3836,7 +3836,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_other1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_other=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3846,7 +3846,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_other_male1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_other=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3857,7 +3857,7 @@ class OverviewVisualization1(APIView):
                             teen_refer_other_female1.append(
                                 Visualization.objects.filter(active=True,
                                     refer_other=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -3869,7 +3869,7 @@ class OverviewVisualization1(APIView):
                             teen_sdf_whole_mouth1.append(
                                 Visualization.objects.filter(active=True,
                                     sdf_whole_mouth=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     geography_id=location.id,
                                 )
@@ -3879,7 +3879,7 @@ class OverviewVisualization1(APIView):
                             teen_sdf_whole_mouth_male1.append(
                                 Visualization.objects.filter(active=True,
                                     sdf_whole_mouth=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="male",
                                     geography_id=location.id,
@@ -3890,7 +3890,7 @@ class OverviewVisualization1(APIView):
                             teen_sdf_whole_mouth_female1.append(
                                 Visualization.objects.filter(active=True,
                                     sdf_whole_mouth=True,
-                                    age__range=(12, 18),
+                                    age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
                                     gender="female",
                                     geography_id=location.id,
@@ -5041,14 +5041,14 @@ class OverviewVisualization1(APIView):
                 return Response(
                     [
                         [
-                            "Kids (< 12)",
+                            "Child ≤12 Y",
                             sum(kid_encounter),
-                            sum(kid_exo),
-                            sum(kid_art),
-                            sum(kid_seal),
-                            sum(kid_sdf),
-                            sum(kid_sdf_whole_mouth),
                             sum(kid_fv),
+                            sum(kid_sdf_whole_mouth),
+                            sum(kid_sdf),
+                            sum(kid_seal),
+                            sum(kid_art),
+                            sum(kid_exo),
                             sum(kid_health_post),
                             sum(kid_refer_hyg),
                             sum(kid_refer_dent),
@@ -5058,12 +5058,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Male</span>',
                             sum(kid_encounter_male),
-                            sum(kid_exo_male),
-                            sum(kid_art_male),
-                            sum(kid_seal_male),
-                            sum(kid_sdf_male),
-                            sum(kid_sdf_whole_mouth_male),
                             sum(kid_fv_male),
+                            sum(kid_sdf_whole_mouth_male),
+                            sum(kid_sdf_male),
+                            sum(kid_seal_male),
+                            sum(kid_art_male),
+                            sum(kid_exo_male),
                             sum(kid_health_post_male),
                             sum(kid_refer_hyg_male),
                             sum(kid_refer_dent_male),
@@ -5074,12 +5074,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Female</span>',
                             sum(kid_encounter_female),
-                            sum(kid_exo_female),
-                            sum(kid_art_female),
-                            sum(kid_seal_female),
-                            sum(kid_sdf_female),
-                            sum(kid_sdf_whole_mouth_female),
                             sum(kid_fv_female),
+                            sum(kid_sdf_whole_mouth_female),
+                            sum(kid_sdf_female),
+                            sum(kid_seal_female),
+                            sum(kid_art_female),
+                            sum(kid_exo_female),
                             sum(kid_health_post_female),
                             sum(kid_refer_hyg_female),
                             sum(kid_refer_dent_female),
@@ -5088,14 +5088,14 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            "Teens (12-18)",
+                            "Teen 13-18 Y ",
                             sum(teen_encounter),
-                            sum(teen_exo),
-                            sum(teen_art),
-                            sum(teen_seal),
-                            sum(teen_sdf),
-                            sum(teen_sdf_whole_mouth),
                             sum(teen_fv),
+                            sum(teen_sdf_whole_mouth),
+                            sum(teen_sdf),
+                            sum(teen_seal),
+                            sum(teen_art),
+                            sum(teen_exo),
                             sum(teen_health_post),
                             sum(teen_refer_hyg),
                             sum(teen_refer_dent),
@@ -5105,12 +5105,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Male</span>',
                             sum(teen_encounter_male),
-                            sum(teen_exo_male),
-                            sum(teen_art_male),
-                            sum(teen_seal_male),
-                            sum(teen_sdf_male),
-                            sum(teen_sdf_whole_mouth_male),
                             sum(teen_fv_male),
+                            sum(teen_sdf_whole_mouth_male),
+                            sum(teen_sdf_male),
+                            sum(teen_seal_male),
+                            sum(teen_art_male),
+                            sum(teen_exo_male),
                             sum(teen_health_post_male),
                             sum(teen_refer_hyg_male),
                             sum(teen_refer_dent_male),
@@ -5121,12 +5121,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Female</span>',
                             sum(teen_encounter_female),
-                            sum(teen_exo_female),
-                            sum(teen_art_female),
-                            sum(teen_seal_female),
-                            sum(teen_sdf_female),
-                            sum(teen_sdf_whole_mouth_female),
                             sum(teen_fv_female),
+                            sum(teen_sdf_whole_mouth_female),
+                            sum(teen_sdf_female),
+                            sum(teen_seal_female),
+                            sum(teen_art_female),
+                            sum(teen_exo_female),
                             sum(teen_health_post_female),
                             sum(teen_refer_hyg_female),
                             sum(teen_refer_dent_female),
@@ -5135,14 +5135,14 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            "Adults (19-60)",
+                            "Adult 19-60 Y",
                             sum(adult_encounter),
-                            sum(adult_exo),
-                            sum(adult_art),
-                            sum(adult_seal),
-                            sum(adult_sdf),
-                            sum(adult_sdf_whole_mouth),
                             sum(adult_fv),
+                            sum(adult_sdf_whole_mouth),
+                            sum(adult_sdf),
+                            sum(adult_seal),
+                            sum(adult_art),
+                            sum(adult_exo),
                             sum(adult_health_post),
                             sum(adult_refer_hyg),
                             sum(adult_refer_dent),
@@ -5152,12 +5152,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Male</span>',
                             sum(adult_encounter_male),
-                            sum(adult_exo_male),
-                            sum(adult_art_male),
-                            sum(adult_seal_male),
-                            sum(adult_sdf_male),
-                            sum(adult_sdf_whole_mouth_male),
                             sum(adult_fv_male),
+                            sum(adult_sdf_whole_mouth_male),
+                            sum(adult_sdf_male),
+                            sum(adult_seal_male),
+                            sum(adult_art_male),
+                            sum(adult_exo_male),
                             sum(adult_health_post_male),
                             sum(adult_refer_hyg_male),
                             sum(adult_refer_dent_male),
@@ -5168,12 +5168,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Female</span>',
                             sum(adult_encounter_female),
-                            sum(adult_exo_female),
-                            sum(adult_art_female),
-                            sum(adult_seal_female),
-                            sum(adult_sdf_female),
-                            sum(adult_sdf_whole_mouth_female),
                             sum(adult_fv_female),
+                            sum(adult_sdf_whole_mouth_female),
+                            sum(adult_sdf_female),
+                            sum(adult_seal_female),
+                            sum(adult_art_female),
+                            sum(adult_exo_female),
                             sum(adult_health_post_female),
                             sum(adult_refer_hyg_female),
                             sum(adult_refer_dent_female),
@@ -5182,14 +5182,14 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            "Older Adults (> 60)",
+                            "Older Adult ≥61 Y",
                             sum(old_encounter),
-                            sum(old_exo),
-                            sum(old_art),
-                            sum(old_seal),
-                            sum(old_sdf),
-                            sum(old_sdf_whole_mouth),
                             sum(old_fv),
+                            sum(old_sdf_whole_mouth),
+                            sum(old_sdf),
+                            sum(old_seal),
+                            sum(old_art),
+                            sum(old_exo),
                             sum(old_health_post),
                             sum(old_refer_hyg),
                             sum(old_refer_dent),
@@ -5199,12 +5199,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Male</span>',
                             sum(old_encounter_male),
-                            sum(old_exo_male),
-                            sum(old_art_male),
-                            sum(old_seal_male),
-                            sum(old_sdf_male),
-                            sum(old_sdf_whole_mouth_male),
                             sum(old_fv_male),
+                            sum(old_sdf_whole_mouth_male),
+                            sum(old_sdf_male),
+                            sum(old_seal_male),
+                            sum(old_art_male),
+                            sum(old_exo_male),
                             sum(old_health_post_male),
                             sum(old_refer_hyg_male),
                             sum(old_refer_dent_male),
@@ -5215,12 +5215,12 @@ class OverviewVisualization1(APIView):
                         [
                             '<span class="ml-4">Female</span>',
                             sum(old_encounter_female),
-                            sum(old_exo_female),
-                            sum(old_art_female),
-                            sum(old_seal_female),
-                            sum(old_sdf_female),
-                            sum(old_sdf_whole_mouth_female),
                             sum(old_fv_female),
+                            sum(old_sdf_whole_mouth_female),
+                            sum(old_sdf_female),
+                            sum(old_seal_female),
+                            sum(old_art_female),
+                            sum(old_exo_female),
                             sum(old_health_post_female),
                             sum(old_refer_hyg_female),
                             sum(old_refer_dent_female),
@@ -5231,12 +5231,12 @@ class OverviewVisualization1(APIView):
                         [
                             "Total",
                             sum(total_encounter),
-                            sum(total_exo),
-                            sum(total_art),
-                            sum(total_seal),
-                            sum(total_sdf),
-                            sum(total_sdf_whole_mouth),
                             sum(total_fv),
+                            sum(total_sdf_whole_mouth),
+                            sum(total_sdf),
+                            sum(total_seal),
+                            sum(total_art),
+                            sum(total_exo),
                             sum(total_health_post),
                             sum(total_refer_hyg),
                             sum(total_refer_dent),

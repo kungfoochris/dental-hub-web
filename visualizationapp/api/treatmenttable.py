@@ -806,7 +806,16 @@ class TreatmentStrategicData(APIView):
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
                 .filter(active=True,
-                    age__lt=18, created_at__range=[last_30_days_obj, today_date_obj]
+                    age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
+                )
+                .count()
+            )
+            encounter_teen = (
+                Visualization.objects.values("encounter_id")
+                .annotate(Count("encounter_id"))
+                .filter(active=True,
+                    age__range=(13, 18),
+                    created_at__range=[last_30_days_obj, today_date_obj],
                 )
                 .count()
             )
@@ -842,7 +851,12 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             refer_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
+                refer_hp=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            refer_teen = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -871,7 +885,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_seal_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -897,7 +911,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             totalfv_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -923,7 +937,12 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_exo_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
+                exo=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            total_exo_teen = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -949,8 +968,13 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_art_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
                 art=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            total_art_teen = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
+                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_art_adult = Visualization.objects.filter(active=True,
@@ -975,8 +999,13 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_sdf_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
                 sdf=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            total_exo_teen = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
+                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_sdf_adult = Visualization.objects.filter(active=True,
@@ -1008,6 +1037,14 @@ class TreatmentStrategicData(APIView):
                 )
             except:
                 preventive_ratio_child = 0
+            
+            try:
+                preventive_ratio_teen = (total_seal_teen + totalfv_teen) / (
+                    total_exo_teen + total_art_teen + total_sdf_teen
+                )
+            except:
+                preventive_ratio_teen = 0
+
             try:
                 preventive_ratio_adult = (total_seal_adult + totalfv_adult) / (
                     total_exo_adult + total_art_adult + total_sdf_adult
@@ -1043,6 +1080,13 @@ class TreatmentStrategicData(APIView):
                 ) / total_exo_child
             except:
                 early_intervention_ratio_child = 0
+            
+            try:
+                early_intervention_ratio_teen = (
+                    total_art_teen + total_sdf_teen
+                ) / total_exo_teen
+            except:
+                early_intervention_ratio_teen = 0
 
             try:
                 early_intervention_ratio_adult = (
@@ -1076,6 +1120,11 @@ class TreatmentStrategicData(APIView):
                 recall_percent_child = (refer_child / encounter_child) * 100
             except:
                 recall_percent_child = 0
+            
+            try:
+                recall_percent_teen = (refer_teen / encounter_teen) * 100
+            except:
+                recall_percent_teen = 0
 
             try:
                 recall_percent_adult = (refer_adult / encounter_adult) * 100
@@ -1089,22 +1138,191 @@ class TreatmentStrategicData(APIView):
 
             recall_percent_total = recall_percent_male + recall_percent_female
 
+            # Prevention  
+            try:
+                prevention_male = (total_sdf_male + total_seal_male + totalfv_male ) / (
+                    encounter_male
+                )
+            except:
+                prevention_male = 0
+            
+            try:
+                prevention_female = (total_sdf_female + total_seal_female + totalfv_female ) / (
+                    encounter_female
+                )
+            except:
+                prevention_female = 0
+            
+            try:
+                prevention_child = (total_sdf_child + total_seal_child + totalfv_child ) / (
+                    encounter_child
+                )
+            except:
+                prevention_child = 0
+            
+            try:
+                prevention_teen = (total_sdf_teen + total_seal_teen + totalfv_teen ) / (
+                    encounter_teen
+                )
+            except:
+                prevention_teen = 0
+            
+            try:
+                prevention_adult = (total_sdf_adult + total_seal_adult + totalfv_adult ) / (
+                    encounter_adult
+                )
+            except:
+                prevention_adult = 0
+            
+            try:
+                prevention_old = (total_sdf_old + total_seal_old + totalfv_old ) / (
+                    encounter_old
+                )
+            except:
+                prevention_old = 0
+            
+            prevention_total = prevention_male + prevention_female
+
+            # Early intervention  
+            try:
+                early_intervention_male = (total_art_male + total_sdf_male) / (
+                    encounter_male
+                )
+            except:
+                early_intervention_male = 0
+            
+            try:
+                early_intervention_female = (total_art_female + total_sdf_female ) / (
+                    encounter_female
+                )
+            except:
+                early_intervention_female = 0
+            
+            try:
+                early_intervention_child = (total_art_child + total_sdf_child) / (
+                    encounter_child
+                )
+            except:
+                early_intervention_child = 0
+            
+            try:
+                early_intervention_teen = (total_art_teen + total_sdf_teen ) / (
+                    encounter_teen
+                )
+            except:
+                early_intervention_teen = 0
+            
+            try:
+                early_intervention_adult = (total_art_adult + total_sdf_adult ) / (
+                    encounter_adult
+                )
+            except:
+                early_intervention_adult = 0
+            
+            try:
+                early_intervention_old = (total_art_old + total_sdf_old) / (
+                    encounter_old
+                )
+            except:
+                early_intervention_old = 0
+            
+            early_intervention_total = early_intervention_male + early_intervention_female
+
+            # Surgical intervention  
+            try:
+                surgical_intervention_male = (total_art_male + total_exo_male + total_sdf_male) / (
+                    encounter_male
+                )
+            except:
+                surgical_intervention_male = 0
+            
+            try:
+                surgical_intervention_female = (total_art_female + total_exo_female + total_sdf_female ) / (
+                    encounter_female
+                )
+            except:
+                surgical_intervention_female = 0
+            
+            try:
+                surgical_intervention_child = (total_art_child + total_exo_child + total_sdf_child) / (
+                    encounter_child
+                )
+            except:
+                surgical_intervention_child = 0
+            
+            try:
+                surgical_intervention_teen = (total_art_teen + total_exo_teen + total_sdf_teen ) / (
+                    encounter_teen
+                )
+            except:
+                surgical_intervention_teen = 0
+            
+            try:
+                surgical_intervention_adult = (total_art_adult + total_exo_adult + total_sdf_adult ) / (
+                    encounter_adult
+                )
+            except:
+                surgical_intervention_adult = 0
+            
+            try:
+                surgical_intervention_old = (total_art_old + total_exo_old + total_sdf_old) / (
+                    encounter_old
+                )
+            except:
+                surgical_intervention_old = 0
+            
+            surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
+            
+            
             return Response(
-                [
+                [   
+                    [
+                        "Prevention",
+                        round(prevention_male, 2),
+                        round(prevention_female, 2),
+                        round(prevention_child, 2),
+                        round(prevention_teen, 2),
+                        round(prevention_adult, 2),
+                        round(prevention_old, 2),
+                        round(prevention_total, 2),
+                    ],
+                    [
+                        "Surgical Intervention",
+                        round(surgical_intervention_male, 2),
+                        round(surgical_intervention_female, 2),
+                        round(surgical_intervention_child,2),
+                        round(surgical_intervention_teen,2),
+                        round(surgical_intervention_adult,2),
+                        round(surgical_intervention_old,2),
+                        round(surgical_intervention_total ,2),
+                    ],
                     [
                         "Preventive Ratio",
                         round(preventive_ratio_male, 2),
                         round(preventive_ratio_female, 2),
                         round(preventive_ratio_child, 2),
+                        round(preventive_ratio_teen, 2),
                         round(preventive_ratio_adult, 2),
                         round(preventive_ratio_old, 2),
                         round(preventive_ratio_total, 2),
+                    ],
+                    
+                    [
+                        "Early Invertention",
+                        round(early_intervention_male, 2),
+                        round(early_intervention_female, 2),
+                        round(early_intervention_child, 2),
+                        round(early_intervention_teen, 2),
+                        round(early_intervention_adult, 2),
+                        round(early_intervention_old, 2),
+                        round(early_intervention_total, 2),
                     ],
                     [
                         "Early Intervention Ratio",
                         round(early_intervention_ratio_male, 2),
                         round(early_intervention_ratio_female, 2),
                         round(early_intervention_ratio_child, 2),
+                        round(early_intervention_ratio_teen, 2),
                         round(early_intervention_ratio_adult, 2),
                         round(early_intervention_ratio_old, 2),
                         round(early_intervention_ratio_total, 2),
@@ -1114,6 +1332,7 @@ class TreatmentStrategicData(APIView):
                         str(round(recall_percent_male, 2)) + "%",
                         str(round(recall_percent_female, 2)) + "%",
                         str(round(recall_percent_child, 2)) + "%",
+                        str(round(recall_percent_teen, 2)) + "%",
                         str(round(recall_percent_adult, 2)) + "%",
                         str(round(recall_percent_old, 2)) + "%",
                         str(round(recall_percent_total, 2)) + "%",
@@ -1170,6 +1389,20 @@ class TreatmentStrategicData(APIView):
                     encounter_child = (
                         Visualization.objects.filter(active=True,
                             age__lt=18, created_at__range=[start_date, end_date]
+                        )
+                        .values("encounter_id")
+                        .annotate(Count("encounter_id"))
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    encounter_teen= (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18), created_at__range=[start_date, end_date]
                         )
                         .values("encounter_id")
                         .annotate(Count("encounter_id"))
@@ -1242,6 +1475,20 @@ class TreatmentStrategicData(APIView):
                     refer_child = (
                         Visualization.objects.filter(active=True,
                             age__lt=18,
+                            refer_hp=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    refer_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1327,6 +1574,20 @@ class TreatmentStrategicData(APIView):
                         )
                         .count()
                     )
+                    total_seal_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            seal=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
                     total_seal_adult = (
                         Visualization.objects.filter(active=True,
                             age__range=(18, 60),
@@ -1398,6 +1659,20 @@ class TreatmentStrategicData(APIView):
                         )
                         .count()
                     )
+                    totalfv_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            fv=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
                     totalfv_adult = (
                         Visualization.objects.filter(active=True,
                             age__range=(18, 60),
@@ -1458,6 +1733,20 @@ class TreatmentStrategicData(APIView):
                     total_exo_child = (
                         Visualization.objects.filter(active=True,
                             age__lt=18,
+                            exo=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    total_exo_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
                             exo=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1542,6 +1831,20 @@ class TreatmentStrategicData(APIView):
                     )
                     total_art_adult = (
                         Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            art=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    total_art_adult = (
+                        Visualization.objects.filter(active=True,
                             age__range=(18, 60),
                             art=True,
                             created_at__range=[start_date, end_date],
@@ -1611,6 +1914,20 @@ class TreatmentStrategicData(APIView):
                         )
                         .count()
                     )
+                    total_sdf_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            sdf=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
                     total_sdf_adult = (
                         Visualization.objects.filter(active=True,
                             age__range=(18, 60),
@@ -1659,6 +1976,12 @@ class TreatmentStrategicData(APIView):
                     except:
                         preventive_ratio_child = 0
                     try:
+                        preventive_ratio_teen = (total_seal_teen + totalfv_teen) / (
+                            total_exo_teen + total_art_teen + total_sdf_teen
+                        )
+                    except:
+                        preventive_ratio_teen = 0
+                    try:
                         preventive_ratio_adult = (total_seal_adult + totalfv_adult) / (
                             total_exo_adult + total_art_adult + total_sdf_adult
                         )
@@ -1695,6 +2018,13 @@ class TreatmentStrategicData(APIView):
                         ) / total_exo_child
                     except:
                         early_intervention_ratio_child = 0
+                    
+                    try:
+                        early_intervention_ratio_teen = (
+                            total_art_teen + total_sdf_teen
+                        ) / total_exo_teen
+                    except:
+                        early_intervention_ratio_teen = 0
 
                     try:
                         early_intervention_ratio_adult = (
@@ -1728,6 +2058,11 @@ class TreatmentStrategicData(APIView):
                         recall_percent_child = (refer_child / encounter_child) * 100
                     except:
                         recall_percent_child = 0
+                    
+                    try:
+                        recall_percent_teen = (refer_teen / encounter_teen) * 100
+                    except:
+                        recall_percent_teen = 0
 
                     try:
                         recall_percent_adult = (refer_adult / encounter_adult) * 100
@@ -1740,16 +2075,154 @@ class TreatmentStrategicData(APIView):
                         recall_percent_old = 0
 
                     recall_percent_total = recall_percent_male + recall_percent_female
+
+                    # Prevention  
+                    try:
+                        prevention_male = (total_sdf_male + total_seal_male + totalfv_male ) / (
+                            encounter_male
+                        )
+                    except:
+                        prevention_male = 0
+                    
+                    try:
+                        prevention_female = (total_sdf_female + total_seal_female + totalfv_female ) / (
+                            encounter_female
+                        )
+                    except:
+                        prevention_female = 0
+                    
+                    try:
+                        prevention_child = (total_sdf_child + total_seal_child + totalfv_child ) / (
+                            encounter_child
+                        )
+                    except:
+                        prevention_child = 0
+                    
+                    try:
+                        prevention_teen = (total_sdf_teen + total_seal_teen + totalfv_teen ) / (
+                            encounter_teen
+                        )
+                    except:
+                        prevention_teen = 0
+                    
+                    try:
+                        prevention_adult = (total_sdf_adult + total_seal_adult + totalfv_adult ) / (
+                            encounter_adult
+                        )
+                    except:
+                        prevention_adult = 0
+                    
+                    try:
+                        prevention_old = (total_sdf_old + total_seal_old + totalfv_old ) / (
+                            encounter_old
+                        )
+                    except:
+                        prevention_old = 0
+                    
+                    prevention_total = prevention_male + prevention_female
+
+                    # Early intervention  
+                    try:
+                        early_intervention_male = (total_art_male + total_sdf_male) / (
+                            encounter_male
+                        )
+                    except:
+                        early_intervention_male = 0
+                    
+                    try:
+                        early_intervention_female = (total_art_female + total_sdf_female ) / (
+                            encounter_female
+                        )
+                    except:
+                        early_intervention_female = 0
+                    
+                    try:
+                        early_intervention_child = (total_art_child + total_sdf_child) / (
+                            encounter_child
+                        )
+                    except:
+                        early_intervention_child = 0
+                    
+                    try:
+                        early_intervention_teen = (total_art_teen + total_sdf_teen ) / (
+                            encounter_teen
+                        )
+                    except:
+                        early_intervention_teen = 0
+                    
+                    try:
+                        early_intervention_adult = (total_art_adult + total_sdf_adult ) / (
+                            encounter_adult
+                        )
+                    except:
+                        early_intervention_adult = 0
+                    
+                    try:
+                        early_intervention_old = (total_art_old + total_sdf_old) / (
+                            encounter_old
+                        )
+                    except:
+                        early_intervention_old = 0
+                    
+                    early_intervention_total = early_intervention_male + early_intervention_female
+
+                    # Surgical intervention  
+                    try:
+                        surgical_intervention_male = (total_art_male + total_exo_male + total_sdf_male) / (
+                            encounter_male
+                        )
+                    except:
+                        surgical_intervention_male = 0
+                    
+                    try:
+                        surgical_intervention_female = (total_art_female + total_exo_female + total_sdf_female ) / (
+                            encounter_female
+                        )
+                    except:
+                        surgical_intervention_female = 0
+                    
+                    try:
+                        surgical_intervention_child = (total_art_child + total_exo_child + total_sdf_child) / (
+                            encounter_child
+                        )
+                    except:
+                        surgical_intervention_child = 0
+                    
+                    try:
+                        surgical_intervention_teen = (total_art_teen + total_exo_teen + total_sdf_teen ) / (
+                            encounter_teen
+                        )
+                    except:
+                        surgical_intervention_teen = 0
+                    
+                    try:
+                        surgical_intervention_adult = (total_art_adult + total_exo_adult + total_sdf_adult ) / (
+                            encounter_adult
+                        )
+                    except:
+                        surgical_intervention_adult = 0
+                    
+                    try:
+                        surgical_intervention_old = (total_art_old + total_exo_old + total_sdf_old) / (
+                            encounter_old
+                        )
+                    except:
+                        surgical_intervention_old = 0
+                    
+                    surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
+
                 else:
                     encounter_male = []
                     encounter_female = []
                     encounter_child = []
+                    encounter_teen = []
                     encounter_adult = []
                     encounter_old = []
 
                     refer_male = []
                     refer_female = []
                     refer_child = []
+                    refer_teen = []
                     refer_adult = []
                     refer_old = []
                     total_refer = []
@@ -1757,30 +2230,35 @@ class TreatmentStrategicData(APIView):
                     total_seal_male = []
                     total_seal_female = []
                     total_seal_child = []
+                    total_seal_teen = []
                     total_seal_adult = []
                     total_seal_old = []
 
                     totalfv_male = []
                     totalfv_female = []
                     totalfv_child = []
+                    totalfv_teen = []
                     totalfv_adult = []
                     totalfv_old = []
 
                     total_exo_male = []
                     total_exo_female = []
                     total_exo_child = []
+                    total_exo_teen = []
                     total_exo_adult = []
                     total_exo_old = []
 
                     total_art_male = []
                     total_art_female = []
                     total_art_child = []
+                    total_art_teen = []
                     total_art_adult = []
                     total_art_old = []
 
                     total_sdf_male = []
                     total_sdf_female = []
                     total_sdf_child = []
+                    total_sdf_teen = []
                     total_sdf_adult = []
                     total_sdf_old = []
 
@@ -1836,6 +2314,22 @@ class TreatmentStrategicData(APIView):
                         encounter_adult.append(
                             Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .values("encounter_id")
+                            .annotate(Count("encounter_id"))
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        encounter_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                             )
@@ -1911,6 +2405,21 @@ class TreatmentStrategicData(APIView):
                             )
                             .count()
                         )
+                        refer_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
+                                refer_hp=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
                         refer_adult.append(
                             Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
@@ -1964,22 +2473,7 @@ class TreatmentStrategicData(APIView):
                             )
                             .count()
                         )
-                        print("----------")
-                        print(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                        
                         total_seal_female.append(
                             Visualization.objects.filter(active=True,
                                 gender="female",
@@ -1998,6 +2492,21 @@ class TreatmentStrategicData(APIView):
                         total_seal_child.append(
                             Visualization.objects.filter(active=True,
                                 age__lt=18,
+                                seal=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        total_seal_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
                                 seal=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2056,22 +2565,7 @@ class TreatmentStrategicData(APIView):
                             )
                             .count()
                         )
-                        print("******************")
-                        print(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                    
                         totalfv_female.append(
                             Visualization.objects.filter(active=True,
                                 gender="female",
@@ -2090,6 +2584,21 @@ class TreatmentStrategicData(APIView):
                         totalfv_child.append(
                             Visualization.objects.filter(active=True,
                                 age__lt=18,
+                                fv=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        totalfv_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
                                 fv=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2193,6 +2702,21 @@ class TreatmentStrategicData(APIView):
                             )
                             .count()
                         )
+                        total_exo_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
+                                exo=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
                         total_exo_old.append(
                             Visualization.objects.filter(active=True,
                                 age__gt=60,
@@ -2254,6 +2778,21 @@ class TreatmentStrategicData(APIView):
                             )
                             .count()
                         )
+                        total_art_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
+                                art=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
                         total_art_adult.append(
                             Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
@@ -2300,22 +2839,7 @@ class TreatmentStrategicData(APIView):
                             )
                             .count()
                         )
-                        print("+++++++++++++++++")
-                        print(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                        
                         total_sdf_female.append(
                             Visualization.objects.filter(active=True,
                                 gender="female",
@@ -2334,6 +2858,21 @@ class TreatmentStrategicData(APIView):
                         total_sdf_child.append(
                             Visualization.objects.filter(active=True,
                                 age__lt=18,
+                                sdf=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        total_sdf_teen.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2408,6 +2947,16 @@ class TreatmentStrategicData(APIView):
                     except:
                         preventive_ratio_child = 0
                     try:
+                        preventive_ratio_teen = (
+                            sum(total_seal_teen) + sum(totalfv_teen)
+                        ) / (
+                            sum(total_exo_teen)
+                            + sum(total_art_teen)
+                            + sum(total_sdf_teen)
+                        )
+                    except:
+                        preventive_ratio_teen = 0
+                    try:
                         preventive_ratio_adult = (
                             sum(total_seal_adult) + sum(totalfv_adult)
                         ) / (
@@ -2426,12 +2975,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         preventive_ratio_old = 0
 
-                    preventive_ratio_total = (
-                        preventive_ratio_male
-                        + preventive_ratio_female
-                        + preventive_ratio_child
-                        + preventive_ratio_old
-                    )
+                    preventive_ratio_total = preventive_ratio_male+ preventive_ratio_female
 
                     try:
                         early_intervention_ratio_male = (
@@ -2453,6 +2997,13 @@ class TreatmentStrategicData(APIView):
                         ) / sum(total_exo_child)
                     except:
                         early_intervention_ratio_child = 0
+                    
+                    try:
+                        early_intervention_ratio_teen = (
+                            sum(total_art_teen) + sum(total_sdf_teen)
+                        ) / sum(total_exo_teen)
+                    except:
+                        early_intervention_ratio_teen = 0
 
                     try:
                         early_intervention_ratio_adult = (
@@ -2468,13 +3019,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         early_intervention_ratio_old = 0
 
-                    early_intervention_ratio_total = (
-                        early_intervention_ratio_male
-                        + early_intervention_ratio_female
-                        + early_intervention_ratio_child
-                        + early_intervention_ratio_adult
-                        + early_intervention_ratio_old
-                    )
+                    early_intervention_ratio_total = early_intervention_ratio_male + early_intervention_ratio_female 
 
                     try:
                         recall_percent_male = (
@@ -2496,6 +3041,13 @@ class TreatmentStrategicData(APIView):
                         ) * 100
                     except:
                         recall_percent_child = 0
+                    
+                    try:
+                        recall_percent_teen = (
+                            sum(refer_teen) / sum(encounter_teen)
+                        ) * 100
+                    except:
+                        recall_percent_teen = 0
 
                     try:
                         recall_percent_adult = (
@@ -2510,22 +3062,191 @@ class TreatmentStrategicData(APIView):
                         recall_percent_old = 0
 
                     recall_percent_total = recall_percent_male + recall_percent_female
+
+                    # Prevention  
+                    try:
+                        prevention_male = (sum(total_sdf_male) + sum(total_seal_male) + sum(totalfv_male) ) / (
+                            sum(encounter_male)
+                        )
+                    except:
+                        prevention_male = 0
+                    
+                    try:
+                        prevention_female = (sum(total_sdf_female) + sum(total_seal_female) + sum(totalfv_female) ) / (
+                            sum(encounter_female)
+                        )
+                    except:
+                        prevention_female = 0
+                    
+                    try:
+                        prevention_child = (sum(total_sdf_child) + sum(total_seal_child) + sum(totalfv_child) ) / (
+                            sum(encounter_child)
+                        )
+                    except:
+                        prevention_child = 0
+                    
+                    try:
+                        prevention_teen = (sum(total_sdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) ) / (
+                            sum(encounter_teen)
+                        )
+                    except:
+                        prevention_teen = 0
+                    
+                    try:
+                        prevention_adult = (sum(total_sdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) ) / (
+                            sum(encounter_adult)
+                        )
+                    except:
+                        prevention_adult = 0
+                    
+                    try:
+                        prevention_old = (sum(total_sdf_old) + sum(total_seal_old) + sum(totalfv_old) ) / (
+                            sum(encounter_old)
+                        )
+                    except:
+                        prevention_old = 0
+                    
+                    prevention_total = prevention_male + prevention_female
+
+                    # Early intervention  
+                    try:
+                        early_intervention_male = (sum(total_art_male) + sum(total_sdf_male)) / (
+                            sum(encounter_male)
+                        )
+                    except:
+                        early_intervention_male = 0
+                    
+                    try:
+                        early_intervention_female = (sum(total_art_female) + sum(total_sdf_female) ) / (
+                            sum(encounter_female)
+                        )
+                    except:
+                        early_intervention_female = 0
+                    
+                    try:
+                        early_intervention_child = (sum(total_art_child) + sum(total_sdf_child)) / (
+                            sum(encounter_child)
+                        )
+                    except:
+                        early_intervention_child = 0
+                    
+                    try:
+                        early_intervention_teen = (sum(total_art_teen) + sum(total_sdf_teen) ) / (
+                            sum(encounter_teen)
+                        )
+                    except:
+                        early_intervention_teen = 0
+                    
+                    try:
+                        early_intervention_adult = (sum(total_art_adult) + sum(total_sdf_adult) ) / (
+                            sum(encounter_adult)
+                        )
+                    except:
+                        early_intervention_adult = 0
+                    
+                    try:
+                        early_intervention_old = (sum(total_art_old) + sum(total_sdf_old)) / (
+                            sum(encounter_old)
+                        )
+                    except:
+                        early_intervention_old = 0
+                    
+                    early_intervention_total = early_intervention_male + early_intervention_female
+
+                    # Surgical intervention  
+                    try:
+                        surgical_intervention_male = (sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)) / (
+                            sum(encounter_male)
+                        )
+                    except:
+                        surgical_intervention_male = 0
+                    
+                    try:
+                        surgical_intervention_female = (sum(total_art_female) + sum(total_exo_female) + sum(total_sdf_female) ) / (
+                            sum(encounter_female)
+                        )
+                    except:
+                        surgical_intervention_female = 0
+                    
+                    try:
+                        surgical_intervention_child = (sum(total_art_child) + sum(total_exo_child) + sum(total_sdf_child)) / (
+                            sum(encounter_child)
+                        )
+                    except:
+                        surgical_intervention_child = 0
+                    
+                    try:
+                        surgical_intervention_teen = (sum(total_art_teen) + sum(total_exo_teen) + sum(total_sdf_teen) ) / (
+                            sum(encounter_teen)
+                        )
+                    except:
+                        surgical_intervention_teen = 0
+                    
+                    try:
+                        surgical_intervention_adult = (sum(total_art_adult) + sum(total_exo_adult) + sum(total_sdf_adult) ) / (
+                            sum(encounter_adult)
+                        )
+                    except:
+                        surgical_intervention_adult = 0
+                    
+                    try:
+                        surgical_intervention_old = (sum(total_art_old) + sum(total_exo_old) + sum(total_sdf_old)) / (
+                            sum(encounter_old)
+                        )
+                    except:
+                        surgical_intervention_old = 0
+                    
+                    surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
+                    
                 return Response(
-                    [
+                    [   
+                        [
+                            "Prevention",
+                            round(prevention_male, 2),
+                            round(prevention_female, 2),
+                            round(prevention_child, 2),
+                            round(prevention_teen, 2),
+                            round(prevention_adult, 2),
+                            round(prevention_old, 2),
+                            round(prevention_total, 2),
+                        ],
+                        [
+                            "Surgical Intervention",
+                            round(surgical_intervention_male, 2),
+                            round(surgical_intervention_female, 2),
+                            round(surgical_intervention_child,2),
+                            round(surgical_intervention_teen,2),
+                            round(surgical_intervention_adult,2),
+                            round(surgical_intervention_old,2),
+                            round(surgical_intervention_total ,2),
+                        ],
                         [
                             "Preventive Ratio",
                             round(preventive_ratio_male, 2),
                             round(preventive_ratio_female, 2),
                             round(preventive_ratio_child, 2),
+                            round(preventive_ratio_teen, 2),
                             round(preventive_ratio_adult, 2),
                             round(preventive_ratio_old, 2),
                             round(preventive_ratio_total, 2),
+                        ],
+                        
+                        [
+                            "Early Invertention",
+                            round(early_intervention_male, 2),
+                            round(early_intervention_female, 2),
+                            round(early_intervention_child, 2),
+                            round(early_intervention_teen, 2),
+                            round(early_intervention_adult, 2),
+                            round(early_intervention_old, 2),
+                            round(early_intervention_total, 2),
                         ],
                         [
                             "Early Intervention Ratio",
                             round(early_intervention_ratio_male, 2),
                             round(early_intervention_ratio_female, 2),
                             round(early_intervention_ratio_child, 2),
+                            round(early_intervention_ratio_teen, 2),
                             round(early_intervention_ratio_adult, 2),
                             round(early_intervention_ratio_old, 2),
                             round(early_intervention_ratio_total, 2),
@@ -2535,6 +3256,7 @@ class TreatmentStrategicData(APIView):
                             str(round(recall_percent_male, 2)) + "%",
                             str(round(recall_percent_female, 2)) + "%",
                             str(round(recall_percent_child, 2)) + "%",
+                            str(round(recall_percent_teen, 2)) + "%",
                             str(round(recall_percent_adult, 2)) + "%",
                             str(round(recall_percent_old, 2)) + "%",
                             str(round(recall_percent_total, 2)) + "%",

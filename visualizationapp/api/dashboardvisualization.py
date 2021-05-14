@@ -182,34 +182,7 @@ class VisualizationSetting(APIView):
                 "data": {
                     "labels": district,
                     "datasets": [
-                        {
-                            "label": "EXO",
-                            "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                            "borderColor": "rgba(255, 206, 86, 1)",
-                            "borderWidth": 1,
-                            "data": exo_data,
-                        },
-                        {
-                            "label": "ART",
-                            "backgroundColor": "rgba(81, 264, 210, 0.2)",
-                            "borderColor": "rgba(81, 264, 210, 1)",
-                            "borderWidth": 1,
-                            "data": art_data,
-                        },
-                        {
-                            "label": "SEAL",
-                            "backgroundColor": "rgba(16, 152, 247, 0.2)",
-                            "borderColor": "rgba(16, 152, 247, 1)",
-                            "borderWidth": 1,
-                            "data": seal_data,
-                        },
-                        {
-                            "label": "SDF",
-                            "backgroundColor": "rgba(87, 50, 200, 0.2)",
-                            "borderColor": "rgba(87, 50, 200, 1)",
-                            "borderWidth": 1,
-                            "data": sdf_data,
-                        },
+
                         {
                             "label": "FV",
                             "backgroundColor": "rgba(239, 62, 54, 0.2)",
@@ -217,6 +190,39 @@ class VisualizationSetting(APIView):
                             "borderWidth": 1,
                             "data": fv_data,
                         },
+
+                        {
+                            "label": "SDF",
+                            "backgroundColor": "rgba(87, 50, 200, 0.2)",
+                            "borderColor": "rgba(87, 50, 200, 1)",
+                            "borderWidth": 1,
+                            "data": sdf_data,
+                        },
+
+                        {
+                            "label": "SEAL",
+                            "backgroundColor": "rgba(16, 152, 247, 0.2)",
+                            "borderColor": "rgba(16, 152, 247, 1)",
+                            "borderWidth": 1,
+                            "data": seal_data,
+                        },
+
+                        {
+                            "label": "ART",
+                            "backgroundColor": "rgba(81, 264, 210, 0.2)",
+                            "borderColor": "rgba(81, 264, 210, 1)",
+                            "borderWidth": 1,
+                            "data": art_data,
+                        },
+                        
+                        {
+                            "label": "EXO",
+                            "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                            "borderColor": "rgba(255, 206, 86, 1)",
+                            "borderWidth": 1,
+                            "data": exo_data,
+                        },
+                        
                     ],
                 },
                 "options": {
@@ -564,7 +570,7 @@ class VisualizationSettingFilter(APIView):
                     .count()
                 )
 
-                district1 = ["Kids", "Teen", "Adult", "Old Adult"]
+                district1 = ["Child", "Teen", "Adult", "Old Adult"]
                 if (
                     Visualization.objects.filter(active=True,age__lt=12)
                     .filter(created_at__range=[start_date, end_date])
@@ -1177,7 +1183,7 @@ class VisualizationSettingFilter(APIView):
                         .count()
                     )
 
-                    district1 = ["Kids", "Teen", "Adult", "Old Adult"]
+                    district1 = ["Child", "Teen", "Adult", "Old Adult"]
 
                     if (
                         Visualization.objects.filter(active=True,age__lt=12)
@@ -1592,11 +1598,27 @@ class VisualizationSettingFilter(APIView):
                         "labels": district1,
                         "datasets": [
                             {
-                                "label": "EXO",
-                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                "borderColor": "rgba(255, 206, 86, 1)",
+                                "label": "FV",
+                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                "borderColor": "rgba(239, 62, 54, 1)",
                                 "borderWidth": 1,
-                                "data": exo_data1,
+                                "data": fv_data1,
+                            },
+
+                            {
+                                "label": "SDF",
+                                "backgroundColor": "rgba(87, 50, 200, 0.2)",
+                                "borderColor": "rgba(87, 50, 200, 1)",
+                                "borderWidth": 1,
+                                "data": sdf_data1,
+                            },
+
+                            {
+                                "label": "SEAL",
+                                "backgroundColor": "rgba(16, 152, 247, 0.2)",
+                                "borderColor": "rgba(16, 152, 247, 1)",
+                                "borderWidth": 1,
+                                "data": seal_data1,
                             },
                             {
                                 "label": "ART",
@@ -1606,26 +1628,14 @@ class VisualizationSettingFilter(APIView):
                                 "data": art_data1,
                             },
                             {
-                                "label": "SEAL",
-                                "backgroundColor": "rgba(16, 152, 247, 0.2)",
-                                "borderColor": "rgba(16, 152, 247, 1)",
+                                "label": "EXO",
+                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                "borderColor": "rgba(255, 206, 86, 1)",
                                 "borderWidth": 1,
-                                "data": seal_data1,
+                                "data": exo_data1,
                             },
-                            {
-                                "label": "SDF",
-                                "backgroundColor": "rgba(87, 50, 200, 0.2)",
-                                "borderColor": "rgba(87, 50, 200, 1)",
-                                "borderWidth": 1,
-                                "data": sdf_data1,
-                            },
-                            {
-                                "label": "FV",
-                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                "borderColor": "rgba(239, 62, 54, 1)",
-                                "borderWidth": 1,
-                                "data": fv_data1,
-                            },
+                            
+                            
                         ],
                     },
                     "options": {
@@ -2960,9 +2970,9 @@ class PieChartVisualizationFilter(APIView):
                             ],
                             "borderWidth": 1,
                             "data": [
-                                [sum(community_outreach_count)],
                                 [sum(health_post_count)],
                                 [sum(school_seminar_count)],
+                                [sum(community_outreach_count)],
                                 [sum(training_count)],
                             ],
                         }
