@@ -22,8 +22,8 @@ POST:
 
 - encounter: ForeignKey(required)
 - reason_for_modification: TextField()
-- reason_for_deletion: CharField()
-- other_reason_for_deletion: ChoiceField()
+- reason_for_deletion: Enum[ accidental_entry, duplicate_encounter,incorrect_patient,incorrect_user and other]
+- other_reason_for_deletion: Text()
 - flag : ChoiceField()
 
 

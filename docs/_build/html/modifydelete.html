@@ -49,8 +49,8 @@ POST:</p>
 <ul class="simple">
 <li>encounter: ForeignKey(required)</li>
 <li>reason_for_modification: TextField()</li>
-<li>reason_for_deletion: CharField()</li>
-<li>other_reason_for_deletion: ChoiceField()</li>
+<li>reason_for_deletion: Enum[&nbsp;accidental_entry, duplicate_encounter,incorrect_patient,incorrect_user and other]</li>
+<li>other_reason_for_deletion: Text()</li>
 <li>flag : ChoiceField()</li>
 <li>if success:</li>
 </ul>

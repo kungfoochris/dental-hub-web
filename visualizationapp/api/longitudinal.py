@@ -69,125 +69,156 @@ class TestLongitudinalVisualization(APIView):
     def get(self, request,format=None):
         if User.objects.filter(id=request.user.id).exists():
             carries_risk = ["Carries Risk"]
-            total_carries_risk_low = ['<span class="ml-4">Low</span>']
-            total_carries_risk_medium = ['<span class="ml-4">Medium</span>']
-            total_carries_risk_high = ['<span class="ml-4">High</span>']
-            total_untreated_caries_present=["Any untreated caries present"]
-            total_decayed_permanent_teeth = ["Number of decayed permanent teeth"]
-            total_decayed_primary_teeth = ["Number of decayed primary teeth"]
-            total_cavity_permanent_molar = ["Cavity permanent molar or premolar"]
-            total_cavity_permanent_anterior = ["Cavity permanent anterior"]
-            total_active_infection = ["Active Infection"]
-            total_reversible_pulpitis = ["Mouth pain due to reversible pulpitis"]
-            total_need_art_filling = ["Need ART filling"]
-            total_need_sdf = ["Need SDF"]
-            total_need_extraction = ["Need Extraction"]
-            total_need_fv = ["Need FV"]
-            total_need_dentist_or_hygienist = ["Need Dentist or Hygenist"]
-            total = []
+            total_carries_risk_low = []
+            total_carries_risk_medium = []
+            total_carries_risk_high = []
+            total_untreated_caries_present=[]
+            total_decayed_permanent_teeth = []
+            total_decayed_primary_teeth = []
+            total_cavity_permanent_molar = []
+            total_cavity_permanent_anterior = []
+            total_active_infection = []
+            total_reversible_pulpitis = []
+            total_need_art_filling = []
+            total_need_sdf = []
+            total_need_extraction = []
+            total_need_fv = []
+            total_need_dentist_or_hygienist = []
+            
+
+
+            carries_risk_low_number = []
+            carries_risk_medium_number = []
+            carries_risk_high_number = []
+            untreated_caries_present_number = []
+            decayed_primary_teeth_mean = []
+            decayed_permanent_teeth_mean = []
+            cavity_permanent_molar_number = []
+            cavity_permanent_anterior_number = []
+            active_infection_number = []
+            reversible_pulpitis_number = []
+            need_art_filling_number = []
+            need_sdf_number = []
+            need_extraction_number = []
+            need_fv_number = []
+            need_dentist_or_hygienist_number = []
 
 
             # carries risk low
-            total_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low").count())
-            total_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low").count())
+            carries_risk_low_number.append(Visualization.objects.filter(carries_risk="Low").count())
+            carries_risk_low_number.append(Visualization.objects.filter(carries_risk="Low").count())
+            percent = round((Visualization.objects.filter(carries_risk="Low").count()/Visualization.objects.all().count()) *100,2)
+            total_carries_risk_low.append(percent)
+            total_carries_risk_low.append(percent)
             try:
-                total_carries_risk_low.append(abs(round(total_carries_risk_low[1] - total_carries_risk_low[2],2)))
+                total_carries_risk_low.append(abs(round(total_carries_risk_low[0] - total_carries_risk_low[1],2)))
             except:
                 total_carries_risk_low.append(0)
             try:
-                total_carries_risk_low.append(round(total_carries_risk_low[3]/total_carries_risk_low[1],2))
+                total_carries_risk_low.append(round(total_carries_risk_low[3]/total_carries_risk_low[0],2))
             except:
                 total_carries_risk_low.append(0)
             
-            if total_carries_risk_low[4] < 0.2:
+            if total_carries_risk_low[3] < 0.2:
                 total_carries_risk_low.append("small")
-            elif total_carries_risk_low[4] >= 0.2 and total_carries_risk_low[4] <= 0.6:
+            elif total_carries_risk_low[3] >= 0.2 and total_carries_risk_low[3] <= 0.6:
                 total_carries_risk_low.append("medium")
             else:
                 total_carries_risk_low.append("large")
             
-            if(total_carries_risk_low[1] or total_carries_risk_low[2] !=0):
-                carries_risk_low_pvalue = chisquare([total_carries_risk_low[2],total_carries_risk_low[3]])
-                total_carries_risk_low.append(round(carries_risk_low_pvalue[2],2))
+            if(total_carries_risk_low[0] or total_carries_risk_low[1] !=0):
+                carries_risk_low_pvalue = chisquare([total_carries_risk_low[1],total_carries_risk_low[3]])
+                total_carries_risk_low.append(round(carries_risk_low_pvalue[1],2))
             else:
                 total_carries_risk_low.append(0)
             
 
             
             # carries risk medium
-            total_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium").count())
-            total_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium").count())
+            carries_risk_medium_number.append(Visualization.objects.filter(carries_risk="Medium").count())
+            carries_risk_medium_number.append(Visualization.objects.filter(carries_risk="Medium").count())
+            percent = round((Visualization.objects.filter(carries_risk="Medium").count()/Visualization.objects.all().count()) *100,2)
+            total_carries_risk_medium.append(percent)
+            total_carries_risk_medium.append(percent)
             try:
-                total_carries_risk_medium.append(abs(round(total_carries_risk_medium[1] - total_carries_risk_medium[2],2)))
+                total_carries_risk_medium.append(abs(round(total_carries_risk_medium[0] - total_carries_risk_medium[1],2)))
             except:
                 total_carries_risk_medium.append(0)
             try:
-                total_carries_risk_medium.append(round(total_carries_risk_medium[3]/total_carries_risk_medium[1],2))
+                total_carries_risk_medium.append(round(total_carries_risk_medium[3]/total_carries_risk_medium[0],2))
             except:
                 total_carries_risk_medium.append(0)
             
-            if total_carries_risk_medium[4] < 0.2:
+            if total_carries_risk_medium[3] < 0.2:
                 total_carries_risk_medium.append("small")
-            elif total_carries_risk_medium[4] >= 0.2 and total_carries_risk_medium[4] <= 0.6:
+            elif total_carries_risk_medium[3] >= 0.2 and total_carries_risk_medium[3] <= 0.6:
                 total_carries_risk_medium.append("medium")
             else:
                 total_carries_risk_medium.append("large")
             
-            if(total_carries_risk_medium[1] or total_carries_risk_medium[2] !=0):
-                carries_risk_low_pvalue = chisquare([total_carries_risk_medium[2],total_carries_risk_medium[3]])
-                total_carries_risk_medium.append(round(carries_risk_low_pvalue[2],2))
+            if(total_carries_risk_medium[0] or total_carries_risk_medium[1] !=0):
+                carries_risk_low_pvalue = chisquare([total_carries_risk_medium[1],total_carries_risk_medium[3]])
+                total_carries_risk_medium.append(round(carries_risk_low_pvalue[1],2))
             else:
                 total_carries_risk_medium.append(0)
 
             
             # carries risk high
-            total_carries_risk_high.append(Visualization.objects.filter(carries_risk="High").count())
-            total_carries_risk_high.append(Visualization.objects.filter(carries_risk="High").count())
+            carries_risk_high_number.append(Visualization.objects.filter(carries_risk="High").count())
+            carries_risk_high_number.append(Visualization.objects.filter(carries_risk="High").count())
+            percent = round((Visualization.objects.filter(carries_risk="High").count()/Visualization.objects.all().count()) *100,2)
+            total_carries_risk_high.append(percent)
+            total_carries_risk_high.append(percent)
             try:
-                total_carries_risk_high.append(abs(round(total_carries_risk_high[1] - total_carries_risk_high[2],2)))
+                total_carries_risk_high.append(abs(round(total_carries_risk_high[0] - total_carries_risk_high[1],2)))
             except:
                 total_carries_risk_high.append(0)
             try:
-                total_carries_risk_high.append(round(total_carries_risk_high[3]/total_carries_risk_high[1],2))
+                total_carries_risk_high.append(round(total_carries_risk_high[3]/total_carries_risk_high[0],2))
             except:
                 total_carries_risk_high.append(0)
             
-            if total_carries_risk_high[4] < 0.2:
+            if total_carries_risk_high[3] < 0.2:
                 total_carries_risk_high.append("small")
-            elif total_carries_risk_high[4] >= 0.2 and total_carries_risk_high[4] <= 0.6:
+            elif total_carries_risk_high[3] >= 0.2 and total_carries_risk_high[3] <= 0.6:
                 total_carries_risk_high.append("medium")
             else:
                 total_carries_risk_high.append("large")
             
-            if(total_carries_risk_high[1] or total_carries_risk_high[2] !=0):
-                carries_risk_low_pvalue = chisquare([total_carries_risk_high[2],total_carries_risk_high[3]])
-                total_carries_risk_high.append(round(carries_risk_low_pvalue[2],2))
+            if(total_carries_risk_high[0] or total_carries_risk_high[1] !=0):
+                carries_risk_low_pvalue = chisquare([total_carries_risk_high[1],total_carries_risk_high[3]])
+                total_carries_risk_high.append(round(carries_risk_low_pvalue[1],2))
             else:
                 total_carries_risk_high.append(0)
 
+
+
             # Any untreated caries present
-            total_untreated_caries_present.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
-            total_untreated_caries_present.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+            untreated_caries_present_number.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_primary_teeth_number__gt=0)).count())
+            untreated_caries_present_number.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_primary_teeth_number__gt=0)).count())
+            percent = round(((Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_primary_teeth_number__gt=0)).count())/Visualization.objects.all().count()) * 100,2)
+            total_untreated_caries_present.append(percent)
+            total_untreated_caries_present.append(percent)
             try:
-                total_untreated_caries_present.append(abs(round(total_untreated_caries_present[1] - total_untreated_caries_present[2],2)))
+                total_untreated_caries_present.append(abs(round(total_untreated_caries_present[0] - total_untreated_caries_present[1],2)))
             except:
                 total_untreated_caries_present.append(0)
             try:
-                total_untreated_caries_present.append(round(total_untreated_caries_present[3]/total_untreated_caries_present[1],2))
+                total_untreated_caries_present.append(round(total_untreated_caries_present[3]/total_untreated_caries_present[0],2))
             except:
                 total_untreated_caries_present.append(0)
             
-            if total_untreated_caries_present[4] < 0.2:
+            if total_untreated_caries_present[3] < 0.2:
                 total_untreated_caries_present.append("small")
-            elif total_untreated_caries_present[4] >= 0.2 and total_untreated_caries_present[4] <= 0.6:
+            elif total_untreated_caries_present[3] >= 0.2 and total_untreated_caries_present[3] <= 0.6:
                 total_untreated_caries_present.append("medium")
             else:
                 total_untreated_caries_present.append("large")
             
             
-            if(total_untreated_caries_present[1] or total_untreated_caries_present[2] !=0):
-                untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[2],total_untreated_caries_present[3]])
-                total_untreated_caries_present.append(round(untreated_caries_present_pvalue[2],2))
+            if(total_untreated_caries_present[0] or total_untreated_caries_present[1] !=0):
+                untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[1],total_untreated_caries_present[3]])
+                total_untreated_caries_present.append(round(untreated_caries_present_pvalue[1],2))
             else:
                 total_untreated_caries_present.append(0)
             
@@ -198,36 +229,40 @@ class TestLongitudinalVisualization(APIView):
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),2))
+                decayed_primary_teeth_mean.append(round(statistics.mean(decayed_primary_teeth1),2))
             except:
                 total_decayed_primary_teeth.append(0)
+                decayed_primary_teeth_mean.append(0)
             
             decayed_primary_teeth1 = []
             for i in Visualization.objects.all():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),2))
+                decayed_primary_teeth_mean.append(round(statistics.mean(decayed_primary_teeth1),2))
+            except:
+                total_decayed_primary_teeth.append(0)
+                decayed_primary_teeth_mean.append(0)
+            
+            try:
+                total_decayed_primary_teeth.append(abs(round(total_decayed_primary_teeth[0] - total_decayed_primary_teeth[1],2)))
             except:
                 total_decayed_primary_teeth.append(0)
             
             try:
-                total_decayed_primary_teeth.append(abs(round(total_decayed_primary_teeth[1] - total_decayed_primary_teeth[2],2)))
+                total_decayed_primary_teeth.append(round(total_decayed_primary_teeth[3]/total_decayed_primary_teeth[0],2))
             except:
                 total_decayed_primary_teeth.append(0)
             
-            try:
-                total_decayed_primary_teeth.append(round(total_decayed_primary_teeth[3]/total_decayed_primary_teeth[1],2))
-            except:
-                total_decayed_primary_teeth.append(0)
-            
-            if total_decayed_primary_teeth[4] < 0.2:
+            if total_decayed_primary_teeth[3] < 0.2:
                 total_decayed_primary_teeth.append("small")
-            elif total_decayed_primary_teeth[4] >= 0.2 and total_decayed_primary_teeth[4] <= 0.6:
+            elif total_decayed_primary_teeth[3] >= 0.2 and total_decayed_primary_teeth[3] <= 0.6:
                 total_decayed_primary_teeth.append("medium")
             else:
                 total_decayed_primary_teeth.append("large")
             
             try:
-                stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[1]], [total_decayed_primary_teeth[2]])
+                stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[0]], [total_decayed_primary_teeth[1]])
                 total_decayed_primary_teeth.append(round(decayed_permanent_teeth_pvalue,2))
             except:
                 total_decayed_primary_teeth.append(0.0)
@@ -240,36 +275,40 @@ class TestLongitudinalVisualization(APIView):
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),2))
+                decayed_permanent_teeth_mean.append(round(statistics.mean(decayed_permanent_teeth1),2))
             except:
                 total_decayed_permanent_teeth.append(0)
+                decayed_permanent_teeth_mean.append(0)
             
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.all():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),2))
+                decayed_permanent_teeth_mean.append(round(statistics.mean(decayed_permanent_teeth1),2))
+            except:
+                total_decayed_permanent_teeth.append(0)
+                decayed_permanent_teeth_mean.append(0)
+            
+            try:
+                total_decayed_permanent_teeth.append(abs(round(total_decayed_permanent_teeth[0] - total_decayed_permanent_teeth[1],2)))
             except:
                 total_decayed_permanent_teeth.append(0)
             
             try:
-                total_decayed_permanent_teeth.append(abs(round(total_decayed_permanent_teeth[1] - total_decayed_permanent_teeth[2],2)))
+                total_decayed_permanent_teeth.append(round(total_decayed_permanent_teeth[3]/total_decayed_permanent_teeth[0],2))
             except:
                 total_decayed_permanent_teeth.append(0)
             
-            try:
-                total_decayed_permanent_teeth.append(round(total_decayed_permanent_teeth[3]/total_decayed_permanent_teeth[1],2))
-            except:
-                total_decayed_permanent_teeth.append(0)
-            
-            if total_decayed_permanent_teeth[4] < 0.2:
+            if total_decayed_permanent_teeth[3] < 0.2:
                 total_decayed_permanent_teeth.append("small")
-            elif total_decayed_permanent_teeth[4] >= 0.2 and total_decayed_permanent_teeth[4] <= 0.6:
+            elif total_decayed_permanent_teeth[3] >= 0.2 and total_decayed_permanent_teeth[3] <= 0.6:
                 total_decayed_permanent_teeth.append("medium")
             else:
                 total_decayed_permanent_teeth.append("large")
             
             try:
-                stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[1]], [total_decayed_permanent_teeth[2]])
+                stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[0]], [total_decayed_permanent_teeth[1]])
                 total_decayed_permanent_teeth.append(round(decayed_permanent_teeth_pvalue,2))
             except:
                 total_decayed_permanent_teeth.append(0.0)
@@ -278,6 +317,7 @@ class TestLongitudinalVisualization(APIView):
             # Cavity permanent molar or premolar
             total_patients = Visualization.objects.all().count()
             cavity_permanent_posterior_teeth = Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
+            cavity_permanent_molar_number.append(cavity_permanent_posterior_teeth)
             try:
                 total_cavity_permanent_molar.append(round((cavity_permanent_posterior_teeth/total_patients)*100,2))
             except:
@@ -286,31 +326,32 @@ class TestLongitudinalVisualization(APIView):
 
             total_patients = Visualization.objects.all().count()
             cavity_permanent_posterior_teeth = Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
+            cavity_permanent_molar_number.append(cavity_permanent_posterior_teeth)
             try:
                 total_cavity_permanent_molar.append(round((cavity_permanent_posterior_teeth/total_patients)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
             
             try:
-                total_cavity_permanent_molar.append(abs(round(total_cavity_permanent_molar[1] - total_cavity_permanent_molar[2],2)))
+                total_cavity_permanent_molar.append(abs(round(total_cavity_permanent_molar[0] - total_cavity_permanent_molar[1],2)))
             except:
                 total_cavity_permanent_molar.append(0)
             
             try:
-                total_cavity_permanent_molar.append(round(total_cavity_permanent_molar[3]/total_cavity_permanent_molar[1],2))
+                total_cavity_permanent_molar.append(round(total_cavity_permanent_molar[3]/total_cavity_permanent_molar[0],2))
             except:
                 total_cavity_permanent_molar.append(0)
             
-            if total_cavity_permanent_molar[4] < 0.2:
+            if total_cavity_permanent_molar[3] < 0.2:
                 total_cavity_permanent_molar.append("small")
-            elif total_cavity_permanent_molar[4] >= 0.2 and total_cavity_permanent_molar[4] <= 0.6:
+            elif total_cavity_permanent_molar[3] >= 0.2 and total_cavity_permanent_molar[3] <= 0.6:
                 total_cavity_permanent_molar.append("medium")
             else:
                 total_cavity_permanent_molar.append("large")
             
-            if(total_cavity_permanent_molar[1] or total_cavity_permanent_molar[2] !=0):
-                cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_molar[1],total_cavity_permanent_molar[2]])
-                total_cavity_permanent_molar.append(round(total_cavity_permanent_molar_pvalue[1],2))
+            if(total_cavity_permanent_molar[0] or total_cavity_permanent_molar[1] !=0):
+                cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_molar[0],total_cavity_permanent_molar[1]])
+                total_cavity_permanent_molar.append(round(total_cavity_permanent_molar_pvalue[0],2))
             else:
                 total_cavity_permanent_molar.append(0)
             
@@ -318,6 +359,7 @@ class TestLongitudinalVisualization(APIView):
             # Cavity permanent anterior
             total_patients = Visualization.objects.all().count()
             cavity_permanent_anterior = Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
+            cavity_permanent_anterior_number.append(cavity_permanent_anterior)
             try:
                 total_cavity_permanent_anterior.append(round((cavity_permanent_anterior/total_patients)*100,2))
             except:
@@ -326,218 +368,400 @@ class TestLongitudinalVisualization(APIView):
 
             total_patients = Visualization.objects.all().count()
             cavity_permanent_anterior = Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
+            cavity_permanent_anterior_number.append(cavity_permanent_anterior)
             try:
                 total_cavity_permanent_anterior.append(round((cavity_permanent_anterior/total_patients)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             try:
-                total_cavity_permanent_anterior.append(abs(round(total_cavity_permanent_anterior[1] - total_cavity_permanent_anterior[2],2)))
+                total_cavity_permanent_anterior.append(abs(round(total_cavity_permanent_anterior[0] - total_cavity_permanent_anterior[1],2)))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             try:
-                total_cavity_permanent_anterior.append(round(total_cavity_permanent_anterior[3]/total_cavity_permanent_anterior[1],2))
+                total_cavity_permanent_anterior.append(round(total_cavity_permanent_anterior[3]/total_cavity_permanent_anterior[0],2))
             except:
                 total_cavity_permanent_anterior.append(0)
             
-            if total_cavity_permanent_anterior[4] < 0.2:
+            if total_cavity_permanent_anterior[3] < 0.2:
                 total_cavity_permanent_anterior.append("small")
-            elif total_cavity_permanent_anterior[4] >= 0.2 and total_cavity_permanent_anterior[4] <= 0.6:
+            elif total_cavity_permanent_anterior[3] >= 0.2 and total_cavity_permanent_anterior[3] <= 0.6:
                 total_cavity_permanent_anterior.append("medium")
             else:
                 total_cavity_permanent_anterior.append("large")
             
-            if(total_cavity_permanent_anterior[1] or total_cavity_permanent_anterior[2] !=0):
-                cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_anterior[1],total_cavity_permanent_anterior[2]])
-                total_cavity_permanent_anterior.append(round(total_cavity_permanent_molar_pvalue[1],2))
+            if(total_cavity_permanent_anterior[0] or total_cavity_permanent_anterior[1] !=0):
+                cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_anterior[0],total_cavity_permanent_anterior[1]])
+                total_cavity_permanent_anterior.append(round(total_cavity_permanent_molar_pvalue[0],2))
             else:
                 total_cavity_permanent_anterior.append(0)
             
             # Active Infection
-            total_active_infection.append(Visualization.objects.filter(active_infection=True).count())
-            total_active_infection.append(Visualization.objects.filter(active_infection=True).count())
-            total_active_infection.append(abs(round(total_active_infection[1]  - total_active_infection[2],2)))
+            active_infection_number.append(Visualization.objects.filter(active_infection=True).count())
+            active_infection_number.append(Visualization.objects.filter(active_infection=True).count())
+            percent = round((Visualization.objects.filter(active_infection=True).count()/Visualization.objects.all().count()) *100,2)
+            total_active_infection.append(percent)
+            total_active_infection.append(percent)
+
+            total_active_infection.append(abs(round(total_active_infection[0]  - total_active_infection[1],2)))
             try:
-                active_proportional = round(total_active_infection[3]/total_active_infection[1],2)
+                active_proportional = round(total_active_infection[3]/total_active_infection[0],2)
             except:
                 active_proportional = 0
             total_active_infection.append(active_proportional)
 
-            if total_active_infection[4] < 0.2:
+            if total_active_infection[3] < 0.2:
                 total_active_infection.append("small")
-            elif total_active_infection[4] >= 0.2 and total_active_infection[4] <= 0.6:
+            elif total_active_infection[3] >= 0.2 and total_active_infection[3] <= 0.6:
                 total_active_infection.append("medium")
             else:
                 total_active_infection.append("large")
             
-            if(total_active_infection[1] or total_active_infection[2] != 0):
-                active_infection_pvalue = round(chisquare([active_infection,active_infection])[1],2)
+            if(total_active_infection[0] or total_active_infection[1] != 0):
+                active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
             else:
                 active_infection_pvalue = 0
             total_active_infection.append(active_infection_pvalue)
             
             # Mouth pain due to reversible pulpitis
-            total_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True).count())
-            total_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True).count())
-            total_reversible_pulpitis.append(abs(round(total_reversible_pulpitis[1] - total_reversible_pulpitis[2],2)))
+            reversible_pulpitis_number.append(Visualization.objects.filter(reversible_pulpitis=True).count())
+            reversible_pulpitis_number.append(Visualization.objects.filter(reversible_pulpitis=True).count())
+            percent = round((Visualization.objects.filter(reversible_pulpitis=True).count()/Visualization.objects.all().count()) *100,2)
+            total_reversible_pulpitis.append(percent)
+            total_reversible_pulpitis.append(percent)
+            
+            total_reversible_pulpitis.append(abs(round(total_reversible_pulpitis[0] - total_reversible_pulpitis[1],2)))
             try:
-                reversible_pulpitis_proportional = round(reversible_pulpitis_real_difference[3]/total_reversible_pulpitis[1],2)
+                reversible_pulpitis_proportional = round(reversible_pulpitis_real_difference[3]/total_reversible_pulpitis[0],2)
             except:
                 reversible_pulpitis_proportional = 0
             total_reversible_pulpitis.append(reversible_pulpitis_proportional)
             
-            if total_reversible_pulpitis[4] < 0.2:
+            if total_reversible_pulpitis[3] < 0.2:
                 total_reversible_pulpitis.append("small")
-            elif total_reversible_pulpitis[4] >= 0.2 and total_reversible_pulpitis[4] <= 0.6:
+            elif total_reversible_pulpitis[3] >= 0.2 and total_reversible_pulpitis[3] <= 0.6:
                 total_reversible_pulpitis.append("medium")
             else:
                 total_reversible_pulpitis.append("large")
 
-            if(total_reversible_pulpitis[1] or total_reversible_pulpitis[2] != 0):
-                reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[1],total_reversible_pulpitis[2]])[1],2)
+            if(total_reversible_pulpitis[0] or total_reversible_pulpitis[1] != 0):
+                reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])[0],2)
             else:
                 reversible_pulpitis_pvalue = 0
             total_reversible_pulpitis.append(reversible_pulpitis_pvalue)
 
 
             # Need ART filling
-            total_need_art_filling.append(Visualization.objects.filter(need_art_filling=True).count())
-            total_need_art_filling.append(Visualization.objects.filter(need_art_filling=True).count())
-            total_need_art_filling.append(abs(round(total_need_art_filling[1] - total_need_art_filling[2],2)))
+            need_art_filling_number.append(Visualization.objects.filter(need_art_filling=True).count())
+            need_art_filling_number.append(Visualization.objects.filter(need_art_filling=True).count())
+            percent = round((Visualization.objects.filter(need_art_filling=True).count()/Visualization.objects.all().count()) *100,2)
+            total_need_art_filling.append(percent)
+            total_need_art_filling.append(percent)
+
+            total_need_art_filling.append(abs(round(total_need_art_filling[0] - total_need_art_filling[1],2)))
             try:
-                art_proportional = round(total_need_art_filling[3]/total_need_art_filling[1],2)
+                art_proportional = round(total_need_art_filling[3]/total_need_art_filling[0],2)
             except:
                 art_proportional = 0
             total_need_art_filling.append(art_proportional)
 
-            if total_need_art_filling[4] < 0.2:
+            if total_need_art_filling[3] < 0.2:
                 total_need_art_filling.append("small")
-            elif total_need_art_filling[4] >= 0.2 and total_need_art_filling[4] <= 0.6:
+            elif total_need_art_filling[3] >= 0.2 and total_need_art_filling[3] <= 0.6:
                 total_need_art_filling.append("medium")
             else:
                 total_need_art_filling.append("large")
 
-            if(total_need_art_filling[1] or total_need_art_filling[2] != 0):
-                need_art_filling_pvalue = round(chisquare([total_need_art_filling[1],total_need_art_filling[2]])[1],2)
+            if(total_need_art_filling[0] or total_need_art_filling[1] != 0):
+                need_art_filling_pvalue = round(chisquare([total_need_art_filling[0],total_need_art_filling[1]])[0],2)
             else:
                 need_art_filling_pvalue = 0
             total_need_art_filling.append(need_art_filling_pvalue)
 
 
             # Need SDF
-            total_need_sdf.append(Visualization.objects.filter(need_sdf=True).count())
-            total_need_sdf.append(Visualization.objects.filter(need_sdf=True).count())
-            total_need_sdf.append(abs(round(total_need_sdf[1] - total_need_sdf[2],2)))
+            need_sdf_number.append(Visualization.objects.filter(need_sdf=True).count())
+            need_sdf_number.append(Visualization.objects.filter(need_sdf=True).count())
+            percent = round((Visualization.objects.filter(need_sdf=True).count()/Visualization.objects.all().count()) *100,2)
+            total_need_sdf.append(percent)
+            total_need_sdf.append(percent)
+
+            total_need_sdf.append(abs(round(total_need_sdf[0] - total_need_sdf[1],2)))
    
             try:
-                sdf_proportional = round(sdf_real_difference/total_need_sdf[1],2)
+                sdf_proportional = round(sdf_real_difference/total_need_sdf[0],2)
             except:
                 sdf_proportional = 0
             total_need_sdf.append(sdf_proportional)
 
-            if total_need_sdf[4] < 0.2:
+            if total_need_sdf[3] < 0.2:
                 total_need_sdf.append("small")
-            elif total_need_sdf[4] >= 0.2 and total_need_sdf[4] <= 0.6:
+            elif total_need_sdf[3] >= 0.2 and total_need_sdf[3] <= 0.6:
                 total_need_sdf.append("medium")
             else:
                 total_need_sdf.append("large")
 
-            if(total_need_sdf[1] or total_need_sdf[2] != 0):
-                need_sdf_pvalue = round(chisquare([total_need_sdf[1],total_need_sdf[2]])[1],2)
+            if(total_need_sdf[0] or total_need_sdf[1] != 0):
+                need_sdf_pvalue = round(chisquare([total_need_sdf[0],total_need_sdf[1]])[0],2)
             else:
                 need_sdf_pvalue = 0
             total_need_sdf.append(need_sdf_pvalue)
 
             
             # Need Extraction
-            total_need_extraction.append(Visualization.objects.filter(need_extraction=True).count())
-            total_need_extraction.append(Visualization.objects.filter(need_extraction=True).count())
-            total_need_extraction.append(abs(round(total_need_extraction[1] - total_need_extraction[2],2)))
+            need_extraction_number.append(Visualization.objects.filter(need_extraction=True).count())
+            need_extraction_number.append(Visualization.objects.filter(need_extraction=True).count())
+            percent = round((Visualization.objects.filter(need_extraction=True).count()/Visualization.objects.all().count()) *100,2)
+            total_need_extraction.append(percent)
+            total_need_extraction.append(percent)
+
+            total_need_extraction.append(abs(round(total_need_extraction[0] - total_need_extraction[1],2)))
             try:
-                extraction_proportional = round(total_need_extraction[3]/total_need_extraction[1],2)
+                extraction_proportional = round(total_need_extraction[3]/total_need_extraction[0],2)
             except:
                 extraction_proportional = 0
             total_need_extraction.append(extraction_proportional)
 
-            if total_need_extraction[4] < 0.2:
+            if total_need_extraction[3] < 0.2:
                 total_need_extraction.append("small")
-            elif total_need_extraction[4] >= 0.2 and total_need_extraction[4] <= 0.6:
+            elif total_need_extraction[3] >= 0.2 and total_need_extraction[3] <= 0.6:
                 total_need_extraction.append("medium")
             else:
                 total_need_extraction.append("large")
 
-            if(total_need_extraction[1] or total_need_extraction[2] != 0):
-                need_extraction_pvalue = round(chisquare([total_need_extraction[1],total_need_extraction[2]])[1],2)
+            if(total_need_extraction[0] or total_need_extraction[1] != 0):
+                need_extraction_pvalue = round(chisquare([total_need_extraction[0],total_need_extraction[1]])[0],2)
             else:
                 need_extraction_pvalue = 0
             total_need_extraction.append(need_extraction_pvalue)
 
 
             # Need FV
-            total_need_fv.append(Visualization.objects.filter(need_fv=True).count())
-            total_need_fv.append(Visualization.objects.filter(need_fv=True).count())
-            total_need_fv.append(abs(round(total_need_fv[1] - total_need_fv[2],2)))
+            need_fv_number.append(Visualization.objects.filter(need_fv=True).count())
+            need_fv_number.append(Visualization.objects.filter(need_fv=True).count())
+            percent = round((Visualization.objects.filter(need_fv=True).count()/Visualization.objects.all().count()) *100,2)
+            total_need_fv.append(percent)
+            total_need_fv.append(percent)
+
+            total_need_fv.append(abs(round(total_need_fv[0] - total_need_fv[1],2)))
             try:
-                fv_proportional = round(total_need_fv[3]/total_need_fv[1],2)
+                fv_proportional = round(total_need_fv[3]/total_need_fv[0],2)
             except:
                 fv_proportional = 0
             total_need_fv.append(fv_proportional)
 
-            if total_need_extraction[4] < 0.2:
-                total_need_extraction.append("small")
-            elif total_need_extraction[4] >= 0.2 and total_need_extraction[4] <= 0.6:
-                total_need_extraction.append("medium")
+            if total_need_fv[3] < 0.2:
+                total_need_fv.append("small")
+            elif total_need_fv[3] >= 0.2 and total_need_fv[3] <= 0.6:
+                total_need_fv.append("medium")
             else:
-                total_need_extraction.append("large")
+                total_need_fv.append("large")
 
-            if(total_need_fv[1] or total_need_fv[2] != 0):
-                need_fv_pvalue = round(chisquare([total_need_fv[1],total_need_fv[2]])[1],2)
+            if(total_need_fv[0] or total_need_fv[1] != 0):
+                need_fv_pvalue = round(chisquare([total_need_fv[0],total_need_fv[1]])[0],2)
             else:
                 need_fv_pvalue = 0
             total_need_fv.append(need_fv_pvalue)
 
             # Need Dentist or Hygenist
-            total_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True).count())
-            total_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True).count())
-            total_need_dentist_or_hygienist.append(abs(round(total_need_dentist_or_hygienist[1] - total_need_dentist_or_hygienist[2],2)))
+            need_dentist_or_hygienist_number.append(Visualization.objects.filter(need_dentist_or_hygienist=True).count())
+            need_dentist_or_hygienist_number.append(Visualization.objects.filter(need_dentist_or_hygienist=True).count())
+            percent = round((Visualization.objects.filter(need_dentist_or_hygienist=True).count()/Visualization.objects.all().count()) *100,2)
+            total_need_dentist_or_hygienist.append(percent)
+            total_need_dentist_or_hygienist.append(percent)
+
+            total_need_dentist_or_hygienist.append(abs(round(total_need_dentist_or_hygienist[0] - total_need_dentist_or_hygienist[1],2)))
             try:
-                dentist_or_hygienist_proportional = round(total_need_dentist_or_hygienist[3]/total_need_dentist_or_hygienist[1],2)
+                dentist_or_hygienist_proportional = round(total_need_dentist_or_hygienist[3]/total_need_dentist_or_hygienist[0],2)
             except:
                 dentist_or_hygienist_proportional = 0
             total_need_dentist_or_hygienist.append(dentist_or_hygienist_proportional)
 
-            if total_need_dentist_or_hygienist[4] < 0.2:
+            if total_need_dentist_or_hygienist[3] < 0.2:
                 total_need_dentist_or_hygienist.append("small")
-            elif total_need_dentist_or_hygienist[4] >= 0.2 and total_need_dentist_or_hygienist[4] <= 0.6:
+            elif total_need_dentist_or_hygienist[3] >= 0.2 and total_need_dentist_or_hygienist[4] <= 0.6:
                 total_need_dentist_or_hygienist.append("medium")
             else:
                 total_need_dentist_or_hygienist.append("large")
 
-            if(total_need_dentist_or_hygienist[1] or total_need_dentist_or_hygienist[2] != 0):
-                need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[1],total_need_dentist_or_hygienist[2]])[1],2)
+            if(total_need_dentist_or_hygienist[0] or total_need_dentist_or_hygienist[1] != 0):
+                need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[2]])[1],2)
             else:
                 need_dentist_or_hygienist_pvalue = 0
             total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
 
+
+
+            final_total_carries_risk_low = [
+                ['<span class="ml-4">Low</span>',""] ,
+                [carries_risk_low_number[0],"(" + str(total_carries_risk_low[0]) + "%)"],
+                [carries_risk_low_number[1],"(" + str(total_carries_risk_low[1]) + "%)"],
+                [total_carries_risk_low[2]],
+                [total_carries_risk_low[3],""],
+                [total_carries_risk_low[4],""],
+                [total_carries_risk_low[5],""],
+                ]
+            
+            final_total_carries_risk_medium = [
+                ['<span class="ml-4">Medium</span>',""] ,
+                [carries_risk_medium_number[0],"(" + str(total_carries_risk_medium[0]) + "%)"],
+                [carries_risk_medium_number[1],"(" + str(total_carries_risk_medium[1]) + "%)"],
+                [total_carries_risk_medium[2]],
+                [total_carries_risk_medium[3],""],
+                [total_carries_risk_medium[4],""],
+                [total_carries_risk_medium[5],""],
+                ]
+            
+            final_total_carries_risk_high = [
+                ['<span class="ml-4">High</span>',""] ,
+                [carries_risk_high_number[0],"(" + str(total_carries_risk_high[0]) + "%)"],
+                [carries_risk_high_number[1],"(" + str(total_carries_risk_high[1]) + "%)"],
+                [total_carries_risk_high[2]],
+                [total_carries_risk_high[3],""],
+                [total_carries_risk_high[4],""],
+                [total_carries_risk_high[5],""],
+                ]
+            
+            final_total_untreated_caries_present = [
+                ["Any untreated caries present",""] ,
+                [untreated_caries_present_number[0],"(" + str(total_untreated_caries_present[0]) + "%)"],
+                [untreated_caries_present_number[1],"(" + str(total_untreated_caries_present[1]) + "%)"],
+                [total_untreated_caries_present[2]],
+                [total_untreated_caries_present[3],""],
+                [total_untreated_caries_present[4],""],
+                [total_untreated_caries_present[5],""],
+                ]
+            
+            final_total_decayed_primary_teeth = [
+                ["Number of decayed primary teeth",""] ,
+                [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
+                [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
+                [total_decayed_primary_teeth[2]],
+                [total_decayed_primary_teeth[3],""],
+                [total_decayed_primary_teeth[4],""],
+                [total_decayed_primary_teeth[5],""],
+                ]
+            
+            final_total_decayed_permanent_teeth = [
+                ["Number of decayed permanent teeth",""] ,
+                [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
+                [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
+                [total_decayed_permanent_teeth[2]],
+                [total_decayed_permanent_teeth[3],""],
+                [total_decayed_permanent_teeth[4],""],
+                [total_decayed_permanent_teeth[5],""],
+                ]
+            
+            final_total_cavity_permanent_molar = [
+                ["Cavity permanent molar or premolar",""] ,
+                [cavity_permanent_molar_number[0],"(" + str(total_cavity_permanent_molar[0]) + "%)"],
+                [cavity_permanent_molar_number[1],"(" + str(total_cavity_permanent_molar[1]) + "%)"],
+                [total_cavity_permanent_molar[2]],
+                [total_cavity_permanent_molar[3],""],
+                [total_cavity_permanent_molar[4],""],
+                [total_cavity_permanent_molar[5],""],
+                ]
+            
+            final_total_cavity_permanent_anterior = [
+                ["Cavity permanent anterior",""] ,
+                [cavity_permanent_anterior_number[0],"(" + str(total_cavity_permanent_anterior[0]) + "%)"],
+                [cavity_permanent_anterior_number[1],"(" + str(total_cavity_permanent_anterior[1]) + "%)"],
+                [total_cavity_permanent_anterior[2]],
+                [total_cavity_permanent_anterior[3],""],
+                [total_cavity_permanent_anterior[4],""],
+                [total_cavity_permanent_anterior[5],""],
+                ]
+            
+            final_total_active_infection = [
+                ["Active Infection",""] ,
+                [active_infection_number[0],"(" + str(total_active_infection[0]) + "%)"],
+                [active_infection_number[1],"(" + str(total_active_infection[1]) + "%)"],
+                [total_active_infection[2]],
+                [total_active_infection[3],""],
+                [total_active_infection[4],""],
+                [total_active_infection[5],""],
+                ]
+            
+            final_total_reversible_pulpitis = [
+                ["Mouth pain due to reversible pulpitis",""] ,
+                [reversible_pulpitis_number[0],"(" + str(total_reversible_pulpitis[0]) + "%)"],
+                [reversible_pulpitis_number[1],"(" + str(total_reversible_pulpitis[1]) + "%)"],
+                [total_reversible_pulpitis[2]],
+                [total_reversible_pulpitis[3],""],
+                [total_reversible_pulpitis[4],""],
+                [total_reversible_pulpitis[5],""],
+                ]
+            
+            final_total_need_art_filling = [
+                ["Need ART filling",""] ,
+                [need_art_filling_number[0],"(" + str(total_need_art_filling[0]) + "%)"],
+                [need_art_filling_number[1],"(" + str(total_need_art_filling[1]) + "%)"],
+                [total_need_art_filling[2]],
+                [total_need_art_filling[3],""],
+                [total_need_art_filling[4],""],
+                [total_need_art_filling[5],""],
+                ]
+            
+            final_total_need_sdf = [
+                ["Need SDF",""] ,
+                [need_sdf_number[0],"(" + str(total_need_sdf[0]) + "%)"],
+                [need_sdf_number[1],"(" + str(total_need_sdf[1]) + "%)"],
+                [total_need_sdf[2]],
+                [total_need_sdf[3],""],
+                [total_need_sdf[4],""],
+                [total_need_sdf[5],""],
+                ]
+            
+            final_total_need_extraction = [
+                ["Need Extraction",""] ,
+                [need_extraction_number[0],"(" + str(total_need_extraction[0]) + "%)"],
+                [need_extraction_number[1],"(" + str(total_need_extraction[1]) + "%)"],
+                [total_need_extraction[2]],
+                [total_need_extraction[3],""],
+                [total_need_extraction[4],""],
+                [total_need_extraction[5],""],
+                ]
+            
+            final_total_need_fv = [
+                ["Need FV",""] ,
+                [need_fv_number[0],"(" + str(total_need_fv[0]) + "%)"],
+                [need_fv_number[1],"(" + str(total_need_fv[1]) + "%)"],
+                [total_need_fv[2]],
+                [total_need_fv[3],""],
+                [total_need_fv[4],""],
+                [total_need_fv[5],""],
+                ]
+            
+            final_total_need_dentist_or_hygienist = [
+                ["Need Dentist or Hygenist",""] ,
+                [need_dentist_or_hygienist_number[0],"(" + str(total_need_dentist_or_hygienist[0]) + "%)"],
+                [need_dentist_or_hygienist_number[1],"(" + str(total_need_dentist_or_hygienist[1]) + "%)"],
+                [total_need_dentist_or_hygienist[2]],
+                [total_need_dentist_or_hygienist[3],""],
+                [total_need_dentist_or_hygienist[4],""],
+                [total_need_dentist_or_hygienist[5],""],
+                ]
+           
+
             
             data = [
                 carries_risk,
-                total_carries_risk_low ,
-                total_carries_risk_medium ,
-                total_carries_risk_high ,
-                total_untreated_caries_present,
-                total_decayed_permanent_teeth ,
-                total_decayed_primary_teeth ,
-                total_cavity_permanent_molar ,
-                total_cavity_permanent_anterior ,
-                total_active_infection,
-                total_reversible_pulpitis ,
-                total_need_art_filling ,
-                total_need_sdf,
-                total_need_extraction,
-                total_need_fv,
-                total_need_dentist_or_hygienist
+                final_total_carries_risk_low ,
+                final_total_carries_risk_medium ,
+                final_total_carries_risk_high ,
+                final_total_untreated_caries_present,
+                final_total_decayed_permanent_teeth ,
+                final_total_decayed_primary_teeth ,
+                final_total_cavity_permanent_molar ,
+                final_total_cavity_permanent_anterior ,
+                final_total_active_infection,
+                final_total_reversible_pulpitis ,
+                final_total_need_art_filling ,
+                final_total_need_sdf,
+                final_total_need_extraction,
+                final_total_need_fv,
+                final_total_need_dentist_or_hygienist
                 ]
             
             return Response(data)
@@ -558,22 +782,40 @@ class TestLongitudinalVisualization(APIView):
             if start_date2 > end_date2:
                 return Response({"message":"Frame2 start date cannot be later than end date."},status=400)
             if User.objects.filter(id=request.user.id).exists():
-                carries_risk=["Carries Risk"]
-                total_carries_risk_low = ['<span class="ml-4">Low</span>']
-                total_carries_risk_medium = ['<span class="ml-4">Medium</span>']
-                total_carries_risk_high = ['<span class="ml-4">High</span>']
-                total_untreated_caries_present=["Any untreated caries present"]
-                total_decayed_permanent_teeth = ["Number of decayed permanent teeth"]
-                total_decayed_primary_teeth = ["Number of decayed primary teeth"]
-                total_cavity_permanent_molar = ["Cavity permanent molar or premolar"]
-                total_cavity_permanent_anterior = ["Cavity permanent anterior"]
-                total_active_infection = ["Active Infection"]
-                total_reversible_pulpitis = ["Mouth pain due to reversible pulpitis"]
-                total_need_art_filling = ["Need ART filling"]
-                total_need_sdf = ["Need SDF"]
-                total_need_extraction = ["Need Extraction"]
-                total_need_fv = ["Need FV"]
-                total_need_dentist_or_hygienist = ["Need Dentist or Hygenist"]
+                carries_risk = ["Carries Risk"]
+                total_carries_risk_low = []
+                total_carries_risk_medium = []
+                total_carries_risk_high = []
+                total_untreated_caries_present=[]
+                total_decayed_permanent_teeth = []
+                total_decayed_primary_teeth = []
+                total_cavity_permanent_molar = []
+                total_cavity_permanent_anterior = []
+                total_active_infection = []
+                total_reversible_pulpitis = []
+                total_need_art_filling = []
+                total_need_sdf = []
+                total_need_extraction = []
+                total_need_fv = []
+                total_need_dentist_or_hygienist = []
+                
+
+
+                carries_risk_low_number = []
+                carries_risk_medium_number = []
+                carries_risk_high_number = []
+                untreated_caries_present_number = []
+                decayed_primary_teeth_mean = []
+                decayed_permanent_teeth_mean = []
+                cavity_permanent_molar_number = []
+                cavity_permanent_anterior_number = []
+                active_infection_number = []
+                reversible_pulpitis_number = []
+                need_art_filling_number = []
+                need_sdf_number = []
+                need_extraction_number = []
+                need_fv_number = []
+                need_dentist_or_hygienist_number = []
 
 
                 reason_for_visit = serializer.validated_data['reason_for_visit']
@@ -606,32 +848,47 @@ class TestLongitudinalVisualization(APIView):
                 # carries risk low
                 frame1_carries_risk_low = []
                 frame2_carries_risk_low = []
+                frame1_total_patient = []
+                frame2_total_patient = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                
-                total_carries_risk_low.append(sum(frame1_carries_risk_low))
-                total_carries_risk_low.append(sum(frame2_carries_risk_low))
+                        frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                denominator = sum(frame1_total_patient) + sum(frame2_total_patient)
                 try:
-                    total_carries_risk_low.append(abs(round(carries_risk_low[1] - carries_risk_low[2],2)))
+                    percent = round((sum(frame1_carries_risk_low)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_carries_risk_low.append(percent)
+                try:
+                    percent = round((sum(frame2_carries_risk_low)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_carries_risk_low.append(percent)
+
+                carries_risk_low_number.append(sum(frame1_carries_risk_low))
+                carries_risk_low_number.append(sum(frame2_carries_risk_low))
+                try:
+                    total_carries_risk_low.append(abs(round(carries_risk_low[0] - carries_risk_low[1],2)))
                 except:
                     total_carries_risk_low.append(0)
                 try:
-                    total_carries_risk_low.append(round(carries_risk_low[3]/carries_risk_low[1],2))
+                    total_carries_risk_low.append(round(carries_risk_low[2]/carries_risk_low[0],2))
                 except:
                     total_carries_risk_low.append(0)
                 
-                if total_carries_risk_low[4] < 0.2:
+                if total_carries_risk_low[3] < 0.2:
                     total_carries_risk_low.append("small")
-                elif total_carries_risk_low[4] >= 0.2 and total_carries_risk_low[4] <= 0.6:
+                elif total_carries_risk_low[3] >= 0.2 and total_carries_risk_low[3] <= 0.6:
                     total_carries_risk_low.append("medium")
                 else:
                     total_carries_risk_low.append("large")
                 
-                if(total_carries_risk_low[1] or total_carries_risk_low[2] !=0):
-                    carries_risk_low_pvalue = chisquare([total_carries_risk_low[2],total_carries_risk_low[3]])
-                    total_carries_risk_low.append(round(carries_risk_low_pvalue[2],2))
+                if(total_carries_risk_low[0] or total_carries_risk_low[1] !=0):
+                    carries_risk_low_pvalue = chisquare([total_carries_risk_low[1],total_carries_risk_low[2]])
+                    total_carries_risk_low.append(round(carries_risk_low_pvalue[1],2))
                 else:
                     total_carries_risk_low.append(0)
 
@@ -644,27 +901,38 @@ class TestLongitudinalVisualization(APIView):
                         frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium").count())
-                total_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium").count())
                 try:
-                    total_carries_risk_medium.append(abs(round(total_carries_risk_medium[1] - total_carries_risk_medium[2],2)))
+                    percent = round((sum(frame1_carries_risk_medium)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_carries_risk_medium.append(percent)
+                try:
+                    percent = round((sum(frame2_carries_risk_medium)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_carries_risk_medium.append(percent)
+
+                carries_risk_medium_number.append(sum(frame1_carries_risk_medium))
+                carries_risk_medium_number.append(sum(frame2_carries_risk_medium))
+                try:
+                    total_carries_risk_medium.append(abs(round(total_carries_risk_medium[0] - total_carries_risk_medium[1],2)))
                 except:
                     total_carries_risk_medium.append(0)
                 try:
-                    total_carries_risk_medium.append(round(total_carries_risk_medium[3]/total_carries_risk_medium[1],2))
+                    total_carries_risk_medium.append(round(total_carries_risk_medium[2]/total_carries_risk_medium[0],2))
                 except:
                     total_carries_risk_medium.append(0)
                 
-                if total_carries_risk_medium[4] < 0.2:
+                if total_carries_risk_medium[3] < 0.2:
                     total_carries_risk_medium.append("small")
-                elif total_carries_risk_medium[4] >= 0.2 and total_carries_risk_medium[4] <= 0.6:
+                elif total_carries_risk_medium[3] >= 0.2 and total_carries_risk_medium[3] <= 0.6:
                     total_carries_risk_medium.append("medium")
                 else:
                     total_carries_risk_medium.append("large")
                 
-                if(total_carries_risk_medium[1] or total_carries_risk_medium[2] !=0):
-                    carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[2],total_carries_risk_medium[3]])
-                    total_carries_risk_medium.append(round(carries_risk_medium_pvalue[2],2))
+                if(total_carries_risk_medium[0] or total_carries_risk_medium[1] !=0):
+                    carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[1],total_carries_risk_medium[2]])
+                    total_carries_risk_medium.append(round(carries_risk_medium_pvalue[1],2))
                 else:
                     total_carries_risk_medium.append(0)
 
@@ -677,27 +945,38 @@ class TestLongitudinalVisualization(APIView):
                         frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_carries_risk_high.append(Visualization.objects.filter(carries_risk="High").count())
-                total_carries_risk_high.append(Visualization.objects.filter(carries_risk="High").count())
                 try:
-                    total_carries_risk_high.append(abs(round(total_carries_risk_high[1]/total_carries_risk_high[2],2)))
+                    percent = round((sum(frame1_carries_risk_high)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_carries_risk_high.append(percent)
+                try:
+                    percent = round((sum(frame2_carries_risk_high)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_carries_risk_high.append(percent)
+
+                carries_risk_high_number.append(sum(frame1_carries_risk_high))
+                carries_risk_high_number.append(sum(frame2_carries_risk_high))
+                try:
+                    total_carries_risk_high.append(abs(round(total_carries_risk_high[0]/total_carries_risk_high[1],2)))
                 except:
                     total_carries_risk_high.append(0)
                 try:
-                    total_carries_risk_high.append(round(total_carries_risk_high[3]/total_carries_risk_high[1],2))
+                    total_carries_risk_high.append(round(total_carries_risk_high[2]/total_carries_risk_high[0],2))
                 except:
                     total_carries_risk_high.append(0)
                 
-                if total_carries_risk_high[4] < 0.2:
+                if total_carries_risk_high[3] < 0.2:
                     total_carries_risk_high.append("small")
-                elif total_carries_risk_high[4] >= 0.2 and total_carries_risk_high[4] <= 0.6:
+                elif total_carries_risk_high[3] >= 0.2 and total_carries_risk_high[3] <= 0.6:
                     total_carries_risk_high.append("medium")
                 else:
                     total_carries_risk_high.append("large")
                 
-                if(total_carries_risk_high[1] or total_carries_risk_high[2] !=0):
-                    carries_risk_high_pvalue = chisquare([total_carries_risk_high[2],total_carries_risk_high[3]])
-                    total_carries_risk_high.append(round(carries_risk_high_pvalue[2],2))
+                if(total_carries_risk_high[0] or total_carries_risk_high[1] !=0):
+                    carries_risk_high_pvalue = chisquare([total_carries_risk_high[1],total_carries_risk_high[2]])
+                    total_carries_risk_high.append(round(carries_risk_high_pvalue[1],2))
                 else:
                     total_carries_risk_high.append(0)
                 
@@ -709,28 +988,40 @@ class TestLongitudinalVisualization(APIView):
                     for a in serializer.validated_data['activity']:
                         frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
                         frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
-                
-                total_untreated_caries_present.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
-                total_untreated_caries_present.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+        
                 try:
-                    total_untreated_caries_present.append(abs(round(total_untreated_caries_present[1]/total_untreated_caries_present[2],2)))
+                    percent = round((sum(frame1_untreated_caries_present)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_untreated_caries_present.append(percent)
+                try:
+                    percent = round((sum(frame2_untreated_caries_present)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_untreated_caries_present.append(percent)
+
+                untreated_caries_present_number.append(sum(frame1_untreated_caries_present))
+                untreated_caries_present_number.append(sum(frame2_untreated_caries_present))
+
+                try:
+                    total_untreated_caries_present.append(abs(round(total_untreated_caries_present[0]/total_untreated_caries_present[1],2)))
                 except:
                     total_untreated_caries_present.append(0)
                 try:
-                    total_untreated_caries_present.append(round(total_untreated_caries_present[3]/total_untreated_caries_present[1],2))
+                    total_untreated_caries_present.append(round(total_untreated_caries_present[2]/total_untreated_caries_present[0],2))
                 except:
                     total_untreated_caries_present.append(0)
                 
-                if total_untreated_caries_present[4] < 0.2:
+                if total_untreated_caries_present[3] < 0.2:
                     total_untreated_caries_present.append("small")
-                elif total_untreated_caries_present[4] >= 0.2 and total_untreated_caries_present[4] <= 0.6:
+                elif total_untreated_caries_present[3] >= 0.2 and total_untreated_caries_present[3] <= 0.6:
                     total_untreated_caries_present.append("medium")
                 else:
                     total_untreated_caries_present.append("large")
                 
-                if(total_untreated_caries_present[1] or total_untreated_caries_present[2] !=0):
-                    untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[2],total_untreated_caries_present[3]])
-                    total_untreated_caries_present.append(round(untreated_caries_present_pvalue[2],2))
+                if(total_untreated_caries_present[0] or total_untreated_caries_present[1] !=0):
+                    untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[1],total_untreated_caries_present[2]])
+                    total_untreated_caries_present.append(round(untreated_caries_present_pvalue[1],2))
                 else:
                     total_untreated_caries_present.append(0)
                 
@@ -746,33 +1037,38 @@ class TestLongitudinalVisualization(APIView):
                             frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(frame1_decayed_primary_teeth),2))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(frame1_total_decayed_primary_teeth),2))
+                    decayed_primary_teeth_mean.append(round(statistics.mean(frame1_total_decayed_primary_teeth),2))
                 except:
                     total_decayed_primary_teeth.append(0)
+                    decayed_primary_teeth_mean.append(0)
+                
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(frame2_decayed_primary_teeth),2))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(frame2_total_decayed_primary_teeth),2))
+                    decayed_primary_teeth_mean.append(round(statistics.mean(frame2_total_decayed_primary_teeth),2))
+                except:
+                    total_decayed_primary_teeth.append(0)
+                    decayed_primary_teeth_mean.append(0)
+                
+                try:
+                    total_decayed_primary_teeth.append(abs(round(total_decayed_primary_teeth[0] - total_decayed_primary_teeth[1],2)))
                 except:
                     total_decayed_primary_teeth.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(abs(round(total_decayed_primary_teeth[1] - total_decayed_primary_teeth[2],2)))
+                    total_decayed_primary_teeth.append(round(total_decayed_primary_teeth[2]/total_decayed_primary_teeth[0],2))
                 except:
                     total_decayed_primary_teeth.append(0)
                 
-                try:
-                    total_decayed_primary_teeth.append(round(total_decayed_primary_teeth[3]/total_decayed_primary_teeth[1],2))
-                except:
-                    total_decayed_primary_teeth.append(0)
-                
-                if total_decayed_primary_teeth[4] < 0.2:
+                if total_decayed_primary_teeth[3] < 0.2:
                     total_decayed_primary_teeth.append("small")
-                elif total_decayed_primary_teeth[4] >= 0.2 and total_decayed_primary_teeth[4] <= 0.6:
+                elif total_decayed_primary_teeth[3] >= 0.2 and total_decayed_primary_teeth[3] <= 0.6:
                     total_decayed_primary_teeth.append("medium")
                 else:
                     total_decayed_primary_teeth.append("large")
                 
                 try:
-                    stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[1]], [total_decayed_primary_teeth[2]])
+                    stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[0]], [total_decayed_primary_teeth[1]])
                     total_decayed_primary_teeth.append(round(decayed_permanent_teeth_pvalue,2))
                 except:
                     total_decayed_primary_teeth.append(0.0)
@@ -791,33 +1087,37 @@ class TestLongitudinalVisualization(APIView):
 
                 try:
                     total_decayed_permanent_teeth.append(round(statistics.stdev(frame1_total_decayed_permanent_teeth),2))
+                    decayed_permanent_teeth_mean.append(round(statistics.mean(frame1_total_decayed_permanent_teeth),2))
                 except:
                     total_decayed_permanent_teeth.append(0)
+                    decayed_permanent_teeth_mean.append(0)
                 
                 try:
                     total_decayed_permanent_teeth.append(round(statistics.stdev(frame2_total_decayed_permanent_teeth),2))
+                    decayed_permanent_teeth_mean.append(round(statistics.mean(frame2_total_decayed_permanent_teeth),2))
+                except:
+                    total_decayed_permanent_teeth.append(0)
+                    decayed_permanent_teeth_mean.append(0)
+                
+                try:
+                    total_decayed_permanent_teeth.append(abs(round(total_decayed_permanent_teeth[0] - total_decayed_permanent_teeth[1],2)))
                 except:
                     total_decayed_permanent_teeth.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(abs(round(total_decayed_permanent_teeth[1] - total_decayed_permanent_teeth[2],2)))
+                    total_decayed_permanent_teeth.append(round(total_decayed_permanent_teeth[2]/total_decayed_permanent_teeth[0],2))
                 except:
                     total_decayed_permanent_teeth.append(0)
                 
-                try:
-                    total_decayed_permanent_teeth.append(round(total_decayed_permanent_teeth[3]/total_decayed_permanent_teeth[1],2))
-                except:
-                    total_decayed_permanent_teeth.append(0)
-                
-                if total_decayed_permanent_teeth[4] < 0.2:
+                if total_decayed_permanent_teeth[3] < 0.2:
                     total_decayed_permanent_teeth.append("small")
-                elif total_decayed_permanent_teeth[4] >= 0.2 and total_decayed_permanent_teeth[4] <= 0.6:
+                elif total_decayed_permanent_teeth[3] >= 0.2 and total_decayed_permanent_teeth[3] <= 0.6:
                     total_decayed_permanent_teeth.append("medium")
                 else:
                     total_decayed_permanent_teeth.append("large")
                 
                 try:
-                    stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[1]], [total_decayed_permanent_teeth[2]])
+                    stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[0]], [total_decayed_permanent_teeth[1]])
                     total_decayed_permanent_teeth.append(round(decayed_permanent_teeth_pvalue,2))
                 except:
                     total_decayed_permanent_teeth.append(0.0)
@@ -826,91 +1126,92 @@ class TestLongitudinalVisualization(APIView):
                 # Cavity permanent molar or premolar
                 frame1_cavity_permanent_molar = []
                 frame2_cavity_permanent_molar = []
-                frame1_total_patient = []
-                frame2_total_patient = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                    
+                try:
+                    percent = round((sum(frame1_cavity_permanent_molar)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_cavity_permanent_molar.append(percent)
+                try:
+                    percent = round((sum(frame2_cavity_permanent_molar)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_cavity_permanent_molar.append(percent)
 
+                cavity_permanent_molar_number.append(sum(frame1_cavity_permanent_molar))
+                cavity_permanent_molar_number.append(sum(frame2_cavity_permanent_molar))
+
+                
                 try:
-                    total_cavity_permanent_molar.append(round((sum(frame1_cavity_permanent_molar)/sum(frame1_total_patient))*100,2))
+                    total_cavity_permanent_molar.append(abs(round(total_cavity_permanent_molar[0] - total_cavity_permanent_molar[1],2)))
                 except:
                     total_cavity_permanent_molar.append(0)
                 
                 try:
-                    total_cavity_permanent_molar.append(round((sum(frame2_cavity_permanent_molar)/sum(frame2_total_patient))*100,2))
+                    total_cavity_permanent_molar.append(round(total_cavity_permanent_molar[2]/total_cavity_permanent_molar[0],2))
                 except:
                     total_cavity_permanent_molar.append(0)
                 
-                try:
-                    total_cavity_permanent_molar.append(abs(round(total_cavity_permanent_molar[1] - total_cavity_permanent_molar[2],2)))
-                except:
-                    total_cavity_permanent_molar.append(0)
-                
-                try:
-                    total_cavity_permanent_molar.append(round(total_cavity_permanent_molar[3]/total_cavity_permanent_molar[1],2))
-                except:
-                    total_cavity_permanent_molar.append(0)
-                
-                if total_cavity_permanent_molar[4] < 0.2:
+                if total_cavity_permanent_molar[3] < 0.2:
                     total_cavity_permanent_molar.append("small")
-                elif total_cavity_permanent_molar[4] >= 0.2 and total_cavity_permanent_molar[4] <= 0.6:
+                elif total_cavity_permanent_molar[3] >= 0.2 and total_cavity_permanent_molar[3] <= 0.6:
                     total_cavity_permanent_molar.append("medium")
                 else:
                     total_cavity_permanent_molar.append("large")
                 
-                if(total_cavity_permanent_molar[1] or total_cavity_permanent_molar[2] !=0):
-                    cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_molar[1],total_cavity_permanent_molar[2]])
-                    total_cavity_permanent_molar.append(round(total_cavity_permanent_molar_pvalue[1],2))
+                if(total_cavity_permanent_molar[0] or total_cavity_permanent_molar[1] !=0):
+                    cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_molar[0],total_cavity_permanent_molar[1]])
+                    total_cavity_permanent_molar.append(round(total_cavity_permanent_molar_pvalue[0],2))
                 else:
                     total_cavity_permanent_molar.append(0)
                 
 
                 # Cavity permanent anterior
-                frame1_total_cavity_permanent_anterior = []
-                frame2_total_cavity_permanent_anterior = []
-                frame1_total_patient = []
-                frame2_total_patient = []
+                frame1_cavity_permanent_anterior = []
+                frame2_cavity_permanent_anterior = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_total_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_total_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        
+                try:
+                    percent = round((sum(frame1_cavity_permanent_anterior)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_cavity_permanent_anterior.append(percent)
+                try:
+                    percent = round((sum(frame2_cavity_permanent_anterior)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_cavity_permanent_anterior.append(percent)
 
+                cavity_permanent_anterior_number.append(sum(frame1_cavity_permanent_anterior))
+                cavity_permanent_anterior_number.append(sum(frame2_cavity_permanent_anterior))
+                
                 try:
-                    total_cavity_permanent_anterior.append(round((sum(frame1_total_cavity_permanent_anterior)/sum(frame1_total_patient))*100,2))
-                except:
-                    total_cavity_permanent_anterior.append(0)
-            
-                try:
-                    total_cavity_permanent_anterior.append(round((sum(frame2_total_cavity_permanent_anterior)/sum(frame2_total_patient))*100,2))
+                    total_cavity_permanent_anterior.append(abs(round(total_cavity_permanent_anterior[0] - total_cavity_permanent_anterior[1],2)))
                 except:
                     total_cavity_permanent_anterior.append(0)
                 
                 try:
-                    total_cavity_permanent_anterior.append(abs(round(total_cavity_permanent_anterior[1] - total_cavity_permanent_anterior[2],2)))
+                    total_cavity_permanent_anterior.append(round(total_cavity_permanent_anterior[2]/total_cavity_permanent_anterior[0],2))
                 except:
                     total_cavity_permanent_anterior.append(0)
                 
-                try:
-                    total_cavity_permanent_anterior.append(round(total_cavity_permanent_anterior[3]/total_cavity_permanent_anterior[1],2))
-                except:
-                    total_cavity_permanent_anterior.append(0)
-                
-                if total_cavity_permanent_anterior[4] < 0.2:
+                if total_cavity_permanent_anterior[3] < 0.2:
                     total_cavity_permanent_anterior.append("small")
-                elif total_cavity_permanent_anterior[4] >= 0.2 and total_cavity_permanent_anterior[4] <= 0.6:
+                elif total_cavity_permanent_anterior[3] >= 0.2 and total_cavity_permanent_anterior[3] <= 0.6:
                     total_cavity_permanent_anterior.append("medium")
                 else:
                     total_cavity_permanent_anterior.append("large")
                 
-                if(total_cavity_permanent_anterior[1] or total_cavity_permanent_anterior[2] !=0):
-                    cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_anterior[1],total_cavity_permanent_anterior[2]])
-                    total_cavity_permanent_anterior.append(round(total_cavity_permanent_molar_pvalue[1],2))
+                if(total_cavity_permanent_anterior[0] or total_cavity_permanent_anterior[1] !=0):
+                    cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_anterior[0],total_cavity_permanent_anterior[1]])
+                    total_cavity_permanent_anterior.append(round(total_cavity_permanent_molar_pvalue[0],2))
                 else:
                     total_cavity_permanent_anterior.append(0)
                 
@@ -922,26 +1223,37 @@ class TestLongitudinalVisualization(APIView):
                         frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_active_infection.append(sum(frame1_active_infection))
-                total_active_infection.append(sum(frame2_active_infection))
+                try:
+                    percent = round((sum(frame1_active_infection)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_active_infection.append(percent)
+                try:
+                    percent = round((sum(frame2_active_infection)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_active_infection.append(percent)
 
-                total_active_infection.append(abs(round(total_active_infection[1] - total_active_infection[2],2)))
+                active_infection_number.append(sum(frame1_active_infection))
+                active_infection_number.append(sum(frame2_active_infection))
+
+                total_active_infection.append(abs(round(total_active_infection[0] - total_active_infection[1],2)))
                 
                 try:
-                    active_proportional = round(total_active_infection[3]/total_active_infection[1],2)
+                    active_proportional = round(total_active_infection[2]/total_active_infection[0],2)
                 except:
                     active_proportional = 0
                 total_active_infection.append(active_proportional)
 
-                if total_active_infection[4] < 0.2:
+                if total_active_infection[3] < 0.2:
                     total_active_infection.append("small")
-                elif total_active_infection[4] >= 0.2 and total_active_infection[4] <= 0.6:
+                elif total_active_infection[3] >= 0.2 and total_active_infection[3] <= 0.6:
                     total_active_infection.append("medium")
                 else:
                     total_active_infection.append("large")
                 
-                if(total_active_infection[1] or total_active_infection[2] != 0):
-                    active_infection_pvalue = round(chisquare([active_infection,active_infection])[1],2)
+                if(total_active_infection[0] or total_active_infection[1] != 0):
+                    active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
                 else:
                     active_infection_pvalue = 0
                 total_active_infection.append(active_infection_pvalue)
@@ -954,25 +1266,36 @@ class TestLongitudinalVisualization(APIView):
                         frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_reversible_pulpitis.append(sum(frame1_reversible_pulpitis))
-                total_reversible_pulpitis.append(sum(frame2_reversible_pulpitis))
-
-                total_reversible_pulpitis.append(abs(round(total_reversible_pulpitis[1] - total_reversible_pulpitis[2],2)))
                 try:
-                    reversible_pulpitis_proportional = round(reversible_pulpitis_real_difference[1]/total_reversible_pulpitis[2],2)
+                    percent = round((sum(frame1_reversible_pulpitis)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_reversible_pulpitis.append(percent)
+                try:
+                    percent = round((sum(frame2_reversible_pulpitis)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_reversible_pulpitis.append(percent)
+
+                reversible_pulpitis_number.append(sum(frame1_reversible_pulpitis))
+                reversible_pulpitis_number.append(sum(frame2_reversible_pulpitis))
+
+                total_reversible_pulpitis.append(abs(round(total_reversible_pulpitis[0] - total_reversible_pulpitis[1],2)))
+                try:
+                    reversible_pulpitis_proportional = round(reversible_pulpitis_real_difference[0]/total_reversible_pulpitis[1],2)
                 except:
                     reversible_pulpitis_proportional = 0
                 total_reversible_pulpitis.append(reversible_pulpitis_proportional)
 
-                if total_reversible_pulpitis[4] < 0.2:
+                if total_reversible_pulpitis[3] < 0.2:
                     total_reversible_pulpitis.append("small")
-                elif total_reversible_pulpitis[4] >= 0.2 and total_reversible_pulpitis[4] <= 0.6:
+                elif total_reversible_pulpitis[3] >= 0.2 and total_reversible_pulpitis[3] <= 0.6:
                     total_reversible_pulpitis.append("medium")
                 else:
                     total_reversible_pulpitis.append("large")
                 
-                if(total_reversible_pulpitis[1] or total_reversible_pulpitis[2] != 0):
-                    reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[1],total_reversible_pulpitis[2]])[1],2)
+                if(total_reversible_pulpitis[0] or total_reversible_pulpitis[1] != 0):
+                    reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])[0],2)
                 else:
                     reversible_pulpitis_pvalue = 0
                 total_reversible_pulpitis.append(reversible_pulpitis_pvalue)
@@ -986,25 +1309,36 @@ class TestLongitudinalVisualization(APIView):
                         frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_need_art_filling.append(sum(frame1_need_art_filling))
-                total_need_art_filling.append(sum(frame2_need_art_filling))
-
-                total_need_art_filling.append(abs(round(total_need_art_filling[1] - total_need_art_filling[2],2)))
                 try:
-                    art_proportional = round(total_need_art_filling[3]/total_need_art_filling[1],2)
+                    percent = round((sum(frame1_need_art_filling)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_art_filling.append(percent)
+                try:
+                    percent = round((sum(frame2_need_art_filling)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_art_filling.append(percent)
+
+                need_art_filling_number.append(sum(frame1_need_art_filling))
+                need_art_filling_number.append(sum(frame2_need_art_filling))
+
+                total_need_art_filling.append(abs(round(total_need_art_filling[0] - total_need_art_filling[1],2)))
+                try:
+                    art_proportional = round(total_need_art_filling[2]/total_need_art_filling[0],2)
                 except:
                     art_proportional = 0
                 total_need_art_filling.append(art_proportional)
 
-                if total_need_art_filling[4] < 0.2:
+                if total_need_art_filling[3] < 0.2:
                     total_need_art_filling.append("small")
-                elif total_need_art_filling[4] >= 0.2 and total_need_art_filling[4] <= 0.6:
+                elif total_need_art_filling[3] >= 0.2 and total_need_art_filling[3] <= 0.6:
                     total_need_art_filling.append("medium")
                 else:
                     total_need_art_filling.append("large")
 
-                if(total_need_art_filling[1] or total_need_art_filling[2] != 0):
-                    need_art_filling_pvalue = round(chisquare([total_need_art_filling[1],total_need_art_filling[2]])[1],2)
+                if(total_need_art_filling[0] or total_need_art_filling[1] != 0):
+                    need_art_filling_pvalue = round(chisquare([total_need_art_filling[0],total_need_art_filling[1]])[0],2)
                 else:
                     need_art_filling_pvalue = 0
                 total_need_art_filling.append(need_art_filling_pvalue)
@@ -1018,26 +1352,37 @@ class TestLongitudinalVisualization(APIView):
                         frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_need_sdf.append(sum(frame1_need_sdf))
-                total_need_sdf.append(sum(frame2_need_sdf))
+                try:
+                    percent = round((sum(frame1_need_sdf)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_sdf.append(percent)
+                try:
+                    percent = round((sum(frame2_need_sdf)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_sdf.append(percent)
 
-                total_need_sdf(abs(round(total_need_sdf[1] - total_need_sdf[2],2)))
+                need_sdf_number.append(sum(frame1_need_sdf))
+                need_sdf_number.append(sum(frame2_need_sdf))
+
+                total_need_sdf.append(abs(round(total_need_sdf[0] - total_need_sdf[1],2)))
                 
                 try:
-                    sdf_proportional = round(sdf_real_difference/total_need_sdf[1],2)
+                    sdf_proportional = round(sdf_real_difference/total_need_sdf[0],2)
                 except:
                     sdf_proportional = 0
                 total_need_sdf.append(sdf_proportional)
 
-                if total_need_sdf[4] < 0.2:
+                if total_need_sdf[3] < 0.2:
                     total_need_sdf.append("small")
-                elif total_need_sdf[4] >= 0.2 and total_need_sdf[4] <= 0.6:
+                elif total_need_sdf[3] >= 0.2 and total_need_sdf[3] <= 0.6:
                     total_need_sdf.append("medium")
                 else:
                     total_need_sdf.append("large")
 
-                if(total_need_sdf[1] or total_need_sdf[2] != 0):
-                    need_sdf_pvalue = round(chisquare([total_need_sdf[1],total_need_sdf[2]])[1],2)
+                if(total_need_sdf[0] or total_need_sdf[1] != 0):
+                    need_sdf_pvalue = round(chisquare([total_need_sdf[0],total_need_sdf[1]])[0],2)
                 else:
                     need_sdf_pvalue = 0
                 total_need_sdf.append(need_sdf_pvalue)
@@ -1051,26 +1396,37 @@ class TestLongitudinalVisualization(APIView):
                         frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_need_extraction.append(sum(frame1_need_extraction))
-                total_need_extraction.append(sum(frame2_need_extraction))
+                try:
+                    percent = round((sum(frame1_need_extraction)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_extraction.append(percent)
+                try:
+                    percent = round((sum(frame2_need_extraction)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_extraction.append(percent)
 
-                total_need_extraction.append(abs(round(total_need_extraction[1]  - total_need_extraction[2],2)))
+                need_extraction_number.append(sum(frame1_need_extraction))
+                need_extraction_number.append(sum(frame2_need_extraction))
+
+                total_need_extraction.append(abs(round(total_need_extraction[0]  - total_need_extraction[1],2)))
 
                 try:
-                    extraction_proportional = round(total_need_extraction[3]/total_need_extraction[1],2)
+                    extraction_proportional = round(total_need_extraction[2]/total_need_extraction[0],2)
                 except:
                     extraction_proportional = 0
                 total_need_extraction.append(extraction_proportional)
 
-                if total_need_extraction[4] < 0.2:
+                if total_need_extraction[3] < 0.2:
                     total_need_extraction.append("small")
-                elif total_need_extraction[4] >= 0.2 and total_need_extraction[4] <= 0.6:
+                elif total_need_extraction[3] >= 0.2 and total_need_extraction[3] <= 0.6:
                     total_need_extraction.append("medium")
                 else:
                     total_need_extraction.append("large")
 
-                if(total_need_extraction[1] or total_need_extraction[2] != 0):
-                    need_extraction_pvalue = round(chisquare([total_need_extraction[1],total_need_extraction[2]])[1],2)
+                if(total_need_extraction[0] or total_need_extraction[1] != 0):
+                    need_extraction_pvalue = round(chisquare([total_need_extraction[0],total_need_extraction[1]])[0],2)
                 else:
                     need_extraction_pvalue = 0
                 total_need_extraction.append(need_extraction_pvalue)
@@ -1084,25 +1440,36 @@ class TestLongitudinalVisualization(APIView):
                         frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_need_fv.append(sum(frame1_need_fv))
-                total_need_fv.append(sum(frame2_need_fv))
-
-                total_need_fv.append(abs(round(total_need_fv[1] - total_need_fv[2],2)))
                 try:
-                    fv_proportional = round(total_need_fv[3]/total_need_fv[1],2)
+                    percent = round((sum(frame1_need_fv)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_fv.append(percent)
+                try:
+                    percent = round((sum(frame2_need_fv)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_fv.append(percent)
+
+                need_fv_number.append(sum(frame1_need_fv))
+                need_fv_number.append(sum(frame2_need_fv))
+
+                total_need_fv.append(abs(round(total_need_fv[0] - total_need_fv[1],2)))
+                try:
+                    fv_proportional = round(total_need_fv[2]/total_need_fv[0],2)
                 except:
                     fv_proportional = 0
                 total_need_fv.append(fv_proportional)
 
-                if total_need_fv[4] < 0.2:
+                if total_need_fv[3] < 0.2:
                     total_need_fv.append("small")
-                elif total_need_fv[4] >= 0.2 and total_need_fv[4] <= 0.6:
+                elif total_need_fv[3] >= 0.2 and total_need_fv[3] <= 0.6:
                     total_need_fv.append("medium")
                 else:
                     total_need_fv.append("large")
 
-                if(total_need_fv[1] or total_need_fv[2] != 0):
-                    need_fv_pvalue = round(chisquare([total_need_fv[1],total_need_fv[2]])[1],2)
+                if(total_need_fv[0] or total_need_fv[1] != 0):
+                    need_fv_pvalue = round(chisquare([total_need_fv[0],total_need_fv[1]])[0],2)
                 else:
                     need_fv_pvalue = 0
                 total_need_fv.append(need_fv_pvalue)
@@ -1116,47 +1483,208 @@ class TestLongitudinalVisualization(APIView):
                         frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                         frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
                 
-                total_need_dentist_or_hygienist.append(sum(frame1_need_dentist_or_hygienist))
-                total_need_dentist_or_hygienist.append(sum(frame2_need_dentist_or_hygienist))
+                try:
+                    percent = round((sum(frame1_need_dentist_or_hygienist)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_dentist_or_hygienist.append(percent)
+                try:
+                    percent = round((sum(frame2_need_dentist_or_hygienist)/denominator) * 100,2)
+                except:
+                    percent = 0
+                total_need_dentist_or_hygienist.append(percent)
 
-                total_need_dentist_or_hygienist.append(abs(round(total_need_dentist_or_hygienist[1] - total_need_dentist_or_hygienist[2],2)))
+                need_dentist_or_hygienist_number.append(sum(frame1_need_dentist_or_hygienist))
+                need_dentist_or_hygienist_number.append(sum(frame2_need_dentist_or_hygienist))
+
+                total_need_dentist_or_hygienist.append(abs(round(total_need_dentist_or_hygienist[0] - total_need_dentist_or_hygienist[1],2)))
                 
                 try:
-                    dentist_or_hygienist_proportional = round(total_need_dentist_or_hygienist[3]/total_need_dentist_or_hygienist[1],2)
+                    dentist_or_hygienist_proportional = round(total_need_dentist_or_hygienist[2]/total_need_dentist_or_hygienist[0],2)
                 except:
                     dentist_or_hygienist_proportional = 0
                 total_need_dentist_or_hygienist.append(dentist_or_hygienist_proportional)
 
-                if total_need_dentist_or_hygienist[4] < 0.2:
+                if total_need_dentist_or_hygienist[3] < 0.2:
                     total_need_dentist_or_hygienist.append("small")
-                elif total_need_dentist_or_hygienist[4] >= 0.2 and total_need_dentist_or_hygienist[4] <= 0.6:
+                elif total_need_dentist_or_hygienist[3] >= 0.2 and total_need_dentist_or_hygienist[3] <= 0.6:
                     total_need_dentist_or_hygienist.append("medium")
                 else:
                     total_need_dentist_or_hygienist.append("large")
 
-                if(total_need_dentist_or_hygienist[1] or total_need_dentist_or_hygienist[2] != 0):
-                    need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[1],total_need_dentist_or_hygienist[2]])[1],2)
+                if(total_need_dentist_or_hygienist[0] or total_need_dentist_or_hygienist[1] != 0):
+                    need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])[0],2)
                 else:
                     need_dentist_or_hygienist_pvalue = 0
                 total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
+
+                final_total_carries_risk_low = [
+                ['<span class="ml-4">Low</span>',""] ,
+                [carries_risk_low_number[0],"(" + str(total_carries_risk_low[0]) + "%)"],
+                [carries_risk_low_number[1],"(" + str(total_carries_risk_low[1]) + "%)"],
+                [total_carries_risk_low[2]],
+                [total_carries_risk_low[3],""],
+                [total_carries_risk_low[4],""],
+                [total_carries_risk_low[5],""],
+                ]
+            
+                final_total_carries_risk_medium = [
+                    ['<span class="ml-4">Medium</span>',""] ,
+                    [carries_risk_medium_number[0],"(" + str(total_carries_risk_medium[0]) + "%)"],
+                    [carries_risk_medium_number[1],"(" + str(total_carries_risk_medium[1]) + "%)"],
+                    [total_carries_risk_medium[2]],
+                    [total_carries_risk_medium[3],""],
+                    [total_carries_risk_medium[4],""],
+                    [total_carries_risk_medium[5],""],
+                    ]
+                
+                final_total_carries_risk_high = [
+                    ['<span class="ml-4">High</span>',""] ,
+                    [carries_risk_high_number[0],"(" + str(total_carries_risk_high[0]) + "%)"],
+                    [carries_risk_high_number[1],"(" + str(total_carries_risk_high[1]) + "%)"],
+                    [total_carries_risk_high[2]],
+                    [total_carries_risk_high[3],""],
+                    [total_carries_risk_high[4],""],
+                    [total_carries_risk_high[5],""],
+                    ]
+                
+                final_total_untreated_caries_present = [
+                    ["Any untreated caries present",""] ,
+                    [untreated_caries_present_number[0],"(" + str(total_untreated_caries_present[0]) + "%)"],
+                    [untreated_caries_present_number[1],"(" + str(total_untreated_caries_present[1]) + "%)"],
+                    [total_untreated_caries_present[2]],
+                    [total_untreated_caries_present[3],""],
+                    [total_untreated_caries_present[4],""],
+                    [total_untreated_caries_present[5],""],
+                    ]
+                
+                final_total_decayed_primary_teeth = [
+                    ["Number of decayed primary teeth",""] ,
+                    [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
+                    [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
+                    [total_decayed_primary_teeth[2]],
+                    [total_decayed_primary_teeth[3],""],
+                    [total_decayed_primary_teeth[4],""],
+                    [total_decayed_primary_teeth[5],""],
+                    ]
+                
+                final_total_decayed_permanent_teeth = [
+                    ["Number of decayed permanent teeth",""] ,
+                    [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
+                    [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
+                    [total_decayed_permanent_teeth[2]],
+                    [total_decayed_permanent_teeth[3],""],
+                    [total_decayed_permanent_teeth[4],""],
+                    [total_decayed_permanent_teeth[5],""],
+                    ]
+                
+                final_total_cavity_permanent_molar = [
+                    ["Cavity permanent molar or premolar",""] ,
+                    [cavity_permanent_molar_number[0],"(" + str(total_cavity_permanent_molar[0]) + "%)"],
+                    [cavity_permanent_molar_number[1],"(" + str(total_cavity_permanent_molar[1]) + "%)"],
+                    [total_cavity_permanent_molar[2]],
+                    [total_cavity_permanent_molar[3],""],
+                    [total_cavity_permanent_molar[4],""],
+                    [total_cavity_permanent_molar[5],""],
+                    ]
+                
+                final_total_cavity_permanent_anterior = [
+                    ["Cavity permanent anterior",""] ,
+                    [cavity_permanent_anterior_number[0],"(" + str(total_cavity_permanent_anterior[0]) + "%)"],
+                    [cavity_permanent_anterior_number[1],"(" + str(total_cavity_permanent_anterior[1]) + "%)"],
+                    [total_cavity_permanent_anterior[2]],
+                    [total_cavity_permanent_anterior[3],""],
+                    [total_cavity_permanent_anterior[4],""],
+                    [total_cavity_permanent_anterior[5],""],
+                    ]
+                
+                final_total_active_infection = [
+                    ["Active Infection",""] ,
+                    [active_infection_number[0],"(" + str(total_active_infection[0]) + "%)"],
+                    [active_infection_number[1],"(" + str(total_active_infection[1]) + "%)"],
+                    [total_active_infection[2]],
+                    [total_active_infection[3],""],
+                    [total_active_infection[4],""],
+                    [total_active_infection[5],""],
+                    ]
+                
+                final_total_reversible_pulpitis = [
+                    ["Mouth pain due to reversible pulpitis",""] ,
+                    [reversible_pulpitis_number[0],"(" + str(total_reversible_pulpitis[0]) + "%)"],
+                    [reversible_pulpitis_number[1],"(" + str(total_reversible_pulpitis[1]) + "%)"],
+                    [total_reversible_pulpitis[2]],
+                    [total_reversible_pulpitis[3],""],
+                    [total_reversible_pulpitis[4],""],
+                    [total_reversible_pulpitis[5],""],
+                    ]
+                
+                final_total_need_art_filling = [
+                    ["Need ART filling",""] ,
+                    [need_art_filling_number[0],"(" + str(total_need_art_filling[0]) + "%)"],
+                    [need_art_filling_number[1],"(" + str(total_need_art_filling[1]) + "%)"],
+                    [total_need_art_filling[2]],
+                    [total_need_art_filling[3],""],
+                    [total_need_art_filling[4],""],
+                    [total_need_art_filling[5],""],
+                    ]
+                
+                final_total_need_sdf = [
+                    ["Need SDF",""] ,
+                    [need_sdf_number[0],"(" + str(total_need_sdf[0]) + "%)"],
+                    [need_sdf_number[1],"(" + str(total_need_sdf[1]) + "%)"],
+                    [total_need_sdf[2]],
+                    [total_need_sdf[3],""],
+                    [total_need_sdf[4],""],
+                    [total_need_sdf[5],""],
+                    ]
+                
+                final_total_need_extraction = [
+                    ["Need Extraction",""] ,
+                    [need_extraction_number[0],"(" + str(total_need_extraction[0]) + "%)"],
+                    [need_extraction_number[1],"(" + str(total_need_extraction[1]) + "%)"],
+                    [total_need_extraction[2]],
+                    [total_need_extraction[3],""],
+                    [total_need_extraction[4],""],
+                    [total_need_extraction[5],""],
+                    ]
+                
+                final_total_need_fv = [
+                    ["Need FV",""] ,
+                    [need_fv_number[0],"(" + str(total_need_fv[0]) + "%)"],
+                    [need_fv_number[1],"(" + str(total_need_fv[1]) + "%)"],
+                    [total_need_fv[2]],
+                    [total_need_fv[3],""],
+                    [total_need_fv[4],""],
+                    [total_need_fv[5],""],
+                    ]
+                
+                final_total_need_dentist_or_hygienist = [
+                    ["Need Dentist or Hygenist",""] ,
+                    [need_dentist_or_hygienist_number[0],"(" + str(total_need_dentist_or_hygienist[0]) + "%)"],
+                    [need_dentist_or_hygienist_number[1],"(" + str(total_need_dentist_or_hygienist[1]) + "%)"],
+                    [total_need_dentist_or_hygienist[2]],
+                    [total_need_dentist_or_hygienist[3],""],
+                    [total_need_dentist_or_hygienist[4],""],
+                    [total_need_dentist_or_hygienist[5],""],
+                    ]
                 
                 data = [
                     carries_risk,
-                    total_carries_risk_low ,
-                    total_carries_risk_medium ,
-                    total_carries_risk_high ,
-                    total_untreated_caries_present,
-                    total_decayed_primary_teeth ,
-                    total_decayed_permanent_teeth ,
-                    total_cavity_permanent_molar ,
-                    total_cavity_permanent_anterior ,
-                    total_active_infection,
-                    total_reversible_pulpitis ,
-                    total_need_art_filling ,
-                    total_need_sdf,
-                    total_need_extraction,
-                    total_need_fv,
-                    total_need_dentist_or_hygienist
+                    final_total_carries_risk_low ,
+                    final_total_carries_risk_medium ,
+                    final_total_carries_risk_high ,
+                    final_total_untreated_caries_present,
+                    final_total_decayed_primary_teeth ,
+                    final_total_decayed_permanent_teeth ,
+                    final_total_cavity_permanent_molar ,
+                    final_total_cavity_permanent_anterior ,
+                    final_total_active_infection,
+                    final_total_reversible_pulpitis ,
+                    final_total_need_art_filling ,
+                    final_total_need_sdf,
+                    final_total_need_extraction,
+                    final_total_need_fv,
+                    final_total_need_dentist_or_hygienist
                     ]
                 
                 return Response(data)

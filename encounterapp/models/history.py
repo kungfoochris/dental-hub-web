@@ -31,6 +31,4 @@ class History(models.Model):
     high_blood_pressure = models.BooleanField(default=False)
     low_blood_pressure = models.BooleanField(default=False)
     thyroid_disorder = models.BooleanField(default=False)
-	# updated_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,related_name='update_history')
 	# updated_at = models.DateField(null=True)
-	# created_at = models.DateField()
