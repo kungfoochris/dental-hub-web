@@ -44,5 +44,6 @@ class Screeing(models.Model):
 	need_fv = models.BooleanField(default=False)
 	need_dentist_or_hygienist = models.BooleanField(default=False)
 	encounter_id = models.OneToOneField(Encounter,on_delete=models.CASCADE,related_name='screening')
+	# updated_at = models.DateField(null=True)
 
 
