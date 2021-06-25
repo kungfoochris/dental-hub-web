@@ -1142,7 +1142,7 @@ class TestCrossSectionalVisualization(APIView):
                 else:
                     efgh2_pvalue = round(p,3)
             except:
-                efgh2_pvalue = "no enough data"
+                efgh2_pvalue = 0
 
             total_untreated_caries_present.append(efgh2_pvalue)
             total_cavity_permanent_molar.append(efgh2_pvalue)

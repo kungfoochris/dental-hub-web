@@ -87,3 +87,5 @@ urlpatterns = [
 	path('testlongitudinal',TestLongitudinalVisualization.as_view()),
 	path('wardstrategicdata',WardStrategicData.as_view()),
 	]
+
+

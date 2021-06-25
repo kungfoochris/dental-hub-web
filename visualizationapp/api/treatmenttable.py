@@ -63,7 +63,11 @@ class TreatmentTableBasicData(APIView):
                 gender="female", created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             treatment_child = Visualization.objects.filter(active=True,
-                age__lt=18, created_at__range=[last_30_days_obj, today_date_obj]
+                age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
+            ).count()
+            treatment_teen = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
+                created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             treatment_adult = Visualization.objects.filter(active=True,
                 age__range=(18, 60),
@@ -87,7 +91,12 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             child__patients_receiving_fv = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            teen__patients_receiving_fv = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -116,7 +125,12 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             sealant_child = Visualization.objects.filter(active=True,
-                age__lt=18,
+                age__lt=13,
+                need_sealant=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            sealant_teen = Visualization.objects.filter(active=True,
+                age__range=(13, 18),
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -140,6 +154,9 @@ class TreatmentTableBasicData(APIView):
             cavities_prevented_child = (
                 0.2 * child__patients_receiving_fv + 0.1 * sealant_child
             )
+            cavities_prevented_teen = (
+                0.2 * teen__patients_receiving_fv + 0.1 * sealant_teen
+            )
             cavities_prevented_adult = (
                 0.2 * adult__patients_receiving_fv + 0.1 * sealant_adult
             )
@@ -157,6 +174,7 @@ class TreatmentTableBasicData(APIView):
                         round(cavities_prevented_male, 2),
                         round(cavities_prevented_female, 2),
                         round(cavities_prevented_child, 2),
+                        round(cavities_prevented_teen, 2),
                         round(cavities_prevented_adult, 2),
                         round(cavities_prevented_old, 2),
                         round(total_cavities, 2),
@@ -166,6 +184,7 @@ class TreatmentTableBasicData(APIView):
                         treatment_male,
                         treatment_female,
                         treatment_child,
+                        treatment_teen,
                         treatment_adult,
                         treatment_old,
                         total_contact,
@@ -217,7 +236,20 @@ class TreatmentTableBasicData(APIView):
                     )
                     treatment_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18, created_at__range=[start_date, end_date]
+                            age__lt=13, created_at__range=[start_date, end_date]
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    treatment_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            created_at__range=[start_date, end_date],
                         )
                         .filter(
                             Q(activities_id=health_post)
@@ -295,7 +327,21 @@ class TreatmentTableBasicData(APIView):
                     )
                     child__patients_receiving_fv = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
+                            fv=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    teen__patients_receiving_fv = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
                             fv=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -378,7 +424,21 @@ class TreatmentTableBasicData(APIView):
                     )
                     sealant_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
+                            need_sealant=True,
+                            created_at__range=[start_date, end_date],
+                        )
+                        .filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=outreach)
+                        )
+                        .count()
+                    )
+                    sealant_teen = (
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -428,6 +488,9 @@ class TreatmentTableBasicData(APIView):
                     cavities_prevented_child = (
                         0.2 * child__patients_receiving_fv + 0.1 * sealant_child
                     )
+                    cavities_prevented_teen = (
+                        0.2 * teen__patients_receiving_fv + 0.1 * sealant_teen
+                    )
                     cavities_prevented_adult = (
                         0.2 * adult__patients_receiving_fv + 0.1 * sealant_adult
                     )
@@ -441,19 +504,22 @@ class TreatmentTableBasicData(APIView):
                     treatment_male_list = []
                     treatment_female_list = []
                     treatment_child_list = []
-                    treatment_adult_lits = []
+                    treatment_teen_list = []
+                    treatment_adult_list = []
                     treatment_old_list = []
 
                     total_fv_list = []
                     female_patients_receiving_fv_list = []
                     male_patients_receiving_fv_list = []
                     child__patients_receiving_fv_list = []
+                    teen__patients_receiving_fv_list = []
                     adult__patients_receiving_fv_list = []
                     old__patients_receiving_fv_list = []
 
                     total_need_sealant_list = []
                     sealant_male_list = []
                     sealant_female_list = []
+                    sealant_teen_list = []
                     sealant_child_list = []
                     sealant_adult_list = []
                     sealant_old_list = []
@@ -488,7 +554,7 @@ class TreatmentTableBasicData(APIView):
                         )
                         treatment_child_list.append(
                             Visualization.objects.filter(active=True,
-                                age__lt=18,
+                                age__lt=13,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                             )
@@ -500,7 +566,21 @@ class TreatmentTableBasicData(APIView):
                             )
                             .count()
                         )
-                        treatment_adult_lits.append(
+                        treatment_teen_list.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        treatment_adult_list.append(
                             Visualization.objects.filter(active=True,
                                 age__range=(18, 60),
                                 created_at__range=[start_date, end_date],
@@ -575,7 +655,22 @@ class TreatmentTableBasicData(APIView):
                         )
                         child__patients_receiving_fv_list.append(
                             Visualization.objects.filter(active=True,
-                                age__lt=18,
+                                age__lt=13,
+                                fv=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        teen__patients_receiving_fv_list.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
                                 fv=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -665,7 +760,22 @@ class TreatmentTableBasicData(APIView):
                         )
                         sealant_child_list.append(
                             Visualization.objects.filter(active=True,
-                                age__lt=18,
+                                age__lt=13,
+                                need_sealant=True,
+                                created_at__range=[start_date, end_date],
+                                geography_id=location.id,
+                            )
+                            .filter(
+                                Q(activities_id=health_post)
+                                | Q(activities_id=seminar)
+                                | Q(activities_id=outreach)
+                                | Q(activities_id=outreach)
+                            )
+                            .count()
+                        )
+                        sealant_teen_list.append(
+                            Visualization.objects.filter(active=True,
+                                age__range=(13, 18),
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -711,7 +821,8 @@ class TreatmentTableBasicData(APIView):
                     treatment_male = sum(treatment_male_list)
                     treatment_female = sum(treatment_female_list)
                     treatment_child = sum(treatment_child_list)
-                    treatment_adult = sum(treatment_adult_lits)
+                    treatment_teen = sum(treatment_teen_list)
+                    treatment_adult = sum(treatment_adult_list)
                     treatment_old = sum(treatment_old_list)
 
                     total_fv = sum(total_fv_list)
@@ -722,6 +833,9 @@ class TreatmentTableBasicData(APIView):
                     child__patients_receiving_fv = sum(
                         child__patients_receiving_fv_list
                     )
+                    teen__patients_receiving_fv = sum(
+                        teen__patients_receiving_fv_list
+                    )
                     adult__patients_receiving_fv = sum(
                         adult__patients_receiving_fv_list
                     )
@@ -731,6 +845,7 @@ class TreatmentTableBasicData(APIView):
                     sealant_male = sum(sealant_male_list)
                     sealant_female = sum(sealant_female_list)
                     sealant_child = sum(sealant_child_list)
+                    sealant_teen = sum(sealant_teen_list)
                     sealant_adult = sum(sealant_adult_list)
                     sealant_old = sum(sealant_old_list)
 
@@ -742,6 +857,9 @@ class TreatmentTableBasicData(APIView):
                     )
                     cavities_prevented_child = (
                         0.2 * child__patients_receiving_fv + 0.1 * sealant_child
+                    )
+                    cavities_prevented_teen = (
+                        0.2 * teen__patients_receiving_fv + 0.1 * sealant_teen
                     )
                     cavities_prevented_adult = (
                         0.2 * adult__patients_receiving_fv + 0.1 * sealant_adult
@@ -758,6 +876,7 @@ class TreatmentTableBasicData(APIView):
                             round(cavities_prevented_male, 2),
                             round(cavities_prevented_female, 2),
                             round(cavities_prevented_child, 2),
+                            round(cavities_prevented_teen, 2),
                             round(cavities_prevented_adult, 2),
                             round(cavities_prevented_old, 2),
                             round(total_cavities, 2),
@@ -767,6 +886,7 @@ class TreatmentTableBasicData(APIView):
                             treatment_male,
                             treatment_female,
                             treatment_child,
+                            treatment_teen,
                             treatment_adult,
                             treatment_old,
                             total_contact,
