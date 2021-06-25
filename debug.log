@@ -6526,3 +6526,76 @@ Traceback (most recent call last):
 TypeError: 'list' object is not callable
 2021-05-28 11:43:55,523 django.server ERROR    "POST /api/v1/testlongitudinal HTTP/1.1" 500 105597
 2021-05-28 11:45:02,419 django.server INFO     "POST /api/v1/testlongitudinal HTTP/1.1" 200 24939
+2021-06-25 13:45:11,954 django.request WARNING  Unauthorized: /api/v1/patients
+2021-06-25 13:45:12,050 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-06-25 13:45:13,267 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-06-25 13:45:13,270 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-06-25 13:45:13,274 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-06-25 13:45:13,275 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-06-25 13:45:13,278 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-06-25 13:45:13,279 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-06-25 13:45:13,302 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-06-25 13:45:13,392 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-06-25 13:45:13,393 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-06-25 13:45:13,529 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-06-25 13:45:13,778 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-06-25 13:45:14,407 django.request WARNING  Not Found: /favicon.ico
+2021-06-25 13:45:14,409 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-06-25 13:46:14,759 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-06-25 13:46:31,542 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-06-25 13:46:35,012 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111108
+2021-06-25 13:47:00,507 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15480
+2021-06-25 13:47:30,591 django.request ERROR    Internal Server Error: /api/v1/treatment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 825, in post
+    treatment_adult = sum(treatment_adult_lits)
+NameError: name 'treatment_adult_lits' is not defined
+2021-06-25 13:47:30,594 django.server ERROR    "POST /api/v1/treatment HTTP/1.1" 500 96138
+2021-06-25 13:48:31,622 django.request ERROR    Internal Server Error: /api/v1/treatment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 862, in post
+    0.2 * teen_patients_receiving_fv + 0.1 * sealant_teen
+NameError: name 'teen_patients_receiving_fv' is not defined
+2021-06-25 13:48:31,636 django.server ERROR    "POST /api/v1/treatment HTTP/1.1" 500 99455
+2021-06-25 13:49:58,375 django.server INFO     "POST /api/v1/treatment HTTP/1.1" 200 15481
+2021-06-25 17:58:54,512 django.request WARNING  Unauthorized: /api/v1/patients
+2021-06-25 17:58:54,556 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-06-25 17:58:59,697 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-06-25 17:59:08,901 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-06-25 17:59:11,928 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111108
+2021-06-25 17:59:20,189 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016
+2021-06-25 18:07:44,886 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28595
+2021-06-25 18:26:04,831 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28595
+2021-06-25 18:26:09,100 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016

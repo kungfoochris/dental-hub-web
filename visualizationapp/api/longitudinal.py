@@ -351,7 +351,7 @@ class TestLongitudinalVisualization(APIView):
             
             if(total_cavity_permanent_molar[0] or total_cavity_permanent_molar[1] !=0):
                 cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_molar[0],total_cavity_permanent_molar[1]])
-                total_cavity_permanent_molar.append(round(total_cavity_permanent_molar_pvalue[0],2))
+                total_cavity_permanent_molar.append(round(cavity_permanent_molar_pvalue[1],2))
             else:
                 total_cavity_permanent_molar.append(0)
             
@@ -392,8 +392,8 @@ class TestLongitudinalVisualization(APIView):
                 total_cavity_permanent_anterior.append("large")
             
             if(total_cavity_permanent_anterior[0] or total_cavity_permanent_anterior[1] !=0):
-                cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_anterior[0],total_cavity_permanent_anterior[1]])
-                total_cavity_permanent_anterior.append(round(total_cavity_permanent_molar_pvalue[0],2))
+                cavity_permanent_anterior_pvalue = chisquare([total_cavity_permanent_anterior[0],total_cavity_permanent_anterior[1]])
+                total_cavity_permanent_anterior.append(round(cavity_permanent_anterior_pvalue[1],2))
             else:
                 total_cavity_permanent_anterior.append(0)
             
@@ -1165,7 +1165,7 @@ class TestLongitudinalVisualization(APIView):
                 
                 if(total_cavity_permanent_molar[0] or total_cavity_permanent_molar[1] !=0):
                     cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_molar[0],total_cavity_permanent_molar[1]])
-                    total_cavity_permanent_molar.append(round(total_cavity_permanent_molar_pvalue[0],2))
+                    total_cavity_permanent_molar.append(round(cavity_permanent_molar_pvalue[1],2))
                 else:
                     total_cavity_permanent_molar.append(0)
                 
@@ -1210,8 +1210,8 @@ class TestLongitudinalVisualization(APIView):
                     total_cavity_permanent_anterior.append("large")
                 
                 if(total_cavity_permanent_anterior[0] or total_cavity_permanent_anterior[1] !=0):
-                    cavity_permanent_molar_pvalue = chisquare([total_cavity_permanent_anterior[0],total_cavity_permanent_anterior[1]])
-                    total_cavity_permanent_anterior.append(round(total_cavity_permanent_molar_pvalue[0],2))
+                    cavity_permanent_anterior_pvalue = chisquare([total_cavity_permanent_anterior[0],total_cavity_permanent_anterior[1]])
+                    total_cavity_permanent_anterior.append(round(cavity_permanent_anterior_pvalue[1],2))
                 else:
                     total_cavity_permanent_anterior.append(0)
                 
