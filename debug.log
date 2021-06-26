@@ -1,0 +1,8 @@
+2021-06-25 22:00:57,848 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-25 22:00:57,851 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-25 22:43:01,461 django.request WARNING  Not Found: /api/v1/
+2021-06-25 22:43:01,463 django.server WARNING  "GET /api/v1/ HTTP/1.0" 404 22089
+2021-06-26 08:24:42,089 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-26 08:24:42,095 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-26 11:19:22,971 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-26 11:19:22,972 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
