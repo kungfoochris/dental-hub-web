@@ -130,7 +130,7 @@ class PatientAdd(APIView):
                 # logger.info("Geography id does not exists in patient section created by="+request.user.full_name)
                 # return Response({"message":"Geography id does not exists created by="+request.user.full_name}, status=400)
             logger.info(" %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s " %("Duplicate data added in by=",request.user.full_name,"Patient ID:",p.id,"first name:",serializer.validated_data['first_name'],"last name:",serializer.validated_data['last_name'],"phone:",serializer.validated_data['phone'],"dob:",serializer.validated_data['dob'],"gender:",serializer.validated_data['gender']))
-            return Response({"message":"duplicate data created by="+request.user.full_name},status=409)
+            return Response({"message":"duplicate data created by="+request.user.full_name,"patient_id":p.id},status=409)
         logger.info(serializer.errors)
         return Response({'message':serializer.errors}, status=400)
 

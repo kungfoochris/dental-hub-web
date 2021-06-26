@@ -6599,3 +6599,16 @@ NameError: name 'teen_patients_receiving_fv' is not defined
 2021-06-25 18:07:44,886 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28595
 2021-06-25 18:26:04,831 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28595
 2021-06-25 18:26:09,100 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016
+2021-06-26 09:26:27,984 django.request WARNING  Unauthorized: /api/v1/patients
+2021-06-26 09:26:28,174 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-06-26 09:26:28,999 django.request WARNING  Not Found: /favicon.ico
+2021-06-26 09:26:29,000 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-06-26 09:26:33,145 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-06-26 09:26:48,675 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-06-26 09:26:51,781 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111108
+2021-06-26 09:27:49,329 patientapp.api.patient INFO     Patient added successfully by admin user, Patient id: 440B0469F14C41ACB23474AF47010B21, first name: Ganga, last name: Cena, phone: +9779840056968, dob: 2021-06-25 ,gender: male, ward: , Activity Area: Health Post, District: Achham, Geography: , Municipality: Mangalsen
+2021-06-26 09:27:51,884 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109908
+2021-06-26 09:27:57,482 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112444
+2021-06-26 09:28:00,806 patientapp.api.patient INFO      Duplicate data added in by= admin user, Patient ID: 440B0469F14C41ACB23474AF47010B21, first name: Ganga, last name: Cena, phone: +9779840056968, dob: 2021-06-25, gender: male 
+2021-06-26 09:28:03,333 django.request WARNING  Conflict: /api/v1/patients
+2021-06-26 09:28:03,334 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109930
