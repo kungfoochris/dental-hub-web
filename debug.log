@@ -3752,7 +3752,6 @@ NameError: name 'mod_obj' is not defined
 2021-04-06 13:58:12,770 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
 2021-04-06 13:58:15,173 django.request WARNING  Bad Request: /api/v1/modifydeleteseen
 2021-04-06 13:58:15,174 django.server WARNING  "GET /api/v1/modifydeleteseen HTTP/1.1" 400 10094
-<<<<<<< HEAD
 2021-04-06 14:01:56,960 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/modifydeleteseen HTTP/1.1" 200 2726
 2021-04-06 14:02:06,503 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2964
 2021-04-06 14:02:34,608 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
@@ -6612,6 +6611,7 @@ NameError: name 'teen_patients_receiving_fv' is not defined
 2021-06-26 09:28:00,806 patientapp.api.patient INFO      Duplicate data added in by= admin user, Patient ID: 440B0469F14C41ACB23474AF47010B21, first name: Ganga, last name: Cena, phone: +9779840056968, dob: 2021-06-25, gender: male 
 2021-06-26 09:28:03,333 django.request WARNING  Conflict: /api/v1/patients
 2021-06-26 09:28:03,334 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109930
+<<<<<<< HEAD
 >>>>>>> e527fea99a7c54970ec0bb0378960cf88f54be55
 2021-06-26 22:10:25,292 django.request WARNING  Bad Request: /api/v1/token/obtain
 2021-06-26 22:10:25,295 django.server WARNING  "POST /api/v1/token/obtain HTTP/1.1" 400 40
@@ -7649,3 +7649,23 @@ TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2021-06-29 16:22:42,708 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 18939
 2021-06-29 16:27:32,748 django.request WARNING  Not Found: /api/jsonws/invoke
 2021-06-29 16:27:32,749 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+=======
+2021-06-29 10:46:09,846 django.request WARNING  Unauthorized: /api/v1/patients
+2021-06-29 10:46:09,899 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-06-29 10:46:11,116 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-06-29 10:46:11,230 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-06-29 10:46:11,231 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-06-29 10:46:11,233 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-06-29 10:46:12,229 django.request WARNING  Not Found: /favicon.ico
+2021-06-29 10:46:12,230 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-06-29 10:46:14,907 django.request WARNING  Unauthorized: /api/v1/testlongitudinal
+2021-06-29 10:46:14,907 django.server WARNING  "GET /api/v1/testlongitudinal HTTP/1.1" 401 10007
+2021-06-29 10:46:17,488 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testlongitudinal HTTP/1.1" 200 2726
+2021-06-29 10:46:26,657 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-06-29 10:46:28,409 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016
+2021-06-29 10:47:03,068 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016
+2021-06-29 10:47:31,981 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
+2021-06-29 10:48:21,917 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
+2021-06-29 11:55:23,215 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
+2021-06-29 11:55:32,518 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
+>>>>>>> e45f1cd9e1f0e3e5498ec2efa1dd4ed07009b9e6

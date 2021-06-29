@@ -70,28 +70,28 @@ class TestCrossSectionalVisualization(APIView):
             total_need_fv = []
             total_need_dentist_or_hygienist = []
 
-
+# round(sdf_real_difference/total_need_sdf[0],2)
 
             # carries risk low
             # WHO indicator age-groups
             numerator_carries_risk_low_A = Visualization.objects.filter(carries_risk="Low",age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_A/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
 
             numerator_carries_risk_low_B = Visualization.objects.filter(carries_risk="Low",age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_B/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
             
             numerator_carries_risk_low_C = Visualization.objects.filter(carries_risk="Low",age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_C/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
             
@@ -101,28 +101,28 @@ class TestCrossSectionalVisualization(APIView):
             numerator_carries_risk_low_E = Visualization.objects.filter(carries_risk="Low",age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_E/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
             
             numerator_carries_risk_low_F = Visualization.objects.filter(carries_risk="Low",age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_F/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
             
             numerator_carries_risk_low_G = Visualization.objects.filter(carries_risk="Low",age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_G/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
 
             numerator_carries_risk_low_H = Visualization.objects.filter(carries_risk="Low",age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_carries_risk_low.append((numerator_carries_risk_low_H/denominator)*100)
+                total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,2))
             except:
                 total_carries_risk_low.append(0)
 
@@ -135,21 +135,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_carries_risk_medium_A = Visualization.objects.filter(carries_risk="Medium",age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_A/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
 
             numerator_carries_risk_medium_B = Visualization.objects.filter(carries_risk="Medium",age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_B/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
             
             numerator_carries_risk_medium_C = Visualization.objects.filter(carries_risk="Medium",age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_C/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
             
@@ -159,27 +159,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_carries_risk_medium_E = Visualization.objects.filter(carries_risk="Medium",age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_E/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
             
             numerator_carries_risk_medium_F = Visualization.objects.filter(carries_risk="Medium",age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_F/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
             
             numerator_carries_risk_medium_G = Visualization.objects.filter(carries_risk="Medium",age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_G/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
             numerator_carries_risk_medium_H = Visualization.objects.filter(carries_risk="Medium",age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_carries_risk_medium.append((numerator_carries_risk_medium_H/denominator)*100)
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,2))
             except:
                 total_carries_risk_medium.append(0)
 
@@ -192,21 +192,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_carries_risk_high_A = Visualization.objects.filter(carries_risk="High",age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_A/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
 
             numerator_carries_risk_high_B = Visualization.objects.filter(carries_risk="High",age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_B/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
             
             numerator_carries_risk_high_C = Visualization.objects.filter(carries_risk="High",age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_C/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
             
@@ -216,27 +216,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_carries_risk_high_E = Visualization.objects.filter(carries_risk="High",age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_E/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
             
             numerator_carries_risk_high_F = Visualization.objects.filter(carries_risk="High",age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_F/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
             
             numerator_carries_risk_high_G = Visualization.objects.filter(carries_risk="High",age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_G/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
             numerator_carries_risk_high_H = Visualization.objects.filter(carries_risk="High",age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_carries_risk_high.append((numerator_carries_risk_high_H/denominator)*100)
+                total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,2))
             except:
                 total_carries_risk_high.append(0)
 
@@ -331,21 +331,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_untreated_caries_present_A = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_A/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
 
             numerator_untreated_caries_present_B = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_B/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_C = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_C/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
             
@@ -355,27 +355,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_untreated_caries_present_E = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_E/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_F = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_F/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_G = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_G/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
             numerator_untreated_caries_present_H = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_untreated_caries_present.append((numerator_untreated_caries_present_H/denominator)*100)
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,2))
             except:
                 total_untreated_caries_present.append(0)
 
@@ -600,21 +600,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_cavity_permanent_molar_A = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_A/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
 
             numerator_cavity_permanent_molar_B = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_B/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
             
             numerator_cavity_permanent_molar_C = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_C/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
             
@@ -624,27 +624,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_cavity_permanent_molar_E = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_E/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
             
             numerator_cavity_permanent_molar_F = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_F/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
             
             numerator_cavity_permanent_molar_G = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_G/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
             numerator_cavity_permanent_molar_H = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_H/denominator)*100)
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
 
@@ -657,21 +657,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_cavity_permanent_anterior_A = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_A/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
 
             numerator_cavity_permanent_anterior_B = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_B/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             numerator_cavity_permanent_anterior_C = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_C/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
             
@@ -681,27 +681,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_cavity_permanent_anterior_E = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_E/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             numerator_cavity_permanent_anterior_F = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_F/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             numerator_cavity_permanent_anterior_G = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_G/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
             numerator_cavity_permanent_anterior_H = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_H/denominator)*100)
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,2))
             except:
                 total_cavity_permanent_anterior.append(0)
 
@@ -714,21 +714,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_active_infection_A = Visualization.objects.filter(active_infection=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_active_infection.append((numerator_active_infection_A/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_A/denominator)*100,2))
             except:
                 total_active_infection.append(0)
 
             numerator_active_infection_B = Visualization.objects.filter(active_infection=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_active_infection.append((numerator_active_infection_B/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_B/denominator)*100,2))
             except:
                 total_active_infection.append(0)
             
             numerator_active_infection_C = Visualization.objects.filter(active_infection=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_active_infection.append((numerator_active_infection_C/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_C/denominator)*100,2))
             except:
                 total_active_infection.append(0)
             
@@ -738,27 +738,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_active_infection_E = Visualization.objects.filter(active_infection=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_active_infection.append((numerator_active_infection_E/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_E/denominator)*100,2))
             except:
                 total_active_infection.append(0)
             
             numerator_active_infection_F = Visualization.objects.filter(active_infection=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_active_infection.append((numerator_active_infection_F/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_F/denominator)*100,2))
             except:
                 total_active_infection.append(0)
             
             numerator_active_infection_G = Visualization.objects.filter(active_infection=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_active_infection.append((numerator_active_infection_G/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_G/denominator)*100,2))
             except:
                 total_active_infection.append(0)
             numerator_active_infection_H = Visualization.objects.filter(active_infection=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_active_infection.append((numerator_active_infection_H/denominator)*100)
+                total_active_infection.append(round((numerator_active_infection_H/denominator)*100,2))
             except:
                 total_active_infection.append(0)
 
@@ -771,21 +771,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_reversible_pulpitis_A = Visualization.objects.filter(reversible_pulpitis=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_A/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
 
             numerator_reversible_pulpitis_B = Visualization.objects.filter(reversible_pulpitis=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_B/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
             
             numerator_reversible_pulpitis_C = Visualization.objects.filter(reversible_pulpitis=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_C/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
             
@@ -795,27 +795,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_reversible_pulpitis_E = Visualization.objects.filter(reversible_pulpitis=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_E/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
             
             numerator_reversible_pulpitis_F = Visualization.objects.filter(reversible_pulpitis=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_F/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
             
             numerator_reversible_pulpitis_G = Visualization.objects.filter(reversible_pulpitis=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_G/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
             numerator_reversible_pulpitis_H = Visualization.objects.filter(reversible_pulpitis=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_reversible_pulpitis.append((numerator_reversible_pulpitis_H/denominator)*100)
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,2))
             except:
                 total_reversible_pulpitis.append(0)
 
@@ -828,21 +828,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_art_filling_A = Visualization.objects.filter(need_art_filling=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_A/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
 
             numerator_need_art_filling_B = Visualization.objects.filter(need_art_filling=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_B/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
             
             numerator_need_art_filling_C = Visualization.objects.filter(need_art_filling=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_C/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
             
@@ -852,27 +852,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_art_filling_E = Visualization.objects.filter(need_art_filling=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_E/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
             
             numerator_need_art_filling_F = Visualization.objects.filter(need_art_filling=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_F/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
             
             numerator_need_art_filling_G = Visualization.objects.filter(need_art_filling=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_G/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
             numerator_need_art_filling_H = Visualization.objects.filter(need_art_filling=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_need_art_filling.append((numerator_need_art_filling_H/denominator)*100)
+                total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,2))
             except:
                 total_need_art_filling.append(0)
 
@@ -886,21 +886,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_sdf_A = Visualization.objects.filter(need_sdf=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_A/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
 
             numerator_need_sdf_B = Visualization.objects.filter(need_sdf=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_B/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
             
             numerator_need_sdf_C = Visualization.objects.filter(need_sdf=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_C/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
             
@@ -910,27 +910,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_sdf_E = Visualization.objects.filter(need_sdf=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_E/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
             
             numerator_need_sdf_F = Visualization.objects.filter(need_sdf=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_F/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
             
             numerator_need_sdf_G = Visualization.objects.filter(need_sdf=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_G/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
             numerator_need_sdf_H = Visualization.objects.filter(need_sdf=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_need_sdf.append((numerator_need_sdf_H/denominator)*100)
+                total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,2))
             except:
                 total_need_sdf.append(0)
 
@@ -943,21 +943,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_extraction_A = Visualization.objects.filter(need_extraction=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_A/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
 
             numerator_need_extraction_B = Visualization.objects.filter(need_extraction=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_B/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
             
             numerator_need_extraction_C = Visualization.objects.filter(need_extraction=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_C/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
 
@@ -968,27 +968,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_extraction_E = Visualization.objects.filter(need_extraction=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_E/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
             
             numerator_need_extraction_F = Visualization.objects.filter(need_extraction=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_F/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
             
             numerator_need_extraction_G = Visualization.objects.filter(need_extraction=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_G/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
             numerator_need_extraction_H = Visualization.objects.filter(need_extraction=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_need_extraction.append((numerator_need_extraction_H/denominator)*100)
+                total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,2))
             except:
                 total_need_extraction.append(0)
 
@@ -1001,21 +1001,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_fv_A = Visualization.objects.filter(need_fv=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_need_fv.append((numerator_need_fv_A/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_A/denominator)*100,2))
             except:
                 total_need_fv.append(0)
 
             numerator_need_fv_B = Visualization.objects.filter(need_fv=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_need_fv.append((numerator_need_fv_B/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_B/denominator)*100,2))
             except:
                 total_need_fv.append(0)
             
             numerator_need_fv_C = Visualization.objects.filter(need_fv=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_need_fv.append((numerator_need_fv_C/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_C/denominator)*100,2))
             except:
                 total_need_fv.append(0)
             
@@ -1025,27 +1025,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_fv_E = Visualization.objects.filter(need_fv=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_need_fv.append((numerator_need_fv_E/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_E/denominator)*100,2))
             except:
                 total_need_fv.append(0)
             
             numerator_need_fv_F = Visualization.objects.filter(need_fv=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_need_fv.append((numerator_need_fv_F/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_F/denominator)*100,2))
             except:
                 total_need_fv.append(0)
             
             numerator_need_fv_G = Visualization.objects.filter(need_fv=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_need_fv.append((numerator_need_fv_G/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_G/denominator)*100,2))
             except:
                 total_need_fv.append(0)
             numerator_need_fv_H = Visualization.objects.filter(need_fv=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_need_fv.append((numerator_need_fv_H/denominator)*100)
+                total_need_fv.append(round((numerator_need_fv_H/denominator)*100,2))
             except:
                 total_need_fv.append(0)
 
@@ -1058,21 +1058,21 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_dentist_or_hygienist_A = Visualization.objects.filter(need_dentist_or_hygienist=True,age=6).count()
             denominator = Visualization.objects.filter(age=6).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_A/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
 
             numerator_need_dentist_or_hygienist_B = Visualization.objects.filter(need_dentist_or_hygienist=True,age=12).count()
             denominator = Visualization.objects.filter(age=12).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_B/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
             numerator_need_dentist_or_hygienist_C = Visualization.objects.filter(need_dentist_or_hygienist=True,age=15).count()
             denominator = Visualization.objects.filter(age=15).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_C/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
@@ -1082,27 +1082,27 @@ class TestCrossSectionalVisualization(APIView):
             numerator_need_dentist_or_hygienist_E = Visualization.objects.filter(need_dentist_or_hygienist=True,age__lt=13).count()
             denominator = Visualization.objects.filter(age__lt=13).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_E/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
             numerator_need_dentist_or_hygienist_F = Visualization.objects.filter(need_dentist_or_hygienist=True,age__range=[13,18]).count()
             denominator = Visualization.objects.filter(age__range=[13,18]).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_F/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
             numerator_need_dentist_or_hygienist_G = Visualization.objects.filter(need_dentist_or_hygienist=True,age__range=[19,60]).count()
             denominator = Visualization.objects.filter(age__range=[19,60]).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_G/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
             numerator_need_dentist_or_hygienist_H = Visualization.objects.filter(need_dentist_or_hygienist=True,age__gt=60).count()
             denominator = Visualization.objects.filter(age__gt=60).count()
             try:
-                total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_H/denominator)*100)
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,2))
             except:
                 total_need_dentist_or_hygienist.append(0)
 
@@ -1402,49 +1402,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_carries_risk_low_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_A/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_B/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_C/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_E/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_F/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_G/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_carries_risk_low.append((numerator_carries_risk_low_H/denominator)*100)
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,2))
                 except:
                     total_carries_risk_low.append(0)
                 
@@ -1475,49 +1475,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_carries_risk_medium_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_A/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_B/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_C/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_E/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_F/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_G/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_carries_risk_medium.append((numerator_carries_risk_medium_H/denominator)*100)
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,2))
                 except:
                     total_carries_risk_medium.append(0)
                 
@@ -1548,49 +1548,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_carries_risk_high_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_A/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_B/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_C/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_E/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_F/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_G/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_carries_risk_high.append((numerator_carries_risk_high_H/denominator)*100)
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,2))
                 except:
                     total_carries_risk_high.append(0)
                 
@@ -1700,49 +1700,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_untreated_caries_present_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_A/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_B/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_C/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_E/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_F/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_G/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_untreated_caries_present.append((numerator_untreated_caries_present_H/denominator)*100)
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,2))
                 except:
                     total_untreated_caries_present.append(0)
 
@@ -1972,49 +1972,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_cavity_permanent_molar_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_A/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_B/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_C/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_E/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_F/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_G/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_cavity_permanent_molar.append((numerator_cavity_permanent_molar_H/denominator)*100)
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,2))
                 except:
                     total_cavity_permanent_molar.append(0)
                 
@@ -2045,49 +2045,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_cavity_permanent_anterior_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_A/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_B/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_C/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_E/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_F/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_G/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_cavity_permanent_anterior.append((numerator_cavity_permanent_anterior_H/denominator)*100)
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,2))
                 except:
                     total_cavity_permanent_anterior.append(0)
                 
@@ -2118,49 +2118,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_active_infection_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_active_infection.append((numerator_active_infection_A/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_A/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_active_infection.append((numerator_active_infection_B/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_B/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_active_infection.append((numerator_active_infection_C/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_C/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_active_infection.append((numerator_active_infection_E/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_E/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_active_infection.append((numerator_active_infection_F/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_F/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_active_infection.append((numerator_active_infection_G/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_G/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_active_infection.append((numerator_active_infection_H/denominator)*100)
+                    total_active_infection.append(round((numerator_active_infection_H/denominator)*100,2))
                 except:
                     total_active_infection.append(0)
                 
@@ -2191,49 +2191,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_reversible_pulpitis_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_A/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_B/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_C/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_E/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_F/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_G/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_reversible_pulpitis.append((numerator_reversible_pulpitis_H/denominator)*100)
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,2))
                 except:
                     total_reversible_pulpitis.append(0)
                 
@@ -2265,49 +2265,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_need_art_filling_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_A/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_B/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_C/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_E/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_F/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_G/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_art_filling.append((numerator_need_art_filling_H/denominator)*100)
+                    total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,2))
                 except:
                     total_need_art_filling.append(0)
                 
@@ -2338,49 +2338,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_need_sdf_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_A/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_B/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_C/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_E/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_F/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_G/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_sdf.append((numerator_need_sdf_H/denominator)*100)
+                    total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,2))
                 except:
                     total_need_sdf.append(0)
                 
@@ -2410,49 +2410,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_need_extraction_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_A/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_B/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_C/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_E/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_F/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_G/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_extraction.append((numerator_need_extraction_H/denominator)*100)
+                    total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,2))
                 except:
                     total_need_extraction.append(0)
                 
@@ -2483,49 +2483,49 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_need_fv_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_fv.append((numerator_need_fv_A/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_A/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_fv.append((numerator_need_fv_B/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_B/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_fv.append((numerator_need_fv_C/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_C/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_fv.append((numerator_need_fv_E/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_E/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_fv.append((numerator_need_fv_F/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_F/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_fv.append((numerator_need_fv_G/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_G/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_fv.append((numerator_need_fv_H/denominator)*100)
+                    total_need_fv.append(round((numerator_need_fv_H/denominator)*100,2))
                 except:
                     total_need_fv.append(0)
                 
@@ -2556,21 +2556,21 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_need_dentist_or_hygienist_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_A/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_B/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_C/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
                 
@@ -2578,28 +2578,28 @@ class TestCrossSectionalVisualization(APIView):
                 numerator_need_dentist_or_hygienist_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_E/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_F/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_G/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_dentist_or_hygienist.append((numerator_need_dentist_or_hygienist_H/denominator)*100)
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,2))
                 except:
                     total_need_dentist_or_hygienist.append(0)
                 

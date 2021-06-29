@@ -266,14 +266,6 @@ PUT:
 
 
 
-
-return Response({'messsage':'Encounter restored successfully.'}, status=200)
-                return Response({'message':"Restoration time expired."}, status=400)
-            return Response({"message":"flag doesn't exists"},status=400)
-        return Response({'message':"No encounter deleted found."}, status=400)
-
-
-
 ======================
 Recyclebin
 ======================

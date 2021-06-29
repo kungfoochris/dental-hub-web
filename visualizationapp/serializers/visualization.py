@@ -139,10 +139,9 @@ class TestCrosssectionVisualizationSerializer(serializers.ModelSerializer):
     referral_type = serializers.ChoiceField(choices = REFER_CHOICES,write_only=True)
     activity = ActivityPKField(write_only=True, many=True)
     location = LocationPKField(write_only=True, many=True)
-    age_group = serializers.ChoiceField(choices = AGE_CHOICES,write_only=True)
     class Meta:
         model = Encounter
-        fields = ("start_date","end_date","reason_for_visit",'referral_type',"activity","location","age_group")
+        fields = ("start_date","end_date","reason_for_visit",'referral_type',"activity","location")
 
 
 
