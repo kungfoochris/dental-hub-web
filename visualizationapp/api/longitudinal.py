@@ -419,7 +419,7 @@ class TestLongitudinalVisualization(APIView):
                 total_active_infection.append("large")
             
             if(total_active_infection[0] or total_active_infection[1] != 0):
-                active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
+                active_infection_pvalue = round(chisquare([total_active_infection[0],total_active_infection[1]])[0],2)
             else:
                 active_infection_pvalue = 0
             total_active_infection.append(active_infection_pvalue)
