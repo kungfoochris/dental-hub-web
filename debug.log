@@ -6613,3 +6613,1039 @@ NameError: name 'teen_patients_receiving_fv' is not defined
 2021-06-26 09:28:03,333 django.request WARNING  Conflict: /api/v1/patients
 2021-06-26 09:28:03,334 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109930
 >>>>>>> e527fea99a7c54970ec0bb0378960cf88f54be55
+2021-06-26 22:10:25,292 django.request WARNING  Bad Request: /api/v1/token/obtain
+2021-06-26 22:10:25,295 django.server WARNING  "POST /api/v1/token/obtain HTTP/1.1" 400 40
+2021-06-26 22:10:32,202 userapp.api.user INFO     Test Login
+2021-06-26 22:10:32,203 django.server INFO     "POST /api/v1/token/obtain HTTP/1.1" 200 248
+2021-06-26 22:10:32,609 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 377
+2021-06-26 22:10:32,951 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 11320
+2021-06-26 22:10:32,972 django.server INFO     "GET /api/v1/accesspatients HTTP/1.1" 200 2147
+2021-06-26 22:10:33,618 django.server INFO     "GET /api/v1/patients/22453A02029B4032AD4540402214DF7B/encounters HTTP/1.1" 200 2683
+2021-06-26 22:10:33,688 django.server INFO     "GET /api/v1/patients/4B1EB47928D148D19C6DFFC2502EDBEA/encounters HTTP/1.1" 200 3380
+2021-06-26 22:10:33,694 django.server INFO     "GET /api/v1/patients/CC6F864ED90C4192B6C978BEA5D116FF/encounters HTTP/1.1" 200 2682
+2021-06-26 22:10:41,325 django.server INFO     "GET /api/v1/addresses HTTP/1.1" 200 1110697
+2021-06-26 22:10:45,395 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 139
+2021-06-26 22:10:50,335 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2021-06-26 22:10:50,348 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 1441
+2021-06-26 22:11:03,432 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 341A9D5C8DD84B0EACCB5FF4544DB7FB, first name: Test, last name: One, phone: 6868682727, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-26 22:11:03,433 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-26 22:11:17,786 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-26 22:11:17,787 django.server INFO     "PUT /api/v1/patient/341A9D5C8DD84B0EACCB5FF4544DB7FB HTTP/1.1" 200 28
+2021-06-26 22:11:17,797 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-26 22:11:17,798 django.server INFO     "POST /api/v1/patients/341A9D5C8DD84B0EACCB5FF4544DB7FB/encounters HTTP/1.1" 200 69
+2021-06-26 22:11:18,224 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-26 22:11:18,225 django.server INFO     "POST /api/v1/encounter/65C3CA1980A84CBE9AFDFF47A960B271/history HTTP/1.1" 200 482
+2021-06-26 22:11:18,265 encounterapp.api.screeing INFO     Screeing added successfully by  65C3CA1980A84CBE9AFDFF47A960B271
+2021-06-26 22:11:18,265 treatmentapp.api.treatment INFO     Treatment added successfully by 65C3CA1980A84CBE9AFDFF47A960B271
+2021-06-26 22:11:18,267 django.server INFO     "POST /api/v1/encounter/65C3CA1980A84CBE9AFDFF47A960B271/treatment HTTP/1.1" 200 1061
+2021-06-26 22:11:18,267 django.server INFO     "POST /api/v1/encounter/65C3CA1980A84CBE9AFDFF47A960B271/screening HTTP/1.1" 200 463
+2021-06-26 22:11:18,621 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-26 22:11:18,622 django.server INFO     "POST /api/v1/encounter/65C3CA1980A84CBE9AFDFF47A960B271/refer HTTP/1.1" 200 200
+2021-06-26 22:13:14,452 django.request WARNING  Unauthorized: /api/v1/patients/585BE3E5F1534FD79BF934FF635B3B22/encounters
+2021-06-26 22:13:14,453 django.server WARNING  "GET /api/v1/patients/585BE3E5F1534FD79BF934FF635B3B22/encounters HTTP/1.1" 401 10191
+2021-06-26 22:13:14,705 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2021-06-26 22:13:14,705 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2021-06-26 22:13:14,706 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2021-06-26 22:13:14,886 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2021-06-26 22:13:14,902 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 304 0
+2021-06-26 22:13:14,929 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2021-06-26 22:13:15,100 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2021-06-26 22:13:15,105 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2021-06-26 22:13:15,116 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2021-06-26 22:13:15,282 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2021-06-26 22:13:15,522 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2021-06-26 22:13:15,884 django.request WARNING  Not Found: /favicon.ico
+2021-06-26 22:13:15,885 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3393
+2021-06-27 00:00:15,554 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-27 00:00:15,555 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-27 08:24:00,502 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-27 08:24:00,562 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-27 08:24:17,303 django.server INFO     "OPTIONS /api/v1/checkuser HTTP/1.0" 200 0
+2021-06-27 08:24:17,442 django.request WARNING  Bad Request: /api/v1/checkuser
+2021-06-27 08:24:17,444 django.server WARNING  "POST /api/v1/checkuser HTTP/1.0" 400 54
+2021-06-27 08:24:23,673 django.server INFO     "POST /api/v1/checkuser HTTP/1.0" 200 21
+2021-06-27 08:24:23,782 django.server INFO     "OPTIONS /api/v1/token HTTP/1.0" 200 0
+2021-06-27 08:24:23,986 django.server INFO     "POST /api/v1/token HTTP/1.0" 200 275
+2021-06-27 08:24:24,929 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.0" 200 0
+2021-06-27 08:24:24,931 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.0" 200 0
+2021-06-27 08:24:25,010 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.0" 200 0
+2021-06-27 08:24:25,019 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.0" 200 0
+2021-06-27 08:24:25,092 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-27 08:24:25,132 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:24:25,141 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.0" 200 0
+2021-06-27 08:24:25,177 django.server INFO     "OPTIONS /api/v1/events HTTP/1.0" 200 0
+2021-06-27 08:24:25,247 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-27 08:24:25,351 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-27 08:24:25,356 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 08:24:25,376 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:24:25,440 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-27 08:24:25,447 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-27 08:24:25,631 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 08:24:25,644 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 08:24:25,687 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 08:24:25,690 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 08:24:25,792 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-27 08:24:25,846 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 08:24:25,977 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 08:24:25,989 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 08:24:26,071 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-27 08:24:26,078 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 08:24:26,086 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-27 08:24:26,107 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 08:24:26,141 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-27 08:24:26,158 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-27 08:24:26,809 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 08:24:29,281 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 08:24:29,367 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 08:24:29,370 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 08:24:29,387 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 08:24:29,944 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 08:24:31,055 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 08:24:31,630 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 08:24:31,947 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 08:24:31,950 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 08:24:31,970 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 08:24:32,402 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 08:24:33,550 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:24:33,593 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:24:34,478 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 08:24:35,065 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 08:24:35,445 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 08:24:35,466 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 08:24:35,539 django.server INFO     "OPTIONS /api/v1/sectional HTTP/1.0" 200 0
+2021-06-27 08:24:36,294 django.server INFO     "GET /api/v1/sectional HTTP/1.0" 200 673
+2021-06-27 08:24:36,761 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 08:24:36,992 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 08:24:37,707 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 08:24:37,805 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 08:25:51,114 django.request WARNING  Unauthorized: /api/v1/sectional
+2021-06-27 08:25:51,116 django.server WARNING  "GET /api/v1/sectional HTTP/1.0" 401 9906
+2021-06-27 08:25:55,955 django.request WARNING  Not Found: /api/v1/
+2021-06-27 08:25:55,956 django.server WARNING  "GET /api/v1/ HTTP/1.0" 404 22089
+2021-06-27 08:26:04,607 django.request WARNING  Unauthorized: /api/v1/testcrosssectional
+2021-06-27 08:26:04,608 django.server WARNING  "GET /api/v1/testcrosssectional HTTP/1.0" 401 10026
+2021-06-27 08:26:08,186 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testcrosssectional HTTP/1.0" 200 2728
+2021-06-27 08:26:14,708 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.0" 302 0
+2021-06-27 08:26:15,364 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 31012
+2021-06-27 08:45:42,223 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:45:42,243 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:45:42,394 django.server INFO     "GET /api/v1/sectional HTTP/1.0" 200 673
+2021-06-27 08:45:48,120 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:45:48,122 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:45:48,251 django.server INFO     "GET /api/v1/sectional HTTP/1.0" 200 673
+2021-06-27 08:50:03,036 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 31012
+2021-06-27 08:51:23,221 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:51:23,227 django.server INFO     "OPTIONS /api/v1/testcrosssectional HTTP/1.0" 200 0
+2021-06-27 08:51:23,227 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:51:23,609 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:52:17,565 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:52:17,592 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:52:17,906 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:54:20,243 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:54:20,251 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:54:20,635 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:54:30,036 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:54:30,047 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:54:30,342 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:56:08,133 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:56:08,146 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:56:08,741 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:56:19,198 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:56:19,214 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:56:19,558 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:56:47,142 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:56:47,180 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:56:47,904 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:57:43,824 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:57:43,840 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:57:44,133 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:58:12,349 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:58:12,366 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:58:12,864 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:58:24,211 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:58:24,228 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:58:24,535 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:58:54,870 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:58:54,887 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:58:55,228 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:59:14,041 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:59:14,068 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:59:14,370 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:59:26,880 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:59:26,889 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:59:27,251 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:59:33,227 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:59:33,244 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:59:33,612 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 08:59:44,379 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 08:59:44,394 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 08:59:44,729 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:00:06,911 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:00:06,929 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:00:07,267 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:00:20,063 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:00:20,073 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:00:20,380 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:00:36,250 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:00:36,268 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:00:36,600 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:00:46,394 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:00:46,412 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:00:46,713 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:00:56,650 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:00:56,661 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:00:56,962 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:01:07,247 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:01:07,264 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:01:07,600 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:01:16,678 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:01:16,690 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:01:17,063 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:01:26,168 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:01:26,190 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:01:26,522 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:01:37,613 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:01:37,644 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:01:37,978 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3380
+2021-06-27 09:05:59,028 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2021-06-27 09:05:59,031 django.server ERROR    "POST /api/v1/testcrosssectional HTTP/1.0" 500 79132
+2021-06-27 09:06:07,163 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2021-06-27 09:06:07,166 django.server ERROR    "POST /api/v1/testcrosssectional HTTP/1.0" 500 79132
+2021-06-27 09:06:15,536 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2021-06-27 09:06:15,538 django.server ERROR    "POST /api/v1/testcrosssectional HTTP/1.0" 500 79132
+2021-06-27 09:07:00,505 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2021-06-27 09:07:00,507 django.server ERROR    "POST /api/v1/testcrosssectional HTTP/1.0" 500 81005
+2021-06-27 09:07:05,053 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 31012
+2021-06-27 09:07:48,275 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.0" 200 29688
+2021-06-27 09:12:49,582 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:12:49,595 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:12:49,600 django.server INFO     "OPTIONS /api/v1/treatment HTTP/1.0" 200 0
+2021-06-27 09:12:49,616 django.server INFO     "OPTIONS /api/v1/treatmentstrategicdatas HTTP/1.0" 200 0
+2021-06-27 09:12:49,647 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-27 09:12:49,734 django.server INFO     "GET /api/v1/treatment HTTP/1.0" 200 89
+2021-06-27 09:12:49,801 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.0" 200 299
+2021-06-27 09:12:54,660 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-27 09:12:54,703 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-27 09:12:54,742 django.server INFO     "GET /api/v1/treatment HTTP/1.0" 200 89
+2021-06-27 09:12:54,830 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-27 09:12:54,891 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 09:12:54,898 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.0" 200 299
+2021-06-27 09:12:55,004 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 09:12:55,168 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 09:12:55,300 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 09:12:56,430 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 09:12:57,490 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 09:12:58,174 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 09:12:58,444 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-27 09:12:58,783 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-27 09:12:58,950 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 09:13:00,221 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 09:13:00,549 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 09:13:00,612 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-27 09:13:00,621 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 09:13:00,978 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 09:13:02,091 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-27 09:13:02,276 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-27 09:13:02,359 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-27 09:13:18,244 django.server INFO     "OPTIONS /api/v1/loginvisualization HTTP/1.0" 200 0
+2021-06-27 09:13:18,246 django.server INFO     "OPTIONS /api/v1/loginvisualization1 HTTP/1.0" 200 0
+2021-06-27 09:13:18,345 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-27 09:13:18,399 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-27 09:47:25,828 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-27 09:47:25,830 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-27 18:59:50,011 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-27 18:59:50,013 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-27 23:54:43,082 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-27 23:54:43,083 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-28 10:56:57,842 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-28 10:56:57,845 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-28 16:57:00,185 userapp.api.user INFO     Test Login
+2021-06-28 16:57:00,188 django.server INFO     "POST /api/v1/token/obtain HTTP/1.1" 200 248
+2021-06-28 16:57:00,477 django.server INFO     "GET /api/v1/profile HTTP/1.1" 200 377
+2021-06-28 16:57:00,701 django.server INFO     "GET /api/v1/accesspatients HTTP/1.1" 200 2858
+2021-06-28 16:57:00,946 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 11320
+2021-06-28 16:57:01,456 django.server INFO     "GET /api/v1/patients/341A9D5C8DD84B0EACCB5FF4544DB7FB/encounters HTTP/1.1" 200 2698
+2021-06-28 16:57:01,465 django.server INFO     "GET /api/v1/patients/22453A02029B4032AD4540402214DF7B/encounters HTTP/1.1" 200 2683
+2021-06-28 16:57:01,489 django.server INFO     "GET /api/v1/patients/CC6F864ED90C4192B6C978BEA5D116FF/encounters HTTP/1.1" 200 2682
+2021-06-28 16:57:01,490 django.server INFO     "GET /api/v1/patients/4B1EB47928D148D19C6DFFC2502EDBEA/encounters HTTP/1.1" 200 3380
+2021-06-28 16:57:08,733 django.server INFO     "GET /api/v1/addresses HTTP/1.1" 200 1110697
+2021-06-28 16:57:09,759 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 139
+2021-06-28 16:57:11,467 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 128
+2021-06-28 16:57:11,494 django.server INFO     "GET /api/v1/activities HTTP/1.1" 200 1441
+2021-06-28 16:57:34,007 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.0" 200 0
+2021-06-28 16:57:34,021 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.0" 200 0
+2021-06-28 16:57:34,035 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.0" 200 0
+2021-06-28 16:57:34,049 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-28 16:57:34,050 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.0" 200 0
+2021-06-28 16:57:34,099 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.0" 200 0
+2021-06-28 16:57:34,111 django.server INFO     "OPTIONS /api/v1/events HTTP/1.0" 200 0
+2021-06-28 16:57:34,115 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-28 16:57:34,130 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-28 16:57:34,153 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,154 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,181 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-28 16:57:34,196 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-28 16:57:34,197 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-28 16:57:34,220 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-28 16:57:34,252 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,254 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,264 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-28 16:57:34,285 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-28 16:57:34,287 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-28 16:57:34,308 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-28 16:57:34,367 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,367 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-28 16:57:34,369 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,380 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-28 16:57:34,384 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-28 16:57:34,394 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-28 16:57:34,456 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,458 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,460 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-28 16:57:34,471 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-28 16:57:34,483 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-28 16:57:34,488 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-28 16:57:34,538 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,667 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-28 16:57:34,795 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-28 16:57:34,798 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-28 16:57:34,843 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-28 16:57:34,971 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-28 16:57:35,049 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-28 16:57:35,071 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-28 16:57:35,147 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-28 16:57:35,204 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:35,310 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:35,634 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-28 16:57:35,902 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:36,089 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-28 16:57:36,251 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:36,355 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:36,570 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:36,627 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:36,703 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 16:57:36,871 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:36,882 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:37,172 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:37,467 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-28 16:57:38,025 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 16:57:38,093 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 16:57:38,779 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-28 16:57:39,254 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 16:57:39,279 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-28 16:57:39,362 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-28 16:57:39,492 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 16:57:39,499 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-28 16:57:39,597 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-28 16:57:39,778 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:39,837 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-28 16:57:39,848 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:40,144 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:40,492 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:40,680 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-28 16:57:40,794 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 16:57:41,027 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 16:57:41,134 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 16:57:41,395 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 16:57:41,836 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-28 16:57:42,632 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 16:57:43,249 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 16:57:43,278 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 16:57:43,319 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-28 16:57:44,703 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3339
+2021-06-28 16:57:45,020 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 16:57:45,337 django.server INFO     "GET /maintainer/ HTTP/1.0" 302 0
+2021-06-28 16:57:45,507 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 16:57:45,516 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.0" 200 1851
+2021-06-28 16:57:46,243 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 16:57:46,801 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 16:57:47,732 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 16:57:51,589 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.0" 302 0
+2021-06-28 16:57:51,938 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-28 16:58:18,075 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
+2021-06-28 16:58:18,086 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 39
+2021-06-28 16:58:18,899 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 801
+2021-06-28 16:58:28,006 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.0" 200 102316
+2021-06-28 16:58:28,151 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 16:58:32,138 django.server INFO     "GET /maintainer/encounterapp/encounter/?date__gte=2021-06-21+00%3A00%3A00%2B05%3A45&date__lt=2021-06-29+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 12776
+2021-06-28 16:58:32,285 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 16:59:03,855 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
+2021-06-28 16:59:03,858 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 39
+2021-06-28 16:59:04,636 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 801
+2021-06-28 16:59:14,314 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: B8803E89BBBE46AC8B7842D54C874871, first name: Test, last name: One, phone: 9876543210, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 16:59:14,315 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 16:59:59,672 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 16:59:59,673 django.server INFO     "PUT /api/v1/patient/B8803E89BBBE46AC8B7842D54C874871 HTTP/1.1" 200 28
+2021-06-28 16:59:59,714 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 16:59:59,715 django.server INFO     "POST /api/v1/patients/B8803E89BBBE46AC8B7842D54C874871/encounters HTTP/1.1" 200 69
+2021-06-28 17:00:00,247 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:00:00,248 django.server INFO     "POST /api/v1/encounter/7E123366426A4777B4C95D0C7BA693F5/history HTTP/1.1" 200 482
+2021-06-28 17:00:00,252 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:00:00,253 django.server INFO     "POST /api/v1/encounter/7E123366426A4777B4C95D0C7BA693F5/refer HTTP/1.1" 200 200
+2021-06-28 17:00:00,260 encounterapp.api.screeing INFO     Screeing added successfully by  7E123366426A4777B4C95D0C7BA693F5
+2021-06-28 17:00:00,260 django.server INFO     "POST /api/v1/encounter/7E123366426A4777B4C95D0C7BA693F5/screening HTTP/1.1" 200 463
+2021-06-28 17:00:00,497 treatmentapp.api.treatment INFO     Treatment added successfully by 7E123366426A4777B4C95D0C7BA693F5
+2021-06-28 17:00:00,499 django.server INFO     "POST /api/v1/encounter/7E123366426A4777B4C95D0C7BA693F5/treatment HTTP/1.1" 200 1057
+2021-06-28 17:00:08,316 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 39
+2021-06-28 17:00:08,322 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
+2021-06-28 17:00:09,166 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 801
+2021-06-28 17:01:08,785 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-28 17:01:14,135 django.server INFO     "GET /maintainer/treatmentapp/treatment/ HTTP/1.0" 200 85194
+2021-06-28 17:01:14,284 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 17:01:17,447 django.server INFO     "GET /maintainer/treatmentapp/treatment/?encounter_id__date__gte=2021-06-28+00%3A00%3A00%2B05%3A45&encounter_id__date__lt=2021-06-29+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 11088
+2021-06-28 17:01:17,601 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 17:01:34,836 django.server INFO     "GET /maintainer/treatmentapp/treatment/?encounter_id__date__gte=2021-06-21+00%3A00%3A00%2B05%3A45&encounter_id__date__lt=2021-06-29+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 12944
+2021-06-28 17:01:34,994 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 17:01:37,877 django.server INFO     "GET /maintainer/treatmentapp/treatment/?encounter_id__date__gte=2021-06-28+00%3A00%3A00%2B05%3A45&encounter_id__date__lt=2021-06-29+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 11088
+2021-06-28 17:01:38,008 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 17:01:43,507 django.server INFO     "GET /maintainer/treatmentapp/treatment/8D84F5AA019D45D98039C58531DEDA5C/change/?_changelist_filters=encounter_id__date__gte%3D2021-06-28%2B00%253A00%253A00%252B05%253A45%26encounter_id__date__lt%3D2021-06-29%2B00%253A00%253A00%252B05%253A45 HTTP/1.0" 200 156273
+2021-06-28 17:01:43,737 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-28 17:07:48,447 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 54EA37D9AA814DEB8744D6B991D0F1AA, first name: Test, last name: Two, phone: 9876543210, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:07:48,447 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:08:07,079 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:08:07,080 django.server INFO     "PUT /api/v1/patient/54EA37D9AA814DEB8744D6B991D0F1AA HTTP/1.1" 200 28
+2021-06-28 17:08:07,114 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:08:07,114 django.server INFO     "POST /api/v1/patients/54EA37D9AA814DEB8744D6B991D0F1AA/encounters HTTP/1.1" 200 69
+2021-06-28 17:08:08,020 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:08:08,021 django.server INFO     "POST /api/v1/encounter/0386212268AC416699FBCB0DBBA766C5/history HTTP/1.1" 200 482
+2021-06-28 17:08:08,028 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:08:08,029 django.server INFO     "POST /api/v1/encounter/0386212268AC416699FBCB0DBBA766C5/refer HTTP/1.1" 200 200
+2021-06-28 17:08:08,044 treatmentapp.api.treatment INFO     Treatment added successfully by 0386212268AC416699FBCB0DBBA766C5
+2021-06-28 17:08:08,045 django.server INFO     "POST /api/v1/encounter/0386212268AC416699FBCB0DBBA766C5/treatment HTTP/1.1" 200 1057
+2021-06-28 17:08:08,295 encounterapp.api.screeing INFO     Screeing added successfully by  0386212268AC416699FBCB0DBBA766C5
+2021-06-28 17:08:08,296 django.server INFO     "POST /api/v1/encounter/0386212268AC416699FBCB0DBBA766C5/screening HTTP/1.1" 200 463
+2021-06-28 17:08:21,825 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-28 17:08:21,851 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-28 17:08:21,998 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-28 17:08:22,074 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 17:08:22,085 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-28 17:08:22,127 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 17:08:22,665 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-28 17:08:22,914 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-28 17:08:23,165 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 17:08:23,243 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 17:08:23,487 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 17:08:23,592 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 17:08:23,593 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 17:08:23,714 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 17:08:23,946 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 17:08:24,014 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-28 17:08:24,235 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-28 17:08:24,356 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3340
+2021-06-28 17:08:24,932 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 17:08:24,943 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 17:08:25,917 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 17:08:25,992 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3340
+2021-06-28 17:08:26,121 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 17:08:27,216 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 17:08:27,368 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 17:08:27,717 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3340
+2021-06-28 17:08:28,659 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3033
+2021-06-28 17:08:29,001 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
+2021-06-28 17:08:29,533 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 17:08:29,768 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3340
+2021-06-28 17:08:29,817 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 17:08:31,906 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3340
+2021-06-28 17:08:32,548 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 17:08:32,958 django.request ERROR    Internal Server Error: /api/v1/overviewvisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 4978, in post
+    (sum(kid_exo) + sum(teen_exo) + sum(adult_exo) + sum(old_exo))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2021-06-28 17:08:32,979 django.server ERROR    "POST /api/v1/overviewvisualization HTTP/1.0" 500 15849
+2021-06-28 17:08:33,265 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 17:08:33,396 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-28 17:08:34,043 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-28 17:08:34,572 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 17:08:35,586 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-28 17:08:48,147 django.request WARNING  Bad Request: /api/v1/treatmentwards
+2021-06-28 17:08:48,154 django.request WARNING  Bad Request: /api/v1/overviewvisualization
+2021-06-28 17:08:48,154 django.server WARNING  "POST /api/v1/treatmentwards HTTP/1.0" 400 54
+2021-06-28 17:08:48,150 django.request WARNING  Bad Request: /api/v1/treatmentactivities
+2021-06-28 17:08:48,156 django.server WARNING  "POST /api/v1/treatmentactivities HTTP/1.0" 400 54
+2021-06-28 17:08:48,158 django.server WARNING  "POST /api/v1/overviewvisualization HTTP/1.0" 400 54
+2021-06-28 17:08:59,091 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
+2021-06-28 17:08:59,116 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 39
+2021-06-28 17:08:59,896 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 801
+2021-06-28 17:09:28,728 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 96AE96AB2A984A66BDD9EB0F5328632D, first name: Test, last name: Three, phone: 9876543210, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:09:28,729 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:09:49,011 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:09:49,012 django.server INFO     "PUT /api/v1/patient/96AE96AB2A984A66BDD9EB0F5328632D HTTP/1.1" 200 28
+2021-06-28 17:09:49,040 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:09:49,041 django.server INFO     "POST /api/v1/patients/96AE96AB2A984A66BDD9EB0F5328632D/encounters HTTP/1.1" 200 69
+2021-06-28 17:09:49,829 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:09:49,832 django.server INFO     "POST /api/v1/encounter/94133A6A02EB4079ABA25E6DE0922C4E/history HTTP/1.1" 200 482
+2021-06-28 17:09:49,839 treatmentapp.api.treatment INFO     Treatment added successfully by 94133A6A02EB4079ABA25E6DE0922C4E
+2021-06-28 17:09:49,840 django.server INFO     "POST /api/v1/encounter/94133A6A02EB4079ABA25E6DE0922C4E/treatment HTTP/1.1" 200 1057
+2021-06-28 17:09:49,853 encounterapp.api.screeing INFO     Screeing added successfully by  94133A6A02EB4079ABA25E6DE0922C4E
+2021-06-28 17:09:49,854 django.server INFO     "POST /api/v1/encounter/94133A6A02EB4079ABA25E6DE0922C4E/screening HTTP/1.1" 200 463
+2021-06-28 17:09:50,055 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:09:50,056 django.server INFO     "POST /api/v1/encounter/94133A6A02EB4079ABA25E6DE0922C4E/refer HTTP/1.1" 200 200
+2021-06-28 17:09:58,894 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 39
+2021-06-28 17:09:58,895 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
+2021-06-28 17:09:59,703 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 801
+2021-06-28 17:10:17,957 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 67FAE792B7144BE1A9C85F5F4D94FB9F, first name: Test, last name: Four, phone: 9876543215, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:10:17,958 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:10:35,981 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:10:35,982 django.server INFO     "PUT /api/v1/patient/67FAE792B7144BE1A9C85F5F4D94FB9F HTTP/1.1" 200 28
+2021-06-28 17:10:36,008 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:10:36,009 django.server INFO     "POST /api/v1/patients/67FAE792B7144BE1A9C85F5F4D94FB9F/encounters HTTP/1.1" 200 69
+2021-06-28 17:10:36,902 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:10:36,903 django.server INFO     "POST /api/v1/encounter/32E33FD2F969475BA5562A93CC02D9CB/refer HTTP/1.1" 200 200
+2021-06-28 17:10:36,911 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:10:36,913 django.server INFO     "POST /api/v1/encounter/32E33FD2F969475BA5562A93CC02D9CB/history HTTP/1.1" 200 482
+2021-06-28 17:10:36,917 treatmentapp.api.treatment INFO     Treatment added successfully by 32E33FD2F969475BA5562A93CC02D9CB
+2021-06-28 17:10:36,918 django.server INFO     "POST /api/v1/encounter/32E33FD2F969475BA5562A93CC02D9CB/treatment HTTP/1.1" 200 1057
+2021-06-28 17:10:37,209 encounterapp.api.screeing INFO     Screeing added successfully by  32E33FD2F969475BA5562A93CC02D9CB
+2021-06-28 17:10:37,210 django.server INFO     "POST /api/v1/encounter/32E33FD2F969475BA5562A93CC02D9CB/screening HTTP/1.1" 200 463
+2021-06-28 17:10:48,140 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 1D9B01DD9A0E490C8C96E05CCD871221, first name: Test, last name: Five, phone: 9876543215, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:10:48,141 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:11:04,439 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:11:04,440 django.server INFO     "PUT /api/v1/patient/1D9B01DD9A0E490C8C96E05CCD871221 HTTP/1.1" 200 28
+2021-06-28 17:11:04,462 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:11:04,467 django.server INFO     "POST /api/v1/patients/1D9B01DD9A0E490C8C96E05CCD871221/encounters HTTP/1.1" 200 69
+2021-06-28 17:11:04,824 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:11:04,825 django.server INFO     "POST /api/v1/encounter/2D224AB046F14B2C8B65054A39E9FBE4/history HTTP/1.1" 200 482
+2021-06-28 17:11:04,849 encounterapp.api.screeing INFO     Screeing added successfully by  2D224AB046F14B2C8B65054A39E9FBE4
+2021-06-28 17:11:04,850 django.server INFO     "POST /api/v1/encounter/2D224AB046F14B2C8B65054A39E9FBE4/screening HTTP/1.1" 200 463
+2021-06-28 17:11:04,858 treatmentapp.api.treatment INFO     Treatment added successfully by 2D224AB046F14B2C8B65054A39E9FBE4
+2021-06-28 17:11:04,859 django.server INFO     "POST /api/v1/encounter/2D224AB046F14B2C8B65054A39E9FBE4/treatment HTTP/1.1" 200 1058
+2021-06-28 17:11:05,225 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:11:05,227 django.server INFO     "POST /api/v1/encounter/2D224AB046F14B2C8B65054A39E9FBE4/refer HTTP/1.1" 200 200
+2021-06-28 17:11:17,949 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 6A2E53CA7EE049B4817C87312870F975, first name: Test, last name: Six, phone: 9786453124, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:11:17,950 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:11:35,557 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:11:35,557 django.server INFO     "PUT /api/v1/patient/6A2E53CA7EE049B4817C87312870F975 HTTP/1.1" 200 28
+2021-06-28 17:11:35,576 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:11:35,577 django.server INFO     "POST /api/v1/patients/6A2E53CA7EE049B4817C87312870F975/encounters HTTP/1.1" 200 69
+2021-06-28 17:11:36,066 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:11:36,067 django.server INFO     "POST /api/v1/encounter/AAB76D5330BA494BAB9CFAE9B9E4624A/refer HTTP/1.1" 200 200
+2021-06-28 17:11:36,078 encounterapp.api.screeing INFO     Screeing added successfully by  AAB76D5330BA494BAB9CFAE9B9E4624A
+2021-06-28 17:11:36,079 django.server INFO     "POST /api/v1/encounter/AAB76D5330BA494BAB9CFAE9B9E4624A/screening HTTP/1.1" 200 463
+2021-06-28 17:11:36,081 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:11:36,082 django.server INFO     "POST /api/v1/encounter/AAB76D5330BA494BAB9CFAE9B9E4624A/history HTTP/1.1" 200 482
+2021-06-28 17:11:36,089 treatmentapp.api.treatment INFO     Treatment added successfully by AAB76D5330BA494BAB9CFAE9B9E4624A
+2021-06-28 17:11:36,091 django.server INFO     "POST /api/v1/encounter/AAB76D5330BA494BAB9CFAE9B9E4624A/treatment HTTP/1.1" 200 1057
+2021-06-28 17:11:55,265 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: C2F28F762488475E8CC85C5CD7CC5D90, first name: Test, last name: Seven, phone: 9631245780, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:11:55,266 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:12:13,709 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:12:13,710 django.server INFO     "PUT /api/v1/patient/C2F28F762488475E8CC85C5CD7CC5D90 HTTP/1.1" 200 28
+2021-06-28 17:12:13,734 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:12:13,734 django.server INFO     "POST /api/v1/patients/C2F28F762488475E8CC85C5CD7CC5D90/encounters HTTP/1.1" 200 69
+2021-06-28 17:12:15,716 encounterapp.api.screeing INFO     Screeing added successfully by  4BFFFD06ABAE4D199046FB7B9B0F6FF2
+2021-06-28 17:12:15,717 django.server INFO     "POST /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/screening HTTP/1.1" 200 463
+2021-06-28 17:12:15,785 treatmentapp.api.treatment INFO     Treatment added successfully by 4BFFFD06ABAE4D199046FB7B9B0F6FF2
+2021-06-28 17:12:15,786 django.server INFO     "POST /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/treatment HTTP/1.1" 200 1057
+2021-06-28 17:12:17,719 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:12:17,720 django.server INFO     "POST /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/history HTTP/1.1" 200 482
+2021-06-28 17:12:17,860 encounterapp.api.history INFO     Encounter already exists in history section :  4BFFFD06ABAE4D199046FB7B9B0F6FF2
+2021-06-28 17:12:17,866 django.request WARNING  Conflict: /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/history
+2021-06-28 17:12:17,868 django.server WARNING  "POST /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/history HTTP/1.1" 409 45
+2021-06-28 17:12:17,875 encounterapp.api.refer INFO     Encounter already exists in refer section :  4BFFFD06ABAE4D199046FB7B9B0F6FF2
+2021-06-28 17:12:17,876 django.request WARNING  Conflict: /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/refer
+2021-06-28 17:12:17,877 django.server WARNING  "POST /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/refer HTTP/1.1" 409 45
+2021-06-28 17:12:17,877 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:12:17,878 django.server INFO     "POST /api/v1/encounter/4BFFFD06ABAE4D199046FB7B9B0F6FF2/refer HTTP/1.1" 200 200
+2021-06-28 17:12:28,379 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 22250612E4F048D0A583A724F4F9D5EE, first name: Test, last name: Eight, phone: 9876543215, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:12:28,380 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:12:45,876 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:12:45,877 django.server INFO     "PUT /api/v1/patient/22250612E4F048D0A583A724F4F9D5EE HTTP/1.1" 200 28
+2021-06-28 17:12:45,915 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:12:45,916 django.server INFO     "POST /api/v1/patients/22250612E4F048D0A583A724F4F9D5EE/encounters HTTP/1.1" 200 69
+2021-06-28 17:12:47,580 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:12:47,582 django.server INFO     "POST /api/v1/encounter/6EC3836945F847D681D63EDCAA7B811D/history HTTP/1.1" 200 482
+2021-06-28 17:12:47,587 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:12:47,587 django.server INFO     "POST /api/v1/encounter/6EC3836945F847D681D63EDCAA7B811D/refer HTTP/1.1" 200 200
+2021-06-28 17:12:47,600 encounterapp.api.screeing INFO     Screeing added successfully by  6EC3836945F847D681D63EDCAA7B811D
+2021-06-28 17:12:47,601 treatmentapp.api.treatment INFO     Treatment added successfully by 6EC3836945F847D681D63EDCAA7B811D
+2021-06-28 17:12:47,602 django.server INFO     "POST /api/v1/encounter/6EC3836945F847D681D63EDCAA7B811D/treatment HTTP/1.1" 200 1057
+2021-06-28 17:12:47,603 django.server INFO     "POST /api/v1/encounter/6EC3836945F847D681D63EDCAA7B811D/screening HTTP/1.1" 200 463
+2021-06-28 17:13:00,486 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 125F9A73222D4CBFA534AAD46A79C5D5, first name: Test, last name: Nine, phone: 9876543210, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:13:00,486 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:13:20,537 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:13:20,538 django.server INFO     "PUT /api/v1/patient/125F9A73222D4CBFA534AAD46A79C5D5 HTTP/1.1" 200 28
+2021-06-28 17:13:20,568 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:13:20,569 django.server INFO     "POST /api/v1/patients/125F9A73222D4CBFA534AAD46A79C5D5/encounters HTTP/1.1" 200 69
+2021-06-28 17:13:21,354 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:13:21,355 django.server INFO     "POST /api/v1/encounter/2306C84DDCC6490782B2FBBF62ADFB53/history HTTP/1.1" 200 482
+2021-06-28 17:13:21,374 encounterapp.api.screeing INFO     Screeing added successfully by  2306C84DDCC6490782B2FBBF62ADFB53
+2021-06-28 17:13:21,376 django.server INFO     "POST /api/v1/encounter/2306C84DDCC6490782B2FBBF62ADFB53/screening HTTP/1.1" 200 463
+2021-06-28 17:13:21,382 treatmentapp.api.treatment INFO     Treatment added successfully by 2306C84DDCC6490782B2FBBF62ADFB53
+2021-06-28 17:13:21,383 django.server INFO     "POST /api/v1/encounter/2306C84DDCC6490782B2FBBF62ADFB53/treatment HTTP/1.1" 200 1057
+2021-06-28 17:13:21,579 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:13:21,580 django.server INFO     "POST /api/v1/encounter/2306C84DDCC6490782B2FBBF62ADFB53/refer HTTP/1.1" 200 200
+2021-06-28 17:13:34,140 patientapp.api.patient INFO     Patient added successfully by Test Test Test, Patient id: 7E782624EE924DC186B47A42E1ABB49D, first name: Test, last name: Ten, phone: 9876543215, dob: 2078-01-01 ,gender: male, ward: , Activity Area: Health Post, District: Kaski, Geography: Test ward, Municipality: Pokhara
+2021-06-28 17:13:34,141 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 82
+2021-06-28 17:14:14,910 patientapp.api.patient INFO     Patient update successfully by Test Test Test
+2021-06-28 17:14:14,911 django.server INFO     "PUT /api/v1/patient/7E782624EE924DC186B47A42E1ABB49D HTTP/1.1" 200 28
+2021-06-28 17:14:14,941 encounterapp.api.encounter INFO     Encounter added successfully by Test Test Test
+2021-06-28 17:14:14,942 django.server INFO     "POST /api/v1/patients/7E782624EE924DC186B47A42E1ABB49D/encounters HTTP/1.1" 200 69
+2021-06-28 17:14:15,337 encounterapp.api.history INFO     History added successfully by Test Test Test
+2021-06-28 17:14:15,338 django.server INFO     "POST /api/v1/encounter/E28052806A0146B1AB4D989394D1CBCD/history HTTP/1.1" 200 482
+2021-06-28 17:14:15,363 encounterapp.api.screeing INFO     Screeing added successfully by  E28052806A0146B1AB4D989394D1CBCD
+2021-06-28 17:14:15,364 django.server INFO     "POST /api/v1/encounter/E28052806A0146B1AB4D989394D1CBCD/screening HTTP/1.1" 200 463
+2021-06-28 17:14:15,376 treatmentapp.api.treatment INFO     Treatment added successfully by E28052806A0146B1AB4D989394D1CBCD
+2021-06-28 17:14:15,377 django.server INFO     "POST /api/v1/encounter/E28052806A0146B1AB4D989394D1CBCD/treatment HTTP/1.1" 200 1057
+2021-06-28 17:14:15,538 encounterapp.api.refer INFO     Refer added successfully by Test Test Test
+2021-06-28 17:14:15,539 django.server INFO     "POST /api/v1/encounter/E28052806A0146B1AB4D989394D1CBCD/refer HTTP/1.1" 200 200
+2021-06-28 17:15:04,933 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 173
+2021-06-28 17:15:04,944 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 44
+2021-06-28 17:15:05,765 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 816
+2021-06-28 17:29:09,351 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-28 17:29:09,352 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-29 03:54:49,695 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-29 03:54:49,696 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
+2021-06-29 04:10:01,977 django.request WARNING  Not Found: /api/search
+2021-06-29 04:10:01,978 django.server WARNING  "GET /api/search?folderIds=0 HTTP/1.0" 404 3391
+2021-06-29 10:14:47,914 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-29 10:14:47,939 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-29 10:16:12,387 django.server INFO     "OPTIONS /api/v1/checkuser HTTP/1.0" 200 0
+2021-06-29 10:16:12,498 django.server INFO     "POST /api/v1/checkuser HTTP/1.0" 200 21
+2021-06-29 10:16:12,615 django.server INFO     "OPTIONS /api/v1/token HTTP/1.0" 200 0
+2021-06-29 10:16:12,806 django.server INFO     "POST /api/v1/token HTTP/1.0" 200 275
+2021-06-29 10:16:13,408 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.0" 200 0
+2021-06-29 10:16:13,498 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.0" 200 0
+2021-06-29 10:16:13,504 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.0" 200 0
+2021-06-29 10:16:13,587 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-29 10:16:13,609 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-29 10:16:13,675 django.server INFO     "OPTIONS /api/v1/events HTTP/1.0" 200 0
+2021-06-29 10:16:13,705 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.0" 200 0
+2021-06-29 10:16:13,709 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.0" 200 0
+2021-06-29 10:16:13,728 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-29 10:16:13,832 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-29 10:16:13,929 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-29 10:16:13,970 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-29 10:16:14,082 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-29 10:16:14,111 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 10:16:14,111 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-29 10:16:14,202 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-29 10:16:14,251 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-29 10:16:14,425 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 10:16:14,438 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 10:16:14,505 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 10:16:14,529 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 10:16:14,673 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 10:16:14,827 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 10:16:14,977 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 10:16:15,122 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 10:16:15,225 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-29 10:16:15,261 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 10:16:15,435 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-29 10:16:15,871 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 10:16:16,064 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 10:16:17,566 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 10:16:17,717 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 10:16:17,738 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 10:16:17,761 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 10:16:17,840 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 10:16:19,120 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 10:16:20,427 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-29 10:16:20,455 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 10:16:20,469 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-29 10:16:21,021 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 10:16:21,219 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 10:16:21,248 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 10:16:21,272 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 10:16:21,687 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 10:16:23,013 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 10:16:23,123 django.server INFO     "OPTIONS /api/v1/testcrosssectional HTTP/1.0" 200 0
+2021-06-29 10:16:23,583 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 10:16:25,016 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 3382
+2021-06-29 10:16:25,964 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 10:16:25,990 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 10:16:26,002 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 10:16:26,064 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 10:16:46,998 django.request WARNING  Unauthorized: /api/v1/testcrosssectional
+2021-06-29 10:16:47,000 django.server WARNING  "GET /api/v1/testcrosssectional HTTP/1.0" 401 10026
+2021-06-29 10:16:50,192 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testcrosssectional HTTP/1.0" 200 2728
+2021-06-29 10:16:52,935 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.0" 302 0
+2021-06-29 10:16:53,465 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 31014
+2021-06-29 10:21:19,157 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 31014
+2021-06-29 10:21:51,752 django.request ERROR    Internal Server Error: /api/v1/testlongitudinal
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 422, in get
+    active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
+NameError: name 'active_infection' is not defined
+2021-06-29 10:21:51,755 django.server ERROR    "GET /api/v1/testlongitudinal HTTP/1.0" 500 104304
+2021-06-29 10:21:57,848 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.0" 200 31014
+2021-06-29 10:22:00,150 django.request WARNING  Not Found: /api/v1/
+2021-06-29 10:22:00,151 django.server WARNING  "GET /api/v1/ HTTP/1.0" 404 22089
+2021-06-29 10:22:08,766 django.request ERROR    Internal Server Error: /api/v1/testlongitudinal
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 422, in get
+    active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
+NameError: name 'active_infection' is not defined
+2021-06-29 10:22:08,769 django.server ERROR    "GET /api/v1/testlongitudinal HTTP/1.0" 500 104304
+2021-06-29 13:14:50,183 django.request WARNING  Unauthorized: /api/v1/encounter/90035A9C4BF543B3AC5B09CE76193FBA/refer
+2021-06-29 13:14:50,184 django.server WARNING  "GET /api/v1/encounter/90035A9C4BF543B3AC5B09CE76193FBA/refer HTTP/1.0" 401 10080
+2021-06-29 13:14:57,977 django.server INFO     "GET /maintainer/ HTTP/1.0" 302 0
+2021-06-29 13:14:58,098 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.0" 200 1851
+2021-06-29 13:15:08,536 django.server INFO     "POST /maintainer/login/?next=/maintainer/ HTTP/1.0" 302 0
+2021-06-29 13:15:08,722 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 13:16:40,244 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 13:16:40,566 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:39:42,949 django.server INFO     "GET /maintainer/login/?next=/maintainer/ HTTP/1.0" 302 0
+2021-06-29 14:39:43,100 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:39:48,628 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 14:39:48,746 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:03,365 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-22&created_at__lt=2021-06-30 HTTP/1.0" 200 6000
+2021-06-29 14:40:03,638 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:08,908 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-22&created_at__lt=2021-06-30 HTTP/1.0" 200 6000
+2021-06-29 14:40:09,029 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:13,735 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:40:20,306 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 14:40:20,425 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:24,529 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-22&created_at__lt=2021-06-30 HTTP/1.0" 200 6000
+2021-06-29 14:40:24,655 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:27,696 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:40:33,500 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.0" 200 102316
+2021-06-29 14:40:33,698 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:35,429 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:40:40,504 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.0" 200 104779
+2021-06-29 14:40:40,623 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:43,522 django.server INFO     "GET /maintainer/patientapp/patient/?date__gte=2021-06-22+00%3A00%3A00%2B05%3A45&date__lt=2021-06-30+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 22541
+2021-06-29 14:40:43,676 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:40:57,513 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:41:02,175 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.0" 200 102316
+2021-06-29 14:41:02,352 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:41:07,759 django.server INFO     "GET /maintainer/encounterapp/encounter/?q=B8803E89BBBE46AC8B7842D54C874871 HTTP/1.0" 200 10583
+2021-06-29 14:41:07,901 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:41:17,117 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:41:20,637 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 14:41:20,869 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:41:24,603 django.server INFO     "GET /maintainer/visualizationapp/visualization/?q=7E123366426A4777B4C95D0C7BA693F5%09 HTTP/1.0" 200 6174
+2021-06-29 14:41:24,747 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:41:29,052 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.0" 200 2642
+2021-06-29 14:41:32,862 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 14:41:33,058 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:41:59,491 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-22&created_at__lt=2021-06-30 HTTP/1.0" 200 6000
+2021-06-29 14:41:59,756 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:42:11,796 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:42:16,428 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 14:42:16,652 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:42:18,902 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.0" 200 2642
+2021-06-29 14:42:20,157 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-22&created_at__lt=2021-06-30 HTTP/1.0" 200 6000
+2021-06-29 14:42:20,281 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:42:21,360 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:42:23,167 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-01&created_at__lt=2021-07-01 HTTP/1.0" 200 6000
+2021-06-29 14:42:23,278 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:42:25,196 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-01-01&created_at__lt=2022-01-01 HTTP/1.0" 200 6000
+2021-06-29 14:42:25,317 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:42:26,915 django.server INFO     "GET /maintainer/visualizationapp/visualization/?created_at__gte=2021-06-29&created_at__lt=2021-06-30 HTTP/1.0" 200 6000
+2021-06-29 14:42:27,031 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:43:07,939 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.0" 200 104779
+2021-06-29 14:43:08,154 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:43:15,737 django.server INFO     "GET /maintainer/patientapp/patient/?date__gte=2021-06-22+00%3A00%3A00%2B05%3A45&date__lt=2021-06-30+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 22541
+2021-06-29 14:43:15,877 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:43:26,780 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:43:30,793 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.0" 200 102316
+2021-06-29 14:43:30,899 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:43:58,124 django.server INFO     "GET /maintainer/encounterapp/encounter/?p=1 HTTP/1.0" 200 104916
+2021-06-29 14:43:58,264 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:44:12,132 django.server INFO     "GET /maintainer/encounterapp/encounter/?date__gte=2021-06-22+00%3A00%3A00%2B05%3A45&date__lt=2021-06-30+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 22095
+2021-06-29 14:44:12,277 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:44:30,973 django.server INFO     "GET /maintainer/encounterapp/encounter/?date__gte=2021-06-22+00%3A00%3A00%2B05%3A45&date__lt=2021-06-30+00%3A00%3A00%2B05%3A45 HTTP/1.0" 200 22095
+2021-06-29 14:44:31,115 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:44:41,605 django.server INFO     "GET /maintainer/ HTTP/1.0" 200 13298
+2021-06-29 14:44:44,405 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.0" 200 219896
+2021-06-29 14:44:44,532 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:45:04,517 django.server INFO     "GET /maintainer/visualizationapp/visualization/?p=1 HTTP/1.0" 200 222528
+2021-06-29 14:45:04,667 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:45:18,349 django.server INFO     "GET /maintainer/visualizationapp/visualization/?p=2 HTTP/1.0" 200 222492
+2021-06-29 14:45:18,481 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:45:33,226 django.server INFO     "GET /maintainer/visualizationapp/visualization/?p=3 HTTP/1.0" 200 222646
+2021-06-29 14:45:33,393 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:45:46,181 django.server INFO     "GET /maintainer/visualizationapp/visualization/?p=4 HTTP/1.0" 200 222639
+2021-06-29 14:45:46,324 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:45:55,993 django.server INFO     "GET /maintainer/visualizationapp/visualization/98098B1BE74E447D81F4B4D72DAEE321/change/?_changelist_filters=p%3D4 HTTP/1.0" 200 23431
+2021-06-29 14:45:56,156 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.0" 200 3185
+2021-06-29 14:46:48,296 django.server INFO     "OPTIONS /api/v1/treatmentactivities HTTP/1.0" 200 0
+2021-06-29 14:46:48,303 django.server INFO     "OPTIONS /api/v1/returndate HTTP/1.0" 200 0
+2021-06-29 14:46:48,312 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.0" 200 0
+2021-06-29 14:46:48,318 django.server INFO     "OPTIONS /api/v1/treatmentwards HTTP/1.0" 200 0
+2021-06-29 14:46:48,320 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-29 14:46:48,393 django.server INFO     "OPTIONS /api/v1/geography HTTP/1.0" 200 0
+2021-06-29 14:46:48,398 django.server INFO     "OPTIONS /api/v1/events HTTP/1.0" 200 0
+2021-06-29 14:46:48,416 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-29 14:46:48,424 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,436 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,451 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-29 14:46:48,472 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-29 14:46:48,492 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-29 14:46:48,501 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-29 14:46:48,509 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-29 14:46:48,577 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,593 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,601 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-29 14:46:48,603 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-29 14:46:48,604 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-29 14:46:48,606 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-29 14:46:48,659 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,674 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,682 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-29 14:46:48,690 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-29 14:46:48,692 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-29 14:46:48,709 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-29 14:46:48,744 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,755 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,765 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-29 14:46:48,778 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-29 14:46:48,780 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-29 14:46:48,807 django.server INFO     "OPTIONS /api/v1/overviewbargraph HTTP/1.0" 200 0
+2021-06-29 14:46:48,826 django.server INFO     "OPTIONS /api/v1/overviewpiechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,836 django.server INFO     "OPTIONS /api/v1/dashboardlinechart HTTP/1.0" 200 0
+2021-06-29 14:46:48,848 django.server INFO     "OPTIONS /api/v1/preventionratio HTTP/1.0" 200 0
+2021-06-29 14:46:48,866 django.server INFO     "OPTIONS /api/v1/earlyintervention HTTP/1.0" 200 0
+2021-06-29 14:46:48,868 django.server INFO     "OPTIONS /api/v1/recalldistribution HTTP/1.0" 200 0
+2021-06-29 14:46:48,906 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-29 14:46:49,000 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-29 14:46:49,149 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:46:49,161 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-29 14:46:49,166 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-29 14:46:49,235 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:46:49,875 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-29 14:46:50,148 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:46:50,199 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-29 14:46:50,496 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:46:50,532 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:46:50,821 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:46:50,822 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:46:50,885 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:46:51,105 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:46:51,142 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:46:51,440 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:46:51,605 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:46:52,152 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:46:52,228 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:46:53,228 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:46:53,320 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:46:53,455 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:46:54,459 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:46:54,745 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:46:55,014 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:46:56,203 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:46:56,460 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:46:56,540 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:46:56,561 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:46:57,936 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:46:58,229 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:46:58,534 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:46:59,356 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:46:59,854 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:47:00,819 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:48:48,958 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 173
+2021-06-29 14:48:50,501 django.request ERROR    Internal Server Error: /api/v1/overviewvisualization
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 4978, in post
+    (sum(kid_exo) + sum(teen_exo) + sum(adult_exo) + sum(old_exo))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2021-06-29 14:48:50,509 django.server ERROR    "POST /api/v1/overviewvisualization HTTP/1.0" 500 15726
+2021-06-29 14:48:50,642 django.server INFO     "POST /api/v1/treatmentwards HTTP/1.0" 200 612
+2021-06-29 14:52:30,524 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-29 14:52:30,537 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-29 14:52:30,672 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-29 14:52:30,679 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-29 14:52:30,814 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-29 14:52:30,827 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-29 14:52:30,890 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:52:30,940 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:52:31,488 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-29 14:52:31,760 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:52:31,794 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-29 14:52:32,071 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:52:32,090 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:52:32,427 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:52:32,435 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:52:32,469 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:52:32,728 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 14:52:32,742 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:52:33,017 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 14:52:33,185 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:52:33,791 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:52:33,798 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:52:34,741 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:52:34,873 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:52:34,986 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:52:36,067 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:52:36,200 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:52:36,542 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:52:37,474 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 14:52:38,010 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:52:38,069 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:52:38,097 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:52:39,382 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 14:52:39,775 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:52:40,098 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:52:40,890 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 14:52:41,401 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 14:52:42,373 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 16:21:20,012 django.server INFO     "GET /api/v1/loginvisualization HTTP/1.0" 200 694
+2021-06-29 16:21:20,037 django.server INFO     "GET /api/v1/returndate HTTP/1.0" 200 81
+2021-06-29 16:21:20,176 django.server INFO     "GET /api/v1/events HTTP/1.0" 200 128
+2021-06-29 16:21:20,197 django.server INFO     "GET /api/v1/loginvisualization1 HTTP/1.0" 200 69
+2021-06-29 16:21:20,324 django.server INFO     "GET /api/v1/geography HTTP/1.0" 200 2157
+2021-06-29 16:21:20,330 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.0" 200 147
+2021-06-29 16:21:20,397 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 16:21:20,447 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 16:21:20,975 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 834
+2021-06-29 16:21:21,265 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 16:21:21,299 django.server INFO     "GET /api/v1/treatmentwards HTTP/1.0" 200 607
+2021-06-29 16:21:21,576 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 16:21:21,576 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 16:21:21,860 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 16:21:21,892 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 16:21:21,930 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 16:21:22,183 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.0" 200 1134
+2021-06-29 16:21:22,279 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 16:21:22,573 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.0" 200 745
+2021-06-29 16:21:22,728 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 16:21:23,283 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 16:21:23,303 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 16:21:24,305 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 16:21:24,414 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 16:21:24,488 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 16:21:25,537 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 16:21:25,699 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 16:21:26,069 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 16:21:26,948 django.server INFO     "GET /api/v1/dashboardlinechart HTTP/1.0" 200 3034
+2021-06-29 16:21:27,545 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 16:21:27,607 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 16:21:27,614 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 16:21:28,925 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.0" 200 3354
+2021-06-29 16:21:29,265 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 16:21:29,607 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 16:21:30,396 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.0" 200 3158
+2021-06-29 16:21:30,946 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 16:21:31,901 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
+2021-06-29 16:22:03,665 django.server INFO     "GET /api/v1/encounter/90035A9C4BF543B3AC5B09CE76193FBA/refer HTTP/1.0" 200 15319
+2021-06-29 16:22:42,708 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 18939
+2021-06-29 16:27:32,748 django.request WARNING  Not Found: /api/jsonws/invoke
+2021-06-29 16:27:32,749 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
