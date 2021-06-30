@@ -1163,8 +1163,8 @@ class TestCrossSectionalVisualization(APIView):
             total_need_art_filling.append(sum(total_need_art_filling))
             total_need_sdf.append(sum(total_need_sdf))
             total_need_extraction.append(sum(total_need_extraction))
-            total_need_fv.append(sum(total_need_fv))
-            total_need_dentist_or_hygienist.append(sum(total_need_dentist_or_hygienist))
+            total_need_fv.append(round(sum(total_need_fv),2))
+            total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
 
             
             final_total_untreated_caries_present = [
