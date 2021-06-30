@@ -2655,16 +2655,16 @@ class TestCrossSectionalVisualization(APIView):
                 total_need_fv.append(efgh2_pvalue)
                 total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
-                total_untreated_caries_present.append(sum(total_untreated_caries_present))
-                total_cavity_permanent_molar.append(sum(total_cavity_permanent_molar))
-                total_cavity_permanent_anterior.append(sum(total_cavity_permanent_anterior))
-                total_active_infection.append(sum(total_active_infection))
-                total_reversible_pulpitis.append(sum(total_reversible_pulpitis))
-                total_need_art_filling.append(sum(total_need_art_filling))
-                total_need_sdf.append(sum(total_need_sdf))
-                total_need_extraction.append(sum(total_need_extraction))
-                total_need_fv.append(sum(total_need_fv))
-                total_need_dentist_or_hygienist.append(sum(total_need_dentist_or_hygienist))
+                total_untreated_caries_present.append(round(sum(total_untreated_caries_present),2))
+                total_cavity_permanent_molar.append(round(sum(total_cavity_permanent_molar),2))
+                total_cavity_permanent_anterior.append(round(sum(total_cavity_permanent_anterior),2))
+                total_active_infection.append(round(sum(total_active_infection),2))
+                total_reversible_pulpitis.append(round(sum(total_reversible_pulpitis),2))
+                total_need_art_filling.append(round(sum(total_need_art_filling),2))
+                total_need_sdf.append(round(sum(total_need_sdf),2))
+                total_need_extraction.append(round(sum(total_need_extraction),2))
+                total_need_fv.append(round(sum(total_need_fv),2))
+                total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
 
                 
                 final_total_untreated_caries_present = [
