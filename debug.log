@@ -4405,7 +4405,6 @@ NameError: name 'mod_obj' is not defined
 2021-04-20 17:16:30,546 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2021-04-20 17:16:33,936 django.server INFO     "GET /maintainer/visualizationapp/visualization/C92AA50215304DEAAC16FFBB53B37022/change/ HTTP/1.1" 200 22419
 2021-04-20 17:16:33,985 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
-=======
 2021-04-09 13:57:07,948 django.server INFO     "GET / HTTP/1.1" 200 1257
 2021-04-09 13:57:08,254 django.request WARNING  Not Found: /js/chunk-vendors.437d418e.js
 2021-04-09 13:57:08,264 django.request WARNING  Not Found: /css/chunk-vendors.772fabf9.css
@@ -7649,7 +7648,6 @@ TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2021-06-29 16:22:42,708 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.0" 200 18939
 2021-06-29 16:27:32,748 django.request WARNING  Not Found: /api/jsonws/invoke
 2021-06-29 16:27:32,749 django.server WARNING  "POST /api/jsonws/invoke HTTP/1.0" 404 3401
-=======
 2021-06-29 10:46:09,846 django.request WARNING  Unauthorized: /api/v1/patients
 2021-06-29 10:46:09,899 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
 2021-06-29 10:46:11,116 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
@@ -7668,7 +7666,6 @@ TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2021-06-29 10:48:21,917 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
 2021-06-29 11:55:23,215 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
 2021-06-29 11:55:32,518 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 27717
->>>>>>> e45f1cd9e1f0e3e5498ec2efa1dd4ed07009b9e6
 2021-06-29 18:26:20,985 django.request WARNING  Bad Request: /api/v1/dashboardlinechart
 2021-06-29 18:26:20,994 django.server WARNING  "GET /api/v1/dashboardlinechart HTTP/1.0" 400 10118
 2021-06-29 18:26:24,359 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/dashboardlinechart HTTP/1.0" 200 2728
@@ -11820,6 +11817,18 @@ TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2021-06-30 12:21:39,809 django.server INFO     "GET /api/v1/preventionratio HTTP/1.0" 200 3269
 2021-06-30 12:21:56,221 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.0" 200 168
 2021-06-30 12:21:57,742 django.request ERROR    Internal Server Error: /api/v1/overviewvisualization
+2021-06-30 20:04:12,034 django.request WARNING  Unauthorized: /api/v1/patients
+2021-06-30 20:04:12,099 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-06-30 20:04:13,408 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-06-30 20:04:13,409 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-06-30 20:04:13,410 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-06-30 20:04:13,427 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-06-30 20:04:13,974 django.request WARNING  Not Found: /favicon.ico
+2021-06-30 20:04:13,974 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-06-30 20:04:17,437 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-06-30 20:04:25,003 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-06-30 20:04:27,868 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112444
+2021-06-30 20:04:46,732 django.request ERROR    Internal Server Error: /api/v1/testdashboardlinechart
 Traceback (most recent call last):
   File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
     response = get_response(request)
@@ -17565,3 +17574,28 @@ TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2021-07-01 14:06:33,604 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 18897
 2021-07-01 14:06:44,425 django.server INFO     "OPTIONS /api/v1/overviewvisualization HTTP/1.0" 200 16361
 2021-07-01 14:07:02,647 django.server INFO     "POST /api/v1/overviewvisualization HTTP/1.0" 200 18897
+  File "/code/visualizationapp/api/wardlinechart.py", line 36, in get
+    if item == 9 or item == 10 or item == 11:
+UnboundLocalError: local variable 'item' referenced before assignment
+2021-06-30 20:04:46,734 django.server ERROR    "GET /api/v1/testdashboardlinechart HTTP/1.1" 500 88231
+2021-06-30 20:06:18,128 django.server INFO     "GET /api/v1/testdashboardlinechart HTTP/1.1" 200 13544
+2021-07-01 10:03:26,185 django.request WARNING  Unauthorized: /api/v1/patients
+2021-07-01 10:03:26,551 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-07-01 10:03:28,560 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-07-01 10:03:28,567 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-07-01 10:03:29,611 django.request WARNING  Not Found: /favicon.ico
+2021-07-01 10:03:29,612 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-07-01 10:04:10,149 django.request WARNING  Bad Request: /api/v1/testdashboardlinechart
+2021-07-01 10:04:10,150 django.server WARNING  "GET /api/v1/testdashboardlinechart HTTP/1.1" 400 10192
+2021-07-01 10:04:12,097 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testdashboardlinechart HTTP/1.1" 200 2732
+2021-07-01 10:04:24,268 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-07-01 10:04:24,765 django.server INFO     "GET /api/v1/testdashboardlinechart HTTP/1.1" 200 13544
+2021-07-01 10:22:48,271 django.server INFO     "GET /api/v1/testdashboardlinechart HTTP/1.1" 200 13784
+2021-07-01 12:27:36,569 django.request WARNING  Bad Request: /api/v1/recalldistribution
+2021-07-01 12:27:36,647 django.server WARNING  "GET /api/v1/recalldistribution HTTP/1.1" 400 10178
+2021-07-01 12:27:40,847 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/recalldistribution HTTP/1.1" 200 2728
+2021-07-01 12:27:54,553 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-07-01 12:27:54,923 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13848
+2021-07-01 12:28:16,188 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13848
+2021-07-01 12:29:33,128 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 13834
+2021-07-01 12:29:43,421 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 13904

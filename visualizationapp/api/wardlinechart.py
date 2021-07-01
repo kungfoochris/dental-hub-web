@@ -26,19 +26,20 @@ class WardlineVisualization(APIView):
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
             label_data = [
-                "Baishakh(Apr/May)",
-                "Jestha(May/Jun)",
-                "Asar(Jun/Jul)",
-                "Shrawan(Jul/Aug)",
-                "Bhadra(Aug/Sep)",
-                "Asoj(Sep/Oct)",
-                "Kartik(Oct/Nov)",
-                "Mangsir(Nov/Dec)",
-                "Poush(Dec/Jan)",
-                "Magh(Jan/Feb)",
-                "Falgun(Feb/Mar)",
-                "Chaitra(Mar/Apr)",
+                "Q2",
+                "",
+                "",
+                "Q3",
+                "",
+                "",
+                "Q4",
+                "",
+                "",
+                "Q1",
+                "",
+                "",
             ]
             next_month = month.index(item) + 1
             month_obj = month[next_month:]
