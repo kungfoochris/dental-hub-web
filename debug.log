@@ -6684,3 +6684,33 @@ UnboundLocalError: local variable 'item' referenced before assignment
 2021-07-01 12:28:16,188 django.server INFO     "GET /api/v1/recalldistribution HTTP/1.1" 200 13848
 2021-07-01 12:29:33,128 django.server INFO     "GET /api/v1/earlyintervention HTTP/1.1" 200 13834
 2021-07-01 12:29:43,421 django.server INFO     "GET /api/v1/preventionratio HTTP/1.1" 200 13904
+2021-07-14 12:20:22,771 django.request WARNING  Unauthorized: /api/v1/patients
+2021-07-14 12:20:22,828 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-07-14 12:20:24,449 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-07-14 12:20:24,450 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-07-14 12:20:24,452 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-07-14 12:20:24,453 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-07-14 12:20:24,497 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-07-14 12:20:24,499 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-07-14 12:20:24,501 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-07-14 12:20:24,502 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-07-14 12:20:24,503 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-07-14 12:20:24,504 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-07-14 12:20:25,019 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-07-14 12:20:26,457 django.request WARNING  Not Found: /favicon.ico
+2021-07-14 12:20:26,458 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-07-14 12:20:29,829 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-07-14 12:21:08,975 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-07-14 12:21:14,017 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112444
+2021-07-14 12:21:28,025 django.request WARNING  Bad Request: /api/v1/wardstrategicdata
+2021-07-14 12:21:28,025 django.server WARNING  "GET /api/v1/wardstrategicdata HTTP/1.1" 400 14369
+2021-07-14 12:22:39,609 django.server INFO     "GET /api/v1/authlogout/?next=/api/v1/wardstrategicdata HTTP/1.1" 302 0
+2021-07-14 12:22:39,670 django.request WARNING  Unauthorized: /api/v1/wardstrategicdata
+2021-07-14 12:22:39,671 django.server WARNING  "GET /api/v1/wardstrategicdata HTTP/1.1" 401 9941
+2021-07-14 12:22:41,109 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardstrategicdata HTTP/1.1" 200 2727
+2021-07-14 12:22:48,149 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-07-14 12:22:48,572 django.server INFO     "GET /api/v1/wardstrategicdata HTTP/1.1" 200 14763
+2021-07-14 12:23:12,253 django.server INFO     "POST /api/v1/wardstrategicdata HTTP/1.1" 200 14758
+2021-07-14 12:36:45,795 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14746
+2021-07-14 12:37:08,586 django.server INFO     "POST /api/v1/wardtablevisualization HTTP/1.1" 200 14747
+2021-07-14 12:37:30,321 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235

@@ -404,7 +404,7 @@ class BarGraphFilterView(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
-# Basic Data
+# Basic Data  
 class WardTreatmentTableVisualization1(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -438,13 +438,19 @@ class WardTreatmentTableVisualization1(APIView):
                 treatment_child = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(active=True,age__lt=18, geography_id=i.id)
+                    .filter(active=True,age__lt=12, geography_id=i.id)
+                    .count()
+                )
+                treatment_teen = (
+                    Visualization.objects.values("encounter_id")
+                    .annotate(Count("encounter_id"))
+                    .filter(active=True,age__range=(13, 18), geography_id=i.id)
                     .count()
                 )
                 treatment_adult = (
                     Visualization.objects.values("encounter_id")
                     .annotate(Count("encounter_id"))
-                    .filter(active=True,age__range=(18, 60), geography_id=i.id)
+                    .filter(active=True,age__range=(19, 60), geography_id=i.id)
                     .count()
                 )
                 treatment_old = (
@@ -462,10 +468,13 @@ class WardTreatmentTableVisualization1(APIView):
                     gender="female", fv=True, geography_id=i.id
                 ).count()
                 child__patients_receiving_FV = Visualization.objects.filter(active=True,
-                    age__lt=18, fv=True, geography_id=i.id
+                    age__lt=12, fv=True, geography_id=i.id
+                ).count()
+                teen__patients_receiving_FV = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), fv=True, geography_id=i.id
                 ).count()
                 adult__patients_receiving_FV = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), fv=True, geography_id=i.id
+                    age__range=(19, 60), fv=True, geography_id=i.id
                 ).count()
                 old__patients_receiving_FV = Visualization.objects.filter(active=True,
                     age__gt=60, fv=True, geography_id=i.id
@@ -478,10 +487,13 @@ class WardTreatmentTableVisualization1(APIView):
                     gender="female", need_sealant=True, geography_id=i.id
                 ).count()
                 sealant_child = Visualization.objects.filter(active=True,
-                    age__lt=18, need_sealant=True, geography_id=i.id
+                    age__lt=12, need_sealant=True, geography_id=i.id
+                ).count()
+                sealant_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), need_sealant=True, geography_id=i.id
                 ).count()
                 sealant_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), need_sealant=True, geography_id=i.id
+                    age__range=(19, 60), need_sealant=True, geography_id=i.id
                 ).count()
                 sealant_old = Visualization.objects.filter(active=True,
                     age__gt=60, need_sealant=True, geography_id=i.id
@@ -495,6 +507,9 @@ class WardTreatmentTableVisualization1(APIView):
                 )
                 cavities_prevented_child = (
                     0.2 * child__patients_receiving_FV + 0.1 * sealant_child
+                )
+                cavities_prevented_teen = (
+                    0.2 * teen__patients_receiving_FV + 0.1 * sealant_teen
                 )
                 cavities_prevented_adult = (
                     0.2 * adult__patients_receiving_FV + 0.1 * sealant_adult
@@ -510,6 +525,7 @@ class WardTreatmentTableVisualization1(APIView):
                             round(cavities_prevented_male, 2),
                             round(cavities_prevented_female, 2),
                             round(cavities_prevented_child, 2),
+                            round(cavities_prevented_teen, 2),
                             round(cavities_prevented_adult, 2),
                             round(cavities_prevented_old, 2),
                             round(total_cavities, 2),
@@ -519,6 +535,7 @@ class WardTreatmentTableVisualization1(APIView):
                             round(treatment_male, 2),
                             round(treatment_female, 2),
                             round(treatment_child, 2),
+                            round(treatment_teen, 2),
                             round(treatment_adult, 2),
                             round(treatment_old, 2),
                             round(total_treatment, 2),
@@ -546,18 +563,21 @@ class WardTreatmentTableVisualization1(APIView):
                     treatment_male = []
                     treatment_female = []
                     treatment_child = []
+                    treatment_teen = []
                     treatment_adult = []
                     treatment_old = []
 
                     female_patients_receiving_FV = []
                     male_patients_receiving_FV = []
                     child__patients_receiving_FV = []
+                    teen__patients_receiving_FV = []
                     adult__patients_receiving_FV = []
                     old__patients_receiving_FV = []
 
                     sealant_male = []
                     sealant_female = []
                     sealant_child = []
+                    sealant_teen = []
                     sealant_adult = []
                     sealant_old = []
 
@@ -599,7 +619,18 @@ class WardTreatmentTableVisualization1(APIView):
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
                                 .filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                )
+                                .count()
+                            )
+                            treatment_teen.append(
+                                Visualization.objects.values("encounter_id")
+                                .annotate(Count("encounter_id"))
+                                .filter(active=True,
+                                    age__range=(13, 18),
                                     geography_id=i.id,
                                     activities_id=activities.id,
                                     created_at__range=[start_date, end_date],
@@ -610,7 +641,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 Visualization.objects.values("encounter_id")
                                 .annotate(Count("encounter_id"))
                                 .filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     geography_id=i.id,
                                     activities_id=activities.id,
                                     created_at__range=[start_date, end_date],
@@ -649,7 +680,16 @@ class WardTreatmentTableVisualization1(APIView):
                             )
                             child__patients_receiving_FV.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    fv=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            teen__patients_receiving_FV.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     fv=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -658,7 +698,7 @@ class WardTreatmentTableVisualization1(APIView):
                             )
                             adult__patients_receiving_FV.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     fv=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -695,7 +735,16 @@ class WardTreatmentTableVisualization1(APIView):
                             )
                             sealant_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    need_sealant=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            sealant_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     need_sealant=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -704,7 +753,7 @@ class WardTreatmentTableVisualization1(APIView):
                             )
                             sealant_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     need_sealant=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -736,6 +785,12 @@ class WardTreatmentTableVisualization1(APIView):
                         + 0.1
                         * sum(sealant_child)
                     )
+                    cavities_prevented_teen = (
+                        0.2
+                        * sum(teen__patients_receiving_FV)
+                        + 0.1
+                        * sum(sealant_teen)
+                    )
                     cavities_prevented_adult = (
                         0.2
                         * sum(adult__patients_receiving_FV)
@@ -753,6 +808,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 round(cavities_prevented_male, 2),
                                 round(cavities_prevented_female, 2),
                                 round(cavities_prevented_child, 2),
+                                round(cavities_prevented_teen, 2),
                                 round(cavities_prevented_adult, 2),
                                 round(cavities_prevented_old, 2),
                                 round(total_cavities, 2),
@@ -762,6 +818,7 @@ class WardTreatmentTableVisualization1(APIView):
                                 round(sum(treatment_male), 2),
                                 round(sum(treatment_female), 2),
                                 round(sum(treatment_child), 2),
+                                round(sum(treatment_teen), 2),
                                 round(sum(treatment_adult), 2),
                                 round(sum(treatment_old), 2),
                                 round(sum(total_treatment), 2),
@@ -3385,10 +3442,13 @@ class WardStrategicData(APIView):
                     gender="female", geography_id=i.id
                 ).count()
                 encounter_child = Visualization.objects.filter(active=True,
-                    age__lt=18, geography_id=i.id
+                    age__lt=12, geography_id=i.id
+                ).count()
+                encounter_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), geography_id=i.id
                 ).count()
                 encounter_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), geography_id=i.id
+                    age__range=(19, 60), geography_id=i.id
                 ).count()
                 encounter_old = Visualization.objects.filter(active=True,
                     age__gt=60, geography_id=i.id
@@ -3404,10 +3464,13 @@ class WardStrategicData(APIView):
                     gender="female", refer_hp=True, geography_id=i.id
                 ).count()
                 refer_child = Visualization.objects.filter(active=True,
-                    age__lt=18, refer_hp=True, geography_id=i.id
+                    age__lt=12, refer_hp=True, geography_id=i.id
+                ).count()
+                refer_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), refer_hp=True, geography_id=i.id
                 ).count()
                 refer_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), refer_hp=True, geography_id=i.id
+                    age__range=(19, 60), refer_hp=True, geography_id=i.id
                 ).count()
                 refer_old = Visualization.objects.filter(active=True,
                     age__gt=60, refer_hp=True, geography_id=i.id
@@ -3423,10 +3486,13 @@ class WardStrategicData(APIView):
                     gender="female", seal=True, geography_id=i.id
                 ).count()
                 total_seal_child = Visualization.objects.filter(active=True,
-                    age__lt=18, seal=True, geography_id=i.id
+                    age__lt=12, seal=True, geography_id=i.id
+                ).count()
+                total_seal_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), seal=True, geography_id=i.id
                 ).count()
                 total_seal_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), seal=True, geography_id=i.id
+                    age__range=(19, 60), seal=True, geography_id=i.id
                 ).count()
                 total_seal_old = Visualization.objects.filter(active=True,
                     age__gt=60, seal=True, geography_id=i.id
@@ -3439,10 +3505,13 @@ class WardStrategicData(APIView):
                     gender="female", fv=True, geography_id=i.id
                 ).count()
                 totalfv_child = Visualization.objects.filter(active=True,
-                    age__lt=18, fv=True, geography_id=i.id
+                    age__lt=12, fv=True, geography_id=i.id
+                ).count()
+                totalfv_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), fv=True, geography_id=i.id
                 ).count()
                 totalfv_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), fv=True, geography_id=i.id
+                    age__range=(19, 60), fv=True, geography_id=i.id
                 ).count()
                 totalfv_old = Visualization.objects.filter(active=True,
                     age__gt=60, fv=True, geography_id=i.id
@@ -3455,10 +3524,13 @@ class WardStrategicData(APIView):
                     gender="female", exo=True, geography_id=i.id
                 ).count()
                 total_exo_child = Visualization.objects.filter(active=True,
-                    age__lt=18, exo=True, geography_id=i.id
+                    age__lt=12, exo=True, geography_id=i.id
+                ).count()
+                total_exo_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), exo=True, geography_id=i.id
                 ).count()
                 total_exo_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), exo=True, geography_id=i.id
+                    age__range=(19, 60), exo=True, geography_id=i.id
                 ).count()
                 total_exo_old = Visualization.objects.filter(active=True,
                     age__gt=60, exo=True, geography_id=i.id
@@ -3471,10 +3543,13 @@ class WardStrategicData(APIView):
                     gender="female", art=True, geography_id=i.id
                 ).count()
                 total_art_child = Visualization.objects.filter(active=True,
-                    age__lt=18, art=True, geography_id=i.id
+                    age__lt=12, art=True, geography_id=i.id
+                ).count()
+                total_art_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), art=True, geography_id=i.id
                 ).count()
                 total_art_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), art=True, geography_id=i.id
+                    age__range=(19, 60), art=True, geography_id=i.id
                 ).count()
                 total_art_old = Visualization.objects.filter(active=True,
                     age__gt=60, art=True, geography_id=i.id
@@ -3487,10 +3562,13 @@ class WardStrategicData(APIView):
                     gender="female", sdf=True, geography_id=i.id
                 ).count()
                 total_sdf_child = Visualization.objects.filter(active=True,
-                    age__lt=18, sdf=True, geography_id=i.id
+                    age__lt=12, sdf=True, geography_id=i.id
                 ).count()
                 total_sdf_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), sdf=True, geography_id=i.id
+                    age__range=(13, 18), sdf=True, geography_id=i.id
+                ).count()
+                total_sdf_adult = Visualization.objects.filter(active=True,
+                    age__range=(19, 60), sdf=True, geography_id=i.id
                 ).count()
                 total_sdf_old = Visualization.objects.filter(active=True,
                     age__gt=60, sdf=True, geography_id=i.id
@@ -3514,6 +3592,12 @@ class WardStrategicData(APIView):
                     )
                 except:
                     preventive_ratio_child = 0
+                try:
+                    preventive_ratio_teen = (total_seal_teen + totalfv_teen) / (
+                        total_exo_teen + total_art_teen + total_sdf_teen
+                    )
+                except:
+                    preventive_ratio_teen = 0
                 try:
                     preventive_ratio_adult = (total_seal_adult + totalfv_adult) / (
                         total_exo_adult + total_art_adult + total_sdf_adult
@@ -3549,6 +3633,13 @@ class WardStrategicData(APIView):
                     ) / total_exo_child
                 except:
                     early_intervention_ratio_child = 0
+                
+                try:
+                    early_intervention_ratio_teen = (
+                        total_art_teen + total_sdf_teen
+                    ) / total_exo_teen
+                except:
+                    early_intervention_ratio_teen = 0
 
                 try:
                     early_intervention_ratio_adult = (
@@ -3582,6 +3673,11 @@ class WardStrategicData(APIView):
                     recall_percent_child = (refer_child / encounter_child) * 100
                 except:
                     recall_percent_child = 0
+                
+                try:
+                    recall_percent_teen = (refer_teen / encounter_teen) * 100
+                except:
+                    recall_percent_teen = 0
 
                 try:
                     recall_percent_adult = (refer_adult / encounter_adult) * 100
@@ -3607,6 +3703,7 @@ class WardStrategicData(APIView):
                         round(preventive_ratio_male, 2),
                         round(preventive_ratio_female, 2),
                         round(preventive_ratio_child, 2),
+                        round(preventive_ratio_teen, 2),
                         round(preventive_ratio_adult, 2),
                         round(preventive_ratio_old, 2),
                         round(preventive_ratio_total, 2),
@@ -3616,6 +3713,7 @@ class WardStrategicData(APIView):
                         round(early_intervention_ratio_male, 2),
                         round(early_intervention_ratio_female, 2),
                         round(early_intervention_ratio_child, 2),
+                        round(early_intervention_ratio_teen, 2),
                         round(early_intervention_ratio_adult, 2),
                         round(early_intervention_ratio_old, 2),
                         round(early_intervention_ratio_total, 2),
@@ -3625,6 +3723,7 @@ class WardStrategicData(APIView):
                         str(round(recall_percent_male, 2)) + "%",
                         str(round(recall_percent_female, 2)) + "%",
                         str(round(recall_percent_child, 2)) + "%",
+                        str(round(recall_percent_teen, 2)) + "%",
                         str(round(recall_percent_adult, 2)) + "%",
                         str(round(recall_percent_old, 2)) + "%",
                         str(round(recall_percent_total, 2)) + "%",
@@ -3652,6 +3751,7 @@ class WardStrategicData(APIView):
                     encounter_male = []
                     encounter_female = []
                     encounter_child = []
+                    encounter_teen = []
                     encounter_adult = []
                     encounter_old = []
 
@@ -3659,6 +3759,7 @@ class WardStrategicData(APIView):
                     refer_male = []
                     refer_female = []
                     refer_child = []
+                    refer_teen = []
                     refer_adult = []
                     refer_old = []
 
@@ -3666,30 +3767,35 @@ class WardStrategicData(APIView):
                     total_seal_male = []
                     total_seal_female = []
                     total_seal_child = []
+                    total_seal_teen = []
                     total_seal_adult = []
                     total_seal_old = []
 
                     totalfv_male = []
                     totalfv_female = []
                     totalfv_child = []
+                    totalfv_teen = []
                     totalfv_adult = []
                     totalfv_old = []
 
                     total_exo_male = []
                     total_exo_female = []
                     total_exo_child = []
+                    total_exo_teen = []
                     total_exo_adult = []
                     total_exo_old = []
 
                     total_art_male = []
                     total_art_female = []
                     total_art_child = []
+                    total_art_teen = []
                     total_art_adult = []
                     total_art_old = []
 
                     total_sdf_male = []
                     total_sdf_female = []
                     total_sdf_child = []
+                    total_sdf_teen = []
                     total_sdf_adult = []
                     total_sdf_old = []
 
@@ -3720,7 +3826,15 @@ class WardStrategicData(APIView):
                             )
                             encounter_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            encounter_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     geography_id=i.id,
                                     activities_id=activities.id,
                                     created_at__range=[start_date, end_date],
@@ -3728,7 +3842,7 @@ class WardStrategicData(APIView):
                             )
                             encounter_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     geography_id=i.id,
                                     activities_id=activities.id,
                                     created_at__range=[start_date, end_date],
@@ -3771,7 +3885,16 @@ class WardStrategicData(APIView):
                             )
                             refer_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    refer_hp=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            refer_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     refer_hp=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3780,7 +3903,7 @@ class WardStrategicData(APIView):
                             )
                             refer_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     refer_hp=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3825,7 +3948,16 @@ class WardStrategicData(APIView):
                             )
                             total_seal_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    seal=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_seal_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     seal=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3834,7 +3966,7 @@ class WardStrategicData(APIView):
                             )
                             total_seal_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     seal=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3871,7 +4003,16 @@ class WardStrategicData(APIView):
                             )
                             totalfv_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    fv=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            totalfv_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     fv=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3880,7 +4021,7 @@ class WardStrategicData(APIView):
                             )
                             totalfv_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     fv=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3917,7 +4058,16 @@ class WardStrategicData(APIView):
                             )
                             total_exo_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    exo=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_exo_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     exo=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3926,7 +4076,7 @@ class WardStrategicData(APIView):
                             )
                             total_exo_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     exo=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -3963,7 +4113,16 @@ class WardStrategicData(APIView):
                             )
                             total_art_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    art=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_art_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     art=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -4009,7 +4168,16 @@ class WardStrategicData(APIView):
                             )
                             total_sdf_child.append(
                                 Visualization.objects.filter(active=True,
-                                    age__lt=18,
+                                    age__lt=12,
+                                    sdf=True,
+                                    geography_id=i.id,
+                                    activities_id=activities.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
+                            total_sdf_teen.append(
+                                Visualization.objects.filter(active=True,
+                                    age__range=(13, 18),
                                     sdf=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -4018,7 +4186,7 @@ class WardStrategicData(APIView):
                             )
                             total_sdf_adult.append(
                                 Visualization.objects.filter(active=True,
-                                    age__range=(18, 60),
+                                    age__range=(19, 60),
                                     sdf=True,
                                     geography_id=i.id,
                                     activities_id=activities.id,
@@ -4075,6 +4243,17 @@ class WardStrategicData(APIView):
                         )
                     except:
                         preventive_ratio_adult = 0
+                    
+                    try:
+                        preventive_ratio_teen = (
+                            sum(total_seal_teen) + sum(totalfv_teen)
+                        ) / (
+                            sum(total_exo_teen)
+                            + sum(total_art_teen)
+                            + sum(total_sdf_teen)
+                        )
+                    except:
+                        preventive_ratio_teen = 0
                     try:
                         preventive_ratio_old = (
                             sum(total_seal_old) + sum(totalfv_old)
@@ -4109,6 +4288,12 @@ class WardStrategicData(APIView):
                     except:
                         early_intervention_ratio_child = 0
 
+                    try:
+                        early_intervention_ratio_teen = (
+                            total_art_teen + total_sdf_teen
+                        ) / total_exo_teen
+                    except:
+                        early_intervention_ratio_teen = 0
                     try:
                         early_intervention_ratio_adult = (
                             total_art_adult + total_sdf_adult
@@ -4149,6 +4334,13 @@ class WardStrategicData(APIView):
                         recall_percent_child = 0
 
                     try:
+                        recall_percent_teen = (
+                            sum(refer_teen) / sum(encounter_teen)
+                        ) * 100
+                    except:
+                        recall_percent_teen = 0
+                    
+                    try:
                         recall_percent_adult = (
                             sum(refer_adult) / sum(encounter_adult)
                         ) * 100
@@ -4175,6 +4367,7 @@ class WardStrategicData(APIView):
                                 round(preventive_ratio_male, 2),
                                 round(preventive_ratio_female, 2),
                                 round(preventive_ratio_child, 2),
+                                round(preventive_ratio_teen, 2),
                                 round(preventive_ratio_adult, 2),
                                 round(preventive_ratio_old, 2),
                                 round(preventive_ratio_total, 2),
@@ -4184,6 +4377,7 @@ class WardStrategicData(APIView):
                                 round(early_intervention_ratio_male, 2),
                                 round(early_intervention_ratio_female, 2),
                                 round(early_intervention_ratio_child, 2),
+                                round(early_intervention_ratio_teen, 2),
                                 round(early_intervention_ratio_adult, 2),
                                 round(early_intervention_ratio_old, 2),
                                 round(early_intervention_ratio_total, 2),
@@ -4193,6 +4387,7 @@ class WardStrategicData(APIView):
                                 str(round(recall_percent_male, 2)) + "%",
                                 str(round(recall_percent_female, 2)) + "%",
                                 str(round(recall_percent_child, 2)) + "%",
+                                str(round(recall_percent_teen, 2)) + "%",
                                 str(round(recall_percent_adult, 2)) + "%",
                                 str(round(recall_percent_old, 2)) + "%",
                                 str(round(recall_percent_total, 2)) + "%",
