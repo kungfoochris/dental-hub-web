@@ -17629,3 +17629,299 @@ UnboundLocalError: local variable 'item' referenced before assignment
 2021-07-14 12:36:45,795 django.server INFO     "GET /api/v1/wardtablevisualization HTTP/1.1" 200 14746
 2021-07-14 12:37:08,586 django.server INFO     "POST /api/v1/wardtablevisualization HTTP/1.1" 200 14747
 2021-07-14 12:37:30,321 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 19235
+2021-08-10 14:33:55,713 django.request WARNING  Not Found: /api/v1/testlongitudinal1
+2021-08-10 14:33:55,736 django.server WARNING  "GET /api/v1/testlongitudinal1 HTTP/1.1" 404 22352
+2021-08-10 14:33:55,997 django.request WARNING  Not Found: /favicon.ico
+2021-08-10 14:33:55,998 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-08-10 14:35:28,141 django.request WARNING  Not Found: /api/v1/testlongitudinalsamplesecond
+2021-08-10 14:35:28,142 django.server WARNING  "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 404 22385
+2021-08-10 14:35:54,713 django.request WARNING  Unauthorized: /api/v1/testlongitudinalsamplesecond
+2021-08-10 14:35:54,714 django.server WARNING  "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 401 10085
+2021-08-10 14:35:55,180 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-08-10 14:35:55,182 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-08-10 14:35:55,199 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-08-10 14:35:55,205 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-08-10 14:35:55,211 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-08-10 14:35:55,268 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-08-10 14:35:55,269 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-08-10 14:35:55,269 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-08-10 14:35:55,270 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-08-10 14:35:55,471 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-08-10 14:35:55,636 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-08-10 14:35:59,480 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 2738
+2021-08-10 14:36:59,071 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-08-10 14:36:59,611 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25133
+2021-08-10 14:37:52,979 django.request ERROR    Internal Server Error: /api/v1/testlongitudinalsamplesecond
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 1532, in post
+    total_need_fv.append(abs(round(total_need_fv[0] - total_need_fv[1],2)))
+IndexError: list index out of range
+2021-08-10 14:37:53,002 django.server ERROR    "POST /api/v1/testlongitudinalsamplesecond HTTP/1.1" 500 109700
+2021-08-10 14:44:15,113 django.server INFO     "POST /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25056
+2021-08-10 14:46:28,270 django.server INFO     "GET /api/v1/data HTTP/1.1" 200 12134
+2021-08-10 14:47:31,657 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-08-10 15:01:00,854 django.request WARNING  Unauthorized: /api/v1/testlongitudinalsamplesecond
+2021-08-10 15:01:00,855 django.server WARNING  "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 401 10085
+2021-08-11 11:15:39,315 django.request WARNING  Unauthorized: /api/v1/patients
+2021-08-11 11:15:39,347 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-08-11 11:15:41,007 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-08-11 11:15:41,521 django.request WARNING  Not Found: /favicon.ico
+2021-08-11 11:15:41,522 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-08-11 11:15:48,077 django.request WARNING  Unauthorized: /api/v1/testlongitudinalsamplesecond
+2021-08-11 11:15:48,078 django.server WARNING  "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 401 10085
+2021-08-11 11:15:52,281 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 2738
+2021-08-11 11:16:04,798 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-08-11 11:16:05,698 django.request ERROR    Internal Server Error: /api/v1/testlongitudinalsamplesecond
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1230, in to_python
+    parsed = parse_date(value)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/dateparse.py", line 77, in parse_date
+    return datetime.date(**kw)
+ValueError: day is out of range for month
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 127, in get
+    frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1]).count())
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 841, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 859, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1268, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1237, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["'2078-02-29' value has the correct format (YYYY-MM-DD) but it is an invalid date."]
+2021-08-11 11:16:05,704 django.server ERROR    "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 500 157072
+2021-08-11 11:18:21,575 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-11 11:18:59,634 django.request ERROR    Internal Server Error: /api/v1/testlongitudinalsamplesecond
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1230, in to_python
+    parsed = parse_date(value)
+  File "/usr/local/lib/python3.7/site-packages/django/utils/dateparse.py", line 77, in parse_date
+    return datetime.date(**kw)
+ValueError: day is out of range for month
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 127, in get
+    frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1]).count())
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 841, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 859, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1225, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1096, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/lookups.py", line 210, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1268, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/fields/__init__.py", line 1237, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["'2078-02-29' value has the correct format (YYYY-MM-DD) but it is an invalid date."]
+2021-08-11 11:18:59,636 django.server ERROR    "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 500 156729
+2021-08-11 11:23:41,679 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-11 11:25:04,041 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-11 11:26:31,799 django.request ERROR    Internal Server Error: /api/v1/testlongitudinalsamplesecond
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 328, in get
+    for l in serializer.validated_data['location']:
+NameError: name 'serializer' is not defined
+2021-08-11 11:26:31,802 django.server ERROR    "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 500 97621
+2021-08-11 11:27:08,727 django.request ERROR    Internal Server Error: /api/v1/testlongitudinalsamplesecond
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 328, in get
+    for l in serializer.validated_data['location']:
+NameError: name 'serializer' is not defined
+2021-08-11 11:27:08,732 django.server ERROR    "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 500 97756
+2021-08-11 11:29:28,604 django.request ERROR    Internal Server Error: /api/v1/testlongitudinalsamplesecond
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 425, in get
+    frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+NameError: name 'start_age' is not defined
+2021-08-11 11:29:28,608 django.server ERROR    "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 500 99354
+2021-08-11 11:31:30,336 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25055
+2021-08-11 11:31:34,575 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25055
+2021-08-11 12:27:34,770 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25055
+2021-08-11 12:29:20,151 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25419
+2021-08-11 12:29:26,794 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25419
+2021-08-11 12:40:12,691 django.server INFO     "GET /api/v1/testlongitudinalsamplesecond HTTP/1.1" 200 25419
+2021-08-11 12:57:03,661 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016
+2021-08-11 12:57:06,780 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25016
+2021-08-11 12:57:38,845 django.server INFO     "POST /api/v1/testlongitudinal HTTP/1.1" 200 25329
+2021-08-11 12:59:49,580 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25406
+2021-08-11 13:14:49,899 django.request ERROR    Internal Server Error: /api/v1/testlongitudinal
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 2261, in get
+    for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+NameError: name 'start_age' is not defined
+2021-08-11 13:14:49,917 django.server ERROR    "GET /api/v1/testlongitudinal HTTP/1.1" 500 96633
+2021-08-11 13:16:34,661 django.request ERROR    Internal Server Error: /api/v1/testlongitudinal
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 2699, in get
+    for l in serializer.validated_data['location']:
+NameError: name 'serializer' is not defined
+2021-08-11 13:16:34,666 django.server ERROR    "GET /api/v1/testlongitudinal HTTP/1.1" 500 102198
+2021-08-11 13:17:38,762 django.server INFO     "GET /api/v1/testlongitudinal HTTP/1.1" 200 25328
+2021-08-11 13:29:55,395 django.request WARNING  Unauthorized: /api/v1/longitudinalone
+2021-08-11 13:29:55,438 django.server WARNING  "GET /api/v1/longitudinalone HTTP/1.1" 401 9989
+2021-08-11 13:29:59,989 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/longitudinalone HTTP/1.1" 200 2725
+2021-08-11 13:30:13,959 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-08-11 13:30:14,405 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25301
+2021-08-11 13:32:39,608 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25275
+2021-08-11 13:39:21,103 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25275
+2021-08-11 13:39:51,968 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 24912

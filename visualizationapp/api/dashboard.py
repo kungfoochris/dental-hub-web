@@ -31,6 +31,8 @@ class OverviewVisualization1(APIView):
     serializer_class = OverViewVisualization
 
     def get(self, request, format=None):
+        print(last_30_days_obj)
+        print(today_date_obj)
         if User.objects.filter(id=request.user.id).exists():
             kid_encounter = Visualization.objects.filter(active=True,
                 age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]

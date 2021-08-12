@@ -37,7 +37,7 @@ TreatmentEarlyIntervention, TreatmentRecallDistribution
 
 
 from visualizationapp.api.longitudinal import LongitudinalVisualization,\
-LongitudinalVisualization1,TestLongitudinalVisualization
+LongitudinalVisualization1,SampleFrameOneLongitudinal,SampleFrameTwoLongitudinal
 
 app_name = 'visualizationapp'
 
@@ -82,9 +82,10 @@ urlpatterns = [
 	path('tablvisualization',TableVisualization.as_view()),
 	path('data',DataVisualization.as_view()),
 	path('waruserlinechart',WardUserlineVisualization.as_view()),
-	path('longitudinal',LongitudinalVisualization.as_view()),
-	path('longitudinal1',LongitudinalVisualization1.as_view()),
-	path('testlongitudinal',TestLongitudinalVisualization.as_view()),
+	# path('longitudinal',LongitudinalVisualization.as_view()),
+	# path('longitudinal1',LongitudinalVisualization1.as_view()),
+	path('longitudinalone',SampleFrameOneLongitudinal.as_view()),
+	path('longitudinaltwo',SampleFrameTwoLongitudinal.as_view()),
 	path('wardstrategicdata',WardStrategicData.as_view()),
 	]
 
