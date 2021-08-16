@@ -61,7 +61,7 @@ class BarGraphView(APIView):
             id=request.user.id, role__name="warduser"
         ):
             customuser_obj = CustomUser.objects.get(id=request.user.id)
-            district = ["Kids", "Adult", "Older Adults"]
+            district = ["Kids ≤ 18", "Adult", "Older Adults"]
             total = []
             total_male = []
             total_female = []
@@ -291,7 +291,7 @@ class BarGraphFilterView(APIView):
                     id=request.user.id, role__name="warduser"
                 ):
                     customuser_obj = CustomUser.objects.get(id=request.user.id)
-                    district = ["Kids", "Adults", "Other Adults"]
+                    district = ["Kids ≤ 18", "Adults", "Other Adults"]
                     total = []
                     male = []
                     female = []

@@ -1327,6 +1327,7 @@ class TestCrossSectionalVisualization(APIView):
                 ]
             
             return Response(data)
+        return Response({"message":"Do not have permission."},status=401)
 
 
 
@@ -2826,6 +2827,8 @@ class TestCrossSectionalVisualization(APIView):
                     ]
                 
                 return Response(data)
+            return Response({"message":"Do not have permission."},status=401)
+        return Response({"message":serializer.errors},status=400)
 
 
 class SectionalVisualization(APIView):
