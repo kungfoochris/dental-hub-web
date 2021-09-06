@@ -52,6 +52,7 @@ class EncounterView(APIView):
                     serializer = AllEncounterSerializer(
                         encounter_obj, many=True, context={"request": request}
                     )
+                    logger.info("%s %s" %("Encounter listed by: ", request.user.username))
                     return Response(serializer.data)
                 return Response(
                     {"message": "encounter not added or not found"}, status=400
@@ -126,10 +127,7 @@ class EncounterView(APIView):
                 encounter_obj.updated_at = serializer.validated_data["updated_at"]
                 encounter_obj.area = serializer.validated_data["area"]
                 encounter_obj.save()
-                logger.info(
-                    "%s %s"
-                    % ("Encounter added successfully by", request.user.full_name)
-                )
+                logger.info("%s %s" % ("Encounter added successfully by", request.user.full_name))
                 return Response(
                     {"message": "Encounter added", "id": encounter_obj.id}, status=200
                 )
@@ -139,21 +137,8 @@ class EncounterView(APIView):
                 # return Response({"message":"Activity id does not exists."},status=400)
             logger.info(serializer.errors)
             return Response({"message": serializer.errors}, status=400)
-        logger.info(
-            "%s %s"
-            % (
-                "Patient id does not exist in encounter section: created by="
-                + request.user.full_name,
-                patient_id,
-            )
-        )
-        return Response(
-            {
-                "message": "patient does not exists. created by="
-                + request.user.full_name
-            },
-            status=400,
-        )
+        logger.info("%s %s" % ("Patient id does not exist in encounter section: created by=" + request.user.full_name,patient_id,))
+        return Response({"message": "patient does not exists. created by="+ request.user.full_name },status=400,)
 
 
 # class EncounterUpdateView(APIView):

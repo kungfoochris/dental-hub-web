@@ -37,6 +37,7 @@ class PatientScreeingView(APIView):
             screeing_obj = Screeing.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientScreeingSerializer(screeing_obj, many=False, \
                 context={'request': request})
+            logger.info("%s %s" %("Screening viewed by: ", request.user.username))
             return Response(serializer.data)
         return Response({"message":"content not found"},status=400)
 

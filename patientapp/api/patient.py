@@ -63,6 +63,7 @@ class PatientAdd(APIView):
             patient_obj = Patient.objects.all().order_by("-date")
             serializer = PatientSerializer(patient_obj, many=True, \
                 context={'request': request})
+            logger.info("%s %s" %("Patient listed by: ", request.user.username))
             return Response(serializer.data)
         return Response({"message":"do not have a permission"},status=400)
 
@@ -123,13 +124,13 @@ class PatientAdd(APIView):
                     patient_obj.recall_geography = serializer.validated_data['recall_geography']
                     patient_obj.area = serializer.validated_data['area']
                     patient_obj.save()
-                logger.info("%s %s, %s %s, %s %s, %s %s, %s %s, %s %s ,%s %s, %s %s, %s %s, %s %s, %s %s, %s %s" %("Patient added successfully by", request.user.full_name,"Patient id:",patient_obj.id,"first name:",patient_obj.first_name,"last name:",patient_obj.last_name,"phone:",patient_obj.phone,"dob:",patient_obj.dob,"gender:",patient_obj.gender,"ward:",patient_obj.ward.name,"Activity Area:",patient_obj.activity_area.name,"District:",patient_obj.district.name,"Geography:",patient_obj.geography.name,"Municipality:",patient_obj.municipality.name))
+                logger.info("%s %s, %s %s, %s %s, %s %s, %s %s, %s %s ,%s %s" %("Patient added successfully by", request.user.full_name,"Patient id:",patient_obj.id,"first name:",patient_obj.first_name,"last name:",patient_obj.last_name,"phone:",patient_obj.phone,"dob:",patient_obj.dob,"gender:",patient_obj.gender))
                 return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)
                     #logger.info("ActivityArea id does not exists in patient section")
                     #return Response({"message":"Activity id does not exists"}, status=400)
                 # logger.info("Geography id does not exists in patient section created by="+request.user.full_name)
                 # return Response({"message":"Geography id does not exists created by="+request.user.full_name}, status=400)
-            logger.info(" %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s " %("Duplicate data added in by=",request.user.full_name,"Patient ID:",p.id,"first name:",serializer.validated_data['first_name'],"last name:",serializer.validated_data['last_name'],"phone:",serializer.validated_data['phone'],"dob:",serializer.validated_data['dob'],"gender:",serializer.validated_data['gender']))
+            logger.info(" %s %s, %s %s, %s %s, %s %s, %s %s, %s %s, %s %s " %("Duplicate data added in by ",request.user.full_name,"Patient id:",p.id,"first name:",serializer.validated_data['first_name'],"last name:",serializer.validated_data['last_name'],"phone:",serializer.validated_data['phone'],"dob:",serializer.validated_data['dob'],"gender:",serializer.validated_data['gender']))
             return Response({"message":"duplicate data created by="+request.user.full_name,"patient_id":p.id},status=409)
         logger.info(serializer.errors)
         return Response({'message':serializer.errors}, status=400)

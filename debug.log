@@ -17925,3 +17925,113 @@ NameError: name 'serializer' is not defined
 2021-08-11 13:32:39,608 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25275
 2021-08-11 13:39:21,103 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25275
 2021-08-11 13:39:51,968 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 24912
+2021-08-25 16:55:51,452 django.request WARNING  Unauthorized: /api/v1/patients
+2021-08-25 16:55:51,473 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-08-25 16:55:52,396 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-08-25 16:55:52,400 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-08-25 16:55:52,400 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-08-25 16:55:52,411 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-08-25 16:55:52,416 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-08-25 16:55:52,420 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-08-25 16:55:52,459 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-08-25 16:55:52,503 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-08-25 16:55:52,504 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-08-25 16:55:52,522 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-08-25 16:55:52,988 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-08-25 16:55:53,491 django.request WARNING  Not Found: /favicon.ico
+2021-08-25 16:55:53,492 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-08-25 16:55:55,355 django.request WARNING  Unauthorized: /api/v1/overviewvisualization
+2021-08-25 16:55:55,356 django.server WARNING  "GET /api/v1/overviewvisualization HTTP/1.1" 401 9989
+2021-08-25 16:55:58,355 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/overviewvisualization HTTP/1.1" 200 2731
+2021-08-25 16:56:23,553 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-08-25 16:56:24,296 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 16:59:55,103 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:02:58,452 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:06:01,860 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:14:50,324 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:14:56,701 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:16:16,173 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:21:08,232 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:25:48,637 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:26:56,490 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:28:07,298 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-25 17:34:03,435 django.server INFO     "GET /api/v1/overviewvisualization HTTP/1.1" 200 17836
+2021-08-30 10:18:11,826 django.request WARNING  Unauthorized: /api/v1/patients
+2021-08-30 10:18:11,847 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-08-30 10:18:12,259 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-08-30 10:18:12,261 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-08-30 10:18:12,265 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-08-30 10:18:12,276 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-08-30 10:18:12,306 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-08-30 10:18:12,306 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-08-30 10:18:12,309 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-08-30 10:18:12,310 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-08-30 10:18:12,359 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-08-30 10:18:12,385 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-08-30 10:18:12,563 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-08-30 10:18:12,755 django.request WARNING  Not Found: /favicon.ico
+2021-08-30 10:18:12,756 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-08-30 10:18:23,043 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-08-30 10:18:31,439 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-08-30 10:18:34,185 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112444
+2021-08-30 10:19:33,620 patientapp.api.patient INFO     Patient added successfully by admin user, Patient id: 6DC8FEF769BB4CAEA0D5E53F4BE62488, first name: Hari, last name: Kane, phone: +9779840056968, dob: 2021-08-30 ,gender: male
+2021-08-30 10:19:36,127 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109908
+2021-08-30 10:20:05,047 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113778
+2021-08-30 10:20:11,248 patientapp.api.patient INFO      Duplicate data added in by  admin user, Patient ID: 6DC8FEF769BB4CAEA0D5E53F4BE62488, first name: Hari, last name: Kane, phone: +9779840056968, dob: 2021-08-30, gender: male 
+2021-08-30 10:20:13,704 django.request WARNING  Conflict: /api/v1/patients
+2021-08-30 10:20:13,705 django.server WARNING  "POST /api/v1/patients HTTP/1.1" 409 109930
+2021-08-30 11:13:52,356 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113778
+2021-08-30 11:14:41,292 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113778
+2021-08-30 11:16:02,298 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113778
+2021-08-30 11:16:34,155 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2021-08-30 11:16:37,347 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113778
+2021-08-30 11:40:46,971 django.server INFO     "GET /api/v1/modifydelete HTTP/1.1" 200 15302
+2021-08-30 11:41:13,544 django.request ERROR    Internal Server Error: /api/v1/modifydelete
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/encounterapp/api/modifydelete.py", line 69, in post
+    logger.info("%s %s" %("Flag successfully created for encounter with id:", encounter_obj.id,"Requesting User:",request.user.username))
+TypeError: not all arguments converted during string formatting
+2021-08-30 11:41:13,547 django.server ERROR    "POST /api/v1/modifydelete HTTP/1.1" 500 91684
+2021-08-30 11:42:04,335 django.server INFO     "GET /api/v1/modifydelete HTTP/1.1" 200 16451
+2021-08-30 11:42:16,471 encounterapp.api.modifydelete INFO     Duplicate flag request for encounter with id:  23116EC886A74E8094C2F3A13874B408,Requesting User: abhiyantrik
+2021-08-30 11:42:16,526 django.request WARNING  Bad Request: /api/v1/modifydelete
+2021-08-30 11:42:16,529 django.server WARNING  "POST /api/v1/modifydelete HTTP/1.1" 400 15383
+2021-08-30 11:50:07,007 encounterapp.api.modifydelete INFO     Flag listed by:  abhiyantrik
+2021-08-30 11:50:07,141 django.server INFO     "GET /api/v1/modifydelete HTTP/1.1" 200 16451
+2021-09-06 12:29:37,722 django.request WARNING  Unauthorized: /api/v1/patients
+2021-09-06 12:29:37,743 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-09-06 12:29:38,156 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-09-06 12:29:38,160 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-09-06 12:29:38,167 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-09-06 12:29:38,170 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-09-06 12:29:38,186 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-09-06 12:29:38,187 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-09-06 12:29:38,189 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-09-06 12:29:38,190 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-09-06 12:29:38,192 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-09-06 12:29:38,193 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-09-06 12:29:38,270 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-09-06 12:29:38,486 django.request WARNING  Not Found: /favicon.ico
+2021-09-06 12:29:38,487 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-09-06 12:29:40,793 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2021-09-06 12:30:36,687 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-09-06 12:30:36,703 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2021-09-06 12:30:39,304 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 113778
+2021-09-06 12:31:17,031 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25301
+2021-09-06 12:32:04,871 django.server INFO     "POST /api/v1/longitudinalone HTTP/1.1" 200 25302

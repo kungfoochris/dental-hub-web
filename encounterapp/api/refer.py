@@ -35,6 +35,7 @@ class PatientReferView(APIView):
             refer_obj = Refer.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientReferSerializer(refer_obj, many=False, \
                 context={'request': request})
+            logger.info("%s %s" %("Refer viewed by: ", request.user.username))
             return Response(serializer.data)
         return Response({"message":"content not found"},status=400)
 

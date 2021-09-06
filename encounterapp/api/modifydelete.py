@@ -8,7 +8,9 @@ from visualizationapp.models import Visualization
 from encounterapp.serializers.encounter import AllEncounterSerializer
 from encounterapp.serializers.modifydelete import ModifyDeleteSerializer,EncounterAdminStatusSerializer,ModifyDeleteListSerializer,EncounterFlagDeadSerializer
 from datetime import datetime, timedelta
-
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
 
@@ -27,6 +29,7 @@ class ModifyDeleteDetail(APIView):
             modify_delete_obj = ModifyDelete.objects.filter(author=request.user).order_by("-id")
         serializer = ModifyDeleteListSerializer(modify_delete_obj,\
             many=True, context={"request":request})
+        logger.info("%s %s" %("Flag listed by: ", request.user.username))
         return Response(serializer.data, status=200)
 
     def post(self,request):
@@ -37,19 +40,24 @@ class ModifyDeleteDetail(APIView):
             if encounter_obj:
                 encounter_obj = Encounter.objects.get(id=serializer.validated_data['encounter'].id)
                 if encounter_obj.active == False:
+                    logger.info("%s %s,%s %s" %("Tried to create flag for deleted encounter with id: ", encounter_obj.id,"Requesting User:",request.user.username))
                     return Response({"message":"This encounter has already been deleted."}, status=400)
                 if encounter_obj.request_counter >= 3:
+                    logger.info("%s %s,%s %s" %("Flag request limit reached for encounter with id: ", encounter_obj.id,"Requesting User:",request.user.username))
                     return Response({"message":"Your request limit already reached."},status=400)
                 if ModifyDelete.objects.filter(encounter__id = serializer.validated_data['encounter'].id,flag='delete') or ModifyDelete.objects.filter(encounter__id =serializer.validated_data['encounter'].id,flag='modify'):
+                    logger.info("%s %s,%s %s" %("Duplicate flag request for encounter with id: ", encounter_obj.id,"Requesting User:",request.user.username))
                     return Response({"message":"You already have a request sent."}, status=400)
                 if serializer.validated_data['flag'] == "modify":
                     if serializer.validated_data['reason_for_modification'] == None:
+                        logger.info("%s %s,%s %s" %("Tried to create flag without modification reason for encounter with id: ", encounter_obj.id,"Requesting User:",request.user.username))
                         return Response({"message":"Please enter reason for modification."},status=400)
                     modify_delete_obj.reason_for_modification = serializer.validated_data['reason_for_modification']
                     modify_delete_obj.modify_status = "pending"
 
                 if serializer.validated_data['flag'] == "delete":
                     if serializer.validated_data['reason_for_deletion'] == "other" and serializer.validated_data['other_reason_for_deletion'] == None:
+                        logger.info("%s %s,%s %s" %("Tried to create flag without reason for deletion and other reason for deletion for encounter with id: ", encounter_obj.id,"Requesting User:",request.user.username))
                         return Response({"message":"You should enter the field either reason for deletion or other reason for deletion."},status=400)
                     if serializer.validated_data['reason_for_deletion'] == "other":
                         modify_delete_obj.other_reason_for_deletion = serializer.validated_data['other_reason_for_deletion']
@@ -59,8 +67,11 @@ class ModifyDeleteDetail(APIView):
                 modify_delete_obj.encounter = serializer.validated_data['encounter']
                 modify_delete_obj.flag = serializer.validated_data['flag']
                 modify_delete_obj.save()
+                logger.info("%s %s,%s %s" %("Flag successfully created for encounter with id:", encounter_obj.id,"Requesting User:",request.user.username))
                 return Response({"message":"Your request sent successfully."},status=200)
+            logger.info("%s %s,%s %s" %("Tried to create flag for encounter that does not exist:", serializer.validated_data['encounter'],"Requesting User:",request.user.username))
             return Response({"message":"Encounter doesn't exists."},status=400)
+        logger.info(serializer.errors)
         return Response(serializer.errors,status=400)
 
 

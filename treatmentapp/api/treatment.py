@@ -36,6 +36,7 @@ class PatientTreatmentView(APIView):
             serializer = PatientTreatmentSerializer(treatment_obj, many=False, \
                 context={'request': request})
             return Response(serializer.data)
+        logger.info("%s %s" %("Treatment viewd by: ", request.user.username))
         return Response({"message":"content not found"},status=400)
 
     def post(self, request, encounter_id, format=None):

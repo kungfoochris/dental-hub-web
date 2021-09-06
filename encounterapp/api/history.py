@@ -35,6 +35,7 @@ class PatientHistoryView(APIView):
             history_obj = History.objects.select_related('encounter_id').get(encounter_id__id=encounter_id)
             serializer = PatientHistorySerializer(history_obj, many=False, \
                 context={'request': request})
+            logger.info("%s %s" %("History viewed by: ", request.user.username))
             return Response(serializer.data)
         return Response({"message":"content not found"},status=400)
 
@@ -45,7 +46,7 @@ class PatientHistoryView(APIView):
             encounter_obj = Encounter.objects.get(id=encounter_id)
             if History.objects.select_related('encounter_id').filter(encounter_id=encounter_obj).exists():
                 logger.info("%s %s" %("Encounter already exists in history section : ", encounter_id))
-                return Response({"message":"encounter id is already exists."},status=409)
+                return Response({"message":"encounter id already exists."},status=409)
             if serializer.is_valid():
                 serializer.save(encounter_id=encounter_obj)
                 logger.info("%s %s" %("History added successfully by", request.user.full_name))
