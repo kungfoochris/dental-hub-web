@@ -1305,7 +1305,63 @@ class TestCrossSectionalVisualization(APIView):
                 [total_need_dentist_or_hygienist[9],""],
                 ]
 
-                
+            rowA_total = numerator_carries_risk_low_A + numerator_carries_risk_medium_A + numerator_carries_risk_high_A \
+                + numerator_untreated_caries_present_A + numerator_cavity_permanent_molar_A \
+                + numerator_cavity_permanent_anterior_A + numerator_active_infection_A \
+                + numerator_reversible_pulpitis_A + numerator_need_art_filling_A \
+                + numerator_need_sdf_A + numerator_need_extraction_A \
+                + numerator_need_fv_A + numerator_need_dentist_or_hygienist_A 
+            
+            rowB_total = numerator_carries_risk_low_B + numerator_carries_risk_medium_B + numerator_carries_risk_high_B \
+                + numerator_untreated_caries_present_B + numerator_cavity_permanent_molar_B \
+                + numerator_cavity_permanent_anterior_B + numerator_active_infection_B \
+                + numerator_reversible_pulpitis_B + numerator_need_art_filling_B \
+                + numerator_need_sdf_B + numerator_need_extraction_B \
+                + numerator_need_fv_B + numerator_need_dentist_or_hygienist_B
+            
+            rowC_total = numerator_carries_risk_low_C + numerator_carries_risk_medium_C + numerator_carries_risk_high_C \
+                + numerator_untreated_caries_present_C + numerator_cavity_permanent_molar_C \
+                + numerator_cavity_permanent_anterior_C + numerator_active_infection_C \
+                + numerator_reversible_pulpitis_C + numerator_need_art_filling_C \
+                + numerator_need_sdf_C + numerator_need_extraction_C \
+                + numerator_need_fv_C + numerator_need_dentist_or_hygienist_C
+
+            rowE_total = numerator_carries_risk_low_E + numerator_carries_risk_medium_E + numerator_carries_risk_high_E \
+                + numerator_untreated_caries_present_E + numerator_cavity_permanent_molar_E \
+                + numerator_cavity_permanent_anterior_E + numerator_active_infection_E \
+                + numerator_reversible_pulpitis_E + numerator_need_art_filling_E \
+                + numerator_need_sdf_E + numerator_need_extraction_E \
+                + numerator_need_fv_E + numerator_need_dentist_or_hygienist_E
+            
+            rowF_total = numerator_carries_risk_low_F + numerator_carries_risk_medium_F + numerator_carries_risk_high_F \
+                + numerator_untreated_caries_present_F + numerator_cavity_permanent_molar_F \
+                + numerator_cavity_permanent_anterior_F + numerator_active_infection_F \
+                + numerator_reversible_pulpitis_F + numerator_need_art_filling_F \
+                + numerator_need_sdf_F + numerator_need_extraction_F \
+                + numerator_need_fv_F + numerator_need_dentist_or_hygienist_F
+            
+            rowG_total = numerator_carries_risk_low_G + numerator_carries_risk_medium_G + numerator_carries_risk_high_G \
+                + numerator_untreated_caries_present_G + numerator_cavity_permanent_molar_G \
+                + numerator_cavity_permanent_anterior_G + numerator_active_infection_G \
+                + numerator_reversible_pulpitis_G + numerator_need_art_filling_G \
+                + numerator_need_sdf_G + numerator_need_extraction_G \
+                + numerator_need_fv_G + numerator_need_dentist_or_hygienist_G
+            
+            rowH_total = numerator_carries_risk_low_H + numerator_carries_risk_medium_H + numerator_carries_risk_high_H \
+                + numerator_untreated_caries_present_H + numerator_cavity_permanent_molar_H \
+                + numerator_cavity_permanent_anterior_H + numerator_active_infection_H \
+                + numerator_reversible_pulpitis_H + numerator_need_art_filling_H \
+                + numerator_need_sdf_H + numerator_need_extraction_H \
+                + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
+            
+            
+        
+
+            row_total = [
+                ["Totals",""],[rowA_total,""],[rowB_total,""],[rowC_total,""],["",""],[rowE_total,""],[rowF_total,""],[rowG_total,""],[rowH_total,""]
+
+            ]
+
             
             data = [
                 carries_risk,
@@ -1323,7 +1379,8 @@ class TestCrossSectionalVisualization(APIView):
                 final_total_need_sdf,
                 final_total_need_extraction,
                 final_total_need_fv,
-                final_total_need_dentist_or_hygienist
+                final_total_need_dentist_or_hygienist,
+                row_total
                 ]
             
             return Response(data)
@@ -2805,6 +2862,64 @@ class TestCrossSectionalVisualization(APIView):
                     [total_need_dentist_or_hygienist[8],""],
                     [total_need_dentist_or_hygienist[9],""],
                     ]
+                
+
+                rowA_total = numerator_carries_risk_low_A + numerator_carries_risk_medium_A + numerator_carries_risk_high_A \
+                    + numerator_untreated_caries_present_A + numerator_cavity_permanent_molar_A \
+                    + numerator_cavity_permanent_anterior_A + numerator_active_infection_A \
+                    + numerator_reversible_pulpitis_A + numerator_need_art_filling_A \
+                    + numerator_need_sdf_A + numerator_need_extraction_A \
+                    + numerator_need_fv_A + numerator_need_dentist_or_hygienist_A 
+            
+                rowB_total = numerator_carries_risk_low_B + numerator_carries_risk_medium_B + numerator_carries_risk_high_B \
+                    + numerator_untreated_caries_present_B + numerator_cavity_permanent_molar_B \
+                    + numerator_cavity_permanent_anterior_B + numerator_active_infection_B \
+                    + numerator_reversible_pulpitis_B + numerator_need_art_filling_B \
+                    + numerator_need_sdf_B + numerator_need_extraction_B \
+                    + numerator_need_fv_B + numerator_need_dentist_or_hygienist_B
+                
+                rowC_total = numerator_carries_risk_low_C + numerator_carries_risk_medium_C + numerator_carries_risk_high_C \
+                    + numerator_untreated_caries_present_C + numerator_cavity_permanent_molar_C \
+                    + numerator_cavity_permanent_anterior_C + numerator_active_infection_C \
+                    + numerator_reversible_pulpitis_C + numerator_need_art_filling_C \
+                    + numerator_need_sdf_C + numerator_need_extraction_C \
+                    + numerator_need_fv_C + numerator_need_dentist_or_hygienist_C
+
+                rowE_total = numerator_carries_risk_low_E + numerator_carries_risk_medium_E + numerator_carries_risk_high_E \
+                    + numerator_untreated_caries_present_E + numerator_cavity_permanent_molar_E \
+                    + numerator_cavity_permanent_anterior_E + numerator_active_infection_E \
+                    + numerator_reversible_pulpitis_E + numerator_need_art_filling_E \
+                    + numerator_need_sdf_E + numerator_need_extraction_E \
+                    + numerator_need_fv_E + numerator_need_dentist_or_hygienist_E
+                
+                rowF_total = numerator_carries_risk_low_F + numerator_carries_risk_medium_F + numerator_carries_risk_high_F \
+                    + numerator_untreated_caries_present_F + numerator_cavity_permanent_molar_F \
+                    + numerator_cavity_permanent_anterior_F + numerator_active_infection_F \
+                    + numerator_reversible_pulpitis_F + numerator_need_art_filling_F \
+                    + numerator_need_sdf_F + numerator_need_extraction_F \
+                    + numerator_need_fv_F + numerator_need_dentist_or_hygienist_F
+                
+                rowG_total = numerator_carries_risk_low_G + numerator_carries_risk_medium_G + numerator_carries_risk_high_G \
+                    + numerator_untreated_caries_present_G + numerator_cavity_permanent_molar_G \
+                    + numerator_cavity_permanent_anterior_G + numerator_active_infection_G \
+                    + numerator_reversible_pulpitis_G + numerator_need_art_filling_G \
+                    + numerator_need_sdf_G + numerator_need_extraction_G \
+                    + numerator_need_fv_G + numerator_need_dentist_or_hygienist_G
+                
+                rowH_total = numerator_carries_risk_low_H + numerator_carries_risk_medium_H + numerator_carries_risk_high_H \
+                    + numerator_untreated_caries_present_H + numerator_cavity_permanent_molar_H \
+                    + numerator_cavity_permanent_anterior_H + numerator_active_infection_H \
+                    + numerator_reversible_pulpitis_H + numerator_need_art_filling_H \
+                    + numerator_need_sdf_H + numerator_need_extraction_H \
+                    + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
+                
+                
+            
+
+                row_total = [
+                    ["Totals",""],[rowA_total,""],[rowB_total,""],[rowC_total,""],["",""],[rowE_total,""],[rowF_total,""],[rowG_total,""],[rowH_total,""]
+
+                ]
 
                 
                 data = [
@@ -2823,7 +2938,8 @@ class TestCrossSectionalVisualization(APIView):
                     final_total_need_sdf,
                     final_total_need_extraction,
                     final_total_need_fv,
-                    final_total_need_dentist_or_hygienist
+                    final_total_need_dentist_or_hygienist,
+                    row_total
                     ]
                 
                 return Response(data)

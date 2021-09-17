@@ -59,7 +59,7 @@ class VisualizationSetting(APIView):
 
     def get(self, request, format=None):
         if User.objects.get(id=request.user.id):
-            district = ["Kids", "Teen", "Adult", "Old Adult"]
+            district = ["Child", "Teen", "Adult", "Old Adult"]
             kid_exo = Visualization.objects.filter(active=True,
                 age__lt=12, created_at__range=[last_30_days_obj, today_date_obj]
             ).aggregate(Sum("exo"))["exo__sum"]
@@ -245,7 +245,7 @@ class VisualizationSetting(APIView):
                     },
                 },
             }
-            return JsonResponse({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
         return Response({"message": "only admin can create"}, status=400)
 
 

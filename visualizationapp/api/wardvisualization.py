@@ -842,12 +842,7 @@ class WardTableVisualization2(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
 
     def get(self, request, format=None):
-        if (
-            CustomUser.objects.select_related("role")
-            .filter(id=request.user.id, role__name="warduser")
-            .exists()
-        ):
-
+        if (CustomUser.objects.select_related("role").filter(id=request.user.id, role__name="warduser").exists()):
             total_male = []
             total_exo_male = []
             total_art_male = []
@@ -877,6 +872,16 @@ class WardTableVisualization2(APIView):
             total_fm_sdf_child = []
             total_ref_hp_child = []
             total_ref_other_child = []
+
+            total_teen = []
+            total_exo_teen = []
+            total_art_teen = []
+            total_seal_teen = []
+            total_sdf_teen = []
+            total_fv_teen = []
+            total_fm_sdf_teen = []
+            total_ref_hp_teen = []
+            total_ref_other_teen = []
 
             total_adult = []
             total_exo_adult = []
@@ -920,11 +925,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_female.append(female)
                 children = Visualization.objects.filter(active=True,
-                    age__lt=18,geography_id=i.id
+                    age__lt=13,geography_id=i.id
                 ).count()
                 total_children.append(children)
+                teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18),geography_id=i.id
+                ).count()
+                total_teen.append(teen)
                 adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60),geography_id=i.id
+                    age__range=(19, 60),geography_id=i.id
                 ).count()
                 total_adult.append(adult)
                 older_adult = Visualization.objects.filter(active=True,
@@ -947,11 +956,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_sdf_female.append(sdf_female)
                 sdf_child = Visualization.objects.filter(active=True,
-                    geography_id=i.id, sdf=True, age__lt=18
+                    geography_id=i.id, sdf=True, age__lt=13
                 ).count()
                 total_sdf_child.append(sdf_child)
+                sdf_teen = Visualization.objects.filter(active=True,
+                    geography_id=i.id, sdf=True, age__range=(13, 18)
+                ).count()
+                total_sdf_teen.append(sdf_teen)
                 sdf_adult = Visualization.objects.filter(active=True,
-                    geography_id=i.id, sdf=True, age__range=(18, 60)
+                    geography_id=i.id, sdf=True, age__range=(19, 60)
                 ).count()
                 total_sdf_adult.append(sdf_adult)
                 sdf_old = Visualization.objects.filter(active=True,
@@ -972,11 +985,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_seal_female.append(seal_female)
                 seal_child = Visualization.objects.filter(active=True,
-                    geography_id=i.id, seal=True, age__lt=18
+                    geography_id=i.id, seal=True, age__lt=13
                 ).count()
                 total_seal_child.append(seal_child)
+                seal_teen = Visualization.objects.filter(active=True,
+                    geography_id=i.id, seal=True, age__range=(13, 18)
+                ).count()
+                total_seal_teen.append(seal_teen)
                 seal_adult = Visualization.objects.filter(active=True,
-                    geography_id=i.id, seal=True, age__range=(18, 60)
+                    geography_id=i.id, seal=True, age__range=(19, 60)
                 ).count()
                 total_seal_adult.append(seal_adult)
                 seal_old = Visualization.objects.filter(active=True,
@@ -997,11 +1014,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_art_female.append(art_female)
                 art_child = Visualization.objects.filter(active=True,
-                    geography_id=i.id, art=True, age__lt=18
+                    geography_id=i.id, art=True, age__lt=13
                 ).count()
                 total_art_child.append(art_child)
+                art_teen = Visualization.objects.filter(active=True,
+                    geography_id=i.id, art=True, age__range=(13, 18)
+                ).count()
+                total_art_teen.append(art_teen)
                 art_adult = Visualization.objects.filter(active=True,
-                    geography_id=i.id, art=True, age__range=(18, 60)
+                    geography_id=i.id, art=True, age__range=(19, 60)
                 ).count()
                 total_art_adult.append(art_adult)
                 art_old = Visualization.objects.filter(active=True,
@@ -1022,11 +1043,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_exo_female.append(exo_female)
                 exo_child = Visualization.objects.filter(active=True,
-                    geography_id=i.id, exo=True, age__lt=18
+                    geography_id=i.id, exo=True, age__lt=13
                 ).count()
                 total_exo_child.append(exo_child)
+                exo_teen = Visualization.objects.filter(active=True,
+                    geography_id=i.id, exo=True, age__range=(13, 18)
+                ).count()
+                total_exo_teen.append(exo_teen)
                 exo_adult = Visualization.objects.filter(active=True,
-                    geography_id=i.id, exo=True, age__range=(18, 60)
+                    geography_id=i.id, exo=True, age__range=(19, 60)
                 ).count()
                 total_exo_adult.append(exo_adult)
                 exo_old = Visualization.objects.filter(active=True,
@@ -1047,11 +1072,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_fv_female.append(fv_female)
                 fv_child = Visualization.objects.filter(active=True,
-                    age__lt=18, fv=True, geography_id=i.id
+                    age__lt=13, fv=True, geography_id=i.id
                 ).count()
                 total_fv_child.append(fv_child)
+                fv_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), fv=True, geography_id=i.id
+                ).count()
+                total_fv_teen.append(fv_teen)
                 fv_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), fv=True, geography_id=i.id
+                    age__range=(19, 60), fv=True, geography_id=i.id
                 ).count()
                 total_fv_adult.append(fv_adult)
                 fv_old = Visualization.objects.filter(active=True,
@@ -1072,11 +1101,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_fm_sdf_female.append(fm_sdf_female)
                 fm_sdf_child = Visualization.objects.filter(active=True,
-                    age__lt=18, sdf_whole_mouth=True, geography_id=i.id
+                    age__lt=13, sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_child.append(fm_sdf_child)
+                fm_sdf_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 60), sdf_whole_mouth=True, geography_id=i.id
+                ).count()
+                total_fm_sdf_teen.append(fm_sdf_teen)
                 fm_sdf_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id
+                    age__range=(19, 60), sdf_whole_mouth=True, geography_id=i.id
                 ).count()
                 total_fm_sdf_adult.append(fm_sdf_adult)
                 fm_sdf_old = Visualization.objects.filter(active=True,
@@ -1097,11 +1130,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_ref_hp_female.append(ref_hp_female)
                 ref_hp_child = Visualization.objects.filter(active=True,
-                    age__lt=18, refer_hp=True, geography_id=i.id
+                    age__lt=13, refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_child.append(ref_hp_child)
+                ref_hp_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), refer_hp=True, geography_id=i.id
+                ).count()
+                total_ref_hp_teen.append(ref_hp_teen)
                 ref_hp_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), refer_hp=True, geography_id=i.id
+                    age__range=(19, 60), refer_hp=True, geography_id=i.id
                 ).count()
                 total_ref_hp_adult.append(ref_hp_adult)
                 ref_hp_old = Visualization.objects.filter(active=True,
@@ -1123,11 +1160,15 @@ class WardTableVisualization2(APIView):
                 ).count()
                 total_ref_other_female.append(ref_other_female)
                 ref_other_child = Visualization.objects.filter(active=True,
-                    age__lt=18, refer_other=True, geography_id=i.id
+                    age__lt=13, refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_child.append(ref_other_child)
+                ref_other_teen = Visualization.objects.filter(active=True,
+                    age__range=(13, 18), refer_other=True, geography_id=i.id
+                ).count()
+                total_ref_other_teen.append(ref_other_teen)
                 ref_other_adult = Visualization.objects.filter(active=True,
-                    age__range=(18, 60), refer_other=True, geography_id=i.id
+                    age__range=(19, 60), refer_other=True, geography_id=i.id
                 ).count()
                 total_ref_other_adult.append(ref_other_adult)
                 ref_other_old = Visualization.objects.filter(active=True,
@@ -1151,6 +1192,108 @@ class WardTableVisualization2(APIView):
                         "Ref_HP":sum(total_ref_hp),
                         "Ref_Other":sum(total_ref_other)
                     },
+                    
+                    {   
+                        "isActive": "true",
+                        "type":"Child ≤ 12Y",
+                        "Check":sum(total_children),
+                        "EXO":sum(total_exo_child),
+                        "ART":sum(total_art_child),
+                        "SEAL":sum(total_seal_child),
+                        "SDF":sum(total_sdf_child),
+                        "FM-SDF":sum(total_fm_sdf_child),
+                        "FV":sum(total_fv_child),
+                        "Ref_HP":sum(total_ref_hp_child),
+                        "Ref_Other":sum(total_ref_other_child),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        },
+                    },
+
+                    {   
+                        "isActive": "true",
+                        "type":"Teen 13-18 Y",
+                        "Check":sum(total_teen),
+                        "EXO":sum(total_exo_teen),
+                        "ART":sum(total_art_teen),
+                        "SEAL":sum(total_seal_teen),
+                        "SDF":sum(total_sdf_teen),
+                        "FM-SDF":sum(total_fm_sdf_teen),
+                        "FV":sum(total_fv_teen),
+                        "Ref_HP":sum(total_ref_hp_teen),
+                        "Ref_Other":sum(total_ref_other_teen),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                        
+                    },
+                    
+                    {   
+                        "isActive": "true",
+                        "type":"Adult 19 - 60 Y",
+                        "Check":sum(total_adult),
+                        "EXO":sum(total_exo_adult),
+                        "ART":sum(total_art_adult),
+                        "SEAL":sum(total_seal_adult),
+                        "SDF":sum(total_sdf_adult),
+                        "FM-SDF":sum(total_fm_sdf_adult),
+                        "FV":sum(total_fv_adult),
+                        "Ref_HP":sum(total_ref_hp_adult),
+                        "Ref_Other":sum(total_ref_other_adult),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                        
+                    },
+                    {   
+                        "isActive": "true",
+                        "type":"Older Adult ≥ 61 Y",
+                        "Check":sum(total_older_adult),
+                        "EXO":sum(total_exo_old),
+                        "ART":sum(total_art_old),
+                        "SEAL":sum(total_seal_old),
+                        "SDF":sum(total_sdf_old),
+                        "FM-SDF":sum(total_fm_sdf_old),
+                        "FV":sum(total_fv_old),
+                        "Ref_HP":sum(total_ref_hp_old),
+                        "Ref_Other":sum(total_ref_other_old),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                    },
+
                     {
                         "isActive": "true",
                         "type":"Male",
@@ -1197,79 +1340,6 @@ class WardTableVisualization2(APIView):
                                 "FV": "info",
                                 "Ref_HP": "info",
                                 "Ref_Other": "info",
-                        }
-                    },
-                    {   
-                        "isActive": "true",
-                        "type":"Children(<18)",
-                        "Check":sum(total_children),
-                        "EXO":sum(total_exo_child),
-                        "ART":sum(total_art_child),
-                        "SEAL":sum(total_seal_child),
-                        "SDF":sum(total_sdf_child),
-                        "FM-SDF":sum(total_fm_sdf_child),
-                        "FV":sum(total_fv_child),
-                        "Ref_HP":sum(total_ref_hp_child),
-                        "Ref_Other":sum(total_ref_other_child),
-                        "_cellVariants": {
-                            "Check": "success",
-                            "EXO": "success",
-                            "ART": "success",
-                            "SEAL": "success",
-                            "SDF": "success",
-                            "FM-SDF": "success",
-                            "FV": "success",
-                            "Ref_HP": "success",
-                            "Ref_Other": "success",
-                        },
-                    },
-                    {   
-                        "isActive": "true",
-                        "type":"Adults(19-60)",
-                        "Check":sum(total_adult),
-                        "EXO":sum(total_exo_adult),
-                        "ART":sum(total_art_adult),
-                        "SEAL":sum(total_seal_adult),
-                        "SDF":sum(total_sdf_adult),
-                        "FM-SDF":sum(total_fm_sdf_adult),
-                        "FV":sum(total_fv_adult),
-                        "Ref_HP":sum(total_ref_hp_adult),
-                        "Ref_Other":sum(total_ref_other_adult),
-                        "_cellVariants": {
-                            "Check": "success",
-                            "EXO": "success",
-                            "ART": "success",
-                            "SEAL": "success",
-                            "SDF": "success",
-                            "FM-SDF": "success",
-                            "FV": "success",
-                            "Ref_HP": "success",
-                            "Ref_Other": "success",
-                        }
-                        
-                    },
-                    {   
-                        "isActive": "true",
-                        "type":"Older Adults(>60)",
-                        "Check":sum(total_older_adult),
-                        "EXO":sum(total_exo_old),
-                        "ART":sum(total_art_old),
-                        "SEAL":sum(total_seal_old),
-                        "SDF":sum(total_sdf_old),
-                        "FM-SDF":sum(total_fm_sdf_old),
-                        "FV":sum(total_fv_old),
-                        "Ref_HP":sum(total_ref_hp_old),
-                        "Ref_Other":sum(total_ref_other_old),
-                        "_cellVariants": {
-                            "Check": "success",
-                            "EXO": "success",
-                            "ART": "success",
-                            "SEAL": "success",
-                            "SDF": "success",
-                            "FM-SDF": "success",
-                            "FV": "success",
-                            "Ref_HP": "success",
-                            "Ref_Other": "success",
                         }
                     }
                 ]
@@ -1325,6 +1395,16 @@ class WardTableVisualization2(APIView):
                     total_ref_hp_child = []
                     total_ref_other_child = []
 
+                    total_teen = []
+                    total_exo_teen = []
+                    total_art_teen = []
+                    total_seal_teen = []
+                    total_sdf_teen = []
+                    total_fv_teen = []
+                    total_fm_sdf_teen = []
+                    total_ref_hp_teen = []
+                    total_ref_other_teen = []
+
                     total_adult = []
                     total_exo_adult = []
                     total_art_adult = []
@@ -1370,13 +1450,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_female.append(female)
                             children = Visualization.objects.filter(active=True,
-                                age__lt=18,geography_id=i.id,
+                                age__lt=13,geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_children.append(children)
+                            teen = Visualization.objects.filter(active=True,
+                                age__range=(13, 18),geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_teen.append(teen)
                             adult = Visualization.objects.filter(active=True,
-                                age__range=(18, 60),geography_id=i.id,
+                                age__range=(19, 60),geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1409,13 +1495,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_sdf_female.append(sdf_female)
                             sdf_child = Visualization.objects.filter(active=True,
-                                geography_id=i.id, sdf=True, age__lt=18,
+                                geography_id=i.id, sdf=True, age__lt=13,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_sdf_child.append(sdf_child)
+                            sdf_teen = Visualization.objects.filter(active=True,
+                                geography_id=i.id, sdf=True, age__range=(13, 18),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_sdf_teen.append(sdf_teen)
                             sdf_adult = Visualization.objects.filter(active=True,
-                                geography_id=i.id, sdf=True, age__range=(18, 60),
+                                geography_id=i.id, sdf=True, age__range=(19, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1446,13 +1538,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_seal_female.append(seal_female)
                             seal_child = Visualization.objects.filter(active=True,
-                                geography_id=i.id, seal=True, age__lt=18,
+                                geography_id=i.id, seal=True, age__lt=13,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_seal_child.append(seal_child)
+                            seal_teen = Visualization.objects.filter(active=True,
+                                geography_id=i.id, seal=True, age__range=(13, 18),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_seal_teen.append(seal_teen)
                             seal_adult = Visualization.objects.filter(active=True,
-                                geography_id=i.id, seal=True, age__range=(18, 60),
+                                geography_id=i.id, seal=True, age__range=(19, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1483,13 +1581,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_art_female.append(art_female)
                             art_child = Visualization.objects.filter(active=True,
-                                geography_id=i.id, art=True, age__lt=18,
+                                geography_id=i.id, art=True, age__lt=13,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_art_child.append(art_child)
+                            art_teen = Visualization.objects.filter(active=True,
+                                geography_id=i.id, art=True, age__range=(13, 18),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_art_teen.append(art_teen)
                             art_adult = Visualization.objects.filter(active=True,
-                                geography_id=i.id, art=True, age__range=(18, 60),
+                                geography_id=i.id, art=True, age__range=(19, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1518,13 +1622,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_exo_female.append(exo_female)
                             exo_child = Visualization.objects.filter(active=True,
-                                geography_id=i.id, exo=True, age__lt=18,
+                                geography_id=i.id, exo=True, age__lt=13,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_exo_child.append(exo_child)
+                            exo_teen = Visualization.objects.filter(active=True,
+                                geography_id=i.id, exo=True, age__range=(13, 18),
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_exo_teen.append(exo_teen)
                             exo_adult = Visualization.objects.filter(active=True,
-                                geography_id=i.id, exo=True, age__range=(18, 60),
+                                geography_id=i.id, exo=True, age__range=(19, 60),
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1555,13 +1665,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_fv_female.append(fv_female)
                             fv_child = Visualization.objects.filter(active=True,
-                                age__lt=18, fv=True, geography_id=i.id,
+                                age__lt=13, fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fv_child.append(fv_child)
+                            fv_teen = Visualization.objects.filter(active=True,
+                                age__range=(13, 18), fv=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fv_teen.append(fv_teen)
                             fv_adult = Visualization.objects.filter(active=True,
-                                age__range=(18, 60), fv=True, geography_id=i.id,
+                                age__range=(19, 60), fv=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1592,13 +1708,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_fm_sdf_female.append(fm_sdf_female)
                             fm_sdf_child = Visualization.objects.filter(active=True,
-                                age__lt=18, sdf_whole_mouth=True, geography_id=i.id,
+                                age__lt=13, sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_fm_sdf_child.append(fm_sdf_child)
+                            fm_sdf_teen = Visualization.objects.filter(active=True,
+                                age__range=(13, 18), sdf_whole_mouth=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_fm_sdf_teen.append(fm_sdf_teen)
                             fm_sdf_adult = Visualization.objects.filter(active=True,
-                                age__range=(18, 60), sdf_whole_mouth=True, geography_id=i.id,
+                                age__range=(19, 60), sdf_whole_mouth=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1629,13 +1751,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_ref_hp_female.append(ref_hp_female)
                             ref_hp_child = Visualization.objects.filter(active=True,
-                                age__lt=18, refer_hp=True, geography_id=i.id,
+                                age__lt=13, refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_hp_child.append(ref_hp_child)
+                            ref_hp_teen = Visualization.objects.filter(active=True,
+                                age__range=(13, 18), refer_hp=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_hp_teen.append(ref_hp_teen)
                             ref_hp_adult = Visualization.objects.filter(active=True,
-                                age__range=(18, 60), refer_hp=True, geography_id=i.id,
+                                age__range=(19, 60), refer_hp=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1667,13 +1795,19 @@ class WardTableVisualization2(APIView):
                             ).count()
                             total_ref_other_female.append(ref_other_female)
                             ref_other_child = Visualization.objects.filter(active=True,
-                                age__lt=18, refer_other=True, geography_id=i.id,
+                                age__lt=13, refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
                             total_ref_other_child.append(ref_other_child)
+                            ref_other_teen = Visualization.objects.filter(active=True,
+                                age__range=(13, 18), refer_other=True, geography_id=i.id,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
+                            ).count()
+                            total_ref_other_teen.append(ref_other_teen)
                             ref_other_adult = Visualization.objects.filter(active=True,
-                                age__range=(18, 60), refer_other=True, geography_id=i.id,
+                                age__range=(19, 60), refer_other=True, geography_id=i.id,
                                 activities_id=activities.id,
                                 created_at__range=[start_date, end_date]
                             ).count()
@@ -1686,144 +1820,172 @@ class WardTableVisualization2(APIView):
                             total_ref_other_old.append(ref_other_old)
 
                         return Response(
-                            [
-                                {   
-                                    "isActive": "true",
-                                    "type":"Total",
-                                    "Check":sum(total_encounter),
-                                    "EXO":sum(total_exo),
-                                    "ART":sum(total_art),
-                                    "SEAL":sum(total_seal),
-                                    "SDF":sum(total_sdf),
-                                    "FM-SDF":sum(total_fm_sdf),
-                                    "FV":sum(total_fv),
-                                    "Ref_HP":sum(total_ref_hp),
-                                    "Ref_Other":sum(total_ref_other)
-                                },
-                                {
-                                    "isActive": "true",
-                                    "type":"Male",
-                                    "Check":sum(total_male),
-                                    "EXO":sum(total_exo_male),
-                                    "ART":sum(total_art_male),
-                                    "SEAL":sum(total_seal_male),
-                                    "SDF":sum(total_sdf_male),
-                                    "FM-SDF":sum(total_fm_sdf_male),
-                                    "FV":sum(total_fv_male),
-                                    "Ref_HP":sum(total_ref_hp_male),
-                                    "Ref_Other":sum(total_ref_other_male),
-                                    "_cellVariants": {
-                                            "Check": "info",
-                                            "EXO": "info",
-                                            "ART": "info",
-                                            "SEAL": "info",
-                                            "SDF": "info",
-                                            "FM-SDF": "info",
-                                            "FV": "info",
-                                            "Ref_HP": "info",
-                                            "Ref_Other": "info",
-                                        }
-                                },
-                                {   
-                                    "isActive": "true",
-                                    "type":"Female",
-                                    "Check":sum(total_female),
-                                    "EXO":sum(total_exo_female),
-                                    "ART":sum(total_art_female),
-                                    "SEAL":sum(total_seal_female),
-                                    "SDF":sum(total_sdf_female),
-                                    "FM-SDF":sum(total_fm_sdf_female),
-                                    "FV":sum(total_fv_female),
-                                    "Ref_HP":sum(total_ref_hp_female),
-                                    "Ref_Other":sum(total_ref_other_female),
-                                    "_cellVariants": {
-                                            "Check": "info",
-                                            "EXO": "info",
-                                            "ART": "info",
-                                            "SEAL": "info",
-                                            "SDF": "info",
-                                            "FM-SDF": "info",
-                                            "FV": "info",
-                                            "Ref_HP": "info",
-                                            "Ref_Other": "info",
-                                    }
-                                },
-                                {   
-                                    "isActive": "true",
-                                    "type":"Children(<18)",
-                                    "Check":sum(total_children),
-                                    "EXO":sum(total_exo_child),
-                                    "ART":sum(total_art_child),
-                                    "SEAL":sum(total_seal_child),
-                                    "SDF":sum(total_sdf_child),
-                                    "FM-SDF":sum(total_fm_sdf_child),
-                                    "FV":sum(total_fv_child),
-                                    "Ref_HP":sum(total_ref_hp_child),
-                                    "Ref_Other":sum(total_ref_other_child),
-                                    "_cellVariants": {
-                                        "Check": "success",
-                                        "EXO": "success",
-                                        "ART": "success",
-                                        "SEAL": "success",
-                                        "SDF": "success",
-                                        "FM-SDF": "success",
-                                        "FV": "success",
-                                        "Ref_HP": "success",
-                                        "Ref_Other": "success",
-                                    },
-                                },
-                                {   
-                                    "isActive": "true",
-                                    "type":"Adults(19-60)",
-                                    "Check":sum(total_adult),
-                                    "EXO":sum(total_exo_adult),
-                                    "ART":sum(total_art_adult),
-                                    "SEAL":sum(total_seal_adult),
-                                    "SDF":sum(total_sdf_adult),
-                                    "FM-SDF":sum(total_fm_sdf_adult),
-                                    "FV":sum(total_fv_adult),
-                                    "Ref_HP":sum(total_ref_hp_adult),
-                                    "Ref_Other":sum(total_ref_other_adult),
-                                    "_cellVariants": {
-                                        "Check": "success",
-                                        "EXO": "success",
-                                        "ART": "success",
-                                        "SEAL": "success",
-                                        "SDF": "success",
-                                        "FM-SDF": "success",
-                                        "FV": "success",
-                                        "Ref_HP": "success",
-                                        "Ref_Other": "success",
-                                    }
-                                    
-                                },
-                                {   
-                                    "isActive": "true",
-                                    "type":"Older Adults(>60)",
-                                    "Check":sum(total_older_adult),
-                                    "EXO":sum(total_exo_old),
-                                    "ART":sum(total_art_old),
-                                    "SEAL":sum(total_seal_old),
-                                    "SDF":sum(total_sdf_old),
-                                    "FM-SDF":sum(total_fm_sdf_old),
-                                    "FV":sum(total_fv_old),
-                                    "Ref_HP":sum(total_ref_hp_old),
-                                    "Ref_Other":sum(total_ref_other_old),
-                                    "_cellVariants": {
-                                        "Check": "success",
-                                        "EXO": "success",
-                                        "ART": "success",
-                                        "SEAL": "success",
-                                        "SDF": "success",
-                                        "FM-SDF": "success",
-                                        "FV": "success",
-                                        "Ref_HP": "success",
-                                        "Ref_Other": "success",
-                                    }
-                                }
+                [
+                    {   
+                        "isActive": "true",
+                        "type":"Total",
+                        "Check":sum(total_encounter),
+                        "EXO":sum(total_exo),
+                        "ART":sum(total_art),
+                        "SEAL":sum(total_seal),
+                        "SDF":sum(total_sdf),
+                        "FM-SDF":sum(total_fm_sdf),
+                        "FV":sum(total_fv),
+                        "Ref_HP":sum(total_ref_hp),
+                        "Ref_Other":sum(total_ref_other)
+                    },
+                    
+                    {   
+                        "isActive": "true",
+                        "type":"Child ≤ 12Y",
+                        "Check":sum(total_children),
+                        "EXO":sum(total_exo_child),
+                        "ART":sum(total_art_child),
+                        "SEAL":sum(total_seal_child),
+                        "SDF":sum(total_sdf_child),
+                        "FM-SDF":sum(total_fm_sdf_child),
+                        "FV":sum(total_fv_child),
+                        "Ref_HP":sum(total_ref_hp_child),
+                        "Ref_Other":sum(total_ref_other_child),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        },
+                    },
 
-                            ]
-                    )
+                    {   
+                        "isActive": "true",
+                        "type":"Teen 13-18 Y",
+                        "Check":sum(total_teen),
+                        "EXO":sum(total_exo_teen),
+                        "ART":sum(total_art_teen),
+                        "SEAL":sum(total_seal_teen),
+                        "SDF":sum(total_sdf_teen),
+                        "FM-SDF":sum(total_fm_sdf_teen),
+                        "FV":sum(total_fv_teen),
+                        "Ref_HP":sum(total_ref_hp_teen),
+                        "Ref_Other":sum(total_ref_other_teen),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                        
+                    },
+                    
+                    {   
+                        "isActive": "true",
+                        "type":"Adult 19 - 60 Y",
+                        "Check":sum(total_adult),
+                        "EXO":sum(total_exo_adult),
+                        "ART":sum(total_art_adult),
+                        "SEAL":sum(total_seal_adult),
+                        "SDF":sum(total_sdf_adult),
+                        "FM-SDF":sum(total_fm_sdf_adult),
+                        "FV":sum(total_fv_adult),
+                        "Ref_HP":sum(total_ref_hp_adult),
+                        "Ref_Other":sum(total_ref_other_adult),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                        
+                    },
+                    {   
+                        "isActive": "true",
+                        "type":"Older Adult ≥ 61 Y",
+                        "Check":sum(total_older_adult),
+                        "EXO":sum(total_exo_old),
+                        "ART":sum(total_art_old),
+                        "SEAL":sum(total_seal_old),
+                        "SDF":sum(total_sdf_old),
+                        "FM-SDF":sum(total_fm_sdf_old),
+                        "FV":sum(total_fv_old),
+                        "Ref_HP":sum(total_ref_hp_old),
+                        "Ref_Other":sum(total_ref_other_old),
+                        "_cellVariants": {
+                            "Check": "success",
+                            "EXO": "success",
+                            "ART": "success",
+                            "SEAL": "success",
+                            "SDF": "success",
+                            "FM-SDF": "success",
+                            "FV": "success",
+                            "Ref_HP": "success",
+                            "Ref_Other": "success",
+                        }
+                    },
+
+                    {
+                        "isActive": "true",
+                        "type":"Male",
+                        "Check":sum(total_male),
+                        "EXO":sum(total_exo_male),
+                        "ART":sum(total_art_male),
+                        "SEAL":sum(total_seal_male),
+                        "SDF":sum(total_sdf_male),
+                        "FM-SDF":sum(total_fm_sdf_male),
+                        "FV":sum(total_fv_male),
+                        "Ref_HP":sum(total_ref_hp_male),
+                        "Ref_Other":sum(total_ref_other_male),
+                        "_cellVariants": {
+                                "Check": "info",
+                                "EXO": "info",
+                                "ART": "info",
+                                "SEAL": "info",
+                                "SDF": "info",
+                                "FM-SDF": "info",
+                                "FV": "info",
+                                "Ref_HP": "info",
+                                "Ref_Other": "info",
+                            }
+                    },
+                    {   
+                        "isActive": "true",
+                        "type":"Female",
+                        "Check":sum(total_female),
+                        "EXO":sum(total_exo_female),
+                        "ART":sum(total_art_female),
+                        "SEAL":sum(total_seal_female),
+                        "SDF":sum(total_sdf_female),
+                        "FM-SDF":sum(total_fm_sdf_female),
+                        "FV":sum(total_fv_female),
+                        "Ref_HP":sum(total_ref_hp_female),
+                        "Ref_Other":sum(total_ref_other_female),
+                        "_cellVariants": {
+                                "Check": "info",
+                                "EXO": "info",
+                                "ART": "info",
+                                "SEAL": "info",
+                                "SDF": "info",
+                                "FM-SDF": "info",
+                                "FV": "info",
+                                "Ref_HP": "info",
+                                "Ref_Other": "info",
+                        }
+                    }
+                ]
+            )
             return Response(
                 {"message": "End date must be greater then Start Date"}, status=400
             )
@@ -2690,7 +2852,7 @@ class WardTreatmentVisualization(APIView):
             .exists()
         ):
             customuser_obj = CustomUser.objects.get(id=request.user.id)
-            district = ["EXO", "ART", "SEAL", "SDF", "FV"]
+            district = ["FV", "SDF", "SEAL", "ART", "EXO"]
             total = []
             male = []
             female = []
@@ -2744,21 +2906,26 @@ class WardTreatmentVisualization(APIView):
                 totalfv_female = Visualization.objects.filter(active=True,
                     geography_id=i.id, fv=True, gender="female"
                 ).count()
-                male.append(total_exo_male)
-                male.append(total_art_male)
-                male.append(total_seal_male)
-                male.append(total_sdf_male)
+
+
                 male.append(totalfv_male)
-                female.append(total_exo_female)
-                female.append(total_art_female)
-                female.append(total_seal_female)
-                female.append(total_sdf_female)
+                male.append(total_sdf_male)
+                male.append(total_seal_male)
+                male.append(total_art_male)
+                male.append(total_exo_male)
+                
                 female.append(totalfv_female)
-                total.append(total_exo)
-                total.append(total_art)
-                total.append(total_seal)
-                total.append(total_sdf)
+                female.append(total_sdf_female)
+                female.append(total_seal_female)
+                female.append(total_art_female)
+                female.append(total_exo_female)
+
                 total.append(total_fv)
+                total.append(total_sdf)
+                total.append(total_seal)
+                total.append(total_art)
+                total.append(total_exo)
+
             locationChart = {
                 "data": {
                     "labels": district,
@@ -2985,21 +3152,24 @@ class WardTreatmentVisualization(APIView):
                                 ).count()
                             )
 
-                        male.append(sum(total_exo_male))
-                        male.append(sum(total_art_male))
-                        male.append(sum(total_seal_male))
-                        male.append(sum(total_sdf_male))
                         male.append(sum(totalfv_male))
-                        female.append(sum(total_exo_female))
-                        female.append(sum(total_art_female))
-                        female.append(sum(total_seal_female))
-                        female.append(sum(total_sdf_female))
+                        male.append(sum(total_sdf_male))
+                        male.append(sum(total_seal_male))
+                        male.append(sum(total_art_male))
+                        male.append(sum(total_exo_male))
+                        
                         female.append(sum(totalfv_female))
-                        total.append(sum(total_exo))
-                        total.append(sum(total_art))
-                        total.append(sum(total_seal))
-                        total.append(sum(total_sdf))
+                        female.append(sum(total_sdf_female))
+                        female.append(sum(total_seal_female))
+                        female.append(sum(total_art_female))
+                        female.append(sum(total_exo_female))
+                        
                         total.append(sum(total_fv))
+                        total.append(sum(total_sdf))
+                        total.append(sum(total_seal))
+                        total.append(sum(total_art))
+                        total.append(sum(total_exo))
+                         
                     locationChart = {
                         "data": {
                             "labels": district,
@@ -3304,24 +3474,42 @@ class WardTreatmentVisualizationFilter(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
+
+# 10.5 Contacts Over Time
 class WardUserlineVisualization(APIView):
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            # label_data = [
+            #     "Baishakh(Apr/May)",
+            #     "Jestha(May/Jun)",
+            #     "Asar(Jun/Jul)",
+            #     "Shrawan(Jul/Aug)",
+            #     "Bhadra(Aug/Sep)",
+            #     "Asoj(Sep/Oct)",
+            #     "Kartik(Oct/Nov)",
+            #     "Mangsir(Nov/Dec)",
+            #     "Poush(Dec/Jan)",
+            #     "Magh(Jan/Feb)",
+            #     "Falgun(Feb/Mar)",
+            #     "Chaitra(Mar/Apr)",
+            # ]
+
             label_data = [
-                "Baishakh(Apr/May)",
-                "Jestha(May/Jun)",
-                "Asar(Jun/Jul)",
-                "Shrawan(Jul/Aug)",
-                "Bhadra(Aug/Sep)",
-                "Asoj(Sep/Oct)",
-                "Kartik(Oct/Nov)",
-                "Mangsir(Nov/Dec)",
-                "Poush(Dec/Jan)",
-                "Magh(Jan/Feb)",
-                "Falgun(Feb/Mar)",
-                "Chaitra(Mar/Apr)",
+                "Q2",
+                "",
+                "",
+                "Q3",
+                "",
+                "",
+                "Q4",
+                "",
+                "",
+                "Q1",
+                "",
+                "",
             ]
+
             next_month = month.index(item) + 1
             month_obj = month[next_month:]
             label_data_obj = label_data[next_month:]
@@ -3416,7 +3604,7 @@ class WardUserlineVisualization(APIView):
                     },
                 },
             }
-            return JsonResponse({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
         return Response({"message": "only admin can see"}, status=400)
 
 # Strategic Data
