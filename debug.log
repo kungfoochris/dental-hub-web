@@ -18131,3 +18131,73 @@ userapp.models.customuser.CustomUser.DoesNotExist: CustomUser matching query doe
 2021-09-16 10:41:26,765 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28300
 2021-09-16 10:45:20,148 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28300
 2021-09-16 10:45:35,211 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 28295
+2021-09-27 09:35:30,128 django.request WARNING  Unauthorized: /api/v1/longitudinalone
+2021-09-27 09:35:30,147 django.server WARNING  "GET /api/v1/longitudinalone HTTP/1.1" 401 9989
+2021-09-27 09:35:30,563 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-09-27 09:35:30,615 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-09-27 09:35:30,617 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-09-27 09:35:30,619 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-09-27 09:35:30,622 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-09-27 09:35:30,649 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-09-27 09:35:30,654 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-09-27 09:35:30,655 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-09-27 09:35:30,695 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-09-27 09:35:30,698 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-09-27 09:35:30,757 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-09-27 09:35:31,111 django.request WARNING  Not Found: /favicon.ico
+2021-09-27 09:35:31,112 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-09-27 09:35:32,967 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/longitudinalone HTTP/1.1" 200 2725
+2021-09-27 09:35:44,413 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-09-27 09:35:44,906 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25295
+2021-09-27 09:35:59,659 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25295
+2021-09-27 10:08:43,308 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25295
+2021-09-27 10:22:25,513 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25295
+2021-09-27 10:54:55,349 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25295
+2021-09-27 10:55:27,817 django.request ERROR    Internal Server Error: /api/v1/longitudinalone
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 1573, in post
+    total_need_sdf.append(need_sdf_pvalue)
+UnboundLocalError: local variable 'need_sdf_pvalue' referenced before assignment
+2021-09-27 10:55:27,823 django.server ERROR    "POST /api/v1/longitudinalone HTTP/1.1" 500 105596
+2021-09-27 10:56:38,164 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25295
+2021-09-27 10:56:44,173 django.request ERROR    Internal Server Error: /api/v1/longitudinalone
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 1704, in post
+    total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
+UnboundLocalError: local variable 'need_dentist_or_hygienist_pvalue' referenced before assignment
+2021-09-27 10:56:44,177 django.server ERROR    "POST /api/v1/longitudinalone HTTP/1.1" 500 107774
+2021-09-27 10:57:15,213 django.server INFO     "POST /api/v1/longitudinalone HTTP/1.1" 200 25292
+2021-09-27 10:57:23,411 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25291
+2021-09-27 10:57:54,923 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 25292

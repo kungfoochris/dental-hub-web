@@ -101,7 +101,6 @@ class SampleFrameOneLongitudinal(APIView):
             total_need_dentist_or_hygienist = []
             
 
-
             carries_risk_low_number = []
             carries_risk_medium_number = []
             carries_risk_high_number = []
@@ -161,7 +160,7 @@ class SampleFrameOneLongitudinal(APIView):
                 total_carries_risk_low.append("large")
             
             if(total_carries_risk_low[0] or total_carries_risk_low[1] !=0):
-                carries_risk_low_pvalue = chisquare([total_carries_risk_low[1],total_carries_risk_low[2]])
+                carries_risk_low_pvalue = chisquare([total_carries_risk_low[0],total_carries_risk_low[1]])
                 total_carries_risk_low.append(round(carries_risk_low_pvalue[1],2))
             else:
                 total_carries_risk_low.append(0)
@@ -204,7 +203,7 @@ class SampleFrameOneLongitudinal(APIView):
                 total_carries_risk_medium.append("large")
             
             if(total_carries_risk_medium[0] or total_carries_risk_medium[1] !=0):
-                carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[1],total_carries_risk_medium[2]])
+                carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[0],total_carries_risk_medium[1]])
                 total_carries_risk_medium.append(round(carries_risk_medium_pvalue[1],2))
             else:
                 total_carries_risk_medium.append(0)
@@ -247,7 +246,7 @@ class SampleFrameOneLongitudinal(APIView):
                 total_carries_risk_high.append("large")
             
             if(total_carries_risk_high[0] or total_carries_risk_high[1] !=0):
-                carries_risk_high_pvalue = chisquare([total_carries_risk_high[1],total_carries_risk_high[2]])
+                carries_risk_high_pvalue = chisquare([total_carries_risk_high[0],total_carries_risk_high[1]])
                 total_carries_risk_high.append(round(carries_risk_high_pvalue[1],2))
             else:
                 total_carries_risk_high.append(0)
@@ -291,7 +290,7 @@ class SampleFrameOneLongitudinal(APIView):
                 total_untreated_caries_present.append("large")
             
             if(total_untreated_caries_present[0] or total_untreated_caries_present[1] !=0):
-                untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[1],total_untreated_caries_present[2]])
+                untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[0],total_untreated_caries_present[1]])
                 total_untreated_caries_present.append(round(untreated_caries_present_pvalue[1],2))
             else:
                 total_untreated_caries_present.append(0)
@@ -519,10 +518,12 @@ class SampleFrameOneLongitudinal(APIView):
                 total_active_infection.append("large")
             
             if(total_active_infection[0] or total_active_infection[1] != 0):
-                active_infection_pvalue = round(chisquare([total_active_infection[0],total_active_infection[1]])[0],2)
+                active_infection_pvalue = chisquare([total_active_infection[0],total_active_infection[1]])
+                total_active_infection.append(round(active_infection_pvalue[1],2))
             else:
-                active_infection_pvalue = 0
-            total_active_infection.append(active_infection_pvalue)
+                total_active_infection.append(0)
+
+            
             
             # Mouth pain due to reversible pulpitis
             frame1_reversible_pulpitis = []
@@ -560,10 +561,10 @@ class SampleFrameOneLongitudinal(APIView):
                 total_reversible_pulpitis.append("large")
             
             if(total_reversible_pulpitis[0] or total_reversible_pulpitis[1] != 0):
-                reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])[0],2)
+                reversible_pulpitis_pvalue = chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])
+                total_reversible_pulpitis.append(round(active_infection_pvalue[1],2))
             else:
-                reversible_pulpitis_pvalue = 0
-            total_reversible_pulpitis.append(reversible_pulpitis_pvalue)
+                total_reversible_pulpitis.append(0)
 
 
             # Need ART filling
@@ -602,10 +603,10 @@ class SampleFrameOneLongitudinal(APIView):
                 total_need_art_filling.append("large")
 
             if(total_need_art_filling[0] or total_need_art_filling[1] != 0):
-                need_art_filling_pvalue = round(chisquare([total_need_art_filling[0],total_need_art_filling[1]])[0],2)
+                need_art_filling_pvalue = chisquare([total_need_art_filling[0],total_need_art_filling[1]])
+                total_need_art_filling.append(round(need_art_filling_pvalue[1],2))
             else:
-                need_art_filling_pvalue = 0
-            total_need_art_filling.append(need_art_filling_pvalue)
+                total_need_art_filling.append(0)
 
 
             # Need SDF
@@ -645,10 +646,10 @@ class SampleFrameOneLongitudinal(APIView):
                 total_need_sdf.append("large")
 
             if(total_need_sdf[0] or total_need_sdf[1] != 0):
-                need_sdf_pvalue = round(chisquare([total_need_sdf[0],total_need_sdf[1]])[0],2)
+                need_sdf_pvalue = chisquare([total_need_sdf[0],total_need_sdf[1]])
+                total_need_sdf.append(round(need_sdf_pvalue[1],2))
             else:
-                need_sdf_pvalue = 0
-            total_need_sdf.append(need_sdf_pvalue)
+                total_need_sdf.append(0)
 
             
             # Need Extraction
@@ -688,10 +689,10 @@ class SampleFrameOneLongitudinal(APIView):
                 total_need_extraction.append("large")
 
             if(total_need_extraction[0] or total_need_extraction[1] != 0):
-                need_extraction_pvalue = round(chisquare([total_need_extraction[0],total_need_extraction[1]])[0],2)
+                need_extraction_pvalue = chisquare([total_need_extraction[0],total_need_extraction[1]])
+                total_need_extraction.append(round(need_extraction_pvalue[1],2))
             else:
-                need_extraction_pvalue = 0
-            total_need_extraction.append(need_extraction_pvalue)
+                total_need_extraction.append(0)
 
 
             # Need fv
@@ -730,10 +731,10 @@ class SampleFrameOneLongitudinal(APIView):
                 total_need_fv.append("large")
 
             if(total_need_fv[0] or total_need_fv[1] != 0):
-                need_fv_pvalue = round(chisquare([total_need_fv[0],total_need_fv[1]])[0],2)
+                need_fv_pvalue = chisquare([total_need_fv[0],total_need_fv[1]])
+                total_need_fv.append(round(need_fv_pvalue[1],2))
             else:
-                need_fv_pvalue = 0
-            total_need_fv.append(need_fv_pvalue)
+                total_need_fv.append(0)
 
 
             # Need dentist or hygienist
@@ -773,10 +774,10 @@ class SampleFrameOneLongitudinal(APIView):
                 total_need_dentist_or_hygienist.append("large")
 
             if(total_need_dentist_or_hygienist[0] or total_need_dentist_or_hygienist[1] != 0):
-                need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])[0],2)
+                need_dentist_or_hygienist_pvalue = chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])
+                total_need_dentist_or_hygienist.append(round(need_dentist_or_hygienist_pvalue[1],2))
             else:
-                need_dentist_or_hygienist_pvalue = 0
-            total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
+                total_need_dentist_or_hygienist.append(0)
 
             final_total_carries_risk_low = [
                 ['<span class="ml-4">Low</span>',""] ,
@@ -1071,7 +1072,7 @@ class SampleFrameOneLongitudinal(APIView):
                     total_carries_risk_low.append("large")
                 
                 if(total_carries_risk_low[0] or total_carries_risk_low[1] !=0):
-                    carries_risk_low_pvalue = chisquare([total_carries_risk_low[1],total_carries_risk_low[2]])
+                    carries_risk_low_pvalue = chisquare([total_carries_risk_low[0],total_carries_risk_low[1]])
                     total_carries_risk_low.append(round(carries_risk_low_pvalue[1],2))
                 else:
                     total_carries_risk_low.append(0)
@@ -1115,7 +1116,7 @@ class SampleFrameOneLongitudinal(APIView):
                     total_carries_risk_medium.append("large")
                 
                 if(total_carries_risk_medium[0] or total_carries_risk_medium[1] !=0):
-                    carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[1],total_carries_risk_medium[2]])
+                    carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[0],total_carries_risk_medium[1]])
                     total_carries_risk_medium.append(round(carries_risk_medium_pvalue[1],2))
                 else:
                     total_carries_risk_medium.append(0)
@@ -1159,7 +1160,7 @@ class SampleFrameOneLongitudinal(APIView):
                     total_carries_risk_high.append("large")
                 
                 if(total_carries_risk_high[0] or total_carries_risk_high[1] !=0):
-                    carries_risk_high_pvalue = chisquare([total_carries_risk_high[1],total_carries_risk_high[2]])
+                    carries_risk_high_pvalue = chisquare([total_carries_risk_high[0],total_carries_risk_high[1]])
                     total_carries_risk_high.append(round(carries_risk_high_pvalue[1],2))
                 else:
                     total_carries_risk_high.append(0)
@@ -1204,7 +1205,7 @@ class SampleFrameOneLongitudinal(APIView):
                     total_untreated_caries_present.append("large")
                 
                 if(total_untreated_caries_present[0] or total_untreated_caries_present[1] !=0):
-                    untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[1],total_untreated_caries_present[2]])
+                    untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[0],total_untreated_caries_present[1]])
                     total_untreated_caries_present.append(round(untreated_caries_present_pvalue[1],2))
                 else:
                     total_untreated_caries_present.append(0)
@@ -1255,7 +1256,7 @@ class SampleFrameOneLongitudinal(APIView):
                     stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[0]], [total_decayed_primary_teeth[1]])
                     total_decayed_primary_teeth.append(round(decayed_permanent_teeth_pvalue,2))
                 except:
-                    total_decayed_primary_teeth.append(0.0)
+                    total_decayed_primary_teeth.append(0)
 
 
 
@@ -1304,7 +1305,7 @@ class SampleFrameOneLongitudinal(APIView):
                     stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[0]], [total_decayed_permanent_teeth[1]])
                     total_decayed_permanent_teeth.append(round(decayed_permanent_teeth_pvalue,2))
                 except:
-                    total_decayed_permanent_teeth.append(0.0)
+                    total_decayed_permanent_teeth.append(0)
 
                 
                 # Cavity permanent molar or premolar
@@ -1437,10 +1438,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_active_infection.append("large")
                 
                 if(total_active_infection[0] or total_active_infection[1] != 0):
-                    active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
+                    active_infection_pvalue = chisquare([total_active_infection[0],total_active_infection[1]])
+                    total_active_infection.append(round(active_infection_pvalue[1],2))
                 else:
-                    active_infection_pvalue = 0
-                total_active_infection.append(active_infection_pvalue)
+                    total_active_infection.append(0)
                 
                 # Mouth pain due to reversible pulpitis
                 frame1_reversible_pulpitis = []
@@ -1479,10 +1480,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_reversible_pulpitis.append("large")
                 
                 if(total_reversible_pulpitis[0] or total_reversible_pulpitis[1] != 0):
-                    reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])[0],2)
+                    reversible_pulpitis_pvalue = chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])
+                    total_reversible_pulpitis.append(round(reversible_pulpitis_pvalue[1],2))
                 else:
-                    reversible_pulpitis_pvalue = 0
-                total_reversible_pulpitis.append(reversible_pulpitis_pvalue)
+                    total_reversible_pulpitis.append(0)
 
 
                 # Need ART filling
@@ -1522,10 +1523,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_need_art_filling.append("large")
 
                 if(total_need_art_filling[0] or total_need_art_filling[1] != 0):
-                    need_art_filling_pvalue = round(chisquare([total_need_art_filling[0],total_need_art_filling[1]])[0],2)
+                    need_art_filling_pvalue = chisquare([total_need_art_filling[0],total_need_art_filling[1]])
+                    total_need_art_filling.append(round(need_art_filling_pvalue[1],2))
                 else:
-                    need_art_filling_pvalue = 0
-                total_need_art_filling.append(need_art_filling_pvalue)
+                    total_need_art_filling.append(0)
 
 
                 # Need SDF
@@ -1566,10 +1567,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_need_sdf.append("large")
 
                 if(total_need_sdf[0] or total_need_sdf[1] != 0):
-                    need_sdf_pvalue = round(chisquare([total_need_sdf[0],total_need_sdf[1]])[0],2)
+                    need_sdf_pvalue = chisquare([total_need_sdf[0],total_need_sdf[1]])
+                    total_need_sdf.append(round(need_sdf_pvalue[1],2))
                 else:
-                    need_sdf_pvalue = 0
-                total_need_sdf.append(need_sdf_pvalue)
+                    total_need_sdf.append(0)
 
                 
                 # Need Extraction
@@ -1610,10 +1611,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_need_extraction.append("large")
 
                 if(total_need_extraction[0] or total_need_extraction[1] != 0):
-                    need_extraction_pvalue = round(chisquare([total_need_extraction[0],total_need_extraction[1]])[0],2)
+                    need_extraction_pvalue = chisquare([total_need_extraction[0],total_need_extraction[1]])
+                    total_need_extraction.append(round(need_extraction_pvalue[1],2))
                 else:
-                    need_extraction_pvalue = 0
-                total_need_extraction.append(need_extraction_pvalue)
+                    total_need_extraction.append(0)
 
 
                 # Need fv
@@ -1653,10 +1654,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_need_fv.append("large")
 
                 if(total_need_fv[0] or total_need_fv[1] != 0):
-                    need_fv_pvalue = round(chisquare([total_need_fv[0],total_need_fv[1]])[0],2)
+                    need_fv_pvalue = chisquare([total_need_fv[0],total_need_fv[1]])
+                    total_need_fv.append(round(need_fv_pvalue[1],2))
                 else:
-                    need_fv_pvalue = 0
-                total_need_fv.append(need_fv_pvalue)
+                    total_need_fv.append(0)
 
 
                 # Need dentist or hygienist
@@ -1697,10 +1698,10 @@ class SampleFrameOneLongitudinal(APIView):
                     total_need_dentist_or_hygienist.append("large")
 
                 if(total_need_dentist_or_hygienist[0] or total_need_dentist_or_hygienist[1] != 0):
-                    need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])[0],2)
+                    need_dentist_or_hygienist_pvalue = chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])
+                    total_need_dentist_or_hygienist.append(round(need_dentist_or_hygienist_pvalue[1],2))
                 else:
-                    need_dentist_or_hygienist_pvalue = 0
-                total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
+                    total_need_dentist_or_hygienist.append(0)
 
                 final_total_carries_risk_low = [
                     ['<span class="ml-4">Low</span>',""] ,
@@ -1966,7 +1967,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_carries_risk_low.append("large")
             
             if(total_carries_risk_low[0] or total_carries_risk_low[1] !=0):
-                carries_risk_low_pvalue = chisquare([total_carries_risk_low[1],total_carries_risk_low[2]])
+                carries_risk_low_pvalue = chisquare([total_carries_risk_low[0],total_carries_risk_low[1]])
                 total_carries_risk_low.append(round(carries_risk_low_pvalue[1],2))
             else:
                 total_carries_risk_low.append(0)
@@ -2015,7 +2016,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_carries_risk_medium.append("large")
             
             if(total_carries_risk_medium[0] or total_carries_risk_medium[1] !=0):
-                carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[1],total_carries_risk_medium[2]])
+                carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[0],total_carries_risk_medium[1]])
                 total_carries_risk_medium.append(round(carries_risk_medium_pvalue[1],2))
             else:
                 total_carries_risk_medium.append(0)
@@ -2064,7 +2065,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_carries_risk_high.append("large")
             
             if(total_carries_risk_high[0] or total_carries_risk_high[1] !=0):
-                carries_risk_high_pvalue = chisquare([total_carries_risk_high[1],total_carries_risk_high[2]])
+                carries_risk_high_pvalue = chisquare([total_carries_risk_high[0],total_carries_risk_high[1]])
                 total_carries_risk_high.append(round(carries_risk_high_pvalue[1],2))
             else:
                 total_carries_risk_high.append(0)
@@ -2114,7 +2115,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_untreated_caries_present.append("large")
             
             if(total_untreated_caries_present[0] or total_untreated_caries_present[1] !=0):
-                untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[1],total_untreated_caries_present[2]])
+                untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[0],total_untreated_caries_present[1]])
                 total_untreated_caries_present.append(round(untreated_caries_present_pvalue[1],2))
             else:
                 total_untreated_caries_present.append(0)
@@ -2164,7 +2165,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[0]], [total_decayed_primary_teeth[1]])
                 total_decayed_primary_teeth.append(round(decayed_permanent_teeth_pvalue,2))
             except:
-                total_decayed_primary_teeth.append(0.0)
+                total_decayed_primary_teeth.append(0)
 
 
 
@@ -2212,7 +2213,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[0]], [total_decayed_permanent_teeth[1]])
                 total_decayed_permanent_teeth.append(round(decayed_permanent_teeth_pvalue,2))
             except:
-                total_decayed_permanent_teeth.append(0.0)
+                total_decayed_permanent_teeth.append(0)
 
             
             # Cavity permanent molar or premolar
@@ -2360,10 +2361,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_active_infection.append("large")
             
             if(total_active_infection[0] or total_active_infection[1] != 0):
-                active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
+                active_infection_pvalue = chisquare([total_active_infection[0],total_active_infection[1]])
+                total_active_infection.append(round(active_infection_pvalue[1],2))
             else:
-                active_infection_pvalue = 0
-            total_active_infection.append(active_infection_pvalue)
+                total_active_infection.append(0)
             
             # Mouth pain due to reversible pulpitis
             frame1_reversible_pulpitis = []
@@ -2407,10 +2408,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_reversible_pulpitis.append("large")
             
             if(total_reversible_pulpitis[0] or total_reversible_pulpitis[1] != 0):
-                reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])[0],2)
+                reversible_pulpitis_pvalue = chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])
+                total_reversible_pulpitis.append(round(active_infection_pvalue[1],2))
             else:
-                reversible_pulpitis_pvalue = 0
-            total_reversible_pulpitis.append(reversible_pulpitis_pvalue)
+                total_reversible_pulpitis.append(0)
 
 
             # Need ART filling
@@ -2455,10 +2456,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_need_art_filling.append("large")
 
             if(total_need_art_filling[0] or total_need_art_filling[1] != 0):
-                need_art_filling_pvalue = round(chisquare([total_need_art_filling[0],total_need_art_filling[1]])[0],2)
+                need_art_filling_pvalue = chisquare([total_need_art_filling[0],total_need_art_filling[1]])
+                total_need_art_filling.append(round(need_art_filling_pvalue[1],2))
             else:
-                need_art_filling_pvalue = 0
-            total_need_art_filling.append(need_art_filling_pvalue)
+                total_need_art_filling.append(0)
 
 
             # Need SDF
@@ -2504,10 +2505,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_need_sdf.append("large")
 
             if(total_need_sdf[0] or total_need_sdf[1] != 0):
-                need_sdf_pvalue = round(chisquare([total_need_sdf[0],total_need_sdf[1]])[0],2)
+                need_sdf_pvalue = chisquare([total_need_sdf[0],total_need_sdf[1]])
+                total_need_sdf.append(round(need_sdf_pvalue[1],2))
             else:
-                need_sdf_pvalue = 0
-            total_need_sdf.append(need_sdf_pvalue)
+                total_need_sdf.append(0)
 
             
             # Need Extraction
@@ -2553,10 +2554,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_need_extraction.append("large")
 
             if(total_need_extraction[0] or total_need_extraction[1] != 0):
-                need_extraction_pvalue = round(chisquare([total_need_extraction[0],total_need_extraction[1]])[0],2)
+                need_extraction_pvalue = chisquare([total_need_extraction[0],total_need_extraction[1]])
+                total_need_extraction.append(round(need_extraction_pvalue[1],2))
             else:
-                need_extraction_pvalue = 0
-            total_need_extraction.append(need_extraction_pvalue)
+                total_need_extraction.append(0)
 
 
             # Need fv
@@ -2601,10 +2602,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_need_fv.append("large")
 
             if(total_need_fv[0] or total_need_fv[1] != 0):
-                need_fv_pvalue = round(chisquare([total_need_fv[0],total_need_fv[1]])[0],2)
+                need_fv_pvalue = chisquare([total_need_fv[0],total_need_fv[1]])
+                total_need_fv.append(round(need_fv_pvalue[1],2))
             else:
-                need_fv_pvalue = 0
-            total_need_fv.append(need_fv_pvalue)
+                total_need_fv.append(0)
 
 
             # Need dentist or hygienist
@@ -2650,10 +2651,10 @@ class SampleFrameTwoLongitudinal(APIView):
                 total_need_dentist_or_hygienist.append("large")
 
             if(total_need_dentist_or_hygienist[0] or total_need_dentist_or_hygienist[1] != 0):
-                need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])[0],2)
+                need_dentist_or_hygienist_pvalue = chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])
+                total_need_dentist_or_hygienist.append(round(need_dentist_or_hygienist_pvalue[1],2))
             else:
-                need_dentist_or_hygienist_pvalue = 0
-            total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
+                total_need_dentist_or_hygienist.append(0)
 
             final_total_carries_risk_low = [
             ['<span class="ml-4">Low</span>',""] ,
@@ -2699,7 +2700,7 @@ class SampleFrameTwoLongitudinal(APIView):
                 ["Number of decayed primary teeth",""] ,
                 [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
                 [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
-                [total_decayed_primary_teeth[2]],
+                [total_decayed_primary_teeth[2],""],
                 [total_decayed_primary_teeth[3],""],
                 [total_decayed_primary_teeth[4],""],
                 [total_decayed_primary_teeth[5],""],
@@ -2957,7 +2958,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_carries_risk_low.append("large")
                 
                 if(total_carries_risk_low[0] or total_carries_risk_low[1] !=0):
-                    carries_risk_low_pvalue = chisquare([total_carries_risk_low[1],total_carries_risk_low[2]])
+                    carries_risk_low_pvalue = chisquare([total_carries_risk_low[0],total_carries_risk_low[1]])
                     total_carries_risk_low.append(round(carries_risk_low_pvalue[1],2))
                 else:
                     total_carries_risk_low.append(0)
@@ -3007,7 +3008,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_carries_risk_medium.append("large")
                 
                 if(total_carries_risk_medium[0] or total_carries_risk_medium[1] !=0):
-                    carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[1],total_carries_risk_medium[2]])
+                    carries_risk_medium_pvalue = chisquare([total_carries_risk_medium[0],total_carries_risk_medium[1]])
                     total_carries_risk_medium.append(round(carries_risk_medium_pvalue[1],2))
                 else:
                     total_carries_risk_medium.append(0)
@@ -3057,7 +3058,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_carries_risk_high.append("large")
                 
                 if(total_carries_risk_high[0] or total_carries_risk_high[1] !=0):
-                    carries_risk_high_pvalue = chisquare([total_carries_risk_high[1],total_carries_risk_high[2]])
+                    carries_risk_high_pvalue = chisquare([total_carries_risk_high[0],total_carries_risk_high[1]])
                     total_carries_risk_high.append(round(carries_risk_high_pvalue[1],2))
                 else:
                     total_carries_risk_high.append(0)
@@ -3108,7 +3109,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_untreated_caries_present.append("large")
                 
                 if(total_untreated_caries_present[0] or total_untreated_caries_present[1] !=0):
-                    untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[1],total_untreated_caries_present[2]])
+                    untreated_caries_present_pvalue = chisquare([total_untreated_caries_present[0],total_untreated_caries_present[1]])
                     total_untreated_caries_present.append(round(untreated_caries_present_pvalue[1],2))
                 else:
                     total_untreated_caries_present.append(0)
@@ -3159,7 +3160,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_primary_teeth[0]], [total_decayed_primary_teeth[1]])
                     total_decayed_primary_teeth.append(round(decayed_permanent_teeth_pvalue,2))
                 except:
-                    total_decayed_primary_teeth.append(0.0)
+                    total_decayed_primary_teeth.append(0)
 
 
 
@@ -3208,7 +3209,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     stat5, decayed_permanent_teeth_pvalue = kruskal([total_decayed_permanent_teeth[0]], [total_decayed_permanent_teeth[1]])
                     total_decayed_permanent_teeth.append(round(decayed_permanent_teeth_pvalue,2))
                 except:
-                    total_decayed_permanent_teeth.append(0.0)
+                    total_decayed_permanent_teeth.append(0)
 
                 
                 # Cavity permanent molar or premolar
@@ -3359,10 +3360,10 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_active_infection.append("large")
                 
                 if(total_active_infection[0] or total_active_infection[1] != 0):
-                    active_infection_pvalue = round(chisquare([active_infection,active_infection])[0],2)
+                    active_infection_pvalue = chisquare([total_active_infection[0],total_active_infection[1]])
+                    total_active_infection.append(round(active_infection_pvalue[1],2))
                 else:
-                    active_infection_pvalue = 0
-                total_active_infection.append(active_infection_pvalue)
+                    total_active_infection.append(0)
                 
                 # Mouth pain due to reversible pulpitis
                 frame1_reversible_pulpitis = []
@@ -3407,10 +3408,10 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_reversible_pulpitis.append("large")
                 
                 if(total_reversible_pulpitis[0] or total_reversible_pulpitis[1] != 0):
-                    reversible_pulpitis_pvalue = round(chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])[0],2)
+                    reversible_pulpitis_pvalue = chisquare([total_reversible_pulpitis[0],total_reversible_pulpitis[1]])
+                    total_reversible_pulpitis.append(round(reversible_pulpitis_pvalue[1],2))
                 else:
-                    reversible_pulpitis_pvalue = 0
-                total_reversible_pulpitis.append(reversible_pulpitis_pvalue)
+                    total_reversible_pulpitis.append(0)
 
 
                 # Need ART filling
@@ -3456,10 +3457,10 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_need_art_filling.append("large")
 
                 if(total_need_art_filling[0] or total_need_art_filling[1] != 0):
-                    need_art_filling_pvalue = round(chisquare([total_need_art_filling[0],total_need_art_filling[1]])[0],2)
+                    need_art_filling_pvalue = chisquare([total_need_art_filling[0],total_need_art_filling[1]])
+                    total_need_art_filling.append(round(need_art_filling_pvalue[1],2))
                 else:
-                    need_art_filling_pvalue = 0
-                total_need_art_filling.append(need_art_filling_pvalue)
+                    total_need_art_filling.append(0)
 
 
                 # Need SDF
@@ -3506,10 +3507,10 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_need_sdf.append("large")
 
                 if(total_need_sdf[0] or total_need_sdf[1] != 0):
-                    need_sdf_pvalue = round(chisquare([total_need_sdf[0],total_need_sdf[1]])[0],2)
+                    need_sdf_pvalue = chisquare([total_need_sdf[0],total_need_sdf[1]])
+                    total_need_sdf.append(round(need_sdf_pvalue[1],2))
                 else:
-                    need_sdf_pvalue = 0
-                total_need_sdf.append(need_sdf_pvalue)
+                    total_need_sdf.append(0)
 
                 
                 # Need Extraction
@@ -3556,10 +3557,10 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_need_extraction.append("large")
 
                 if(total_need_extraction[0] or total_need_extraction[1] != 0):
-                    need_extraction_pvalue = round(chisquare([total_need_extraction[0],total_need_extraction[1]])[0],2)
+                    need_extraction_pvalue = chisquare([total_need_extraction[0],total_need_extraction[1]])
+                    total_need_extraction.append(round(need_extraction_pvalue[1],2))
                 else:
-                    need_extraction_pvalue = 0
-                total_need_extraction.append(need_extraction_pvalue)
+                    total_need_extraction.append(0)
 
 
                 # Need fv
@@ -3605,10 +3606,10 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_need_fv.append("large")
 
                 if(total_need_fv[0] or total_need_fv[1] != 0):
-                    need_fv_pvalue = round(chisquare([total_need_fv[0],total_need_fv[1]])[0],2)
+                    need_fv_pvalue = chisquare([total_need_fv[0],total_need_fv[1]])
+                    total_need_fv.append(round(need_fv_pvalue[1],2))
                 else:
-                    need_fv_pvalue = 0
-                total_need_fv.append(need_fv_pvalue)
+                    total_need_fv.append(0)
 
 
                 # Need dentist or hygienist
@@ -3655,26 +3656,26 @@ class SampleFrameTwoLongitudinal(APIView):
                     total_need_dentist_or_hygienist.append("large")
 
                 if(total_need_dentist_or_hygienist[0] or total_need_dentist_or_hygienist[1] != 0):
-                    need_dentist_or_hygienist_pvalue = round(chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])[0],2)
+                    need_dentist_or_hygienist_pvalue = chisquare([total_need_dentist_or_hygienist[0],total_need_dentist_or_hygienist[1]])
+                    total_need_dentist_or_hygienist.append(round(need_dentist_or_hygienist_pvalue[1],2))
                 else:
-                    need_dentist_or_hygienist_pvalue = 0
-                total_need_dentist_or_hygienist.append(need_dentist_or_hygienist_pvalue)
+                    total_need_dentist_or_hygienist.append(0)
 
                 final_total_carries_risk_low = [
-                ['<span class="ml-4">Low</span>',""] ,
-                [carries_risk_low_number[0],"(" + str(total_carries_risk_low[0]) + "%)"],
-                [carries_risk_low_number[1],"(" + str(total_carries_risk_low[1]) + "%)"],
-                [total_carries_risk_low[2]],
-                [total_carries_risk_low[3],""],
-                [total_carries_risk_low[4],""],
-                [total_carries_risk_low[5],""],
-                ]
+                    ['<span class="ml-4">Low</span>',""] ,
+                    [carries_risk_low_number[0],"(" + str(total_carries_risk_low[0]) + "%)"],
+                    [carries_risk_low_number[1],"(" + str(total_carries_risk_low[1]) + "%)"],
+                    [total_carries_risk_low[2],""],
+                    [total_carries_risk_low[3],""],
+                    [total_carries_risk_low[4],""],
+                    [total_carries_risk_low[5],""],
+                    ]
             
                 final_total_carries_risk_medium = [
                     ['<span class="ml-4">Medium</span>',""] ,
                     [carries_risk_medium_number[0],"(" + str(total_carries_risk_medium[0]) + "%)"],
                     [carries_risk_medium_number[1],"(" + str(total_carries_risk_medium[1]) + "%)"],
-                    [total_carries_risk_medium[2]],
+                    [total_carries_risk_medium[2],""],
                     [total_carries_risk_medium[3],""],
                     [total_carries_risk_medium[4],""],
                     [total_carries_risk_medium[5],""],
@@ -3684,7 +3685,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ['<span class="ml-4">High</span>',""] ,
                     [carries_risk_high_number[0],"(" + str(total_carries_risk_high[0]) + "%)"],
                     [carries_risk_high_number[1],"(" + str(total_carries_risk_high[1]) + "%)"],
-                    [total_carries_risk_high[2]],
+                    [total_carries_risk_high[2],""],
                     [total_carries_risk_high[3],""],
                     [total_carries_risk_high[4],""],
                     [total_carries_risk_high[5],""],
@@ -3694,7 +3695,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Any untreated caries present",""] ,
                     [untreated_caries_present_number[0],"(" + str(total_untreated_caries_present[0]) + "%)"],
                     [untreated_caries_present_number[1],"(" + str(total_untreated_caries_present[1]) + "%)"],
-                    [total_untreated_caries_present[2]],
+                    [total_untreated_caries_present[2],""],
                     [total_untreated_caries_present[3],""],
                     [total_untreated_caries_present[4],""],
                     [total_untreated_caries_present[5],""],
@@ -3704,7 +3705,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Number of decayed primary teeth",""] ,
                     [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
                     [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
-                    [total_decayed_primary_teeth[2]],
+                    [total_decayed_primary_teeth[2],""],
                     [total_decayed_primary_teeth[3],""],
                     [total_decayed_primary_teeth[4],""],
                     [total_decayed_primary_teeth[5],""],
@@ -3714,7 +3715,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Number of decayed permanent teeth",""] ,
                     [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
                     [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
-                    [total_decayed_permanent_teeth[2]],
+                    [total_decayed_permanent_teeth[2],""],
                     [total_decayed_permanent_teeth[3],""],
                     [total_decayed_permanent_teeth[4],""],
                     [total_decayed_permanent_teeth[5],""],
@@ -3724,7 +3725,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Cavity permanent molar or premolar",""] ,
                     [cavity_permanent_molar_number[0],"(" + str(total_cavity_permanent_molar[0]) + "%)"],
                     [cavity_permanent_molar_number[1],"(" + str(total_cavity_permanent_molar[1]) + "%)"],
-                    [total_cavity_permanent_molar[2]],
+                    [total_cavity_permanent_molar[2],""],
                     [total_cavity_permanent_molar[3],""],
                     [total_cavity_permanent_molar[4],""],
                     [total_cavity_permanent_molar[5],""],
@@ -3734,7 +3735,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Cavity permanent anterior",""] ,
                     [cavity_permanent_anterior_number[0],"(" + str(total_cavity_permanent_anterior[0]) + "%)"],
                     [cavity_permanent_anterior_number[1],"(" + str(total_cavity_permanent_anterior[1]) + "%)"],
-                    [total_cavity_permanent_anterior[2]],
+                    [total_cavity_permanent_anterior[2],""],
                     [total_cavity_permanent_anterior[3],""],
                     [total_cavity_permanent_anterior[4],""],
                     [total_cavity_permanent_anterior[5],""],
@@ -3744,7 +3745,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Active Infection",""] ,
                     [active_infection_number[0],"(" + str(total_active_infection[0]) + "%)"],
                     [active_infection_number[1],"(" + str(total_active_infection[1]) + "%)"],
-                    [total_active_infection[2]],
+                    [total_active_infection[2],""],
                     [total_active_infection[3],""],
                     [total_active_infection[4],""],
                     [total_active_infection[5],""],
@@ -3754,7 +3755,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Mouth pain due to reversible pulpitis",""] ,
                     [reversible_pulpitis_number[0],"(" + str(total_reversible_pulpitis[0]) + "%)"],
                     [reversible_pulpitis_number[1],"(" + str(total_reversible_pulpitis[1]) + "%)"],
-                    [total_reversible_pulpitis[2]],
+                    [total_reversible_pulpitis[2],""],
                     [total_reversible_pulpitis[3],""],
                     [total_reversible_pulpitis[4],""],
                     [total_reversible_pulpitis[5],""],
@@ -3764,7 +3765,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Need ART filling",""] ,
                     [need_art_filling_number[0],"(" + str(total_need_art_filling[0]) + "%)"],
                     [need_art_filling_number[1],"(" + str(total_need_art_filling[1]) + "%)"],
-                    [total_need_art_filling[2]],
+                    [total_need_art_filling[2],""],
                     [total_need_art_filling[3],""],
                     [total_need_art_filling[4],""],
                     [total_need_art_filling[5],""],
@@ -3774,7 +3775,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Need SDF",""] ,
                     [need_sdf_number[0],"(" + str(total_need_sdf[0]) + "%)"],
                     [need_sdf_number[1],"(" + str(total_need_sdf[1]) + "%)"],
-                    [total_need_sdf[2]],
+                    [total_need_sdf[2],""],
                     [total_need_sdf[3],""],
                     [total_need_sdf[4],""],
                     [total_need_sdf[5],""],
@@ -3784,7 +3785,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Need Extraction",""] ,
                     [need_extraction_number[0],"(" + str(total_need_extraction[0]) + "%)"],
                     [need_extraction_number[1],"(" + str(total_need_extraction[1]) + "%)"],
-                    [total_need_extraction[2]],
+                    [total_need_extraction[2],""],
                     [total_need_extraction[3],""],
                     [total_need_extraction[4],""],
                     [total_need_extraction[5],""],
@@ -3794,7 +3795,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Need FV",""] ,
                     [need_fv_number[0],"(" + str(total_need_fv[0]) + "%)"],
                     [need_fv_number[1],"(" + str(total_need_fv[1]) + "%)"],
-                    [total_need_fv[2]],
+                    [total_need_fv[2],""],
                     [total_need_fv[3],""],
                     [total_need_fv[4],""],
                     [total_need_fv[5],""],
@@ -3804,7 +3805,7 @@ class SampleFrameTwoLongitudinal(APIView):
                     ["Need Dentist or Hygenist",""] ,
                     [need_dentist_or_hygienist_number[0],"(" + str(total_need_dentist_or_hygienist[0]) + "%)"],
                     [need_dentist_or_hygienist_number[1],"(" + str(total_need_dentist_or_hygienist[1]) + "%)"],
-                    [total_need_dentist_or_hygienist[2]],
+                    [total_need_dentist_or_hygienist[2],""],
                     [total_need_dentist_or_hygienist[3],""],
                     [total_need_dentist_or_hygienist[4],""],
                     [total_need_dentist_or_hygienist[5],""],
