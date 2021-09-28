@@ -821,8 +821,8 @@ class SampleFrameOneLongitudinal(APIView):
             
             final_total_decayed_primary_teeth = [
                 ["Number of decayed primary teeth",""] ,
-                [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
-                [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
+                [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "SD)"],
+                [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "SD)"],
                 [total_decayed_primary_teeth[2],""],
                 [total_decayed_primary_teeth[3],""],
                 [total_decayed_primary_teeth[4],""],
@@ -831,8 +831,8 @@ class SampleFrameOneLongitudinal(APIView):
             
             final_total_decayed_permanent_teeth = [
                 ["Number of decayed permanent teeth",""] ,
-                [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
-                [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
+                [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "SD)"],
+                [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "SD)"],
                 [total_decayed_permanent_teeth[2],""],
                 [total_decayed_permanent_teeth[3],""],
                 [total_decayed_permanent_teeth[4],""],
@@ -1745,8 +1745,8 @@ class SampleFrameOneLongitudinal(APIView):
                 
                 final_total_decayed_primary_teeth = [
                     ["Number of decayed primary teeth",""] ,
-                    [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
-                    [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
+                    [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "SD)"],
+                    [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "SD)"],
                     [total_decayed_primary_teeth[2],""],
                     [total_decayed_primary_teeth[3],""],
                     [total_decayed_primary_teeth[4],""],
@@ -1755,8 +1755,8 @@ class SampleFrameOneLongitudinal(APIView):
                 
                 final_total_decayed_permanent_teeth = [
                     ["Number of decayed permanent teeth",""] ,
-                    [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
-                    [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
+                    [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "SD)"],
+                    [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "SD)"],
                     [total_decayed_permanent_teeth[2],""],
                     [total_decayed_permanent_teeth[3],""],
                     [total_decayed_permanent_teeth[4],""],
@@ -2698,8 +2698,8 @@ class SampleFrameTwoLongitudinal(APIView):
             
             final_total_decayed_primary_teeth = [
                 ["Number of decayed primary teeth",""] ,
-                [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
-                [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
+                [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "SD)"],
+                [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "SD)"],
                 [total_decayed_primary_teeth[2],""],
                 [total_decayed_primary_teeth[3],""],
                 [total_decayed_primary_teeth[4],""],
@@ -2708,8 +2708,8 @@ class SampleFrameTwoLongitudinal(APIView):
             
             final_total_decayed_permanent_teeth = [
                 ["Number of decayed permanent teeth",""] ,
-                [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
-                [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
+                [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "SD)"],
+                [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "SD)"],
                 [total_decayed_permanent_teeth[2],""],
                 [total_decayed_permanent_teeth[3],""],
                 [total_decayed_permanent_teeth[4],""],
@@ -3703,8 +3703,8 @@ class SampleFrameTwoLongitudinal(APIView):
                 
                 final_total_decayed_primary_teeth = [
                     ["Number of decayed primary teeth",""] ,
-                    [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "%)"],
-                    [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "%)"],
+                    [decayed_primary_teeth_mean[0],"(" + str(total_decayed_primary_teeth[0]) + "SD)"],
+                    [decayed_primary_teeth_mean[1],"(" + str(total_decayed_primary_teeth[1]) + "SD)"],
                     [total_decayed_primary_teeth[2],""],
                     [total_decayed_primary_teeth[3],""],
                     [total_decayed_primary_teeth[4],""],
@@ -3713,8 +3713,8 @@ class SampleFrameTwoLongitudinal(APIView):
                 
                 final_total_decayed_permanent_teeth = [
                     ["Number of decayed permanent teeth",""] ,
-                    [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "%)"],
-                    [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "%)"],
+                    [decayed_permanent_teeth_mean[0],"(" + str(total_decayed_permanent_teeth[0]) + "SD)"],
+                    [decayed_permanent_teeth_mean[1],"(" + str(total_decayed_permanent_teeth[1]) + "SD)"],
                     [total_decayed_permanent_teeth[2],""],
                     [total_decayed_permanent_teeth[3],""],
                     [total_decayed_permanent_teeth[4],""],
