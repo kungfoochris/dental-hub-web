@@ -949,6 +949,7 @@ class SampleFrameOneLongitudinal(APIView):
                 ]
             
             return Response(data)
+        return Response({"message": "Do not have a permission."}, status=400)
 
 
 
@@ -1873,6 +1874,8 @@ class SampleFrameOneLongitudinal(APIView):
                     ]
                 
                 return Response(data)
+            return Response({"message": "Do not have a permission"}, status=400)
+        return Response({'message':serializer.errors}, status=400)
 
 
 
@@ -3831,6 +3834,8 @@ class SampleFrameTwoLongitudinal(APIView):
                     ]
                 
                 return Response(data)
+            return Response({"message": "Do not have a permission."}, status=400)
+        return Response({'message':serializer.errors}, status=400)
 
 
 
