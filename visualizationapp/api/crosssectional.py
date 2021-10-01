@@ -276,9 +276,24 @@ class TestCrossSectionalVisualization(APIView):
             total_carries_risk_medium.append(efgh1_pvalue)
             total_carries_risk_high.append(efgh1_pvalue)
 
-            total_carries_risk_low.append(round(sum(total_carries_risk_low),2))
-            total_carries_risk_medium.append(round(sum(total_carries_risk_medium),2))
-            total_carries_risk_high.append(round(sum(total_carries_risk_high),2))
+            # total_carries_risk_low.append(round(sum(total_carries_risk_low),2))
+            # total_carries_risk_medium.append(round(sum(total_carries_risk_medium),2))
+            # total_carries_risk_high.append(round(sum(total_carries_risk_high),2))
+            overall_carries_risk_low = numerator_carries_risk_low_A + numerator_carries_risk_low_B 
+            + numerator_carries_risk_low_C + numerator_carries_risk_low_E
+            + numerator_carries_risk_low_F + numerator_carries_risk_low_G
+            + numerator_carries_risk_low_H
+        
+            overall_carries_risk_medium = numerator_carries_risk_medium_A + numerator_carries_risk_medium_B 
+            + numerator_carries_risk_medium_C + numerator_carries_risk_medium_E
+            + numerator_carries_risk_medium_F + numerator_carries_risk_medium_G
+            + numerator_carries_risk_medium_H
+        
+            overall_carries_risk_high = numerator_carries_risk_high_A + numerator_carries_risk_high_B 
+            + numerator_carries_risk_high_C + numerator_carries_risk_high_E
+            + numerator_carries_risk_high_F + numerator_carries_risk_high_G
+            + numerator_carries_risk_high_H
+
 
 
             final_total_carries_risk_low = [
@@ -292,7 +307,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_carries_risk_low_G,"(" + str(total_carries_risk_low[6]) + "%)"],
                 [numerator_carries_risk_low_H,"(" + str(total_carries_risk_low[7]) + "%)"],
                 [total_carries_risk_low[8],""],
-                [total_carries_risk_low[9],""],
+                [overall_carries_risk_low,""],
                 ]
             
             final_total_carries_risk_medium = [
@@ -306,7 +321,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_carries_risk_medium_G,"(" + str(total_carries_risk_medium[6]) + "%)"],
                 [numerator_carries_risk_medium_H,"(" + str(total_carries_risk_medium[7]) + "%)"],
                 [total_carries_risk_medium[8],""],
-                [total_carries_risk_medium[9],""],
+                [overall_carries_risk_medium,""],
                 ]
             
             final_total_carries_risk_high = [
@@ -320,7 +335,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_carries_risk_high_G,"(" + str(total_carries_risk_high[6]) + "%)"],
                 [numerator_carries_risk_high_H,"(" + str(total_carries_risk_high[7]) + "%)"],
                 [total_carries_risk_high[8],""],
-                [total_carries_risk_high[9],""],
+                [overall_carries_risk_high,""],
                 ]
 
 
@@ -559,10 +574,24 @@ class TestCrossSectionalVisualization(APIView):
             total_decayed_primary_teeth.append(efgh_pvalue)
             total_decayed_permanent_teeth.append(efgh_pvalue)
 
-            total_decayed_primary_teeth.append(round(sum(total_decayed_primary_teeth),2))
-            total_decayed_permanent_teeth.append(round(sum(total_decayed_permanent_teeth),2))
+            # total_decayed_primary_teeth.append(round(sum(total_decayed_primary_teeth),2))
+            # total_decayed_permanent_teeth.append(round(sum(total_decayed_permanent_teeth),2))
 
-            
+            overall_decayed_primary_teeth = decayed_primary_teeth_mean_list_ABC[0] + decayed_primary_teeth_mean_list_ABC[1] 
+            + decayed_primary_teeth_mean_list_ABC[2] + decayed_primary_teeth_mean_list_EFGH[0]
+            + decayed_primary_teeth_mean_list_EFGH[1] + decayed_primary_teeth_mean_list_EFGH[2]
+            + decayed_primary_teeth_mean_list_EFGH[3]
+
+            mean_overall_decayed_primary_teeth = round(overall_decayed_primary_teeth / 7,2)
+
+            overall_decayed_permanent_teeth = decayed_permanent_teeth_list_ABC[0] + decayed_permanent_teeth_list_ABC[1] 
+            + decayed_permanent_teeth_list_ABC[2] + decayed_permanent_teeth_list_EFGH[0]
+            + decayed_permanent_teeth_list_EFGH[1] + decayed_permanent_teeth_list_EFGH[2]
+            + decayed_permanent_teeth_list_EFGH[3]
+
+            mean_overall_decayed_permanent_teeth = round(overall_decayed_permanent_teeth / 7,2)
+
+        
 
             final_total_decayed_primary_teeth = [
                 ["Number of decayed primary teeth" ,""],
@@ -575,7 +604,7 @@ class TestCrossSectionalVisualization(APIView):
                 [decayed_primary_teeth_mean_list_EFGH[2],"(" + str(total_decayed_primary_teeth[6]) + "SD)"],
                 [decayed_primary_teeth_mean_list_EFGH[3],"(" + str(total_decayed_primary_teeth[7]) + "SD)"],
                 [total_decayed_primary_teeth[8],""],
-                [total_decayed_primary_teeth[9],""],
+                [mean_overall_decayed_primary_teeth,""],
                 ]
             
             final_total_decayed_permanent_teeth = [
@@ -589,7 +618,7 @@ class TestCrossSectionalVisualization(APIView):
                 [decayed_permanent_teeth_list_EFGH[2],"(" + str(total_decayed_permanent_teeth[6]) + "SD)"],
                 [decayed_permanent_teeth_list_EFGH[3],"(" + str(total_decayed_permanent_teeth[7]) + "SD)"],
                 [total_decayed_permanent_teeth[8],""],
-                [total_decayed_permanent_teeth[9],""],
+                [mean_overall_decayed_permanent_teeth,""],
                 ]
             
             
@@ -1153,17 +1182,66 @@ class TestCrossSectionalVisualization(APIView):
             total_need_fv.append(efgh2_pvalue)
             total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
-            total_untreated_caries_present.append(round(sum(total_untreated_caries_present),2))
-            total_cavity_permanent_molar.append(round(sum(total_cavity_permanent_molar),2))
-            total_cavity_permanent_anterior.append(round(sum(total_cavity_permanent_anterior),2))
-            total_active_infection.append(round(sum(total_active_infection),2))
-            total_reversible_pulpitis.append(round(sum(total_reversible_pulpitis),2))
-            total_need_art_filling.append(round(sum(total_need_art_filling),2))
-            total_need_sdf.append(round(sum(total_need_sdf),2))
-            total_need_extraction.append(round(sum(total_need_extraction),2))
-            total_need_fv.append(round(sum(total_need_fv),2))
-            total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
+            # total_untreated_caries_present.append(round(sum(total_untreated_caries_present),2))
+            # total_cavity_permanent_molar.append(round(sum(total_cavity_permanent_molar),2))
+            # total_cavity_permanent_anterior.append(round(sum(total_cavity_permanent_anterior),2))
+            # total_active_infection.append(round(sum(total_active_infection),2))
+            # total_reversible_pulpitis.append(round(sum(total_reversible_pulpitis),2))
+            # total_need_art_filling.append(round(sum(total_need_art_filling),2))
+            # total_need_sdf.append(round(sum(total_need_sdf),2))
+            # total_need_extraction.append(round(sum(total_need_extraction),2))
+            # total_need_fv.append(round(sum(total_need_fv),2))
+            # total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
 
+            overall_untreated_caries_present = numerator_untreated_caries_present_A + numerator_untreated_caries_present_B 
+            + numerator_untreated_caries_present_C + numerator_untreated_caries_present_E
+            + numerator_untreated_caries_present_F + numerator_untreated_caries_present_G
+            + numerator_untreated_caries_present_H
+            
+            overall_cavity_permanent_molar = numerator_cavity_permanent_molar_A + numerator_cavity_permanent_molar_B 
+            + numerator_cavity_permanent_molar_C + numerator_cavity_permanent_molar_E
+            + numerator_cavity_permanent_molar_F + numerator_cavity_permanent_molar_G
+            + numerator_cavity_permanent_molar_H
+
+            overall_cavity_permanent_anterior = numerator_cavity_permanent_anterior_A + numerator_cavity_permanent_anterior_B 
+            + numerator_cavity_permanent_anterior_C + numerator_cavity_permanent_anterior_E
+            + numerator_cavity_permanent_anterior_F + numerator_cavity_permanent_anterior_G
+            + numerator_cavity_permanent_anterior_H
+
+            overall_active_infection = numerator_active_infection_A + numerator_active_infection_B 
+            + numerator_active_infection_C + numerator_active_infection_E
+            + numerator_active_infection_F + numerator_active_infection_G
+            + numerator_active_infection_H
+            
+            overall_reversible_pulpitis = numerator_reversible_pulpitis_A + numerator_reversible_pulpitis_B 
+            + numerator_reversible_pulpitis_C + numerator_reversible_pulpitis_E
+            + numerator_reversible_pulpitis_F + numerator_reversible_pulpitis_G
+            + numerator_reversible_pulpitis_H
+            
+            overall_need_art_filling = numerator_need_art_filling_A + numerator_need_art_filling_B 
+            + numerator_need_art_filling_C + numerator_need_art_filling_E
+            + numerator_need_art_filling_F + numerator_need_art_filling_G
+            + numerator_need_art_filling_H
+            
+            overall_need_sdf = numerator_need_sdf_A + numerator_need_sdf_B 
+            + numerator_need_sdf_C + numerator_need_sdf_E
+            + numerator_need_sdf_F + numerator_need_sdf_G
+            + numerator_need_sdf_H
+            
+            overall_need_extraction = numerator_need_extraction_A + numerator_need_extraction_B 
+            + numerator_need_extraction_C + numerator_need_extraction_E
+            + numerator_need_extraction_F + numerator_need_extraction_G
+            + numerator_need_extraction_H
+            
+            overall_need_fv = numerator_need_fv_A + numerator_need_fv_B 
+            + numerator_need_fv_C + numerator_need_fv_E
+            + numerator_need_fv_F + numerator_need_fv_G
+            + numerator_need_fv_H
+            
+            overall_need_dentist_or_hygienist = numerator_need_dentist_or_hygienist_A + numerator_need_dentist_or_hygienist_B 
+            + numerator_need_dentist_or_hygienist_C + numerator_need_dentist_or_hygienist_E
+            + numerator_need_dentist_or_hygienist_F + numerator_need_dentist_or_hygienist_G
+            + numerator_need_dentist_or_hygienist_H
             
             final_total_untreated_caries_present = [
                 ["Any untreated caries present" ,""],
@@ -1176,7 +1254,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_untreated_caries_present_G,"(" + str(total_untreated_caries_present[6]) + "%)"],
                 [numerator_untreated_caries_present_H,"(" + str(total_untreated_caries_present[7]) + "%)"],
                 [total_untreated_caries_present[8],""],
-                [total_untreated_caries_present[9],""],
+                [overall_untreated_caries_present,""],
                 ]
             
             final_total_cavity_permanent_molar = [
@@ -1190,7 +1268,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_cavity_permanent_molar_G,"(" + str(total_cavity_permanent_molar[6]) + "%)"],
                 [numerator_cavity_permanent_molar_H,"(" + str(total_cavity_permanent_molar[7]) + "%)"],
                 [total_cavity_permanent_molar[8],""],
-                [total_cavity_permanent_molar[9],""],
+                [overall_cavity_permanent_molar,""],
                 ]
             
             final_total_cavity_permanent_anterior = [
@@ -1204,7 +1282,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_cavity_permanent_anterior_G,"(" + str(total_cavity_permanent_anterior[6]) + "%)"],
                 [numerator_cavity_permanent_anterior_H,"(" + str(total_cavity_permanent_anterior[7]) + "%)"],
                 [total_cavity_permanent_anterior[8],""],
-                [total_cavity_permanent_anterior[9],""],
+                [overall_cavity_permanent_anterior,""],
                 ]
             
             final_total_active_infection = [
@@ -1218,7 +1296,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_active_infection_G,"(" + str(total_active_infection[6]) + "%)"],
                 [numerator_active_infection_H,"(" + str(total_active_infection[7]) + "%)"],
                 [total_active_infection[8],""],
-                [total_active_infection[9],""],
+                [overall_active_infection,""],
                 ]
             
             final_total_reversible_pulpitis = [
@@ -1232,7 +1310,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_reversible_pulpitis_G,"(" + str(total_reversible_pulpitis[6]) + "%)"],
                 [numerator_reversible_pulpitis_H,"(" + str(total_reversible_pulpitis[7]) + "%)"],
                 [total_reversible_pulpitis[8],""],
-                [total_reversible_pulpitis[9],""],
+                [overall_reversible_pulpitis,""],
                 ]
             
             final_total_need_art_filling = [
@@ -1246,7 +1324,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_need_art_filling_G,"(" + str(total_need_art_filling[6]) + "%)"],
                 [numerator_need_art_filling_H,"(" + str(total_need_art_filling[7]) + "%)"],
                 [total_need_art_filling[8],""],
-                [total_need_art_filling[9],""],
+                [overall_need_art_filling,""],
                 ]
 
             final_total_need_sdf = [
@@ -1260,7 +1338,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_need_sdf_G,"(" + str(total_need_sdf[6]) + "%)"],
                 [numerator_need_sdf_H,"(" + str(total_need_sdf[7]) + "%)"],
                 [total_need_sdf[8],""],
-                [total_need_sdf[9],""],
+                [overall_need_sdf,""],
                 ]
             
             final_total_need_extraction = [
@@ -1274,7 +1352,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_need_extraction_G,"(" + str(total_need_extraction[6]) + "%)"],
                 [numerator_need_extraction_H,"(" + str(total_need_extraction[7]) + "%)"],
                 [total_need_extraction[8],""],
-                [total_need_extraction[9],""],
+                [overall_need_extraction,""],
                 ]
             
             final_total_need_fv = [
@@ -1288,7 +1366,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_need_fv_G,"(" + str(total_need_fv[6]) + "%)"],
                 [numerator_need_fv_H,"(" + str(total_need_fv[7]) + "%)"],
                 [total_need_fv[8],""],
-                [total_need_fv[9],""],
+                [overall_need_fv,""],
                 ]
             
             final_total_need_dentist_or_hygienist = [
@@ -1302,7 +1380,7 @@ class TestCrossSectionalVisualization(APIView):
                 [numerator_need_dentist_or_hygienist_G,"(" + str(total_need_dentist_or_hygienist[6]) + "%)"],
                 [numerator_need_dentist_or_hygienist_H,"(" + str(total_need_dentist_or_hygienist[7]) + "%)"],
                 [total_need_dentist_or_hygienist[8],""],
-                [total_need_dentist_or_hygienist[9],""],
+                [overall_need_dentist_or_hygienist,""],
                 ]
 
             rowA_total = numerator_carries_risk_low_A + numerator_carries_risk_medium_A + numerator_carries_risk_high_A \
@@ -1354,15 +1432,10 @@ class TestCrossSectionalVisualization(APIView):
                 + numerator_need_sdf_H + numerator_need_extraction_H \
                 + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
             
-            
-        
-
             row_total = [
                 ["Totals",""],[rowA_total,""],[rowB_total,""],[rowC_total,""],["",""],[rowE_total,""],[rowF_total,""],[rowG_total,""],[rowH_total,""]
-
             ]
 
-            
             data = [
                 carries_risk,
                 final_total_carries_risk_low ,
@@ -1414,12 +1487,8 @@ class TestCrossSectionalVisualization(APIView):
                 total_need_fv = []
                 total_need_dentist_or_hygienist = []
 
-
                 reason_for_visit = serializer.validated_data['reason_for_visit']
                 referral_type = serializer.validated_data['referral_type']
-                
-
-
                 
                 numerator_list_6 = []
                 denominator_list_6 = []
@@ -1685,9 +1754,24 @@ class TestCrossSectionalVisualization(APIView):
                 total_carries_risk_medium.append(efgh1_pvalue)
                 total_carries_risk_high.append(efgh1_pvalue)
 
-                total_carries_risk_low.append(round(sum(total_carries_risk_low),2))
-                total_carries_risk_medium.append(round(sum(total_carries_risk_medium),2))
-                total_carries_risk_high.append(round(sum(total_carries_risk_high),2))
+                # total_carries_risk_low.append(round(sum(total_carries_risk_low),2))
+                # total_carries_risk_medium.append(round(sum(total_carries_risk_medium),2))
+                # total_carries_risk_high.append(round(sum(total_carries_risk_high),2))
+
+                overall_carries_risk_low = numerator_carries_risk_low_A + numerator_carries_risk_low_B 
+                + numerator_carries_risk_low_C + numerator_carries_risk_low_E
+                + numerator_carries_risk_low_F + numerator_carries_risk_low_G
+                + numerator_carries_risk_low_H
+            
+                overall_carries_risk_medium = numerator_carries_risk_medium_A + numerator_carries_risk_medium_B 
+                + numerator_carries_risk_medium_C + numerator_carries_risk_medium_E
+                + numerator_carries_risk_medium_F + numerator_carries_risk_medium_G
+                + numerator_carries_risk_medium_H
+            
+                overall_carries_risk_high = numerator_carries_risk_high_A + numerator_carries_risk_high_B 
+                + numerator_carries_risk_high_C + numerator_carries_risk_high_E
+                + numerator_carries_risk_high_F + numerator_carries_risk_high_G
+                + numerator_carries_risk_high_H
 
 
                 final_total_carries_risk_low = [
@@ -1701,7 +1785,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_carries_risk_low_G,"(" + str(total_carries_risk_low[6]) + "%)"],
                     [numerator_carries_risk_low_H,"(" + str(total_carries_risk_low[7]) + "%)"],
                     [total_carries_risk_low[8],""],
-                    [total_carries_risk_low[9],""],
+                    [overall_carries_risk_low,""],
                     ]
                 
                 final_total_carries_risk_medium = [
@@ -1715,7 +1799,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_carries_risk_medium_G,"(" + str(total_carries_risk_medium[6]) + "%)"],
                     [numerator_carries_risk_medium_H,"(" + str(total_carries_risk_medium[7]) + "%)"],
                     [total_carries_risk_medium[8],""],
-                    [total_carries_risk_medium[9],""],
+                    [overall_carries_risk_medium,""],
                     ]
                 
                 final_total_carries_risk_high = [
@@ -1729,7 +1813,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_carries_risk_high_G,"(" + str(total_carries_risk_high[6]) + "%)"],
                     [numerator_carries_risk_high_H,"(" + str(total_carries_risk_high[7]) + "%)"],
                     [total_carries_risk_high[8],""],
-                    [total_carries_risk_high[9],""],
+                    [overall_carries_risk_high,""],
                     ]
 
 
@@ -1972,8 +2056,22 @@ class TestCrossSectionalVisualization(APIView):
                 total_decayed_primary_teeth.append(efgh_pvalue)
                 total_decayed_permanent_teeth.append(efgh_pvalue)
 
-                total_decayed_primary_teeth.append(round(sum(total_decayed_primary_teeth),2))
-                total_decayed_permanent_teeth.append(round(sum(total_decayed_permanent_teeth),2))
+                # total_decayed_primary_teeth.append(round(sum(total_decayed_primary_teeth),2))
+                # total_decayed_permanent_teeth.append(round(sum(total_decayed_permanent_teeth),2))
+
+                overall_decayed_primary_teeth = decayed_primary_teeth_mean_list_ABC[0] + decayed_primary_teeth_mean_list_ABC[1] 
+                + decayed_primary_teeth_mean_list_ABC[2] + decayed_primary_teeth_mean_list_EFGH[0]
+                + decayed_primary_teeth_mean_list_EFGH[1] + decayed_primary_teeth_mean_list_EFGH[2]
+                + decayed_primary_teeth_mean_list_EFGH[3]
+
+                mean_overall_decayed_primary_teeth = round(overall_decayed_primary_teeth / 7,2)
+
+                overall_decayed_permanent_teeth = decayed_permanent_teeth_mean_list_ABC[0] + decayed_permanent_teeth_mean_list_ABC[1] 
+                + decayed_permanent_teeth_mean_list_ABC[2] + decayed_permanent_teeth_mean_list_EFGH[0]
+                + decayed_permanent_teeth_mean_list_EFGH[1] + decayed_permanent_teeth_mean_list_EFGH[2]
+                + decayed_permanent_teeth_mean_list_EFGH[3]
+
+                mean_overall_decayed_permanent_teeth = round(overall_decayed_permanent_teeth / 7,2)
 
                 
                 final_total_decayed_primary_teeth = [
@@ -1987,7 +2085,7 @@ class TestCrossSectionalVisualization(APIView):
                     [decayed_primary_teeth_mean_list_EFGH[2],"(" + str(total_decayed_primary_teeth[6]) + "SD)"],
                     [decayed_primary_teeth_mean_list_EFGH[3],"(" + str(total_decayed_primary_teeth[7]) + "SD)"],
                     [total_decayed_primary_teeth[8],""],
-                    [total_decayed_primary_teeth[9],""],
+                    [mean_overall_decayed_primary_teeth,""],
                     ]
                 
                 final_total_decayed_permanent_teeth = [
@@ -2001,7 +2099,7 @@ class TestCrossSectionalVisualization(APIView):
                     [decayed_permanent_teeth_mean_list_EFGH[2],"(" + str(total_decayed_permanent_teeth[6]) + "SD)"],
                     [decayed_permanent_teeth_mean_list_EFGH[3],"(" + str(total_decayed_permanent_teeth[7]) + "SD)"],
                     [total_decayed_permanent_teeth[8],""],
-                    [total_decayed_permanent_teeth[9],""],
+                    [mean_overall_decayed_permanent_teeth,""],
                     ]
                 
 
@@ -2711,17 +2809,67 @@ class TestCrossSectionalVisualization(APIView):
                 total_need_fv.append(efgh2_pvalue)
                 total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
-                total_untreated_caries_present.append(round(sum(total_untreated_caries_present),2))
-                total_cavity_permanent_molar.append(round(sum(total_cavity_permanent_molar),2))
-                total_cavity_permanent_anterior.append(round(sum(total_cavity_permanent_anterior),2))
-                total_active_infection.append(round(sum(total_active_infection),2))
-                total_reversible_pulpitis.append(round(sum(total_reversible_pulpitis),2))
-                total_need_art_filling.append(round(sum(total_need_art_filling),2))
-                total_need_sdf.append(round(sum(total_need_sdf),2))
-                total_need_extraction.append(round(sum(total_need_extraction),2))
-                total_need_fv.append(round(sum(total_need_fv),2))
-                total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
+                # total_untreated_caries_present.append(round(sum(total_untreated_caries_present),2))
+                # total_cavity_permanent_molar.append(round(sum(total_cavity_permanent_molar),2))
+                # total_cavity_permanent_anterior.append(round(sum(total_cavity_permanent_anterior),2))
+                # total_active_infection.append(round(sum(total_active_infection),2))
+                # total_reversible_pulpitis.append(round(sum(total_reversible_pulpitis),2))
+                # total_need_art_filling.append(round(sum(total_need_art_filling),2))
+                # total_need_sdf.append(round(sum(total_need_sdf),2))
+                # total_need_extraction.append(round(sum(total_need_extraction),2))
+                # total_need_fv.append(round(sum(total_need_fv),2))
+                # total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
 
+                
+                overall_untreated_caries_present = numerator_untreated_caries_present_A + numerator_untreated_caries_present_B 
+                + numerator_untreated_caries_present_C + numerator_untreated_caries_present_E
+                + numerator_untreated_caries_present_F + numerator_untreated_caries_present_G
+                + numerator_untreated_caries_present_H
+                
+                overall_cavity_permanent_molar = numerator_cavity_permanent_molar_A + numerator_cavity_permanent_molar_B 
+                + numerator_cavity_permanent_molar_C + numerator_cavity_permanent_molar_E
+                + numerator_cavity_permanent_molar_F + numerator_cavity_permanent_molar_G
+                + numerator_cavity_permanent_molar_H
+
+                overall_cavity_permanent_anterior = numerator_cavity_permanent_anterior_A + numerator_cavity_permanent_anterior_B 
+                + numerator_cavity_permanent_anterior_C + numerator_cavity_permanent_anterior_E
+                + numerator_cavity_permanent_anterior_F + numerator_cavity_permanent_anterior_G
+                + numerator_cavity_permanent_anterior_H
+
+                overall_active_infection = numerator_active_infection_A + numerator_active_infection_B 
+                + numerator_active_infection_C + numerator_active_infection_E
+                + numerator_active_infection_F + numerator_active_infection_G
+                + numerator_active_infection_H
+                
+                overall_reversible_pulpitis = numerator_reversible_pulpitis_A + numerator_reversible_pulpitis_B 
+                + numerator_reversible_pulpitis_C + numerator_reversible_pulpitis_E
+                + numerator_reversible_pulpitis_F + numerator_reversible_pulpitis_G
+                + numerator_reversible_pulpitis_H
+                
+                overall_need_art_filling = numerator_need_art_filling_A + numerator_need_art_filling_B 
+                + numerator_need_art_filling_C + numerator_need_art_filling_E
+                + numerator_need_art_filling_F + numerator_need_art_filling_G
+                + numerator_need_art_filling_H
+                
+                overall_need_sdf = numerator_need_sdf_A + numerator_need_sdf_B 
+                + numerator_need_sdf_C + numerator_need_sdf_E
+                + numerator_need_sdf_F + numerator_need_sdf_G
+                + numerator_need_sdf_H
+                
+                overall_need_extraction = numerator_need_extraction_A + numerator_need_extraction_B 
+                + numerator_need_extraction_C + numerator_need_extraction_E
+                + numerator_need_extraction_F + numerator_need_extraction_G
+                + numerator_need_extraction_H
+                
+                overall_need_fv = numerator_need_fv_A + numerator_need_fv_B 
+                + numerator_need_fv_C + numerator_need_fv_E
+                + numerator_need_fv_F + numerator_need_fv_G
+                + numerator_need_fv_H
+                
+                overall_need_dentist_or_hygienist = numerator_need_dentist_or_hygienist_A + numerator_need_dentist_or_hygienist_B 
+                + numerator_need_dentist_or_hygienist_C + numerator_need_dentist_or_hygienist_E
+                + numerator_need_dentist_or_hygienist_F + numerator_need_dentist_or_hygienist_G
+                + numerator_need_dentist_or_hygienist_H
                 
                 final_total_untreated_caries_present = [
                     ["Any untreated caries present" ,""],
@@ -2734,7 +2882,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_untreated_caries_present_G,"(" + str(total_untreated_caries_present[6]) + "%)"],
                     [numerator_untreated_caries_present_H,"(" + str(total_untreated_caries_present[7]) + "%)"],
                     [total_untreated_caries_present[8],""],
-                    [total_untreated_caries_present[9],""],
+                    [overall_untreated_caries_present,""],
                     ]
                 
                 final_total_cavity_permanent_molar = [
@@ -2748,7 +2896,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_cavity_permanent_molar_G,"(" + str(total_cavity_permanent_molar[6]) + "%)"],
                     [numerator_cavity_permanent_molar_H,"(" + str(total_cavity_permanent_molar[7]) + "%)"],
                     [total_cavity_permanent_molar[8],""],
-                    [total_cavity_permanent_molar[9],""],
+                    [overall_cavity_permanent_molar,""],
                     ]
                 
                 final_total_cavity_permanent_anterior = [
@@ -2762,7 +2910,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_cavity_permanent_anterior_G,"(" + str(total_cavity_permanent_anterior[6]) + "%)"],
                     [numerator_cavity_permanent_anterior_H,"(" + str(total_cavity_permanent_anterior[7]) + "%)"],
                     [total_cavity_permanent_anterior[8],""],
-                    [total_cavity_permanent_anterior[9],""],
+                    [overall_cavity_permanent_anterior,""],
                     ]
                 
                 final_total_active_infection = [
@@ -2776,7 +2924,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_active_infection_G,"(" + str(total_active_infection[6]) + "%)"],
                     [numerator_active_infection_H,"(" + str(total_active_infection[7]) + "%)"],
                     [total_active_infection[8],""],
-                    [total_active_infection[9],""],
+                    [overall_active_infection,""],
                     ]
                 
                 final_total_reversible_pulpitis = [
@@ -2790,7 +2938,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_reversible_pulpitis_G,"(" + str(total_reversible_pulpitis[6]) + "%)"],
                     [numerator_reversible_pulpitis_H,"(" + str(total_reversible_pulpitis[7]) + "%)"],
                     [total_reversible_pulpitis[8],""],
-                    [total_reversible_pulpitis[9],""],
+                    [overall_reversible_pulpitis,""],
                     ]
                 
                 final_total_need_art_filling = [
@@ -2804,7 +2952,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_need_art_filling_G,"(" + str(total_need_art_filling[6]) + "%)"],
                     [numerator_need_art_filling_H,"(" + str(total_need_art_filling[7]) + "%)"],
                     [total_need_art_filling[8],""],
-                    [total_need_art_filling[9],""],
+                    [overall_need_art_filling,""],
                     ]
 
                 final_total_need_sdf = [
@@ -2818,7 +2966,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_need_sdf_G,"(" + str(total_need_sdf[6]) + "%)"],
                     [numerator_need_sdf_H,"(" + str(total_need_sdf[7]) + "%)"],
                     [total_need_sdf[8],""],
-                    [total_need_sdf[9],""],
+                    [overall_need_sdf,""],
                     ]
                 
                 final_total_need_extraction = [
@@ -2832,7 +2980,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_need_extraction_G,"(" + str(total_need_extraction[6]) + "%)"],
                     [numerator_need_extraction_H,"(" + str(total_need_extraction[7]) + "%)"],
                     [total_need_extraction[8],""],
-                    [total_need_extraction[9],""],
+                    [overall_need_extraction,""],
                     ]
                 
                 final_total_need_fv = [
@@ -2846,7 +2994,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_need_fv_G,"(" + str(total_need_fv[6]) + "%)"],
                     [numerator_need_fv_H,"(" + str(total_need_fv[7]) + "%)"],
                     [total_need_fv[8],""],
-                    [total_need_fv[9],""],
+                    [overall_need_fv,""],
                     ]
                 
                 final_total_need_dentist_or_hygienist = [
@@ -2860,7 +3008,7 @@ class TestCrossSectionalVisualization(APIView):
                     [numerator_need_dentist_or_hygienist_G,"(" + str(total_need_dentist_or_hygienist[6]) + "%)"],
                     [numerator_need_dentist_or_hygienist_H,"(" + str(total_need_dentist_or_hygienist[7]) + "%)"],
                     [total_need_dentist_or_hygienist[8],""],
-                    [total_need_dentist_or_hygienist[9],""],
+                    [overall_need_dentist_or_hygienist,""],
                     ]
                 
 
@@ -2913,9 +3061,7 @@ class TestCrossSectionalVisualization(APIView):
                     + numerator_need_sdf_H + numerator_need_extraction_H \
                     + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
                 
-                
             
-
                 row_total = [
                     ["Totals",""],[rowA_total,""],[rowB_total,""],[rowC_total,""],["",""],[rowE_total,""],[rowF_total,""],[rowG_total,""],[rowH_total,""]
 
