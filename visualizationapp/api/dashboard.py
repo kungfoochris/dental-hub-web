@@ -26,6 +26,8 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
         return request.user and request.user.is_authenticated
 
 
+
+# 1.1 Overview
 class OverviewVisualization1(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = OverViewVisualization
@@ -984,7 +986,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_other,
                     ],
                     [
-                        '<span class="ml-4">Male</span>',
+                        "Male",
                         kid_encounter_male,
                         kid_fv_male,
                         kid_sdf_whole_mouth_male,
@@ -1000,7 +1002,7 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        '<span class="ml-4">Female</span>',
+                        "Female",
                         kid_encounter_female,
                         kid_fv_female,
                         kid_sdf_whole_mouth_female,
@@ -1031,7 +1033,7 @@ class OverviewVisualization1(APIView):
                         teen_refer_other,
                     ],
                     [
-                        '<span class="ml-4">Male</span>',
+                        "Male",
                         teen_encounter_male,
                         teen_fv_male,
                         teen_sdf_whole_mouth_male,
@@ -1047,7 +1049,7 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        '<span class="ml-4">Female</span>',
+                        "Female",
                         teen_encounter_female,
                         teen_fv_female,
                         teen_sdf_whole_mouth_female,
@@ -1078,7 +1080,7 @@ class OverviewVisualization1(APIView):
                         adult_refer_other,
                     ],
                     [
-                        '<span class="ml-4" striped hover :basic="basic">Male</span>',
+                        "Male",
                         adult_encounter_male,
                         adult_fv_male,
                         adult_sdf_whole_mouth_male,
@@ -1094,7 +1096,7 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        '<span class="ml-4">Female</span>',
+                        "Female",
                         adult_encounter_female,
                         adult_fv_female,
                         adult_sdf_whole_mouth_female,
@@ -1125,7 +1127,7 @@ class OverviewVisualization1(APIView):
                         old_refer_other,
                     ],
                     [
-                        '<span class="ml-4">Male</span>',
+                        "Male",
                         old_encounter_male,
                         old_fv_male,
                         old_sdf_whole_mouth_male,
@@ -1141,7 +1143,7 @@ class OverviewVisualization1(APIView):
                         "secondary",
                     ],
                     [
-                        '<span class="ml-4">Female</span>',
+                        "Female",
                         old_encounter_female,
                         old_fv_female,
                         old_sdf_whole_mouth_female,
@@ -3741,7 +3743,7 @@ class OverviewVisualization1(APIView):
                                     refer_hyg=True,
                                     age__range=(13, 18),
                                     created_at__range=[start_date, end_date],
-                                    geography_id=location,
+                                    geography_id=location.id,
                                 )
                                 .filter(activities_id=i.id)
                                 .count()
@@ -5058,7 +5060,7 @@ class OverviewVisualization1(APIView):
                             sum(kid_refer_other),
                         ],
                         [
-                            '<span class="ml-4">Male</span>',
+                            "Male",
                             sum(kid_encounter_male),
                             sum(kid_fv_male),
                             sum(kid_sdf_whole_mouth_male),
@@ -5074,7 +5076,7 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            '<span class="ml-4">Female</span>',
+                            "Female",
                             sum(kid_encounter_female),
                             sum(kid_fv_female),
                             sum(kid_sdf_whole_mouth_female),
@@ -5105,7 +5107,7 @@ class OverviewVisualization1(APIView):
                             sum(teen_refer_other),
                         ],
                         [
-                            '<span class="ml-4">Male</span>',
+                            "Male",
                             sum(teen_encounter_male),
                             sum(teen_fv_male),
                             sum(teen_sdf_whole_mouth_male),
@@ -5121,7 +5123,7 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            '<span class="ml-4">Female</span>',
+                            "Female",
                             sum(teen_encounter_female),
                             sum(teen_fv_female),
                             sum(teen_sdf_whole_mouth_female),
@@ -5152,7 +5154,7 @@ class OverviewVisualization1(APIView):
                             sum(adult_refer_other),
                         ],
                         [
-                            '<span class="ml-4">Male</span>',
+                            "Male",
                             sum(adult_encounter_male),
                             sum(adult_fv_male),
                             sum(adult_sdf_whole_mouth_male),
@@ -5168,7 +5170,7 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            '<span class="ml-4">Female</span>',
+                            "Female",
                             sum(adult_encounter_female),
                             sum(adult_fv_female),
                             sum(adult_sdf_whole_mouth_female),
@@ -5199,7 +5201,7 @@ class OverviewVisualization1(APIView):
                             sum(old_refer_other),
                         ],
                         [
-                            '<span class="ml-4">Male</span>',
+                            "Male",
                             sum(old_encounter_male),
                             sum(old_fv_male),
                             sum(old_sdf_whole_mouth_male),
@@ -5215,7 +5217,7 @@ class OverviewVisualization1(APIView):
                             "secondary",
                         ],
                         [
-                            '<span class="ml-4">Female</span>',
+                            "Female",
                             sum(old_encounter_female),
                             sum(old_fv_female),
                             sum(old_sdf_whole_mouth_female),
@@ -5253,6 +5255,45 @@ class OverviewVisualization1(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
+# for testing purpose of below api
+class TreatmentActivityTesting(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = OverViewVisualization
+
+    def get(self, request, format=None):
+        if User.objects.filter(id=request.user.id).exists():
+            health_post_obj = Activity.objects.get(name="Health Post")
+            seminar_obj = Activity.objects.get(name="School Seminar")
+            outreach_obj = Activity.objects.get(name="Community Outreach")
+            training = Activity.objects.get(name="Training")
+
+            seminar_art = Visualization.objects.filter(active=True,
+                activities_id=seminar_obj.id,
+                created_at__range=[last_30_days_obj, today_date_obj]
+            )
+      
+
+
+            e_list = []
+            a_list = []
+            for t in seminar_art:
+                if t.art > 0:
+                    e_list.append(t.encounter_id)
+                    a_list.append(t.art)
+            return Response([
+                [
+                    "encounter",
+                    e_list
+                ],
+                [
+                    "art_count",
+                    a_list
+                ]
+            ])
+        return Response({"message": "do not have a permission"}, status=401)
+
+
+# 1.4 Treatment by Activity Table
 class TreatmentActivityList(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = OverViewVisualization
@@ -5349,6 +5390,15 @@ class TreatmentActivityList(APIView):
             ).aggregate(Sum('art'))['art__sum']
             if seminar_art is None:
                 seminar_art = 0
+
+
+            e_list = []
+            a_list = []
+            for t in seminar_art:
+                if t.art > 0:
+                    e_list.append(t.encounter_id)
+                    a_list.append(t.art)
+            print(t_list)
 
             seminar_seal = Visualization.objects.filter(active=True,
                 activities_id=seminar_obj.id,
@@ -6315,6 +6365,9 @@ class TreatmentbyWardList(APIView):
         return Response({"treatment_obj": "do not have a permission"}, status=400)
 
 
+
+
+
 class DateReturn(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
 
@@ -6326,3 +6379,4 @@ class DateReturn(APIView):
                 "location": "All Location",
             }
         )
+

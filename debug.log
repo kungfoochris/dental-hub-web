@@ -18551,3 +18551,91 @@ TypeError: can only concatenate list (not "str") to list
 2021-10-26 14:37:18,205 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 18318
 2021-10-26 14:37:40,671 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16165
 2021-10-26 14:44:55,262 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 18319
+2021-10-27 09:33:20,695 django.request WARNING  Not Found: /api/v1/dailyrecalls
+2021-10-27 09:33:20,729 django.server WARNING  "GET /api/v1/dailyrecalls HTTP/1.1" 404 21908
+2021-10-27 09:33:21,599 django.request WARNING  Not Found: /favicon.ico
+2021-10-27 09:33:21,600 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-10-27 09:33:27,975 django.request WARNING  Unauthorized: /api/v1/patients
+2021-10-27 09:33:27,976 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-10-27 09:33:28,537 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-10-27 09:33:28,622 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-10-27 09:33:28,667 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-10-27 13:39:56,942 django.request WARNING  Unauthorized: /api/v1/treatmentactivities
+2021-10-27 13:39:56,975 django.server WARNING  "GET /api/v1/treatmentactivities HTTP/1.1" 401 9977
+2021-10-27 13:53:01,110 django.request WARNING  Unauthorized: /api/v1/treatmentactivitiestest
+2021-10-27 13:53:01,111 django.server WARNING  "GET /api/v1/treatmentactivitiestest HTTP/1.1" 401 10013
+2021-10-27 13:53:03,119 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentactivitiestest HTTP/1.1" 200 2733
+2021-10-27 13:53:13,808 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2975
+2021-10-27 13:53:20,761 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentactivitiestest HTTP/1.1" 200 2733
+2021-10-27 13:53:21,921 django.request WARNING  Unauthorized: /api/v1/treatmentactivitiestest
+2021-10-27 13:53:21,922 django.server WARNING  "GET /api/v1/treatmentactivitiestest HTTP/1.1" 401 10013
+2021-10-27 13:53:24,291 django.request WARNING  Unauthorized: /api/v1/treatmentactivitiestest
+2021-10-27 13:53:24,292 django.server WARNING  "GET /api/v1/treatmentactivitiestest HTTP/1.1" 401 10013
+2021-10-27 13:53:25,830 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentactivitiestest HTTP/1.1" 200 2733
+2021-10-27 13:53:34,076 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-10-27 13:53:34,308 django.request ERROR    Internal Server Error: /api/v1/treatmentactivitiestest
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 5279, in get
+    for t in seminar_art:
+TypeError: 'int' object is not iterable
+2021-10-27 13:53:34,311 django.server ERROR    "GET /api/v1/treatmentactivitiestest HTTP/1.1" 500 89053
+2021-10-27 13:54:42,725 django.request ERROR    Internal Server Error: /api/v1/treatmentactivitiestest
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 5282, in get
+    print(t_list)
+NameError: name 't_list' is not defined
+2021-10-27 13:54:42,729 django.server ERROR    "GET /api/v1/treatmentactivitiestest HTTP/1.1" 500 88834
+2021-10-27 13:55:05,837 django.server INFO     "GET /api/v1/treatmentactivitiestest HTTP/1.1" 200 10470
+2021-10-27 13:55:32,304 django.server INFO     "GET /api/v1/treatmentactivitiestest HTTP/1.1" 200 10516
+2021-10-28 10:03:05,450 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25305
+2021-10-28 10:03:06,751 django.request WARNING  Not Found: /favicon.ico
+2021-10-28 10:03:06,752 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-10-28 10:03:11,019 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-10-28 10:05:30,405 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-10-28 10:06:26,985 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-10-28 10:18:03,132 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-10-28 10:18:45,037 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-10-28 10:18:49,000 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-10-28 10:41:36,888 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28298
+2021-10-28 10:42:06,416 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 28301
+2021-10-28 11:38:40,297 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28357
+2021-10-28 11:38:40,297 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28357
+2021-10-28 11:39:10,112 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 28360
+2021-10-28 11:59:00,967 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28357
+2021-10-28 12:00:07,662 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 28360
+2021-10-28 12:16:18,421 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25364
+2021-10-28 12:17:42,945 django.server INFO     "POST /api/v1/longitudinalone HTTP/1.1" 200 25361
+2021-10-28 13:04:14,400 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25360
+2021-10-28 13:04:54,782 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 25361

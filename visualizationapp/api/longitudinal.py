@@ -1037,10 +1037,17 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_total_patient = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                    
                 denominator1 = sum(frame1_total_patient)
                 denominator2 = sum(frame2_total_patient)
                 try:
@@ -1084,8 +1091,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_carries_risk_medium = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_carries_risk_medium)/denominator1) * 100,2)
@@ -1128,8 +1139,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_carries_risk_high = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_carries_risk_high)/denominator1) * 100,2)
@@ -1172,8 +1187,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_untreated_caries_present = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
-                        frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                        if referral_type:
+                            frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                            frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                        else:
+                            frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                            frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
         
                 try:
                     percent = round((sum(frame1_untreated_caries_present)/denominator1) * 100,2)
@@ -1217,10 +1236,16 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_total_decayed_primary_teeth = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame1_total_decayed_primary_teeth.append(x.decayed_primary_teeth_number)
-                        for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
+                        if referral_type:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame1_total_decayed_primary_teeth.append(x.decayed_primary_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
+                        else:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame1_total_decayed_primary_teeth.append(x.decayed_primary_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
 
                 try:
                     total_decayed_primary_teeth.append(round(statistics.stdev(frame1_total_decayed_primary_teeth),2))
@@ -1266,10 +1291,16 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_total_decayed_permanent_teeth = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame1_total_decayed_permanent_teeth.append(x.decayed_permanent_teeth_number)
-                        for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame2_total_decayed_permanent_teeth.append(y.decayed_permanent_teeth_number)                
+                        if referral_type:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame1_total_decayed_permanent_teeth.append(x.decayed_permanent_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame2_total_decayed_permanent_teeth.append(y.decayed_permanent_teeth_number)                
+                        else:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame1_total_decayed_permanent_teeth.append(x.decayed_permanent_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame2_total_decayed_permanent_teeth.append(y.decayed_permanent_teeth_number)                
 
                 try:
                     total_decayed_permanent_teeth.append(round(statistics.stdev(frame1_total_decayed_permanent_teeth),2))
@@ -1314,8 +1345,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_cavity_permanent_molar = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                     
                 try:
                     percent = round((sum(frame1_cavity_permanent_molar)/denominator1) * 100,2)
@@ -1361,8 +1396,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_cavity_permanent_anterior = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                         
                 try:
                     percent = round((sum(frame1_cavity_permanent_anterior)/denominator1) * 100,2)
@@ -1406,9 +1445,13 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_active_infection = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                
+                        if referral_type:
+                            frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                    
                 try:
                     percent = round((sum(frame1_active_infection)/denominator1) * 100,2)
                 except:
@@ -1449,8 +1492,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_reversible_pulpitis = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_reversible_pulpitis)/denominator1) * 100,2)
@@ -1492,8 +1539,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_need_art_filling = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_need_art_filling)/denominator1) * 100,2)
@@ -1535,8 +1586,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_need_sdf = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_need_sdf)/denominator1) * 100,2)
@@ -1579,8 +1634,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_need_extraction = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_need_extraction)/denominator1) * 100,2)
@@ -1623,8 +1682,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_need_fv = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_need_fv)/denominator1) * 100,2)
@@ -1666,8 +1729,12 @@ class SampleFrameOneLongitudinal(APIView):
                 frame2_need_dentist_or_hygienist = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        else:
+                            frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
                 
                 try:
                     percent = round((sum(frame1_need_dentist_or_hygienist)/denominator1) * 100,2)
@@ -2916,13 +2983,23 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_carries_risk_low = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                        if referral_type:
+                            frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
 
-                        frame1_obj = Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            frame1_obj = Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_carries_risk_low.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_total_patient.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_total_patient.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+
+                            frame1_obj = Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                        
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -2973,10 +3050,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_carries_risk_medium = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_carries_risk_medium.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                        
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3023,10 +3107,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_carries_risk_high = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_carries_risk_high.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(carries_risk="High",created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(carries_risk="High",created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                        
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3073,10 +3164,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_untreated_caries_present = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
-                        frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
-                        frame1_obj = Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0))
-                        fram2_obj = Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0))
+                        if referral_type:
+                            frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                            frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                            frame1_obj = Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0))
+                            fram2_obj = Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0))
+                        else:
+                            frame1_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                            frame2_untreated_caries_present.append(Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).count())
+                            frame1_obj = Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0))
+                            fram2_obj = Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0))
+                        
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3123,11 +3221,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 frame2_total_decayed_primary_teeth = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame1_total_decayed_primary_teeth.append(x.decayed_primary_teeth_number)
-                        for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
-                        
+                        if referral_type:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame1_total_decayed_primary_teeth.append(x.decayed_primary_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
+                        else:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame1_total_decayed_primary_teeth.append(x.decayed_primary_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame2_total_decayed_primary_teeth.append(y.decayed_primary_teeth_number)                
+                           
                 try:
                     total_decayed_primary_teeth.append(round(statistics.stdev(frame1_total_decayed_primary_teeth),2))
                     decayed_primary_teeth_mean.append(round(statistics.mean(frame1_total_decayed_primary_teeth),2))
@@ -3172,10 +3276,16 @@ class SampleFrameTwoLongitudinal(APIView):
                 frame2_total_decayed_permanent_teeth = []
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame1_total_decayed_permanent_teeth.append(x.decayed_permanent_teeth_number)
-                        for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
-                            frame2_total_decayed_permanent_teeth.append(y.decayed_permanent_teeth_number)                
+                        if referral_type:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame1_total_decayed_permanent_teeth.append(x.decayed_permanent_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type):
+                                frame2_total_decayed_permanent_teeth.append(y.decayed_permanent_teeth_number)                
+                        else:
+                            for x in Visualization.objects.filter(created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame1_total_decayed_permanent_teeth.append(x.decayed_permanent_teeth_number)
+                            for y in Visualization.objects.filter(created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit):
+                                frame2_total_decayed_permanent_teeth.append(y.decayed_permanent_teeth_number)                
 
                 try:
                     total_decayed_permanent_teeth.append(round(statistics.stdev(frame1_total_decayed_permanent_teeth),2))
@@ -3221,10 +3331,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_cavity_permanent_molar = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_cavity_permanent_molar.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                           
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3274,10 +3391,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_cavity_permanent_anterior = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_cavity_permanent_anterior.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3325,10 +3449,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_active_infection = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_active_infection.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(active_infection=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(active_infection=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                        
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3374,10 +3505,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_reversible_pulpitis = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_reversible_pulpitis.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3423,10 +3561,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_need_art_filling = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_art_filling.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3472,10 +3617,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_need_sdf = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_sdf.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(need_sdf=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(need_sdf=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3522,10 +3674,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_need_extraction = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_extraction.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(need_extraction=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(need_extraction=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3572,10 +3731,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_need_fv = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_fv.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(need_fv=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(need_fv=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:
@@ -3621,10 +3787,17 @@ class SampleFrameTwoLongitudinal(APIView):
                 common_need_dentist_or_hygienist = 0
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
-                        frame1_obj = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
-                        fram2_obj = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        if referral_type:
+                            frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).count())
+                            frame1_obj = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                            fram2_obj = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type)
+                        else:
+                            frame1_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame2_need_dentist_or_hygienist.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).count())
+                            frame1_obj = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date1, end_date1],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            fram2_obj = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date2, end_date2],age__range=[start_age, end_age],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit)
+                            
                         for x in frame1_obj:
                             for y in fram2_obj:
                                 if x.patiend_id == y.patiend_id:

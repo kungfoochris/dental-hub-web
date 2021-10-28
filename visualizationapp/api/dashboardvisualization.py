@@ -54,6 +54,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
         return request.user and request.user.is_authenticated
 
 
+# 1.2 Treatment Distribution
 class VisualizationSetting(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
 
@@ -1724,6 +1725,7 @@ class VisualizationSettingFilter(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
+# 1.3 Activity Distribution
 class PieChartVisualization(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
 
@@ -1854,6 +1856,7 @@ class PieChartVisualization(APIView):
         }
         return JsonResponse({"locationChart": locationChart})
 
+# 1.3 Activity Distribution
 class PieChartVisualizationFilter(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = TreatMentBarGraphVisualization

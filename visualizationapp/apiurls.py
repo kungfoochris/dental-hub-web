@@ -4,7 +4,7 @@ from django.urls import path
 # from treatmentapp.api.visualization import Visualization, Visualization1
 
 from visualizationapp.api.dashboard import OverviewVisualization1,\
-TreatmentActivityList,TreatmentbyWardList,DateReturn
+TreatmentActivityList,TreatmentbyWardList,DateReturn,TreatmentActivityTesting
 
 from visualizationapp.api.dashboardvisualization import VisualizationSetting,\
 VisualizationSettingFilter,PieChartVisualization,PieChartVisualizationFilter
@@ -50,6 +50,7 @@ urlpatterns = [
 
 	path('overviewvisualization',OverviewVisualization1.as_view()),
 	path('treatmentactivities', TreatmentActivityList.as_view()),
+	path('treatmentactivitiestest', TreatmentActivityTesting.as_view()),
 	path('treatmentwards',TreatmentbyWardList.as_view()),
 	path('returndate',DateReturn.as_view()),
 	path('overviewbargraph',VisualizationSetting.as_view()),

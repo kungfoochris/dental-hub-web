@@ -898,7 +898,7 @@ class TreatmentTableBasicData(APIView):
             )
         return Response({"message": serializer.errors}, status=400)
 
-# table 2.2
+# 2.2 Strategic Data
 class TreatmentStrategicData(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = TreatmentStrategicDataSerializer
