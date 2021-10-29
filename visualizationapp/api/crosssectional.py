@@ -239,16 +239,14 @@ class TestCrossSectionalVisualization(APIView):
 
 
             carries_risk_high_EFGH = [numerator_carries_risk_high_E,numerator_carries_risk_high_F,numerator_carries_risk_high_G,numerator_carries_risk_high_H]
+            
 
             # p-value calculation for ABC
             # WHO Indicator age-groups
             try:
                 table_ABC1 = [carries_risk_low_ABC,carries_risk_medium_ABC,carries_risk_high_ABC]
                 stat, p, dof, expected = chi2_contingency(table_ABC1)
-                if type(p) != float:
-                    abc1_pvalue = 0
-                else:
-                    abc1_pvalue = round(p,3)
+                abc1_pvalue = round(p,3)
                 print(stat)
                 print(p)
                 print(dof)
@@ -264,10 +262,7 @@ class TestCrossSectionalVisualization(APIView):
             try:
                 table_EFGH1 = [carries_risk_low_EFGH,carries_risk_medium_EFGH,carries_risk_high_EFGH]
                 stat, p, dof, expected = chi2_contingency(table_EFGH1)
-                if type(p) != float:
-                    efgh1_pvalue = 0
-                else:
-                    efgh1_pvalue = round(p,3)
+                efgh1_pvalue = round(p,3)
             except:
                 efgh1_pvalue = 0
                 
@@ -550,10 +545,7 @@ class TestCrossSectionalVisualization(APIView):
             # p-value calculation for ABC
             try:
                 stat, p = wilcoxon(decayed_primary_teeth_mean_list_ABC,decayed_primary_teeth_mean_list_EFGH)
-                if type(p) != float:
-                    abc_pvalue = 0
-                else:
-                    abc_pvalue = round(p,3)
+                abc_pvalue = round(p,3)
             except:
                 abc_pvalue = 0
             
@@ -563,10 +555,7 @@ class TestCrossSectionalVisualization(APIView):
             # p-value calculation for EFGH
             try:
                 stat, p = wilcoxon(decayed_permanent_teeth_list_ABC,decayed_permanent_teeth_list_EFGH)
-                if type(p) != float:
-                    efgh_pvalue = 0
-                else:
-                    efgh_pvalue = round(p,3)
+                efgh_pvalue = round(p,3)
             except:
                 efgh_pvalue = 0
             
@@ -1140,10 +1129,7 @@ class TestCrossSectionalVisualization(APIView):
             try:
                 table_ABC2 = [untreated_caries_present_ABC,cavity_permanent_molar_ABC,cavity_permanent_anterior_ABC,active_infection_ABC,reversible_pulpitis_ABC,need_art_filling_ABC,need_sdf_ABC,need_extraction_ABC,need_fv_ABC,need_dentist_or_hygienist_ABC]
                 stat, p, dof, expected = chi2_contingency(table_ABC2)
-                if type(p) != float:
-                    abc2_pvalue = 0
-                else:
-                    abc2_pvalue = round(p,3)
+                abc2_pvalue = round(p,3)
             except:
                 abc2_pvalue = 0
 
@@ -1163,10 +1149,7 @@ class TestCrossSectionalVisualization(APIView):
             try:
                 table_EFGH2 = [untreated_caries_present_EFGH,cavity_permanent_molar_EFGH,cavity_permanent_anterior_EFGH,active_infection_EFGH,reversible_pulpitis_EFGH,need_art_filling_EFGH,need_sdf_EFGH,need_extraction_EFGH,need_fv_EFGH,need_dentist_or_hygienist_EFGH]
                 stat, p, dof, expected = chi2_contingency(table_EFGH2)
-                if type(p) != float:
-                    efgh2_pvalue = 0
-                else:
-                    efgh2_pvalue = round(p,3)
+                efgh2_pvalue = round(p,3)
             except:
                 efgh2_pvalue = 0
 
@@ -1781,10 +1764,7 @@ class TestCrossSectionalVisualization(APIView):
                 try:
                     table_ABC1 = [carries_risk_low_ABC,carries_risk_medium_ABC,carries_risk_high_ABC]
                     stat, p, dof, expected = chi2_contingency(table_ABC1)
-                    if type(p) != float:
-                        abc1_pvalue = 0
-                    else:
-                        abc1_pvalue = round(p,3)
+                    abc1_pvalue = round(p,3)
                 except:
                     abc1_pvalue = 0
                 total_carries_risk_low.insert(3, abc1_pvalue)
@@ -1796,10 +1776,7 @@ class TestCrossSectionalVisualization(APIView):
                 try:
                     table_EFGH1 = [carries_risk_low_EFGH,carries_risk_medium_EFGH,carries_risk_high_EFGH]
                     stat, p, dof, expected = chi2_contingency(table_EFGH1)
-                    if type(p) != float:
-                        efgh1_pvalue = 0
-                    else:
-                        efgh1_pvalue = round(p,3)
+                    efgh1_pvalue = round(p,3)
                 except:
                     efgh1_pvalue = 0
 
@@ -2133,10 +2110,7 @@ class TestCrossSectionalVisualization(APIView):
                 # p-value calculation for ABC
                 try:
                     stat, p = wilcoxon(decayed_primary_teeth_mean_list_ABC,decayed_permanent_teeth_mean_list_ABC)
-                    if type(p) != float:
-                        abc_pvalue = 0
-                    else:
-                        abc_pvalue = round(p,3)
+                    abc_pvalue = round(p,3)
                 except:
                     abc_pvalue = 0
                 
@@ -2146,10 +2120,7 @@ class TestCrossSectionalVisualization(APIView):
                 # p-value calculation for EFGH
                 try:
                     stat, p = wilcoxon(decayed_primary_teeth_mean_list_EFGH,decayed_permanent_teeth_mean_list_EFGH)
-                    if type(p) != float:
-                        efgh_pvalue = 0
-                    else:
-                        efgh_pvalue = round(p,3)
+                    efgh_pvalue = round(p,3)
                 except:
                     efgh_pvalue = 0
                 
@@ -3019,10 +2990,7 @@ class TestCrossSectionalVisualization(APIView):
                 try:
                     table_ABC2 = [untreated_caries_present_ABC,cavity_permanent_molar_ABC,cavity_permanent_anterior_ABC,active_infection_ABC,reversible_pulpitis_ABC,need_art_filling_ABC,need_sdf_ABC,need_extraction_ABC,need_fv_ABC,need_dentist_or_hygienist_ABC]
                     stat, p, dof, expected = chi2_contingency(table_ABC2)
-                    if type(p) != float:
-                        abc2_pvalue = 0
-                    else:
-                        abc2_pvalue = round(p,3)
+                    abc2_pvalue = round(p,3)
                 except:
                     abc2_pvalue = 0
 
@@ -3042,15 +3010,10 @@ class TestCrossSectionalVisualization(APIView):
                 try:
                     table_EFGH2 = [untreated_caries_present_EFGH,cavity_permanent_molar_EFGH,cavity_permanent_anterior_EFGH,active_infection_EFGH,reversible_pulpitis_EFGH,need_art_filling_EFGH,need_sdf_EFGH,need_extraction_EFGH,need_fv_EFGH,need_dentist_or_hygienist_EFGH]
                     stat, p, dof, expected = chi2_contingency(table_EFGH2)
-                    if type(p) != float:
-                        efgh2_pvalue = 0
-                    else:
-                        efgh2_pvalue = round(p,3)
+                    efgh2_pvalue = round(p,3)
                 except:
                     efgh2_pvalue = 0
 
-            
-                
                 total_untreated_caries_present.append(efgh2_pvalue)
                 total_cavity_permanent_molar.append(efgh2_pvalue)
                 total_cavity_permanent_anterior.append(efgh2_pvalue)

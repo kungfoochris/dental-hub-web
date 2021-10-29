@@ -4812,7 +4812,7 @@ class OverviewVisualization1(APIView):
                         kid_refer_dr_male.append(sum(kid_refer_dr_male1))
                         kid_refer_dr_female.append(sum(kid_refer_dr_female1))
 
-                        kid_refer_other.append(sum(kid_refer_other))
+                        kid_refer_other.append(sum(kid_refer_other1))
                         kid_refer_other_male.append(sum(kid_refer_other_male1))
                         kid_refer_other_female.append(sum(kid_refer_other_female1))
 
@@ -5383,14 +5383,13 @@ class TreatmentActivityList(APIView):
             ).aggregate(Sum('exo'))['exo__sum']
             if seminar_exo is None:
                 seminar_exo = 0
-
+            
             seminar_art = Visualization.objects.filter(active=True,
                 activities_id=seminar_obj.id,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum('art'))['art__sum']
             if seminar_art is None:
                 seminar_art = 0
-
 
             e_list = []
             a_list = []

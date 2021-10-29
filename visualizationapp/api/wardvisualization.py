@@ -1606,7 +1606,9 @@ class WardTableVisualization2(APIView):
                             total_art_old.append(art_old)
 
                             exo = Visualization.objects.filter(active=True,
-                                geography_id=i.id, exo=True
+                                geography_id=i.id, exo=True,
+                                activities_id=activities.id,
+                                created_at__range=[start_date, end_date]
                             ).count()
                             total_exo.append(exo)
                             exo_male = Visualization.objects.filter(active=True,
@@ -3607,7 +3609,7 @@ class WardUserlineVisualization(APIView):
             return Response({"locationChart": locationChart})
         return Response({"message": "only admin can see"}, status=400)
 
-# Strategic Data
+# 10.7 Strategic Data
 class WardStrategicData(APIView):
     serializer_class = WardFilterVisualization
     permission_classes = (IsPostOrIsAuthenticated,)
