@@ -18639,3 +18639,46 @@ NameError: name 't_list' is not defined
 2021-10-28 12:17:42,945 django.server INFO     "POST /api/v1/longitudinalone HTTP/1.1" 200 25361
 2021-10-28 13:04:14,400 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 25360
 2021-10-28 13:04:54,782 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 25361
+2021-11-01 10:25:30,688 django.request WARNING  Unauthorized: /api/v1/longitudinalone
+2021-11-01 10:25:30,771 django.server WARNING  "GET /api/v1/longitudinalone HTTP/1.1" 401 9989
+2021-11-01 10:25:31,246 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-11-01 10:25:31,254 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-11-01 10:25:31,256 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-11-01 10:25:31,258 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-11-01 10:25:31,321 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-11-01 10:25:31,323 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-11-01 10:25:31,325 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-11-01 10:25:31,328 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-11-01 10:25:31,329 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-11-01 10:25:31,335 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-11-01 10:25:31,374 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-11-01 10:25:31,617 django.request WARNING  Not Found: /favicon.ico
+2021-11-01 10:25:31,618 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-11-01 10:40:53,149 django.request WARNING  Unauthorized: /api/v1/treatmentactivities
+2021-11-01 10:40:53,150 django.server WARNING  "GET /api/v1/treatmentactivities HTTP/1.1" 401 9977
+2021-11-01 10:40:55,118 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentactivities HTTP/1.1" 200 2729
+2021-11-01 10:41:11,674 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2967
+2021-11-01 10:41:31,174 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-11-01 10:41:31,541 django.request ERROR    Internal Server Error: /api/v1/treatmentactivities
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboard.py", line 5405, in get
+    print(t_list)
+NameError: name 't_list' is not defined
+2021-11-01 10:41:31,545 django.server ERROR    "GET /api/v1/treatmentactivities HTTP/1.1" 500 91528
+2021-11-01 10:42:59,038 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15559

@@ -5273,7 +5273,6 @@ class TreatmentActivityTesting(APIView):
             )
       
 
-
             e_list = []
             a_list = []
             for t in seminar_art:
@@ -5391,13 +5390,6 @@ class TreatmentActivityList(APIView):
             if seminar_art is None:
                 seminar_art = 0
 
-            e_list = []
-            a_list = []
-            for t in seminar_art:
-                if t.art > 0:
-                    e_list.append(t.encounter_id)
-                    a_list.append(t.art)
-            print(t_list)
 
             seminar_seal = Visualization.objects.filter(active=True,
                 activities_id=seminar_obj.id,
