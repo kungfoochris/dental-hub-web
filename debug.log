@@ -18682,3 +18682,20 @@ Traceback (most recent call last):
 NameError: name 't_list' is not defined
 2021-11-01 10:41:31,545 django.server ERROR    "GET /api/v1/treatmentactivities HTTP/1.1" 500 91528
 2021-11-01 10:42:59,038 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15559
+2021-11-01 11:19:50,545 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15044
+2021-11-01 11:20:48,024 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15041
+2021-11-01 13:16:18,597 django.request WARNING  Unauthorized: /api/v1/treatmentactivities
+2021-11-01 13:16:18,637 django.server WARNING  "GET /api/v1/treatmentactivities HTTP/1.1" 401 9977
+2021-11-01 13:16:21,619 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentactivities HTTP/1.1" 200 2729
+2021-11-01 13:16:34,133 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2968
+2021-11-01 13:16:43,150 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-11-01 13:16:43,473 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
+2021-11-01 13:17:02,546 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15437
+2021-11-01 13:18:05,206 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
+2021-11-01 13:18:08,155 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15554
+2021-11-01 13:25:18,769 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
+2021-11-01 13:25:26,586 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15965
+2021-11-01 13:30:08,517 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
+2021-11-01 13:30:14,809 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 16493
+2021-11-01 14:14:44,625 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
+2021-11-01 14:15:11,908 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15554

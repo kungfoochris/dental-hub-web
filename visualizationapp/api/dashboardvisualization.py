@@ -2270,6 +2270,7 @@ class PieChartVisualizationFilter(APIView):
                         )
                     else:
                         training_count.append(0)
+
                 if age_group == "fv":
                     health_post_count.append(
                         Visualization.objects.filter(active=True,
@@ -2295,6 +2296,36 @@ class PieChartVisualizationFilter(APIView):
                     training_count.append(
                         Visualization.objects.filter(active=True,
                             fv=True,
+                            activities_id=training_obj.id,
+                            created_at__range=[start_date, end_date],
+                        ).count()
+                    )
+                
+                if age_group == "f-sdf":
+                    health_post_count.append(
+                        Visualization.objects.filter(active=True,
+                            sdf_whole_mouth=True,
+                            activities_id=health_post_obj.id,
+                            created_at__range=[start_date, end_date],
+                        ).count()
+                    )
+                    school_seminar_count.append(
+                        Visualization.objects.filter(active=True,
+                            sdf_whole_mouth=True,
+                            activities_id=school_seminar_obj.id,
+                            created_at__range=[start_date, end_date],
+                        ).count()
+                    )
+                    community_outreach_count.append(
+                        Visualization.objects.filter(active=True,
+                            sdf_whole_mouth=True,
+                            activities_id=community_outreach_obj.id,
+                            created_at__range=[start_date, end_date],
+                        ).count()
+                    )
+                    training_count.append(
+                        Visualization.objects.filter(active=True,
+                            sdf_whole_mouth=True,
                             activities_id=training_obj.id,
                             created_at__range=[start_date, end_date],
                         ).count()
@@ -2914,6 +2945,40 @@ class PieChartVisualizationFilter(APIView):
                         training_count.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
+                                activities_id=training_obj.id,
+                                geography_id=location.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                    
+                    if age_group == "f-sdf":
+                        health_post_count.append(
+                            Visualization.objects.filter(active=True,
+                                sdf_whole_mouth=True,
+                                activities_id=health_post_obj.id,
+                                geography_id=location.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                        school_seminar_count.append(
+                            Visualization.objects.filter(
+                                sdf_whole_mouth=True,
+                                activities_id=school_seminar_obj.id,
+                                geography_id=location.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                        community_outreach_count.append(
+                            Visualization.objects.filter(active=True,
+                                sdf_whole_mouth=True,
+                                activities_id=community_outreach_obj.id,
+                                geography_id=location.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
+                        training_count.append(
+                            Visualization.objects.filter(active=True,
+                                sdf_whole_mouth=True,
                                 activities_id=training_obj.id,
                                 geography_id=location.id,
                                 created_at__range=[start_date, end_date],
