@@ -245,12 +245,11 @@ class TestCrossSectionalVisualization(APIView):
             # WHO Indicator age-groups
             try:
                 table_ABC1 = [carries_risk_low_ABC,carries_risk_medium_ABC,carries_risk_high_ABC]
+                print("table_ABC1=")
+                print(table_ABC1)
                 stat, p, dof, expected = chi2_contingency(table_ABC1)
                 abc1_pvalue = round(p,3)
-                print(stat)
-                print(p)
-                print(dof)
-                print(expected)
+
             except:
                 abc1_pvalue = 0
             total_carries_risk_low.insert(3, abc1_pvalue)
@@ -261,6 +260,8 @@ class TestCrossSectionalVisualization(APIView):
             # Jevaia’s indicator age-groups
             try:
                 table_EFGH1 = [carries_risk_low_EFGH,carries_risk_medium_EFGH,carries_risk_high_EFGH]
+                print("table_EFGH1=")
+                print(table_EFGH1)
                 stat, p, dof, expected = chi2_contingency(table_EFGH1)
                 efgh1_pvalue = round(p,3)
             except:
@@ -270,9 +271,7 @@ class TestCrossSectionalVisualization(APIView):
             total_carries_risk_medium.append(efgh1_pvalue)
             total_carries_risk_high.append(efgh1_pvalue)
 
-            # total_carries_risk_low.append(round(sum(total_carries_risk_low),2))
-            # total_carries_risk_medium.append(round(sum(total_carries_risk_medium),2))
-            # total_carries_risk_high.append(round(sum(total_carries_risk_high),2))
+
             overall_carries_risk_low = numerator_carries_risk_low_A + numerator_carries_risk_low_B 
             + numerator_carries_risk_low_C + numerator_carries_risk_low_E
             + numerator_carries_risk_low_F + numerator_carries_risk_low_G
@@ -544,7 +543,7 @@ class TestCrossSectionalVisualization(APIView):
 
             # p-value calculation for ABC
             try:
-                stat, p = wilcoxon(decayed_primary_teeth_mean_list_ABC,decayed_primary_teeth_mean_list_EFGH)
+                stat, p = wilcoxon(decayed_primary_teeth_mean_list_ABC,decayed_permanent_teeth_list_ABC)
                 abc_pvalue = round(p,3)
             except:
                 abc_pvalue = 0
@@ -554,16 +553,13 @@ class TestCrossSectionalVisualization(APIView):
 
             # p-value calculation for EFGH
             try:
-                stat, p = wilcoxon(decayed_permanent_teeth_list_ABC,decayed_permanent_teeth_list_EFGH)
+                stat, p = wilcoxon(decayed_primary_teeth_mean_list_EFGH,decayed_permanent_teeth_list_EFGH)
                 efgh_pvalue = round(p,3)
             except:
                 efgh_pvalue = 0
             
             total_decayed_primary_teeth.append(efgh_pvalue)
             total_decayed_permanent_teeth.append(efgh_pvalue)
-
-            # total_decayed_primary_teeth.append(round(sum(total_decayed_primary_teeth),2))
-            # total_decayed_permanent_teeth.append(round(sum(total_decayed_permanent_teeth),2))
 
             overall_decayed_primary_teeth = decayed_primary_teeth_mean_list_ABC[0] + decayed_primary_teeth_mean_list_ABC[1] 
             + decayed_primary_teeth_mean_list_ABC[2] + decayed_primary_teeth_mean_list_EFGH[0]
@@ -1128,6 +1124,8 @@ class TestCrossSectionalVisualization(APIView):
             # WHO Indicator age-groups
             try:
                 table_ABC2 = [untreated_caries_present_ABC,cavity_permanent_molar_ABC,cavity_permanent_anterior_ABC,active_infection_ABC,reversible_pulpitis_ABC,need_art_filling_ABC,need_sdf_ABC,need_extraction_ABC,need_fv_ABC,need_dentist_or_hygienist_ABC]
+                print("table_ABC2=")
+                print(table_ABC2)
                 stat, p, dof, expected = chi2_contingency(table_ABC2)
                 abc2_pvalue = round(p,3)
             except:
@@ -1148,6 +1146,8 @@ class TestCrossSectionalVisualization(APIView):
             # Jevaia’s indicator age-groups
             try:
                 table_EFGH2 = [untreated_caries_present_EFGH,cavity_permanent_molar_EFGH,cavity_permanent_anterior_EFGH,active_infection_EFGH,reversible_pulpitis_EFGH,need_art_filling_EFGH,need_sdf_EFGH,need_extraction_EFGH,need_fv_EFGH,need_dentist_or_hygienist_EFGH]
+                print("table_EFGH2=")
+                print(table_EFGH2)
                 stat, p, dof, expected = chi2_contingency(table_EFGH2)
                 efgh2_pvalue = round(p,3)
             except:
@@ -1164,17 +1164,7 @@ class TestCrossSectionalVisualization(APIView):
             total_need_fv.append(efgh2_pvalue)
             total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
-            # total_untreated_caries_present.append(round(sum(total_untreated_caries_present),2))
-            # total_cavity_permanent_molar.append(round(sum(total_cavity_permanent_molar),2))
-            # total_cavity_permanent_anterior.append(round(sum(total_cavity_permanent_anterior),2))
-            # total_active_infection.append(round(sum(total_active_infection),2))
-            # total_reversible_pulpitis.append(round(sum(total_reversible_pulpitis),2))
-            # total_need_art_filling.append(round(sum(total_need_art_filling),2))
-            # total_need_sdf.append(round(sum(total_need_sdf),2))
-            # total_need_extraction.append(round(sum(total_need_extraction),2))
-            # total_need_fv.append(round(sum(total_need_fv),2))
-            # total_need_dentist_or_hygienist.append(round(sum(total_need_dentist_or_hygienist),2))
-
+            
             overall_untreated_caries_present = numerator_untreated_caries_present_A + numerator_untreated_caries_present_B 
             + numerator_untreated_caries_present_C + numerator_untreated_caries_present_E
             + numerator_untreated_caries_present_F + numerator_untreated_caries_present_G
@@ -1763,6 +1753,8 @@ class TestCrossSectionalVisualization(APIView):
                 # WHO Indicator age-groups
                 try:
                     table_ABC1 = [carries_risk_low_ABC,carries_risk_medium_ABC,carries_risk_high_ABC]
+                    print("table_ABC1=")
+                    print(table_ABC1)
                     stat, p, dof, expected = chi2_contingency(table_ABC1)
                     abc1_pvalue = round(p,3)
                 except:
@@ -1775,6 +1767,8 @@ class TestCrossSectionalVisualization(APIView):
                 # Jevaia’s indicator age-groups
                 try:
                     table_EFGH1 = [carries_risk_low_EFGH,carries_risk_medium_EFGH,carries_risk_high_EFGH]
+                    print("table_EFGH1=")
+                    print(table_EFGH1)
                     stat, p, dof, expected = chi2_contingency(table_EFGH1)
                     efgh1_pvalue = round(p,3)
                 except:
@@ -1783,10 +1777,6 @@ class TestCrossSectionalVisualization(APIView):
                 total_carries_risk_low.append(efgh1_pvalue)
                 total_carries_risk_medium.append(efgh1_pvalue)
                 total_carries_risk_high.append(efgh1_pvalue)
-
-                # total_carries_risk_low.append(round(sum(total_carries_risk_low),2))
-                # total_carries_risk_medium.append(round(sum(total_carries_risk_medium),2))
-                # total_carries_risk_high.append(round(sum(total_carries_risk_high),2))
 
                 overall_carries_risk_low = numerator_carries_risk_low_A + numerator_carries_risk_low_B 
                 + numerator_carries_risk_low_C + numerator_carries_risk_low_E
@@ -2989,6 +2979,8 @@ class TestCrossSectionalVisualization(APIView):
                 # WHO Indicator age-groups
                 try:
                     table_ABC2 = [untreated_caries_present_ABC,cavity_permanent_molar_ABC,cavity_permanent_anterior_ABC,active_infection_ABC,reversible_pulpitis_ABC,need_art_filling_ABC,need_sdf_ABC,need_extraction_ABC,need_fv_ABC,need_dentist_or_hygienist_ABC]
+                    print("table_ABC2=")
+                    print(table_ABC2)
                     stat, p, dof, expected = chi2_contingency(table_ABC2)
                     abc2_pvalue = round(p,3)
                 except:
@@ -3009,6 +3001,8 @@ class TestCrossSectionalVisualization(APIView):
                 # Jevaia’s indicator age-groups
                 try:
                     table_EFGH2 = [untreated_caries_present_EFGH,cavity_permanent_molar_EFGH,cavity_permanent_anterior_EFGH,active_infection_EFGH,reversible_pulpitis_EFGH,need_art_filling_EFGH,need_sdf_EFGH,need_extraction_EFGH,need_fv_EFGH,need_dentist_or_hygienist_EFGH]
+                    print("table_EFGH2=")
+                    print(table_EFGH2)
                     stat, p, dof, expected = chi2_contingency(table_EFGH2)
                     efgh2_pvalue = round(p,3)
                 except:
