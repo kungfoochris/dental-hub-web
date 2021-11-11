@@ -62,58 +62,58 @@ class VisualizationSetting(APIView):
         if User.objects.get(id=request.user.id):
             district = ["Child", "Teen", "Adult", "Old Adult"]
             kid_exo = Visualization.objects.filter(active=True,
-                age__lt=12, created_at__range=[last_30_days_obj, today_date_obj]
+                age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
             ).aggregate(Sum("exo"))["exo__sum"]
             if kid_exo is None:
                 kid_exo = 0
             kid_art = Visualization.objects.filter(active=True,
-                age__lt=12, created_at__range=[last_30_days_obj, today_date_obj]
+                age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
             ).aggregate(Sum("art"))["art__sum"]
             if kid_art is None:
                 kid_art = 0
             kid_seal = Visualization.objects.filter(active=True,
-                age__lt=12, created_at__range=[last_30_days_obj, today_date_obj]
+                age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
             ).aggregate(Sum("seal"))["seal__sum"]
             if kid_seal is None:
                 kid_seal = 0
             kid_sdf = Visualization.objects.filter(active=True,
-                age__lt=12, created_at__range=[last_30_days_obj, today_date_obj]
+                age__lt=13, created_at__range=[last_30_days_obj, today_date_obj]
             ).aggregate(Sum("sdf"))["sdf__sum"]
             if kid_sdf is None:
                 kid_sdf = 0
             kid_fv = Visualization.objects.filter(active=True,
                 fv=True,
-                age__lt=12,
+                age__lt=13,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
             teen_exo = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum("exo"))["exo__sum"]
             if teen_exo is None:
                 teen_exo = 0
             teen_art = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum("art"))["art__sum"]
             if teen_art is None:
                 teen_art = 0
             teen_seal = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum("seal"))["seal__sum"]
             if teen_seal is None:
                 teen_seal = 0
             teen_sdf = Visualization.objects.filter(active=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).aggregate(Sum("sdf"))["sdf__sum"]
             if teen_sdf is None:
                 teen_sdf = 0
             teen_fv = Visualization.objects.filter(active=True,
                 fv=True,
-                age__range=(12, 18),
+                age__range=(13, 18),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
@@ -573,13 +573,13 @@ class VisualizationSettingFilter(APIView):
 
                 district1 = ["Child", "Teen", "Adult", "Old Adult"]
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     kid_exo.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
@@ -587,13 +587,13 @@ class VisualizationSettingFilter(APIView):
                     kid_exo.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     kid_art.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("art"))["art__sum"]
                     )
@@ -601,13 +601,13 @@ class VisualizationSettingFilter(APIView):
                     kid_art.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     kid_seal.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
@@ -615,32 +615,32 @@ class VisualizationSettingFilter(APIView):
                     kid_seal.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     kid_sdf.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     kid_sdf.append(0)
                 kid_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, age__lt=12)
+                    Visualization.objects.filter(active=True,fv=True, age__lt=13)
                     .filter(created_at__range=[start_date, end_date])
                     .count()
                 )
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     teen_exo.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
@@ -648,13 +648,13 @@ class VisualizationSettingFilter(APIView):
                     teen_exo.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     teen_art.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("art"))["art__sum"]
                     )
@@ -662,13 +662,13 @@ class VisualizationSettingFilter(APIView):
                     teen_art.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     teen_seal.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
@@ -676,20 +676,20 @@ class VisualizationSettingFilter(APIView):
                     teen_seal.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(created_at__range=[start_date, end_date])
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     teen_sdf.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(created_at__range=[start_date, end_date])
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     teen_sdf.append(0)
                 teen_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, age__range=(12, 18))
+                    Visualization.objects.filter(active=True,fv=True, age__range=(13, 18))
                     .filter(created_at__range=[start_date, end_date])
                     .count()
                 )
