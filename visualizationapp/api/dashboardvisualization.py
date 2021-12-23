@@ -23,7 +23,6 @@ from visualizationapp.models import Visualization
 from addressapp.models import Activity
 
 from visualizationapp.serializers.visualization import OverViewVisualization
-import datetime
 
 from visualizationapp.serializers.visualization import TreatMentBarGraphVisualization
 from addressapp.models import Address, District, Municipality, Ward

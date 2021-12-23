@@ -19204,3 +19204,661 @@ AttributeError: 'list' object has no attribute 'id'
 2021-11-09 13:54:36,832 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/returndate HTTP/1.1" 200 2720
 2021-11-09 13:54:46,847 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2021-11-09 13:54:46,994 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10322
+2021-11-11 09:53:40,715 django.request WARNING  Unauthorized: /api/v1/treatmentactivities
+2021-11-11 09:53:40,728 django.server WARNING  "GET /api/v1/treatmentactivities HTTP/1.1" 401 9977
+2021-11-11 09:53:41,944 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-11-11 09:53:41,945 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-11-11 09:53:41,966 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-11-11 09:53:41,974 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-11-11 09:53:42,379 django.request WARNING  Not Found: /favicon.ico
+2021-11-11 09:53:42,380 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-11-11 09:53:45,298 django.request WARNING  Unauthorized: /api/v1/returndate
+2021-11-11 09:53:45,299 django.server WARNING  "GET /api/v1/returndate HTTP/1.1" 401 9845
+2021-11-11 09:53:48,261 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/returndate HTTP/1.1" 200 2720
+2021-11-11 09:53:59,872 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-11-11 09:53:59,950 django.server INFO     "GET /api/v1/returndate HTTP/1.1" 200 10316
+2021-11-15 13:38:14,403 django.request WARNING  Unauthorized: /api/v1/patients
+2021-11-15 13:38:14,414 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2021-11-15 13:38:14,843 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-11-15 13:38:14,852 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-11-15 13:38:15,122 django.request WARNING  Not Found: /favicon.ico
+2021-11-15 13:38:15,124 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-11-15 13:38:20,930 django.request WARNING  Unauthorized: /api/v1/testcrosssectional
+2021-11-15 13:38:20,932 django.server WARNING  "GET /api/v1/testcrosssectional HTTP/1.1" 401 10037
+2021-11-15 13:39:00,264 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/testcrosssectional HTTP/1.1" 200 2728
+2021-11-15 13:39:06,492 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2966
+2021-11-15 13:39:11,080 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-11-15 13:39:11,916 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-11-15 13:39:11,919 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 206262
+2021-11-15 13:39:19,193 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-11-15 13:39:19,195 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 206184
+2021-11-15 13:42:56,918 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-11-15 13:42:56,923 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 206096
+2021-11-15 13:46:32,277 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-11-15 13:46:32,278 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 206096
+2021-11-15 13:50:02,483 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-11-15 13:50:02,506 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 206096
+2021-11-15 13:51:31,462 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-11-15 13:51:31,466 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 206096
+2021-12-23 11:12:27,417 django.request WARNING  Unauthorized: /api/v1/longitudinalone
+2021-12-23 11:12:27,444 django.server WARNING  "GET /api/v1/longitudinalone HTTP/1.1" 401 9989
+2021-12-23 11:12:28,253 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-12-23 11:12:28,258 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-12-23 11:12:28,261 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-12-23 11:12:28,270 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-12-23 11:12:28,276 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-12-23 11:12:28,280 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-12-23 11:12:28,283 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-12-23 11:12:28,285 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-12-23 11:12:28,287 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-12-23 11:12:28,305 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-12-23 11:12:28,342 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-12-23 11:12:28,678 django.request WARNING  Not Found: /favicon.ico
+2021-12-23 11:12:28,679 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2021-12-23 11:12:47,760 django.request WARNING  Unauthorized: /api/v1/longitudinalone
+2021-12-23 11:12:47,763 django.server WARNING  "GET /api/v1/longitudinalone HTTP/1.1" 401 9989
+2021-12-23 11:12:47,852 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2021-12-23 11:12:47,853 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2021-12-23 11:12:47,869 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2021-12-23 11:12:47,871 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2021-12-23 11:12:47,898 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2021-12-23 11:12:47,905 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2021-12-23 11:12:47,921 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2021-12-23 11:12:47,922 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2021-12-23 11:12:47,923 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2021-12-23 11:12:47,926 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2021-12-23 11:12:47,960 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2021-12-23 11:12:49,768 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/longitudinalone HTTP/1.1" 200 2725
+2021-12-23 11:13:20,620 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-12-23 11:13:20,964 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25364
+2021-12-23 11:13:44,340 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2021-12-23 11:13:44,562 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12949
+2021-12-23 11:13:44,616 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2021-12-23 11:13:44,617 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2021-12-23 11:13:44,618 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2021-12-23 11:13:44,663 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2021-12-23 11:13:44,722 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2021-12-23 11:13:44,723 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2021-12-23 11:13:44,726 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2021-12-23 11:13:44,891 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2021-12-23 11:13:44,893 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2021-12-23 11:13:44,929 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2021-12-23 11:13:51,606 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 11449
+2021-12-23 11:13:51,661 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2021-12-23 11:13:51,687 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2021-12-23 11:13:51,692 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-12-23 11:13:51,700 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2021-12-23 11:13:51,708 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2021-12-23 11:13:51,715 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2021-12-23 11:13:51,717 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2021-12-23 11:13:51,721 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2021-12-23 11:13:51,722 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2021-12-23 11:13:51,764 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2021-12-23 11:13:51,770 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2021-12-23 11:13:51,827 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2021-12-23 11:13:51,857 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2021-12-23 11:13:58,023 django.server INFO     "POST /maintainer/patientapp/patient/ HTTP/1.1" 200 4515
+2021-12-23 11:13:58,078 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 200 410
+2021-12-23 11:13:59,823 django.server INFO     "POST /maintainer/patientapp/patient/ HTTP/1.1" 302 0
+2021-12-23 11:13:59,900 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 5318
+2021-12-23 11:13:59,957 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-12-23 11:14:00,021 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2021-12-23 11:14:01,993 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12868
+2021-12-23 11:14:05,669 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 5378
+2021-12-23 11:14:05,718 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-12-23 11:14:07,196 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12868
+2021-12-23 11:14:09,295 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4710
+2021-12-23 11:14:09,355 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-12-23 11:14:11,266 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12868
+2021-12-23 11:14:20,534 django.server INFO     "GET /maintainer/userapp/role/ HTTP/1.1" 200 5000
+2021-12-23 11:14:20,586 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2021-12-23 11:14:23,693 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12868
+2021-12-23 11:14:29,207 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/longitudinalone HTTP/1.1" 200 2725
+2021-12-23 11:14:44,214 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2021-12-23 11:14:44,424 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 25358
+2021-12-23 11:14:58,148 django.request WARNING  Not Found: /api/v1/crosssectional
+2021-12-23 11:14:58,150 django.server WARNING  "GET /api/v1/crosssectional HTTP/1.1" 404 22138
+2021-12-23 11:15:03,080 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-12-23 11:15:03,083 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 205811
+2021-12-23 11:28:19,543 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 1132, in get
+    total_untreated_caries_present.insert(3, abc2_pvalue)
+UnboundLocalError: local variable 'abc2_pvalue' referenced before assignment
+2021-12-23 11:28:19,564 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 119572
+2021-12-23 11:30:06,022 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-12-23 11:30:06,025 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 205930
+2021-12-23 11:35:52,760 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-12-23 11:35:52,789 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 205930
+2021-12-23 11:39:20,788 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-12-23 11:39:20,791 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 205930
+2021-12-23 11:40:46,842 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-12-23 11:40:46,850 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 205930
+2021-12-23 11:41:01,879 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 316, in _iterencode_list
+    yield buf + _floatstr(value)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 241, in floatstr
+    repr(o))
+ValueError: Out of range float values are not JSON compliant: nan
+2021-12-23 11:41:01,882 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 205930
+2021-12-23 13:36:40,981 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28689
+2021-12-23 13:45:56,252 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28689
+2021-12-23 13:46:35,974 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 28438
+2021-12-23 13:50:12,288 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28675
+2021-12-23 13:51:02,424 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28676
+2021-12-23 13:56:21,469 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 156, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 154, in _get_response
+    response = response.render()
+  File "/usr/local/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 681, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 422, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/local/lib/python3.7/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 429, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 325, in _iterencode_list
+    yield from chunks
+  File "/usr/local/lib/python3.7/json/encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/utils/encoders.py", line 68, in default
+    return super(JSONEncoder, self).default(obj)
+  File "/usr/local/lib/python3.7/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type SystemError is not JSON serializable
+2021-12-23 13:56:21,472 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 223662
+2021-12-23 13:57:22,840 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 293, in get
+    [numerator_carries_risk_low_B + "," + str(total_carries_risk_low[1]) + "%)"],
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+2021-12-23 13:57:22,843 django.server ERROR    "GET /api/v1/testcrosssectional HTTP/1.1" 500 98503
+2021-12-23 13:58:05,866 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28676
+2021-12-23 13:58:29,466 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28624
+2021-12-23 14:00:20,530 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28514
+2021-12-23 14:06:12,378 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28514
+2021-12-23 14:37:18,295 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 28223
+2021-12-23 15:00:02,627 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 21699
+2021-12-23 15:03:00,699 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 21699
+2021-12-23 15:18:03,417 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16434
+2021-12-23 15:18:47,107 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16435
