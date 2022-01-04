@@ -19862,3 +19862,215 @@ TypeError: unsupported operand type(s) for +: 'int' and 'str'
 2021-12-23 15:03:00,699 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 21699
 2021-12-23 15:18:03,417 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16434
 2021-12-23 15:18:47,107 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16435
+2022-01-03 10:18:42,167 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-03 10:18:42,197 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-03 10:18:42,985 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-03 10:18:42,993 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-03 10:18:43,429 django.request WARNING  Not Found: /favicon.ico
+2022-01-03 10:18:43,430 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-03 10:20:20,296 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2022-01-03 10:20:32,514 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-03 10:20:32,531 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 10:20:35,515 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109768
+2022-01-03 10:23:46,656 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 10:23:49,835 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 109768
+2022-01-03 10:24:53,303 patientapp.api.patient INFO     Patient added successfully by Shyam Magar, Patient id: 60345A3858DB498BA2A4B83DD390BF56, first name: Helen, last name: Singh, phone: 9876556755, dob: 2022-01-03 ,gender: male
+2022-01-03 10:24:56,485 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109902
+2022-01-03 10:25:01,927 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 10:25:05,198 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111102
+2022-01-03 10:25:41,123 django.request WARNING  Bad Request: /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters
+2022-01-03 10:25:41,124 django.server WARNING  "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 400 16756
+2022-01-03 10:26:13,180 encounterapp.api.encounter INFO     Encounter added successfully by Shyam Magar
+2022-01-03 10:26:13,254 django.server INFO     "POST /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 16797
+2022-01-03 10:26:45,438 django.request WARNING  Bad Request: /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer
+2022-01-03 10:26:45,439 django.server WARNING  "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 400 15032
+2022-01-03 10:26:59,729 encounterapp.api.refer INFO     Refer added successfully by Shyam Magar
+2022-01-03 10:26:59,779 django.server INFO     "POST /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 200 15332
+2022-01-03 10:27:57,656 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 10:30:53,041 django.server INFO     "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer/update HTTP/1.1" 200 15509
+2022-01-03 10:31:03,560 encounterapp.api.refer ERROR    Refer updated successfully.
+2022-01-03 10:31:03,560 encounterapp.api.refer INFO     Refer update successfully by Shyam Magar
+2022-01-03 10:31:03,619 django.server INFO     "PUT /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer/update HTTP/1.1" 200 15539
+2022-01-03 10:31:09,239 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 10:31:25,681 encounterapp.api.refer ERROR    Refer updated successfully.
+2022-01-03 10:31:25,681 encounterapp.api.refer INFO     Refer update successfully by Shyam Magar
+2022-01-03 10:31:25,724 django.server INFO     "PUT /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer/update HTTP/1.1" 200 15539
+2022-01-03 10:31:32,685 encounterapp.api.refer ERROR    Refer updated successfully.
+2022-01-03 10:31:32,685 encounterapp.api.refer INFO     Refer update successfully by Shyam Magar
+2022-01-03 10:31:32,731 django.server INFO     "PUT /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer/update HTTP/1.1" 200 15539
+2022-01-03 10:31:41,728 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 10:41:30,414 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 10:41:33,046 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111102
+2022-01-03 10:44:08,203 django.request WARNING  Unauthorized: /api/v1/wardtreatmenttablevisualizaation
+2022-01-03 10:44:08,203 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 401 10067
+2022-01-03 10:44:08,291 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2022-01-03 10:44:08,291 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2022-01-03 10:44:08,292 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2022-01-03 10:44:08,301 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-03 10:44:08,312 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2022-01-03 10:44:08,316 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-03 10:44:08,320 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2022-01-03 10:44:08,326 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-01-03 10:44:08,338 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2022-01-03 10:44:08,354 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-01-03 10:44:08,393 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2022-01-03 10:44:36,235 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 2742
+2022-01-03 10:44:43,632 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-03 10:44:43,692 django.request WARNING  Bad Request: /api/v1/wardtreatmenttablevisualizaation
+2022-01-03 10:44:43,694 django.server WARNING  "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 400 14558
+2022-01-03 10:44:54,471 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2022-01-03 10:44:54,653 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12868
+2022-01-03 10:44:54,705 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2022-01-03 10:44:54,707 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2022-01-03 10:44:54,707 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2022-01-03 10:44:54,731 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2022-01-03 10:44:54,780 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2022-01-03 10:44:54,794 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2022-01-03 10:44:54,819 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2022-01-03 10:44:55,000 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2022-01-03 10:44:55,031 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2022-01-03 10:44:55,034 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2022-01-03 10:44:58,062 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13014
+2022-01-03 10:44:58,160 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2022-01-03 10:44:58,167 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2022-01-03 10:44:58,176 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2022-01-03 10:44:58,179 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2022-01-03 10:44:58,202 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2022-01-03 10:44:58,212 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2022-01-03 10:44:58,217 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2022-01-03 10:44:58,233 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2022-01-03 10:44:58,265 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:44:58,281 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2022-01-03 10:44:58,307 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2022-01-03 10:44:58,331 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2022-01-03 10:44:58,338 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2022-01-03 10:44:58,351 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2022-01-03 10:45:00,475 django.server INFO     "GET /maintainer/visualizationapp/visualization/888DB63000E04C199C31F6B5D2F44C5C/change/ HTTP/1.1" 200 23314
+2022-01-03 10:45:00,516 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2022-01-03 10:45:00,535 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:45:00,536 django.server INFO     "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+2022-01-03 10:45:00,541 django.server INFO     "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+2022-01-03 10:45:00,546 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2022-01-03 10:45:00,548 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2022-01-03 10:45:00,569 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2022-01-03 10:45:00,720 django.server INFO     "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2022-01-03 10:47:31,711 django.server INFO     "GET /api/v1/patient/60345A3858DB498BA2A4B83DD390BF56 HTTP/1.1" 200 109231
+2022-01-03 10:47:53,516 patientapp.api.patient INFO     Patient update successfully by Shyam Magar
+2022-01-03 10:47:55,564 django.server INFO     "PUT /api/v1/patient/60345A3858DB498BA2A4B83DD390BF56 HTTP/1.1" 200 108016
+2022-01-03 10:48:01,233 django.server INFO     "GET /api/v1/patient/60345A3858DB498BA2A4B83DD390BF56 HTTP/1.1" 200 109279
+2022-01-03 10:48:07,042 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 10:54:10,050 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12868
+2022-01-03 10:54:17,611 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13014
+2022-01-03 10:54:17,657 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:54:19,863 django.server INFO     "GET /maintainer/visualizationapp/visualization/888DB63000E04C199C31F6B5D2F44C5C/change/ HTTP/1.1" 200 23314
+2022-01-03 10:54:19,939 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:54:23,672 django.server INFO     "GET /maintainer/visualizationapp/visualization/888DB63000E04C199C31F6B5D2F44C5C/delete/ HTTP/1.1" 200 3659
+2022-01-03 10:54:23,717 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 200 410
+2022-01-03 10:54:25,607 django.server INFO     "POST /maintainer/visualizationapp/visualization/888DB63000E04C199C31F6B5D2F44C5C/delete/ HTTP/1.1" 302 0
+2022-01-03 10:54:25,673 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4913
+2022-01-03 10:54:25,721 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:54:25,804 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2022-01-03 10:54:54,319 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-01-03 10:54:54,535 django.server INFO     "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 18054
+2022-01-03 10:55:16,716 encounterapp.api.refer INFO     Refer viewed by:  shyam
+2022-01-03 10:55:16,771 django.server INFO     "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 200 15339
+2022-01-03 10:55:31,744 encounterapp.api.refer INFO     Encounter already exists in refer section :  957B2F49CFA444B3864ECEEF4953131E
+2022-01-03 10:55:31,790 django.request WARNING  Conflict: /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer
+2022-01-03 10:55:31,792 django.server WARNING  "POST /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 409 15044
+2022-01-03 10:55:40,058 encounterapp.api.refer INFO     Refer viewed by:  shyam
+2022-01-03 10:55:40,110 django.server INFO     "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 200 15339
+2022-01-03 10:56:10,607 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12888
+2022-01-03 10:56:15,788 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9204
+2022-01-03 10:56:15,843 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:56:21,787 django.server INFO     "POST /maintainer/encounterapp/refer/ HTTP/1.1" 200 3596
+2022-01-03 10:56:23,156 django.server INFO     "POST /maintainer/encounterapp/refer/ HTTP/1.1" 302 0
+2022-01-03 10:56:23,218 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 5719
+2022-01-03 10:56:23,259 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:56:33,200 django.request WARNING  Bad Request: /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer
+2022-01-03 10:56:33,200 django.server WARNING  "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 400 15032
+2022-01-03 10:56:39,195 encounterapp.api.refer INFO     Refer added successfully by Shyam Magar
+2022-01-03 10:56:39,238 django.server INFO     "POST /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 200 15342
+2022-01-03 10:56:44,435 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 10:57:30,933 encounterapp.api.refer INFO     Refer viewed by:  shyam
+2022-01-03 10:57:30,982 django.server INFO     "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 200 15333
+2022-01-03 10:57:46,361 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12872
+2022-01-03 10:57:49,574 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4710
+2022-01-03 10:57:49,636 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 10:57:52,923 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.1" 200 2642
+2022-01-03 10:57:56,335 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 12872
+2022-01-03 10:58:25,523 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:00:12,946 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9197
+2022-01-03 11:00:13,017 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:00:15,034 django.server INFO     "GET /maintainer/encounterapp/refer/C9C21E09BDE04F8780F991C8919DAD96/change/ HTTP/1.1" 200 7809
+2022-01-03 11:00:15,085 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:00:28,112 django.server INFO     "POST /maintainer/encounterapp/refer/C9C21E09BDE04F8780F991C8919DAD96/change/ HTTP/1.1" 302 0
+2022-01-03 11:00:28,202 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9459
+2022-01-03 11:00:28,260 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:00:30,633 django.server INFO     "GET /maintainer/encounterapp/refer/C9C21E09BDE04F8780F991C8919DAD96/change/ HTTP/1.1" 200 7816
+2022-01-03 11:00:30,716 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:00:36,769 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:01:16,039 encounterapp.api.refer INFO     Refer viewed by:  shyam
+2022-01-03 11:01:16,086 django.server INFO     "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 200 15331
+2022-01-03 11:01:55,713 django.server INFO     "POST /maintainer/encounterapp/refer/C9C21E09BDE04F8780F991C8919DAD96/change/ HTTP/1.1" 200 7943
+2022-01-03 11:01:55,778 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:02:09,411 django.server INFO     "POST /maintainer/encounterapp/refer/C9C21E09BDE04F8780F991C8919DAD96/change/ HTTP/1.1" 302 0
+2022-01-03 11:02:09,503 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9457
+2022-01-03 11:02:09,561 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:02:17,591 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:02:31,438 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13077
+2022-01-03 11:02:33,752 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 9432
+2022-01-03 11:02:33,804 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:02:39,357 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 200 3805
+2022-01-03 11:02:40,858 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 302 0
+2022-01-03 11:02:40,928 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 5503
+2022-01-03 11:02:40,978 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:02:53,944 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 11:02:56,687 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-03 11:03:06,615 django.request WARNING  Bad Request: /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters
+2022-01-03 11:03:06,616 django.server WARNING  "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 400 16756
+2022-01-03 11:03:22,526 encounterapp.api.encounter INFO     Encounter added successfully by Shyam Magar
+2022-01-03 11:03:22,594 django.server INFO     "POST /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 16797
+2022-01-03 11:03:35,862 django.request WARNING  Bad Request: /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer
+2022-01-03 11:03:35,863 django.server WARNING  "GET /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 400 15032
+2022-01-03 11:03:41,459 encounterapp.api.refer INFO     Encounter id does not exists in refer section :  957B2F49CFA444B3864ECEEF4953131E
+2022-01-03 11:03:41,507 django.request WARNING  Bad Request: /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer
+2022-01-03 11:03:41,508 django.server WARNING  "POST /api/v1/encounter/957B2F49CFA444B3864ECEEF4953131E/refer HTTP/1.1" 400 15040
+2022-01-03 11:04:01,602 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 11:04:04,238 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-03 11:04:14,985 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-01-03 11:04:15,076 django.server INFO     "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 17607
+2022-01-03 11:04:36,601 django.request WARNING  Bad Request: /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/refer
+2022-01-03 11:04:36,602 django.server WARNING  "GET /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/refer HTTP/1.1" 400 15032
+2022-01-03 11:04:42,286 encounterapp.api.refer INFO     Refer added successfully by Shyam Magar
+2022-01-03 11:04:42,331 django.server INFO     "POST /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/refer HTTP/1.1" 200 15340
+2022-01-03 11:04:48,240 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:06:15,175 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-03 11:06:17,959 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-03 11:06:42,929 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13103
+2022-01-03 11:06:45,582 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13010
+2022-01-03 11:06:45,641 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:06:48,034 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23302
+2022-01-03 11:06:48,100 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:10:30,650 django.server INFO     "GET /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/refer/update HTTP/1.1" 200 15517
+2022-01-03 11:10:42,162 encounterapp.api.refer ERROR    Refer updated successfully.
+2022-01-03 11:10:42,163 encounterapp.api.refer INFO     Refer update successfully by Shyam Magar
+2022-01-03 11:10:42,205 django.server INFO     "PUT /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/refer/update HTTP/1.1" 200 15509
+2022-01-03 11:10:48,949 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:11:10,186 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13007
+2022-01-03 11:13:30,218 encounterapp.api.refer ERROR    Refer updated successfully.
+2022-01-03 11:13:30,219 encounterapp.api.refer INFO     Refer update successfully by Shyam Magar
+2022-01-03 11:13:30,259 django.server INFO     "PUT /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/refer/update HTTP/1.1" 200 15517
+2022-01-03 11:13:34,065 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:13:38,492 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-03 11:13:57,627 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.1" 200 2642
+2022-01-03 11:13:58,982 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13103
+2022-01-03 11:14:01,768 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9193
+2022-01-03 11:14:01,860 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:14:03,712 django.server INFO     "GET /maintainer/encounterapp/refer/C4F22BC194B848A29404627FA9DB0098/change/ HTTP/1.1" 200 7782
+2022-01-03 11:14:03,766 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:14:09,010 django.server INFO     "POST /maintainer/encounterapp/refer/C4F22BC194B848A29404627FA9DB0098/change/ HTTP/1.1" 302 0
+2022-01-03 11:14:09,105 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9456
+2022-01-03 11:14:09,158 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:14:10,879 django.server INFO     "GET /maintainer/encounterapp/refer/C4F22BC194B848A29404627FA9DB0098/change/ HTTP/1.1" 200 7774
+2022-01-03 11:14:10,941 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-03 11:14:18,318 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
