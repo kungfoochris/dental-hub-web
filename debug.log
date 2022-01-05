@@ -20074,3 +20074,146 @@ TypeError: unsupported operand type(s) for +: 'int' and 'str'
 2022-01-03 11:14:10,879 django.server INFO     "GET /maintainer/encounterapp/refer/C4F22BC194B848A29404627FA9DB0098/change/ HTTP/1.1" 200 7774
 2022-01-03 11:14:10,941 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2022-01-03 11:14:18,318 django.server INFO     "GET /api/v1/wardtreatmenttablevisualizaation HTTP/1.1" 200 20123
+2022-01-04 10:49:09,361 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-04 10:49:09,362 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-04 10:49:11,166 django.request WARNING  Not Found: /favicon.ico
+2022-01-04 10:49:11,166 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-04 10:49:13,521 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2022-01-04 10:49:29,296 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-04 10:49:29,351 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-04 10:49:32,541 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-04 10:49:54,384 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-04 10:49:54,556 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-04 10:49:54,965 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2022-01-04 10:49:54,968 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-04 10:49:54,976 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2022-01-04 10:49:54,979 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2022-01-04 10:49:54,981 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2022-01-04 10:49:54,987 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-04 10:49:54,987 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-01-04 10:49:54,988 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2022-01-04 10:49:54,996 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2022-01-04 10:49:54,998 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-01-04 10:49:55,177 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2022-01-04 10:49:56,870 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2022-01-04 10:50:04,626 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-04 10:50:04,640 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-01-04 10:50:07,401 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111148
+2022-01-04 10:50:31,589 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2022-01-04 10:50:31,828 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13223
+2022-01-04 10:50:31,895 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2022-01-04 10:50:31,895 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2022-01-04 10:50:31,916 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2022-01-04 10:50:31,940 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2022-01-04 10:50:31,997 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2022-01-04 10:50:31,998 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2022-01-04 10:50:31,998 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2022-01-04 10:50:32,231 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2022-01-04 10:50:32,232 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2022-01-04 10:50:32,232 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2022-01-04 10:50:36,092 django.server INFO     "GET /maintainer/encounterapp/refer/ HTTP/1.1" 200 9193
+2022-01-04 10:50:36,140 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2022-01-04 10:50:36,209 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2022-01-04 10:50:36,210 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2022-01-04 10:50:36,211 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2022-01-04 10:50:36,219 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2022-01-04 10:50:36,238 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2022-01-04 10:50:36,241 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2022-01-04 10:50:36,242 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2022-01-04 10:50:36,248 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2022-01-04 10:50:36,256 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-04 10:50:36,329 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2022-01-04 10:50:36,354 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2022-01-04 10:50:36,366 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2022-01-04 10:50:36,380 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2022-01-04 10:50:38,667 django.server INFO     "GET /maintainer/encounterapp/refer/C4F22BC194B848A29404627FA9DB0098/change/ HTTP/1.1" 200 7774
+2022-01-04 10:50:38,730 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2022-01-04 10:50:38,730 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-04 10:50:38,749 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2022-01-04 10:50:38,754 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2022-01-04 10:50:38,774 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2022-01-05 10:21:57,885 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-05 10:21:58,003 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-05 10:21:58,914 django.request WARNING  Not Found: /favicon.ico
+2022-01-05 10:21:58,915 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-05 10:22:01,315 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2022-01-05 10:22:22,135 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-05 10:22:22,174 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-05 10:22:26,827 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-05 10:23:26,194 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 21275
+2022-01-05 10:23:49,146 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 2161, in post
+    str(decayed_permanent_teeth_list_ABC[0]) + "(" + str(total_decayed_permanent_teeth[0]) + "SD)",
+NameError: name 'decayed_permanent_teeth_list_ABC' is not defined
+2022-01-05 10:23:49,151 django.server ERROR    "POST /api/v1/testcrosssectional HTTP/1.1" 500 110255
+2022-01-05 10:32:19,408 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 21275
+2022-01-05 10:32:35,103 django.request ERROR    Internal Server Error: /api/v1/testcrosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 2165, in post
+    str(decayed_permanent_teeth_list_EFGH[0]) + "(" + str(total_decayed_permanent_teeth[4]) + "SD)",
+NameError: name 'decayed_permanent_teeth_list_EFGH' is not defined
+2022-01-05 10:32:35,108 django.server ERROR    "POST /api/v1/testcrosssectional HTTP/1.1" 500 110290
+2022-01-05 10:33:49,303 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 20998
+2022-01-05 10:33:57,480 django.server INFO     "GET /api/v1/testcrosssectional HTTP/1.1" 200 21275
+2022-01-05 10:34:01,202 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 20998
+2022-01-05 10:35:38,218 django.server INFO     "POST /api/v1/testcrosssectional HTTP/1.1" 200 20998
+2022-01-05 10:44:44,105 django.request ERROR    Internal Server Error: /api/v1/longitudinalone
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/longitudinal.py", line 784, in get
+    carries_risk_low_number[0] + "(" + str(total_carries_risk_low[0]) + "%)",
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+2022-01-05 10:44:44,110 django.server ERROR    "GET /api/v1/longitudinalone HTTP/1.1" 500 101365
+2022-01-05 10:50:05,578 django.server INFO     "GET /api/v1/longitudinalone HTTP/1.1" 200 20468
+2022-01-05 10:52:33,862 django.server INFO     "POST /api/v1/longitudinalone HTTP/1.1" 200 20465
+2022-01-05 10:54:41,420 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 20464
+2022-01-05 10:56:38,984 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 20464
+2022-01-05 10:57:06,210 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 20465

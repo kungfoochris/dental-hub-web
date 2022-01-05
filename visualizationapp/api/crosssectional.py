@@ -286,7 +286,6 @@ class TestCrossSectionalVisualization(APIView):
             + numerator_carries_risk_high_H
 
 
-
             final_total_carries_risk_low = [
                 '<span class="ml-4">Low</span>',
                 str(numerator_carries_risk_low_A ) + "(" + str(total_carries_risk_low[0]) + "%)",
@@ -1405,8 +1404,8 @@ class TestCrossSectionalVisualization(APIView):
                 + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
             
             row_total = [
-                ["Totals",""],[rowA_total,""],[rowB_total,""],[rowC_total,""],["",""],[rowE_total,""],[rowF_total,""],[rowG_total,""],[rowH_total,""]
-            ]
+                    "Totals",rowA_total,rowB_total,rowC_total,"",rowE_total,rowF_total,rowG_total,rowH_total
+                ]
 
             data = [
                 carries_risk,
@@ -1797,46 +1796,46 @@ class TestCrossSectionalVisualization(APIView):
 
 
                 final_total_carries_risk_low = [
-                    ['<span class="ml-4">Low</span>',""] ,
-                    [numerator_carries_risk_low_A,"(" + str(total_carries_risk_low[0]) + "%)"],
-                    [numerator_carries_risk_low_B,"(" + str(total_carries_risk_low[1]) + "%)"],
-                    [numerator_carries_risk_low_C,"(" + str(total_carries_risk_low[2]) + "%)"],
-                    [total_carries_risk_low[3],""],
-                    [numerator_carries_risk_low_E,"(" + str(total_carries_risk_low[4]) + "%)"],
-                    [numerator_carries_risk_low_F,"(" + str(total_carries_risk_low[5]) + "%)"],
-                    [numerator_carries_risk_low_G,"(" + str(total_carries_risk_low[6]) + "%)"],
-                    [numerator_carries_risk_low_H,"(" + str(total_carries_risk_low[7]) + "%)"],
-                    [total_carries_risk_low[8],""],
-                    [overall_carries_risk_low,""],
-                    ]
-                
+                    '<span class="ml-4">Low</span>',
+                    str(numerator_carries_risk_low_A ) + "(" + str(total_carries_risk_low[0]) + "%)",
+                    str(numerator_carries_risk_low_B) + "(" + str(total_carries_risk_low[1]) + "%)",
+                    str(numerator_carries_risk_low_C) + "(" + str(total_carries_risk_low[2]) + "%)",
+                    total_carries_risk_low[3],
+                    str(numerator_carries_risk_low_E) + "(" + str(total_carries_risk_low[4]) + "%)",
+                    str(numerator_carries_risk_low_F) + "(" + str(total_carries_risk_low[5]) + "%)",
+                    str(numerator_carries_risk_low_G) + "(" + str(total_carries_risk_low[6]) + "%)",
+                    str(numerator_carries_risk_low_H) + "(" + str(total_carries_risk_low[7]) + "%)",
+                    total_carries_risk_low[8],
+                    overall_carries_risk_low,
+                ]
+            
                 final_total_carries_risk_medium = [
-                    ['<span class="ml-4">Medium</span>',""] ,
-                    [numerator_carries_risk_medium_A,"(" + str(total_carries_risk_medium[0]) + "%)"],
-                    [numerator_carries_risk_medium_B,"(" + str(total_carries_risk_medium[1]) + "%)"],
-                    [numerator_carries_risk_medium_C,"(" + str(total_carries_risk_medium[2]) + "%)"],
-                    [total_carries_risk_medium[3],""],
-                    [numerator_carries_risk_medium_E,"(" + str(total_carries_risk_medium[4]) + "%)"],
-                    [numerator_carries_risk_medium_F,"(" + str(total_carries_risk_medium[5]) + "%)"],
-                    [numerator_carries_risk_medium_G,"(" + str(total_carries_risk_medium[6]) + "%)"],
-                    [numerator_carries_risk_medium_H,"(" + str(total_carries_risk_medium[7]) + "%)"],
-                    [total_carries_risk_medium[8],""],
-                    [overall_carries_risk_medium,""],
-                    ]
+                    '<span class="ml-4">Medium</span>',
+                    str(numerator_carries_risk_medium_A) + "(" + str(total_carries_risk_medium[0]) + "%)",
+                    str(numerator_carries_risk_medium_B) + "(" + str(total_carries_risk_medium[1]) + "%)",
+                    str(numerator_carries_risk_medium_C) + "(" + str(total_carries_risk_medium[2]) + "%)",
+                    total_carries_risk_medium[3],
+                    str(numerator_carries_risk_medium_E) + "(" + str(total_carries_risk_medium[4]) + "%)",
+                    str(numerator_carries_risk_medium_F) + "(" + str(total_carries_risk_medium[5]) + "%)",
+                    str(numerator_carries_risk_medium_G) + "(" + str(total_carries_risk_medium[6]) + "%)",
+                    str(numerator_carries_risk_medium_H) + "(" + str(total_carries_risk_medium[7]) + "%)",
+                    total_carries_risk_medium[8],
+                    overall_carries_risk_medium,
+                ]
                 
                 final_total_carries_risk_high = [
-                    ['<span class="ml-4">High</span>' ,""],
-                    [numerator_carries_risk_high_A,"(" + str(total_carries_risk_high[0]) + "%)"],
-                    [numerator_carries_risk_high_B,"(" + str(total_carries_risk_high[1]) + "%)"],
-                    [numerator_carries_risk_high_C,"(" + str(total_carries_risk_high[2]) + "%)"],
-                    [total_carries_risk_high[3],""],
-                    [numerator_carries_risk_high_E,"(" + str(total_carries_risk_high[4]) + "%)"],
-                    [numerator_carries_risk_high_F,"(" + str(total_carries_risk_high[5]) + "%)"],
-                    [numerator_carries_risk_high_G,"(" + str(total_carries_risk_high[6]) + "%)"],
-                    [numerator_carries_risk_high_H,"(" + str(total_carries_risk_high[7]) + "%)"],
-                    [total_carries_risk_high[8],""],
-                    [overall_carries_risk_high,""],
-                    ]
+                    '<span class="ml-4">High</span>' ,
+                    str(numerator_carries_risk_high_A) + "(" + str(total_carries_risk_high[0]) + "%)",
+                    str(numerator_carries_risk_high_B) + "(" + str(total_carries_risk_high[1]) + "%)",
+                    str(numerator_carries_risk_high_C) + "(" + str(total_carries_risk_high[2]) + "%)",
+                    total_carries_risk_high[3],
+                    str(numerator_carries_risk_high_E) + "(" + str(total_carries_risk_high[4]) + "%)",
+                    str(numerator_carries_risk_high_F) + "(" + str(total_carries_risk_high[5]) + "%)",
+                    str(numerator_carries_risk_high_G) + "(" + str(total_carries_risk_high[6]) + "%)",
+                    str(numerator_carries_risk_high_H) + "(" + str(total_carries_risk_high[7]) + "%)",
+                    total_carries_risk_high[8],
+                    overall_carries_risk_high,
+                ]
 
 
                 # untreated caries present
@@ -2125,9 +2124,6 @@ class TestCrossSectionalVisualization(APIView):
                 total_decayed_primary_teeth.append(efgh_pvalue)
                 total_decayed_permanent_teeth.append(efgh_pvalue)
 
-                # total_decayed_primary_teeth.append(round(sum(total_decayed_primary_teeth),2))
-                # total_decayed_permanent_teeth.append(round(sum(total_decayed_permanent_teeth),2))
-
                 overall_decayed_primary_teeth = decayed_primary_teeth_mean_list_ABC[0] + decayed_primary_teeth_mean_list_ABC[1] 
                 + decayed_primary_teeth_mean_list_ABC[2] + decayed_primary_teeth_mean_list_EFGH[0]
                 + decayed_primary_teeth_mean_list_EFGH[1] + decayed_primary_teeth_mean_list_EFGH[2]
@@ -2144,32 +2140,32 @@ class TestCrossSectionalVisualization(APIView):
 
                 
                 final_total_decayed_primary_teeth = [
-                    ["Number of decayed primary teeth" ,""],
-                    [decayed_primary_teeth_mean_list_ABC[0],"(" + str(total_decayed_primary_teeth[0]) + "SD)"],
-                    [decayed_primary_teeth_mean_list_ABC[1],"(" + str(total_decayed_primary_teeth[1]) + "SD)"],
-                    [decayed_primary_teeth_mean_list_ABC[2],"(" + str(total_decayed_primary_teeth[2]) + "SD)"],
-                    [total_decayed_primary_teeth[3],""],
-                    [decayed_primary_teeth_mean_list_EFGH[0],"(" + str(total_decayed_primary_teeth[4]) + "SD)"],
-                    [decayed_primary_teeth_mean_list_EFGH[1],"(" + str(total_decayed_primary_teeth[5]) + "SD)"],
-                    [decayed_primary_teeth_mean_list_EFGH[2],"(" + str(total_decayed_primary_teeth[6]) + "SD)"],
-                    [decayed_primary_teeth_mean_list_EFGH[3],"(" + str(total_decayed_primary_teeth[7]) + "SD)"],
-                    [total_decayed_primary_teeth[8],""],
-                    [mean_overall_decayed_primary_teeth,""],
-                    ]
-                
+                    "Number of decayed primary teeth",
+                    str(decayed_primary_teeth_mean_list_ABC[0]) + "(" + str(total_decayed_primary_teeth[0]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_ABC[1]) + "(" + str(total_decayed_primary_teeth[1]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_ABC[2]) + "(" + str(total_decayed_primary_teeth[2]) + "SD)",
+                    total_decayed_primary_teeth[3],
+                    str(decayed_primary_teeth_mean_list_EFGH[0]) + "(" + str(total_decayed_primary_teeth[4]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_EFGH[1]) + "(" + str(total_decayed_primary_teeth[5]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_EFGH[2]) + "(" + str(total_decayed_primary_teeth[6]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_EFGH[3]) + "(" + str(total_decayed_primary_teeth[7]) + "SD)",
+                    total_decayed_primary_teeth[8],
+                    mean_overall_decayed_primary_teeth,
+                ]
+            
                 final_total_decayed_permanent_teeth = [
-                    ["Number of decayed permanent teeth" ,""],
-                    [decayed_permanent_teeth_mean_list_ABC[0],"(" + str(total_decayed_permanent_teeth[0]) + "SD)"],
-                    [decayed_permanent_teeth_mean_list_ABC[1],"(" + str(total_decayed_permanent_teeth[1]) + "SD)"],
-                    [decayed_permanent_teeth_mean_list_ABC[2],"(" + str(total_decayed_permanent_teeth[2]) + "SD)"],
-                    [total_decayed_permanent_teeth[3],""],
-                    [decayed_permanent_teeth_mean_list_EFGH[0],"(" + str(total_decayed_permanent_teeth[4]) + "SD)"],
-                    [decayed_permanent_teeth_mean_list_EFGH[1],"(" + str(total_decayed_permanent_teeth[5]) + "SD)"],
-                    [decayed_permanent_teeth_mean_list_EFGH[2],"(" + str(total_decayed_permanent_teeth[6]) + "SD)"],
-                    [decayed_permanent_teeth_mean_list_EFGH[3],"(" + str(total_decayed_permanent_teeth[7]) + "SD)"],
-                    [total_decayed_permanent_teeth[8],""],
-                    [mean_overall_decayed_permanent_teeth,""],
-                    ]
+                    "Number of decayed permanent teeth",
+                    str(decayed_permanent_teeth_mean_list_ABC[0]) + "(" + str(total_decayed_permanent_teeth[0]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_ABC[1]) + "(" + str(total_decayed_permanent_teeth[1]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_ABC[2]) + "(" + str(total_decayed_permanent_teeth[2]) + "SD)",
+                    total_decayed_permanent_teeth[3],
+                    str(decayed_permanent_teeth_mean_list_EFGH[0]) + "(" + str(total_decayed_permanent_teeth[4]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_EFGH[1]) + "(" + str(total_decayed_permanent_teeth[5]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_EFGH[2]) + "(" + str(total_decayed_permanent_teeth[6]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_EFGH[3]) + "(" + str(total_decayed_permanent_teeth[7]) + "SD)",
+                    total_decayed_permanent_teeth[8],
+                    mean_overall_decayed_permanent_teeth,
+                ]
                 
 
                 # Cavity permanent molar or premolar
@@ -3081,143 +3077,143 @@ class TestCrossSectionalVisualization(APIView):
                 + numerator_need_dentist_or_hygienist_H
                 
                 final_total_untreated_caries_present = [
-                    ["Any untreated caries present" ,""],
-                    [numerator_untreated_caries_present_A,"(" + str(total_untreated_caries_present[0]) + "%)"],
-                    [numerator_untreated_caries_present_B,"(" + str(total_untreated_caries_present[1]) + "%)"],
-                    [numerator_untreated_caries_present_C,"(" + str(total_untreated_caries_present[2]) + "%)"],
-                    [total_untreated_caries_present[3],""],
-                    [numerator_untreated_caries_present_E,"(" + str(total_untreated_caries_present[4]) + "%)"],
-                    [numerator_untreated_caries_present_F,"(" + str(total_untreated_caries_present[5]) + "%)"],
-                    [numerator_untreated_caries_present_G,"(" + str(total_untreated_caries_present[6]) + "%)"],
-                    [numerator_untreated_caries_present_H,"(" + str(total_untreated_caries_present[7]) + "%)"],
-                    [total_untreated_caries_present[8],""],
-                    [overall_untreated_caries_present,""],
-                    ]
-                
+                    "Any untreated caries present" ,
+                    str(numerator_untreated_caries_present_A) + "(" + str(total_untreated_caries_present[0]) + "%)",
+                    str(numerator_untreated_caries_present_B) + "(" + str(total_untreated_caries_present[1]) + "%)",
+                    str(numerator_untreated_caries_present_C) + "(" + str(total_untreated_caries_present[2]) + "%)",
+                    total_untreated_caries_present[3],
+                    str(numerator_untreated_caries_present_E) + "(" + str(total_untreated_caries_present[4]) + "%)",
+                    str(numerator_untreated_caries_present_F) + "(" + str(total_untreated_caries_present[5]) + "%)",
+                    str(numerator_untreated_caries_present_G) + "(" + str(total_untreated_caries_present[6]) + "%)",
+                    str(numerator_untreated_caries_present_H) + "(" + str(total_untreated_caries_present[7]) + "%)",
+                    total_untreated_caries_present[8],
+                    overall_untreated_caries_present,
+                ]
+            
                 final_total_cavity_permanent_molar = [
-                    ["Cavity permanent molar or premolar",""] ,
-                    [numerator_cavity_permanent_molar_A,"(" + str(total_cavity_permanent_molar[0]) + "%)"],
-                    [numerator_cavity_permanent_molar_B,"(" + str(total_cavity_permanent_molar[1]) + "%)"],
-                    [numerator_cavity_permanent_molar_C,"(" + str(total_cavity_permanent_molar[2]) + "%)"],
-                    [total_cavity_permanent_molar[3],""],
-                    [numerator_cavity_permanent_molar_E,"(" + str(total_cavity_permanent_molar[4]) + "%)"],
-                    [numerator_cavity_permanent_molar_F,"(" + str(total_cavity_permanent_molar[5]) + "%)"],
-                    [numerator_cavity_permanent_molar_G,"(" + str(total_cavity_permanent_molar[6]) + "%)"],
-                    [numerator_cavity_permanent_molar_H,"(" + str(total_cavity_permanent_molar[7]) + "%)"],
-                    [total_cavity_permanent_molar[8],""],
-                    [overall_cavity_permanent_molar,""],
+                    "Cavity permanent molar or premolar" ,
+                    str(numerator_cavity_permanent_molar_A) + "(" + str(total_cavity_permanent_molar[0]) + "%)",
+                    str(numerator_cavity_permanent_molar_B) + "(" + str(total_cavity_permanent_molar[1]) + "%)",
+                    str(numerator_cavity_permanent_molar_C) + "(" + str(total_cavity_permanent_molar[2]) + "%)",
+                    total_cavity_permanent_molar[3],
+                    str(numerator_cavity_permanent_molar_E) + "(" + str(total_cavity_permanent_molar[4]) + "%)",
+                    str(numerator_cavity_permanent_molar_F) + "(" + str(total_cavity_permanent_molar[5]) + "%)",
+                    str(numerator_cavity_permanent_molar_G) + "(" + str(total_cavity_permanent_molar[6]) + "%)",
+                    str(numerator_cavity_permanent_molar_H) + "(" + str(total_cavity_permanent_molar[7]) + "%)",
+                    total_cavity_permanent_molar[8],
+                    overall_cavity_permanent_molar,
                     ]
                 
                 final_total_cavity_permanent_anterior = [
-                    ["Cavity permanent anterior","" ],
-                    [numerator_cavity_permanent_anterior_A,"(" + str(total_cavity_permanent_anterior[0]) + "%)"],
-                    [numerator_cavity_permanent_anterior_B,"(" + str(total_cavity_permanent_anterior[1]) + "%)"],
-                    [numerator_cavity_permanent_anterior_C,"(" + str(total_cavity_permanent_anterior[2]) + "%)"],
-                    [total_cavity_permanent_anterior[3],""],
-                    [numerator_cavity_permanent_anterior_E,"(" + str(total_cavity_permanent_anterior[4]) + "%)"],
-                    [numerator_cavity_permanent_anterior_F,"(" + str(total_cavity_permanent_anterior[5]) + "%)"],
-                    [numerator_cavity_permanent_anterior_G,"(" + str(total_cavity_permanent_anterior[6]) + "%)"],
-                    [numerator_cavity_permanent_anterior_H,"(" + str(total_cavity_permanent_anterior[7]) + "%)"],
-                    [total_cavity_permanent_anterior[8],""],
-                    [overall_cavity_permanent_anterior,""],
+                    "Cavity permanent anterior",
+                    str(numerator_cavity_permanent_anterior_A) + "(" + str(total_cavity_permanent_anterior[0]) + "%)",
+                    str(numerator_cavity_permanent_anterior_B) + "(" + str(total_cavity_permanent_anterior[1]) + "%)",
+                    str(numerator_cavity_permanent_anterior_C) + "(" + str(total_cavity_permanent_anterior[2]) + "%)",
+                    total_cavity_permanent_anterior[3],
+                    str(numerator_cavity_permanent_anterior_E) + "(" + str(total_cavity_permanent_anterior[4]) + "%)",
+                    str(numerator_cavity_permanent_anterior_F) + "(" + str(total_cavity_permanent_anterior[5]) + "%)",
+                    str(numerator_cavity_permanent_anterior_G) + "(" + str(total_cavity_permanent_anterior[6]) + "%)",
+                    str(numerator_cavity_permanent_anterior_H) + "(" + str(total_cavity_permanent_anterior[7]) + "%)",
+                    total_cavity_permanent_anterior[8],
+                    overall_cavity_permanent_anterior,
                     ]
                 
                 final_total_active_infection = [
-                    ["Active Infection",""] ,
-                    [numerator_active_infection_A,"(" + str(total_active_infection[0]) + "%)"],
-                    [numerator_active_infection_B,"(" + str(total_active_infection[1]) + "%)"],
-                    [numerator_active_infection_C,"(" + str(total_active_infection[2]) + "%)"],
-                    [total_active_infection[3],""],
-                    [numerator_active_infection_E,"(" + str(total_active_infection[4]) + "%)"],
-                    [numerator_active_infection_F,"(" + str(total_active_infection[5]) + "%)"],
-                    [numerator_active_infection_G,"(" + str(total_active_infection[6]) + "%)"],
-                    [numerator_active_infection_H,"(" + str(total_active_infection[7]) + "%)"],
-                    [total_active_infection[8],""],
-                    [overall_active_infection,""],
+                    "Active Infection" ,
+                    str(numerator_active_infection_A) + "(" + str(total_active_infection[0]) + "%)",
+                    str(numerator_active_infection_B) + "(" + str(total_active_infection[1]) + "%)",
+                    str(numerator_active_infection_C) + "(" + str(total_active_infection[2]) + "%)",
+                    total_active_infection[3],
+                    str(numerator_active_infection_E) + "(" + str(total_active_infection[4]) + "%)",
+                    str(numerator_active_infection_F) + "(" + str(total_active_infection[5]) + "%)",
+                    str(numerator_active_infection_G) + "(" + str(total_active_infection[6]) + "%)",
+                    str(numerator_active_infection_H) + "(" + str(total_active_infection[7]) + "%)",
+                    total_active_infection[8],
+                    overall_active_infection,
                     ]
                 
                 final_total_reversible_pulpitis = [
-                    ["Mouth pain due to reversible pulpitis",""] ,
-                    [numerator_reversible_pulpitis_A,"(" + str(total_reversible_pulpitis[0]) + "%)"],
-                    [numerator_reversible_pulpitis_B,"(" + str(total_reversible_pulpitis[1]) + "%)"],
-                    [numerator_reversible_pulpitis_C,"(" + str(total_reversible_pulpitis[2]) + "%)"],
-                    [total_reversible_pulpitis[3],""],
-                    [numerator_reversible_pulpitis_E,"(" + str(total_reversible_pulpitis[4]) + "%)"],
-                    [numerator_reversible_pulpitis_F,"(" + str(total_reversible_pulpitis[5]) + "%)"],
-                    [numerator_reversible_pulpitis_G,"(" + str(total_reversible_pulpitis[6]) + "%)"],
-                    [numerator_reversible_pulpitis_H,"(" + str(total_reversible_pulpitis[7]) + "%)"],
-                    [total_reversible_pulpitis[8],""],
-                    [overall_reversible_pulpitis,""],
+                    "Mouth pain due to reversible pulpitis" ,
+                    str(numerator_reversible_pulpitis_A) + "(" + str(total_reversible_pulpitis[0]) + "%)",
+                    str(numerator_reversible_pulpitis_B) + "(" + str(total_reversible_pulpitis[1]) + "%)",
+                    str(numerator_reversible_pulpitis_C) + "(" + str(total_reversible_pulpitis[2]) + "%)",
+                    total_reversible_pulpitis[3],
+                    str(numerator_reversible_pulpitis_E) + "(" + str(total_reversible_pulpitis[4]) + "%)",
+                    str(numerator_reversible_pulpitis_F) + "(" + str(total_reversible_pulpitis[5]) + "%)",
+                    str(numerator_reversible_pulpitis_G) + "(" + str(total_reversible_pulpitis[6]) + "%)",
+                    str(numerator_reversible_pulpitis_H) + "(" + str(total_reversible_pulpitis[7]) + "%)",
+                    total_reversible_pulpitis[8],
+                    overall_reversible_pulpitis,
                     ]
                 
                 final_total_need_art_filling = [
-                    ["Need ART filling",""] ,
-                    [numerator_need_art_filling_A,"(" + str(total_need_art_filling[0]) + "%)"],
-                    [numerator_need_art_filling_B,"(" + str(total_need_art_filling[1]) + "%)"],
-                    [numerator_need_art_filling_C,"(" + str(total_need_art_filling[2]) + "%)"],
-                    [total_need_art_filling[3],""],
-                    [numerator_need_art_filling_E,"(" + str(total_need_art_filling[4]) + "%)"],
-                    [numerator_need_art_filling_F,"(" + str(total_need_art_filling[5]) + "%)"],
-                    [numerator_need_art_filling_G,"(" + str(total_need_art_filling[6]) + "%)"],
-                    [numerator_need_art_filling_H,"(" + str(total_need_art_filling[7]) + "%)"],
-                    [total_need_art_filling[8],""],
-                    [overall_need_art_filling,""],
+                    "Need ART filling" ,
+                    str(numerator_need_art_filling_A) + "(" + str(total_need_art_filling[0]) + "%)",
+                    str(numerator_need_art_filling_B) + "(" + str(total_need_art_filling[1]) + "%)",
+                    str(numerator_need_art_filling_C) + "(" + str(total_need_art_filling[2]) + "%)",
+                    total_need_art_filling[3],
+                    str(numerator_need_art_filling_E) + "(" + str(total_need_art_filling[4]) + "%)",
+                    str(numerator_need_art_filling_F) + "(" + str(total_need_art_filling[5]) + "%)",
+                    str(numerator_need_art_filling_G) + "(" + str(total_need_art_filling[6]) + "%)",
+                    str(numerator_need_art_filling_H) + "(" + str(total_need_art_filling[7]) + "%)",
+                    total_need_art_filling[8],
+                    overall_need_art_filling,
                     ]
 
                 final_total_need_sdf = [
-                    ["Need SDF",""] ,
-                    [numerator_need_sdf_A,"(" + str(total_need_sdf[0]) + "%)"],
-                    [numerator_need_sdf_B,"(" + str(total_need_sdf[1]) + "%)"],
-                    [numerator_need_sdf_C,"(" + str(total_need_sdf[2]) + "%)"],
-                    [total_need_sdf[3],""],
-                    [numerator_need_sdf_E,"(" + str(total_need_sdf[4]) + "%)"],
-                    [numerator_need_sdf_F,"(" + str(total_need_sdf[5]) + "%)"],
-                    [numerator_need_sdf_G,"(" + str(total_need_sdf[6]) + "%)"],
-                    [numerator_need_sdf_H,"(" + str(total_need_sdf[7]) + "%)"],
-                    [total_need_sdf[8],""],
-                    [overall_need_sdf,""],
+                    "Need SDF",
+                    str(numerator_need_sdf_A) + "(" + str(total_need_sdf[0]) + "%)",
+                    str(numerator_need_sdf_B) + "(" + str(total_need_sdf[1]) + "%)",
+                    str(numerator_need_sdf_C) + "(" + str(total_need_sdf[2]) + "%)",
+                    total_need_sdf[3],
+                    str(numerator_need_sdf_E) + "(" + str(total_need_sdf[4]) + "%)",
+                    str(numerator_need_sdf_F) + "(" + str(total_need_sdf[5]) + "%)",
+                    str(numerator_need_sdf_G) + "(" + str(total_need_sdf[6]) + "%)",
+                    str(numerator_need_sdf_H) + "(" + str(total_need_sdf[7]) + "%)",
+                    total_need_sdf[8],
+                    overall_need_sdf,
                     ]
                 
                 final_total_need_extraction = [
-                    ["Need Extraction",""] ,
-                    [numerator_need_extraction_A,"(" + str(total_need_extraction[0]) + "%)"],
-                    [numerator_need_extraction_B,"(" + str(total_need_extraction[1]) + "%)"],
-                    [numerator_need_extraction_C,"(" + str(total_need_extraction[2]) + "%)"],
-                    [total_need_extraction[3],""],
-                    [numerator_need_extraction_E,"(" + str(total_need_extraction[4]) + "%)"],
-                    [numerator_need_extraction_F,"(" + str(total_need_extraction[5]) + "%)"],
-                    [numerator_need_extraction_G,"(" + str(total_need_extraction[6]) + "%)"],
-                    [numerator_need_extraction_H,"(" + str(total_need_extraction[7]) + "%)"],
-                    [total_need_extraction[8],""],
-                    [overall_need_extraction,""],
+                    "Need Extraction",
+                    str(numerator_need_extraction_A) + "(" + str(total_need_extraction[0]) + "%)",
+                    str(numerator_need_extraction_B) + "(" + str(total_need_extraction[1]) + "%)",
+                    str(numerator_need_extraction_C) + "(" + str(total_need_extraction[2]) + "%)",
+                    total_need_extraction[3],
+                    str(numerator_need_extraction_E) + "(" + str(total_need_extraction[4]) + "%)",
+                    str(numerator_need_extraction_F) + "(" + str(total_need_extraction[5]) + "%)",
+                    str(numerator_need_extraction_G) + "(" + str(total_need_extraction[6]) + "%)",
+                    str(numerator_need_extraction_H) + "(" + str(total_need_extraction[7]) + "%)",
+                    total_need_extraction[8],
+                    overall_need_extraction,
                     ]
                 
                 final_total_need_fv = [
-                    ["Need FV",""],
-                    [numerator_need_fv_A,"(" + str(total_need_fv[0]) + "%)"],
-                    [numerator_need_fv_B,"(" + str(total_need_fv[1]) + "%)"],
-                    [numerator_need_fv_C,"(" + str(total_need_fv[2]) + "%)"],
-                    [total_need_fv[3],""],
-                    [numerator_need_fv_E,"(" + str(total_need_fv[4]) + "%)"],
-                    [numerator_need_fv_F,"(" + str(total_need_fv[5]) + "%)"],
-                    [numerator_need_fv_G,"(" + str(total_need_fv[6]) + "%)"],
-                    [numerator_need_fv_H,"(" + str(total_need_fv[7]) + "%)"],
-                    [total_need_fv[8],""],
-                    [overall_need_fv,""],
+                    "Need FV",
+                    str(numerator_need_fv_A) + "(" + str(total_need_fv[0]) + "%)",
+                    str(numerator_need_fv_B) + "(" + str(total_need_fv[1]) + "%)",
+                    str(numerator_need_fv_C) + "(" + str(total_need_fv[2]) + "%)",
+                    total_need_fv[3],
+                    str(numerator_need_fv_E) + "(" + str(total_need_fv[4]) + "%)",
+                    str(numerator_need_fv_F) + "(" + str(total_need_fv[5]) + "%)",
+                    str(numerator_need_fv_G) + "(" + str(total_need_fv[6]) + "%)",
+                    str(numerator_need_fv_H) + "(" + str(total_need_fv[7]) + "%)",
+                    total_need_fv[8],
+                    overall_need_fv,
                     ]
                 
                 final_total_need_dentist_or_hygienist = [
-                    ["Need Dentist or Hygenist",""] ,
-                    [numerator_need_dentist_or_hygienist_A,"(" + str(total_need_dentist_or_hygienist[0]) + "%)"],
-                    [numerator_need_dentist_or_hygienist_B,"(" + str(total_need_dentist_or_hygienist[1]) + "%)"],
-                    [numerator_need_dentist_or_hygienist_C,"(" + str(total_need_dentist_or_hygienist[2]) + "%)"],
-                    [total_need_dentist_or_hygienist[3],""],
-                    [numerator_need_dentist_or_hygienist_E,"(" + str(total_need_dentist_or_hygienist[4]) + "%)"],
-                    [numerator_need_dentist_or_hygienist_F,"(" + str(total_need_dentist_or_hygienist[5]) + "%)"],
-                    [numerator_need_dentist_or_hygienist_G,"(" + str(total_need_dentist_or_hygienist[6]) + "%)"],
-                    [numerator_need_dentist_or_hygienist_H,"(" + str(total_need_dentist_or_hygienist[7]) + "%)"],
-                    [total_need_dentist_or_hygienist[8],""],
-                    [overall_need_dentist_or_hygienist,""],
+                    "Need Dentist or Hygenist",
+                    str(numerator_need_dentist_or_hygienist_A) + "(" + str(total_need_dentist_or_hygienist[0]) + "%)",
+                    str(numerator_need_dentist_or_hygienist_B) + "(" + str(total_need_dentist_or_hygienist[1]) + "%)",
+                    str(numerator_need_dentist_or_hygienist_C) + "(" + str(total_need_dentist_or_hygienist[2]) + "%)",
+                    total_need_dentist_or_hygienist[3],
+                    str(numerator_need_dentist_or_hygienist_E) + "(" + str(total_need_dentist_or_hygienist[4]) + "%)",
+                    str(numerator_need_dentist_or_hygienist_F) + "(" + str(total_need_dentist_or_hygienist[5]) + "%)",
+                    str(numerator_need_dentist_or_hygienist_G) + "(" + str(total_need_dentist_or_hygienist[6]) + "%)",
+                    str(numerator_need_dentist_or_hygienist_H) + "(" + str(total_need_dentist_or_hygienist[7]) + "%)",
+                    total_need_dentist_or_hygienist[8],
+                    overall_need_dentist_or_hygienist,
                     ]
                 
 
@@ -3272,8 +3268,7 @@ class TestCrossSectionalVisualization(APIView):
                 
             
                 row_total = [
-                    ["Totals",""],[rowA_total,""],[rowB_total,""],[rowC_total,""],["",""],[rowE_total,""],[rowF_total,""],[rowG_total,""],[rowH_total,""]
-
+                    "Totals",rowA_total,rowB_total,rowC_total,"",rowE_total,rowF_total,rowG_total,rowH_total
                 ]
    
                 data = [
