@@ -1178,13 +1178,9 @@ class OverviewVisualization1(APIView):
         return Response({"treatment_obj": "do not have a permission"}, status=400)
 
     def post(self, request, format=None):
-        serializer = OverViewVisualization(
-            data=request.data, context={"request": request}
-        )
+        serializer = OverViewVisualization(data=request.data, context={"request": request})
         if serializer.is_valid():
-            start_date = str(
-                NepaliDate.from_date(serializer.validated_data["start_date"])
-            )
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
             location_list = serializer.validated_data["location"]
             activities = serializer.validated_data["activities"]

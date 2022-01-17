@@ -43,7 +43,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 
 
-class TestCrossSectionalVisualization(APIView):
+class CrossSectionalVisualization(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = TestCrosssectionVisualizationSerializer
 
@@ -287,7 +287,7 @@ class TestCrossSectionalVisualization(APIView):
 
 
             final_total_carries_risk_low = [
-                '<span class="ml-4">Low</span>',
+                'Low',
                 str(numerator_carries_risk_low_A ) + "(" + str(total_carries_risk_low[0]) + "%)",
                 str(numerator_carries_risk_low_B) + "(" + str(total_carries_risk_low[1]) + "%)",
                 str(numerator_carries_risk_low_C) + "(" + str(total_carries_risk_low[2]) + "%)",
@@ -301,7 +301,7 @@ class TestCrossSectionalVisualization(APIView):
                 ]
             
             final_total_carries_risk_medium = [
-                '<span class="ml-4">Medium</span>',
+                'Medium>',
                 str(numerator_carries_risk_medium_A) + "(" + str(total_carries_risk_medium[0]) + "%)",
                 str(numerator_carries_risk_medium_B) + "(" + str(total_carries_risk_medium[1]) + "%)",
                 str(numerator_carries_risk_medium_C) + "(" + str(total_carries_risk_medium[2]) + "%)",
@@ -315,7 +315,7 @@ class TestCrossSectionalVisualization(APIView):
                 ]
             
             final_total_carries_risk_high = [
-                '<span class="ml-4">High</span>' ,
+                'High>' ,
                 str(numerator_carries_risk_high_A) + "(" + str(total_carries_risk_high[0]) + "%)",
                 str(numerator_carries_risk_high_B) + "(" + str(total_carries_risk_high[1]) + "%)",
                 str(numerator_carries_risk_high_C) + "(" + str(total_carries_risk_high[2]) + "%)",
@@ -1796,7 +1796,7 @@ class TestCrossSectionalVisualization(APIView):
 
 
                 final_total_carries_risk_low = [
-                    '<span class="ml-4">Low</span>',
+                    'Low',
                     str(numerator_carries_risk_low_A ) + "(" + str(total_carries_risk_low[0]) + "%)",
                     str(numerator_carries_risk_low_B) + "(" + str(total_carries_risk_low[1]) + "%)",
                     str(numerator_carries_risk_low_C) + "(" + str(total_carries_risk_low[2]) + "%)",
@@ -1810,7 +1810,7 @@ class TestCrossSectionalVisualization(APIView):
                 ]
             
                 final_total_carries_risk_medium = [
-                    '<span class="ml-4">Medium</span>',
+                    'Medium',
                     str(numerator_carries_risk_medium_A) + "(" + str(total_carries_risk_medium[0]) + "%)",
                     str(numerator_carries_risk_medium_B) + "(" + str(total_carries_risk_medium[1]) + "%)",
                     str(numerator_carries_risk_medium_C) + "(" + str(total_carries_risk_medium[2]) + "%)",
@@ -1824,7 +1824,7 @@ class TestCrossSectionalVisualization(APIView):
                 ]
                 
                 final_total_carries_risk_high = [
-                    '<span class="ml-4">High</span>' ,
+                    'High' ,
                     str(numerator_carries_risk_high_A) + "(" + str(total_carries_risk_high[0]) + "%)",
                     str(numerator_carries_risk_high_B) + "(" + str(total_carries_risk_high[1]) + "%)",
                     str(numerator_carries_risk_high_C) + "(" + str(total_carries_risk_high[2]) + "%)",

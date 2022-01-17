@@ -54,7 +54,7 @@ class PatientTreatmentView(APIView):
             logger.error(serializer.errors)
             return Response({'message':serializer.errors}, status=400)
         logger.info("%s %s" %("Encounter id does not exists in treatment section : ", encounter_id))
-        return Response({"message":"patient does not exists."},status=400)
+        return Response({"message":"Encounter does not exists."},status=400)
 
 class PatientTreatmentUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)

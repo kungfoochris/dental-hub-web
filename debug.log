@@ -20217,3 +20217,252 @@ TypeError: unsupported operand type(s) for +: 'int' and 'str'
 2022-01-05 10:54:41,420 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 20464
 2022-01-05 10:56:38,984 django.server INFO     "GET /api/v1/longitudinaltwo HTTP/1.1" 200 20464
 2022-01-05 10:57:06,210 django.server INFO     "POST /api/v1/longitudinaltwo HTTP/1.1" 200 20465
+2022-01-07 09:12:13,052 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-07 09:12:13,082 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-07 09:12:13,958 django.request WARNING  Not Found: /favicon.ico
+2022-01-07 09:12:13,958 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-07 09:12:15,557 django.request WARNING  Unauthorized: /api/v1/overviewpiechart
+2022-01-07 09:12:15,558 django.server WARNING  "GET /api/v1/overviewpiechart HTTP/1.1" 401 9953
+2022-01-07 09:12:18,744 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/overviewpiechart HTTP/1.1" 200 2726
+2022-01-07 09:12:31,120 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-07 09:12:31,193 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 745
+2022-01-07 09:13:00,235 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 12411
+2022-01-07 11:27:03,461 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-07 11:27:03,492 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-07 11:31:07,641 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 745
+2022-01-07 11:31:37,272 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-07 11:31:37,273 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-07 11:31:50,935 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 745
+2022-01-07 11:32:06,772 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-07 11:32:06,773 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 11:57:51,490 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-14 11:57:51,539 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-14 11:57:52,109 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2022-01-14 11:57:52,116 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2022-01-14 11:57:52,116 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2022-01-14 11:57:52,136 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2022-01-14 11:57:52,151 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-14 11:57:52,152 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-01-14 11:57:52,152 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2022-01-14 11:57:52,153 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2022-01-14 11:57:52,242 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-14 11:57:52,243 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-01-14 11:57:52,570 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2022-01-14 11:57:52,806 django.request WARNING  Not Found: /favicon.ico
+2022-01-14 11:57:52,807 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-14 11:57:56,740 django.request WARNING  Unauthorized: /api/v1/piechartfilter
+2022-01-14 11:57:56,743 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 401 8591
+2022-01-14 11:57:58,291 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/piechartfilter HTTP/1.1" 200 2724
+2022-01-14 11:58:05,825 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-14 11:58:06,010 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 11:58:06,011 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 11:58:29,696 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 11:58:40,461 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 11:58:40,462 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 11:58:57,765 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 745
+2022-01-14 12:00:21,317 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 12:00:21,318 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 12:00:24,257 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:00:29,486 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 12:00:29,487 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 12:00:37,188 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 12:26:34,571 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-14 12:26:37,469 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-14 12:26:53,704 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-01-14 12:26:53,944 django.server INFO     "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 18039
+2022-01-14 12:27:38,598 treatmentapp.api.treatment INFO     Treatment viewd by:  shyam
+2022-01-14 12:27:38,865 django.request WARNING  Bad Request: /api/v1/encounter/60345A3858DB498BA2A4B83DD390BF56/treatment
+2022-01-14 12:27:38,866 django.server WARNING  "GET /api/v1/encounter/60345A3858DB498BA2A4B83DD390BF56/treatment HTTP/1.1" 400 55700
+2022-01-14 12:27:55,826 treatmentapp.api.treatment INFO     Encounter id does not exists in treatment section :  60345A3858DB498BA2A4B83DD390BF56
+2022-01-14 12:27:56,060 django.request WARNING  Bad Request: /api/v1/encounter/60345A3858DB498BA2A4B83DD390BF56/treatment
+2022-01-14 12:27:56,063 django.server WARNING  "POST /api/v1/encounter/60345A3858DB498BA2A4B83DD390BF56/treatment HTTP/1.1" 400 55708
+2022-01-14 12:28:57,637 treatmentapp.api.treatment INFO     Treatment viewd by:  shyam
+2022-01-14 12:28:57,924 django.request WARNING  Bad Request: /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/treatment
+2022-01-14 12:28:57,925 django.server WARNING  "GET /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/treatment HTTP/1.1" 400 55700
+2022-01-14 12:29:12,434 treatmentapp.api.treatment INFO     Treatment added successfully by F394535FEEEF40ABA043E390AC9F3841
+2022-01-14 12:29:12,656 django.server INFO     "POST /api/v1/encounter/F394535FEEEF40ABA043E390AC9F3841/treatment HTTP/1.1" 200 58607
+2022-01-14 12:34:06,647 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 12:34:06,648 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 12:34:32,267 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:37:18,481 django.request WARNING  Unauthorized: /api/v1/piechartfilter
+2022-01-14 12:37:18,484 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 401 8591
+2022-01-14 12:37:18,634 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2022-01-14 12:37:18,634 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2022-01-14 12:37:18,637 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2022-01-14 12:37:18,641 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-14 12:37:18,650 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-14 12:37:18,660 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2022-01-14 12:37:18,662 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2022-01-14 12:37:18,663 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-01-14 12:37:18,664 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-01-14 12:37:18,727 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2022-01-14 12:37:18,787 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2022-01-14 12:37:21,124 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/piechartfilter HTTP/1.1" 200 2724
+2022-01-14 12:37:35,626 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-14 12:37:35,729 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 12:37:35,730 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13251
+2022-01-14 12:37:48,060 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2022-01-14 12:37:48,241 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13223
+2022-01-14 12:37:48,304 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2022-01-14 12:37:48,305 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2022-01-14 12:37:48,306 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2022-01-14 12:37:48,334 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2022-01-14 12:37:48,392 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2022-01-14 12:37:48,393 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2022-01-14 12:37:48,403 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2022-01-14 12:37:48,557 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2022-01-14 12:37:48,580 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2022-01-14 12:37:48,583 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2022-01-14 12:37:52,028 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13010
+2022-01-14 12:37:52,113 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2022-01-14 12:37:52,130 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2022-01-14 12:37:52,138 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2022-01-14 12:37:52,140 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2022-01-14 12:37:52,147 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2022-01-14 12:37:52,167 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-14 12:37:52,174 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2022-01-14 12:37:52,184 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2022-01-14 12:37:52,184 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2022-01-14 12:37:52,213 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2022-01-14 12:37:52,220 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2022-01-14 12:37:52,266 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2022-01-14 12:37:52,292 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2022-01-14 12:37:52,321 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2022-01-14 12:38:08,675 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23302
+2022-01-14 12:38:08,746 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2022-01-14 12:38:08,749 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2022-01-14 12:38:08,753 django.server INFO     "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+2022-01-14 12:38:08,755 django.server INFO     "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+2022-01-14 12:38:08,755 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2022-01-14 12:38:08,764 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-01-14 12:38:08,806 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2022-01-14 12:38:08,951 django.server INFO     "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2022-01-14 12:38:52,518 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:40:57,829 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:42:06,253 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:42:59,980 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-14 12:43:02,576 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-14 12:43:22,716 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-14 12:43:25,093 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-14 12:43:32,135 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 10511
+2022-01-14 12:46:10,437 django.server INFO     "GET /api/v1/events HTTP/1.1" 200 10511
+2022-01-14 12:51:20,142 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:52:30,637 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 12:53:26,306 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 12:53:26,307 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 12:53:41,892 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 13:03:26,766 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 13:09:43,719 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 13:22:05,325 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 13:27:16,283 encounterapp.api.encounter INFO     Encounter added successfully by Shyam Magar
+2022-01-14 13:27:16,347 django.server INFO     "POST /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 16797
+2022-01-14 13:27:34,343 treatmentapp.api.treatment INFO     Treatment viewd by:  shyam
+2022-01-14 13:27:34,578 django.request WARNING  Bad Request: /api/v1/encounter/67148F4752934249A9981B281352BF58/treatment
+2022-01-14 13:27:34,580 django.server WARNING  "GET /api/v1/encounter/67148F4752934249A9981B281352BF58/treatment HTTP/1.1" 400 55700
+2022-01-14 13:27:55,659 treatmentapp.api.treatment INFO     Treatment added successfully by 67148F4752934249A9981B281352BF58
+2022-01-14 13:27:55,867 django.server INFO     "POST /api/v1/encounter/67148F4752934249A9981B281352BF58/treatment HTTP/1.1" 200 58602
+2022-01-14 13:28:31,037 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 13:28:53,950 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 13:30:43,258 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 13:56:24,695 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 13:56:24,696 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 13:56:38,787 django.request ERROR    Internal Server Error: /api/v1/piechartfilter
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 3076, in post
+    return Response({"locationChart": locationChart})
+UnboundLocalError: local variable 'locationChart' referenced before assignment
+2022-01-14 13:56:38,790 django.server ERROR    "POST /api/v1/piechartfilter HTTP/1.1" 500 89017
+2022-01-14 13:59:21,080 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 14:03:24,618 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:06:50,848 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:11:20,081 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:11:56,103 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:13:09,590 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:14:12,343 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-01-14 14:14:12,486 django.server INFO     "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 25005
+2022-01-14 14:14:45,365 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-01-14 14:14:45,462 django.server INFO     "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 25005
+2022-01-14 14:15:30,313 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-14 14:15:32,743 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-14 14:15:39,466 django.server INFO     "GET /api/v1/geography HTTP/1.1" 200 10172
+2022-01-14 14:16:10,588 django.server INFO     "GET /api/v1/addresses HTTP/1.1" 200 11363632
+2022-01-14 14:46:08,082 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-14 14:46:10,909 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-14 14:46:12,669 django.request WARNING  Not Found: /favicon.ico
+2022-01-14 14:46:12,670 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-14 14:46:18,879 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:46:18,880 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:46:37,974 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:49:20,700 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:49:20,701 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:49:24,475 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:50:26,249 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:50:26,250 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:50:38,020 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:50:49,144 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:50:49,145 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:50:56,198 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 14:51:26,056 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 14:52:38,675 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:52:38,676 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:53:00,930 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 14:53:19,341 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:53:19,342 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:53:37,566 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 14:53:57,043 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:53:57,044 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:54:48,635 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 14:55:37,340 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:55:37,341 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:55:41,063 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 14:56:50,537 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 14:56:50,539 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 14:56:53,329 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 15:10:01,723 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 15:10:36,912 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 15:11:14,500 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 15:11:52,320 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 15:14:40,979 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 15:53:25,121 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 15:54:03,093 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 15:56:39,009 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15388
+2022-01-14 16:04:49,069 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15164
+2022-01-14 16:07:11,107 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 16:10:44,806 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 16:11:31,190 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 17:14:27,244 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-14 17:14:27,245 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-14 17:14:42,729 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15164
+2022-01-14 17:18:24,636 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15282
+2022-01-14 17:35:50,157 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15380
+2022-01-14 18:09:13,852 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15164
+2022-01-14 18:10:21,520 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15164
+2022-01-14 18:10:50,432 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15164
+2022-01-17 12:22:23,686 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-17 12:22:27,475 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 111142
+2022-01-17 12:22:29,425 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-01-17 12:22:29,425 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-01-17 12:22:29,427 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-17 12:22:29,444 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-17 12:22:30,725 django.request WARNING  Not Found: /favicon.ico
+2022-01-17 12:22:30,726 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-17 12:25:24,817 patientapp.api.patient INFO     Patient added successfully by Shyam Magar, Patient id: 54879BA1F74C453388D7AEA3D8EEB9FB, first name: John, last name: Cena, phone: +9779840056968, dob: 2022-01-31 ,gender: male
+2022-01-17 12:25:27,527 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109902
+2022-01-17 12:25:30,861 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-17 12:25:33,601 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476

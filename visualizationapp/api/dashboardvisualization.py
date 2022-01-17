@@ -1729,10 +1729,6 @@ class PieChartVisualization(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
 
     def get(self, request, format=None):
-        health_post_obj = Activity.objects.get(name="Health Post")
-        school_seminar_obj = Activity.objects.get(name="School Seminar")
-        community_outreach_obj = Activity.objects.get(name="Community Outreach")
-        training_obj = Activity.objects.get(name="Training")
         data = []
         data_label = []
         for activities_obj in Activity.objects.all():
@@ -1853,7 +1849,8 @@ class PieChartVisualization(APIView):
                 },
             },
         }
-        return JsonResponse({"locationChart": locationChart})
+        return Response({"locationChart": locationChart})
+
 
 # 1.3 Activity Distribution
 class PieChartVisualizationFilter(APIView):
@@ -1865,35 +1862,27 @@ class PieChartVisualizationFilter(APIView):
             data=request.data, context={"request": request}
         )
         if serializer.is_valid():
-            start_date = str(
-                NepaliDate.from_date(serializer.validated_data["start_date"])
-            )
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+
+            # start_date = serializer.validated_data["start_date"]
+            # end_date = serializer.validated_data["end_date"]
+
+            print("Heyyyyyyyyyyyy")
+            print(start_date)
+            print(end_date)
 
             age_group = serializer.validated_data["age_group"]
             location_list = serializer.validated_data["location"]
-            label_data = [
-                "Health Post",
-                "School Seminar",
-                "Community Outreach",
-                "Training",
-            ]
 
-            health_post_obj = Activity.objects.get(name="Health Post")
-            school_seminar_obj = Activity.objects.get(name="School Seminar")
-            community_outreach_obj = Activity.objects.get(name="Community Outreach")
-            training_obj = Activity.objects.get(name="Training")
+            data_label = []
+            for activities_obj in Activity.objects.all():
+                data_label.append(activities_obj.name)
 
-            health_post_count = []
-            school_seminar_count = []
-            community_outreach_count = []
-            training_count = []
             if not location_list:
                 if age_group == "alltreatment":
                     data = []
-                    data_label = []
                     for activities_obj in Activity.objects.all():
-                        data_label.append(activities_obj.name)
                         a = []
                         if (
                             Visualization.objects.filter(active=True,
@@ -1966,405 +1955,172 @@ class PieChartVisualizationFilter(APIView):
                             ).count()
                         )
                         data.append(sum(a))
-                    locationChart = {
-                        "data": {
-                            "labels": data_label,
-                            "datasets": [
-                                {
-                                    "label": "Female",
-                                    "backgroundColor": [
-                                        "rgba(84, 184, 209, 0.5)",
-                                        "rgba(91, 95, 151, 0.5)",
-                                        "rgba(255, 193, 69, 0.5)",
-                                        "rgba(96, 153, 45, 0.5)",
-                                        "rgba(230, 232, 230, 0.5)",
-                                    ],
-                                    "borderColor": [
-                                        "rgba(84, 184, 209, 1)",
-                                        "rgba(91, 95, 151, 1)",
-                                        "rgba(255, 193, 69, 1)",
-                                        "rgba(96, 153, 45, 1)",
-                                        "rgba(230, 232, 230, 1)",
-                                    ],
-                                    "borderWidth": 1,
-                                    "data": data,
-                                }
-                            ],
-                        },
-                        "options": {
-                            "aspectRatio": 1.5,
-                            "title": {
-                                "display": "true",
-                                # 'text': "Activity Distribution Chart",
-                                "fontSize": 18,
-                                "fontFamily": "'Palanquin', sans-serif",
-                            },
-                            "legend": {
-                                "display": "true",
-                                "position": "bottom",
-                                "labels": {
-                                    "usePointStyle": "true",
-                                    "padding": 20,
-                                    "fontFamily": "'Maven Pro', sans-serif",
-                                },
-                            },
-                        },
-                    }
-                    return JsonResponse({"locationChart": locationChart})
+                    # locationChart = {
+                    #     "data": {
+                    #         "labels": data_label,
+                    #         "datasets": [
+                    #             {
+                    #                 "label": "Female",
+                    #                 "backgroundColor": [
+                    #                     "rgba(84, 184, 209, 0.5)",
+                    #                     "rgba(91, 95, 151, 0.5)",
+                    #                     "rgba(255, 193, 69, 0.5)",
+                    #                     "rgba(96, 153, 45, 0.5)",
+                    #                     "rgba(230, 232, 230, 0.5)",
+                    #                 ],
+                    #                 "borderColor": [
+                    #                     "rgba(84, 184, 209, 1)",
+                    #                     "rgba(91, 95, 151, 1)",
+                    #                     "rgba(255, 193, 69, 1)",
+                    #                     "rgba(96, 153, 45, 1)",
+                    #                     "rgba(230, 232, 230, 1)",
+                    #                 ],
+                    #                 "borderWidth": 1,
+                    #                 "data": data,
+                    #             }
+                    #         ],
+                    #     },
+                    #     "options": {
+                    #         "aspectRatio": 1.5,
+                    #         "title": {
+                    #             "display": "true",
+                    #             # 'text': "Activity Distribution Chart",
+                    #             "fontSize": 18,
+                    #             "fontFamily": "'Palanquin', sans-serif",
+                    #         },
+                    #         "legend": {
+                    #             "display": "true",
+                    #             "position": "bottom",
+                    #             "labels": {
+                    #                 "usePointStyle": "true",
+                    #                 "padding": 20,
+                    #                 "fontFamily": "'Maven Pro', sans-serif",
+                    #             },
+                    #         },
+                    #     },
+                    # }
+                    # return Response({"locationChart": locationChart})
 
                 if age_group == "exo":
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=health_post_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        health_post_count.append(
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        if (
                             Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
+                                activities_id=activities_obj.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        health_post_count.append(0)
+                            is not None
+                        ):
+                            print("inside if")
+                            data.append(
+                                Visualization.objects.filter(active=True,
+                                    activities_id=activities_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).aggregate(Sum("exo"))["exo__sum"]
+                            )
+                        else:
+                            print("inside else")
+                            data.append(0)
 
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=school_seminar_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        school_seminar_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        school_seminar_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=community_outreach_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        community_outreach_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=training_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        training_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        training_count.append(0)
 
                 if age_group == "art":
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=health_post_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        health_post_count.append(
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        if (
                             Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
+                                activities_id=activities_obj.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        health_post_count.append(0)
+                            is not None
+                        ):
+                            print("inside if")
+                            data.append(
+                                Visualization.objects.filter(active=True,
+                                    activities_id=activities_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).aggregate(Sum("art"))["art__sum"]
+                            )
+                        else:
+                            print("inside else")
+                            data.append(0)
 
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=school_seminar_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        school_seminar_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        school_seminar_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=community_outreach_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        community_outreach_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=training_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        training_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        training_count.append(0)
                 if age_group == "seal":
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=health_post_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        health_post_count.append(
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        if (
                             Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
+                                activities_id=activities_obj.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        health_post_count.append(0)
+                            is not None
+                        ):
+                            print("inside if")
+                            data.append(
+                                Visualization.objects.filter(active=True,
+                                    activities_id=activities_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).aggregate(Sum("seal"))["seal__sum"]
+                            )
+                        else:
+                            print("inside else")
+                            data.append(0)
 
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=school_seminar_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        school_seminar_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        school_seminar_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=community_outreach_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        community_outreach_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=training_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        training_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        training_count.append(0)
                 if age_group == "sdf":
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=health_post_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        health_post_count.append(
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        if (
                             Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
+                                activities_id=activities_obj.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        health_post_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=school_seminar_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        school_seminar_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        school_seminar_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=community_outreach_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        community_outreach_count.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,
-                            activities_id=training_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        training_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        training_count.append(0)
+                            is not None
+                        ):
+                            print("inside if")
+                            data.append(
+                                Visualization.objects.filter(active=True,
+                                    activities_id=activities_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).aggregate(Sum("sdf"))["sdf__sum"]
+                            )
+                        else:
+                            print("inside else")
+                            data.append(0)
 
                 if age_group == "fv":
-                    health_post_count.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True,
-                            activities_id=health_post_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
-                    school_seminar_count.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True,
-                            activities_id=school_seminar_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
-                    community_outreach_count.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True,
-                            activities_id=community_outreach_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
-                    training_count.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True,
-                            activities_id=training_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        data.append(
+                            Visualization.objects.filter(active=True,
+                                fv=True,
+                                activities_id=activities_obj.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
                 
                 if age_group == "f-sdf":
-                    health_post_count.append(
-                        Visualization.objects.filter(active=True,
-                            sdf_whole_mouth=True,
-                            activities_id=health_post_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
-                    school_seminar_count.append(
-                        Visualization.objects.filter(active=True,
-                            sdf_whole_mouth=True,
-                            activities_id=school_seminar_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
-                    community_outreach_count.append(
-                        Visualization.objects.filter(active=True,
-                            sdf_whole_mouth=True,
-                            activities_id=community_outreach_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
-                    training_count.append(
-                        Visualization.objects.filter(active=True,
-                            sdf_whole_mouth=True,
-                            activities_id=training_obj.id,
-                            created_at__range=[start_date, end_date],
-                        ).count()
-                    )
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        data.append(
+                            Visualization.objects.filter(active=True,
+                                sdf_whole_mouth=True,
+                                activities_id=activities_obj.id,
+                                created_at__range=[start_date, end_date],
+                            ).count()
+                        )
                 
                 if age_group == "contacts":
-                    health_post_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                    
-                    school_seminar_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                    
-                    community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                    
-                    training_count.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        data.append(
+                                Visualization.objects.filter(active=True,
+                                    activities_id=activities_obj.id,
+                                    created_at__range=[start_date, end_date],
+                                ).count()
+                            )
             else:
                 if age_group == "alltreatment":
                     data = []
-                    data_label = []
                     for activities_obj in Activity.objects.all():
-                        data_label.append(activities_obj.name)
                         a = []
                         for location in location_list:
                             if (
@@ -2438,588 +2194,212 @@ class PieChartVisualizationFilter(APIView):
                                 )
                             else:
                                 a.append(0)
+
                             a.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
                                     created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
-                                    geography_id=location.id,
                                 ).count()
                             )
                         data.append(sum(a))
+                        a = []
+                        # locationChart = {
+                        #     "data": {
+                        #         "labels": data_label,
+                        #         "datasets": [
+                        #             {
+                        #                 "label": "Female",
+                        #                 "backgroundColor": [
+                        #                     "rgba(84, 184, 209, 0.5)",
+                        #                     "rgba(91, 95, 151, 0.5)",
+                        #                     "rgba(255, 193, 69, 0.5)",
+                        #                     "rgba(96, 153, 45, 0.5)",
+                        #                     "rgba(230, 232, 230, 0.5)",
+                        #                 ],
+                        #                 "borderColor": [
+                        #                     "rgba(84, 184, 209, 1)",
+                        #                     "rgba(91, 95, 151, 1)",
+                        #                     "rgba(255, 193, 69, 1)",
+                        #                     "rgba(96, 153, 45, 1)",
+                        #                     "rgba(230, 232, 230, 1)",
+                        #                 ],
+                        #                 "borderWidth": 1,
+                        #                 "data": data,
+                        #             }
+                        #         ],
+                        #     },
+                        #     "options": {
+                        #         "aspectRatio": 1.5,
+                        #         "title": {
+                        #             "display": "true",
+                        #             # 'text': "Activity Distribution Chart",
+                        #             "fontSize": 18,
+                        #             "fontFamily": "'Palanquin', sans-serif",
+                        #         },
+                        #         "legend": {
+                        #             "display": "true",
+                        #             "position": "bottom",
+                        #             "labels": {
+                        #                 "usePointStyle": "true",
+                        #                 "padding": 20,
+                        #                 "fontFamily": "'Maven Pro', sans-serif",
+                        #             },
+                        #         },
+                        #     },
+                        # }
+                        # return Response({"locationChart": locationChart})
 
-                    locationChart = {
-                        "data": {
-                            "labels": data_label,
-                            "datasets": [
-                                {
-                                    "label": "Female",
-                                    "backgroundColor": [
-                                        "rgba(84, 184, 209, 0.5)",
-                                        "rgba(91, 95, 151, 0.5)",
-                                        "rgba(255, 193, 69, 0.5)",
-                                        "rgba(96, 153, 45, 0.5)",
-                                        "rgba(230, 232, 230, 0.5)",
-                                    ],
-                                    "borderColor": [
-                                        "rgba(84, 184, 209, 1)",
-                                        "rgba(91, 95, 151, 1)",
-                                        "rgba(255, 193, 69, 1)",
-                                        "rgba(96, 153, 45, 1)",
-                                        "rgba(230, 232, 230, 1)",
-                                    ],
-                                    "borderWidth": 1,
-                                    "data": data,
-                                }
-                            ],
-                        },
-                        "options": {
-                            "aspectRatio": 1.5,
-                            "title": {
-                                "display": "true",
-                                # 'text': "Activity Distribution Chart",
-                                "fontSize": 18,
-                                "fontFamily": "'Palanquin', sans-serif",
-                            },
-                            "legend": {
-                                "display": "true",
-                                "position": "bottom",
-                                "labels": {
-                                    "usePointStyle": "true",
-                                    "padding": 20,
-                                    "fontFamily": "'Maven Pro', sans-serif",
-                                },
-                            },
-                        },
-                    }
-                    return JsonResponse({"locationChart": locationChart})
-                for location in location_list:
-                    if age_group == "alltreatment":
-                        data = []
-                        data_label = []
-                        for activities_obj in Activity.objects.all():
-                            data_label.append(activities_obj.name)
-                            a = []
+                if age_group == "exo":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
                             if (
                                 Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
+                                    created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("exo"))["exo__sum"]
                                 is not None
                             ):
                                 a.append(
                                     Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
                                         activities_id=activities_obj.id,
+                                        geography_id=location.id,
+                                        created_at__range=[start_date, end_date],
                                     ).aggregate(Sum("exo"))["exo__sum"]
                                 )
                             else:
                                 a.append(0)
+                        data.append(sum(a))
+                        a = []
 
+                if age_group == "art":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
                             if (
                                 Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
                                     geography_id=location.id,
+                                    created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("art"))["art__sum"]
                                 is not None
                             ):
                                 a.append(
                                     Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
                                         activities_id=activities_obj.id,
                                         geography_id=location.id,
+                                        created_at__range=[start_date, end_date],
                                     ).aggregate(Sum("art"))["art__sum"]
                                 )
                             else:
                                 a.append(0)
+                        data.append(sum(a))
+                        a = []
 
+                if age_group == "seal":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
                             if (
                                 Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
                                     geography_id=location.id,
+                                    created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("seal"))["seal__sum"]
                                 is not None
                             ):
                                 a.append(
                                     Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
                                         activities_id=activities_obj.id,
                                         geography_id=location.id,
+                                        created_at__range=[start_date, end_date],
                                     ).aggregate(Sum("seal"))["seal__sum"]
                                 )
                             else:
                                 a.append(0)
+                        data.append(sum(a))
+                        a = []
 
+                if age_group == "sdf":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
                             if (
                                 Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
                                     geography_id=location.id,
+                                    created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("sdf"))["sdf__sum"]
                                 is not None
                             ):
                                 a.append(
                                     Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
                                         activities_id=activities_obj.id,
                                         geography_id=location.id,
+                                        created_at__range=[start_date, end_date],
                                     ).aggregate(Sum("sdf"))["sdf__sum"]
                                 )
                             else:
                                 a.append(0)
+                        data.append(sum(a))
+                        a = []
 
+                if age_group == "fv":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
                             a.append(
                                 Visualization.objects.filter(active=True,
                                     fv=True,
+                                    activities_id=health_post_obj.id,
+                                    geography_id=location.id,
                                     created_at__range=[start_date, end_date],
-                                    activities_id=activities_obj.id,
                                 ).count()
                             )
-                            data.append(sum(a))
-                        locationChart = {
-                            "data": {
-                                "labels": data_label,
-                                "datasets": [
-                                    {
-                                        "label": "Female",
-                                        "backgroundColor": [
-                                            "rgba(84, 184, 209, 0.5)",
-                                            "rgba(91, 95, 151, 0.5)",
-                                            "rgba(255, 193, 69, 0.5)",
-                                            "rgba(96, 153, 45, 0.5)",
-                                            "rgba(230, 232, 230, 0.5)",
-                                        ],
-                                        "borderColor": [
-                                            "rgba(84, 184, 209, 1)",
-                                            "rgba(91, 95, 151, 1)",
-                                            "rgba(255, 193, 69, 1)",
-                                            "rgba(96, 153, 45, 1)",
-                                            "rgba(230, 232, 230, 1)",
-                                        ],
-                                        "borderWidth": 1,
-                                        "data": data,
-                                    }
-                                ],
-                            },
-                            "options": {
-                                "aspectRatio": 1.5,
-                                "title": {
-                                    "display": "true",
-                                    # 'text': "Activity Distribution Chart",
-                                    "fontSize": 18,
-                                    "fontFamily": "'Palanquin', sans-serif",
-                                },
-                                "legend": {
-                                    "display": "true",
-                                    "position": "bottom",
-                                    "labels": {
-                                        "usePointStyle": "true",
-                                        "padding": 20,
-                                        "fontFamily": "'Maven Pro', sans-serif",
-                                    },
-                                },
-                            },
-                        }
-                        return JsonResponse({"locationChart": locationChart})
-
-                    if age_group == "exo":
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                            is not None
-                        ):
-                            health_post_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=health_post_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("exo"))["exo__sum"]
-                            )
-                        else:
-                            health_post_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                            is not None
-                        ):
-                            school_seminar_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=school_seminar_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("exo"))["exo__sum"]
-                            )
-                        else:
-                            school_seminar_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                            is not None
-                        ):
-                            community_outreach_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=community_outreach_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("exo"))["exo__sum"]
-                            )
-                        else:
-                            community_outreach_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("exo"))["exo__sum"]
-                            is not None
-                        ):
-                            training_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=training_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("exo"))["exo__sum"]
-                            )
-                        else:
-                            training_count.append(0)
-
-                    if age_group == "art":
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                            is not None
-                        ):
-                            health_post_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=health_post_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("art"))["art__sum"]
-                            )
-                        else:
-                            health_post_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                            is not None
-                        ):
-                            school_seminar_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=school_seminar_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("art"))["art__sum"]
-                            )
-                        else:
-                            school_seminar_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                            is not None
-                        ):
-                            community_outreach_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=community_outreach_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("art"))["art__sum"]
-                            )
-                        else:
-                            community_outreach_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("art"))["art__sum"]
-                            is not None
-                        ):
-                            training_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=training_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("art"))["art__sum"]
-                            )
-                        else:
-                            training_count.append(0)
-
-                    if age_group == "seal":
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                            is not None
-                        ):
-                            health_post_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=health_post_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("seal"))["seal__sum"]
-                            )
-                        else:
-                            health_post_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                            is not None
-                        ):
-                            school_seminar_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=school_seminar_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("seal"))["seal__sum"]
-                            )
-                        else:
-                            school_seminar_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                            is not None
-                        ):
-                            community_outreach_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=community_outreach_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("seal"))["seal__sum"]
-                            )
-                        else:
-                            community_outreach_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("seal"))["seal__sum"]
-                            is not None
-                        ):
-                            training_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=training_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("seal"))["seal__sum"]
-                            )
-                        else:
-                            training_count.append(0)
-
-                    if age_group == "sdf":
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                            is not None
-                        ):
-                            health_post_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=health_post_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("sdf"))["sdf__sum"]
-                            )
-                        else:
-                            health_post_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=school_seminar_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                            is not None
-                        ):
-                            school_seminar_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=school_seminar_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("sdf"))["sdf__sum"]
-                            )
-                        else:
-                            school_seminar_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=community_outreach_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                            is not None
-                        ):
-                            community_outreach_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=community_outreach_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("sdf"))["sdf__sum"]
-                            )
-                        else:
-                            community_outreach_count.append(0)
-
-                        if (
-                            Visualization.objects.filter(active=True,
-                                activities_id=training_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).aggregate(Sum("sdf"))["sdf__sum"]
-                            is not None
-                        ):
-                            training_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=training_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("sdf"))["sdf__sum"]
-                            )
-                        else:
-                            training_count.append(0)
-
-                    if age_group == "fv":
-                        health_post_count.append(
-                            Visualization.objects.filter(active=True,
-                                fv=True,
-                                activities_id=health_post_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                        school_seminar_count.append(
-                            Visualization.objects.filter(
-                                fv=True,
-                                activities_id=school_seminar_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                        community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                fv=True,
-                                activities_id=community_outreach_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                        training_count.append(
-                            Visualization.objects.filter(active=True,
-                                fv=True,
-                                activities_id=training_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
+                        data.append(sum(a))
+                        a = []
                     
-                    if age_group == "f-sdf":
-                        health_post_count.append(
-                            Visualization.objects.filter(active=True,
-                                sdf_whole_mouth=True,
-                                activities_id=health_post_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                        school_seminar_count.append(
-                            Visualization.objects.filter(
-                                sdf_whole_mouth=True,
-                                activities_id=school_seminar_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                        community_outreach_count.append(
-                            Visualization.objects.filter(active=True,
-                                sdf_whole_mouth=True,
-                                activities_id=community_outreach_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                        training_count.append(
-                            Visualization.objects.filter(active=True,
-                                sdf_whole_mouth=True,
-                                activities_id=training_obj.id,
-                                geography_id=location.id,
-                                created_at__range=[start_date, end_date],
-                            ).count()
-                        )
-                    
-                    if age_group == "contacts":
-                        health_post_count.append(
+                if age_group == "f-sdf":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
+                            a.append(
                                 Visualization.objects.filter(active=True,
+                                    sdf_whole_mouth=True,
                                     activities_id=health_post_obj.id,
+                                    geography_id=location.id,
                                     created_at__range=[start_date, end_date],
                                 ).count()
                             )
-                        
-                        school_seminar_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=school_seminar_obj.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                        
-                        community_outreach_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=community_outreach_obj.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                        
-                        training_count.append(
-                                Visualization.objects.filter(active=True,
-                                    activities_id=training_obj.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
+                        data.append(sum(a))
+                        a = []
+                    
+                if age_group == "contacts":
+                    data = []
+                    for activities_obj in Activity.objects.all():
+                        a = []
+                        for location in location_list:
+                            a.append(
+                                    Visualization.objects.filter(active=True,
+                                        activities_id=health_post_obj.id,
+                                        geography_id=location.id,
+                                        created_at__range=[start_date, end_date],
+                                    ).count()
+                                )
+                        data.append(sum(a))
+                        a = []
+                                  
             locationChart = {
                 "data": {
-                    "labels": [
-                        "Community Outreach",
-                        "Health Post",
-                        "School Seminar",
-                        "Training",
-                    ],
+                    "labels": data_label,
                     "datasets": [
                         {
                             "label": "Female",
@@ -3036,12 +2416,7 @@ class PieChartVisualizationFilter(APIView):
                                 "rgba(16, 152, 247, 1)",
                             ],
                             "borderWidth": 1,
-                            "data": [
-                                [sum(health_post_count)],
-                                [sum(school_seminar_count)],
-                                [sum(community_outreach_count)],
-                                [sum(training_count)],
-                            ],
+                            "data": data,
                         }
                     ],
                 },

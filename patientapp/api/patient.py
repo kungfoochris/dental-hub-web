@@ -14,6 +14,7 @@ from rest_framework import filters
 from addressapp.models import ActivityArea, Ward, Activity
 from addressapp.models import Address,Ward,Municipality,District
 import datetime
+from patientapp.dobchange import dobchange
 
 import logging
 # Get an instance of a logger
@@ -52,6 +53,7 @@ class GeographyPatientListView(APIView):
             serializer = PatientSerializer(add_patient, many=True, context={'request': request})
             return Response(serializer.data,status=200)
         return Response({"message":"only app user can access."},status=400)
+ 
 
 class PatientAdd(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
@@ -101,13 +103,15 @@ class PatientAdd(APIView):
                     # patient_obj.recall_date = serializer.validated_data['recall_date']
                     patient_obj.recall_time = serializer.validated_data['recall_time']
                     patient_obj.area = serializer.validated_data['area']
+                    bdate = serializer.validated_data['dob']
+                    b = dobchange(bdate)
+                    patient_obj.dob = b
                     patient_obj.save()
                 else:
                     patient_obj.first_name = serializer.validated_data['first_name']
                     patient_obj.last_name = serializer.validated_data['last_name']
                     patient_obj.middle_name = serializer.validated_data['middle_name']
                     patient_obj.gender = serializer.validated_data['gender']
-                    patient_obj.dob = serializer.validated_data['dob']
                     patient_obj.phone = serializer.validated_data['phone']
                     patient_obj.latitude = serializer.validated_data['latitude']
                     patient_obj.longitude = serializer.validated_data['longitude']
@@ -123,6 +127,9 @@ class PatientAdd(APIView):
                     patient_obj.recall_time = serializer.validated_data['recall_time']
                     patient_obj.recall_geography = serializer.validated_data['recall_geography']
                     patient_obj.area = serializer.validated_data['area']
+                    bdate = serializer.validated_data['dob']
+                    b = dobchange(bdate)
+                    patient_obj.dob = b
                     patient_obj.save()
                 logger.info("%s %s, %s %s, %s %s, %s %s, %s %s, %s %s ,%s %s" %("Patient added successfully by", request.user.full_name,"Patient id:",patient_obj.id,"first name:",patient_obj.first_name,"last name:",patient_obj.last_name,"phone:",patient_obj.phone,"dob:",patient_obj.dob,"gender:",patient_obj.gender))
                 return Response({"message":"Patient created successfully","id":patient_obj.id},status=200)
@@ -159,7 +166,6 @@ class PatientUpdateView(APIView):
                 patient_obj.last_name = serializer.validated_data['last_name']
                 patient_obj.middle_name = serializer.validated_data['middle_name']
                 patient_obj.gender = serializer.validated_data['gender']
-                patient_obj.dob = serializer.validated_data['dob']
                 patient_obj.phone = serializer.validated_data['phone']
                 patient_obj.ward = serializer.validated_data['ward_id']
                 patient_obj.municipality = serializer.validated_data['municipality_id']
@@ -167,6 +173,9 @@ class PatientUpdateView(APIView):
                 patient_obj.education = serializer.validated_data['education']
                 patient_obj.updated_by = serializer.validated_data['updated_by']
                 patient_obj.updated_at = serializer.validated_data['updated_at']
+                bdate = serializer.validated_data['dob']
+                b = dobchange(bdate)
+                patient_obj.dob = b
                 patient_obj.save()
                 serializer.save()
                 logger.info("%s %s" %("Patient update successfully by", request.user.full_name))
@@ -203,4 +212,3 @@ class ChangePatientCreatedDate(APIView):
             return Response({'message':"Patient with this id doesn't exist"}, status=400)
         return Response({"message","Only admin has access."},status=401)
         
-               

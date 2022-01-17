@@ -4011,7 +4011,6 @@ class SampleFrameTwoLongitudinal(APIView):
         return Response({'message':serializer.errors}, status=400)
 
 
-
 class LongitudinalVisualization(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = LongitudinalVisualizationSerializer
