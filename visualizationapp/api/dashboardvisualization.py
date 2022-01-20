@@ -24,7 +24,7 @@ from addressapp.models import Activity
 
 from visualizationapp.serializers.visualization import OverViewVisualization
 
-from visualizationapp.serializers.visualization import TreatMentBarGraphVisualization
+from visualizationapp.serializers.visualization import TreatMentBarGraphVisualization,ActivityDistributionVisualization
 from addressapp.models import Address, District, Municipality, Ward
 from django.db.models import Sum
 import logging
@@ -54,8 +54,10 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
 
 
 # 1.2 Treatment Distribution
-class VisualizationSetting(APIView):
+class TreatmentDistributionAPI(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = TreatMentBarGraphVisualization
+
 
     def get(self, request, format=None):
         if User.objects.get(id=request.user.id):
@@ -182,15 +184,27 @@ class VisualizationSetting(APIView):
                 "data": {
                     "labels": district,
                     "datasets": [
-
                         {
-                            "label": "FV",
-                            "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                            "borderColor": "rgba(239, 62, 54, 1)",
+                            "label": "EXO",
+                            "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                            "borderColor": "rgba(255, 206, 86, 1)",
                             "borderWidth": 1,
-                            "data": fv_data,
+                            "data": exo_data,
                         },
-
+                        {
+                            "label": "ART",
+                            "backgroundColor": "rgba(81, 264, 210, 0.2)",
+                            "borderColor": "rgba(81, 264, 210, 1)",
+                            "borderWidth": 1,
+                            "data": art_data,
+                        },
+                        {
+                            "label": "SEAL",
+                            "backgroundColor": "rgba(16, 152, 247, 0.2)",
+                            "borderColor": "rgba(16, 152, 247, 1)",
+                            "borderWidth": 1,
+                            "data": seal_data,
+                        },
                         {
                             "label": "SDF",
                             "backgroundColor": "rgba(87, 50, 200, 0.2)",
@@ -200,27 +214,11 @@ class VisualizationSetting(APIView):
                         },
 
                         {
-                            "label": "SEAL",
-                            "backgroundColor": "rgba(16, 152, 247, 0.2)",
-                            "borderColor": "rgba(16, 152, 247, 1)",
+                            "label": "FV",
+                            "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                            "borderColor": "rgba(239, 62, 54, 1)",
                             "borderWidth": 1,
-                            "data": seal_data,
-                        },
-
-                        {
-                            "label": "ART",
-                            "backgroundColor": "rgba(81, 264, 210, 0.2)",
-                            "borderColor": "rgba(81, 264, 210, 1)",
-                            "borderWidth": 1,
-                            "data": art_data,
-                        },
-                        
-                        {
-                            "label": "EXO",
-                            "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                            "borderColor": "rgba(255, 206, 86, 1)",
-                            "borderWidth": 1,
-                            "data": exo_data,
+                            "data": fv_data,
                         },
                         
                     ],
@@ -248,19 +246,12 @@ class VisualizationSetting(APIView):
             return Response({"locationChart": locationChart})
         return Response({"message": "only admin can create"}, status=400)
 
-
-class VisualizationSettingFilter(APIView):
-    permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = TreatMentBarGraphVisualization
-
     def post(self, request, format=None):
         serializer = TreatMentBarGraphVisualization(
             data=request.data, context={"request": request}
         )
         if serializer.is_valid():
-            start_date = str(
-                NepaliDate.from_date(serializer.validated_data["start_date"])
-            )
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
             end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
             location_list = serializer.validated_data["location"]
 
@@ -270,11 +261,15 @@ class VisualizationSettingFilter(APIView):
                 "School Seminar",
                 "Training",
             ]
+
+            district1 = ["Child", "Teen", "Adult", "Old Adult"]
+
             health_post_obj = Activity.objects.get(name="Health Post")
             seminar_obj = Activity.objects.get(name="School Seminar")
             outreach_obj = Activity.objects.get(name="Community Outreach")
             training = Activity.objects.get(name="Training")
-            age_group = serializer.validated_data["age_group"]
+            age_group_activity = serializer.validated_data["age_group_activity"]
+
             health_post_exo = []
             health_post_art = []
             health_post_seal = []
@@ -322,16 +317,25 @@ class VisualizationSettingFilter(APIView):
             old_adult_seal = []
             old_adult_sdf = []
             old_adult_fv = []
-            if not location_list:
+            
+            for location in location_list:
                 if (
                     Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     health_post_exo.append(
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,
+                            activities_id=health_post_obj.id
+                        )
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
@@ -339,13 +343,21 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     health_post_art.append(
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,
+                            activities_id=health_post_obj.id
+                        )
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
@@ -353,13 +365,21 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     health_post_seal.append(
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,
+                            activities_id=health_post_obj.id
+                        )
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
@@ -367,35 +387,51 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     health_post_sdf.append(
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,
+                            activities_id=health_post_obj.id
+                        )
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     health_post_sdf.append(0)
-
                 health_post_fv.append(
                     Visualization.objects.filter(active=True,
                         fv=True, activities_id=health_post_obj.id
                     )
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     seminar_exo.append(
                         Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
@@ -403,13 +439,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     seminar_art.append(
                         Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
@@ -417,13 +459,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     seminar_seal.append(
                         Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
@@ -431,32 +479,49 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     seminar_sdf.append(
                         Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     seminar_sdf.append(0)
                 seminar_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, activities_id=seminar_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,
+                        fv=True, activities_id=seminar_obj.id
+                    )
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     outreach_exo.append(
                         Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
@@ -464,13 +529,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     outreach_art.append(
                         Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
@@ -478,13 +549,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     outreach_seal.append(
                         Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
@@ -492,32 +569,49 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     outreach_sdf.append(
                         Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     outreach_sdf.append(0)
                 outreach_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, activities_id=outreach_obj.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,
+                        fv=True, activities_id=outreach_obj.id
+                    )
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=training.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     training_exo.append(
                         Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
@@ -525,13 +619,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=training.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     training_art.append(
                         Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
@@ -539,13 +639,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=training.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     training_seal.append(
                         Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
@@ -553,155 +659,223 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,activities_id=training.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     training_sdf.append(
                         Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     training_sdf.append(0)
                 training_fv.append(
                     Visualization.objects.filter(active=True,fv=True, activities_id=training.id)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
-                district1 = ["Child", "Teen", "Adult", "Old Adult"]
                 if (
-                    Visualization.objects.filter(active=True,age__lt=13)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__lt=12)
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     kid_exo.append(
-                        Visualization.objects.filter(active=True,age__lt=13)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__lt=12)
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
                     kid_exo.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=13)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__lt=12)
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     kid_art.append(
-                        Visualization.objects.filter(active=True,age__lt=13)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__lt=12)
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
                     kid_art.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=13)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__lt=12)
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     kid_seal.append(
-                        Visualization.objects.filter(active=True,age__lt=13)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__lt=12)
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
                     kid_seal.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=13)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__lt=12)
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     kid_sdf.append(
-                        Visualization.objects.filter(active=True,age__lt=13)
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__lt=12)
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     kid_sdf.append(0)
                 kid_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, age__lt=13)
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,fv=True, age__lt=12)
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(13, 18))
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     teen_exo.append(
-                        Visualization.objects.filter(active=True,age__range=(13, 18))
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
                     teen_exo.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(13, 18))
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     teen_art.append(
-                        Visualization.objects.filter(active=True,age__range=(13, 18))
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
                     teen_art.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(13, 18))
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     teen_seal.append(
-                        Visualization.objects.filter(active=True,age__range=(13, 18))
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
                     teen_seal.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(13, 18))
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     teen_sdf.append(
-                        Visualization.objects.filter(active=True,age__range=(13, 18))
-                        .filter(created_at__range=[start_date, end_date])
+                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     teen_sdf.append(0)
                 teen_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, age__range=(13, 18))
-                    .filter(created_at__range=[start_date, end_date])
+                    Visualization.objects.filter(active=True,fv=True, age__range=(12, 18))
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
                 if (
                     Visualization.objects.filter(active=True,age__range=(19, 60))
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     adult_exo.append(
                         Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
@@ -709,13 +883,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,age__range=(19, 60))
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     adult_art.append(
                         Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
@@ -723,13 +903,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,age__range=(19, 60))
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     adult_seal.append(
                         Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
@@ -737,32 +923,47 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,age__range=(19, 60))
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     adult_sdf.append(
                         Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     adult_sdf.append(0)
                 adult_fv.append(
                     Visualization.objects.filter(active=True,fv=True, age__range=(19, 60))
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
 
                 if (
                     Visualization.objects.filter(active=True,age__gt=60)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("exo"))["exo__sum"]
                     is not None
                 ):
                     old_adult_exo.append(
                         Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("exo"))["exo__sum"]
                     )
                 else:
@@ -770,13 +971,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,age__gt=60)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("art"))["art__sum"]
                     is not None
                 ):
                     old_adult_art.append(
                         Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("art"))["art__sum"]
                     )
                 else:
@@ -784,13 +991,19 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,age__gt=60)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("seal"))["seal__sum"]
                     is not None
                 ):
                     old_adult_seal.append(
                         Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("seal"))["seal__sum"]
                     )
                 else:
@@ -798,744 +1011,31 @@ class VisualizationSettingFilter(APIView):
 
                 if (
                     Visualization.objects.filter(active=True,age__gt=60)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .aggregate(Sum("sdf"))["sdf__sum"]
                     is not None
                 ):
                     old_adult_sdf.append(
                         Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(created_at__range=[start_date, end_date])
+                        .filter(
+                            created_at__range=[start_date, end_date],
+                            geography_id=location.id,
+                        )
                         .aggregate(Sum("sdf"))["sdf__sum"]
                     )
                 else:
                     old_adult_sdf.append(0)
                 old_adult_fv.append(
                     Visualization.objects.filter(active=True,fv=True, age__gt=60)
-                    .filter(created_at__range=[start_date, end_date])
+                    .filter(
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
                     .count()
                 )
-
-            else:
-                for location in location_list:
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        health_post_exo.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id
-                            )
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        health_post_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        health_post_art.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id
-                            )
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        health_post_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        health_post_seal.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id
-                            )
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        health_post_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=health_post_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        health_post_sdf.append(
-                            Visualization.objects.filter(active=True,
-                                activities_id=health_post_obj.id
-                            )
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        health_post_sdf.append(0)
-                    health_post_fv.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True, activities_id=health_post_obj.id
-                        )
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        seminar_exo.append(
-                            Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        seminar_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        seminar_art.append(
-                            Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        seminar_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        seminar_seal.append(
-                            Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        seminar_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        seminar_sdf.append(
-                            Visualization.objects.filter(active=True,activities_id=seminar_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        seminar_sdf.append(0)
-                    seminar_fv.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True, activities_id=seminar_obj.id
-                        )
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        outreach_exo.append(
-                            Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        outreach_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        outreach_art.append(
-                            Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        outreach_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        outreach_seal.append(
-                            Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        outreach_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        outreach_sdf.append(
-                            Visualization.objects.filter(active=True,activities_id=outreach_obj.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        outreach_sdf.append(0)
-                    outreach_fv.append(
-                        Visualization.objects.filter(active=True,
-                            fv=True, activities_id=outreach_obj.id
-                        )
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        training_exo.append(
-                            Visualization.objects.filter(active=True,activities_id=training.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        training_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        training_art.append(
-                            Visualization.objects.filter(active=True,activities_id=training.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        training_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        training_seal.append(
-                            Visualization.objects.filter(active=True,activities_id=training.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        training_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,activities_id=training.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        training_sdf.append(
-                            Visualization.objects.filter(active=True,activities_id=training.id)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        training_sdf.append(0)
-                    training_fv.append(
-                        Visualization.objects.filter(active=True,fv=True, activities_id=training.id)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    district1 = ["Child", "Teen", "Adult", "Old Adult"]
-
-                    if (
-                        Visualization.objects.filter(active=True,age__lt=12)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        kid_exo.append(
-                            Visualization.objects.filter(active=True,age__lt=12)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        kid_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__lt=12)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        kid_art.append(
-                            Visualization.objects.filter(active=True,age__lt=12)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        kid_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__lt=12)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        kid_seal.append(
-                            Visualization.objects.filter(active=True,age__lt=12)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        kid_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__lt=12)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        kid_sdf.append(
-                            Visualization.objects.filter(active=True,age__lt=12)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        kid_sdf.append(0)
-                    kid_fv.append(
-                        Visualization.objects.filter(active=True,fv=True, age__lt=12)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        teen_exo.append(
-                            Visualization.objects.filter(active=True,age__range=(12, 18))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        teen_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        teen_art.append(
-                            Visualization.objects.filter(active=True,age__range=(12, 18))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        teen_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        teen_seal.append(
-                            Visualization.objects.filter(active=True,age__range=(12, 18))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        teen_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        teen_sdf.append(
-                            Visualization.objects.filter(active=True,age__range=(12, 18))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        teen_sdf.append(0)
-                    teen_fv.append(
-                        Visualization.objects.filter(active=True,fv=True, age__range=(12, 18))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        adult_exo.append(
-                            Visualization.objects.filter(active=True,age__range=(19, 60))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        adult_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        adult_art.append(
-                            Visualization.objects.filter(active=True,age__range=(19, 60))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        adult_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        adult_seal.append(
-                            Visualization.objects.filter(active=True,age__range=(19, 60))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        adult_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__range=(19, 60))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        adult_sdf.append(
-                            Visualization.objects.filter(active=True,age__range=(19, 60))
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        adult_sdf.append(0)
-                    adult_fv.append(
-                        Visualization.objects.filter(active=True,fv=True, age__range=(19, 60))
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
-
-                    if (
-                        Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("exo"))["exo__sum"]
-                        is not None
-                    ):
-                        old_adult_exo.append(
-                            Visualization.objects.filter(active=True,age__gt=60)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("exo"))["exo__sum"]
-                        )
-                    else:
-                        old_adult_exo.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("art"))["art__sum"]
-                        is not None
-                    ):
-                        old_adult_art.append(
-                            Visualization.objects.filter(active=True,age__gt=60)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("art"))["art__sum"]
-                        )
-                    else:
-                        old_adult_art.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("seal"))["seal__sum"]
-                        is not None
-                    ):
-                        old_adult_seal.append(
-                            Visualization.objects.filter(active=True,age__gt=60)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("seal"))["seal__sum"]
-                        )
-                    else:
-                        old_adult_seal.append(0)
-
-                    if (
-                        Visualization.objects.filter(active=True,age__gt=60)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .aggregate(Sum("sdf"))["sdf__sum"]
-                        is not None
-                    ):
-                        old_adult_sdf.append(
-                            Visualization.objects.filter(active=True,age__gt=60)
-                            .filter(
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .aggregate(Sum("sdf"))["sdf__sum"]
-                        )
-                    else:
-                        old_adult_sdf.append(0)
-                    old_adult_fv.append(
-                        Visualization.objects.filter(active=True,fv=True, age__gt=60)
-                        .filter(
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        )
-                        .count()
-                    )
             exo_data = [
                 sum(outreach_exo),
                 sum(health_post_exo),
@@ -1573,7 +1073,6 @@ class VisualizationSettingFilter(APIView):
                 sum(adult_exo),
                 sum(old_adult_exo),
             ]
-            fv_data1 = [sum(kid_fv), sum(teen_fv), sum(adult_fv), sum(old_adult_fv)]
             art_data1 = [
                 sum(kid_art),
                 sum(teen_art),
@@ -1592,33 +1091,23 @@ class VisualizationSettingFilter(APIView):
                 sum(adult_sdf),
                 sum(old_adult_sdf),
             ]
-            if age_group == "Age Group":
+            fv_data1 = [
+                sum(kid_fv), 
+                sum(teen_fv), 
+                sum(adult_fv), 
+                sum(old_adult_fv)
+                ]
+            if age_group_activity == "Age Group":
                 locationChart = {
                     "data": {
                         "labels": district1,
                         "datasets": [
                             {
-                                "label": "FV",
-                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
-                                "borderColor": "rgba(239, 62, 54, 1)",
+                                "label": "EXO",
+                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
+                                "borderColor": "rgba(255, 206, 86, 1)",
                                 "borderWidth": 1,
-                                "data": fv_data1,
-                            },
-
-                            {
-                                "label": "SDF",
-                                "backgroundColor": "rgba(87, 50, 200, 0.2)",
-                                "borderColor": "rgba(87, 50, 200, 1)",
-                                "borderWidth": 1,
-                                "data": sdf_data1,
-                            },
-
-                            {
-                                "label": "SEAL",
-                                "backgroundColor": "rgba(16, 152, 247, 0.2)",
-                                "borderColor": "rgba(16, 152, 247, 1)",
-                                "borderWidth": 1,
-                                "data": seal_data1,
+                                "data": exo_data1,
                             },
                             {
                                 "label": "ART",
@@ -1628,11 +1117,25 @@ class VisualizationSettingFilter(APIView):
                                 "data": art_data1,
                             },
                             {
-                                "label": "EXO",
-                                "backgroundColor": "rgba(255, 206, 86, 0.2)",
-                                "borderColor": "rgba(255, 206, 86, 1)",
+                                "label": "SEAL",
+                                "backgroundColor": "rgba(16, 152, 247, 0.2)",
+                                "borderColor": "rgba(16, 152, 247, 1)",
                                 "borderWidth": 1,
-                                "data": exo_data1,
+                                "data": seal_data1,
+                            },
+                            {
+                                "label": "SDF",
+                                "backgroundColor": "rgba(87, 50, 200, 0.2)",
+                                "borderColor": "rgba(87, 50, 200, 1)",
+                                "borderWidth": 1,
+                                "data": sdf_data1,
+                            },
+                            {
+                                "label": "FV",
+                                "backgroundColor": "rgba(239, 62, 54, 0.2)",
+                                "borderColor": "rgba(239, 62, 54, 1)",
+                                "borderWidth": 1,
+                                "data": fv_data1,
                             },
                             
                             
@@ -1720,13 +1223,14 @@ class VisualizationSettingFilter(APIView):
                         },
                     },
                 }
-            return JsonResponse({"locationChart": locationChart}, status=200)
+            return Response({"locationChart": locationChart}, status=200)
         return Response({"message": serializer.errors}, status=400)
 
 
 # 1.3 Activity Distribution
-class PieChartVisualization(APIView):
+class ActivityDistributionAPI(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
+    serializer_class = ActivityDistributionVisualization
 
     def get(self, request, format=None):
         data = []
@@ -1851,43 +1355,37 @@ class PieChartVisualization(APIView):
         }
         return Response({"locationChart": locationChart})
 
-
-# 1.3 Activity Distribution
-class PieChartVisualizationFilter(APIView):
-    permission_classes = (IsPostOrIsAuthenticated,)
-    serializer_class = TreatMentBarGraphVisualization
-
     def post(self, request, format=None):
         serializer = TreatMentBarGraphVisualization(
             data=request.data, context={"request": request}
         )
         if serializer.is_valid():
-            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
-            end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+            # start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
+            # end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
 
-            # start_date = serializer.validated_data["start_date"]
-            # end_date = serializer.validated_data["end_date"]
+            start_date = serializer.validated_data["start_date"]
+            end_date = serializer.validated_data["end_date"]
 
             print("Heyyyyyyyyyyyy")
             print(start_date)
             print(end_date)
 
-            age_group = serializer.validated_data["age_group"]
+            treatment_type = serializer.validated_data["treatment_type"]
             location_list = serializer.validated_data["location"]
 
             data_label = []
-            for activities_obj in Activity.objects.all():
-                data_label.append(activities_obj.name)
 
-            if not location_list:
-                if age_group == "alltreatment":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
+            if treatment_type == "alltreatment":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
                         if (
                             Visualization.objects.filter(active=True,
                                 created_at__range=[start_date, end_date],
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                             ).aggregate(Sum("exo"))["exo__sum"]
                             is not None
                         ):
@@ -1895,6 +1393,7 @@ class PieChartVisualizationFilter(APIView):
                                 Visualization.objects.filter(active=True,
                                     created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                 ).aggregate(Sum("exo"))["exo__sum"]
                             )
                         else:
@@ -1904,6 +1403,7 @@ class PieChartVisualizationFilter(APIView):
                             Visualization.objects.filter(active=True,
                                 created_at__range=[start_date, end_date],
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                             ).aggregate(Sum("art"))["art__sum"]
                             is not None
                         ):
@@ -1911,6 +1411,7 @@ class PieChartVisualizationFilter(APIView):
                                 Visualization.objects.filter(active=True,
                                     created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                 ).aggregate(Sum("art"))["art__sum"]
                             )
                         else:
@@ -1920,6 +1421,7 @@ class PieChartVisualizationFilter(APIView):
                             Visualization.objects.filter(active=True,
                                 created_at__range=[start_date, end_date],
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                             ).aggregate(Sum("seal"))["seal__sum"]
                             is not None
                         ):
@@ -1927,6 +1429,7 @@ class PieChartVisualizationFilter(APIView):
                                 Visualization.objects.filter(active=True,
                                     created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                 ).aggregate(Sum("seal"))["seal__sum"]
                             )
                         else:
@@ -1936,6 +1439,7 @@ class PieChartVisualizationFilter(APIView):
                             Visualization.objects.filter(active=True,
                                 created_at__range=[start_date, end_date],
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                             ).aggregate(Sum("sdf"))["sdf__sum"]
                             is not None
                         ):
@@ -1943,460 +1447,178 @@ class PieChartVisualizationFilter(APIView):
                                 Visualization.objects.filter(active=True,
                                     created_at__range=[start_date, end_date],
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                 ).aggregate(Sum("sdf"))["sdf__sum"]
                             )
                         else:
                             a.append(0)
+
                         a.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
                                 created_at__range=[start_date, end_date],
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                             ).count()
                         )
-                        data.append(sum(a))
-                    # locationChart = {
-                    #     "data": {
-                    #         "labels": data_label,
-                    #         "datasets": [
-                    #             {
-                    #                 "label": "Female",
-                    #                 "backgroundColor": [
-                    #                     "rgba(84, 184, 209, 0.5)",
-                    #                     "rgba(91, 95, 151, 0.5)",
-                    #                     "rgba(255, 193, 69, 0.5)",
-                    #                     "rgba(96, 153, 45, 0.5)",
-                    #                     "rgba(230, 232, 230, 0.5)",
-                    #                 ],
-                    #                 "borderColor": [
-                    #                     "rgba(84, 184, 209, 1)",
-                    #                     "rgba(91, 95, 151, 1)",
-                    #                     "rgba(255, 193, 69, 1)",
-                    #                     "rgba(96, 153, 45, 1)",
-                    #                     "rgba(230, 232, 230, 1)",
-                    #                 ],
-                    #                 "borderWidth": 1,
-                    #                 "data": data,
-                    #             }
-                    #         ],
-                    #     },
-                    #     "options": {
-                    #         "aspectRatio": 1.5,
-                    #         "title": {
-                    #             "display": "true",
-                    #             # 'text': "Activity Distribution Chart",
-                    #             "fontSize": 18,
-                    #             "fontFamily": "'Palanquin', sans-serif",
-                    #         },
-                    #         "legend": {
-                    #             "display": "true",
-                    #             "position": "bottom",
-                    #             "labels": {
-                    #                 "usePointStyle": "true",
-                    #                 "padding": 20,
-                    #                 "fontFamily": "'Maven Pro', sans-serif",
-                    #             },
-                    #         },
-                    #     },
-                    # }
-                    # return Response({"locationChart": locationChart})
+                    print(a)
+                    data.append(sum(a))
+                    a = []
 
-                if age_group == "exo":
-                    data = []
-                    for activities_obj in Activity.objects.all():
+            if treatment_type == "exo":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
                         if (
                             Visualization.objects.filter(active=True,
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("exo"))["exo__sum"]
                             is not None
                         ):
-                            print("inside if")
-                            data.append(
+                            a.append(
                                 Visualization.objects.filter(active=True,
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                     created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("exo"))["exo__sum"]
                             )
                         else:
-                            print("inside else")
-                            data.append(0)
+                            a.append(0)
+                    data.append(sum(a))
+                    a = []
 
-
-                if age_group == "art":
-                    data = []
-                    for activities_obj in Activity.objects.all():
+            if treatment_type == "art":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
                         if (
                             Visualization.objects.filter(active=True,
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("art"))["art__sum"]
                             is not None
                         ):
-                            print("inside if")
-                            data.append(
+                            a.append(
                                 Visualization.objects.filter(active=True,
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                     created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("art"))["art__sum"]
                             )
                         else:
-                            print("inside else")
-                            data.append(0)
+                            a.append(0)
+                    data.append(sum(a))
+                    a = []
 
-                if age_group == "seal":
-                    data = []
-                    for activities_obj in Activity.objects.all():
+            if treatment_type == "seal":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
                         if (
                             Visualization.objects.filter(active=True,
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("seal"))["seal__sum"]
                             is not None
                         ):
-                            print("inside if")
-                            data.append(
+                            a.append(
                                 Visualization.objects.filter(active=True,
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                     created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("seal"))["seal__sum"]
                             )
                         else:
-                            print("inside else")
-                            data.append(0)
+                            a.append(0)
+                    data.append(sum(a))
+                    a = []
 
-                if age_group == "sdf":
-                    data = []
-                    for activities_obj in Activity.objects.all():
+            if treatment_type == "sdf":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
                         if (
                             Visualization.objects.filter(active=True,
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                                 created_at__range=[start_date, end_date],
                             ).aggregate(Sum("sdf"))["sdf__sum"]
                             is not None
                         ):
-                            print("inside if")
-                            data.append(
+                            a.append(
                                 Visualization.objects.filter(active=True,
                                     activities_id=activities_obj.id,
+                                    geography_id=location.id,
                                     created_at__range=[start_date, end_date],
                                 ).aggregate(Sum("sdf"))["sdf__sum"]
                             )
                         else:
-                            print("inside else")
-                            data.append(0)
+                            a.append(0)
+                    data.append(sum(a))
+                    a = []
 
-                if age_group == "fv":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        data.append(
+            if treatment_type == "fv":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
+                        a.append(
                             Visualization.objects.filter(active=True,
                                 fv=True,
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                                 created_at__range=[start_date, end_date],
                             ).count()
                         )
+                    data.append(sum(a))
+                    a = []
                 
-                if age_group == "f-sdf":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        data.append(
+            if treatment_type == "f-sdf":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
+                        a.append(
                             Visualization.objects.filter(active=True,
                                 sdf_whole_mouth=True,
                                 activities_id=activities_obj.id,
+                                geography_id=location.id,
                                 created_at__range=[start_date, end_date],
                             ).count()
                         )
+                    data.append(sum(a))
+                    a = []
                 
-                if age_group == "contacts":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        data.append(
+            if treatment_type == "contacts":
+                data = []
+                for activities_obj in Activity.objects.all():
+                    data_label.append(activities_obj.name)
+                    a = []
+                    for location in location_list:
+                        a.append(
                                 Visualization.objects.filter(active=True,
                                     activities_id=activities_obj.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-            else:
-                if age_group == "alltreatment":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                ).aggregate(Sum("exo"))["exo__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                    ).aggregate(Sum("exo"))["exo__sum"]
-                                )
-                            else:
-                                a.append(0)
-
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                ).aggregate(Sum("art"))["art__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                    ).aggregate(Sum("art"))["art__sum"]
-                                )
-                            else:
-                                a.append(0)
-
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                ).aggregate(Sum("seal"))["seal__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                    ).aggregate(Sum("seal"))["seal__sum"]
-                                )
-                            else:
-                                a.append(0)
-
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    created_at__range=[start_date, end_date],
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                ).aggregate(Sum("sdf"))["sdf__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        created_at__range=[start_date, end_date],
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                    ).aggregate(Sum("sdf"))["sdf__sum"]
-                                )
-                            else:
-                                a.append(0)
-
-                            a.append(
-                                Visualization.objects.filter(active=True,
-                                    fv=True,
-                                    created_at__range=[start_date, end_date],
-                                    activities_id=activities_obj.id,
-                                ).count()
-                            )
-                        data.append(sum(a))
-                        a = []
-                        # locationChart = {
-                        #     "data": {
-                        #         "labels": data_label,
-                        #         "datasets": [
-                        #             {
-                        #                 "label": "Female",
-                        #                 "backgroundColor": [
-                        #                     "rgba(84, 184, 209, 0.5)",
-                        #                     "rgba(91, 95, 151, 0.5)",
-                        #                     "rgba(255, 193, 69, 0.5)",
-                        #                     "rgba(96, 153, 45, 0.5)",
-                        #                     "rgba(230, 232, 230, 0.5)",
-                        #                 ],
-                        #                 "borderColor": [
-                        #                     "rgba(84, 184, 209, 1)",
-                        #                     "rgba(91, 95, 151, 1)",
-                        #                     "rgba(255, 193, 69, 1)",
-                        #                     "rgba(96, 153, 45, 1)",
-                        #                     "rgba(230, 232, 230, 1)",
-                        #                 ],
-                        #                 "borderWidth": 1,
-                        #                 "data": data,
-                        #             }
-                        #         ],
-                        #     },
-                        #     "options": {
-                        #         "aspectRatio": 1.5,
-                        #         "title": {
-                        #             "display": "true",
-                        #             # 'text': "Activity Distribution Chart",
-                        #             "fontSize": 18,
-                        #             "fontFamily": "'Palanquin', sans-serif",
-                        #         },
-                        #         "legend": {
-                        #             "display": "true",
-                        #             "position": "bottom",
-                        #             "labels": {
-                        #                 "usePointStyle": "true",
-                        #                 "padding": 20,
-                        #                 "fontFamily": "'Maven Pro', sans-serif",
-                        #             },
-                        #         },
-                        #     },
-                        # }
-                        # return Response({"locationChart": locationChart})
-
-                if age_group == "exo":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("exo"))["exo__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                        created_at__range=[start_date, end_date],
-                                    ).aggregate(Sum("exo"))["exo__sum"]
-                                )
-                            else:
-                                a.append(0)
-                        data.append(sum(a))
-                        a = []
-
-                if age_group == "art":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("art"))["art__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                        created_at__range=[start_date, end_date],
-                                    ).aggregate(Sum("art"))["art__sum"]
-                                )
-                            else:
-                                a.append(0)
-                        data.append(sum(a))
-                        a = []
-
-                if age_group == "seal":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("seal"))["seal__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                        created_at__range=[start_date, end_date],
-                                    ).aggregate(Sum("seal"))["seal__sum"]
-                                )
-                            else:
-                                a.append(0)
-                        data.append(sum(a))
-                        a = []
-
-                if age_group == "sdf":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            if (
-                                Visualization.objects.filter(active=True,
-                                    activities_id=activities_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).aggregate(Sum("sdf"))["sdf__sum"]
-                                is not None
-                            ):
-                                a.append(
-                                    Visualization.objects.filter(active=True,
-                                        activities_id=activities_obj.id,
-                                        geography_id=location.id,
-                                        created_at__range=[start_date, end_date],
-                                    ).aggregate(Sum("sdf"))["sdf__sum"]
-                                )
-                            else:
-                                a.append(0)
-                        data.append(sum(a))
-                        a = []
-
-                if age_group == "fv":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            a.append(
-                                Visualization.objects.filter(active=True,
-                                    fv=True,
-                                    activities_id=health_post_obj.id,
                                     geography_id=location.id,
                                     created_at__range=[start_date, end_date],
                                 ).count()
                             )
-                        data.append(sum(a))
-                        a = []
-                    
-                if age_group == "f-sdf":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            a.append(
-                                Visualization.objects.filter(active=True,
-                                    sdf_whole_mouth=True,
-                                    activities_id=health_post_obj.id,
-                                    geography_id=location.id,
-                                    created_at__range=[start_date, end_date],
-                                ).count()
-                            )
-                        data.append(sum(a))
-                        a = []
-                    
-                if age_group == "contacts":
-                    data = []
-                    for activities_obj in Activity.objects.all():
-                        a = []
-                        for location in location_list:
-                            a.append(
-                                    Visualization.objects.filter(active=True,
-                                        activities_id=health_post_obj.id,
-                                        geography_id=location.id,
-                                        created_at__range=[start_date, end_date],
-                                    ).count()
-                                )
-                        data.append(sum(a))
-                        a = []
-                                  
+                    data.append(sum(a))
+                    a = []
+                                
             locationChart = {
                 "data": {
                     "labels": data_label,

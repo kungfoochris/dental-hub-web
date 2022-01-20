@@ -20466,3 +20466,236 @@ UnboundLocalError: local variable 'locationChart' referenced before assignment
 2022-01-17 12:25:27,527 django.server INFO     "POST /api/v1/patients HTTP/1.1" 200 109902
 2022-01-17 12:25:30,861 patientapp.api.patient INFO     Patient listed by:  shyam
 2022-01-17 12:25:33,601 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476
+2022-01-20 10:58:50,025 django.request WARNING  Unauthorized: /api/v1/patients
+2022-01-20 10:58:50,066 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-01-20 10:58:50,862 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-20 10:58:51,136 django.request WARNING  Not Found: /favicon.ico
+2022-01-20 10:58:51,139 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-20 10:58:52,689 django.request WARNING  Unauthorized: /api/v1/piechartfilter
+2022-01-20 10:58:52,690 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 401 8591
+2022-01-20 10:58:54,532 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/piechartfilter HTTP/1.1" 200 2724
+2022-01-20 10:59:01,872 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2963
+2022-01-20 10:59:12,347 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-20 10:59:12,673 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-20 10:59:12,674 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13245
+2022-01-20 10:59:31,404 django.request ERROR    Internal Server Error: /api/v1/piechartfilter
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2078, in post
+    activities_id=health_post_obj.id,
+NameError: name 'health_post_obj' is not defined
+2022-01-20 10:59:31,408 django.server ERROR    "POST /api/v1/piechartfilter HTTP/1.1" 500 91911
+2022-01-20 11:03:33,093 django.request ERROR    Internal Server Error: /api/v1/piechartfilter
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2074, in post
+    data_label.append(activities_obj.name)
+UnboundLocalError: local variable 'activities_obj' referenced before assignment
+2022-01-20 11:03:33,095 django.server ERROR    "POST /api/v1/piechartfilter HTTP/1.1" 500 91178
+2022-01-20 11:04:44,130 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15164
+2022-01-20 11:06:33,732 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-20 11:06:33,733 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13255
+2022-01-20 11:06:35,878 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-20 11:06:35,879 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13255
+2022-01-20 11:06:54,429 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15174
+2022-01-20 11:08:37,264 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-20 11:08:37,265 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13255
+2022-01-20 11:09:13,653 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15174
+2022-01-20 11:09:33,864 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-20 11:09:36,996 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476
+2022-01-20 11:10:00,643 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-01-20 11:10:00,844 django.server INFO     "GET /api/v1/patients/60345A3858DB498BA2A4B83DD390BF56/encounters HTTP/1.1" 200 25005
+2022-01-20 11:10:43,993 django.request WARNING  Not Found: /api/v1/patients/
+2022-01-20 11:10:43,994 django.server WARNING  "GET /api/v1/patients/ HTTP/1.1" 404 22119
+2022-01-20 11:13:20,547 django.request WARNING  Method Not Allowed: /api/v1/piechartfilter
+2022-01-20 11:13:20,548 django.server WARNING  "GET /api/v1/piechartfilter HTTP/1.1" 405 13255
+2022-01-20 11:13:44,224 django.server INFO     "POST /api/v1/piechartfilter HTTP/1.1" 200 15174
+2022-01-20 11:26:56,448 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 16644
+2022-01-20 11:29:05,506 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 16644
+2022-01-20 11:42:10,100 django.request ERROR    Internal Server Error: /api/v1/overviewpiechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2089, in post
+    data.append(sum(a))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2022-01-20 11:42:10,122 django.server ERROR    "POST /api/v1/overviewpiechart HTTP/1.1" 500 91994
+2022-01-20 11:44:14,657 django.request ERROR    Internal Server Error: /api/v1/overviewpiechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2089, in post
+    data.append(sum(a))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2022-01-20 11:44:14,659 django.server ERROR    "POST /api/v1/overviewpiechart HTTP/1.1" 500 91994
+2022-01-20 11:44:54,364 django.server INFO     "POST /api/v1/overviewpiechart HTTP/1.1" 200 16527
+2022-01-20 11:45:47,021 django.server INFO     "GET /api/v1/overviewpiechart HTTP/1.1" 200 16644
+2022-01-20 11:45:49,836 django.request ERROR    Internal Server Error: /api/v1/overviewpiechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2090, in post
+    data.append(sum(a))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2022-01-20 11:45:49,839 django.server ERROR    "POST /api/v1/overviewpiechart HTTP/1.1" 500 91953
+2022-01-20 11:48:20,869 django.request ERROR    Internal Server Error: /api/v1/overviewpiechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2090, in post
+    data.append(sum(a))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2022-01-20 11:48:20,871 django.server ERROR    "POST /api/v1/overviewpiechart HTTP/1.1" 500 91936
+2022-01-20 11:49:03,119 django.request ERROR    Internal Server Error: /api/v1/overviewpiechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2090, in post
+    data.append(sum(a))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2022-01-20 11:49:03,121 django.server ERROR    "POST /api/v1/overviewpiechart HTTP/1.1" 500 91953
+2022-01-20 11:50:07,003 django.request ERROR    Internal Server Error: /api/v1/overviewpiechart
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 2090, in post
+    data.append(sum(a))
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+2022-01-20 11:50:07,006 django.server ERROR    "POST /api/v1/overviewpiechart HTTP/1.1" 500 91955
+2022-01-20 11:51:33,869 django.server INFO     "POST /api/v1/overviewpiechart HTTP/1.1" 200 16527
+2022-01-20 12:42:07,404 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 13981
+2022-01-20 12:42:24,808 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-01-20 12:42:27,918 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476
+2022-01-20 12:42:30,685 django.request WARNING  Method Not Allowed: /api/v1/settingsgraphfilter
+2022-01-20 12:42:30,686 django.server WARNING  "GET /api/v1/settingsgraphfilter HTTP/1.1" 405 13263
+2022-01-20 12:54:57,433 django.server INFO     "POST /api/v1/settingsgraphfilter HTTP/1.1" 200 1135
+2022-01-20 12:55:28,790 django.request WARNING  Method Not Allowed: /api/v1/settingsgraphfilter
+2022-01-20 12:55:28,791 django.server WARNING  "GET /api/v1/settingsgraphfilter HTTP/1.1" 405 13263
+2022-01-20 12:55:38,075 django.request WARNING  Bad Request: /api/v1/settingsgraphfilter
+2022-01-20 12:55:38,093 django.server WARNING  "POST /api/v1/settingsgraphfilter HTTP/1.1" 400 13497
+2022-01-20 12:56:14,049 django.server INFO     "POST /api/v1/settingsgraphfilter HTTP/1.1" 200 16884
+2022-01-20 13:02:47,633 django.request WARNING  Method Not Allowed: /api/v1/settingsgraphfilter
+2022-01-20 13:02:47,651 django.server WARNING  "GET /api/v1/settingsgraphfilter HTTP/1.1" 405 13263
+2022-01-20 13:03:02,138 django.server INFO     "GET /api/v1/overviewbargraph HTTP/1.1" 200 13981
+2022-01-20 13:05:05,887 django.server INFO     "POST /api/v1/settingsgraphfilter HTTP/1.1" 200 16884
+2022-01-20 13:19:26,183 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18290
+2022-01-20 13:35:56,946 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18290
+2022-01-20 13:36:17,223 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18319
+2022-01-20 13:36:19,989 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18290
+2022-01-20 13:36:47,712 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18291
+2022-01-20 13:42:15,043 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
+2022-01-20 13:42:45,940 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18309

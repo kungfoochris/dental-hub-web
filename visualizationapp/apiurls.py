@@ -6,8 +6,7 @@ from django.urls import path
 from visualizationapp.api.dashboard import OverviewVisualization1,\
 TreatmentActivityList,TreatmentbyWardList,DateReturn,TreatmentActivityTesting
 
-from visualizationapp.api.dashboardvisualization import VisualizationSetting,\
-VisualizationSettingFilter,PieChartVisualization,PieChartVisualizationFilter
+from visualizationapp.api.dashboardvisualization import TreatmentDistributionAPI,ActivityDistributionAPI
 
 from visualizationapp.api.wardlinechart import WardlineVisualization
 from visualizationapp.api.loginvisualization import LoginVisualization,LoginVisualization1
@@ -53,10 +52,8 @@ urlpatterns = [
 	path('treatmentactivitiestest', TreatmentActivityTesting.as_view()),
 	path('treatmentwards',TreatmentbyWardList.as_view()),
 	path('returndate',DateReturn.as_view()),
-	path('overviewbargraph',VisualizationSetting.as_view()),
-	path('settingsgraphfilter',VisualizationSettingFilter.as_view()),
-	path('overviewpiechart',PieChartVisualization.as_view()),
-	path('piechartfilter',PieChartVisualizationFilter.as_view()),
+	path('treatmentdistribution',TreatmentDistributionAPI.as_view()),
+	path('activitydistribution',ActivityDistributionAPI.as_view()),
 	path('dashboardlinechart',WardlineVisualization.as_view()),
 
 	path('treatmentstrategicdatas',TreatmentStrategicData.as_view()),
