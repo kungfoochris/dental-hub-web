@@ -1362,7 +1362,7 @@ class ActivityDistributionAPI(APIView):
         if serializer.is_valid():
             # start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
             # end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
-
+            locationChart = []
             start_date = serializer.validated_data["start_date"]
             end_date = serializer.validated_data["end_date"]
 
