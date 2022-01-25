@@ -20699,3 +20699,144 @@ TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
 2022-01-20 13:36:47,712 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18291
 2022-01-20 13:42:15,043 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
 2022-01-20 13:42:45,940 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18309
+2022-01-25 12:26:12,502 django.request WARNING  Unauthorized: /api/v1/treatmentdistribution
+2022-01-25 12:26:12,542 django.server WARNING  "GET /api/v1/treatmentdistribution HTTP/1.1" 401 10007
+2022-01-25 12:26:13,688 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-01-25 12:26:13,739 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-01-25 12:26:14,088 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-01-25 12:26:14,089 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-01-25 12:26:14,407 django.request WARNING  Not Found: /favicon.ico
+2022-01-25 12:26:14,408 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-25 12:26:16,270 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentdistribution HTTP/1.1" 200 2731
+2022-01-25 12:26:27,959 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2970
+2022-01-25 12:26:37,290 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-25 12:26:37,613 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
+2022-01-25 12:27:02,814 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18309
+2022-01-25 12:28:44,499 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18337
+2022-01-25 12:29:35,837 django.request WARNING  Bad Request: /api/v1/treatmentdistribution
+2022-01-25 12:29:35,838 django.server WARNING  "POST /api/v1/treatmentdistribution HTTP/1.1" 400 14690
+2022-01-25 12:30:15,235 django.server INFO     "GET /api/v1/activitydistribution HTTP/1.1" 200 16698
+2022-01-25 12:30:31,808 django.request ERROR    Internal Server Error: /api/v1/activitydistribution
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 1667, in post
+    return Response({"locationChart": locationChart})
+UnboundLocalError: local variable 'locationChart' referenced before assignment
+2022-01-25 12:30:31,811 django.server ERROR    "POST /api/v1/activitydistribution HTTP/1.1" 500 89262
+2022-01-25 12:31:52,185 django.request ERROR    Internal Server Error: /api/v1/activitydistribution
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 1627, in post
+    "labels": data_label,
+UnboundLocalError: local variable 'data_label' referenced before assignment
+2022-01-25 12:31:52,188 django.server ERROR    "POST /api/v1/activitydistribution HTTP/1.1" 500 90288
+2022-01-25 12:34:03,006 django.request ERROR    Internal Server Error: /api/v1/activitydistribution
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 1667, in post
+    return Response({"locationChart": locationChart})
+UnboundLocalError: local variable 'locationChart' referenced before assignment
+2022-01-25 12:34:03,009 django.server ERROR    "POST /api/v1/activitydistribution HTTP/1.1" 500 89262
+2022-01-25 12:35:36,945 django.request ERROR    Internal Server Error: /api/v1/activitydistribution
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 485, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 400, in finalize_response
+    % type(response)
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2022-01-25 12:35:36,947 django.server ERROR    "POST /api/v1/activitydistribution HTTP/1.1" 500 81148
+2022-01-25 12:37:03,015 django.request ERROR    Internal Server Error: /api/v1/activitydistribution
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/dashboardvisualization.py", line 1668, in post
+    return Response(serializer.error)
+AttributeError: 'TreatMentBarGraphVisualization' object has no attribute 'error'
+2022-01-25 12:37:03,018 django.server ERROR    "POST /api/v1/activitydistribution HTTP/1.1" 500 89253
+2022-01-25 12:38:36,593 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 14805
+2022-01-25 12:38:48,946 django.server INFO     "GET /api/v1/activitydistribution HTTP/1.1" 200 16698
+2022-01-25 12:39:05,421 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 14805
+2022-01-25 12:40:25,727 django.server INFO     "GET /api/v1/activitydistribution HTTP/1.1" 200 16698
+2022-01-25 12:40:29,165 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 16581
+2022-01-25 12:45:40,864 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
+2022-01-25 12:46:11,835 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18337
+2022-01-25 12:46:22,352 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
+2022-01-25 12:46:29,817 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18309
+2022-01-25 12:46:40,580 django.server INFO     "GET /api/v1/activitydistribution HTTP/1.1" 200 16698
+2022-01-25 12:46:55,890 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 16581
+2022-01-25 12:47:00,626 django.server INFO     "GET /api/v1/activitydistribution HTTP/1.1" 200 16698
+2022-01-25 12:47:07,823 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 16581
+2022-01-25 12:47:14,133 django.server INFO     "GET /api/v1/activitydistribution HTTP/1.1" 200 16698
+2022-01-25 12:47:21,851 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 16581
+2022-01-25 12:48:55,233 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
+2022-01-25 12:49:36,249 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
+2022-01-25 12:49:50,686 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18309

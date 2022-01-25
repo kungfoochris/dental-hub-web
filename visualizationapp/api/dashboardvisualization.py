@@ -1161,7 +1161,7 @@ class TreatmentDistributionAPI(APIView):
                         },
                     },
                 }
-            else:
+            elif age_group_activity == "Activity":
                 locationChart = {
                     "data": {
                         "labels": district,
@@ -1223,6 +1223,9 @@ class TreatmentDistributionAPI(APIView):
                         },
                     },
                 }
+            else:
+                return Response({"message": "Wrong value sent to age_group_activity field."}, status=400)
+
             return Response({"locationChart": locationChart}, status=200)
         return Response({"message": serializer.errors}, status=400)
 
@@ -1356,19 +1359,15 @@ class ActivityDistributionAPI(APIView):
         return Response({"locationChart": locationChart})
 
     def post(self, request, format=None):
-        serializer = TreatMentBarGraphVisualization(
+        serializer = ActivityDistributionVisualization(
             data=request.data, context={"request": request}
         )
         if serializer.is_valid():
-            # start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
-            # end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
+            start_date = str(NepaliDate.from_date(serializer.validated_data["start_date"]))
+            end_date = str(NepaliDate.from_date(serializer.validated_data["end_date"]))
 
-            start_date = serializer.validated_data["start_date"]
-            end_date = serializer.validated_data["end_date"]
-
-            print("Heyyyyyyyyyyyy")
-            print(start_date)
-            print(end_date)
+            # start_date = serializer.validated_data["start_date"]
+            # end_date = serializer.validated_data["end_date"]
 
             treatment_type = serializer.validated_data["treatment_type"]
             location_list = serializer.validated_data["location"]
@@ -1661,4 +1660,5 @@ class ActivityDistributionAPI(APIView):
                     },
                 },
             }
-        return Response({"locationChart": locationChart})
+            return Response({"locationChart": locationChart})
+        return Response(serializer.errors)
