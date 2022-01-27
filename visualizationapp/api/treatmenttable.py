@@ -48,6 +48,7 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
         return request.user and request.user.is_authenticated
 
 
+# 2.1 2.1 Preventative Overview
 class TreatmentTableBasicData(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = TreatmentStrategicDataSerializer
@@ -70,7 +71,7 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             treatment_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             treatment_old = Visualization.objects.filter(active=True,
@@ -101,7 +102,7 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             adult__patients_receiving_fv = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -135,7 +136,7 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             sealant_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 need_sealant=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -261,7 +262,7 @@ class TreatmentTableBasicData(APIView):
                     )
                     treatment_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             created_at__range=[start_date, end_date],
                         )
                         .filter(
@@ -355,7 +356,7 @@ class TreatmentTableBasicData(APIView):
                     )
                     adult__patients_receiving_fv = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             fv=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -452,7 +453,7 @@ class TreatmentTableBasicData(APIView):
                     )
                     sealant_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             need_sealant=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -582,7 +583,7 @@ class TreatmentTableBasicData(APIView):
                         )
                         treatment_adult_list.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                             )
@@ -685,7 +686,7 @@ class TreatmentTableBasicData(APIView):
                         )
                         adult__patients_receiving_fv_list.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 fv=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -790,7 +791,7 @@ class TreatmentTableBasicData(APIView):
                         )
                         sealant_adult_list.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 need_sealant=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -943,7 +944,7 @@ class TreatmentStrategicData(APIView):
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
                 .filter(active=True,
-                    age__range=(18, 60),
+                    age__range=(19, 60),
                     created_at__range=[last_30_days_obj, today_date_obj],
                 )
                 .count()
@@ -981,7 +982,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             refer_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 refer_hp=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -1015,7 +1016,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_seal_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 seal=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -1046,7 +1047,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             totalfv_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -1077,7 +1078,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_exo_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -1108,7 +1109,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_art_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -1139,7 +1140,7 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_sdf_adult = Visualization.objects.filter(active=True,
-                age__range=(18, 60),
+                age__range=(19, 60),
                 sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -1318,6 +1319,7 @@ class TreatmentStrategicData(APIView):
                 prevention_old = 0
             
             prevention_total = prevention_male + prevention_female
+            
 
             # Early intervention  
             early_intervention_male_number = total_art_male + total_sdf_male
@@ -1421,18 +1423,24 @@ class TreatmentStrategicData(APIView):
             
             surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
             
-            
+
+            prevention_total_number = prevention_male_number + prevention_female_number
+            surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+            early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+
+
             return Response(
                 [   
                     [
                         "Prevention",
                         str(prevention_male_number) + "(" + str(round(prevention_male, 2)) + ")",
-                        str(prevention_child_number) + "(" + str(round(prevention_female, 2)) + ")",
+                        str(prevention_female_number) + "(" + str(round(prevention_female, 2)) + ")",
                         str(prevention_child_number ) + "(" + str(round(prevention_child, 2)) + ")",
                         str(prevention_teen_number) + "(" + str(round(prevention_teen, 2)) + ")",
                         str(prevention_adult_number) + "(" + str(round(prevention_adult, 2)) + ")",
                         str(prevention_old_number) + "(" + str(round(prevention_old, 2)) + ")",
-                        round(prevention_total, 2)
+                        str(prevention_total_number) + "(" + str(round(prevention_total, 2)) + ")",
+                        
                     ],
                     [
                         "Surgical Intervention",
@@ -1442,7 +1450,8 @@ class TreatmentStrategicData(APIView):
                         str(surgical_intervention_teen_number) + "(" + str(round(surgical_intervention_teen, 2)) + ")",
                         str(surgical_intervention_adult_number) + "(" + str(round(surgical_intervention_adult, 2)) + ")",
                         str(surgical_intervention_old_number) + "(" + str(round(surgical_intervention_old, 2)) + ")",
-                        round(surgical_intervention_total ,2),
+                        str(surgical_intervention_total_number) + "(" + str(round(surgical_intervention_total ,2)) + ")",
+                        
                     ],
             
                     [
@@ -1464,7 +1473,7 @@ class TreatmentStrategicData(APIView):
                         str(early_intervention_teen_number) + "(" + str(round(early_intervention_teen, 2)) + ")",
                         str(early_intervention_adult_number) + "(" + str(round(early_intervention_adult, 2)) + ")",
                         str(early_intervention_old_number) + "(" + str(round(early_intervention_old, 2)) + ")",
-                        round(early_intervention_total, 2),
+                        str(early_intervention_total_number) + "(" + str(round(early_intervention_total, 2)) + ")",
                     ],
                     [
                         "Early Intervention Ratio",
@@ -1565,7 +1574,7 @@ class TreatmentStrategicData(APIView):
                     )
                     encounter_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             created_at__range=[start_date, end_date],
                         )
                         .values("encounter_id")
@@ -1651,7 +1660,7 @@ class TreatmentStrategicData(APIView):
                     )
                     refer_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1739,7 +1748,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_seal_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             seal=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1824,7 +1833,7 @@ class TreatmentStrategicData(APIView):
                     )
                     totalfv_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             fv=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1909,7 +1918,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_exo_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             exo=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1994,7 +2003,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_art_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             art=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -2079,7 +2088,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_sdf_adult = (
                         Visualization.objects.filter(active=True,
-                            age__range=(18, 60),
+                            age__range=(19, 60),
                             sdf=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -2462,7 +2471,7 @@ class TreatmentStrategicData(APIView):
                         )
                         encounter_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
                             )
@@ -2571,7 +2580,7 @@ class TreatmentStrategicData(APIView):
                         )
                         refer_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 refer_hp=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2670,7 +2679,7 @@ class TreatmentStrategicData(APIView):
                         )
                         total_seal_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 seal=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2762,7 +2771,7 @@ class TreatmentStrategicData(APIView):
                         )
                         totalfv_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 fv=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2838,7 +2847,7 @@ class TreatmentStrategicData(APIView):
                         )
                         total_exo_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 exo=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -2944,7 +2953,7 @@ class TreatmentStrategicData(APIView):
                         )
                         total_art_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 art=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -3036,7 +3045,7 @@ class TreatmentStrategicData(APIView):
                         )
                         total_sdf_adult.append(
                             Visualization.objects.filter(active=True,
-                                age__range=(18, 60),
+                                age__range=(19, 60),
                                 sdf=True,
                                 created_at__range=[start_date, end_date],
                                 geography_id=location.id,
@@ -3365,17 +3374,22 @@ class TreatmentStrategicData(APIView):
                     
                     surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
                     
+                    prevention_total_number = prevention_male_number + prevention_female_number
+                    surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+                    early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+
                 return Response(
                     [   
                         [
                             "Prevention",
                             str(prevention_male_number) + "(" + str(round(prevention_male, 2)) + ")",
-                            str(prevention_child_number) + "(" + str(round(prevention_female, 2)) + ")",
+                            str(prevention_female_number) + "(" + str(round(prevention_female, 2)) + ")",
                             str(prevention_child_number ) + "(" + str(round(prevention_child, 2)) + ")",
                             str(prevention_teen_number) + "(" + str(round(prevention_teen, 2)) + ")",
                             str(prevention_adult_number) + "(" + str(round(prevention_adult, 2)) + ")",
                             str(prevention_old_number) + "(" + str(round(prevention_old, 2)) + ")",
-                            round(prevention_total, 2)
+                            str(prevention_total_number) + "(" + str(round(prevention_total, 2)) + ")",
+                            
                         ],
                         [
                             "Surgical Intervention",
@@ -3385,7 +3399,7 @@ class TreatmentStrategicData(APIView):
                             str(surgical_intervention_teen_number) + "(" + str(round(surgical_intervention_teen, 2)) + ")",
                             str(surgical_intervention_adult_number) + "(" + str(round(surgical_intervention_adult, 2)) + ")",
                             str(surgical_intervention_old_number) + "(" + str(round(surgical_intervention_old, 2)) + ")",
-                            round(surgical_intervention_total ,2),
+                            str(surgical_intervention_total_number) + "(" + str(round(surgical_intervention_total ,2)) + ")",
                         ],
                 
                         [
@@ -3407,7 +3421,7 @@ class TreatmentStrategicData(APIView):
                             str(early_intervention_teen_number) + "(" + str(round(early_intervention_teen, 2)) + ")",
                             str(early_intervention_adult_number) + "(" + str(round(early_intervention_adult, 2)) + ")",
                             str(early_intervention_old_number) + "(" + str(round(early_intervention_old, 2)) + ")",
-                            round(early_intervention_total, 2),
+                            str(early_intervention_total_number) + "(" + str(round(early_intervention_total, 2)) + ")",
                         ],
                         [
                             "Early Intervention Ratio",
