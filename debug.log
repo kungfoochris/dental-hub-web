@@ -20844,3 +20844,12 @@ AttributeError: 'TreatMentBarGraphVisualization' object has no attribute 'error'
 2022-01-25 12:56:58,183 django.server INFO     "POST /api/v1/activitydistribution HTTP/1.1" 200 16581
 2022-01-25 12:57:31,808 django.server INFO     "GET /api/v1/treatmentdistribution HTTP/1.1" 200 18308
 2022-01-25 12:57:48,334 django.server INFO     "POST /api/v1/treatmentdistribution HTTP/1.1" 200 18309
+2022-01-27 11:51:39,639 django.request WARNING  Unauthorized: /api/v1/treatmentactivities
+2022-01-27 11:51:39,669 django.server WARNING  "GET /api/v1/treatmentactivities HTTP/1.1" 401 9977
+2022-01-27 11:51:40,468 django.request WARNING  Not Found: /favicon.ico
+2022-01-27 11:51:40,470 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-01-27 11:53:21,533 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentactivities HTTP/1.1" 200 2729
+2022-01-27 11:53:28,759 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2968
+2022-01-27 11:53:36,188 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-01-27 11:53:36,499 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
+2022-01-27 11:53:58,320 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15576

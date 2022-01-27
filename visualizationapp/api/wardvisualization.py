@@ -834,7 +834,6 @@ class WardTreatmentTableVisualization1(APIView):
         return Response({"message": serializer.errors}, status=400)
 
 
-# k
 
 # Overview
 class WardTableVisualization2(APIView):

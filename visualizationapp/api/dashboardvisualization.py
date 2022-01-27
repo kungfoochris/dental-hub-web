@@ -686,7 +686,7 @@ class TreatmentDistributionAPI(APIView):
                 )
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -695,7 +695,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     kid_exo.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -706,7 +706,7 @@ class TreatmentDistributionAPI(APIView):
                     kid_exo.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -715,7 +715,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     kid_art.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -726,7 +726,7 @@ class TreatmentDistributionAPI(APIView):
                     kid_art.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -735,7 +735,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     kid_seal.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -746,7 +746,7 @@ class TreatmentDistributionAPI(APIView):
                     kid_seal.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__lt=12)
+                    Visualization.objects.filter(active=True,age__lt=13)
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -755,7 +755,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     kid_sdf.append(
-                        Visualization.objects.filter(active=True,age__lt=12)
+                        Visualization.objects.filter(active=True,age__lt=13)
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -765,7 +765,7 @@ class TreatmentDistributionAPI(APIView):
                 else:
                     kid_sdf.append(0)
                 kid_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, age__lt=12)
+                    Visualization.objects.filter(active=True,fv=True, age__lt=13)
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -774,7 +774,7 @@ class TreatmentDistributionAPI(APIView):
                 )
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -783,7 +783,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     teen_exo.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -794,7 +794,7 @@ class TreatmentDistributionAPI(APIView):
                     teen_exo.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -803,7 +803,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     teen_art.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -814,7 +814,7 @@ class TreatmentDistributionAPI(APIView):
                     teen_art.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -823,7 +823,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     teen_seal.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -834,7 +834,7 @@ class TreatmentDistributionAPI(APIView):
                     teen_seal.append(0)
 
                 if (
-                    Visualization.objects.filter(active=True,age__range=(12, 18))
+                    Visualization.objects.filter(active=True,age__range=(13, 18))
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -843,7 +843,7 @@ class TreatmentDistributionAPI(APIView):
                     is not None
                 ):
                     teen_sdf.append(
-                        Visualization.objects.filter(active=True,age__range=(12, 18))
+                        Visualization.objects.filter(active=True,age__range=(13, 18))
                         .filter(
                             created_at__range=[start_date, end_date],
                             geography_id=location.id,
@@ -853,7 +853,7 @@ class TreatmentDistributionAPI(APIView):
                 else:
                     teen_sdf.append(0)
                 teen_fv.append(
-                    Visualization.objects.filter(active=True,fv=True, age__range=(12, 18))
+                    Visualization.objects.filter(active=True,fv=True, age__range=(13, 18))
                     .filter(
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
