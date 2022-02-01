@@ -1105,7 +1105,7 @@ class TreatmentStrategicData(APIView):
             ).count()
             total_art_teen = Visualization.objects.filter(active=True,
                 age__range=(13, 18),
-                exo=True,
+                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_art_adult = Visualization.objects.filter(active=True,
@@ -1546,7 +1546,7 @@ class TreatmentStrategicData(APIView):
                     )
                     encounter_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18, created_at__range=[start_date, end_date]
+                            age__lt=13, created_at__range=[start_date, end_date]
                         )
                         .values("encounter_id")
                         .annotate(Count("encounter_id"))
@@ -1632,7 +1632,7 @@ class TreatmentStrategicData(APIView):
                     )
                     refer_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
                             refer_hp=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1720,7 +1720,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_seal_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
                             seal=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1805,7 +1805,7 @@ class TreatmentStrategicData(APIView):
                     )
                     totalfv_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
                             fv=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1845,7 +1845,7 @@ class TreatmentStrategicData(APIView):
                         )
                         .count()
                     )
-                    totalfv_adult = (
+                    totalfv_old = (
                         Visualization.objects.filter(active=True,
                             age__gt=60,
                             fv=True,
@@ -1890,7 +1890,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_exo_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
                             exo=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1975,7 +1975,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_art_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
                             art=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -1987,7 +1987,8 @@ class TreatmentStrategicData(APIView):
                         )
                         .count()
                     )
-                    total_art_adult = (
+                    
+                    total_art_teen = (
                         Visualization.objects.filter(active=True,
                             age__range=(13, 18),
                             art=True,
@@ -2060,7 +2061,7 @@ class TreatmentStrategicData(APIView):
                     )
                     total_sdf_child = (
                         Visualization.objects.filter(active=True,
-                            age__lt=18,
+                            age__lt=13,
                             sdf=True,
                             created_at__range=[start_date, end_date],
                         )
@@ -3133,7 +3134,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         preventive_ratio_old = 0
 
-                    preventive_ratio_total = preventive_ratio_male+ preventive_ratio_female
+                    preventive_ratio_total = preventive_ratio_male + preventive_ratio_female
 
                     try:
                         early_intervention_ratio_male = (
