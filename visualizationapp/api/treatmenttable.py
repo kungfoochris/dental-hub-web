@@ -1460,10 +1460,14 @@ class TreatmentStrategicData(APIView):
             surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
             early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
 
-            prevention_total = (prevention_total_number * 100)/(encounter_male + encounter_female)
-            surgical_intervention_total = (surgical_intervention_total_number * 100)/(encounter_male + encounter_female)
-            early_intervention_total = (early_intervention_total_number * 100)/(encounter_male + encounter_female)
-
+            total_encounter = encounter_male + encounter_female
+            if total_encounter == 0:
+                total_encounter = 1
+            prevention_total = (prevention_total_number * 100)/total_encounter
+            surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
+            early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+            preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            
             return Response(
                 [   
                     [
@@ -3615,85 +3619,85 @@ class TreatmentStrategicData(APIView):
                 except:
                     surgical_intervention_old = 0
                 
-                total_encounter = sum(encounter_male) + sum(encounter_female)
-                if total_encounter == 0:
-                    total_encounter = 1
+            total_encounter = sum(encounter_male) + sum(encounter_female)
+            if total_encounter == 0:
+                total_encounter = 1
 
-                prevention_total_number = prevention_male_number + prevention_female_number
-                surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
-                early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+            prevention_total_number = prevention_male_number + prevention_female_number
+            surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+            early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
 
-                prevention_total = (prevention_total_number * 100)/total_encounter
-                surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
-                early_intervention_total = (early_intervention_total_number * 100)/total_encounter
-                preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
-                return Response(
-                    [   
-                        [
-                            "Prevention",
-                            str(prevention_male_number) + "(" + str(round(prevention_male, 2)) + ")",
-                            str(prevention_female_number) + "(" + str(round(prevention_female, 2)) + ")",
-                            str(prevention_child_number ) + "(" + str(round(prevention_child, 2)) + ")",
-                            str(prevention_teen_number) + "(" + str(round(prevention_teen, 2)) + ")",
-                            str(prevention_adult_number) + "(" + str(round(prevention_adult, 2)) + ")",
-                            str(prevention_old_number) + "(" + str(round(prevention_old, 2)) + ")",
-                            str(prevention_total_number) + "(" + str(round(prevention_total, 2)) + ")",
-                            
-                        ],
-                        [
-                            "Surgical Intervention",
-                            str(surgical_intervention_male_number) + "(" + str(round(surgical_intervention_male, 2)) + ")",
-                            str(surgical_intervention_female_number) + "(" + str(round(surgical_intervention_female, 2)) + ")",
-                            str(surgical_intervention_child_number) + "(" + str(round(surgical_intervention_child, 2)) + ")",
-                            str(surgical_intervention_teen_number) + "(" + str(round(surgical_intervention_teen, 2)) + ")",
-                            str(surgical_intervention_adult_number) + "(" + str(round(surgical_intervention_adult, 2)) + ")",
-                            str(surgical_intervention_old_number) + "(" + str(round(surgical_intervention_old, 2)) + ")",
-                            str(surgical_intervention_total_number) + "(" + str(round(surgical_intervention_total ,2)) + ")",
-                        ],
-                
-                        [
-                            "Preventive Ratio",
-                            round(preventive_ratio_male, 2),
-                            round(preventive_ratio_female, 2),
-                            round(preventive_ratio_child, 2),
-                            round(preventive_ratio_teen, 2),
-                            round(preventive_ratio_adult, 2),
-                            round(preventive_ratio_old, 2),
-                            round(preventive_ratio_total, 2),
-                        ],
+            prevention_total = (prevention_total_number * 100)/total_encounter
+            surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
+            early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+            preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            return Response(
+                [   
+                    [
+                        "Prevention",
+                        str(prevention_male_number) + "(" + str(round(prevention_male, 2)) + ")",
+                        str(prevention_female_number) + "(" + str(round(prevention_female, 2)) + ")",
+                        str(prevention_child_number ) + "(" + str(round(prevention_child, 2)) + ")",
+                        str(prevention_teen_number) + "(" + str(round(prevention_teen, 2)) + ")",
+                        str(prevention_adult_number) + "(" + str(round(prevention_adult, 2)) + ")",
+                        str(prevention_old_number) + "(" + str(round(prevention_old, 2)) + ")",
+                        str(prevention_total_number) + "(" + str(round(prevention_total, 2)) + ")",
                         
-                        [
-                            "Early Invertention",
-                            str(early_intervention_male_number) + "(" + str(round(early_intervention_male, 2)) + ")",
-                            str(early_intervention_female_number) + "(" + str(round(early_intervention_female, 2)) + ")",
-                            str(early_intervention_child_number) + "(" + str(round(early_intervention_child, 2)) + ")",
-                            str(early_intervention_teen_number) + "(" + str(round(early_intervention_teen, 2)) + ")",
-                            str(early_intervention_adult_number) + "(" + str(round(early_intervention_adult, 2)) + ")",
-                            str(early_intervention_old_number) + "(" + str(round(early_intervention_old, 2)) + ")",
-                            str(early_intervention_total_number) + "(" + str(round(early_intervention_total, 2)) + ")",
-                        ],
-                        [
-                            "Early Intervention Ratio",
-                            round(early_intervention_ratio_male, 2),
-                            round(early_intervention_ratio_female, 2),
-                            round(early_intervention_ratio_child, 2),
-                            round(early_intervention_ratio_teen, 2),
-                            round(early_intervention_ratio_adult, 2),
-                            round(early_intervention_ratio_old, 2),
-                            round(early_intervention_ratio_total, 2),
-                        ],
-                        [
-                            "% Recall",
-                            str(round(recall_percent_male, 2)) + "%",
-                            str(round(recall_percent_female, 2)) + "%",
-                            str(round(recall_percent_child, 2)) + "%",
-                            str(round(recall_percent_teen, 2)) + "%",
-                            str(round(recall_percent_adult, 2)) + "%",
-                            str(round(recall_percent_old, 2)) + "%",
-                            str(round(recall_percent_total, 2)) + "%",
-                        ],
-                    ]
-                )
+                    ],
+                    [
+                        "Surgical Intervention",
+                        str(surgical_intervention_male_number) + "(" + str(round(surgical_intervention_male, 2)) + ")",
+                        str(surgical_intervention_female_number) + "(" + str(round(surgical_intervention_female, 2)) + ")",
+                        str(surgical_intervention_child_number) + "(" + str(round(surgical_intervention_child, 2)) + ")",
+                        str(surgical_intervention_teen_number) + "(" + str(round(surgical_intervention_teen, 2)) + ")",
+                        str(surgical_intervention_adult_number) + "(" + str(round(surgical_intervention_adult, 2)) + ")",
+                        str(surgical_intervention_old_number) + "(" + str(round(surgical_intervention_old, 2)) + ")",
+                        str(surgical_intervention_total_number) + "(" + str(round(surgical_intervention_total ,2)) + ")",
+                    ],
+            
+                    [
+                        "Preventive Ratio",
+                        round(preventive_ratio_male, 2),
+                        round(preventive_ratio_female, 2),
+                        round(preventive_ratio_child, 2),
+                        round(preventive_ratio_teen, 2),
+                        round(preventive_ratio_adult, 2),
+                        round(preventive_ratio_old, 2),
+                        round(preventive_ratio_total, 2),
+                    ],
+                    
+                    [
+                        "Early Invertention",
+                        str(early_intervention_male_number) + "(" + str(round(early_intervention_male, 2)) + ")",
+                        str(early_intervention_female_number) + "(" + str(round(early_intervention_female, 2)) + ")",
+                        str(early_intervention_child_number) + "(" + str(round(early_intervention_child, 2)) + ")",
+                        str(early_intervention_teen_number) + "(" + str(round(early_intervention_teen, 2)) + ")",
+                        str(early_intervention_adult_number) + "(" + str(round(early_intervention_adult, 2)) + ")",
+                        str(early_intervention_old_number) + "(" + str(round(early_intervention_old, 2)) + ")",
+                        str(early_intervention_total_number) + "(" + str(round(early_intervention_total, 2)) + ")",
+                    ],
+                    [
+                        "Early Intervention Ratio",
+                        round(early_intervention_ratio_male, 2),
+                        round(early_intervention_ratio_female, 2),
+                        round(early_intervention_ratio_child, 2),
+                        round(early_intervention_ratio_teen, 2),
+                        round(early_intervention_ratio_adult, 2),
+                        round(early_intervention_ratio_old, 2),
+                        round(early_intervention_ratio_total, 2),
+                    ],
+                    [
+                        "% Recall",
+                        str(round(recall_percent_male, 2)) + "%",
+                        str(round(recall_percent_female, 2)) + "%",
+                        str(round(recall_percent_child, 2)) + "%",
+                        str(round(recall_percent_teen, 2)) + "%",
+                        str(round(recall_percent_adult, 2)) + "%",
+                        str(round(recall_percent_old, 2)) + "%",
+                        str(round(recall_percent_total, 2)) + "%",
+                    ],
+                ]
+            )
             return Response(
                 {"message": "End date must be greated then Start Date"}, status=400
             )
