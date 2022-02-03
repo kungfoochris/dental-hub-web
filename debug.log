@@ -20932,3 +20932,27 @@ Traceback (most recent call last):
 UnboundLocalError: local variable 'early_intervention_male_number' referenced before assignment
 2022-02-03 11:53:20,957 django.server ERROR    "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 500 110021
 2022-02-03 12:01:36,638 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16480
+2022-02-03 12:38:30,828 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 3627, in post
+    prevention_total = (prevention_total_number * 100)/(sum(encounter_male) + sum(encounter_female))
+ZeroDivisionError: division by zero
+2022-02-03 12:38:30,832 django.server ERROR    "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 500 111046
+2022-02-03 12:43:23,882 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16486
+2022-02-03 12:43:40,056 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16486

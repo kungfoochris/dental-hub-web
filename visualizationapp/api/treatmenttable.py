@@ -1305,10 +1305,7 @@ class TreatmentStrategicData(APIView):
                     encounter_old
                 )
             except:
-                prevention_old = 0
-            
-            prevention_total = prevention_male + prevention_female
-            
+                prevention_old = 0            
 
             # Early Intervention Ratio
             try:
@@ -1407,8 +1404,6 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_old = 0
             
-            early_intervention_total = early_intervention_male + early_intervention_female
-
             # Surgical intervention  
             surgical_intervention_male_number = total_art_male + total_exo_male + total_sdf_male
             try:
@@ -1465,6 +1460,9 @@ class TreatmentStrategicData(APIView):
             surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
             early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
 
+            prevention_total = (prevention_total_number * 100)/(encounter_male + encounter_female)
+            surgical_intervention_total = (surgical_intervention_total_number * 100)/(encounter_male + encounter_female)
+            early_intervention_total = (early_intervention_total_number * 100)/(encounter_male + encounter_female)
 
             return Response(
                 [   
@@ -2408,8 +2406,6 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_old = 0
                     
-                    prevention_total = prevention_male + prevention_female
-
                     # Early intervention  
                     early_intervention_male_number = total_art_male + total_sdf_male
                     try:
@@ -2459,8 +2455,6 @@ class TreatmentStrategicData(APIView):
                     except:
                         early_intervention_old = 0
                     
-                    early_intervention_total = early_intervention_male + early_intervention_female
-
                     # Surgical intervention  
                     surgical_intervention_male_number = total_art_male + total_exo_male + total_sdf_male
                     try:
@@ -2510,7 +2504,17 @@ class TreatmentStrategicData(APIView):
                     except:
                         surgical_intervention_old = 0
                     
-                    surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
+                    prevention_total_number = prevention_male_number + prevention_female_number
+                    surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+                    early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+                        
+                    total_encounter = encounter_male + encounter_female
+                    if total_encounter == 0:
+                        total_encounter = 1
+                    prevention_total = (prevention_total_number * 100)/total_encounter
+                    surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
+                    early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+                
 
                 else:
                     encounter_male = []
@@ -3517,8 +3521,6 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_old = 0
                     
-                    prevention_total = prevention_male + prevention_female
-
                     # Early intervention  
                     early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
                     try:
@@ -3568,8 +3570,6 @@ class TreatmentStrategicData(APIView):
                     except:
                         early_intervention_old = 0
                     
-                    early_intervention_total = early_intervention_male + early_intervention_female
-
                     # Surgical intervention  
                     surgical_intervention_male_number = sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)
                     try:
@@ -3619,12 +3619,18 @@ class TreatmentStrategicData(APIView):
                     except:
                         surgical_intervention_old = 0
                     
-                    surgical_intervention_total = surgical_intervention_male + surgical_intervention_female
-                    
-                prevention_total_number = prevention_male_number + prevention_female_number
-                surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
-                early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+                    total_encounter = sum(encounter_male) + sum(encounter_female)
+                    if total_encounter == 0:
+                        total_encounter = 1
 
+                    prevention_total_number = prevention_male_number + prevention_female_number
+                    surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+                    early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+
+                    prevention_total = (prevention_total_number * 100)/total_encounter
+                    surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
+                    early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+                
                 return Response(
                     [   
                         [
