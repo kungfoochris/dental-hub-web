@@ -3497,16 +3497,16 @@ class WardUserlineVisualization(APIView):
             # ]
 
             label_data = [
-                "Q2",
+                "Q2(Apr/May)",
                 "",
                 "",
-                "Q3",
+                "Q3(Jul/Aug)",
                 "",
                 "",
-                "Q4",
+                "Q4(Oct/Nov)",
                 "",
                 "",
-                "Q1",
+                "Q1(Jan/Feb)",
                 "",
                 "",
             ]
@@ -3753,9 +3753,10 @@ class WardStrategicData(APIView):
                 total_sdf_child = Visualization.objects.filter(active=True,
                     age__lt=12, sdf=True, geography_id=i.id
                 ).count()
-                total_sdf_adult = Visualization.objects.filter(active=True,
+                total_sdf_teen = Visualization.objects.filter(active=True,
                     age__range=(13, 18), sdf=True, geography_id=i.id
                 ).count()
+    
                 total_sdf_adult = Visualization.objects.filter(active=True,
                     age__range=(19, 60), sdf=True, geography_id=i.id
                 ).count()

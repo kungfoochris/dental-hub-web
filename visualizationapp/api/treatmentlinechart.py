@@ -44,16 +44,16 @@ class TreatmentPreventionRatioVisualization(APIView):
             # ]
 
             label_data = [
-                "Q2",
+                "Q2(Apr/May)",
                 "",
                 "",
-                "Q3",
+                "Q3(Jul/Aug)",
                 "",
                 "",
-                "Q4",
+                "Q4(Oct/Nov)",
                 "",
                 "",
-                "Q1",
+                "Q1(Jan/Feb)",
                 "",
                 "",
             ]
@@ -288,16 +288,16 @@ class TreatmentEarlyIntervention(APIView):
             # ]
 
             label_data = [
-                "Q2",
+                "Q2(Apr/May)",
                 "",
                 "",
-                "Q3",
+                "Q3(Jul/Aug)",
                 "",
                 "",
-                "Q4",
+                "Q4(Oct/Nov)",
                 "",
                 "",
-                "Q1",
+                "Q1(Jan/Feb)",
                 "",
                 "",
             ]
@@ -526,16 +526,16 @@ class TreatmentRecallDistribution(APIView):
             # ]
 
             label_data = [
-                "Q2",
+                "Q2(Apr/May)",
                 "",
                 "",
-                "Q3",
+                "Q3(Jul/Aug)",
                 "",
                 "",
-                "Q4",
+                "Q4(Oct/Nov)",
                 "",
                 "",
-                "Q1",
+                "Q1(Jan/Feb)",
                 "",
                 "",
             ]

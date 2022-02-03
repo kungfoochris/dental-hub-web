@@ -22,22 +22,23 @@ class IsPostOrIsAuthenticated(permissions.BasePermission):
         return request.user and request.user.is_authenticated
 
 
+# 2.3 Preventive Ratio Over Time
 class WardlineVisualization(APIView):
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
             month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
             label_data = [
-                "Q2",
+                "Q2(Apr/May)",
                 "",
                 "",
-                "Q3",
+                "Q3(Jul/Aug)",
                 "",
                 "",
-                "Q4",
+                "Q4(Oct/Nov)",
                 "",
                 "",
-                "Q1",
+                "Q1(Jan/Feb)",
                 "",
                 "",
             ]
