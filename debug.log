@@ -20878,3 +20878,57 @@ AttributeError: 'TreatMentBarGraphVisualization' object has no attribute 'error'
 2022-02-02 15:37:36,482 django.server WARNING  "GET /api/v1/treatmentprogress HTTP/1.1" 404 21717
 2022-02-02 15:39:43,449 django.request WARNING  Not Found: /api/v1/treatmentprogress
 2022-02-02 15:39:43,449 django.server WARNING  "GET /api/v1/treatmentprogress HTTP/1.1" 404 21717
+2022-02-03 11:32:31,190 django.request WARNING  Unauthorized: /api/v1/treatmentstrategicdatas
+2022-02-03 11:32:31,242 django.server WARNING  "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 401 10007
+2022-02-03 11:32:32,389 django.request WARNING  Not Found: /favicon.ico
+2022-02-03 11:32:32,391 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-03 11:32:34,687 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentstrategicdatas HTTP/1.1" 200 2733
+2022-02-03 11:32:42,792 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-03 11:32:43,391 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16479
+2022-02-03 11:33:30,525 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16480
+2022-02-03 11:33:54,070 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 3633, in post
+    str(prevention_total_number) + "(" + str(round(prevention_total, 2)) + ")",
+UnboundLocalError: local variable 'prevention_total_number' referenced before assignment
+2022-02-03 11:33:54,074 django.server ERROR    "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 500 110167
+2022-02-03 11:53:05,209 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16479
+2022-02-03 11:53:20,954 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 3620, in post
+    early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+UnboundLocalError: local variable 'early_intervention_male_number' referenced before assignment
+2022-02-03 11:53:20,957 django.server ERROR    "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 500 110021
+2022-02-03 12:01:36,638 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16480
