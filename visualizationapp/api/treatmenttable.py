@@ -2272,10 +2272,7 @@ class TreatmentStrategicData(APIView):
                             total_exo_old + total_art_old + total_sdf_old
                         )
                     except:
-                        preventive_ratio_old = 0
-
-                    preventive_ratio_total = preventive_ratio_male + preventive_ratio_female
-                    
+                        preventive_ratio_old = 0                    
 
                     # Early Intervention Ratio
                     try:
@@ -2514,6 +2511,7 @@ class TreatmentStrategicData(APIView):
                     prevention_total = (prevention_total_number * 100)/total_encounter
                     surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
                     early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+                    preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
                 
 
                 else:
@@ -3382,8 +3380,6 @@ class TreatmentStrategicData(APIView):
                     except:
                         preventive_ratio_old = 0
 
-                    preventive_ratio_total = preventive_ratio_male + preventive_ratio_female
-
                     # Early Intervention Ratio
                     try:
                         early_intervention_ratio_male = (
@@ -3473,7 +3469,7 @@ class TreatmentStrategicData(APIView):
                     recall_percent_total = recall_percent_male + recall_percent_female
 
                     # Prevention  
-                    prevention_male_number = sum(total_sdf_male) + sum(total_seal_male) + sum(totalfv_male) 
+                    prevention_male_number = sum(total_fsdf_male) + sum(total_seal_male) + sum(totalfv_male) 
                     try:
                         prevention_male = (prevention_male_number * 100) / (
                             sum(encounter_male)
@@ -3481,7 +3477,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_male = 0
                     
-                    prevention_female_number = sum(total_sdf_female) + sum(total_seal_female) + sum(totalfv_female) 
+                    prevention_female_number = sum(total_fsdf_female) + sum(total_seal_female) + sum(totalfv_female) 
                     try:
                         prevention_female = (prevention_female_number * 100) / (
                             sum(encounter_female)
@@ -3489,7 +3485,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_female = 0
                     
-                    prevention_child_number = sum(total_sdf_child) + sum(total_seal_child) + sum(totalfv_child) 
+                    prevention_child_number = sum(total_fsdf_child) + sum(total_seal_child) + sum(totalfv_child) 
                     try:
                         prevention_child = (prevention_child_number *100 ) / (
                             sum(encounter_child)
@@ -3497,7 +3493,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_child = 0
                     
-                    prevention_teen_number = sum(total_sdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) 
+                    prevention_teen_number = sum(total_fsdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) 
                     try:
                         prevention_teen = (prevention_teen_number * 100) / (
                             sum(encounter_teen)
@@ -3505,7 +3501,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_teen = 0
                     
-                    prevention_adult_number = sum(total_sdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) 
+                    prevention_adult_number = sum(total_fsdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) 
                     try:
                         prevention_adult = (prevention_adult_number * 100) / (
                             sum(encounter_adult)
@@ -3513,7 +3509,7 @@ class TreatmentStrategicData(APIView):
                     except:
                         prevention_adult = 0
                     
-                    prevention_old_number = sum(total_sdf_old) + sum(total_seal_old) + sum(totalfv_old) 
+                    prevention_old_number = sum(total_fsdf_old) + sum(total_seal_old) + sum(totalfv_old) 
                     try:
                         prevention_old = (prevention_old_number * 100 ) / (
                             sum(encounter_old)
@@ -3524,7 +3520,7 @@ class TreatmentStrategicData(APIView):
                     # Early intervention  
                     early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
                     try:
-                        early_intervention_male = (sum(total_art_male) + sum(total_sdf_male)) / (
+                        early_intervention_male = (early_intervention_male_number * 100) / (
                             sum(encounter_male)
                         )
                     except:
@@ -3532,7 +3528,7 @@ class TreatmentStrategicData(APIView):
                     
                     early_intervention_female_number = sum(total_art_female) + sum(total_sdf_female) 
                     try:
-                        early_intervention_female = (sum(total_art_female) + sum(total_sdf_female) ) / (
+                        early_intervention_female = (early_intervention_female_number * 100 ) / (
                             sum(encounter_female)
                         )
                     except:
@@ -3540,7 +3536,7 @@ class TreatmentStrategicData(APIView):
                     
                     early_intervention_child_number = sum(total_art_child) + sum(total_sdf_child)
                     try:
-                        early_intervention_child = (sum(total_art_child) + sum(total_sdf_child)) / (
+                        early_intervention_child = (early_intervention_child_number * 100) / (
                             sum(encounter_child)
                         )
                     except:
@@ -3548,7 +3544,7 @@ class TreatmentStrategicData(APIView):
                     
                     early_intervention_teen_number = sum(total_art_teen) + sum(total_sdf_teen) 
                     try:
-                        early_intervention_teen = (sum(total_art_teen) + sum(total_sdf_teen) ) / (
+                        early_intervention_teen = (early_intervention_teen_number * 100) / (
                             sum(encounter_teen)
                         )
                     except:
@@ -3556,7 +3552,7 @@ class TreatmentStrategicData(APIView):
                     
                     early_intervention_adult_number = sum(total_art_adult) + sum(total_sdf_adult)
                     try:
-                        early_intervention_adult = (sum(total_art_adult) + sum(total_sdf_adult) ) / (
+                        early_intervention_adult = (early_intervention_adult_number * 100) / (
                             sum(encounter_adult)
                         )
                     except:
@@ -3564,7 +3560,7 @@ class TreatmentStrategicData(APIView):
                     
                     early_intervention_old_number = sum(total_art_old) + sum(total_sdf_old)
                     try:
-                        early_intervention_old = (sum(total_art_old) + sum(total_sdf_old)) / (
+                        early_intervention_old = (early_intervention_old_number) / (
                             sum(encounter_old)
                         )
                     except:
@@ -3630,7 +3626,7 @@ class TreatmentStrategicData(APIView):
                     prevention_total = (prevention_total_number * 100)/total_encounter
                     surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
                     early_intervention_total = (early_intervention_total_number * 100)/total_encounter
-                
+                    preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
                 return Response(
                     [   
                         [
