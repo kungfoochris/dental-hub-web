@@ -20853,3 +20853,28 @@ AttributeError: 'TreatMentBarGraphVisualization' object has no attribute 'error'
 2022-01-27 11:53:36,188 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2022-01-27 11:53:36,499 django.server INFO     "GET /api/v1/treatmentactivities HTTP/1.1" 200 15553
 2022-01-27 11:53:58,320 django.server INFO     "POST /api/v1/treatmentactivities HTTP/1.1" 200 15576
+2022-02-02 10:46:29,842 django.request WARNING  Unauthorized: /api/v1/treatmentstrategicdatas
+2022-02-02 10:46:29,871 django.server WARNING  "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 401 10007
+2022-02-02 10:46:30,481 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-02-02 10:46:30,485 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2022-02-02 10:46:30,489 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2022-02-02 10:46:30,490 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2022-02-02 10:46:30,503 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2022-02-02 10:46:30,504 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-02-02 10:46:30,512 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2022-02-02 10:46:30,534 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-02-02 10:46:30,542 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2022-02-02 10:46:30,578 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-02-02 10:46:30,689 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2022-02-02 10:46:31,170 django.request WARNING  Not Found: /favicon.ico
+2022-02-02 10:46:31,171 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-02 10:46:33,456 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentstrategicdatas HTTP/1.1" 200 2733
+2022-02-02 10:46:42,306 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-02 10:46:42,687 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16479
+2022-02-02 11:20:54,477 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16479
+2022-02-02 15:37:14,019 django.request WARNING  Not Found: /api/v1/treatmentprogress
+2022-02-02 15:37:14,047 django.server WARNING  "GET /api/v1/treatmentprogress HTTP/1.1" 404 21717
+2022-02-02 15:37:36,481 django.request WARNING  Not Found: /api/v1/treatmentprogress
+2022-02-02 15:37:36,482 django.server WARNING  "GET /api/v1/treatmentprogress HTTP/1.1" 404 21717
+2022-02-02 15:39:43,449 django.request WARNING  Not Found: /api/v1/treatmentprogress
+2022-02-02 15:39:43,449 django.server WARNING  "GET /api/v1/treatmentprogress HTTP/1.1" 404 21717

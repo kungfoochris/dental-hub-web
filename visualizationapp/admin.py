@@ -43,7 +43,7 @@ class AdminVisualization(ImportExportActionModelAdmin):
 	'reversible_pulpitis','need_art_filling','need_extraction','need_sdf',\
 	'need_sealant','author','created_at')
 	list_filter = ('created_at',)
-	search_fields = ['created_at','gender','author','geography_name','activity_name']
+	search_fields = ['created_at','gender','author','geography_name','activity_name','encounter_id']
 
 	def has_add_permission(self, request, obj=None):
 		if request.user.is_superuser:
