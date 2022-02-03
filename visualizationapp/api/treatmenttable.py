@@ -1549,2084 +1549,2084 @@ class TreatmentStrategicData(APIView):
             outreach = serializer.validated_data["outreach"]
             training = serializer.validated_data["training"]
 
-            if end_date > start_date:
-                if not location_list:
-                    encounter_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male", created_at__range=[start_date, end_date]
-                        )
-                        .values("encounter_id")
-                        .annotate(Count("encounter_id"))
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    encounter_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female", created_at__range=[start_date, end_date]
-                        )
-                        .values("encounter_id")
-                        .annotate(Count("encounter_id"))
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    encounter_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13, created_at__range=[start_date, end_date]
-                        )
-                        .values("encounter_id")
-                        .annotate(Count("encounter_id"))
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    encounter_teen= (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18), created_at__range=[start_date, end_date]
-                        )
-                        .values("encounter_id")
-                        .annotate(Count("encounter_id"))
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    encounter_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            created_at__range=[start_date, end_date],
-                        )
-                        .values("encounter_id")
-                        .annotate(Count("encounter_id"))
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    encounter_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60, created_at__range=[start_date, end_date]
-                        )
-                        .values("encounter_id")
-                        .annotate(Count("encounter_id"))
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            # if end_date > start_date:
+            #     if not location_list:
+            #         encounter_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male", created_at__range=[start_date, end_date]
+            #             )
+            #             .values("encounter_id")
+            #             .annotate(Count("encounter_id"))
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         encounter_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female", created_at__range=[start_date, end_date]
+            #             )
+            #             .values("encounter_id")
+            #             .annotate(Count("encounter_id"))
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         encounter_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13, created_at__range=[start_date, end_date]
+            #             )
+            #             .values("encounter_id")
+            #             .annotate(Count("encounter_id"))
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         encounter_teen= (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18), created_at__range=[start_date, end_date]
+            #             )
+            #             .values("encounter_id")
+            #             .annotate(Count("encounter_id"))
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         encounter_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .values("encounter_id")
+            #             .annotate(Count("encounter_id"))
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         encounter_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60, created_at__range=[start_date, end_date]
+            #             )
+            #             .values("encounter_id")
+            #             .annotate(Count("encounter_id"))
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    refer_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male",
-                            refer_hp=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    refer_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            refer_hp=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    refer_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            refer_hp=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    refer_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            refer_hp=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    refer_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            refer_hp=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    refer_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            refer_hp=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         refer_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male",
+            #                 refer_hp=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         refer_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 refer_hp=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         refer_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 refer_hp=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         refer_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 refer_hp=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         refer_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 refer_hp=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         refer_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 refer_hp=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    total_refer = Visualization.objects.filter(active=True,
-                        refer_hp=True, created_at__range=[start_date, end_date]
-                    ).count()
-                    total_seal_male = (
-                        Visualization.objects.filter(
-                            gender="male",
-                            seal=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_seal_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            seal=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_seal_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            seal=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_seal_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            seal=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_seal_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            seal=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_seal_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            seal=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         total_refer = Visualization.objects.filter(active=True,
+            #             refer_hp=True, created_at__range=[start_date, end_date]
+            #         ).count()
+            #         total_seal_male = (
+            #             Visualization.objects.filter(
+            #                 gender="male",
+            #                 seal=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_seal_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 seal=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_seal_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 seal=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_seal_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 seal=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_seal_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 seal=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_seal_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 seal=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    totalfv_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male",
-                            fv=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    totalfv_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            fv=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    totalfv_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            fv=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    totalfv_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            fv=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    totalfv_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            fv=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    totalfv_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            fv=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         totalfv_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male",
+            #                 fv=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         totalfv_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 fv=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         totalfv_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 fv=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         totalfv_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 fv=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         totalfv_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 fv=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         totalfv_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 fv=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    total_exo_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male",
-                            exo=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_exo_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            exo=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_exo_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            exo=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_exo_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            exo=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_exo_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            exo=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_exo_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            exo=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         total_exo_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male",
+            #                 exo=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_exo_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 exo=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_exo_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 exo=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_exo_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 exo=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_exo_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 exo=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_exo_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 exo=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    total_art_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male",
-                            art=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_art_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            art=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_art_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            art=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         total_art_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male",
+            #                 art=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_art_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 art=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_art_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 art=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
                     
-                    total_art_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            art=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_art_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            art=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_art_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            art=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         total_art_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 art=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_art_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 art=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_art_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 art=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    total_sdf_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male",
-                            sdf=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_sdf_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            sdf=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_sdf_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            sdf=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_sdf_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            sdf=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_sdf_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            sdf=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_sdf_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            sdf=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         total_sdf_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male",
+            #                 sdf=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_sdf_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 sdf=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_sdf_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 sdf=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_sdf_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 sdf=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_sdf_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 sdf=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_sdf_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 sdf=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    total_fsdf_male = (
-                        Visualization.objects.filter(active=True,
-                            gender="male",
-                            sdf_whole_mouth=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_fsdf_female = (
-                        Visualization.objects.filter(active=True,
-                            gender="female",
-                            sdf_whole_mouth=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_fsdf_child = (
-                        Visualization.objects.filter(active=True,
-                            age__lt=13,
-                            sdf_whole_mouth=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_fsdf_teen = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(13, 18),
-                            sdf_whole_mouth=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_fsdf_adult = (
-                        Visualization.objects.filter(active=True,
-                            age__range=(19, 60),
-                            sdf_whole_mouth=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
-                    total_fsdf_old = (
-                        Visualization.objects.filter(active=True,
-                            age__gt=60,
-                            sdf_whole_mouth=True,
-                            created_at__range=[start_date, end_date],
-                        )
-                        .filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                        .count()
-                    )
+            #         total_fsdf_male = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="male",
+            #                 sdf_whole_mouth=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_fsdf_female = (
+            #             Visualization.objects.filter(active=True,
+            #                 gender="female",
+            #                 sdf_whole_mouth=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_fsdf_child = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__lt=13,
+            #                 sdf_whole_mouth=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_fsdf_teen = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(13, 18),
+            #                 sdf_whole_mouth=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_fsdf_adult = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__range=(19, 60),
+            #                 sdf_whole_mouth=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
+            #         total_fsdf_old = (
+            #             Visualization.objects.filter(active=True,
+            #                 age__gt=60,
+            #                 sdf_whole_mouth=True,
+            #                 created_at__range=[start_date, end_date],
+            #             )
+            #             .filter(
+            #                 Q(activities_id=health_post)
+            #                 | Q(activities_id=seminar)
+            #                 | Q(activities_id=outreach)
+            #                 | Q(activities_id=outreach)
+            #             )
+            #             .count()
+            #         )
 
-                    # Preventive Ratio
-                    try:
-                        preventive_ratio_male = (total_seal_male + totalfv_male + total_fsdf_male) / (
-                            total_exo_male + total_art_male + total_sdf_male
-                        )
-                    except:
-                        preventive_ratio_male = 0
-                    try:
-                        preventive_ratio_female = (
-                            total_seal_female + totalfv_female
-                        ) / (total_exo_female + total_art_female + total_sdf_female + total_fsdf_female)
-                    except:
-                        preventive_ratio_female = 0
-                    try:
-                        preventive_ratio_child = (total_seal_child + totalfv_child + total_fsdf_child) / (
-                            total_exo_child + total_art_child + total_sdf_child
-                        )
-                    except:
-                        preventive_ratio_child = 0
-                    try:
-                        preventive_ratio_teen = (total_seal_teen + totalfv_teen + total_fsdf_teen) / (
-                            total_exo_teen + total_art_teen + total_sdf_teen
-                        )
-                    except:
-                        preventive_ratio_teen = 0
-                    try:
-                        preventive_ratio_adult = (total_seal_adult + totalfv_adult + total_fsdf_adult) / (
-                            total_exo_adult + total_art_adult + total_sdf_adult
-                        )
-                    except:
-                        preventive_ratio_adult = 0
-                    try:
-                        preventive_ratio_old = (total_seal_old + totalfv_old + total_fsdf_old) / (
-                            total_exo_old + total_art_old + total_sdf_old
-                        )
-                    except:
-                        preventive_ratio_old = 0                    
+            #         # Preventive Ratio
+            #         try:
+            #             preventive_ratio_male = (total_seal_male + totalfv_male + total_fsdf_male) / (
+            #                 total_exo_male + total_art_male + total_sdf_male
+            #             )
+            #         except:
+            #             preventive_ratio_male = 0
+            #         try:
+            #             preventive_ratio_female = (
+            #                 total_seal_female + totalfv_female
+            #             ) / (total_exo_female + total_art_female + total_sdf_female + total_fsdf_female)
+            #         except:
+            #             preventive_ratio_female = 0
+            #         try:
+            #             preventive_ratio_child = (total_seal_child + totalfv_child + total_fsdf_child) / (
+            #                 total_exo_child + total_art_child + total_sdf_child
+            #             )
+            #         except:
+            #             preventive_ratio_child = 0
+            #         try:
+            #             preventive_ratio_teen = (total_seal_teen + totalfv_teen + total_fsdf_teen) / (
+            #                 total_exo_teen + total_art_teen + total_sdf_teen
+            #             )
+            #         except:
+            #             preventive_ratio_teen = 0
+            #         try:
+            #             preventive_ratio_adult = (total_seal_adult + totalfv_adult + total_fsdf_adult) / (
+            #                 total_exo_adult + total_art_adult + total_sdf_adult
+            #             )
+            #         except:
+            #             preventive_ratio_adult = 0
+            #         try:
+            #             preventive_ratio_old = (total_seal_old + totalfv_old + total_fsdf_old) / (
+            #                 total_exo_old + total_art_old + total_sdf_old
+            #             )
+            #         except:
+            #             preventive_ratio_old = 0                    
 
-                    # Early Intervention Ratio
-                    try:
-                        early_intervention_ratio_male = (
-                            total_art_male + total_sdf_male
-                        ) / total_exo_male
-                    except:
-                        early_intervention_ratio_male = 0
+            #         # Early Intervention Ratio
+            #         try:
+            #             early_intervention_ratio_male = (
+            #                 total_art_male + total_sdf_male
+            #             ) / total_exo_male
+            #         except:
+            #             early_intervention_ratio_male = 0
 
-                    try:
-                        early_intervention_ratio_female = (
-                            total_art_female + total_sdf_female
-                        ) / total_exo_female
-                    except:
-                        early_intervention_ratio_female = 0
+            #         try:
+            #             early_intervention_ratio_female = (
+            #                 total_art_female + total_sdf_female
+            #             ) / total_exo_female
+            #         except:
+            #             early_intervention_ratio_female = 0
 
-                    try:
-                        early_intervention_ratio_child = (
-                            total_art_child + total_sdf_child
-                        ) / total_exo_child
-                    except:
-                        early_intervention_ratio_child = 0
+            #         try:
+            #             early_intervention_ratio_child = (
+            #                 total_art_child + total_sdf_child
+            #             ) / total_exo_child
+            #         except:
+            #             early_intervention_ratio_child = 0
                     
-                    try:
-                        early_intervention_ratio_teen = (
-                            total_art_teen + total_sdf_teen
-                        ) / total_exo_teen
-                    except:
-                        early_intervention_ratio_teen = 0
+            #         try:
+            #             early_intervention_ratio_teen = (
+            #                 total_art_teen + total_sdf_teen
+            #             ) / total_exo_teen
+            #         except:
+            #             early_intervention_ratio_teen = 0
 
-                    try:
-                        early_intervention_ratio_adult = (
-                            total_art_adult + total_sdf_adult
-                        ) / total_exo_adult
-                    except:
-                        early_intervention_ratio_adult = 0
+            #         try:
+            #             early_intervention_ratio_adult = (
+            #                 total_art_adult + total_sdf_adult
+            #             ) / total_exo_adult
+            #         except:
+            #             early_intervention_ratio_adult = 0
 
-                    try:
-                        early_intervention_ratio_old = (
-                            total_art_old + total_sdf_old
-                        ) / total_exo_old
-                    except:
-                        early_intervention_ratio_old = 0
+            #         try:
+            #             early_intervention_ratio_old = (
+            #                 total_art_old + total_sdf_old
+            #             ) / total_exo_old
+            #         except:
+            #             early_intervention_ratio_old = 0
 
-                    early_intervention_ratio_total = early_intervention_ratio_male + early_intervention_ratio_female
+            #         early_intervention_ratio_total = early_intervention_ratio_male + early_intervention_ratio_female
                     
                     
 
-                    # Recall %
-                    try:
-                        recall_percent_male = (refer_male / encounter_male) * 100
-                    except:
-                        recall_percent_male = 0
+            #         # Recall %
+            #         try:
+            #             recall_percent_male = (refer_male / encounter_male) * 100
+            #         except:
+            #             recall_percent_male = 0
 
-                    try:
-                        recall_percent_female = (refer_female / encounter_female) * 100
-                    except:
-                        recall_percent_female = 0
+            #         try:
+            #             recall_percent_female = (refer_female / encounter_female) * 100
+            #         except:
+            #             recall_percent_female = 0
 
-                    try:
-                        recall_percent_child = (refer_child / encounter_child) * 100
-                    except:
-                        recall_percent_child = 0
+            #         try:
+            #             recall_percent_child = (refer_child / encounter_child) * 100
+            #         except:
+            #             recall_percent_child = 0
                     
-                    try:
-                        recall_percent_teen = (refer_teen / encounter_teen) * 100
-                    except:
-                        recall_percent_teen = 0
+            #         try:
+            #             recall_percent_teen = (refer_teen / encounter_teen) * 100
+            #         except:
+            #             recall_percent_teen = 0
 
-                    try:
-                        recall_percent_adult = (refer_adult / encounter_adult) * 100
-                    except:
-                        recall_percent_adult = 0
+            #         try:
+            #             recall_percent_adult = (refer_adult / encounter_adult) * 100
+            #         except:
+            #             recall_percent_adult = 0
 
-                    try:
-                        recall_percent_old = (refer_old / encounter_old) * 100
-                    except:
-                        recall_percent_old = 0
+            #         try:
+            #             recall_percent_old = (refer_old / encounter_old) * 100
+            #         except:
+            #             recall_percent_old = 0
 
-                    recall_percent_total = recall_percent_male + recall_percent_female
+            #         recall_percent_total = recall_percent_male + recall_percent_female
 
-                    # Prevention  
-                    prevention_male_number = total_fsdf_male + total_seal_male + totalfv_male 
-                    try:
-                        prevention_male = (prevention_male_number * 100 ) / (
-                            encounter_male
-                        )
-                    except:
-                        prevention_male = 0
+            #         # Prevention  
+            #         prevention_male_number = total_fsdf_male + total_seal_male + totalfv_male 
+            #         try:
+            #             prevention_male = (prevention_male_number * 100 ) / (
+            #                 encounter_male
+            #             )
+            #         except:
+            #             prevention_male = 0
                     
-                    prevention_female_number = total_fsdf_female + total_seal_female + totalfv_female 
-                    try:
-                        prevention_female = (prevention_female_number * 100 ) / (
-                            encounter_female
-                        )
-                    except:
-                        prevention_female = 0
+            #         prevention_female_number = total_fsdf_female + total_seal_female + totalfv_female 
+            #         try:
+            #             prevention_female = (prevention_female_number * 100 ) / (
+            #                 encounter_female
+            #             )
+            #         except:
+            #             prevention_female = 0
                     
-                    prevention_child_number = total_fsdf_child + total_seal_child + totalfv_child 
-                    try:
-                        prevention_child = (prevention_child_number * 100 ) / (
-                            encounter_child
-                        )
-                    except:
-                        prevention_child = 0
+            #         prevention_child_number = total_fsdf_child + total_seal_child + totalfv_child 
+            #         try:
+            #             prevention_child = (prevention_child_number * 100 ) / (
+            #                 encounter_child
+            #             )
+            #         except:
+            #             prevention_child = 0
                     
-                    prevention_teen_number = total_fsdf_teen + total_seal_teen + totalfv_teen 
-                    try:
-                        prevention_teen = (prevention_teen_number * 100) / (
-                            encounter_teen
-                        )
-                    except:
-                        prevention_teen = 0
+            #         prevention_teen_number = total_fsdf_teen + total_seal_teen + totalfv_teen 
+            #         try:
+            #             prevention_teen = (prevention_teen_number * 100) / (
+            #                 encounter_teen
+            #             )
+            #         except:
+            #             prevention_teen = 0
                     
-                    prevention_adult_number = total_fsdf_adult + total_seal_adult + totalfv_adult 
-                    try:
-                        prevention_adult = (prevention_adult_number * 100) / (
-                            encounter_adult
-                        )
-                    except:
-                        prevention_adult = 0
+            #         prevention_adult_number = total_fsdf_adult + total_seal_adult + totalfv_adult 
+            #         try:
+            #             prevention_adult = (prevention_adult_number * 100) / (
+            #                 encounter_adult
+            #             )
+            #         except:
+            #             prevention_adult = 0
                     
-                    prevention_old_number = total_fsdf_old + total_seal_old + totalfv_old 
-                    try:
-                        prevention_old = (prevention_old_number * 100 ) / (
-                            encounter_old
-                        )
-                    except:
-                        prevention_old = 0
+            #         prevention_old_number = total_fsdf_old + total_seal_old + totalfv_old 
+            #         try:
+            #             prevention_old = (prevention_old_number * 100 ) / (
+            #                 encounter_old
+            #             )
+            #         except:
+            #             prevention_old = 0
                     
-                    # Early intervention  
-                    early_intervention_male_number = total_art_male + total_sdf_male
-                    try:
-                        early_intervention_male = (total_art_male + total_sdf_male) / (
-                            encounter_male
-                        )
-                    except:
-                        early_intervention_male = 0
+            #         # Early intervention  
+            #         early_intervention_male_number = total_art_male + total_sdf_male
+            #         try:
+            #             early_intervention_male = (total_art_male + total_sdf_male) / (
+            #                 encounter_male
+            #             )
+            #         except:
+            #             early_intervention_male = 0
                     
-                    early_intervention_female_number = total_art_female + total_sdf_female
-                    try:
-                        early_intervention_female = (total_art_female + total_sdf_female ) / (
-                            encounter_female
-                        )
-                    except:
-                        early_intervention_female = 0
+            #         early_intervention_female_number = total_art_female + total_sdf_female
+            #         try:
+            #             early_intervention_female = (total_art_female + total_sdf_female ) / (
+            #                 encounter_female
+            #             )
+            #         except:
+            #             early_intervention_female = 0
                     
-                    early_intervention_child_number = total_art_child + total_sdf_child
-                    try:
-                        early_intervention_child = (total_art_child + total_sdf_child) / (
-                            encounter_child
-                        )
-                    except:
-                        early_intervention_child = 0
+            #         early_intervention_child_number = total_art_child + total_sdf_child
+            #         try:
+            #             early_intervention_child = (total_art_child + total_sdf_child) / (
+            #                 encounter_child
+            #             )
+            #         except:
+            #             early_intervention_child = 0
                     
-                    early_intervention_teen_number = total_art_teen + total_sdf_teen
-                    try:
-                        early_intervention_teen = (total_art_teen + total_sdf_teen ) / (
-                            encounter_teen
-                        )
-                    except:
-                        early_intervention_teen = 0
+            #         early_intervention_teen_number = total_art_teen + total_sdf_teen
+            #         try:
+            #             early_intervention_teen = (total_art_teen + total_sdf_teen ) / (
+            #                 encounter_teen
+            #             )
+            #         except:
+            #             early_intervention_teen = 0
 
-                    early_intervention_adult_number = total_art_adult + total_sdf_adult
-                    try:
-                        early_intervention_adult = (total_art_adult + total_sdf_adult ) / (
-                            encounter_adult
-                        )
-                    except:
-                        early_intervention_adult = 0
+            #         early_intervention_adult_number = total_art_adult + total_sdf_adult
+            #         try:
+            #             early_intervention_adult = (total_art_adult + total_sdf_adult ) / (
+            #                 encounter_adult
+            #             )
+            #         except:
+            #             early_intervention_adult = 0
 
-                    early_intervention_old_number = total_art_old + total_sdf_old
-                    try:
-                        early_intervention_old = (total_art_old + total_sdf_old) / (
-                            encounter_old
-                        )
-                    except:
-                        early_intervention_old = 0
+            #         early_intervention_old_number = total_art_old + total_sdf_old
+            #         try:
+            #             early_intervention_old = (total_art_old + total_sdf_old) / (
+            #                 encounter_old
+            #             )
+            #         except:
+            #             early_intervention_old = 0
                     
-                    # Surgical intervention  
-                    surgical_intervention_male_number = total_art_male + total_exo_male + total_sdf_male
-                    try:
-                        surgical_intervention_male = (surgical_intervention_male_number * 100) / (
-                            encounter_male
-                        )
-                    except:
-                        surgical_intervention_male = 0
+            #         # Surgical intervention  
+            #         surgical_intervention_male_number = total_art_male + total_exo_male + total_sdf_male
+            #         try:
+            #             surgical_intervention_male = (surgical_intervention_male_number * 100) / (
+            #                 encounter_male
+            #             )
+            #         except:
+            #             surgical_intervention_male = 0
                     
-                    surgical_intervention_female_number = total_art_female + total_exo_female + total_sdf_female
-                    try:
-                        surgical_intervention_female = (surgical_intervention_female_number * 100) / (
-                            encounter_female
-                        )
-                    except:
-                        surgical_intervention_female = 0
+            #         surgical_intervention_female_number = total_art_female + total_exo_female + total_sdf_female
+            #         try:
+            #             surgical_intervention_female = (surgical_intervention_female_number * 100) / (
+            #                 encounter_female
+            #             )
+            #         except:
+            #             surgical_intervention_female = 0
                     
-                    surgical_intervention_child_number = total_art_child + total_exo_child + total_sdf_child
-                    try:
-                        surgical_intervention_child = (surgical_intervention_child_number * 100) / (
-                            encounter_child
-                        )
-                    except:
-                        surgical_intervention_child = 0
+            #         surgical_intervention_child_number = total_art_child + total_exo_child + total_sdf_child
+            #         try:
+            #             surgical_intervention_child = (surgical_intervention_child_number * 100) / (
+            #                 encounter_child
+            #             )
+            #         except:
+            #             surgical_intervention_child = 0
                     
-                    surgical_intervention_teen_number = total_art_teen + total_exo_teen + total_sdf_teen
-                    try:
-                        surgical_intervention_teen = (surgical_intervention_teen_number * 100) / (
-                            encounter_teen
-                        )
-                    except:
-                        surgical_intervention_teen = 0
+            #         surgical_intervention_teen_number = total_art_teen + total_exo_teen + total_sdf_teen
+            #         try:
+            #             surgical_intervention_teen = (surgical_intervention_teen_number * 100) / (
+            #                 encounter_teen
+            #             )
+            #         except:
+            #             surgical_intervention_teen = 0
                     
-                    surgical_intervention_adult_number = total_art_adult + total_exo_adult + total_sdf_adult
-                    try:
-                        surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
-                            encounter_adult
-                        )
-                    except:
-                        surgical_intervention_adult = 0
+            #         surgical_intervention_adult_number = total_art_adult + total_exo_adult + total_sdf_adult
+            #         try:
+            #             surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
+            #                 encounter_adult
+            #             )
+            #         except:
+            #             surgical_intervention_adult = 0
 
-                    surgical_intervention_old_number = total_art_old + total_exo_old + total_sdf_old
-                    try:
-                        surgical_intervention_old = (surgical_intervention_old_number * 100) / (
-                            encounter_old
-                        )
-                    except:
-                        surgical_intervention_old = 0
+            #         surgical_intervention_old_number = total_art_old + total_exo_old + total_sdf_old
+            #         try:
+            #             surgical_intervention_old = (surgical_intervention_old_number * 100) / (
+            #                 encounter_old
+            #             )
+            #         except:
+            #             surgical_intervention_old = 0
                     
-                    prevention_total_number = prevention_male_number + prevention_female_number
-                    surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
-                    early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
+            #         prevention_total_number = prevention_male_number + prevention_female_number
+            #         surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+            #         early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
                         
-                    total_encounter = encounter_male + encounter_female
-                    if total_encounter == 0:
-                        total_encounter = 1
-                    prevention_total = (prevention_total_number * 100)/total_encounter
-                    surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
-                    early_intervention_total = (early_intervention_total_number * 100)/total_encounter
-                    preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            #         total_encounter = encounter_male + encounter_female
+            #         if total_encounter == 0:
+            #             total_encounter = 1
+            #         prevention_total = (prevention_total_number * 100)/total_encounter
+            #         surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
+            #         early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+            #         preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
                 
 
-                else:
-                    encounter_male = []
-                    encounter_female = []
-                    encounter_child = []
-                    encounter_teen = []
-                    encounter_adult = []
-                    encounter_old = []
+            #     else:
+            encounter_male = []
+            encounter_female = []
+            encounter_child = []
+            encounter_teen = []
+            encounter_adult = []
+            encounter_old = []
 
-                    refer_male = []
-                    refer_female = []
-                    refer_child = []
-                    refer_teen = []
-                    refer_adult = []
-                    refer_old = []
-                    total_refer = []
+            refer_male = []
+            refer_female = []
+            refer_child = []
+            refer_teen = []
+            refer_adult = []
+            refer_old = []
+            total_refer = []
 
-                    total_seal_male = []
-                    total_seal_female = []
-                    total_seal_child = []
-                    total_seal_teen = []
-                    total_seal_adult = []
-                    total_seal_old = []
+            total_seal_male = []
+            total_seal_female = []
+            total_seal_child = []
+            total_seal_teen = []
+            total_seal_adult = []
+            total_seal_old = []
 
-                    totalfv_male = []
-                    totalfv_female = []
-                    totalfv_child = []
-                    totalfv_teen = []
-                    totalfv_adult = []
-                    totalfv_old = []
+            totalfv_male = []
+            totalfv_female = []
+            totalfv_child = []
+            totalfv_teen = []
+            totalfv_adult = []
+            totalfv_old = []
 
-                    total_exo_male = []
-                    total_exo_female = []
-                    total_exo_child = []
-                    total_exo_teen = []
-                    total_exo_adult = []
-                    total_exo_old = []
+            total_exo_male = []
+            total_exo_female = []
+            total_exo_child = []
+            total_exo_teen = []
+            total_exo_adult = []
+            total_exo_old = []
 
-                    total_art_male = []
-                    total_art_female = []
-                    total_art_child = []
-                    total_art_teen = []
-                    total_art_adult = []
-                    total_art_old = []
+            total_art_male = []
+            total_art_female = []
+            total_art_child = []
+            total_art_teen = []
+            total_art_adult = []
+            total_art_old = []
 
-                    total_sdf_male = []
-                    total_sdf_female = []
-                    total_sdf_child = []
-                    total_sdf_teen = []
-                    total_sdf_adult = []
-                    total_sdf_old = []
+            total_sdf_male = []
+            total_sdf_female = []
+            total_sdf_child = []
+            total_sdf_teen = []
+            total_sdf_adult = []
+            total_sdf_old = []
 
-                    total_fsdf_male = []
-                    total_fsdf_female = []
-                    total_fsdf_child = []
-                    total_fsdf_teen = []
-                    total_fsdf_adult = []
-                    total_fsdf_old = []
+            total_fsdf_male = []
+            total_fsdf_female = []
+            total_fsdf_child = []
+            total_fsdf_teen = []
+            total_fsdf_adult = []
+            total_fsdf_old = []
 
-                    for location in location_list:
-                        encounter_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .values("encounter_id")
-                            .annotate(Count("encounter_id"))
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        encounter_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .values("encounter_id")
-                            .annotate(Count("encounter_id"))
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        encounter_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .values("encounter_id")
-                            .annotate(Count("encounter_id"))
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        encounter_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .values("encounter_id")
-                            .annotate(Count("encounter_id"))
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        encounter_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .values("encounter_id")
-                            .annotate(Count("encounter_id"))
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        encounter_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .values("encounter_id")
-                            .annotate(Count("encounter_id"))
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+            for location in location_list:
+                encounter_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .values("encounter_id")
+                    .annotate(Count("encounter_id"))
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                encounter_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .values("encounter_id")
+                    .annotate(Count("encounter_id"))
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                encounter_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .values("encounter_id")
+                    .annotate(Count("encounter_id"))
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                encounter_teen.append(
+                Visualization.objects.filter(active=True,
+                    age__range=(13, 18),
+                    created_at__range=[start_date, end_date],
+                    geography_id=location.id,
+                )
+                .values("encounter_id")
+                .annotate(Count("encounter_id"))
+                .filter(
+                    Q(activities_id=health_post)
+                    | Q(activities_id=seminar)
+                    | Q(activities_id=outreach)
+                    | Q(activities_id=outreach)
+                )
+                .count()
+                )
+                encounter_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .values("encounter_id")
+                    .annotate(Count("encounter_id"))
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+               
+                encounter_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .values("encounter_id")
+                    .annotate(Count("encounter_id"))
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
-                        refer_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        refer_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        refer_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        refer_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        refer_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        refer_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_refer.append(
-                            Visualization.objects.filter(active=True,
-                                refer_hp=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            ).count()
-                        )
+                refer_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                refer_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                refer_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                refer_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                refer_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                refer_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_refer.append(
+                    Visualization.objects.filter(active=True,
+                        refer_hp=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).count()
+                )
 
-                        total_seal_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        
-                        total_seal_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_seal_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_seal_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_seal_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_seal_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                seal=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                total_seal_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        seal=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                
+                total_seal_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        seal=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_seal_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        seal=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_seal_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        seal=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_seal_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        seal=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_seal_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        seal=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
-                        totalfv_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                    
-                        totalfv_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        totalfv_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        totalfv_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        totalfv_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        totalfv_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                fv=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                totalfv_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+            
+                totalfv_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                totalfv_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                totalfv_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                totalfv_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                totalfv_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
-                        total_exo_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                exo=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_exo_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                exo=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_exo_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                exo=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_exo_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                exo=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_exo_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                exo=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_exo_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                exo=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                total_exo_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        exo=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_exo_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        exo=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_exo_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        exo=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_exo_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        exo=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_exo_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        exo=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                
+                total_exo_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        exo=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
-                        total_art_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                art=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_art_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                art=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_art_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                art=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_art_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                art=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_art_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                art=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_art_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                art=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                total_art_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        art=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_art_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        art=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_art_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        art=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_art_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        art=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_art_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        art=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_art_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        art=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
-                        total_sdf_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        
-                        total_sdf_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_sdf_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_sdf_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_sdf_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_sdf_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                sdf=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                total_sdf_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        sdf=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                
+                total_sdf_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        sdf=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_sdf_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        sdf=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_sdf_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        sdf=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_sdf_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        sdf=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_sdf_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        sdf=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
+                total_fsdf_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                
+                total_fsdf_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="female",
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_fsdf_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_fsdf_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_fsdf_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
+                total_fsdf_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    )
+                    .filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=outreach)
+                    )
+                    .count()
+                )
 
+                # Preventive Ratio
+                try:
+                    preventive_ratio_male = (
+                        sum(total_seal_male) + sum(totalfv_male) + sum(total_fsdf_male)
+                    ) / (
+                        sum(total_exo_male)
+                        + sum(total_art_male)
+                        + sum(total_sdf_male)
+                    )
+                except:
+                    preventive_ratio_male = 0
+                try:
+                    preventive_ratio_female = (
+                        sum(total_seal_female) + sum(totalfv_female) + sum(total_fsdf_female)
+                    ) / (
+                        sum(total_exo_female)
+                        + sum(total_art_female)
+                        + sum(total_sdf_female)
+                    )
+                except:
+                    preventive_ratio_female = 0
+                try:
+                    preventive_ratio_child = (
+                        sum(total_seal_child) + sum(totalfv_child) + sum(total_fsdf_child)
+                    ) / (
+                        sum(total_exo_child)
+                        + sum(total_art_child)
+                        + sum(total_sdf_child)
+                    )
+                except:
+                    preventive_ratio_child = 0
+                try:
+                    preventive_ratio_teen = (
+                        sum(total_seal_teen) + sum(totalfv_teen) + sum(total_fsdf_teen)
+                    ) / (
+                        sum(total_exo_teen)
+                        + sum(total_art_teen)
+                        + sum(total_sdf_teen)
+                    )
+                except:
+                    preventive_ratio_teen = 0
+                try:
+                    preventive_ratio_adult = (
+                        sum(total_seal_adult) + sum(totalfv_adult) + sum(total_fsdf_adult)
+                    ) / (
+                        sum(total_exo_adult)
+                        + sum(total_art_adult)
+                        + sum(total_sdf_adult)
+                    )
+                except:
+                    preventive_ratio_adult = 0
+                try:
+                    preventive_ratio_old = (
+                        sum(total_seal_old) + sum(totalfv_old) + sum(total_fsdf_old)
+                    ) / (
+                        sum(total_exo_old) + sum(total_art_old) + sum(total_sdf_old)
+                    )
+                except:
+                    preventive_ratio_old = 0
 
-                        total_fsdf_male.append(
-                            Visualization.objects.filter(active=True,
-                                gender="male",
-                                sdf_whole_mouth=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        
-                        total_fsdf_female.append(
-                            Visualization.objects.filter(active=True,
-                                gender="female",
-                                sdf_whole_mouth=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_fsdf_child.append(
-                            Visualization.objects.filter(active=True,
-                                age__lt=18,
-                                sdf_whole_mouth=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_fsdf_teen.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(13, 18),
-                                sdf_whole_mouth=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_fsdf_adult.append(
-                            Visualization.objects.filter(active=True,
-                                age__range=(19, 60),
-                                sdf_whole_mouth=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
-                        total_fsdf_old.append(
-                            Visualization.objects.filter(active=True,
-                                age__gt=60,
-                                sdf_whole_mouth=True,
-                                created_at__range=[start_date, end_date],
-                                geography_id=location.id,
-                            )
-                            .filter(
-                                Q(activities_id=health_post)
-                                | Q(activities_id=seminar)
-                                | Q(activities_id=outreach)
-                                | Q(activities_id=outreach)
-                            )
-                            .count()
-                        )
+                # Early Intervention Ratio
+                try:
+                    early_intervention_ratio_male = (
+                        sum(total_art_male) + sum(total_sdf_male)
+                    ) / sum(total_exo_male)
+                except:
+                    early_intervention_ratio_male = 0
 
-                    # Preventive Ratio
-                    try:
-                        preventive_ratio_male = (
-                            sum(total_seal_male) + sum(totalfv_male) + sum(total_fsdf_male)
-                        ) / (
-                            sum(total_exo_male)
-                            + sum(total_art_male)
-                            + sum(total_sdf_male)
-                        )
-                    except:
-                        preventive_ratio_male = 0
-                    try:
-                        preventive_ratio_female = (
-                            sum(total_seal_female) + sum(totalfv_female) + sum(total_fsdf_female)
-                        ) / (
-                            sum(total_exo_female)
-                            + sum(total_art_female)
-                            + sum(total_sdf_female)
-                        )
-                    except:
-                        preventive_ratio_female = 0
-                    try:
-                        preventive_ratio_child = (
-                            sum(total_seal_child) + sum(totalfv_child) + sum(total_fsdf_child)
-                        ) / (
-                            sum(total_exo_child)
-                            + sum(total_art_child)
-                            + sum(total_sdf_child)
-                        )
-                    except:
-                        preventive_ratio_child = 0
-                    try:
-                        preventive_ratio_teen = (
-                            sum(total_seal_teen) + sum(totalfv_teen) + sum(total_fsdf_teen)
-                        ) / (
-                            sum(total_exo_teen)
-                            + sum(total_art_teen)
-                            + sum(total_sdf_teen)
-                        )
-                    except:
-                        preventive_ratio_teen = 0
-                    try:
-                        preventive_ratio_adult = (
-                            sum(total_seal_adult) + sum(totalfv_adult) + sum(total_fsdf_adult)
-                        ) / (
-                            sum(total_exo_adult)
-                            + sum(total_art_adult)
-                            + sum(total_sdf_adult)
-                        )
-                    except:
-                        preventive_ratio_adult = 0
-                    try:
-                        preventive_ratio_old = (
-                            sum(total_seal_old) + sum(totalfv_old) + sum(total_fsdf_old)
-                        ) / (
-                            sum(total_exo_old) + sum(total_art_old) + sum(total_sdf_old)
-                        )
-                    except:
-                        preventive_ratio_old = 0
+                try:
+                    early_intervention_ratio_female = (
+                        sum(total_art_female) + sum(total_sdf_female)
+                    ) / sum(total_exo_female)
+                except:
+                    early_intervention_ratio_female = 0
 
-                    # Early Intervention Ratio
-                    try:
-                        early_intervention_ratio_male = (
-                            sum(total_art_male) + sum(total_sdf_male)
-                        ) / sum(total_exo_male)
-                    except:
-                        early_intervention_ratio_male = 0
+                try:
+                    early_intervention_ratio_child = (
+                        sum(total_art_child) + sum(total_sdf_child)
+                    ) / sum(total_exo_child)
+                except:
+                    early_intervention_ratio_child = 0
+                
+                try:
+                    early_intervention_ratio_teen = (
+                        sum(total_art_teen) + sum(total_sdf_teen)
+                    ) / sum(total_exo_teen)
+                except:
+                    early_intervention_ratio_teen = 0
 
-                    try:
-                        early_intervention_ratio_female = (
-                            sum(total_art_female) + sum(total_sdf_female)
-                        ) / sum(total_exo_female)
-                    except:
-                        early_intervention_ratio_female = 0
+                try:
+                    early_intervention_ratio_adult = (
+                        sum(total_art_adult) + sum(total_sdf_adult)
+                    ) / sum(total_exo_adult)
+                except:
+                    early_intervention_ratio_adult = 0
 
-                    try:
-                        early_intervention_ratio_child = (
-                            sum(total_art_child) + sum(total_sdf_child)
-                        ) / sum(total_exo_child)
-                    except:
-                        early_intervention_ratio_child = 0
-                    
-                    try:
-                        early_intervention_ratio_teen = (
-                            sum(total_art_teen) + sum(total_sdf_teen)
-                        ) / sum(total_exo_teen)
-                    except:
-                        early_intervention_ratio_teen = 0
+                try:
+                    early_intervention_ratio_old = (
+                        sum(total_art_old) + sum(total_sdf_old)
+                    ) / sum(total_exo_old)
+                except:
+                    early_intervention_ratio_old = 0
 
-                    try:
-                        early_intervention_ratio_adult = (
-                            sum(total_art_adult) + sum(total_sdf_adult)
-                        ) / sum(total_exo_adult)
-                    except:
-                        early_intervention_ratio_adult = 0
+                early_intervention_ratio_total = early_intervention_ratio_male + early_intervention_ratio_female 
 
-                    try:
-                        early_intervention_ratio_old = (
-                            sum(total_art_old) + sum(total_sdf_old)
-                        ) / sum(total_exo_old)
-                    except:
-                        early_intervention_ratio_old = 0
+                # Recall %
+                try:
+                    recall_percent_male = (
+                        sum(refer_male) / sum(encounter_male)
+                    ) * 100
+                except:
+                    recall_percent_male = 0
 
-                    early_intervention_ratio_total = early_intervention_ratio_male + early_intervention_ratio_female 
+                try:
+                    recall_percent_female = (
+                        sum(refer_female) / sum(encounter_female)
+                    ) * 100
+                except:
+                    recall_percent_female = 0
 
-                    # Recall %
-                    try:
-                        recall_percent_male = (
-                            sum(refer_male) / sum(encounter_male)
-                        ) * 100
-                    except:
-                        recall_percent_male = 0
+                try:
+                    recall_percent_child = (
+                        sum(refer_child) / sum(encounter_child)
+                    ) * 100
+                except:
+                    recall_percent_child = 0
+                
+                try:
+                    recall_percent_teen = (
+                        sum(refer_teen) / sum(encounter_teen)
+                    ) * 100
+                except:
+                    recall_percent_teen = 0
 
-                    try:
-                        recall_percent_female = (
-                            sum(refer_female) / sum(encounter_female)
-                        ) * 100
-                    except:
-                        recall_percent_female = 0
+                try:
+                    recall_percent_adult = (
+                        sum(refer_adult) / sum(encounter_adult)
+                    ) * 100
+                except:
+                    recall_percent_adult = 0
 
-                    try:
-                        recall_percent_child = (
-                            sum(refer_child) / sum(encounter_child)
-                        ) * 100
-                    except:
-                        recall_percent_child = 0
-                    
-                    try:
-                        recall_percent_teen = (
-                            sum(refer_teen) / sum(encounter_teen)
-                        ) * 100
-                    except:
-                        recall_percent_teen = 0
+                try:
+                    recall_percent_old = (sum(refer_old) / sum(encounter_old)) * 100
+                except:
+                    recall_percent_old = 0
 
-                    try:
-                        recall_percent_adult = (
-                            sum(refer_adult) / sum(encounter_adult)
-                        ) * 100
-                    except:
-                        recall_percent_adult = 0
+                recall_percent_total = recall_percent_male + recall_percent_female
 
-                    try:
-                        recall_percent_old = (sum(refer_old) / sum(encounter_old)) * 100
-                    except:
-                        recall_percent_old = 0
+                # Prevention  
+                prevention_male_number = sum(total_fsdf_male) + sum(total_seal_male) + sum(totalfv_male) 
+                try:
+                    prevention_male = (prevention_male_number * 100) / (
+                        sum(encounter_male)
+                    )
+                except:
+                    prevention_male = 0
+                
+                prevention_female_number = sum(total_fsdf_female) + sum(total_seal_female) + sum(totalfv_female) 
+                try:
+                    prevention_female = (prevention_female_number * 100) / (
+                        sum(encounter_female)
+                    )
+                except:
+                    prevention_female = 0
+                
+                prevention_child_number = sum(total_fsdf_child) + sum(total_seal_child) + sum(totalfv_child) 
+                try:
+                    prevention_child = (prevention_child_number *100 ) / (
+                        sum(encounter_child)
+                    )
+                except:
+                    prevention_child = 0
+                
+                prevention_teen_number = sum(total_fsdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) 
+                try:
+                    prevention_teen = (prevention_teen_number * 100) / (
+                        sum(encounter_teen)
+                    )
+                except:
+                    prevention_teen = 0
+                
+                prevention_adult_number = sum(total_fsdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) 
+                try:
+                    prevention_adult = (prevention_adult_number * 100) / (
+                        sum(encounter_adult)
+                    )
+                except:
+                    prevention_adult = 0
+                
+                prevention_old_number = sum(total_fsdf_old) + sum(total_seal_old) + sum(totalfv_old) 
+                try:
+                    prevention_old = (prevention_old_number * 100 ) / (
+                        sum(encounter_old)
+                    )
+                except:
+                    prevention_old = 0
+                
+                # Early intervention  
+                early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
+                try:
+                    early_intervention_male = (early_intervention_male_number * 100) / (
+                        sum(encounter_male)
+                    )
+                except:
+                    early_intervention_male = 0
+                
+                early_intervention_female_number = sum(total_art_female) + sum(total_sdf_female) 
+                try:
+                    early_intervention_female = (early_intervention_female_number * 100 ) / (
+                        sum(encounter_female)
+                    )
+                except:
+                    early_intervention_female = 0
+                
+                early_intervention_child_number = sum(total_art_child) + sum(total_sdf_child)
+                try:
+                    early_intervention_child = (early_intervention_child_number * 100) / (
+                        sum(encounter_child)
+                    )
+                except:
+                    early_intervention_child = 0
+                
+                early_intervention_teen_number = sum(total_art_teen) + sum(total_sdf_teen) 
+                try:
+                    early_intervention_teen = (early_intervention_teen_number * 100) / (
+                        sum(encounter_teen)
+                    )
+                except:
+                    early_intervention_teen = 0
+                
+                early_intervention_adult_number = sum(total_art_adult) + sum(total_sdf_adult)
+                try:
+                    early_intervention_adult = (early_intervention_adult_number * 100) / (
+                        sum(encounter_adult)
+                    )
+                except:
+                    early_intervention_adult = 0
+                
+                early_intervention_old_number = sum(total_art_old) + sum(total_sdf_old)
+                try:
+                    early_intervention_old = (early_intervention_old_number) / (
+                        sum(encounter_old)
+                    )
+                except:
+                    early_intervention_old = 0
+                
+                # Surgical intervention  
+                surgical_intervention_male_number = sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)
+                try:
+                    surgical_intervention_male = (surgical_intervention_male_number *100) / (
+                        sum(encounter_male)
+                    )
+                except:
+                    surgical_intervention_male = 0
+                
+                surgical_intervention_female_number = sum(total_art_female) + sum(total_exo_female) + sum(total_sdf_female) 
+                try:
+                    surgical_intervention_female = (surgical_intervention_female_number * 100) / (
+                        sum(encounter_female)
+                    )
+                except:
+                    surgical_intervention_female = 0
+                
+                surgical_intervention_child_number = sum(total_art_child) + sum(total_exo_child) + sum(total_sdf_child)
+                try:
+                    surgical_intervention_child = (surgical_intervention_child_number * 100) / (
+                        sum(encounter_child)
+                    )
+                except:
+                    surgical_intervention_child = 0
+                
+                surgical_intervention_teen_number = sum(total_art_teen) + sum(total_exo_teen) + sum(total_sdf_teen)
+                try:
+                    surgical_intervention_teen = (surgical_intervention_teen_number * 100 ) / (
+                        sum(encounter_teen)
+                    )
+                except:
+                    surgical_intervention_teen = 0
+                
+                surgical_intervention_adult_number = sum(total_art_adult) + sum(total_exo_adult) + sum(total_sdf_adult) 
+                try:
+                    surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
+                        sum(encounter_adult)
+                    )
+                except:
+                    surgical_intervention_adult = 0
+                
+                surgical_intervention_old_number = sum(total_art_old) + sum(total_exo_old) + sum(total_sdf_old)
+                try:
+                    surgical_intervention_old = (surgical_intervention_old_number * 100) / (
+                        sum(encounter_old)
+                    )
+                except:
+                    surgical_intervention_old = 0
+                
+                total_encounter = sum(encounter_male) + sum(encounter_female)
+                if total_encounter == 0:
+                    total_encounter = 1
 
-                    recall_percent_total = recall_percent_male + recall_percent_female
+                prevention_total_number = prevention_male_number + prevention_female_number
+                surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
+                early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
 
-                    # Prevention  
-                    prevention_male_number = sum(total_fsdf_male) + sum(total_seal_male) + sum(totalfv_male) 
-                    try:
-                        prevention_male = (prevention_male_number * 100) / (
-                            sum(encounter_male)
-                        )
-                    except:
-                        prevention_male = 0
-                    
-                    prevention_female_number = sum(total_fsdf_female) + sum(total_seal_female) + sum(totalfv_female) 
-                    try:
-                        prevention_female = (prevention_female_number * 100) / (
-                            sum(encounter_female)
-                        )
-                    except:
-                        prevention_female = 0
-                    
-                    prevention_child_number = sum(total_fsdf_child) + sum(total_seal_child) + sum(totalfv_child) 
-                    try:
-                        prevention_child = (prevention_child_number *100 ) / (
-                            sum(encounter_child)
-                        )
-                    except:
-                        prevention_child = 0
-                    
-                    prevention_teen_number = sum(total_fsdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) 
-                    try:
-                        prevention_teen = (prevention_teen_number * 100) / (
-                            sum(encounter_teen)
-                        )
-                    except:
-                        prevention_teen = 0
-                    
-                    prevention_adult_number = sum(total_fsdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) 
-                    try:
-                        prevention_adult = (prevention_adult_number * 100) / (
-                            sum(encounter_adult)
-                        )
-                    except:
-                        prevention_adult = 0
-                    
-                    prevention_old_number = sum(total_fsdf_old) + sum(total_seal_old) + sum(totalfv_old) 
-                    try:
-                        prevention_old = (prevention_old_number * 100 ) / (
-                            sum(encounter_old)
-                        )
-                    except:
-                        prevention_old = 0
-                    
-                    # Early intervention  
-                    early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
-                    try:
-                        early_intervention_male = (early_intervention_male_number * 100) / (
-                            sum(encounter_male)
-                        )
-                    except:
-                        early_intervention_male = 0
-                    
-                    early_intervention_female_number = sum(total_art_female) + sum(total_sdf_female) 
-                    try:
-                        early_intervention_female = (early_intervention_female_number * 100 ) / (
-                            sum(encounter_female)
-                        )
-                    except:
-                        early_intervention_female = 0
-                    
-                    early_intervention_child_number = sum(total_art_child) + sum(total_sdf_child)
-                    try:
-                        early_intervention_child = (early_intervention_child_number * 100) / (
-                            sum(encounter_child)
-                        )
-                    except:
-                        early_intervention_child = 0
-                    
-                    early_intervention_teen_number = sum(total_art_teen) + sum(total_sdf_teen) 
-                    try:
-                        early_intervention_teen = (early_intervention_teen_number * 100) / (
-                            sum(encounter_teen)
-                        )
-                    except:
-                        early_intervention_teen = 0
-                    
-                    early_intervention_adult_number = sum(total_art_adult) + sum(total_sdf_adult)
-                    try:
-                        early_intervention_adult = (early_intervention_adult_number * 100) / (
-                            sum(encounter_adult)
-                        )
-                    except:
-                        early_intervention_adult = 0
-                    
-                    early_intervention_old_number = sum(total_art_old) + sum(total_sdf_old)
-                    try:
-                        early_intervention_old = (early_intervention_old_number) / (
-                            sum(encounter_old)
-                        )
-                    except:
-                        early_intervention_old = 0
-                    
-                    # Surgical intervention  
-                    surgical_intervention_male_number = sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)
-                    try:
-                        surgical_intervention_male = (surgical_intervention_male_number *100) / (
-                            sum(encounter_male)
-                        )
-                    except:
-                        surgical_intervention_male = 0
-                    
-                    surgical_intervention_female_number = sum(total_art_female) + sum(total_exo_female) + sum(total_sdf_female) 
-                    try:
-                        surgical_intervention_female = (surgical_intervention_female_number * 100) / (
-                            sum(encounter_female)
-                        )
-                    except:
-                        surgical_intervention_female = 0
-                    
-                    surgical_intervention_child_number = sum(total_art_child) + sum(total_exo_child) + sum(total_sdf_child)
-                    try:
-                        surgical_intervention_child = (surgical_intervention_child_number * 100) / (
-                            sum(encounter_child)
-                        )
-                    except:
-                        surgical_intervention_child = 0
-                    
-                    surgical_intervention_teen_number = sum(total_art_teen) + sum(total_exo_teen) + sum(total_sdf_teen)
-                    try:
-                        surgical_intervention_teen = (surgical_intervention_teen_number * 100 ) / (
-                            sum(encounter_teen)
-                        )
-                    except:
-                        surgical_intervention_teen = 0
-                    
-                    surgical_intervention_adult_number = sum(total_art_adult) + sum(total_exo_adult) + sum(total_sdf_adult) 
-                    try:
-                        surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
-                            sum(encounter_adult)
-                        )
-                    except:
-                        surgical_intervention_adult = 0
-                    
-                    surgical_intervention_old_number = sum(total_art_old) + sum(total_exo_old) + sum(total_sdf_old)
-                    try:
-                        surgical_intervention_old = (surgical_intervention_old_number * 100) / (
-                            sum(encounter_old)
-                        )
-                    except:
-                        surgical_intervention_old = 0
-                    
-                    total_encounter = sum(encounter_male) + sum(encounter_female)
-                    if total_encounter == 0:
-                        total_encounter = 1
-
-                    prevention_total_number = prevention_male_number + prevention_female_number
-                    surgical_intervention_total_number = surgical_intervention_male_number + surgical_intervention_female_number
-                    early_intervention_total_number = early_intervention_male_number + early_intervention_female_number
-
-                    prevention_total = (prevention_total_number * 100)/total_encounter
-                    surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
-                    early_intervention_total = (early_intervention_total_number * 100)/total_encounter
-                    preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+                prevention_total = (prevention_total_number * 100)/total_encounter
+                surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
+                early_intervention_total = (early_intervention_total_number * 100)/total_encounter
+                preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
                 return Response(
                     [   
                         [
