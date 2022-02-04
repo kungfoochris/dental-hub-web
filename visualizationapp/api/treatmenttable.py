@@ -1469,7 +1469,11 @@ class TreatmentStrategicData(APIView):
             prevention_total = (prevention_total_number * 100)/total_encounter
             surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
             early_intervention_total = (early_intervention_total_number * 100)/total_encounter
-            preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            try:
+                preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            except:
+                preventive_ratio_total = 0
+
             
             return Response(
                 [   
@@ -2668,7 +2672,10 @@ class TreatmentStrategicData(APIView):
             prevention_total = (prevention_total_number * 100)/total_encounter
             surgical_intervention_total = (surgical_intervention_total_number * 100)/total_encounter
             early_intervention_total = (early_intervention_total_number * 100)/total_encounter
-            preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            try:
+                preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
+            except:
+                preventive_ratio_total = 0
             return Response(
                 [   
                     [
