@@ -21030,3 +21030,44 @@ Traceback (most recent call last):
     preventive_ratio_total = prevention_total_number / surgical_intervention_total_number
 ZeroDivisionError: division by zero
 2022-02-03 17:48:04,652 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 107341
+2022-02-07 09:46:23,753 django.request WARNING  Unauthorized: /api/v1/treatmentstrategicdatas
+2022-02-07 09:46:23,807 django.server WARNING  "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 401 10007
+2022-02-07 09:46:25,413 django.request WARNING  Not Found: /favicon.ico
+2022-02-07 09:46:25,415 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-07 09:46:27,438 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentstrategicdatas HTTP/1.1" 200 2733
+2022-02-07 09:46:35,065 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-07 09:46:35,575 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16506
+2022-02-07 09:47:50,944 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16507
+2022-02-07 10:28:49,494 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
+2022-02-07 10:29:14,232 django.server INFO     "POST /api/v1/treatment HTTP/1.1" 200 15475
+2022-02-07 13:56:09,828 django.request WARNING  Unauthorized: /api/v1/treatmentstrategicdatas
+2022-02-07 13:56:09,861 django.server WARNING  "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 401 10007
+2022-02-07 13:56:13,907 django.request WARNING  Unauthorized: /api/v1/treatment
+2022-02-07 13:56:13,908 django.server WARNING  "GET /api/v1/treatment HTTP/1.1" 401 9935
+2022-02-07 13:56:16,713 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatment HTTP/1.1" 200 2719
+2022-02-07 13:56:24,309 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-07 13:56:24,593 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
+2022-02-07 14:19:26,816 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
+2022-02-07 14:19:41,086 django.request ERROR    Internal Server Error: /api/v1/treatment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 541, in post
+    total_fv_list.append(
+NameError: name 'total_fv_list' is not defined
+2022-02-07 14:19:41,089 django.server ERROR    "POST /api/v1/treatment HTTP/1.1" 500 96018
+2022-02-07 14:21:09,207 django.server INFO     "POST /api/v1/treatment HTTP/1.1" 200 15475
