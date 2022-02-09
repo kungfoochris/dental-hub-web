@@ -56,14 +56,6 @@ class TreatmentTableBasicData(APIView):
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
 
-            total_male_fsdf_fv = []
-            total_female_fsdf_fv = []
-            total_child_fsdf_fv = []
-            total_teen_fsdf_fv = []
-            total_adult_fsdf_fv = []
-            total_old_fsdf_fv = []
-
-            treatment_obj = Treatment.objects.all().count()
             treatment_male = Visualization.objects.filter(active=True,
                 gender="male", created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
@@ -86,92 +78,128 @@ class TreatmentTableBasicData(APIView):
             ).count()
 
             # F-SDF FV
-            male_fsdf_fv = Visualization.objects.filter(
+            
+            male_fsdf_and_fv1 = Visualization.objects.filter(
+                active=True,
+                gender="male",
+                sdf_whole_mouth=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            male_fsdf_and_fv2 = Visualization.objects.filter(
+                active=True,
+                gender="male",
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            male_fsdf_and_fv3 = Visualization.objects.filter(
                 active=True,
                 gender="male",
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            )
-            total_male_fsdf_fv.append(male_fsdf_fv.count())
-            for i in male_fsdf_fv:
-                total_male_fsdf_fv.append(Visualization.objects.filter(
-                    active=True,
-                    gender="male",
-                    created_at__range=[last_30_days_obj, today_date_obj],
-                ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).exclude(id=i.id).count())
+            ).count()
+            total_male_fsdf_fv = male_fsdf_and_fv1 + male_fsdf_and_fv2 - male_fsdf_and_fv3
+            print(male_fsdf_and_fv1)
+            print(male_fsdf_and_fv2)
+            print(male_fsdf_and_fv3)
 
-            female_fsdf_fv = Visualization.objects.filter(
+            female_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
-                gender="female",
+                sdf_whole_mouth=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            female_fsdf_and_fv2 = Visualization.objects.filter(
+                active=True,
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            female_fsdf_and_fv3 = Visualization.objects.filter(
+                active=True,
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            )
-            total_female_fsdf_fv.append(female_fsdf_fv.count())
-            for i in female_fsdf_fv:
-                total_female_fsdf_fv.append(Visualization.objects.filter(
-                    active=True,
-                    gender="female",
-                    created_at__range=[last_30_days_obj, today_date_obj],
-                ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).exclude(id=i.id).count())
-            
-            child_fsdf_fv = Visualization.objects.filter(
+            ).count()
+            total_female_fsdf_fv = female_fsdf_and_fv1 + female_fsdf_and_fv2 - female_fsdf_and_fv3
+
+            child_fsdf_and_fv1 = Visualization.objects.filter(
+                active=True,
                 age__lt=13,
+                sdf_whole_mouth=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            child_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
+                age__lt=13,
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            child_fsdf_and_fv3 = Visualization.objects.filter(
+                active=True,
+                age__lt=13,
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            )
-            total_child_fsdf_fv.append(child_fsdf_fv.count())
-            for i in child_fsdf_fv:
-                total_child_fsdf_fv.append(Visualization.objects.filter(
-                    age__lt=13,
-                    active=True,
-                    created_at__range=[last_30_days_obj, today_date_obj],
-                ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).exclude(id=i.id).count())
-            
-            teen_fsdf_fv = Visualization.objects.filter(
+            ).count()
+            total_child_fsdf_fv = child_fsdf_and_fv1 + child_fsdf_and_fv2 - child_fsdf_and_fv3
+
+            teen_fsdf_and_fv1 = Visualization.objects.filter(
+                active=True,
                 age__range=(13, 18),
+                sdf_whole_mouth=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            teen_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
+                age__range=(13, 18),
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            teen_fsdf_and_fv3 = Visualization.objects.filter(
+                active=True,
+                age__range=(13, 18),
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            )
-            total_teen_fsdf_fv.append(teen_fsdf_fv.count())
-            for i in teen_fsdf_fv:
-                total_teen_fsdf_fv.append(Visualization.objects.filter(
-                    age__range=(13, 18),
-                    active=True,
-                    created_at__range=[last_30_days_obj, today_date_obj],
-                ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).exclude(id=i.id).count())
-            
-            adult_fsdf_fv = Visualization.objects.filter(
+            ).count()
+            total_teen_fsdf_fv = teen_fsdf_and_fv1 + teen_fsdf_and_fv2 - teen_fsdf_and_fv3
+
+            adult_fsdf_and_fv1 = Visualization.objects.filter(
+                active=True,
                 age__range=(19, 60),
+                sdf_whole_mouth=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            adult_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
+                age__range=(19, 60),
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            adult_fsdf_and_fv3 = Visualization.objects.filter(
+                active=True,
+                age__range=(19, 60),
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            )
-            total_adult_fsdf_fv.append(adult_fsdf_fv.count())
-            for i in adult_fsdf_fv:
-                total_adult_fsdf_fv.append(Visualization.objects.filter(
-                    age__range=(19, 60),
-                    active=True,
-                    created_at__range=[last_30_days_obj, today_date_obj],
-                ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).exclude(id=i.id).count())
-            
-            old_fsdf_fv = Visualization.objects.filter(
+            ).count()
+            total_adult_fsdf_fv = adult_fsdf_and_fv1 + adult_fsdf_and_fv2 - adult_fsdf_and_fv3
+
+            old_fsdf_and_fv1 = Visualization.objects.filter(
+                active=True,
                 age__gt=60,
+                sdf_whole_mouth=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            old_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
+                age__gt=60,
+                fv=True,
+                created_at__range=[last_30_days_obj, today_date_obj],
+            ).count()
+            old_fsdf_and_fv3 = Visualization.objects.filter(
+                active=True,
+                age__gt=60,
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            )
-            total_old_fsdf_fv.append(old_fsdf_fv.count())
-            for i in old_fsdf_fv:
-                total_old_fsdf_fv.append(Visualization.objects.filter(
-                    age__gt=60,
-                    active=True,
-                    created_at__range=[last_30_days_obj, today_date_obj],
-                ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).exclude(id=i.id).count())
-            
+            ).count()
+            total_old_fsdf_fv = old_fsdf_and_fv1 + old_fsdf_and_fv2 - old_fsdf_and_fv3
 
-
+        
 
             # SEAL
             sealant_male = Visualization.objects.filter(active=True,
@@ -207,22 +235,22 @@ class TreatmentTableBasicData(APIView):
             
 
             cavities_prevented_male = (
-                0.2 * sum(total_male_fsdf_fv) + 0.1 * sealant_male
+                0.2 * total_male_fsdf_fv + 0.1 * sealant_male
             )
             cavities_prevented_female = (
-                0.2 * sum(total_female_fsdf_fv) + 0.1 * sealant_female
+                0.2 * total_female_fsdf_fv + 0.1 * sealant_female
             )
             cavities_prevented_child = (
-                0.2 * sum(total_child_fsdf_fv) + 0.1 * sealant_child
+                0.2 * total_child_fsdf_fv + 0.1 * sealant_child
             )
             cavities_prevented_teen = (
-                0.2 * sum(total_teen_fsdf_fv) + 0.1 * sealant_teen
+                0.2 * total_teen_fsdf_fv + 0.1 * sealant_teen
             )
             cavities_prevented_adult = (
-                0.2 * sum(total_adult_fsdf_fv) + 0.1 * sealant_adult
+                0.2 * total_adult_fsdf_fv + 0.1 * sealant_adult
             )
             cavities_prevented_old = (
-                0.2 * sum(total_old_fsdf_fv) + 0.1 * sealant_old
+                0.2 * total_old_fsdf_fv + 0.1 * sealant_old
             )
             total_cavities = cavities_prevented_male + cavities_prevented_female
 
@@ -252,7 +280,7 @@ class TreatmentTableBasicData(APIView):
                     ],
                 ]
             )
-        return Response({"treatment_obj": "do not have a permission"}, status=400)
+        return Response({"message": "do not have a permission"}, status=400)
 
     def post(self, request, format=None):
         serializer = TreatmentStrategicDataSerializer(
@@ -301,7 +329,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -315,7 +343,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -329,7 +357,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -343,7 +371,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -357,7 +385,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -371,14 +399,39 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
 
 
                     # F-SDF FV
-                    male_fsdf_fv = Visualization.objects.filter(
+                    
+                    male_fsdf_and_fv1 = Visualization.objects.filter(
+                        active=True,
+                        gender="male",
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    male_fsdf_and_fv2 = Visualization.objects.filter(
+                        active=True,
+                        gender="male",
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    male_fsdf_and_fv3 = Visualization.objects.filter(
                         active=True,
                         gender="male",
                         sdf_whole_mouth=True,fv=True,
@@ -388,25 +441,37 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                    total_male_fsdf_fv.append(male_fsdf_fv.count())
-                    for i in male_fsdf_fv:
-                        total_male_fsdf_fv.append(Visualization.objects.filter(
-                            active=True,
-                            gender="male",
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        ).exclude(id=i.id).count())
+                            | Q(activities_id=training)
+                        ).count()
+                    total_male_fsdf_fv.append(male_fsdf_and_fv1 + male_fsdf_and_fv2 - male_fsdf_and_fv3)
+                    print(male_fsdf_and_fv1)
+                    print(male_fsdf_and_fv2)
+                    print(male_fsdf_and_fv3)
 
-                    female_fsdf_fv = Visualization.objects.filter(
+                    female_fsdf_and_fv1 = Visualization.objects.filter(
                         active=True,
-                        gender="female",
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    female_fsdf_and_fv2 = Visualization.objects.filter(
+                        active=True,
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    female_fsdf_and_fv3 = Visualization.objects.filter(
+                        active=True,
                         sdf_whole_mouth=True,fv=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -414,25 +479,37 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                    total_female_fsdf_fv.append(female_fsdf_fv.count())
-                    for i in female_fsdf_fv:
-                        total_female_fsdf_fv.append(Visualization.objects.filter(
-                            active=True,
-                            gender="female",
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        ).exclude(id=i.id).count())
-                    
-                    child_fsdf_fv = Visualization.objects.filter(
+                            | Q(activities_id=training)
+                        ).count()
+                    total_female_fsdf_fv.append(female_fsdf_and_fv1 + female_fsdf_and_fv2 - female_fsdf_and_fv3)
+
+                    child_fsdf_and_fv1 = Visualization.objects.filter(
+                        active=True,
                         age__lt=13,
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    child_fsdf_and_fv2 = Visualization.objects.filter(
                         active=True,
+                        age__lt=13,
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    child_fsdf_and_fv3 = Visualization.objects.filter(
+                        active=True,
+                        age__lt=13,
                         sdf_whole_mouth=True,fv=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -440,51 +517,75 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                    total_child_fsdf_fv.append(child_fsdf_fv.count())
-                    for i in child_fsdf_fv:
-                        total_child_fsdf_fv.append(Visualization.objects.filter(
-                            age__lt=13,
-                            active=True,
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        ).exclude(id=i.id).count())
-                    
-                    teen_fsdf_fv = Visualization.objects.filter(
+                            | Q(activities_id=training)
+                        ).count()
+                    total_child_fsdf_fv.append(child_fsdf_and_fv1 + child_fsdf_and_fv2 - child_fsdf_and_fv3)
+
+                    teen_fsdf_and_fv1 = Visualization.objects.filter(
+                        active=True,
                         age__range=(13, 18),
-                        active=True,
-                        sdf_whole_mouth=True,fv=True,
+                        sdf_whole_mouth=True,
                         created_at__range=[start_date, end_date],
-                            geography_id=location.id,
+                        geography_id=location.id,
                     ).filter(
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                    total_teen_fsdf_fv.append(teen_fsdf_fv.count())
-                    for i in teen_fsdf_fv:
-                        total_teen_fsdf_fv.append(Visualization.objects.filter(
-                            age__range=(13, 18),
-                            active=True,
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).filter(
+                            | Q(activities_id=training)
+                        ).count()
+                    teen_fsdf_and_fv2 = Visualization.objects.filter(
+                        active=True,
+                        age__range=(13, 18),
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    teen_fsdf_and_fv3 = Visualization.objects.filter(
+                        active=True,
+                        age__range=(13, 18),
+                        sdf_whole_mouth=True,fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                        ).exclude(id=i.id).count())
-                    
-                    adult_fsdf_fv = Visualization.objects.filter(
+                            | Q(activities_id=training)
+                        ).count()
+                    total_teen_fsdf_fv.append(teen_fsdf_and_fv1 + teen_fsdf_and_fv2 - teen_fsdf_and_fv3)
+
+                    adult_fsdf_and_fv1 = Visualization.objects.filter(
+                        active=True,
                         age__range=(19, 60),
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    adult_fsdf_and_fv2 = Visualization.objects.filter(
                         active=True,
+                        age__range=(19, 60),
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    adult_fsdf_and_fv3 = Visualization.objects.filter(
+                        active=True,
+                        age__range=(19, 60),
                         sdf_whole_mouth=True,fv=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -492,25 +593,37 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                    total_adult_fsdf_fv.append(adult_fsdf_fv.count())
-                    for i in adult_fsdf_fv:
-                        total_adult_fsdf_fv.append(Visualization.objects.filter(
-                            age__range=(19, 60),
-                            active=True,
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        ).exclude(id=i.id).count())
-                    
-                    old_fsdf_fv = Visualization.objects.filter(
+                            | Q(activities_id=training)
+                        ).count()
+                    total_adult_fsdf_fv.append(adult_fsdf_and_fv1 + adult_fsdf_and_fv2 - adult_fsdf_and_fv3)
+
+                    old_fsdf_and_fv1 = Visualization.objects.filter(
+                        active=True,
                         age__gt=60,
+                        sdf_whole_mouth=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    old_fsdf_and_fv2 = Visualization.objects.filter(
                         active=True,
+                        age__gt=60,
+                        fv=True,
+                        created_at__range=[start_date, end_date],
+                        geography_id=location.id,
+                    ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).count()
+                    old_fsdf_and_fv3 = Visualization.objects.filter(
+                        active=True,
+                        age__gt=60,
                         sdf_whole_mouth=True,fv=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -518,21 +631,9 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        )
-                    total_old_fsdf_fv.append(old_fsdf_fv.count())
-                    for i in old_fsdf_fv:
-                        total_old_fsdf_fv.append(Visualization.objects.filter(
-                            age__gt=60,
-                            active=True,
-                            created_at__range=[start_date, end_date],
-                            geography_id=location.id,
-                        ).filter(Q(fv=True)|Q(sdf_whole_mouth=True)).filter(
-                            Q(activities_id=health_post)
-                            | Q(activities_id=seminar)
-                            | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
-                        ).exclude(id=i.id).count())
+                            | Q(activities_id=training)
+                        ).count()
+                    total_old_fsdf_fv.append(old_fsdf_and_fv1 + old_fsdf_and_fv2 - old_fsdf_and_fv3)
                         
                     # SEAL
                     sealant_male_list.append(
@@ -546,7 +647,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -561,7 +662,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -576,7 +677,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -591,7 +692,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -606,7 +707,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -621,7 +722,7 @@ class TreatmentTableBasicData(APIView):
                             Q(activities_id=health_post)
                             | Q(activities_id=seminar)
                             | Q(activities_id=outreach)
-                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
                         )
                         .count()
                     )
@@ -1442,7 +1543,7 @@ class TreatmentStrategicData(APIView):
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
-                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
                     )
                     .count()
                 )
