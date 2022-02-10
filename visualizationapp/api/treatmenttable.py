@@ -78,26 +78,26 @@ class TreatmentTableBasicData(APIView):
             ).count()
 
             # F-SDF FV
-            
             male_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
                 gender="male",
                 sdf_whole_mouth=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
+                # created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             male_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
                 gender="male",
                 fv=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
+                # created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             male_fsdf_and_fv3 = Visualization.objects.filter(
                 active=True,
                 gender="male",
                 sdf_whole_mouth=True,fv=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
+                # created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             total_male_fsdf_fv = male_fsdf_and_fv1 + male_fsdf_and_fv2 - male_fsdf_and_fv3
+            print("Male Data")
             print(male_fsdf_and_fv1)
             print(male_fsdf_and_fv2)
             print(male_fsdf_and_fv3)
@@ -118,6 +118,10 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_female_fsdf_fv = female_fsdf_and_fv1 + female_fsdf_and_fv2 - female_fsdf_and_fv3
+            print("Female Data")
+            print(female_fsdf_and_fv1)
+            print(female_fsdf_and_fv2)
+            print(female_fsdf_and_fv3)
 
             child_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
@@ -138,6 +142,10 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_child_fsdf_fv = child_fsdf_and_fv1 + child_fsdf_and_fv2 - child_fsdf_and_fv3
+            print("Child Data")
+            print(child_fsdf_and_fv1)
+            print(child_fsdf_and_fv2)
+            print(child_fsdf_and_fv3)
 
             teen_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
@@ -158,6 +166,10 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_teen_fsdf_fv = teen_fsdf_and_fv1 + teen_fsdf_and_fv2 - teen_fsdf_and_fv3
+            print("Teen Data")
+            print(teen_fsdf_and_fv1)
+            print(teen_fsdf_and_fv2)
+            print(teen_fsdf_and_fv3)
 
             adult_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
@@ -178,6 +190,10 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_adult_fsdf_fv = adult_fsdf_and_fv1 + adult_fsdf_and_fv2 - adult_fsdf_and_fv3
+            print("Adult Data")
+            print(adult_fsdf_and_fv1)
+            print(adult_fsdf_and_fv2)
+            print(adult_fsdf_and_fv3)
 
             old_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
@@ -198,6 +214,10 @@ class TreatmentTableBasicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             total_old_fsdf_fv = old_fsdf_and_fv1 + old_fsdf_and_fv2 - old_fsdf_and_fv3
+            print("Old Data")
+            print(old_fsdf_and_fv1)
+            print(old_fsdf_and_fv2)
+            print(old_fsdf_and_fv3)
 
         
 

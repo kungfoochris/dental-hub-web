@@ -21245,3 +21245,5 @@ NameError: name 'total_fv_list' is not defined
 2022-02-09 15:03:27,193 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
 2022-02-09 15:11:59,026 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
 2022-02-09 15:12:14,404 django.server INFO     "POST /api/v1/treatment HTTP/1.1" 200 15475
+2022-02-09 15:19:19,049 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
+2022-02-09 15:19:41,719 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
