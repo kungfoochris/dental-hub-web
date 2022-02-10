@@ -104,16 +104,19 @@ class TreatmentTableBasicData(APIView):
 
             female_fsdf_and_fv1 = Visualization.objects.filter(
                 active=True,
+                gender="female",
                 sdf_whole_mouth=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             female_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
+                gender="female",
                 fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
             female_fsdf_and_fv3 = Visualization.objects.filter(
                 active=True,
+                gender="female",
                 sdf_whole_mouth=True,fv=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
@@ -470,6 +473,7 @@ class TreatmentTableBasicData(APIView):
 
                     female_fsdf_and_fv1 = Visualization.objects.filter(
                         active=True,
+                        gender="female",
                         sdf_whole_mouth=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -481,6 +485,7 @@ class TreatmentTableBasicData(APIView):
                         ).count()
                     female_fsdf_and_fv2 = Visualization.objects.filter(
                         active=True,
+                        gender="female",
                         fv=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
@@ -492,6 +497,7 @@ class TreatmentTableBasicData(APIView):
                         ).count()
                     female_fsdf_and_fv3 = Visualization.objects.filter(
                         active=True,
+                        gender="female",
                         sdf_whole_mouth=True,fv=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,
