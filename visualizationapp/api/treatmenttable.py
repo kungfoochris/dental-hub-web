@@ -82,19 +82,19 @@ class TreatmentTableBasicData(APIView):
                 active=True,
                 gender="male",
                 sdf_whole_mouth=True,
-                # created_at__range=[last_30_days_obj, today_date_obj]
+                created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             male_fsdf_and_fv2 = Visualization.objects.filter(
                 active=True,
                 gender="male",
                 fv=True,
-                # created_at__range=[last_30_days_obj, today_date_obj]
+                created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             male_fsdf_and_fv3 = Visualization.objects.filter(
                 active=True,
                 gender="male",
                 sdf_whole_mouth=True,fv=True,
-                # created_at__range=[last_30_days_obj, today_date_obj]
+                created_at__range=[last_30_days_obj, today_date_obj]
             ).count()
             total_male_fsdf_fv = male_fsdf_and_fv1 + male_fsdf_and_fv2 - male_fsdf_and_fv3
             print("Male Data")
