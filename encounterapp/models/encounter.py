@@ -28,7 +28,6 @@ def default_time():
 
 
 class Encounter(models.Model):
-    # id = models.CharField(max_length=200,null=True)
     id = models.CharField(
         max_length=200, primary_key=True, default=keygenerator, editable=False
     )

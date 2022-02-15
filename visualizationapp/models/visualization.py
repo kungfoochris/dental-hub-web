@@ -66,6 +66,7 @@ class Visualization(models.Model):
     need_sealant = models.BooleanField(default=False, db_index=True)
     reason_for_visit = models.CharField(max_length=60, default="", db_index=True)
     referral_type = models.CharField(max_length=60, default="", db_index=True)
+    recall_date = models.DateField(null=True)
     author = models.CharField(max_length=60, default="")
     active = models.BooleanField(default=True)
 
@@ -94,6 +95,7 @@ def create_encounter(sender, **kwargs):
             visualization_obj.geography_id = encounter_obj.geography.id
             visualization_obj.geography_name = encounter_obj.geography.name
         visualization_obj.created_at = encounter_obj.patient.created_at
+        visualization_obj.recall_date = encounter_obj.patient.recall_date
         visualization_obj.reason_for_visit = encounter_obj.encounter_type
         visualization_obj.author = encounter_obj.author.username
         visualization_obj.active = encounter_obj.active

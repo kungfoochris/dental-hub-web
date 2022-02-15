@@ -21335,3 +21335,70 @@ NameError: name 'total_fv_list' is not defined
 2022-02-10 13:13:23,176 django.server INFO     "GET /maintainer/visualizationapp/visualization/024CDA44C46B41CE83ACF5640CB27AB2/change/ HTTP/1.1" 200 23320
 2022-02-10 13:13:23,267 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
 2022-02-10 13:13:32,244 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17112
+2022-02-15 19:08:50,023 django.request WARNING  Unauthorized: /api/v1/patients
+2022-02-15 19:08:50,059 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-02-15 19:08:50,441 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-02-15 19:08:50,488 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-02-15 19:08:50,549 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-02-15 19:08:50,560 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-02-15 19:08:50,884 django.request WARNING  Not Found: /favicon.ico
+2022-02-15 19:08:50,885 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-15 19:08:53,431 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2022-02-15 19:09:01,379 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-15 19:09:01,391 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-02-15 19:09:04,044 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-02-15 20:06:56,907 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1732, in add_fields
+    join_info = self.setup_joins(name.split(LOOKUP_SEP), opts, alias, allow_many=allow_m2m)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1473, in setup_joins
+    names[:pivot], opts, allow_many, fail_on_missing=True,
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1389, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'patient_id' into field. Choices are: active, active_infection, activities_id, activity_name, age, art, author, carries_risk, cavity_permanent_anterior_teeth, cavity_permanent_posterior_teeth, created_at, decayed_permanent_teeth, decayed_permanent_teeth_number, decayed_primary_teeth, decayed_primary_teeth_number, encounter_id, exo, fv, gender, geography_id, geography_name, id, need_art_filling, need_dentist_or_hygienist, need_extraction, need_fv, need_sdf, need_sealant, patiend_id, patient_name, reason_for_visit, recall_date, refer_dent, refer_dr, refer_hp, refer_hyg, refer_other, referral_type, reversible_pulpitis, sdf, sdf_whole_mouth, seal
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 917, in get
+    ).order_by('-created_at').values('patient_id').distinct()
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 747, in values
+    clone = self._values(*fields, **expressions)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 742, in _values
+    clone.query.set_values(fields)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1984, in set_values
+    self.add_fields(field_names, True)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1755, in add_fields
+    "Choices are: %s" % (name, ", ".join(names)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'patient_id' into field. Choices are: active, active_infection, activities_id, activity_name, age, art, author, carries_risk, cavity_permanent_anterior_teeth, cavity_permanent_posterior_teeth, created_at, decayed_permanent_teeth, decayed_permanent_teeth_number, decayed_primary_teeth, decayed_primary_teeth_number, encounter_id, exo, fv, gender, geography_id, geography_name, id, need_art_filling, need_dentist_or_hygienist, need_extraction, need_fv, need_sdf, need_sealant, patiend_id, patient_name, reason_for_visit, recall_date, refer_dent, refer_dr, refer_hp, refer_hyg, refer_other, referral_type, reversible_pulpitis, sdf, sdf_whole_mouth, seal
+2022-02-15 20:06:56,927 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 133797
+2022-02-15 20:10:12,820 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:10:31,623 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-02-15 20:10:34,143 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-02-15 20:11:38,228 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:11:47,493 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-02-15 20:11:49,821 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-02-15 20:12:28,664 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:14:04,624 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:14:06,485 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:24:52,593 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:40:12,995 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:40:28,831 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16513
+2022-02-15 20:47:54,982 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-15 20:48:08,421 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16513
