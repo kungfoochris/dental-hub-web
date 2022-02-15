@@ -1262,9 +1262,12 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_ratio_old = 0
 
-            early_intervention_ratio_total = (
-                early_intervention_ratio_male + early_intervention_ratio_female
-            )
+            try:
+                early_intervention_ratio_total = (
+                    total_art_male + total_sdf_male + total_art_female + total_sdf_female
+                ) / (total_exo_male + total_exo_female)
+            except:
+                early_intervention_ratio_total = 0
             
 
             # Early intervention  
@@ -2374,8 +2377,13 @@ class TreatmentStrategicData(APIView):
                     ) / sum(total_exo_old)
                 except:
                     early_intervention_ratio_old = 0
-
-                early_intervention_ratio_total = early_intervention_ratio_male + early_intervention_ratio_female 
+                
+                try:
+                    early_intervention_ratio_total = (
+                        sum(total_art_male) + sum(total_sdf_male) + sum(total_art_female) + sum(total_sdf_female)
+                    ) / (sum(total_exo_male) + sum(total_exo_female))
+                except:
+                    early_intervention_ratio_total = 0
 
                 # Recall %
                 try:
