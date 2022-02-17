@@ -183,8 +183,7 @@ class CrossSectionalVisualization(APIView):
                 total_carries_risk_low.append(0)
 
             carries_risk_low_EFGH = [numerator_carries_risk_low_E,numerator_carries_risk_low_F,numerator_carries_risk_low_G,numerator_carries_risk_low_H]
-
-
+            
             # carries risk medium
             # WHO indicator age-groups
             numerator_carries_risk_medium_A = Visualization.objects.filter(carries_risk="Medium",age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
@@ -297,7 +296,6 @@ class CrossSectionalVisualization(APIView):
 
             carries_risk_medium_EFGH = [numerator_carries_risk_medium_E,numerator_carries_risk_medium_F,numerator_carries_risk_medium_G,numerator_carries_risk_medium_H]
 
-
             # carries risk high
             # WHO indicator age-groups
             numerator_carries_risk_high_A = Visualization.objects.filter(carries_risk="High",age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
@@ -409,7 +407,6 @@ class CrossSectionalVisualization(APIView):
                 total_carries_risk_high.append(0)
 
             carries_risk_high_EFGH = [numerator_carries_risk_high_E,numerator_carries_risk_high_F,numerator_carries_risk_high_G,numerator_carries_risk_high_H]
-            
 
             # p-value calculation for ABC
             # WHO Indicator age-groups
@@ -442,22 +439,26 @@ class CrossSectionalVisualization(APIView):
             total_carries_risk_medium.append(efgh1_pvalue)
             total_carries_risk_high.append(efgh1_pvalue)
 
+            numerator_carries_risk_low_total = Visualization.objects.filter(carries_risk="Low",created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_carries_risk_low.append(round((numerator_carries_risk_low_total/denominator_total)*100,2))
+            except:
+                total_carries_risk_low.append(0)
 
-            overall_carries_risk_low = numerator_carries_risk_low_A + numerator_carries_risk_low_B 
-            + numerator_carries_risk_low_C + numerator_carries_risk_low_E
-            + numerator_carries_risk_low_F + numerator_carries_risk_low_G
-            + numerator_carries_risk_low_H
-        
-            overall_carries_risk_medium = numerator_carries_risk_medium_A + numerator_carries_risk_medium_B 
-            + numerator_carries_risk_medium_C + numerator_carries_risk_medium_E
-            + numerator_carries_risk_medium_F + numerator_carries_risk_medium_G
-            + numerator_carries_risk_medium_H
-        
-            overall_carries_risk_high = numerator_carries_risk_high_A + numerator_carries_risk_high_B 
-            + numerator_carries_risk_high_C + numerator_carries_risk_high_E
-            + numerator_carries_risk_high_F + numerator_carries_risk_high_G
-            + numerator_carries_risk_high_H
+            numerator_carries_risk_medium_total = Visualization.objects.filter(carries_risk="Medium",created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_total/denominator_total)*100,2))
+            except:
+                total_carries_risk_medium.append(0)
 
+            numerator_carries_risk_high_total = Visualization.objects.filter(carries_risk="High",created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_carries_risk_high.append(round((numerator_carries_risk_high_total/denominator_total)*100,2))
+            except:
+                total_carries_risk_high.append(0)
 
             final_total_carries_risk_low = [
                 'Low',
@@ -470,11 +471,11 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_carries_risk_low_G) + "(" + str(total_carries_risk_low[6]) + "%)",
                 str(numerator_carries_risk_low_H) + "(" + str(total_carries_risk_low[7]) + "%)",
                 total_carries_risk_low[8],
-                overall_carries_risk_low,
+                str(numerator_carries_risk_low_total) + "(" + str(total_carries_risk_low[9]) + "%)",
                 ]
             
             final_total_carries_risk_medium = [
-                'Medium>',
+                'Medium',
                 str(numerator_carries_risk_medium_A) + "(" + str(total_carries_risk_medium[0]) + "%)",
                 str(numerator_carries_risk_medium_B) + "(" + str(total_carries_risk_medium[1]) + "%)",
                 str(numerator_carries_risk_medium_C) + "(" + str(total_carries_risk_medium[2]) + "%)",
@@ -484,11 +485,11 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_carries_risk_medium_G) + "(" + str(total_carries_risk_medium[6]) + "%)",
                 str(numerator_carries_risk_medium_H) + "(" + str(total_carries_risk_medium[7]) + "%)",
                 total_carries_risk_medium[8],
-                overall_carries_risk_medium,
+                str(numerator_carries_risk_medium_total) + "(" + str(total_carries_risk_medium[9]) + "%)",
                 ]
             
             final_total_carries_risk_high = [
-                'High>' ,
+                'High' ,
                 str(numerator_carries_risk_high_A) + "(" + str(total_carries_risk_high[0]) + "%)",
                 str(numerator_carries_risk_high_B) + "(" + str(total_carries_risk_high[1]) + "%)",
                 str(numerator_carries_risk_high_C) + "(" + str(total_carries_risk_high[2]) + "%)",
@@ -498,9 +499,8 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_carries_risk_high_G) + "(" + str(total_carries_risk_high[6]) + "%)",
                 str(numerator_carries_risk_high_H) + "(" + str(total_carries_risk_high[7]) + "%)",
                 total_carries_risk_high[8],
-                overall_carries_risk_high,
+                str(numerator_carries_risk_high_total) + "(" + str(total_carries_risk_high[9]) + "%)",
                 ]
-
 
             # Any untreated caries present
             # WHO indicator age-groups
@@ -613,13 +613,12 @@ class CrossSectionalVisualization(APIView):
 
             untreated_caries_present_EFGH = [numerator_untreated_caries_present_E,numerator_untreated_caries_present_F,numerator_untreated_caries_present_G,numerator_untreated_caries_present_H]
 
-
             # Number of decayed primary teeth
             # WHO indicator age-groups
             decayed_primary_teeth_mean_list_ABC = []
             decayed_primary_teeth_mean_list_EFGH = []
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age=6):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=6).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -629,7 +628,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_primary_teeth_mean_list_ABC.append(0)
             
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age=12):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=12).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -639,7 +638,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_primary_teeth_mean_list_ABC.append(0)
             
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age=15):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=15).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -651,7 +650,7 @@ class CrossSectionalVisualization(APIView):
 
             # Jevaia's indicator age groups
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age__lt=13):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__lt=13).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -661,7 +660,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_primary_teeth_mean_list_EFGH.append(0)
             
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age__range=[13,18]):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__range=[13,18]).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -671,7 +670,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_primary_teeth_mean_list_EFGH.append(0)
             
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age__range=[19,60]):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__range=[19,60]).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -681,7 +680,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_primary_teeth_mean_list_EFGH.append(0)
             
             decayed_primary_teeth1 = []
-            for i in Visualization.objects.filter(age__gt=60):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__gt=60).values('patiend_id').distinct():
                 decayed_primary_teeth1.append(i.decayed_primary_teeth_number)
             try:
                 total_decayed_primary_teeth.append(round(statistics.stdev(decayed_primary_teeth1),1))
@@ -695,7 +694,7 @@ class CrossSectionalVisualization(APIView):
             decayed_permanent_teeth_list_ABC = []
             decayed_permanent_teeth_list_EFGH = []
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age=6):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=6).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -705,7 +704,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth_list_ABC.append(0)
             
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age=12):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=12).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -715,7 +714,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth_list_ABC.append(0)
             
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age=15):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=15).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -727,7 +726,7 @@ class CrossSectionalVisualization(APIView):
 
             # Jevaia's indicator age groups
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age__lt=13):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__lt=13).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -737,7 +736,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth_list_EFGH.append(0)
             
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age__range=[13,18]):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__range=[13,18]).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -747,7 +746,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth_list_EFGH.append(0)
             
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age__range=[19,60]):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__range=[19,60]).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -757,7 +756,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth_list_EFGH.append(0)
             
             decayed_permanent_teeth1 = []
-            for i in Visualization.objects.filter(age__gt=60):
+            for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__gt=60).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
@@ -800,8 +799,6 @@ class CrossSectionalVisualization(APIView):
 
             mean_overall_decayed_permanent_teeth = round(overall_decayed_permanent_teeth / 7,2)
 
-        
-
             final_total_decayed_primary_teeth = [
                 "Number of decayed primary teeth",
                 str(decayed_primary_teeth_mean_list_ABC[0]) + "(" + str(total_decayed_primary_teeth[0]) + "SD)",
@@ -829,7 +826,6 @@ class CrossSectionalVisualization(APIView):
                 total_decayed_permanent_teeth[8],
                 mean_overall_decayed_permanent_teeth,
                 ]
-            
             
             # Cavity permanent molar or premolar
             # WHO indicator age-groups
@@ -939,7 +935,6 @@ class CrossSectionalVisualization(APIView):
                 total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,2))
             except:
                 total_cavity_permanent_molar.append(0)
-
 
             cavity_permanent_molar_EFGH = [numerator_cavity_permanent_molar_E,numerator_cavity_permanent_molar_F,numerator_cavity_permanent_molar_G,numerator_cavity_permanent_molar_H]
 
@@ -1167,7 +1162,6 @@ class CrossSectionalVisualization(APIView):
 
             active_infection_EFGH = [numerator_active_infection_E,numerator_active_infection_F,numerator_active_infection_G,numerator_active_infection_H]
 
-
             # Mouth pain due to reversible pulpitis
             # WHO indicator age-groups
             numerator_reversible_pulpitis_A = Visualization.objects.filter(reversible_pulpitis=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
@@ -1390,8 +1384,6 @@ class CrossSectionalVisualization(APIView):
                 total_need_art_filling.append(0)
 
             need_art_filling_EFGH = [numerator_need_art_filling_E,numerator_need_art_filling_F,numerator_need_art_filling_G,numerator_need_art_filling_H]
-
-
 
             # Need SDF
             # WHO indicator age-groups
@@ -1617,7 +1609,6 @@ class CrossSectionalVisualization(APIView):
 
             need_extraction_EFGH = [numerator_need_extraction_E,numerator_need_extraction_F,numerator_need_extraction_G,numerator_need_extraction_H]
 
-
             # Need FV
             # WHO indicator age-groups
             numerator_need_fv_A = Visualization.objects.filter(need_fv=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
@@ -1727,9 +1718,8 @@ class CrossSectionalVisualization(APIView):
             except:
                 total_need_fv.append(0)
 
-
             need_fv_EFGH = [numerator_need_fv_E,numerator_need_fv_F,numerator_need_fv_G,numerator_need_fv_H]
-
+            
 
             # Need Dentist or Hygenist
             # WHO indicator age-groups
@@ -1840,7 +1830,6 @@ class CrossSectionalVisualization(APIView):
             except:
                 total_need_dentist_or_hygienist.append(0)
 
-
             need_dentist_or_hygienist_EFGH = [numerator_need_dentist_or_hygienist_E,numerator_need_dentist_or_hygienist_F,numerator_need_dentist_or_hygienist_G,numerator_need_dentist_or_hygienist_H]
 
             # p-value calculation for ABCD2
@@ -1889,56 +1878,78 @@ class CrossSectionalVisualization(APIView):
             total_need_fv.append(efgh2_pvalue)
             total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
-            
-            overall_untreated_caries_present = numerator_untreated_caries_present_A + numerator_untreated_caries_present_B 
-            + numerator_untreated_caries_present_C + numerator_untreated_caries_present_E
-            + numerator_untreated_caries_present_F + numerator_untreated_caries_present_G
-            + numerator_untreated_caries_present_H
-            
-            overall_cavity_permanent_molar = numerator_cavity_permanent_molar_A + numerator_cavity_permanent_molar_B 
-            + numerator_cavity_permanent_molar_C + numerator_cavity_permanent_molar_E
-            + numerator_cavity_permanent_molar_F + numerator_cavity_permanent_molar_G
-            + numerator_cavity_permanent_molar_H
+            numerator_untreated_caries_present_total = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_total/denominator_total)*100,2))
+            except:
+                total_untreated_caries_present.append(0)
 
-            overall_cavity_permanent_anterior = numerator_cavity_permanent_anterior_A + numerator_cavity_permanent_anterior_B 
-            + numerator_cavity_permanent_anterior_C + numerator_cavity_permanent_anterior_E
-            + numerator_cavity_permanent_anterior_F + numerator_cavity_permanent_anterior_G
-            + numerator_cavity_permanent_anterior_H
+            numerator_cavity_permanent_molar_total = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_total/denominator_total)*100,2))
+            except:
+                total_cavity_permanent_molar.append(0)
 
-            overall_active_infection = numerator_active_infection_A + numerator_active_infection_B 
-            + numerator_active_infection_C + numerator_active_infection_E
-            + numerator_active_infection_F + numerator_active_infection_G
-            + numerator_active_infection_H
+            numerator_cavity_permanent_anterior_total = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_total/denominator_total)*100,2))
+            except:
+                total_cavity_permanent_anterior.append(0)
+
+            numerator_active_infection_total = Visualization.objects.filter(active_infection=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_active_infection.append(round((numerator_active_infection_total/denominator_total)*100,2))
+            except:
+                total_active_infection.append(0)
+
+            numerator_reversible_pulpitis_total = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_total/denominator_total)*100,2))
+            except:
+                total_reversible_pulpitis.append(0)
+
+            numerator_need_art_filling_total = Visualization.objects.filter(need_art_filling=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_need_art_filling.append(round((numerator_need_art_filling_total/denominator_total)*100,2))
+            except:
+                total_need_art_filling.append(0)
+
+            numerator_need_sdf_total = Visualization.objects.filter(need_sdf=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_need_sdf.append(round((numerator_need_sdf_total/denominator_total)*100,2))
+            except:
+                total_need_sdf.append(0)
+
+            numerator_need_extraction_total = Visualization.objects.filter(need_extraction=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_need_extraction.append(round((numerator_need_extraction_total/denominator_total)*100,2))
+            except:
+                total_need_extraction.append(0)
+
+            numerator_need_fv_total = Visualization.objects.filter(need_fv=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_need_fv.append(round((numerator_need_fv_total/denominator_total)*100,2))
+            except:
+                total_need_fv.append(0)
+
+            numerator_need_dentist_or_hygienist_total = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
+            try:
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_total/denominator_total)*100,2))
+            except:
+                total_need_dentist_or_hygienist.append(0)
+
             
-            overall_reversible_pulpitis = numerator_reversible_pulpitis_A + numerator_reversible_pulpitis_B 
-            + numerator_reversible_pulpitis_C + numerator_reversible_pulpitis_E
-            + numerator_reversible_pulpitis_F + numerator_reversible_pulpitis_G
-            + numerator_reversible_pulpitis_H
             
-            overall_need_art_filling = numerator_need_art_filling_A + numerator_need_art_filling_B 
-            + numerator_need_art_filling_C + numerator_need_art_filling_E
-            + numerator_need_art_filling_F + numerator_need_art_filling_G
-            + numerator_need_art_filling_H
-            
-            overall_need_sdf = numerator_need_sdf_A + numerator_need_sdf_B 
-            + numerator_need_sdf_C + numerator_need_sdf_E
-            + numerator_need_sdf_F + numerator_need_sdf_G
-            + numerator_need_sdf_H
-            
-            overall_need_extraction = numerator_need_extraction_A + numerator_need_extraction_B 
-            + numerator_need_extraction_C + numerator_need_extraction_E
-            + numerator_need_extraction_F + numerator_need_extraction_G
-            + numerator_need_extraction_H
-            
-            overall_need_fv = numerator_need_fv_A + numerator_need_fv_B 
-            + numerator_need_fv_C + numerator_need_fv_E
-            + numerator_need_fv_F + numerator_need_fv_G
-            + numerator_need_fv_H
-            
-            overall_need_dentist_or_hygienist = numerator_need_dentist_or_hygienist_A + numerator_need_dentist_or_hygienist_B 
-            + numerator_need_dentist_or_hygienist_C + numerator_need_dentist_or_hygienist_E
-            + numerator_need_dentist_or_hygienist_F + numerator_need_dentist_or_hygienist_G
-            + numerator_need_dentist_or_hygienist_H
             
             final_total_untreated_caries_present = [
                 "Any untreated caries present" ,
@@ -1951,7 +1962,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_untreated_caries_present_G) + "(" + str(total_untreated_caries_present[6]) + "%)",
                 str(numerator_untreated_caries_present_H) + "(" + str(total_untreated_caries_present[7]) + "%)",
                 total_untreated_caries_present[8],
-                overall_untreated_caries_present,
+                str(numerator_untreated_caries_present_total) + "(" + str(total_untreated_caries_present[9]) + "%)",
                 ]
             
             final_total_cavity_permanent_molar = [
@@ -1965,7 +1976,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_cavity_permanent_molar_G) + "(" + str(total_cavity_permanent_molar[6]) + "%)",
                 str(numerator_cavity_permanent_molar_H) + "(" + str(total_cavity_permanent_molar[7]) + "%)",
                 total_cavity_permanent_molar[8],
-                overall_cavity_permanent_molar,
+                str(numerator_cavity_permanent_molar_total) + "(" + str(total_cavity_permanent_molar[9]) + "%)",
                 ]
             
             final_total_cavity_permanent_anterior = [
@@ -1979,7 +1990,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_cavity_permanent_anterior_G) + "(" + str(total_cavity_permanent_anterior[6]) + "%)",
                 str(numerator_cavity_permanent_anterior_H) + "(" + str(total_cavity_permanent_anterior[7]) + "%)",
                 total_cavity_permanent_anterior[8],
-                overall_cavity_permanent_anterior,
+                str(numerator_cavity_permanent_anterior_total) + "(" + str(total_cavity_permanent_anterior[9]) + "%)",
                 ]
             
             final_total_active_infection = [
@@ -1993,7 +2004,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_active_infection_G) + "(" + str(total_active_infection[6]) + "%)",
                 str(numerator_active_infection_H) + "(" + str(total_active_infection[7]) + "%)",
                 total_active_infection[8],
-                overall_active_infection,
+                str(numerator_active_infection_total) + "(" + str(total_active_infection[9]) + "%)",
                 ]
             
             final_total_reversible_pulpitis = [
@@ -2007,7 +2018,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_reversible_pulpitis_G) + "(" + str(total_reversible_pulpitis[6]) + "%)",
                 str(numerator_reversible_pulpitis_H) + "(" + str(total_reversible_pulpitis[7]) + "%)",
                 total_reversible_pulpitis[8],
-                overall_reversible_pulpitis,
+                str(numerator_reversible_pulpitis_total) + "(" + str(total_reversible_pulpitis[9]) + "%)",
                 ]
             
             final_total_need_art_filling = [
@@ -2021,7 +2032,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_need_art_filling_G) + "(" + str(total_need_art_filling[6]) + "%)",
                 str(numerator_need_art_filling_H) + "(" + str(total_need_art_filling[7]) + "%)",
                 total_need_art_filling[8],
-                overall_need_art_filling,
+                str(numerator_need_art_filling_total) + "(" + str(total_need_art_filling[9]) + "%)",
                 ]
 
             final_total_need_sdf = [
@@ -2035,7 +2046,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_need_sdf_G) + "(" + str(total_need_sdf[6]) + "%)",
                 str(numerator_need_sdf_H) + "(" + str(total_need_sdf[7]) + "%)",
                 total_need_sdf[8],
-                overall_need_sdf,
+                str(numerator_need_sdf_total) + "(" + str(total_need_sdf[9]) + "%)",
                 ]
             
             final_total_need_extraction = [
@@ -2049,7 +2060,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_need_extraction_G) + "(" + str(total_need_extraction[6]) + "%)",
                 str(numerator_need_extraction_H) + "(" + str(total_need_extraction[7]) + "%)",
                 total_need_extraction[8],
-                overall_need_extraction,
+                str(numerator_need_extraction_total) + "(" + str(total_need_extraction[9]) + "%)",
                 ]
             
             final_total_need_fv = [
@@ -2063,7 +2074,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_need_fv_G) + "(" + str(total_need_fv[6]) + "%)",
                 str(numerator_need_fv_H) + "(" + str(total_need_fv[7]) + "%)",
                 total_need_fv[8],
-                overall_need_fv,
+                str(numerator_need_fv_total) + "(" + str(total_need_fv[9]) + "%)",
                 ]
             
             final_total_need_dentist_or_hygienist = [
@@ -2077,7 +2088,7 @@ class CrossSectionalVisualization(APIView):
                 str(numerator_need_dentist_or_hygienist_G) + "(" + str(total_need_dentist_or_hygienist[6]) + "%)",
                 str(numerator_need_dentist_or_hygienist_H) + "(" + str(total_need_dentist_or_hygienist[7]) + "%)",
                 total_need_dentist_or_hygienist[8],
-                overall_need_dentist_or_hygienist,
+                str(numerator_need_dentist_or_hygienist_total) + "(" + str(total_need_dentist_or_hygienist[9]) + "%)",
                 ]
 
             rowA_total = numerator_carries_risk_low_A + numerator_carries_risk_medium_A + numerator_carries_risk_high_A \
@@ -2204,6 +2215,42 @@ class CrossSectionalVisualization(APIView):
                 numerator_list_gte61  = []
                 denominator_list_gte61  = []
 
+                numerator_carries_risk_low_total = []
+                numerator_carries_risk_medium_total = []
+                numerator_carries_risk_high_total = []
+                # numerator_untreated_caries_present_total = []
+
+                # numerator_decayed_permanent_teeth_total = []
+                numerator_decayed_primary_teeth_total = []
+
+                numerator_cavity_permanent_molar_total = []
+                numerator_cavity_permanent_anterior_total = []
+                numerator_active_infection_total = []
+                numerator_reversible_pulpitis_total = []
+                numerator_need_art_filling_total = []
+                numerator_need_sdf_total = []
+                numerator_need_extraction_total = []
+                numerator_need_fv_total = []
+                numerator_need_dentist_or_hygienist_total = []
+
+                denominator_carries_risk_low_total = []
+                denominator_carries_risk_medium_total = []
+                denominator_carries_risk_high_total = []
+                # denominator_untreated_caries_present_total = []
+
+                # denominator_decayed_permanent_teeth_total = []
+                denominator_decayed_primary_teeth_total = []
+
+                denominator_cavity_permanent_molar_total = []
+                denominator_cavity_permanent_anterior_total = []
+                denominator_active_infection_total = []
+                denominator_reversible_pulpitis_total = []
+                denominator_need_art_filling_total = []
+                denominator_need_sdf_total = []
+                denominator_need_extraction_total = []
+                denominator_need_fv_total = []
+                denominator_need_dentist_or_hygienist_total = []
+
                 # carries risk low
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
@@ -2244,9 +2291,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                                if age < 13:
+                                    denominator_list_12.append(1)
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2254,9 +2300,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                                if age > 12 and age < 19:
+                                    denominator_list_13_18.append(1)
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2264,9 +2309,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                                if age > 18 and age < 61:
+                                    denominator_list_19_60.append(1)
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2274,9 +2318,11 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                                if age > 60:
+                                    denominator_list_gte61.append(1)
+                            
+                            numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_total.append(patient_obj.count())
                         else:
                             print("inside no referral")
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
@@ -2288,7 +2334,6 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age == 6:
                                     denominator_list_6.append(1)
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2296,9 +2341,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                                if age == 12:
+                                    denominator_list_12.append(1)
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2306,9 +2350,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                                if age == 15:
+                                    denominator_list_15.append(1)
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2317,9 +2360,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                                if age < 13:
+                                    denominator_list_lte12.append(1)
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2327,9 +2369,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                                if age > 12 and age < 19:
+                                    denominator_list_13_18.append(1)
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2337,9 +2378,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                                if age > 18 and age < 61:
+                                    denominator_list_19_60.append(1)
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2347,9 +2387,10 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                                if age > 60:
+                                    denominator_list_gte61.append(1)
+                            numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_total.append(patient_obj.count())
 
                 numerator_carries_risk_low_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -2403,7 +2444,6 @@ class CrossSectionalVisualization(APIView):
                 carries_risk_low_ABC = [numerator_carries_risk_low_A,numerator_carries_risk_low_B,numerator_carries_risk_low_C]
                 carries_risk_low_EFGH = [numerator_carries_risk_low_E,numerator_carries_risk_low_F,numerator_carries_risk_low_G,numerator_carries_risk_low_H]
 
-
                 # carries risk medium
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
@@ -2416,8 +2456,7 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                                    numerator_list_12.append(1)
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2425,9 +2464,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                                if age == 12:
+                                    denominator_list_12.append(1)
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2435,9 +2473,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                                if age == 15:
+                                    denominator_list_15.append(1)
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2446,9 +2483,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                                if age < 13:
+                                    denominator_list_lte12.append(1)
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2456,9 +2492,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                                if age > 12 and age < 19:
+                                    denominator_list_13_18.append(1)
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2466,9 +2501,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                                if age > 18 and age < 61:
+                                    denominator_list_19_60.append(1)
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2476,9 +2510,11 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                                if age > 60:
+                                    denominator_list_gte61.append(1)
+
+                            numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2489,7 +2525,6 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age == 6:
                                     denominator_list_6.append(1)
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2497,9 +2532,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                                if age == 12:
+                                    denominator_list_12.append(1)
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2507,9 +2541,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                                if age == 15:
+                                    denominator_list_15.append(1)
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2518,9 +2551,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                                if age < 13:
+                                    denominator_list_lte12.append(1)
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2528,9 +2560,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                                if age > 12 and age < 19:
+                                    denominator_list_13_18.append(1)
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2538,9 +2569,8 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                                if age > 18 and age < 61:
+                                    denominator_list_19_60.append(1)
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2548,9 +2578,10 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                                if age > 60:
+                                    denominator_list_gte61.append(1)
+                            numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_total.append(patient_obj.count())
                     
                 numerator_carries_risk_medium_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -2625,7 +2656,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age == 12:
                                     denominator_list_12.append(1)
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2634,7 +2665,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age == 15:
                                     denominator_list_15.append(1)
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
@@ -2644,7 +2675,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age < 13:
                                     denominator_list_lte12.append(1)
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2653,7 +2684,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age > 12 and age < 19:
                                     denominator_list_13_18.append(1)
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2662,7 +2693,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age > 18 and age < 61:
                                     denominator_list_19_60.append(1)
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2671,8 +2702,10 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2690,7 +2723,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age == 12:
                                     denominator_list_12.append(1)
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2699,8 +2732,9 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age == 15:
                                     denominator_list_15.append(1)
+
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -2708,7 +2742,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age < 13:
                                     denominator_list_lte12.append(1)
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2717,7 +2751,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age > 12 and age < 19:
                                     denominator_list_13_18.append(1)
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2726,7 +2760,7 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age > 18 and age < 61:
                                     denominator_list_19_60.append(1)
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -2735,8 +2769,10 @@ class CrossSectionalVisualization(APIView):
                                 today.npYear()
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
+                                if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_total.append(patient_obj.count())
 
                 numerator_carries_risk_high_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -2790,7 +2826,6 @@ class CrossSectionalVisualization(APIView):
                 carries_risk_high_ABC = [numerator_carries_risk_high_A,numerator_carries_risk_high_B,numerator_carries_risk_high_C]
                 carries_risk_high_EFGH = [numerator_carries_risk_high_E,numerator_carries_risk_high_F,numerator_carries_risk_high_G,numerator_carries_risk_high_H]
                 
-
                 # p-value calculation for ABC
                 # WHO Indicator age-groups
                 try:
@@ -2880,7 +2915,6 @@ class CrossSectionalVisualization(APIView):
                     overall_carries_risk_high,
                 ]
 
-
                 # untreated caries present
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
@@ -2949,6 +2983,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_decayed_primary_teeth_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+                            denominator_decayed_primary_teeth_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -3013,7 +3049,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
-                                    denominator_list_gte61.append(1)                    
+                                    denominator_list_gte61.append(1)
+                            numerator_decayed_primary_teeth_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_decayed_primary_teeth_total.append(patient_obj.count())                    
                 
                 numerator_untreated_caries_present_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -3066,7 +3104,6 @@ class CrossSectionalVisualization(APIView):
 
                 untreated_caries_present_ABC = numerator_untreated_caries_present_A + numerator_untreated_caries_present_B + numerator_untreated_caries_present_C
                 untreated_caries_present_EFGH =  numerator_untreated_caries_present_E + numerator_untreated_caries_present_F + numerator_untreated_caries_present_G + numerator_untreated_caries_present_H
-
 
                 # Number of decayed primary teeth
                 decayed_primary_teeth_mean_list_ABC = []
@@ -3154,7 +3191,6 @@ class CrossSectionalVisualization(APIView):
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_EFGH.append(0)
                                 
-
                 # Number of decayed permanent teeth
                 decayed_permanent_teeth_mean_list_ABC = []
                 decayed_permanent_teeth_mean_list_EFGH = []
@@ -3310,7 +3346,6 @@ class CrossSectionalVisualization(APIView):
                     mean_overall_decayed_permanent_teeth,
                 ]
                 
-
                 # Cavity permanent molar or premolar
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
@@ -3379,6 +3414,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 61:
                                     denominator_list_gte61.append(1)
+                            numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -3444,6 +3481,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_total.append(patient_obj.count())
                 
                 numerator_cavity_permanent_molar_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -3496,7 +3535,6 @@ class CrossSectionalVisualization(APIView):
                 
                 cavity_permanent_molar_ABC = [numerator_cavity_permanent_molar_A,numerator_cavity_permanent_molar_B,numerator_cavity_permanent_molar_C]
                 cavity_permanent_molar_EFGH = [numerator_cavity_permanent_molar_E,numerator_cavity_permanent_molar_F,numerator_cavity_permanent_molar_G,numerator_cavity_permanent_molar_H]
-
 
                 # Cavity permanent anterior
                 for l in serializer.validated_data['location']:
@@ -3566,6 +3604,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -3576,7 +3616,6 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age == 6:
                                     denominator_list_6.append(1)
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
                             for p in patient_obj:
@@ -3632,8 +3671,9 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_total.append(patient_obj.count())
                     
-                
                 numerator_cavity_permanent_anterior_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
@@ -3755,6 +3795,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 61:
                                     denominator_list_6.append(1)
+                            numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_active_infection_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -3819,7 +3861,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
-                                    denominator_list_gte61.append(1)                    
+                                    denominator_list_gte61.append(1) 
+                            numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_active_infection_total.append(patient_obj.count())                   
                 
                 numerator_active_infection_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -3942,6 +3986,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age == 6:
                                     denominator_list_gte61.append(1)
+                            numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -4006,7 +4052,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
-                                    denominator_list_gte61.append(1)                    
+                                    denominator_list_gte61.append(1)   
+                            numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_total.append(patient_obj.count())                 
                 
                 numerator_reversible_pulpitis_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -4130,6 +4178,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -4194,7 +4244,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 61:
-                                    denominator_list_gte61.append(1)                    
+                                    denominator_list_gte61.append(1)  
+                            numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_total.append(patient_obj.count())                  
                 
                 numerator_need_art_filling_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -4317,6 +4369,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_need_sdf_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -4381,7 +4435,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
-                                    denominator_list_gte61.append(1)                    
+                                    denominator_list_gte61.append(1)  
+                            numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_need_sdf_total.append(patient_obj.count())                  
                 
                 numerator_need_sdf_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -4504,6 +4560,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_need_extraction_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -4569,6 +4627,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_need_extraction_total.append(patient_obj.count())
                     
                 numerator_need_extraction_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -4691,6 +4751,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_need_fv_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -4755,7 +4817,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
-                                    denominator_list_gte61.append(1)                
+                                    denominator_list_gte61.append(1) 
+                            numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_need_fv_total.append(patient_obj.count())               
                 
                 numerator_need_fv_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
@@ -4878,6 +4942,8 @@ class CrossSectionalVisualization(APIView):
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
                                     denominator_list_gte61.append(1)
+                            numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_total.append(patient_obj.count())
                         else:
                             numerator_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
@@ -4942,7 +5008,9 @@ class CrossSectionalVisualization(APIView):
                                 - p.dob.year
                                 - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
                                 if age > 60:
-                                    denominator_list_gte61.append(1)                
+                                    denominator_list_gte61.append(1)   
+                            numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_total.append(patient_obj.count())             
             
                 numerator_need_dentist_or_hygienist_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)

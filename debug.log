@@ -21480,3 +21480,9 @@ NameError: name 'untreated_caries_present_E' is not defined
 2022-02-16 17:23:05,528 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20767
 2022-02-16 17:38:50,849 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21064
 2022-02-16 17:42:50,459 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21030
+2022-02-17 13:34:14,314 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16506
+2022-02-17 13:34:15,689 django.request WARNING  Not Found: /favicon.ico
+2022-02-17 13:34:15,690 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-17 13:34:19,236 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-17 19:11:34,128 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-17 19:12:02,671 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20767
