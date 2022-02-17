@@ -21486,3 +21486,53 @@ NameError: name 'untreated_caries_present_E' is not defined
 2022-02-17 13:34:19,236 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
 2022-02-17 19:11:34,128 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
 2022-02-17 19:12:02,671 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20767
+2022-02-17 19:45:47,242 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-17 19:46:13,471 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 5189, in post
+    str(numerator_untreated_caries_present_total) + "(" + str(total_untreated_caries_present[9]) + "%)",
+NameError: name 'numerator_untreated_caries_present_total' is not defined
+2022-02-17 19:46:13,475 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 136728
+2022-02-17 19:50:14,220 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21243
+2022-02-17 19:52:13,956 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 2997, in post
+    numerator_decayed_primary_teeth_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+NameError: name 'numerator_decayed_primary_teeth_total' is not defined
+2022-02-17 19:52:13,960 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 113112
+2022-02-17 19:56:04,996 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21277
+2022-02-17 19:58:13,056 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21277
+2022-02-17 20:00:58,669 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21430
+2022-02-17 20:04:21,370 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
