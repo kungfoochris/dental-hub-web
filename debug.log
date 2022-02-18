@@ -21536,3 +21536,111 @@ NameError: name 'numerator_decayed_primary_teeth_total' is not defined
 2022-02-17 19:58:13,056 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21277
 2022-02-17 20:00:58,669 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21430
 2022-02-17 20:04:21,370 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 10:32:06,199 django.request WARNING  Unauthorized: /api/v1/crosssectional
+2022-02-18 10:32:06,242 django.server WARNING  "GET /api/v1/crosssectional HTTP/1.1" 401 9983
+2022-02-18 10:32:07,938 django.request WARNING  Not Found: /favicon.ico
+2022-02-18 10:32:07,938 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-18 10:32:17,343 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/crosssectional HTTP/1.1" 200 2724
+2022-02-18 10:32:35,804 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-18 10:32:36,715 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 10:33:03,547 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 10:33:24,467 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 10:33:38,093 django.request WARNING  Bad Request: /api/v1/crosssectional
+2022-02-18 10:33:38,094 django.server WARNING  "POST /api/v1/crosssectional HTTP/1.1" 400 16509
+2022-02-18 10:33:53,910 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 10:43:38,938 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 10:46:53,539 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 10:48:39,446 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 10:51:19,804 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 10:51:28,803 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 10:51:37,021 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 2229, in post
+    for p in patient_obj:
+UnboundLocalError: local variable 'patient_obj' referenced before assignment
+2022-02-18 10:51:37,025 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 103025
+2022-02-18 10:54:08,018 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 13:32:00,237 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 141, in get
+    denominator = Visualization.objects.filter(ag=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 841, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 859, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1263, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1287, in _add_q
+    split_subq=split_subq,
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1164, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1028, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/query.py", line 1389, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'ag' into field. Choices are: active, active_infection, activities_id, activity_name, age, art, author, carries_risk, cavity_permanent_anterior_teeth, cavity_permanent_posterior_teeth, created_at, decayed_permanent_teeth, decayed_permanent_teeth_number, decayed_primary_teeth, decayed_primary_teeth_number, encounter_id, exo, fv, gender, geography_id, geography_name, id, need_art_filling, need_dentist_or_hygienist, need_extraction, need_fv, need_sdf, need_sealant, patiend_id, patient_name, reason_for_visit, recall_date, refer_dent, refer_dr, refer_hp, refer_hyg, refer_other, referral_type, reversible_pulpitis, sdf, sdf_whole_mouth, seal
+2022-02-18 13:32:00,328 django.server ERROR    "GET /api/v1/crosssectional HTTP/1.1" 500 138333
+2022-02-18 13:33:04,097 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 13:33:10,415 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 13:33:34,729 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 1842, in post
+    str(sum(numerator_carries_risk_low_total)) + "(" + str(total_carries_risk_low[9]) + "%)",
+TypeError: 'int' object is not iterable
+2022-02-18 13:33:34,732 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 111762
+2022-02-18 13:51:37,035 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 13:52:01,247 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 14:23:51,681 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 14:24:29,792 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-18 15:32:21,619 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
+2022-02-18 15:32:45,410 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975

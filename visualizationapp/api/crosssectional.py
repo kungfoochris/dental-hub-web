@@ -75,47 +75,23 @@ class CrossSectionalVisualization(APIView):
             # carries risk low
             # WHO indicator age-groups
             numerator_carries_risk_low_A = Visualization.objects.filter(carries_risk="Low",age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
 
             numerator_carries_risk_low_B = Visualization.objects.filter(carries_risk="Low",age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
             
             numerator_carries_risk_low_C = Visualization.objects.filter(carries_risk="Low",age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
             
@@ -123,62 +99,30 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_carries_risk_low_E = Visualization.objects.filter(carries_risk="Low",age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
             
             numerator_carries_risk_low_F = Visualization.objects.filter(carries_risk="Low",age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
             
             numerator_carries_risk_low_G = Visualization.objects.filter(carries_risk="Low",age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
 
             numerator_carries_risk_low_H = Visualization.objects.filter(carries_risk="Low",age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,1))
             except:
                 total_carries_risk_low.append(0)
 
@@ -187,47 +131,23 @@ class CrossSectionalVisualization(APIView):
             # carries risk medium
             # WHO indicator age-groups
             numerator_carries_risk_medium_A = Visualization.objects.filter(carries_risk="Medium",age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
 
             numerator_carries_risk_medium_B = Visualization.objects.filter(carries_risk="Medium",age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
             
             numerator_carries_risk_medium_C = Visualization.objects.filter(carries_risk="Medium",age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
             
@@ -235,62 +155,30 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_carries_risk_medium_E = Visualization.objects.filter(carries_risk="Medium",age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
             
             numerator_carries_risk_medium_F = Visualization.objects.filter(carries_risk="Medium",age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
             
             numerator_carries_risk_medium_G = Visualization.objects.filter(carries_risk="Medium",age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
 
             numerator_carries_risk_medium_H = Visualization.objects.filter(carries_risk="Medium",age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,1))
             except:
                 total_carries_risk_medium.append(0)
 
@@ -299,47 +187,23 @@ class CrossSectionalVisualization(APIView):
             # carries risk high
             # WHO indicator age-groups
             numerator_carries_risk_high_A = Visualization.objects.filter(carries_risk="High",age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
 
             numerator_carries_risk_high_B = Visualization.objects.filter(carries_risk="High",age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
             
             numerator_carries_risk_high_C = Visualization.objects.filter(carries_risk="High",age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
             
@@ -347,62 +211,30 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_carries_risk_high_E = Visualization.objects.filter(carries_risk="High",age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
             
             numerator_carries_risk_high_F = Visualization.objects.filter(carries_risk="High",age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
             
             numerator_carries_risk_high_G = Visualization.objects.filter(carries_risk="High",age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
 
             numerator_carries_risk_high_H = Visualization.objects.filter(carries_risk="High",age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,1))
             except:
                 total_carries_risk_high.append(0)
 
@@ -439,24 +271,22 @@ class CrossSectionalVisualization(APIView):
             total_carries_risk_medium.append(efgh1_pvalue)
             total_carries_risk_high.append(efgh1_pvalue)
 
+            denominator_total = Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             numerator_carries_risk_low_total = Visualization.objects.filter(carries_risk="Low",created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_carries_risk_low.append(round((numerator_carries_risk_low_total/denominator_total)*100,2))
+                total_carries_risk_low.append(round((numerator_carries_risk_low_total/denominator_total)*100,1))
             except:
                 total_carries_risk_low.append(0)
 
             numerator_carries_risk_medium_total = Visualization.objects.filter(carries_risk="Medium",created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_carries_risk_medium.append(round((numerator_carries_risk_medium_total/denominator_total)*100,2))
+                total_carries_risk_medium.append(round((numerator_carries_risk_medium_total/denominator_total)*100,1))
             except:
                 total_carries_risk_medium.append(0)
 
             numerator_carries_risk_high_total = Visualization.objects.filter(carries_risk="High",created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_carries_risk_high.append(round((numerator_carries_risk_high_total/denominator_total)*100,2))
+                total_carries_risk_high.append(round((numerator_carries_risk_high_total/denominator_total)*100,1))
             except:
                 total_carries_risk_high.append(0)
 
@@ -505,47 +335,23 @@ class CrossSectionalVisualization(APIView):
             # Any untreated caries present
             # WHO indicator age-groups
             numerator_untreated_caries_present_A = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
 
             numerator_untreated_caries_present_B = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_C = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
@@ -553,61 +359,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_untreated_caries_present_E = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_F = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_G = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             numerator_untreated_caries_present_H = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
 
@@ -647,7 +421,6 @@ class CrossSectionalVisualization(APIView):
                 total_decayed_primary_teeth.append(0)
                 decayed_primary_teeth_mean_list_ABC.append(0)
             
-
             # Jevaia's indicator age groups
             decayed_primary_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__lt=13).values('patiend_id').distinct():
@@ -691,83 +464,82 @@ class CrossSectionalVisualization(APIView):
             
             # Number of decayed permanent teeth
             # WHO indicator age-groups
-            decayed_permanent_teeth_list_ABC = []
-            decayed_permanent_teeth_list_EFGH = []
+            decayed_permanent_teeth_mean_list_ABC = []
+            decayed_permanent_teeth_mean_list_EFGH = []
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=6).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_ABC.append(0)
+                decayed_permanent_teeth_mean_list_ABC.append(0)
             
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=12).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_ABC.append(0)
+                decayed_permanent_teeth_mean_list_ABC.append(0)
             
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age=15).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_ABC.append(0)
+                decayed_permanent_teeth_mean_list_ABC.append(0)
             
-
             # Jevaia's indicator age groups
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__lt=13).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_EFGH.append(0)
+                decayed_permanent_teeth_mean_list_EFGH.append(0)
             
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__range=[13,18]).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_EFGH.append(0)
+                decayed_permanent_teeth_mean_list_EFGH.append(0)
             
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__range=[19,60]).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_EFGH.append(0)
+                decayed_permanent_teeth_mean_list_EFGH.append(0)
             
             decayed_permanent_teeth1 = []
             for i in Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj],age__gt=60).values('patiend_id').distinct():
                 decayed_permanent_teeth1.append(i.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
-                decayed_permanent_teeth_list_EFGH.append(0)
+                decayed_permanent_teeth_mean_list_EFGH.append(0)
 
             # p-value calculation for ABC
             try:
-                stat, p = wilcoxon(decayed_primary_teeth_mean_list_ABC,decayed_permanent_teeth_list_ABC)
+                stat, p = wilcoxon(decayed_primary_teeth_mean_list_ABC,decayed_permanent_teeth_mean_list_ABC)
                 abc_pvalue = round(p,3)
             except:
                 abc_pvalue = 0
@@ -777,7 +549,7 @@ class CrossSectionalVisualization(APIView):
 
             # p-value calculation for EFGH
             try:
-                stat, p = wilcoxon(decayed_primary_teeth_mean_list_EFGH,decayed_permanent_teeth_list_EFGH)
+                stat, p = wilcoxon(decayed_primary_teeth_mean_list_EFGH,decayed_permanent_teeth_mean_list_EFGH)
                 efgh_pvalue = round(p,3)
             except:
                 efgh_pvalue = 0
@@ -792,37 +564,37 @@ class CrossSectionalVisualization(APIView):
 
             mean_overall_decayed_primary_teeth = round(overall_decayed_primary_teeth / 7,2)
 
-            overall_decayed_permanent_teeth = decayed_permanent_teeth_list_ABC[0] + decayed_permanent_teeth_list_ABC[1] 
-            + decayed_permanent_teeth_list_ABC[2] + decayed_permanent_teeth_list_EFGH[0]
-            + decayed_permanent_teeth_list_EFGH[1] + decayed_permanent_teeth_list_EFGH[2]
-            + decayed_permanent_teeth_list_EFGH[3]
+            overall_decayed_permanent_teeth = decayed_permanent_teeth_mean_list_ABC[0] + decayed_permanent_teeth_mean_list_ABC[1] 
+            + decayed_permanent_teeth_mean_list_ABC[2] + decayed_permanent_teeth_mean_list_EFGH[0]
+            + decayed_permanent_teeth_mean_list_EFGH[1] + decayed_permanent_teeth_mean_list_EFGH[2]
+            + decayed_permanent_teeth_mean_list_EFGH[3]
 
             mean_overall_decayed_permanent_teeth = round(overall_decayed_permanent_teeth / 7,2)
 
             final_total_decayed_primary_teeth = [
                 "Number of decayed primary teeth",
-                str(decayed_primary_teeth_mean_list_ABC[0]) + "(" + str(total_decayed_primary_teeth[0]) + "SD)",
-                str(decayed_primary_teeth_mean_list_ABC[1]) + "(" + str(total_decayed_primary_teeth[1]) + "SD)",
-                str(decayed_primary_teeth_mean_list_ABC[2]) + "(" + str(total_decayed_primary_teeth[2]) + "SD)",
+                str(decayed_primary_teeth_mean_list_ABC[0]) + "(" + "SD" + str(total_decayed_primary_teeth[0]) + ")",
+                str(decayed_primary_teeth_mean_list_ABC[1]) + "(" + "SD" + str(total_decayed_primary_teeth[1]) + ")",
+                str(decayed_primary_teeth_mean_list_ABC[2]) + "(" + "SD" + str(total_decayed_primary_teeth[2]) + ")",
                 total_decayed_primary_teeth[3],
-                str(decayed_primary_teeth_mean_list_EFGH[0]) + "(" + str(total_decayed_primary_teeth[4]) + "SD)",
-                str(decayed_primary_teeth_mean_list_EFGH[1]) + "(" + str(total_decayed_primary_teeth[5]) + "SD)",
-                str(decayed_primary_teeth_mean_list_EFGH[2]) + "(" + str(total_decayed_primary_teeth[6]) + "SD)",
-                str(decayed_primary_teeth_mean_list_EFGH[3]) + "(" + str(total_decayed_primary_teeth[7]) + "SD)",
+                str(decayed_primary_teeth_mean_list_EFGH[0]) + "(" + "SD" + str(total_decayed_primary_teeth[4]) + ")",
+                str(decayed_primary_teeth_mean_list_EFGH[1]) + "(" + "SD" + str(total_decayed_primary_teeth[5]) + ")",
+                str(decayed_primary_teeth_mean_list_EFGH[2]) + "(" + "SD" + str(total_decayed_primary_teeth[6]) + ")",
+                str(decayed_primary_teeth_mean_list_EFGH[3]) + "(" + "SD" + str(total_decayed_primary_teeth[7]) + ")",
                 total_decayed_primary_teeth[8],
                 mean_overall_decayed_primary_teeth,
                 ]
             
             final_total_decayed_permanent_teeth = [
                 "Number of decayed permanent teeth",
-                str(decayed_permanent_teeth_list_ABC[0]) + "(" + str(total_decayed_permanent_teeth[0]) + "SD)",
-                str(decayed_permanent_teeth_list_ABC[1]) + "(" + str(total_decayed_permanent_teeth[1]) + "SD)",
-                str(decayed_permanent_teeth_list_ABC[2]) + "(" + str(total_decayed_permanent_teeth[2]) + "SD)",
+                str(decayed_permanent_teeth_mean_list_ABC[0]) + "(" + "SD" + str(total_decayed_permanent_teeth[0]) + ")",
+                str(decayed_permanent_teeth_mean_list_ABC[1]) + "(" + "SD" + str(total_decayed_permanent_teeth[1]) + ")",
+                str(decayed_permanent_teeth_mean_list_ABC[2]) + "(" + "SD" + str(total_decayed_permanent_teeth[2]) + ")",
                 total_decayed_permanent_teeth[3],
-                str(decayed_permanent_teeth_list_EFGH[0]) + "(" + str(total_decayed_permanent_teeth[4]) + "SD)",
-                str(decayed_permanent_teeth_list_EFGH[1]) + "(" + str(total_decayed_permanent_teeth[5]) + "SD)",
-                str(decayed_permanent_teeth_list_EFGH[2]) + "(" + str(total_decayed_permanent_teeth[6]) + "SD)",
-                str(decayed_permanent_teeth_list_EFGH[3]) + "(" + str(total_decayed_permanent_teeth[7]) + "SD)",
+                str(decayed_permanent_teeth_mean_list_EFGH[0]) + "(" + "SD" + str(total_decayed_permanent_teeth[4]) + ")",
+                str(decayed_permanent_teeth_mean_list_EFGH[1]) + "(" + "SD" + str(total_decayed_permanent_teeth[5]) + ")",
+                str(decayed_permanent_teeth_mean_list_EFGH[2]) + "(" + "SD" + str(total_decayed_permanent_teeth[6]) + ")",
+                str(decayed_permanent_teeth_mean_list_EFGH[3]) + "(" + "SD" + str(total_decayed_permanent_teeth[7]) + ")",
                 total_decayed_permanent_teeth[8],
                 mean_overall_decayed_permanent_teeth,
                 ]
@@ -830,47 +602,23 @@ class CrossSectionalVisualization(APIView):
             # Cavity permanent molar or premolar
             # WHO indicator age-groups
             numerator_cavity_permanent_molar_A = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
 
             numerator_cavity_permanent_molar_B = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
             
             numerator_cavity_permanent_molar_C = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
             
@@ -878,61 +626,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_cavity_permanent_molar_E = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
             
             numerator_cavity_permanent_molar_F = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
             
             numerator_cavity_permanent_molar_G = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
             numerator_cavity_permanent_molar_H = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
 
@@ -942,47 +658,23 @@ class CrossSectionalVisualization(APIView):
             # Cavity permanent anterior
             # WHO indicator age-groups
             numerator_cavity_permanent_anterior_A = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
 
             numerator_cavity_permanent_anterior_B = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             numerator_cavity_permanent_anterior_C = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
             
@@ -990,61 +682,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_cavity_permanent_anterior_E = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             numerator_cavity_permanent_anterior_F = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
             
             numerator_cavity_permanent_anterior_G = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
             numerator_cavity_permanent_anterior_H = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
 
@@ -1054,47 +714,23 @@ class CrossSectionalVisualization(APIView):
             # Active Infection
             # WHO indicator age-groups
             numerator_active_infection_A = Visualization.objects.filter(active_infection=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_A/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_A/denominator)*100,1))
             except:
                 total_active_infection.append(0)
 
             numerator_active_infection_B = Visualization.objects.filter(active_infection=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_B/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_B/denominator)*100,1))
             except:
                 total_active_infection.append(0)
             
             numerator_active_infection_C = Visualization.objects.filter(active_infection=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_C/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_C/denominator)*100,1))
             except:
                 total_active_infection.append(0)
             
@@ -1102,61 +738,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_active_infection_E = Visualization.objects.filter(active_infection=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_E/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_E/denominator)*100,1))
             except:
                 total_active_infection.append(0)
             
             numerator_active_infection_F = Visualization.objects.filter(active_infection=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_F/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_F/denominator)*100,1))
             except:
                 total_active_infection.append(0)
             
             numerator_active_infection_G = Visualization.objects.filter(active_infection=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_G/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_G/denominator)*100,1))
             except:
                 total_active_infection.append(0)
             numerator_active_infection_H = Visualization.objects.filter(active_infection=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_active_infection.append(round((numerator_active_infection_H/denominator)*100,2))
+                total_active_infection.append(round((numerator_active_infection_H/denominator)*100,1))
             except:
                 total_active_infection.append(0)
 
@@ -1165,47 +769,23 @@ class CrossSectionalVisualization(APIView):
             # Mouth pain due to reversible pulpitis
             # WHO indicator age-groups
             numerator_reversible_pulpitis_A = Visualization.objects.filter(reversible_pulpitis=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
 
             numerator_reversible_pulpitis_B = Visualization.objects.filter(reversible_pulpitis=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
             
             numerator_reversible_pulpitis_C = Visualization.objects.filter(reversible_pulpitis=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
             
@@ -1213,61 +793,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_reversible_pulpitis_E = Visualization.objects.filter(reversible_pulpitis=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
             
             numerator_reversible_pulpitis_F = Visualization.objects.filter(reversible_pulpitis=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
             
             numerator_reversible_pulpitis_G = Visualization.objects.filter(reversible_pulpitis=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
             numerator_reversible_pulpitis_H = Visualization.objects.filter(reversible_pulpitis=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
 
@@ -1277,47 +825,23 @@ class CrossSectionalVisualization(APIView):
             # Need ART filling
             # WHO indicator age-groups
             numerator_need_art_filling_A = Visualization.objects.filter(need_art_filling=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
 
             numerator_need_art_filling_B = Visualization.objects.filter(need_art_filling=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
             
             numerator_need_art_filling_C = Visualization.objects.filter(need_art_filling=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
             
@@ -1325,61 +849,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_need_art_filling_E = Visualization.objects.filter(need_art_filling=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
             
             numerator_need_art_filling_F = Visualization.objects.filter(need_art_filling=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
             
             numerator_need_art_filling_G = Visualization.objects.filter(need_art_filling=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
             numerator_need_art_filling_H = Visualization.objects.filter(need_art_filling=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,1))
             except:
                 total_need_art_filling.append(0)
 
@@ -1388,47 +880,23 @@ class CrossSectionalVisualization(APIView):
             # Need SDF
             # WHO indicator age-groups
             numerator_need_sdf_A = Visualization.objects.filter(need_sdf=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
 
             numerator_need_sdf_B = Visualization.objects.filter(need_sdf=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
             
             numerator_need_sdf_C = Visualization.objects.filter(need_sdf=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
             
@@ -1436,61 +904,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_need_sdf_E = Visualization.objects.filter(need_sdf=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
             
             numerator_need_sdf_F = Visualization.objects.filter(need_sdf=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
             
             numerator_need_sdf_G = Visualization.objects.filter(need_sdf=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
             numerator_need_sdf_H = Visualization.objects.filter(need_sdf=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,1))
             except:
                 total_need_sdf.append(0)
 
@@ -1500,47 +936,23 @@ class CrossSectionalVisualization(APIView):
             # Need Extraction
             # WHO indicator age-groups
             numerator_need_extraction_A = Visualization.objects.filter(need_extraction=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
 
             numerator_need_extraction_B = Visualization.objects.filter(need_extraction=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
             
             numerator_need_extraction_C = Visualization.objects.filter(need_extraction=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
 
@@ -1549,61 +961,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_need_extraction_E = Visualization.objects.filter(need_extraction=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
             
             numerator_need_extraction_F = Visualization.objects.filter(need_extraction=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
             
             numerator_need_extraction_G = Visualization.objects.filter(need_extraction=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
             numerator_need_extraction_H = Visualization.objects.filter(need_extraction=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,1))
             except:
                 total_need_extraction.append(0)
 
@@ -1612,47 +992,23 @@ class CrossSectionalVisualization(APIView):
             # Need FV
             # WHO indicator age-groups
             numerator_need_fv_A = Visualization.objects.filter(need_fv=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_A/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_A/denominator)*100,1))
             except:
                 total_need_fv.append(0)
 
             numerator_need_fv_B = Visualization.objects.filter(need_fv=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_B/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_B/denominator)*100,1))
             except:
                 total_need_fv.append(0)
             
             numerator_need_fv_C = Visualization.objects.filter(need_fv=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_C/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_C/denominator)*100,1))
             except:
                 total_need_fv.append(0)
             
@@ -1660,61 +1016,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_need_fv_E = Visualization.objects.filter(need_fv=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_E/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_E/denominator)*100,1))
             except:
                 total_need_fv.append(0)
             
             numerator_need_fv_F = Visualization.objects.filter(need_fv=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_F/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_F/denominator)*100,1))
             except:
                 total_need_fv.append(0)
             
             numerator_need_fv_G = Visualization.objects.filter(need_fv=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_G/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_G/denominator)*100,1))
             except:
                 total_need_fv.append(0)
             numerator_need_fv_H = Visualization.objects.filter(need_fv=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_fv.append(round((numerator_need_fv_H/denominator)*100,2))
+                total_need_fv.append(round((numerator_need_fv_H/denominator)*100,1))
             except:
                 total_need_fv.append(0)
 
@@ -1724,47 +1048,23 @@ class CrossSectionalVisualization(APIView):
             # Need Dentist or Hygenist
             # WHO indicator age-groups
             numerator_need_dentist_or_hygienist_A = Visualization.objects.filter(need_dentist_or_hygienist=True,age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 6:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
 
             numerator_need_dentist_or_hygienist_B = Visualization.objects.filter(need_dentist_or_hygienist=True,age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 12:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
             numerator_need_dentist_or_hygienist_C = Visualization.objects.filter(need_dentist_or_hygienist=True,age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age == 15:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
@@ -1772,61 +1072,29 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_need_dentist_or_hygienist_E = Visualization.objects.filter(need_dentist_or_hygienist=True,age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age < 13:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
             numerator_need_dentist_or_hygienist_F = Visualization.objects.filter(need_dentist_or_hygienist=True,age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 12 and age < 19:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
             
             numerator_need_dentist_or_hygienist_G = Visualization.objects.filter(need_dentist_or_hygienist=True,age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 18 and age < 61:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
             numerator_need_dentist_or_hygienist_H = Visualization.objects.filter(need_dentist_or_hygienist=True,age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = 0
-            patient_obj = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj])
-            for p in patient_obj:
-                age = (
-                today.npYear()
-                - p.dob.year
-                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                if age > 60:
-                    denominator += 1
+            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
 
@@ -1878,79 +1146,67 @@ class CrossSectionalVisualization(APIView):
             total_need_fv.append(efgh2_pvalue)
             total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
+            denominator_total = Visualization.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             numerator_untreated_caries_present_total = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_untreated_caries_present.append(round((numerator_untreated_caries_present_total/denominator_total)*100,2))
+                total_untreated_caries_present.append(round((numerator_untreated_caries_present_total/denominator_total)*100,1))
             except:
                 total_untreated_caries_present.append(0)
 
             numerator_cavity_permanent_molar_total = Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_total/denominator_total)*100,2))
+                total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_total/denominator_total)*100,1))
             except:
                 total_cavity_permanent_molar.append(0)
 
             numerator_cavity_permanent_anterior_total = Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_total/denominator_total)*100,2))
+                total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_total/denominator_total)*100,1))
             except:
                 total_cavity_permanent_anterior.append(0)
 
             numerator_active_infection_total = Visualization.objects.filter(active_infection=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_active_infection.append(round((numerator_active_infection_total/denominator_total)*100,2))
+                total_active_infection.append(round((numerator_active_infection_total/denominator_total)*100,1))
             except:
                 total_active_infection.append(0)
 
             numerator_reversible_pulpitis_total = Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_total/denominator_total)*100,2))
+                total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_total/denominator_total)*100,1))
             except:
                 total_reversible_pulpitis.append(0)
 
             numerator_need_art_filling_total = Visualization.objects.filter(need_art_filling=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_need_art_filling.append(round((numerator_need_art_filling_total/denominator_total)*100,2))
+                total_need_art_filling.append(round((numerator_need_art_filling_total/denominator_total)*100,1))
             except:
                 total_need_art_filling.append(0)
 
             numerator_need_sdf_total = Visualization.objects.filter(need_sdf=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_need_sdf.append(round((numerator_need_sdf_total/denominator_total)*100,2))
+                total_need_sdf.append(round((numerator_need_sdf_total/denominator_total)*100,1))
             except:
                 total_need_sdf.append(0)
 
             numerator_need_extraction_total = Visualization.objects.filter(need_extraction=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_need_extraction.append(round((numerator_need_extraction_total/denominator_total)*100,2))
+                total_need_extraction.append(round((numerator_need_extraction_total/denominator_total)*100,1))
             except:
                 total_need_extraction.append(0)
 
             numerator_need_fv_total = Visualization.objects.filter(need_fv=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_need_fv.append(round((numerator_need_fv_total/denominator_total)*100,2))
+                total_need_fv.append(round((numerator_need_fv_total/denominator_total)*100,1))
             except:
                 total_need_fv.append(0)
 
             numerator_need_dentist_or_hygienist_total = Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator_total = Patient.objects.filter(created_at__range=[last_30_days_obj, today_date_obj]).count()
             try:
-                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_total/denominator_total)*100,2))
+                total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_total/denominator_total)*100,1))
             except:
                 total_need_dentist_or_hygienist.append(0)
 
-            
-            
-            
             final_total_untreated_caries_present = [
                 "Any untreated caries present" ,
                 str(numerator_untreated_caries_present_A) + "(" + str(total_untreated_caries_present[0]) + "%)",
@@ -2231,209 +1487,98 @@ class CrossSectionalVisualization(APIView):
                 numerator_need_fv_total = []
                 numerator_need_dentist_or_hygienist_total = []
 
-                denominator_carries_risk_low_total = []
-                denominator_carries_risk_medium_total = []
-                denominator_carries_risk_high_total = []
-                denominator_untreated_caries_present_total = []
-                # denominator_decayed_permanent_teeth_total = []
-                # denominator_decayed_primary_teeth_total = []
-                denominator_cavity_permanent_molar_total = []
-                denominator_cavity_permanent_anterior_total = []
-                denominator_active_infection_total = []
-                denominator_reversible_pulpitis_total = []
-                denominator_need_art_filling_total = []
-                denominator_need_sdf_total = []
-                denominator_need_extraction_total = []
-                denominator_need_fv_total = []
-                denominator_need_dentist_or_hygienist_total = []
+                denominator_all = []
+                
 
+                patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date])
                 # carries risk low
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
                             print("inside referral")
+                            numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+                            denominator_all.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            
-                            numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            denominator_carries_risk_low_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
                             print("inside no referral")
+                            numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
+                            denominator_all.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_carries_risk_low_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                 numerator_carries_risk_low_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
                 numerator_carries_risk_low_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,2))
+                    total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
                 
@@ -2444,378 +1589,176 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    numerator_list_12.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-
-                            numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            denominator_carries_risk_medium_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_carries_risk_medium_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                     
                 numerator_carries_risk_medium_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
                 numerator_carries_risk_medium_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,2))
+                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
                 
                 carries_risk_medium_ABC = [numerator_carries_risk_medium_A,numerator_carries_risk_medium_B,numerator_carries_risk_medium_C]
                 carries_risk_medium_EFGH = [numerator_carries_risk_medium_E,numerator_carries_risk_medium_F,numerator_carries_risk_medium_G,numerator_carries_risk_medium_H]
 
-
                 # carries risk high
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            denominator_carries_risk_high_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_carries_risk_high_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                 numerator_carries_risk_high_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
                 numerator_carries_risk_high_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,2))
+                    total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
                 
@@ -2854,34 +1797,19 @@ class CrossSectionalVisualization(APIView):
                 total_carries_risk_high.append(efgh1_pvalue)
 
                 try:
-                    total_carries_risk_low.append(round((numerator_carries_risk_low_total/denominator_carries_risk_low_total)*100,2))
+                    total_carries_risk_low.append(round((sum(numerator_carries_risk_low_total)/sum(denominator_all))*100,1))
                 except:
                     total_carries_risk_low.append(0)
                 
                 try:
-                    total_carries_risk_medium.append(round((numerator_carries_risk_medium_total/denominator_carries_risk_medium_total)*100,2))
+                    total_carries_risk_medium.append(round((sum(numerator_carries_risk_medium_total)/sum(denominator_all))*100,1))
                 except:
                     total_carries_risk_medium.append(0)
                 
                 try:
-                    total_carries_risk_high.append(round((numerator_carries_risk_high_total/denominator_carries_risk_high_total)*100,2))
+                    total_carries_risk_high.append(round((sum(numerator_carries_risk_high_total)/sum(denominator_all))*100,1))
                 except:
                     total_carries_risk_high.append(0)
-
-                overall_carries_risk_low = numerator_carries_risk_low_A + numerator_carries_risk_low_B 
-                + numerator_carries_risk_low_C + numerator_carries_risk_low_E
-                + numerator_carries_risk_low_F + numerator_carries_risk_low_G
-                + numerator_carries_risk_low_H
-            
-                overall_carries_risk_medium = numerator_carries_risk_medium_A + numerator_carries_risk_medium_B 
-                + numerator_carries_risk_medium_C + numerator_carries_risk_medium_E
-                + numerator_carries_risk_medium_F + numerator_carries_risk_medium_G
-                + numerator_carries_risk_medium_H
-            
-                overall_carries_risk_high = numerator_carries_risk_high_A + numerator_carries_risk_high_B 
-                + numerator_carries_risk_high_C + numerator_carries_risk_high_E
-                + numerator_carries_risk_high_F + numerator_carries_risk_high_G
-                + numerator_carries_risk_high_H
 
 
                 final_total_carries_risk_low = [
@@ -2930,186 +1858,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_untreated_caries_present_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12  and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18  and age < 60:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_untreated_caries_present_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            denominator_untreated_caries_present_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_untreated_caries_present_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12  and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18  and age < 60:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_untreated_caries_present_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_untreated_caries_present_total.append(patient_obj.count())                    
-                
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                    
+
                 numerator_untreated_caries_present_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
                 numerator_untreated_caries_present_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,2))
+                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
@@ -3331,28 +2160,28 @@ class CrossSectionalVisualization(APIView):
                 
                 final_total_decayed_primary_teeth = [
                     "Number of decayed primary teeth",
-                    str(decayed_primary_teeth_mean_list_ABC[0]) + "(" + str(total_decayed_primary_teeth[0]) + "SD)",
-                    str(decayed_primary_teeth_mean_list_ABC[1]) + "(" + str(total_decayed_primary_teeth[1]) + "SD)",
-                    str(decayed_primary_teeth_mean_list_ABC[2]) + "(" + str(total_decayed_primary_teeth[2]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_ABC[0]) + "(" + "SD" + str(total_decayed_primary_teeth[0]) + ")",
+                    str(decayed_primary_teeth_mean_list_ABC[1]) + "(" + "SD" + str(total_decayed_primary_teeth[1]) + ")",
+                    str(decayed_primary_teeth_mean_list_ABC[2]) + "(" + "SD" + str(total_decayed_primary_teeth[2]) + ")",
                     total_decayed_primary_teeth[3],
-                    str(decayed_primary_teeth_mean_list_EFGH[0]) + "(" + str(total_decayed_primary_teeth[4]) + "SD)",
-                    str(decayed_primary_teeth_mean_list_EFGH[1]) + "(" + str(total_decayed_primary_teeth[5]) + "SD)",
-                    str(decayed_primary_teeth_mean_list_EFGH[2]) + "(" + str(total_decayed_primary_teeth[6]) + "SD)",
-                    str(decayed_primary_teeth_mean_list_EFGH[3]) + "(" + str(total_decayed_primary_teeth[7]) + "SD)",
+                    str(decayed_primary_teeth_mean_list_EFGH[0]) + "(" + "SD" + str(total_decayed_primary_teeth[4]) + ")",
+                    str(decayed_primary_teeth_mean_list_EFGH[1]) + "(" + "SD" + str(total_decayed_primary_teeth[5]) + ")",
+                    str(decayed_primary_teeth_mean_list_EFGH[2]) + "(" + "SD" + str(total_decayed_primary_teeth[6]) + ")",
+                    str(decayed_primary_teeth_mean_list_EFGH[3]) + "(" + "SD" + str(total_decayed_primary_teeth[7]) + ")",
                     total_decayed_primary_teeth[8],
                     mean_overall_decayed_primary_teeth,
                 ]
             
                 final_total_decayed_permanent_teeth = [
                     "Number of decayed permanent teeth",
-                    str(decayed_permanent_teeth_mean_list_ABC[0]) + "(" + str(total_decayed_permanent_teeth[0]) + "SD)",
-                    str(decayed_permanent_teeth_mean_list_ABC[1]) + "(" + str(total_decayed_permanent_teeth[1]) + "SD)",
-                    str(decayed_permanent_teeth_mean_list_ABC[2]) + "(" + str(total_decayed_permanent_teeth[2]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_ABC[0]) + "(" + "SD" + str(total_decayed_permanent_teeth[0]) + ")",
+                    str(decayed_permanent_teeth_mean_list_ABC[1]) + "(" + "SD" + str(total_decayed_permanent_teeth[1]) + ")",
+                    str(decayed_permanent_teeth_mean_list_ABC[2]) + "(" + "SD" + str(total_decayed_permanent_teeth[2]) + ")",
                     total_decayed_permanent_teeth[3],
-                    str(decayed_permanent_teeth_mean_list_EFGH[0]) + "(" + str(total_decayed_permanent_teeth[4]) + "SD)",
-                    str(decayed_permanent_teeth_mean_list_EFGH[1]) + "(" + str(total_decayed_permanent_teeth[5]) + "SD)",
-                    str(decayed_permanent_teeth_mean_list_EFGH[2]) + "(" + str(total_decayed_permanent_teeth[6]) + "SD)",
-                    str(decayed_permanent_teeth_mean_list_EFGH[3]) + "(" + str(total_decayed_permanent_teeth[7]) + "SD)",
+                    str(decayed_permanent_teeth_mean_list_EFGH[0]) + "(" + "SD" + str(total_decayed_permanent_teeth[4]) + ")",
+                    str(decayed_permanent_teeth_mean_list_EFGH[1]) + "(" + "SD" + str(total_decayed_permanent_teeth[5]) + ")",
+                    str(decayed_permanent_teeth_mean_list_EFGH[2]) + "(" + "SD" + str(total_decayed_permanent_teeth[6]) + ")",
+                    str(decayed_permanent_teeth_mean_list_EFGH[3]) + "(" + "SD" + str(total_decayed_permanent_teeth[7]) + ")",
                     total_decayed_permanent_teeth[8],
                     mean_overall_decayed_permanent_teeth,
                 ]
@@ -3361,186 +2190,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 61:
-                                    denominator_list_gte61.append(1)
-                            numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_cavity_permanent_molar_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_cavity_permanent_molar_total.append(patient_obj.count())
-                
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                    
+
                 numerator_cavity_permanent_molar_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
                 numerator_cavity_permanent_molar_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,2))
+                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
                 
@@ -3551,186 +2281,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_cavity_permanent_anterior_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_cavity_permanent_anterior_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                     
+
                 numerator_cavity_permanent_anterior_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
                 numerator_cavity_permanent_anterior_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,2))
+                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
                 
@@ -3742,186 +2373,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 61:
-                                    denominator_list_6.append(1)
-                            numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_active_infection_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1) 
-                            numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_active_infection_total.append(patient_obj.count())                   
-                
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                    
+
                 numerator_active_infection_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_A/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_A/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_B/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_B/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_C/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_C/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_E/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_E/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_F/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_F/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_G/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_G/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
                 numerator_active_infection_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_active_infection.append(round((numerator_active_infection_H/denominator)*100,2))
+                    total_active_infection.append(round((numerator_active_infection_H/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
                 
@@ -3932,186 +2464,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_gte61.append(1)
-                            numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_reversible_pulpitis_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)   
-                            numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_reversible_pulpitis_total.append(patient_obj.count())                 
-                
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                    
+
                 numerator_reversible_pulpitis_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 numerator_reversible_pulpitis_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,2))
+                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
                 
@@ -4122,186 +2555,86 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_need_art_filling_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 61:
-                                    denominator_list_gte61.append(1)  
-                            numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_need_art_filling_total.append(patient_obj.count())                  
-                
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                    
                 numerator_need_art_filling_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
                 numerator_need_art_filling_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,2))
+                    total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
                 
@@ -4312,186 +2645,86 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_need_sdf_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)  
-                            numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_need_sdf_total.append(patient_obj.count())                  
-                
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                    
                 numerator_need_sdf_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
                 numerator_need_sdf_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,2))
+                    total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
                 
@@ -4503,186 +2736,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_need_extraction_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_need_extraction_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                     
+
                 numerator_need_extraction_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
                 numerator_need_extraction_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,2))
+                    total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
                 
@@ -4694,186 +2828,87 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_need_fv_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1) 
-                            numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_need_fv_total.append(patient_obj.count())               
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                 
+
                 numerator_need_fv_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_A/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_A/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_B/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_B/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_C/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_C/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_E/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_E/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_F/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_F/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_G/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_G/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
                 numerator_need_fv_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_fv.append(round((numerator_need_fv_H/denominator)*100,2))
+                    total_need_fv.append(round((numerator_need_fv_H/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
                 
@@ -4885,158 +2920,59 @@ class CrossSectionalVisualization(APIView):
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
                         if referral_type:
+                            numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)
-                            numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,).values('patiend_id').distinct().count())
-                            denominator_need_dentist_or_hygienist_total.append(patient_obj.count())
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
+                            numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             numerator_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 6:
-                                    denominator_list_6.append(1)
+                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
                             numerator_list_12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 12:
-                                    denominator_list_12.append(1)
+                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
                             numerator_list_15.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age == 15:
-                                    denominator_list_15.append(1)
+                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
                             numerator_list_lte12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age < 13:
-                                    denominator_list_lte12.append(1)
+                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
                             numerator_list_13_18.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 12 and age < 19:
-                                    denominator_list_13_18.append(1)
+                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
                             numerator_list_19_60.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 18 and age < 61:
-                                    denominator_list_19_60.append(1)
+                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
                             numerator_list_gte61.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date],geography=l.id,activity_area=a.id)
-                            for p in patient_obj:
-                                age = (
-                                today.npYear()
-                                - p.dob.year
-                                - ((today.npMonth(), today.npDay()) < (p.dob.month, p.dob.day)))
-                                if age > 60:
-                                    denominator_list_gte61.append(1)   
-                            numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            denominator_need_dentist_or_hygienist_total.append(patient_obj.count())             
-            
+                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                
+
                 numerator_need_dentist_or_hygienist_A = sum(numerator_list_6)
                 denominator = sum(denominator_list_6)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_B = sum(numerator_list_12)
                 denominator = sum(denominator_list_12)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_C = sum(numerator_list_15)
                 denominator = sum(denominator_list_15)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
                 
@@ -5044,28 +2980,28 @@ class CrossSectionalVisualization(APIView):
                 numerator_need_dentist_or_hygienist_E = sum(numerator_list_lte12)
                 denominator = sum(denominator_list_lte12)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_F = sum(numerator_list_13_18)
                 denominator = sum(denominator_list_13_18)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_G = sum(numerator_list_19_60)
                 denominator = sum(denominator_list_19_60)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
                 numerator_need_dentist_or_hygienist_H = sum(numerator_list_gte61)
                 denominator = sum(denominator_list_gte61)
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,2))
+                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
                 
@@ -5120,52 +3056,52 @@ class CrossSectionalVisualization(APIView):
                 total_need_dentist_or_hygienist.append(efgh2_pvalue)
 
                 try:
-                    total_untreated_caries_present.append(round((numerator_untreated_caries_present_total/denominator_untreated_caries_present_total)*100,2))
+                    total_untreated_caries_present.append(round((sum(numerator_untreated_caries_present_total)/sum(denominator_all))*100,1))
                 except:
                     total_untreated_caries_present.append(0)
                 
                 try:
-                    total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_total/denominator_cavity_permanent_molar_total)*100,2))
+                    total_cavity_permanent_molar.append(round((sum(numerator_cavity_permanent_molar_total)/sum(denominator_all))*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
                 
                 try:
-                    total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_total/denominator_cavity_permanent_anterior_total)*100,2))
+                    total_cavity_permanent_anterior.append(round((sum(numerator_cavity_permanent_anterior_total)/sum(denominator_all))*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
                 
                 try:
-                    total_active_infection.append(round((numerator_active_infection_total/denominator_active_infection_total)*100,2))
+                    total_active_infection.append(round((sum(numerator_active_infection_total)/sum(denominator_all))*100,1))
                 except:
                     total_active_infection.append(0)
                 
                 try:
-                    total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_total/denominator_reversible_pulpitis_total)*100,2))
+                    total_reversible_pulpitis.append(round((sum(numerator_reversible_pulpitis_total)/sum(denominator_all))*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
                 try:
-                    total_need_art_filling.append(round((numerator_need_art_filling_total/denominator_need_art_filling_total)*100,2))
+                    total_need_art_filling.append(round((sum(numerator_need_art_filling_total)/sum(denominator_all))*100,1))
                 except:
                     total_need_art_filling.append(0)
                 
                 try:
-                    total_need_sdf.append(round((numerator_need_sdf_total/denominator_need_sdf_total)*100,2))
+                    total_need_sdf.append(round((sum(numerator_need_sdf_total)/sum(denominator_all))*100,1))
                 except:
                     total_need_sdf.append(0)
                 
                 try:
-                    total_need_extraction.append(round((numerator_need_extraction_total/denominator_need_extraction_total)*100,2))
+                    total_need_extraction.append(round((sum(numerator_need_extraction_total)/sum(denominator_all))*100,1))
                 except:
                     total_need_extraction.append(0)
                 
                 try:
-                    total_need_fv.append(round((numerator_need_fv_total/denominator_need_fv_total)*100,2))
+                    total_need_fv.append(round((sum(numerator_need_fv_total)/sum(denominator_all))*100,1))
                 except:
                     total_need_fv.append(0)
                 
                 try:
-                    total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_total/denominator_need_dentist_or_hygienist_total)*100,2))
+                    total_need_dentist_or_hygienist.append(round((sum(numerator_need_dentist_or_hygienist_total)/sum(denominator_all))*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
                 
@@ -5387,7 +3323,8 @@ class CrossSectionalVisualization(APIView):
                 
                 return Response(data)
             return Response({"message":"Do not have permission."},status=401)
-        return Response({"message":serializer.errors},status=400)
+        return Response({"message":serializer.errors},status=400)    
+
 
 
 class SectionalVisualization(APIView):
@@ -5523,82 +3460,82 @@ class SectionalVisualization(APIView):
             total_cavity_permanent_posterior = Visualization.objects.filter(cavity_permanent_posterior_teeth=True).count()
             total_cavity_permanent_posterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,1))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_posterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100,1))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_posterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100,1))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100,1))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100,1))
             except:
                 cavity_permanent_molar.append(0)
 
 
             total_cavity_permanent_posterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_posterior_teeth=True).count()
             try:
-                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100,2))
+                cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100,1))
             except:
                 cavity_permanent_molar.append(0)
 
             total_cavity_permanent_anterior=Visualization.objects.filter(cavity_permanent_anterior_teeth=True).count()
             total_cavity_permanent_anterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100,2))
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100,1))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100,2))
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100,1))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100,2))
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100,1))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100,2))
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100,1))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100,2))
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100,1))
             except:
                 cavity_permanent_anterior.append(0)
 
 
             total_cavity_permanent_anterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_anterior_teeth=True).count()
             try:
-                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100,2))
+                cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100,1))
             except:
                 cavity_permanent_anterior.append(0)
 
@@ -5784,40 +3721,40 @@ class SectionalVisualization(APIView):
                 total_cavity_permanent_posterior=Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 total_cavity_permanent_posterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,2))
+                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_6/total_cavity_permanent_posterior)*100,1))
                 except:
                     cavity_permanent_molar.append(0)
 
                 total_cavity_permanent_posterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100,2))
+                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_12/total_cavity_permanent_posterior)*100,1))
                 except:
                     cavity_permanent_molar.append(0)
 
                 total_cavity_permanent_posterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100,2))
+                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_15/total_cavity_permanent_posterior)*100,1))
                 except:
                     cavity_permanent_molar.append(0)
 
 
                 total_cavity_permanent_posterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100,2))
+                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_child/total_cavity_permanent_posterior)*100,1))
                 except:
                     cavity_permanent_molar.append(0)
 
 
                 total_cavity_permanent_posterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100,2))
+                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_adult/total_cavity_permanent_posterior)*100,1))
                 except:
                     cavity_permanent_molar.append(0)
 
 
                 total_cavity_permanent_posterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_posterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100,2))
+                    cavity_permanent_molar.append(round((total_cavity_permanent_posterior_teeth_old/total_cavity_permanent_posterior)*100,1))
                 except:
                     cavity_permanent_molar.append(0)
 
@@ -5826,42 +3763,42 @@ class SectionalVisualization(APIView):
                 total_cavity_permanent_anterior=Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 total_cavity_permanent_anterior_teeth_6=Visualization.objects.filter(age=6,cavity_permanent_anterior_teeth=True,reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100,2))
+                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_6/total_cavity_permanent_anterior)*100,1))
                 except:
                     cavity_permanent_anterior.append(0)
 
 
                 total_cavity_permanent_anterior_teeth_12=Visualization.objects.filter(age=12,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100,2))
+                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_12/total_cavity_permanent_anterior)*100,1))
                 except:
                     cavity_permanent_anterior.append(0)
 
 
                 total_cavity_permanent_anterior_teeth_15=Visualization.objects.filter(age=15,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100,2))
+                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_15/total_cavity_permanent_anterior)*100,1))
                 except:
                     cavity_permanent_anterior.append(0)
 
 
                 total_cavity_permanent_anterior_teeth_child=Visualization.objects.filter(age__lt=18,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100,2))
+                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_child/total_cavity_permanent_anterior)*100,1))
                 except:
                     cavity_permanent_anterior.append(0)
 
 
                 total_cavity_permanent_anterior_teeth_adult=Visualization.objects.filter(age__range=(18,60),cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100,2))
+                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_adult/total_cavity_permanent_anterior)*100,1))
                 except:
                     cavity_permanent_anterior.append(0)
 
 
                 total_cavity_permanent_anterior_teeth_old=Visualization.objects.filter(age__gt=60,cavity_permanent_anterior_teeth=True,created_at__range=[start_date,end_date],reason_for_visit=reason_for_visit,referral_type=referral_type).count()
                 try:
-                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100,2))
+                    cavity_permanent_anterior.append(round((total_cavity_permanent_anterior_teeth_old/total_cavity_permanent_anterior)*100,1))
                 except:
                     cavity_permanent_anterior.append(0)
 
