@@ -34,7 +34,7 @@ class AdminVisualization(ImportExportActionModelAdmin):
 	def has_add_permission(self, request):
 		return False
 	resource_class = VisualizationResource
-	list_display = ('patiend_id','patient_name','geography_id','geography_name',\
+	list_display = ('id','patiend_id','patient_name','geography_id','geography_name',\
 	'activities_id','activity_name','encounter_id','reason_for_visit',\
 	'gender','age','carries_risk','decayed_primary_teeth_number',\
 	'decayed_permanent_teeth_number','cavity_permanent_posterior_teeth',\

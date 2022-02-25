@@ -21644,3 +21644,563 @@ TypeError: 'int' object is not iterable
 2022-02-18 14:24:29,792 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
 2022-02-18 15:32:21,619 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21226
 2022-02-18 15:32:45,410 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20975
+2022-02-25 10:43:34,372 django.request WARNING  Unauthorized: /api/v1/users
+2022-02-25 10:43:34,404 django.server WARNING  "GET /api/v1/users HTTP/1.1" 401 9809
+2022-02-25 10:43:34,801 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-02-25 10:43:34,867 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-02-25 10:43:34,868 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-02-25 10:43:34,919 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-02-25 10:43:35,256 django.request WARNING  Not Found: /favicon.ico
+2022-02-25 10:43:35,257 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-25 10:43:37,287 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/users HTTP/1.1" 200 2715
+2022-02-25 10:43:45,337 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-25 10:43:45,561 django.server INFO     "GET /api/v1/users HTTP/1.1" 200 17666
+2022-02-25 10:43:54,179 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 10:47:26,697 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 926, in get
+    patient_id=i.patient_id,
+AttributeError: 'dict' object has no attribute 'patient_id'
+2022-02-25 10:47:26,702 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90632
+2022-02-25 10:49:22,971 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 926, in get
+    patient_id=i.patient_id.patient_id,
+AttributeError: 'dict' object has no attribute 'patient_id'
+2022-02-25 10:49:22,973 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90654
+2022-02-25 10:50:13,051 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 926, in get
+    patient_id=i.patiend_id,
+AttributeError: 'dict' object has no attribute 'patiend_id'
+2022-02-25 10:50:13,054 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90632
+2022-02-25 10:50:48,262 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 926, in get
+    patiend_id=i.patiend_id,
+AttributeError: 'dict' object has no attribute 'patiend_id'
+2022-02-25 10:50:48,266 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90632
+2022-02-25 10:50:53,216 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 926, in get
+    patiend_id=i.patiend_id,
+AttributeError: 'dict' object has no attribute 'patiend_id'
+2022-02-25 10:50:53,218 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90632
+2022-02-25 10:51:37,714 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 926, in get
+    patiend_id=i.patiend_id.patiend_id,
+AttributeError: 'dict' object has no attribute 'patiend_id'
+2022-02-25 10:51:37,717 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90654
+2022-02-25 11:01:55,819 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 927, in get
+    patiend_id=i.patiend_id.patiend_id,
+UnboundLocalError: local variable 'i' referenced before assignment
+2022-02-25 11:01:55,824 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90630
+2022-02-25 11:02:39,937 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 928, in get
+    patiend_id=i.patiend_id.patiend_id,
+UnboundLocalError: local variable 'i' referenced before assignment
+2022-02-25 11:02:39,941 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90615
+2022-02-25 11:03:55,279 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 928, in get
+    patiend_id=i.patiend_id.patiend_id,
+UnboundLocalError: local variable 'i' referenced before assignment
+2022-02-25 11:03:55,281 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90615
+2022-02-25 11:04:17,150 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 928, in get
+    patiend_id=i.patiend_id.patiend_id,
+UnboundLocalError: local variable 'i' referenced before assignment
+2022-02-25 11:04:17,152 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90615
+2022-02-25 11:07:53,117 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 928, in get
+    patiend_id=i.patiend_id.patiend_id,
+AttributeError: 'dict' object has no attribute 'patiend_id'
+2022-02-25 11:07:53,120 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90602
+2022-02-25 11:16:19,077 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 924, in get
+    print(i["patiend_id"])
+TypeError: 'Visualization' object is not subscriptable
+2022-02-25 11:16:19,080 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90717
+2022-02-25 11:18:41,713 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 929, in get
+    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
+AttributeError: 'dict' object has no attribute 'encounter_id'
+2022-02-25 11:18:41,715 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90667
+2022-02-25 11:19:07,489 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 929, in get
+    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
+AttributeError: 'dict' object has no attribute 'encounter_id'
+2022-02-25 11:19:07,491 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90532
+2022-02-25 11:19:12,595 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-02-25 11:19:15,375 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-02-25 11:20:22,548 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-02-25 11:20:25,316 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-02-25 11:21:53,197 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-02-25 11:21:56,010 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-02-25 11:37:14,871 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 936, in get
+    d2 = a.recall_at
+AttributeError: 'NoneType' object has no attribute 'recall_at'
+2022-02-25 11:37:14,874 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 91139
+2022-02-25 11:38:53,619 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 11:41:22,490 django.server INFO     "GET /maintainer HTTP/1.1" 301 0
+2022-02-25 11:41:22,766 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13908
+2022-02-25 11:41:22,990 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2022-02-25 11:41:22,990 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2022-02-25 11:41:23,014 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2022-02-25 11:41:23,015 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2022-02-25 11:41:23,036 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2022-02-25 11:41:23,043 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2022-02-25 11:41:23,071 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2022-02-25 11:41:23,306 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2022-02-25 11:41:23,312 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2022-02-25 11:41:23,317 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2022-02-25 11:41:28,563 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17112
+2022-02-25 11:41:28,667 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2022-02-25 11:41:28,678 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:41:28,696 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2022-02-25 11:41:28,697 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2022-02-25 11:41:28,698 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2022-02-25 11:41:28,699 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2022-02-25 11:41:28,719 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2022-02-25 11:41:28,721 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2022-02-25 11:41:28,727 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2022-02-25 11:41:28,734 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2022-02-25 11:41:28,759 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2022-02-25 11:41:28,777 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2022-02-25 11:41:28,840 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2022-02-25 11:41:28,840 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2022-02-25 11:41:28,854 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2022-02-25 11:42:23,943 django.server INFO     "GET /maintainer/visualizationapp/visualization/5485C71B443B47FAB43F67F5B1B62C45/change/ HTTP/1.1" 200 23835
+2022-02-25 11:42:24,038 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:42:24,041 django.server INFO     "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+2022-02-25 11:42:24,044 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2022-02-25 11:42:24,044 django.server INFO     "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+2022-02-25 11:42:24,046 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2022-02-25 11:42:24,059 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2022-02-25 11:42:24,080 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2022-02-25 11:42:24,194 django.server INFO     "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2022-02-25 11:42:32,304 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17112
+2022-02-25 11:42:34,367 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23843
+2022-02-25 11:42:34,451 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:42:44,341 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17112
+2022-02-25 11:43:33,600 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:43:33,674 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:43:39,233 django.server INFO     "GET /maintainer/visualizationapp/visualization/5485C71B443B47FAB43F67F5B1B62C45/change/ HTTP/1.1" 200 23835
+2022-02-25 11:43:39,314 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:43:43,665 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:43:45,600 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23843
+2022-02-25 11:43:45,677 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:43:50,269 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:43:54,517 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23843
+2022-02-25 11:43:54,602 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:43:59,019 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:44:02,664 django.server INFO     "GET /maintainer/visualizationapp/visualization/024CDA44C46B41CE83ACF5640CB27AB2/change/ HTTP/1.1" 200 23822
+2022-02-25 11:44:02,776 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:44:19,344 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:45:13,385 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23843
+2022-02-25 11:45:13,465 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:45:21,273 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:45:23,175 django.server INFO     "GET /maintainer/visualizationapp/visualization/024CDA44C46B41CE83ACF5640CB27AB2/change/ HTTP/1.1" 200 23822
+2022-02-25 11:45:23,276 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 11:45:30,685 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 11:59:44,394 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23843
+2022-02-25 11:59:44,481 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:00:11,858 django.server INFO     "POST /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23995
+2022-02-25 12:00:11,942 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:00:18,656 django.server INFO     "GET /static/admin/img/calendar-icons.svg HTTP/1.1" 200 1094
+2022-02-25 12:00:46,777 django.server INFO     "POST /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 302 0
+2022-02-25 12:00:46,866 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17721
+2022-02-25 12:00:46,946 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:00:56,525 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 938, in get
+    d2 = a.recall_at
+AttributeError: 'Visualization' object has no attribute 'recall_at'
+2022-02-25 12:00:56,528 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 91296
+2022-02-25 12:02:44,837 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:05:07,095 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:23:24,447 django.server INFO     "GET /maintainer/visualizationapp/visualization/5485C71B443B47FAB43F67F5B1B62C45/change/ HTTP/1.1" 200 23835
+2022-02-25 12:23:24,550 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:23:33,389 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 12:23:35,386 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23862
+2022-02-25 12:23:35,483 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:23:40,799 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 12:23:42,850 django.server INFO     "GET /maintainer/visualizationapp/visualization/024CDA44C46B41CE83ACF5640CB27AB2/change/ HTTP/1.1" 200 23822
+2022-02-25 12:23:42,937 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:33:11,705 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:35:18,526 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:36:38,668 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 12:36:46,019 django.server INFO     "GET /maintainer/visualizationapp/visualization/5485C71B443B47FAB43F67F5B1B62C45/change/ HTTP/1.1" 200 23835
+2022-02-25 12:36:46,111 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:36:49,752 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 12:36:51,549 django.server INFO     "GET /maintainer/visualizationapp/visualization/437C0E0CF54F437DA0246BB3E83A490F/change/ HTTP/1.1" 200 23862
+2022-02-25 12:36:51,624 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:37:40,153 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-02-25 12:37:42,253 django.server INFO     "GET /maintainer/visualizationapp/visualization/024CDA44C46B41CE83ACF5640CB27AB2/change/ HTTP/1.1" 200 23822
+2022-02-25 12:37:42,315 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-02-25 12:40:34,668 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:42:28,690 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 920, in get
+    print(e_male)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 244, in __repr__
+    data = list(self[:REPR_OUTPUT_SIZE + 1])
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 268, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 1183, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/query.py", line 54, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1048, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/local/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 468, in as_sql
+    distinct_params,
+  File "/usr/local/lib/python3.7/site-packages/django/db/backends/base/operations.py", line 171, in distinct_sql
+    raise NotSupportedError('DISTINCT ON fields is not supported by this database backend')
+django.db.utils.NotSupportedError: DISTINCT ON fields is not supported by this database backend
+2022-02-25 12:42:28,695 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 122332
+2022-02-25 12:43:08,414 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:45:02,830 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:46:00,113 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:47:05,695 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:52:40,751 django.request ERROR    Internal Server Error: /api/v1/treatmentstrategicdatas
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/treatmenttable.py", line 924, in get
+    patiend_id=i["patiend_id"]
+TypeError: 'Visualization' object is not subscriptable
+2022-02-25 12:52:40,755 django.server ERROR    "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 500 90757
+2022-02-25 12:53:56,450 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 12:57:28,843 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 13:08:27,779 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 13:08:55,689 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16524
+2022-02-25 13:08:58,474 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16524
+2022-02-25 13:12:37,447 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16524
+2022-02-25 13:22:33,890 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-25 14:01:37,362 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-25 14:01:59,878 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20981
+2022-02-25 14:02:18,035 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-25 14:02:30,317 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20981
+2022-02-25 14:07:26,154 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-25 16:40:10,093 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-25 16:40:29,678 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 1736, in post
+    numerator_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+NameError: name 'numerator_list_6' is not defined
+2022-02-25 16:40:29,701 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 139740
+2022-02-25 16:41:51,522 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20981
