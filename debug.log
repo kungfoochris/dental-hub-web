@@ -22204,3 +22204,120 @@ Traceback (most recent call last):
 NameError: name 'numerator_list_6' is not defined
 2022-02-25 16:40:29,701 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 139740
 2022-02-25 16:41:51,522 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20981
+2022-02-28 10:31:20,396 django.request WARNING  Unauthorized: /api/v1/treatmentstrategicdatas
+2022-02-28 10:31:20,430 django.server WARNING  "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 401 10007
+2022-02-28 10:31:21,145 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-02-28 10:31:21,526 django.request WARNING  Not Found: /favicon.ico
+2022-02-28 10:31:21,527 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-02-28 10:31:24,010 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatmentstrategicdatas HTTP/1.1" 200 2733
+2022-02-28 10:31:42,716 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-28 10:31:43,143 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-02-28 10:32:00,682 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16513
+2022-02-28 11:40:53,819 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-28 11:41:13,795 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 1875, in post
+    numerator_cavity_permanent_molar_list_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
+NameError: name 'numerator_cavity_permanent_molar_list_total' is not defined
+2022-02-28 11:41:13,801 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 143150
+2022-02-28 11:45:41,520 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-28 11:46:03,972 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/code/visualizationapp/api/crosssectional.py", line 2622, in post
+    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_6),1))
+  File "/usr/local/lib/python3.7/statistics.py", line 649, in stdev
+    var = variance(data, xbar)
+  File "/usr/local/lib/python3.7/statistics.py", line 587, in variance
+    raise StatisticsError('variance requires at least two data points')
+statistics.StatisticsError: variance requires at least two data points
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 2626, in post
+    decayed_primary_teeth_mean_decayed_primary_teeth_list_ABC.append(0)
+NameError: name 'decayed_primary_teeth_mean_decayed_primary_teeth_list_ABC' is not defined
+2022-02-28 11:46:04,011 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 230918
+2022-02-28 11:48:20,582 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-28 11:48:45,129 django.request ERROR    Internal Server Error: /api/v1/crosssectional
+Traceback (most recent call last):
+  File "/code/visualizationapp/api/crosssectional.py", line 2674, in post
+    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_6),1))
+  File "/usr/local/lib/python3.7/statistics.py", line 649, in stdev
+    var = variance(data, xbar)
+  File "/usr/local/lib/python3.7/statistics.py", line 587, in variance
+    raise StatisticsError('variance requires at least two data points')
+statistics.StatisticsError: variance requires at least two data points
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.7/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/usr/local/lib/python3.7/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/code/visualizationapp/api/crosssectional.py", line 2678, in post
+    decayed_permanent_teeth_mean_decayed_permanent_teeth_list_ABC.append(0)
+NameError: name 'decayed_permanent_teeth_mean_decayed_permanent_teeth_list_ABC' is not defined
+2022-02-28 11:48:45,135 django.server ERROR    "POST /api/v1/crosssectional HTTP/1.1" 500 231614
+2022-02-28 11:49:29,119 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21232
+2022-02-28 11:49:53,685 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 20953
+2022-02-28 18:00:26,373 django.request WARNING  Unauthorized: /api/v1/treatment
+2022-02-28 18:00:26,406 django.server WARNING  "GET /api/v1/treatment HTTP/1.1" 401 9935
+2022-02-28 18:00:33,500 django.request WARNING  Unauthorized: /api/v1/crosssectional
+2022-02-28 18:00:33,501 django.server WARNING  "GET /api/v1/crosssectional HTTP/1.1" 401 9983
+2022-02-28 18:00:35,141 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/crosssectional HTTP/1.1" 200 2724
+2022-02-28 18:00:43,307 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 200 2962
+2022-02-28 18:00:54,038 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-28 18:00:54,919 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21369
+2022-02-28 18:01:21,231 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21090
+2022-02-28 18:08:17,861 django.request WARNING  Unauthorized: /api/v1/crosssectional
+2022-02-28 18:08:17,862 django.server WARNING  "GET /api/v1/crosssectional HTTP/1.1" 401 9983
+2022-02-28 18:08:20,387 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/crosssectional HTTP/1.1" 200 2724
+2022-02-28 18:08:35,465 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-02-28 18:08:36,362 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21393
+2022-02-28 18:09:54,994 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21114

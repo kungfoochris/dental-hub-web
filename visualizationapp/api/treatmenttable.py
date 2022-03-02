@@ -891,18 +891,19 @@ class TreatmentStrategicData(APIView):
                     patiend_id=i["patiend_id"],
                     created_at__range=[last_30_days_obj, today_date_obj],
                     ).order_by('-created_at').first()
-                a = Visualization.objects.filter(active=True,
-                    gender="male",
-                    refer_hp=True,
-                    patiend_id=i["patiend_id"],
-                ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
-                if a:
-                    if a.recall_date:
-                        d1 = l_en.created_at
-                        d2 = a.recall_date
-                        diff = abs((d1 - d2).days)
-                        if diff < 15 and diff > 0:
-                            refer_male += 1
+                if l_en:
+                    a = Visualization.objects.filter(active=True,
+                        gender="male",
+                        refer_hp=True,
+                        patiend_id=i["patiend_id"],
+                    ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                    if a:
+                        if a.recall_date:
+                            d1 = l_en.created_at
+                            d2 = a.recall_date
+                            diff = abs((d1 - d2).days)
+                            if diff < 15 and diff > 0:
+                                refer_male += 1
             
             e_female = Visualization.objects.filter(active=True,
                 gender="female",
@@ -914,18 +915,19 @@ class TreatmentStrategicData(APIView):
                     patiend_id=i["patiend_id"],
                     created_at__range=[last_30_days_obj, today_date_obj],
                     ).order_by('-created_at').first()
-                a = Visualization.objects.filter(active=True,
-                    gender="female",
-                    refer_hp=True,
-                    patiend_id=i["patiend_id"],
-                ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
-                if a:
-                    if a.recall_date:
-                        d1 = l_en.created_at
-                        d2 = a.recall_date
-                        diff = abs((d1 - d2).days)
-                        if diff < 15 and diff > 0:
-                            refer_female += 1
+                if l_en:
+                    a = Visualization.objects.filter(active=True,
+                        gender="female",
+                        refer_hp=True,
+                        patiend_id=i["patiend_id"],
+                    ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                    if a:
+                        if a.recall_date:
+                            d1 = l_en.created_at
+                            d2 = a.recall_date
+                            diff = abs((d1 - d2).days)
+                            if diff < 15 and diff > 0:
+                                refer_female += 1
 
             e_child = Visualization.objects.filter(active=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -936,18 +938,19 @@ class TreatmentStrategicData(APIView):
                     patiend_id=i["patiend_id"],
                     created_at__range=[last_30_days_obj, today_date_obj],
                     ).order_by('-created_at').first()
-                a = Visualization.objects.filter(active=True,
-                    age__lt=13,
-                    refer_hp=True,
-                    patiend_id=i["patiend_id"],
-                ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
-                if a:
-                    if a.recall_date:
-                        d1 = l_en.created_at
-                        d2 = a.recall_date
-                        diff = abs((d1 - d2).days)
-                        if diff < 15 and diff > 0:
-                            refer_child += 1
+                if l_en:
+                    a = Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        refer_hp=True,
+                        patiend_id=i["patiend_id"],
+                    ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                    if a:
+                        if a.recall_date:
+                            d1 = l_en.created_at
+                            d2 = a.recall_date
+                            diff = abs((d1 - d2).days)
+                            if diff < 15 and diff > 0:
+                                refer_child += 1
 
             e_teen = Visualization.objects.filter(active=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -958,18 +961,19 @@ class TreatmentStrategicData(APIView):
                     patiend_id=i["patiend_id"],
                     created_at__range=[last_30_days_obj, today_date_obj],
                     ).order_by('-created_at').first()
-                a = Visualization.objects.filter(active=True,
-                    age__range=(13, 18),
-                    refer_hp=True,
-                    patiend_id=i["patiend_id"],
-                ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
-                if a:
-                    if a.recall_date:
-                        d1 = l_en.created_at
-                        d2 = a.recall_date
-                        diff = abs((d1 - d2).days)
-                        if diff < 15 and diff > 0:
-                            refer_teen += 1
+                if l_en:
+                    a = Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        refer_hp=True,
+                        patiend_id=i["patiend_id"],
+                    ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                    if a:
+                        if a.recall_date:
+                            d1 = l_en.created_at
+                            d2 = a.recall_date
+                            diff = abs((d1 - d2).days)
+                            if diff < 15 and diff > 0:
+                                refer_teen += 1
             
             e_adult = Visualization.objects.filter(active=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -980,18 +984,19 @@ class TreatmentStrategicData(APIView):
                     patiend_id=i["patiend_id"],
                     created_at__range=[last_30_days_obj, today_date_obj],
                     ).order_by('-created_at').first()
-                a = Visualization.objects.filter(active=True,
-                    age__range=(19, 60),
-                    refer_hp=True,
-                    patiend_id=i["patiend_id"],
-                ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
-                if a:
-                    if a.recall_date:
-                        d1 = l_en.created_at
-                        d2 = a.recall_date
-                        diff = abs((d1 - d2).days)
-                        if diff < 15 and diff > 0:
-                            refer_adult += 1
+                if l_en:
+                    a = Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        refer_hp=True,
+                        patiend_id=i["patiend_id"],
+                    ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                    if a:
+                        if a.recall_date:
+                            d1 = l_en.created_at
+                            d2 = a.recall_date
+                            diff = abs((d1 - d2).days)
+                            if diff < 15 and diff > 0:
+                                refer_adult += 1
             
             e_adult = Visualization.objects.filter(active=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
@@ -1002,18 +1007,19 @@ class TreatmentStrategicData(APIView):
                     patiend_id=i["patiend_id"],
                     created_at__range=[last_30_days_obj, today_date_obj],
                     ).order_by('-created_at').first()
-                a = Visualization.objects.filter(active=True,
-                    age__gt=60,
-                    refer_hp=True,
-                    patiend_id=i["patiend_id"],
-                ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
-                if a:
-                    if a.recall_date:
-                        d1 = l_en.created_at
-                        d2 = a.recall_date
-                        diff = abs((d1 - d2).days)
-                        if diff < 15 and diff > 0:
-                            refer_adult += 1
+                if l_en:
+                    a = Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        refer_hp=True,
+                        patiend_id=i["patiend_id"],
+                    ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                    if a:
+                        if a.recall_date:
+                            d1 = l_en.created_at
+                            d2 = a.recall_date
+                            diff = abs((d1 - d2).days)
+                            if diff < 15 and diff > 0:
+                                refer_adult += 1
 
             total_seal_male = Visualization.objects.filter(active=True,
                 gender="male",
@@ -1737,275 +1743,223 @@ class TreatmentStrategicData(APIView):
                 # %Recall
                 e_male = Visualization.objects.filter(active=True,
                     gender="male",
-                    created_at__range=[start_date, end_date],
                     geography_id=location.id,
-                ).filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    ).order_by('-created_at').values('patiend_id').distinct()
+                    created_at__range=[start_date, end_date],
+                    ).values('patiend_id').distinct()
                 for i in e_male:
-                    a = Visualization.objects.filter(active=True,
+                    l_en = Visualization.objects.filter(active=True,
                         gender="male",
-                        refer_hp=True,
-                        patient_id=i.patient_id,
-                    ).filter(
+                        patiend_id=i["patiend_id"],
+                        geography_id=location.id,
+                        created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
-                    d1 = i.created_at
-                    d2 = a.recall_date
-                    if d2:
-                        diff = abs((d1 - d2).days)
-                        if diff < 15:
-                            refer_male.append(1)
-                
+                    ).order_by('-created_at').first()
+                    if l_en:
+                        a = Visualization.objects.filter(active=True,
+                            gender="male",
+                            refer_hp=True,
+                            patiend_id=i["patiend_id"],
+                        ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                        if a:
+                            if a.recall_date:
+                                d1 = l_en.created_at
+                                d2 = a.recall_date
+                                diff = abs((d1 - d2).days)
+                                if diff < 15 and diff > 0:
+                                    refer_male.append(1)
+
                 e_female = Visualization.objects.filter(active=True,
                     gender="female",
-                    created_at__range=[start_date, end_date],
                     geography_id=location.id,
-                ).filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    ).order_by('-created_at').values('patiend_id').distinct()
+                    created_at__range=[start_date, end_date],
+                    ).values('patiend_id').distinct()
                 for i in e_female:
-                    a = Visualization.objects.filter(active=True,
+                    l_en = Visualization.objects.filter(active=True,
                         gender="female",
-                        refer_hp=True,
-                        patient_id=i.patient_id,
-                    ).filter(
+                        patiend_id=i["patiend_id"],
+                        geography_id=location.id,
+                        created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
-                    d1 = i.created_at
-                    d2 = a.recall_date
-                    if d2:
-                        diff = abs((d1 - d2).days)
-                        if diff < 15:
-                            refer_female.append(1)
+                    ).order_by('-created_at').first()
+                    if l_en:
+                        a = Visualization.objects.filter(active=True,
+                            gender="female",
+                            refer_hp=True,
+                            patiend_id=i["patiend_id"],
+                        ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                        if a:
+                            if a.recall_date:
+                                d1 = l_en.created_at
+                                d2 = a.recall_date
+                                diff = abs((d1 - d2).days)
+                                if diff < 15 and diff > 0:
+                                    refer_female.append(1)
                 
                 e_child = Visualization.objects.filter(active=True,
                     age__lt=13,
-                    created_at__range=[start_date, end_date],
                     geography_id=location.id,
-                ).filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    ).order_by('-created_at').values('patiend_id').distinct()
+                    created_at__range=[start_date, end_date],
+                    ).values('patiend_id').distinct()
                 for i in e_child:
-                    a = Visualization.objects.filter(active=True,
+                    l_en = Visualization.objects.filter(active=True,
                         age__lt=13,
-                        refer_hp=True,
-                        patient_id=i.patient_id,
-                    ).filter(
+                        patiend_id=i["patiend_id"],
+                        geography_id=location.id,
+                        created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
-                    d1 = i.created_at
-                    d2 = a.recall_date
-                    if d2:
-                        diff = abs((d1 - d2).days)
-                        if diff < 15:
-                            refer_child.append(1)
-
+                    ).order_by('-created_at').first()
+                    if l_en:
+                        a = Visualization.objects.filter(active=True,
+                            age__lt=13,
+                            refer_hp=True,
+                            patiend_id=i["patiend_id"],
+                        ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                        if a:
+                            if a.recall_date:
+                                d1 = l_en.created_at
+                                d2 = a.recall_date
+                                diff = abs((d1 - d2).days)
+                                if diff < 15 and diff > 0:
+                                    refer_child.append(1)
+                
                 e_teen = Visualization.objects.filter(active=True,
                     age__range=(13, 18),
-                    created_at__range=[start_date, end_date],
                     geography_id=location.id,
-                ).filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    ).order_by('-created_at').values('patiend_id').distinct()
+                    created_at__range=[start_date, end_date],
+                    ).values('patiend_id').distinct()
                 for i in e_teen:
-                    a = Visualization.objects.filter(active=True,
+                    l_en = Visualization.objects.filter(active=True,
                         age__range=(13, 18),
-                        refer_hp=True,
-                        patient_id=i.patient_id,
-                    ).filter(
+                        patiend_id=i["patiend_id"],
+                        geography_id=location.id,
+                        created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
-                    d1 = i.created_at
-                    d2 = a.recall_date
-                    if d2:
-                        diff = abs((d1 - d2).days)
-                        if diff < 15:
-                            refer_teen.append(1)
-                
+                    ).order_by('-created_at').first()
+                    if l_en:
+                        a = Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            refer_hp=True,
+                            patiend_id=i["patiend_id"],
+                        ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                        if a:
+                            if a.recall_date:
+                                d1 = l_en.created_at
+                                d2 = a.recall_date
+                                diff = abs((d1 - d2).days)
+                                if diff < 15 and diff > 0:
+                                    refer_teen.append(1)
+
                 e_adult = Visualization.objects.filter(active=True,
                     age__range=(19, 60),
-                    created_at__range=[start_date, end_date],
                     geography_id=location.id,
-                ).filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    ).order_by('-created_at').values('patiend_id').distinct()
+                    created_at__range=[start_date, end_date],
+                    ).values('patiend_id').distinct()
                 for i in e_adult:
-                    a = Visualization.objects.filter(active=True,
+                    l_en = Visualization.objects.filter(active=True,
                         age__range=(19, 60),
-                        refer_hp=True,
-                        patient_id=i.patient_id,
-                    ).filter(
+                        patiend_id=i["patiend_id"],
+                        geography_id=location.id,
+                        created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
-                    d1 = i.created_at
-                    d2 = a.recall_date
-                    if d2:
-                        diff = abs((d1 - d2).days)
-                        if diff < 15:
-                            refer_adult.append(1)
-                
+                    ).order_by('-created_at').first()
+                    if l_en:
+                        a = Visualization.objects.filter(active=True,
+                            age__range=(19, 60),
+                            refer_hp=True,
+                            patiend_id=i["patiend_id"],
+                        ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                        if a:
+                            if a.recall_date:
+                                d1 = l_en.created_at
+                                d2 = a.recall_date
+                                diff = abs((d1 - d2).days)
+                                if diff < 15 and diff > 0:
+                                    refer_adult.append(1)
+
                 e_old = Visualization.objects.filter(active=True,
                     age__gt=60,
-                    created_at__range=[start_date, end_date],
                     geography_id=location.id,
-                ).filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    ).order_by('-created_at').values('patiend_id').distinct()
+                    created_at__range=[start_date, end_date],
+                    ).values('patiend_id').distinct()
                 for i in e_old:
-                    a = Visualization.objects.filter(active=True,
+                    l_en = Visualization.objects.filter(active=True,
                         age__gt=60,
-                        refer_hp=True,
-                        patient_id=i.patient_id,
-                    ).filter(
+                        patiend_id=i["patiend_id"],
+                        geography_id=location.id,
+                        created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    ).exclude(encounter_id=i.encounter_id).order_by('-created_at').first()
-                    d1 = i.created_at
-                    d2 = a.recall_date
-                    if d2:
-                        diff = abs((d1 - d2).days)
-                        if diff < 15:
-                            refer_old.append(1)
-
-
-
-                # refer_male.append(
-                #     Visualization.objects.filter(active=True,
-                #         gender="male",
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     )
-                #     .filter(
-                #         Q(activities_id=health_post)
-                #         | Q(activities_id=seminar)
-                #         | Q(activities_id=outreach)
-                #         | Q(activities_id=training)
-                #     )
-                #     .count()
-                # )
-                # refer_female.append(
-                #     Visualization.objects.filter(active=True,
-                #         gender="female",
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     )
-                #     .filter(
-                #         Q(activities_id=health_post)
-                #         | Q(activities_id=seminar)
-                #         | Q(activities_id=outreach)
-                #         | Q(activities_id=training)
-                #     )
-                #     .count()
-                # )
-                # refer_child.append(
-                #     Visualization.objects.filter(active=True,
-                #         age__lt=13,
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     )
-                #     .filter(
-                #         Q(activities_id=health_post)
-                #         | Q(activities_id=seminar)
-                #         | Q(activities_id=outreach)
-                #         | Q(activities_id=training)
-                #     )
-                #     .count()
-                # )
-                # refer_teen.append(
-                #     Visualization.objects.filter(active=True,
-                #         age__range=(13, 18),
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     )
-                #     .filter(
-                #         Q(activities_id=health_post)
-                #         | Q(activities_id=seminar)
-                #         | Q(activities_id=outreach)
-                #         | Q(activities_id=training)
-                #     )
-                #     .count()
-                # )
-                # refer_adult.append(
-                #     Visualization.objects.filter(active=True,
-                #         age__range=(19, 60),
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     )
-                #     .filter(
-                #         Q(activities_id=health_post)
-                #         | Q(activities_id=seminar)
-                #         | Q(activities_id=outreach)
-                #         | Q(activities_id=training)
-                #     )
-                #     .count()
-                # )
-                # refer_old.append(
-                #     Visualization.objects.filter(active=True,
-                #         age__gt=60,
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     )
-                #     .filter(
-                #         Q(activities_id=health_post)
-                #         | Q(activities_id=seminar)
-                #         | Q(activities_id=outreach)
-                #         | Q(activities_id=training)
-                #     )
-                #     .count()
-                # )
-                # total_refer.append(
-                #     Visualization.objects.filter(active=True,
-                #         refer_hp=True,
-                #         created_at__range=[start_date, end_date],
-                #         geography_id=location.id,
-                #     ).count()
-                # )
+                    ).order_by('-created_at').first()
+                    if l_en:
+                        a = Visualization.objects.filter(active=True,
+                            age__gt=60,
+                            refer_hp=True,
+                            patiend_id=i["patiend_id"],
+                        ).filter(
+                            Q(activities_id=health_post)
+                            | Q(activities_id=seminar)
+                            | Q(activities_id=outreach)
+                            | Q(activities_id=training)
+                        ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
+                        if a:
+                            if a.recall_date:
+                                d1 = l_en.created_at
+                                d2 = a.recall_date
+                                diff = abs((d1 - d2).days)
+                                if diff < 15 and diff > 0:
+                                    refer_old.append(1)
 
                 total_seal_male.append(
                     Visualization.objects.filter(active=True,
-                        gender="male",
+                        
                         seal=True,
                         created_at__range=[start_date, end_date],
                         geography_id=location.id,

@@ -59,7 +59,7 @@ class CrossSectionalVisualization(APIView):
             total_carries_risk_low = []
             total_carries_risk_medium = []
             total_carries_risk_high = []
-            total_untreated_caries_present=[]
+            total_untreated_caries_present = []
             total_decayed_permanent_teeth = []
             total_decayed_primary_teeth = []
             total_cavity_permanent_molar = []
@@ -1409,8 +1409,59 @@ class CrossSectionalVisualization(APIView):
                 + numerator_need_sdf_H + numerator_need_extraction_H \
                 + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
             
+            grand_total = rowE_total + rowF_total + rowG_total + rowH_total
+            try:
+                rowA_total_percent = round((rowA_total / grand_total) * 100,1)
+            except:
+                rowA_total_percent = 0
+
+            try:
+                rowB_total_percent = round((rowB_total / grand_total) * 100,1)
+            except:
+                rowB_total_percent = 0
+            
+            try:
+                rowC_total_percent = round((rowC_total / grand_total) * 100,1)
+            except:
+                rowC_total_percent = 0
+            
+            try:
+                rowE_total_percent = round((rowE_total / grand_total) * 100,1)
+            except:
+                rowE_total_percent = 0
+            
+            try:
+                rowF_total_percent = round((rowF_total / grand_total) * 100,1)
+            except:
+                rowF_total_percent = 0
+
+            try:
+                rowG_total_percent = round((rowG_total / grand_total) * 100,1)
+            except:
+                rowG_total_percent = 0
+            
+            try:
+                rowH_total_percent = round((rowH_total / grand_total) * 100,1)
+            except:
+                rowH_total_percent = 0
+
+            try:
+                grand_total_percent = round((grand_total / grand_total) * 100,1)
+            except:
+                grand_total_percent = 0
+
             row_total = [
-                    "Totals",rowA_total,rowB_total,rowC_total,"",rowE_total,rowF_total,rowG_total,rowH_total
+                    "Totals",
+                    str(rowA_total) + "(" + str(rowA_total_percent) + "%" + ")",
+                    str(rowB_total) + "(" + str(rowB_total_percent) + "%" + ")",
+                    str(rowC_total) + "(" + str(rowC_total_percent) + "%" + ")",
+                    "",
+                    str(rowE_total) + "(" + str(rowE_total_percent) + "%" + ")",
+                    str(rowF_total) + "(" + str(rowF_total_percent) + "%" + ")",
+                    str(rowG_total) + "(" + str(rowG_total_percent) + "%" + ")",
+                    str(rowH_total) + "(" + str(rowH_total_percent) + "%" + ")",
+                    "",
+                    str(grand_total) + "(" + str(grand_total_percent) + "%" + ")",
                 ]
 
             data = [
@@ -1730,7 +1781,21 @@ class CrossSectionalVisualization(APIView):
                 denominator_all = []
                 
 
-                patient_obj = Patient.objects.filter(created_at__range=[start_date, end_date])
+                numerator_carries_risk_low_list_6
+                numerator_carries_risk_medium_list_6
+                numerator_carries_risk_high_list_6
+                numerator_untreated_caries_present_list_6
+                numerator_decayed_permanent_teeth_list_6
+                numerator_decayed_primary_teeth_list_6
+                numerator_cavity_permanent_molar_list_6
+                numerator_cavity_permanent_anterior_list_6
+                numerator_active_infection_list_6
+                numerator_reversible_pulpitis_list_6
+                numerator_need_art_filling_list_6
+                numerator_need_sdf_list_6
+                numerator_need_extraction_list_6
+                numerator_need_fv_list_6
+                numerator_need_dentist_or_hygienist_list_6
                 # carries risk low
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
@@ -1739,613 +1804,611 @@ class CrossSectionalVisualization(APIView):
                             # carries risk low
                             numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             denominator_all.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
-                            # carries risk low
+                            # carries risk medium
                             numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # carries risk high
                             numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # untreated caries present
                             numerator_untreated_caries_present_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_15.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_lte12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_13_18.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_19_60.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
+                            
                             # Number of decayed primary teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_6.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_6.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_12.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_12.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_15.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_15.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_lte12.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_lte12.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_13_18.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_13_18.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_19_60.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_19_60.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_gte61.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_gte61.append(a.decayed_primary_teeth_number)
 
                             # Number of decayed permanent teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_6.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_6.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_12.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_12.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_15.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_15.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_lte12.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_lte12.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_13_18.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_13_18.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_19_60.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_19_60.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_gte61.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_gte61.append(a.decayed_permanent_teeth_number)
                             
                             # Cavity permanent molar or premolar
                             numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_15.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_lte12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_13_18.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_19_60.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_gte61.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Cavity permanent anterior
                             numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_15.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_lte12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_13_18.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_19_60.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_gte61.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Active Infection
                             numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_15.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_lte12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_13_18.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_19_60.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_gte61.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Mouth pain due to reversible pulpitis
                             numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_15.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_lte12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_13_18.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_19_60.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_gte61.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need ART filling
                             numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need SDF
                             numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_6.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_12.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_15.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_lte12.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_13_18.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_19_60.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_gte61.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need Extraction
                             numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_15.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_lte12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_13_18.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_19_60.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_gte61.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need fv
                             numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_15.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_lte12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_13_18.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_19_60.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_gte61.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need dentist or hygienist
                             numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_15.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                        
-
+                            numerator_need_dentist_or_hygienist_list_lte12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_13_18.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_19_60.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_gte61.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                         else:
                             print("inside no referral")
                             # carries risk low
                             numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
                             denominator_all.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_6.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_15.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_lte12.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_13_18.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_19_60.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_low_list_gte61.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_carries_risk_low_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # carries risk medium
                             numerator_carries_risk_medium_total.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_6.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_15.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_lte12.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_13_18.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_19_60.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_medium_list_gte61.append(Visualization.objects.filter(carries_risk="Medium",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_carries_risk_medium_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # carries risk high
                             numerator_carries_risk_high_total.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_6.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_15.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_lte12.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_13_18.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_19_60.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_carries_risk_high_list_gte61.append(Visualization.objects.filter(carries_risk="High",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_carries_risk_high_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # untreated caries present
                             numerator_untreated_caries_present_total.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_6.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_15.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_lte12.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_13_18.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_19_60.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_untreated_caries_present_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_untreated_caries_present_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Number of decayed primary teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_6.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_6.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_12.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_12.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_15.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_15.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_lte12.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_lte12.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_13_18.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_13_18.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_19_60.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_19_60.append(a.decayed_primary_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_gte61.append(a.decayed_primary_teeth_number)
+                                numerator_decayed_primary_teeth_list_gte61.append(a.decayed_primary_teeth_number)
                             
                             # Number of decayed permanent teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_6.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_6.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_12.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_12.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_15.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_15.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_lte12.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_lte12.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_13_18.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_13_18.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_19_60.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_19_60.append(a.decayed_permanent_teeth_number)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_list_gte61.append(a.decayed_permanent_teeth_number)
+                                numerator_decayed_permanent_teeth_list_gte61.append(a.decayed_permanent_teeth_number)
 
                             # Cavity permanent molar or premolar
                             numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_15.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_lte12.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_13_18.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_19_60.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_molar_list_gte61.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_molar_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Cavity permanent anterior
                             numerator_cavity_permanent_anterior_total.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_6.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_15.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_lte12.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_13_18.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_19_60.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_cavity_permanent_anterior_list_gte61.append(Visualization.objects.filter(cavity_permanent_anterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_cavity_permanent_anterior_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Active Infection
                             numerator_active_infection_total.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_6.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_15.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_lte12.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_13_18.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_19_60.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_active_infection_list_gte61.append(Visualization.objects.filter(active_infection=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_active_infection_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
                             # Mouth pain due to reversible pulpitis
                             numerator_reversible_pulpitis_total.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_6.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_15.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_lte12.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_13_18.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_19_60.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_reversible_pulpitis_list_gte61.append(Visualization.objects.filter(reversible_pulpitis=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_reversible_pulpitis_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need ART filling
                             numerator_need_art_filling_total.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_art_filling_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_art_filling_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need SDF
                             numerator_need_sdf_total.append(Visualization.objects.filter(need_sdf=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_6.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_15.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_lte12.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_13_18.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_19_60.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_sdf_list_gte61.append(Visualization.objects.filter(need_art_filling=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_sdf_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need Extraction
                             numerator_need_extraction_total.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_6.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_15.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_lte12.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_13_18.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_19_60.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_extraction_list_gte61.append(Visualization.objects.filter(need_extraction=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_extraction_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
                     
                             # Need fv
                             numerator_need_fv_total.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_6.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_15.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_lte12.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_13_18.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_19_60.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_fv_list_gte61.append(Visualization.objects.filter(need_fv=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_fv_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
                             # Need dentist or hygienist
                             numerator_need_dentist_or_hygienist_total.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
-                            numerator_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            denominator_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
-                            numerator_list_12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            denominator_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
-                            numerator_list_15.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
-                            denominator_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_6.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_6.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_15.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_15.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct().count())
 
-                            numerator_list_lte12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            denominator_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
-                            numerator_list_13_18.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            denominator_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
-                            numerator_list_19_60.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            denominator_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
-                            numerator_list_gte61.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                            denominator_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
-                        
+                            numerator_need_dentist_or_hygienist_list_lte12.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_lte12.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_13_18.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_13_18.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_19_60.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_19_60.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct().count())
+                            numerator_need_dentist_or_hygienist_list_gte61.append(Visualization.objects.filter(need_dentist_or_hygienist=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
+                            denominator_need_dentist_or_hygienist_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct().count())
 
-                numerator_carries_risk_low_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_carries_risk_low_A = sum(numerator_carries_risk_low_list_6)
+                denominator = sum(denominator_carries_risk_low_list_6)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_A/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
-                numerator_carries_risk_low_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_carries_risk_low_B = sum(numerator_carries_risk_low_list_12)
+                denominator = sum(denominator_carries_risk_low_list_12)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_B/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
-                numerator_carries_risk_low_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_carries_risk_low_C = sum(numerator_carries_risk_low_list_15)
+                denominator = sum(denominator_carries_risk_low_list_15)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_C/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
-                numerator_carries_risk_low_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_carries_risk_low_E = sum(numerator_carries_risk_low_list_lte12)
+                denominator = sum(denominator_carries_risk_low_list_lte12)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_E/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
-                numerator_carries_risk_low_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_carries_risk_low_F = sum(numerator_carries_risk_low_list_13_18)
+                denominator = sum(denominator_carries_risk_low_list_13_18)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_F/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
-                numerator_carries_risk_low_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_carries_risk_low_G = sum(numerator_carries_risk_low_list_19_60)
+                denominator = sum(denominator_carries_risk_low_list_19_60)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_G/denominator)*100,1))
                 except:
                     total_carries_risk_low.append(0)
 
-                numerator_carries_risk_low_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_carries_risk_low_H = sum(numerator_carries_risk_low_list_gte61)
+                denominator = sum(denominator_carries_risk_low_list_gte61)
                 try:
                     total_carries_risk_low.append(round((numerator_carries_risk_low_H/denominator)*100,1))
                 except:
@@ -2355,50 +2418,50 @@ class CrossSectionalVisualization(APIView):
                 carries_risk_low_EFGH = [numerator_carries_risk_low_E,numerator_carries_risk_low_F,numerator_carries_risk_low_G,numerator_carries_risk_low_H]
 
                 # carries risk medium
-                numerator_carries_risk_medium_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_carries_risk_medium_A = sum(numerator_carries_risk_medium_list_6)
+                denominator = sum(denominator_carries_risk_medium_list_6)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_A/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
-                numerator_carries_risk_medium_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_carries_risk_medium_B = sum(numerator_carries_risk_medium_list_12)
+                denominator = sum(denominator_carries_risk_medium_list_12)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_B/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
-                numerator_carries_risk_medium_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_carries_risk_medium_C = sum(numerator_carries_risk_medium_list_15)
+                denominator = sum(denominator_carries_risk_medium_list_15)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_C/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
-                numerator_carries_risk_medium_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_carries_risk_medium_E = sum(numerator_carries_risk_medium_list_lte12)
+                denominator = sum(denominator_carries_risk_medium_list_lte12)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_E/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
-                numerator_carries_risk_medium_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_carries_risk_medium_F = sum(numerator_carries_risk_medium_list_13_18)
+                denominator = sum(denominator_carries_risk_medium_list_13_18)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_F/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
-                numerator_carries_risk_medium_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_carries_risk_medium_G = sum(numerator_carries_risk_medium_list_19_60)
+                denominator = sum(denominator_carries_risk_medium_list_19_60)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_G/denominator)*100,1))
                 except:
                     total_carries_risk_medium.append(0)
 
-                numerator_carries_risk_medium_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_carries_risk_medium_H = sum(numerator_carries_risk_medium_list_gte61)
+                denominator = sum(denominator_carries_risk_medium_list_gte61)
                 try:
                     total_carries_risk_medium.append(round((numerator_carries_risk_medium_H/denominator)*100,1))
                 except:
@@ -2408,50 +2471,50 @@ class CrossSectionalVisualization(APIView):
                 carries_risk_medium_EFGH = [numerator_carries_risk_medium_E,numerator_carries_risk_medium_F,numerator_carries_risk_medium_G,numerator_carries_risk_medium_H]
 
                 # carries risk high
-                numerator_carries_risk_high_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_carries_risk_high_A = sum(numerator_carries_risk_high_list_6)
+                denominator = sum(denominator_carries_risk_high_list_6)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_A/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
-                numerator_carries_risk_high_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_carries_risk_high_B = sum(numerator_carries_risk_high_list_12)
+                denominator = sum(denominator_carries_risk_high_list_12)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_B/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
-                numerator_carries_risk_high_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_carries_risk_high_C = sum(numerator_carries_risk_high_list_15)
+                denominator = sum(denominator_carries_risk_high_list_15)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_C/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
-                numerator_carries_risk_high_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_carries_risk_high_E = sum(numerator_carries_risk_high_list_lte12)
+                denominator = sum(denominator_carries_risk_high_list_lte12)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_E/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
-                numerator_carries_risk_high_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_carries_risk_high_F = sum(numerator_carries_risk_high_list_13_18)
+                denominator = sum(denominator_carries_risk_high_list_13_18)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_F/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
-                numerator_carries_risk_high_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_carries_risk_high_G = sum(numerator_carries_risk_high_list_19_60)
+                denominator = sum(denominator_carries_risk_high_list_19_60)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_G/denominator)*100,1))
                 except:
                     total_carries_risk_high.append(0)
 
-                numerator_carries_risk_high_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_carries_risk_high_H = sum(numerator_carries_risk_high_list_gte61)
+                denominator = sum(denominator_carries_risk_high_list_gte61)
                 try:
                     total_carries_risk_high.append(round((numerator_carries_risk_high_H/denominator)*100,1))
                 except:
@@ -2550,50 +2613,50 @@ class CrossSectionalVisualization(APIView):
                 ]
 
                 # untreated caries present
-                numerator_untreated_caries_present_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_untreated_caries_present_A = sum(numerator_untreated_caries_present_list_6)
+                denominator = sum(denominator_untreated_caries_present_list_6)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
-                numerator_untreated_caries_present_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_untreated_caries_present_B = sum(numerator_untreated_caries_present_list_12)
+                denominator = sum(denominator_untreated_caries_present_list_12)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
-                numerator_untreated_caries_present_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_untreated_caries_present_C = sum(numerator_untreated_caries_present_list_15)
+                denominator = sum(denominator_untreated_caries_present_list_15)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
-                numerator_untreated_caries_present_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_untreated_caries_present_E = sum(numerator_untreated_caries_present_list_lte12)
+                denominator = sum(denominator_untreated_caries_present_list_lte12)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
-                numerator_untreated_caries_present_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_untreated_caries_present_F = sum(numerator_untreated_caries_present_list_13_18)
+                denominator = sum(denominator_untreated_caries_present_list_13_18)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
-                numerator_untreated_caries_present_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_untreated_caries_present_G = sum(numerator_untreated_caries_present_list_19_60)
+                denominator = sum(denominator_untreated_caries_present_list_19_60)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,1))
                 except:
                     total_untreated_caries_present.append(0)
 
-                numerator_untreated_caries_present_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_untreated_caries_present_H = sum(numerator_untreated_caries_present_list_gte61)
+                denominator = sum(denominator_untreated_caries_present_list_gte61)
                 try:
                     total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,1))
                 except:
@@ -2606,50 +2669,50 @@ class CrossSectionalVisualization(APIView):
                 decayed_primary_teeth_mean_list_ABC = []
                 decayed_primary_teeth_mean_list_EFGH = []
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_6),1))
-                    decayed_primary_teeth_mean_list_ABC.append(round(statistics.mean(numerator_list_6),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_6),1))
+                    decayed_primary_teeth_mean_list_ABC.append(round(statistics.mean(numerator_decayed_primary_teeth_list_6),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_ABC.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_12),1))
-                    decayed_primary_teeth_mean_list_ABC.append(round(statistics.mean(numerator_list_12),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_12),1))
+                    decayed_primary_teeth_mean_list_ABC.append(round(statistics.mean(numerator_decayed_primary_teeth_list_12),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_ABC.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_15),1))
-                    decayed_primary_teeth_mean_list_ABC.append(round(statistics.mean(numerator_list_15),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_15),1))
+                    decayed_primary_teeth_mean_list_ABC.append(round(statistics.mean(numerator_decayed_primary_teeth_list_15),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_ABC.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_lte12),1))
-                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_lte12),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_lte12),1))
+                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_primary_teeth_list_lte12),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_EFGH.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_13_18),1))
-                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_13_18),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_13_18),1))
+                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_primary_teeth_list_13_18),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_EFGH.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_19_60),1))
-                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_19_60),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_19_60),1))
+                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_primary_teeth_list_19_60),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_EFGH.append(0)
                 
                 try:
-                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_list_gte61),1))
-                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_gte61),1))
+                    total_decayed_primary_teeth.append(round(statistics.stdev(numerator_decayed_primary_teeth_list_gte61),1))
+                    decayed_primary_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_primary_teeth_list_gte61),1))
                 except:
                     total_decayed_primary_teeth.append(0)
                     decayed_primary_teeth_mean_list_EFGH.append(0)
@@ -2658,50 +2721,50 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth_mean_list_ABC = []
                 decayed_permanent_teeth_mean_list_EFGH = []
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_6),1))
-                    decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(numerator_list_6),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_6),1))
+                    decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_6),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_ABC.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_12),1))
-                    decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(numerator_list_12),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_12),1))
+                    decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_12),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_ABC.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_15),1))
-                    decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(numerator_list_15),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_15),1))
+                    decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_15),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_ABC.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_lte12),1))
-                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_lte12),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_lte12),1))
+                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_lte12),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_EFGH.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_13_18),1))
-                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_13_18),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_13_18),1))
+                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_13_18),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_EFGH.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_19_60),1))
-                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_19_60),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_19_60),1))
+                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_19_60),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_EFGH.append(0)
                 
                 try:
-                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_list_gte61),1))
-                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_list_gte61),1))
+                    total_decayed_permanent_teeth.append(round(statistics.stdev(numerator_decayed_permanent_teeth_list_gte61),1))
+                    decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(numerator_decayed_permanent_teeth_list_gte61),1))
                 except:
                     total_decayed_permanent_teeth.append(0)
                     decayed_permanent_teeth_mean_list_EFGH.append(0)
@@ -2737,14 +2800,14 @@ class CrossSectionalVisualization(APIView):
                 + decayed_primary_teeth_mean_list_EFGH[1] + decayed_primary_teeth_mean_list_EFGH[2]
                 + decayed_primary_teeth_mean_list_EFGH[3]
 
-                mean_overall_decayed_primary_teeth = round(overall_decayed_primary_teeth / 7,2)
+                mean_overall_decayed_primary_teeth = round(overall_decayed_primary_teeth / 7,1)
 
                 overall_decayed_permanent_teeth = decayed_permanent_teeth_mean_list_ABC[0] + decayed_permanent_teeth_mean_list_ABC[1] 
                 + decayed_permanent_teeth_mean_list_ABC[2] + decayed_permanent_teeth_mean_list_EFGH[0]
                 + decayed_permanent_teeth_mean_list_EFGH[1] + decayed_permanent_teeth_mean_list_EFGH[2]
                 + decayed_permanent_teeth_mean_list_EFGH[3]
 
-                mean_overall_decayed_permanent_teeth = round(overall_decayed_permanent_teeth / 7,2)
+                mean_overall_decayed_permanent_teeth = round(overall_decayed_permanent_teeth / 7,1)
 
                 
                 final_total_decayed_primary_teeth = [
@@ -2776,50 +2839,50 @@ class CrossSectionalVisualization(APIView):
                 ]
                 
                 # Cavity permanent molar or premolar
-                numerator_cavity_permanent_molar_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_cavity_permanent_molar_A = sum(numerator_cavity_permanent_molar_list_6)
+                denominator = sum(denominator_cavity_permanent_molar_list_6)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_A/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
-                numerator_cavity_permanent_molar_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_cavity_permanent_molar_B = sum(numerator_cavity_permanent_molar_list_12)
+                denominator = sum(denominator_cavity_permanent_molar_list_12)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_B/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
-                numerator_cavity_permanent_molar_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_cavity_permanent_molar_C = sum(numerator_cavity_permanent_molar_list_15)
+                denominator = sum(denominator_cavity_permanent_molar_list_15)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_C/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
-                numerator_cavity_permanent_molar_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_cavity_permanent_molar_E = sum(numerator_cavity_permanent_molar_list_lte12)
+                denominator = sum(denominator_cavity_permanent_molar_list_lte12)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_E/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
-                numerator_cavity_permanent_molar_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_cavity_permanent_molar_F = sum(numerator_cavity_permanent_molar_list_13_18)
+                denominator = sum(denominator_cavity_permanent_molar_list_13_18)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_F/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
-                numerator_cavity_permanent_molar_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_cavity_permanent_molar_G = sum(numerator_cavity_permanent_molar_list_19_60)
+                denominator = sum(denominator_cavity_permanent_molar_list_19_60)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_G/denominator)*100,1))
                 except:
                     total_cavity_permanent_molar.append(0)
 
-                numerator_cavity_permanent_molar_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_cavity_permanent_molar_H = sum(numerator_cavity_permanent_molar_list_gte61)
+                denominator = sum(denominator_cavity_permanent_molar_list_gte61)
                 try:
                     total_cavity_permanent_molar.append(round((numerator_cavity_permanent_molar_H/denominator)*100,1))
                 except:
@@ -2829,50 +2892,50 @@ class CrossSectionalVisualization(APIView):
                 cavity_permanent_molar_EFGH = [numerator_cavity_permanent_molar_E,numerator_cavity_permanent_molar_F,numerator_cavity_permanent_molar_G,numerator_cavity_permanent_molar_H]
 
                 # Cavity permanent anterior
-                numerator_cavity_permanent_anterior_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_cavity_permanent_anterior_A = sum(numerator_cavity_permanent_anterior_list_6)
+                denominator = sum(denominator_cavity_permanent_anterior_list_6)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_A/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
-                numerator_cavity_permanent_anterior_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_cavity_permanent_anterior_B = sum(numerator_cavity_permanent_anterior_list_12)
+                denominator = sum(denominator_cavity_permanent_anterior_list_12)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_B/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
-                numerator_cavity_permanent_anterior_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_cavity_permanent_anterior_C = sum(numerator_cavity_permanent_anterior_list_15)
+                denominator = sum(denominator_cavity_permanent_anterior_list_15)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_C/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
-                numerator_cavity_permanent_anterior_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_cavity_permanent_anterior_E = sum(numerator_cavity_permanent_anterior_list_lte12)
+                denominator = sum(denominator_cavity_permanent_anterior_list_lte12)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_E/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
-                numerator_cavity_permanent_anterior_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_cavity_permanent_anterior_F = sum(numerator_cavity_permanent_anterior_list_13_18)
+                denominator = sum(denominator_cavity_permanent_anterior_list_13_18)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_F/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
-                numerator_cavity_permanent_anterior_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_cavity_permanent_anterior_G = sum(numerator_cavity_permanent_anterior_list_19_60)
+                denominator = sum(denominator_cavity_permanent_anterior_list_19_60)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_G/denominator)*100,1))
                 except:
                     total_cavity_permanent_anterior.append(0)
 
-                numerator_cavity_permanent_anterior_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_cavity_permanent_anterior_H = sum(numerator_cavity_permanent_anterior_list_gte61)
+                denominator = sum(denominator_cavity_permanent_anterior_list_gte61)
                 try:
                     total_cavity_permanent_anterior.append(round((numerator_cavity_permanent_anterior_H/denominator)*100,1))
                 except:
@@ -2883,50 +2946,50 @@ class CrossSectionalVisualization(APIView):
 
 
                 # Active Infection
-                numerator_active_infection_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_active_infection_A = sum(numerator_active_infection_list_6)
+                denominator = sum(denominator_active_infection_list_6)
                 try:
                     total_active_infection.append(round((numerator_active_infection_A/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
-                numerator_active_infection_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_active_infection_B = sum(numerator_active_infection_list_12)
+                denominator = sum(denominator_active_infection_list_12)
                 try:
                     total_active_infection.append(round((numerator_active_infection_B/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
-                numerator_active_infection_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_active_infection_C = sum(numerator_active_infection_list_15)
+                denominator = sum(denominator_active_infection_list_15)
                 try:
                     total_active_infection.append(round((numerator_active_infection_C/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
-                numerator_active_infection_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_active_infection_E = sum(numerator_active_infection_list_lte12)
+                denominator = sum(denominator_active_infection_list_lte12)
                 try:
                     total_active_infection.append(round((numerator_active_infection_E/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
-                numerator_active_infection_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_active_infection_F = sum(numerator_active_infection_list_13_18)
+                denominator = sum(denominator_active_infection_list_13_18)
                 try:
                     total_active_infection.append(round((numerator_active_infection_F/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
-                numerator_active_infection_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_active_infection_G = sum(numerator_active_infection_list_19_60)
+                denominator = sum(denominator_active_infection_list_19_60)
                 try:
                     total_active_infection.append(round((numerator_active_infection_G/denominator)*100,1))
                 except:
                     total_active_infection.append(0)
 
-                numerator_active_infection_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_active_infection_H = sum(numerator_active_infection_list_gte61)
+                denominator = sum(denominator_active_infection_list_gte61)
                 try:
                     total_active_infection.append(round((numerator_active_infection_H/denominator)*100,1))
                 except:
@@ -2936,50 +2999,50 @@ class CrossSectionalVisualization(APIView):
                 active_infection_EFGH = [numerator_active_infection_E,numerator_active_infection_F,numerator_active_infection_G,numerator_active_infection_H]
                 
                 # Mouth pain due to reversible pulpitis
-                numerator_reversible_pulpitis_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_reversible_pulpitis_A = sum(numerator_reversible_pulpitis_list_6)
+                denominator = sum(denominator_reversible_pulpitis_list_6)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_A/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
-                numerator_reversible_pulpitis_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_reversible_pulpitis_B = sum(numerator_reversible_pulpitis_list_12)
+                denominator = sum(denominator_reversible_pulpitis_list_12)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_B/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
-                numerator_reversible_pulpitis_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_reversible_pulpitis_C = sum(numerator_reversible_pulpitis_list_15)
+                denominator = sum(denominator_reversible_pulpitis_list_15)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_C/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
-                numerator_reversible_pulpitis_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_reversible_pulpitis_E = sum(numerator_reversible_pulpitis_list_lte12)
+                denominator = sum(denominator_reversible_pulpitis_list_lte12)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_E/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
-                numerator_reversible_pulpitis_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_reversible_pulpitis_F = sum(numerator_reversible_pulpitis_list_13_18)
+                denominator = sum(denominator_reversible_pulpitis_list_13_18)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_F/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
-                numerator_reversible_pulpitis_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_reversible_pulpitis_G = sum(numerator_reversible_pulpitis_list_19_60)
+                denominator = sum(denominator_reversible_pulpitis_list_19_60)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_G/denominator)*100,1))
                 except:
                     total_reversible_pulpitis.append(0)
 
-                numerator_reversible_pulpitis_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_reversible_pulpitis_H = sum(numerator_reversible_pulpitis_list_gte61)
+                denominator = sum(denominator_reversible_pulpitis_list_gte61)
                 try:
                     total_reversible_pulpitis.append(round((numerator_reversible_pulpitis_H/denominator)*100,1))
                 except:
@@ -2989,50 +3052,50 @@ class CrossSectionalVisualization(APIView):
                 reversible_pulpitis_EFGH = [numerator_reversible_pulpitis_E,numerator_reversible_pulpitis_F,numerator_reversible_pulpitis_G,numerator_reversible_pulpitis_H]
 
                 # Need ART filling
-                numerator_need_art_filling_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_need_art_filling_A = sum(numerator_need_art_filling_list_6)
+                denominator = sum(denominator_need_art_filling_list_6)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_A/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
-                numerator_need_art_filling_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_need_art_filling_B = sum(numerator_need_art_filling_list_12)
+                denominator = sum(denominator_need_art_filling_list_12)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_B/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
-                numerator_need_art_filling_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_need_art_filling_C = sum(numerator_need_art_filling_list_15)
+                denominator = sum(denominator_need_art_filling_list_15)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_C/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
-                numerator_need_art_filling_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_need_art_filling_E = sum(numerator_need_art_filling_list_lte12)
+                denominator = sum(denominator_need_art_filling_list_lte12)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_E/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
-                numerator_need_art_filling_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_need_art_filling_F = sum(numerator_need_art_filling_list_13_18)
+                denominator = sum(denominator_need_art_filling_list_13_18)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_F/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
-                numerator_need_art_filling_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_need_art_filling_G = sum(numerator_need_art_filling_list_19_60)
+                denominator = sum(denominator_need_art_filling_list_19_60)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_G/denominator)*100,1))
                 except:
                     total_need_art_filling.append(0)
 
-                numerator_need_art_filling_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_need_art_filling_H = sum(numerator_need_art_filling_list_gte61)
+                denominator = sum(denominator_need_art_filling_list_gte61)
                 try:
                     total_need_art_filling.append(round((numerator_need_art_filling_H/denominator)*100,1))
                 except:
@@ -3042,50 +3105,50 @@ class CrossSectionalVisualization(APIView):
                 need_art_filling_EFGH = [numerator_need_art_filling_E,numerator_need_art_filling_F,numerator_need_art_filling_G,numerator_need_art_filling_H]
 
                 # Need SDF
-                numerator_need_sdf_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_need_sdf_A = sum(numerator_need_sdf_list_6)
+                denominator = sum(denominator_need_sdf_list_6)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_A/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
-                numerator_need_sdf_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_need_sdf_B = sum(numerator_need_sdf_list_12)
+                denominator = sum(denominator_need_sdf_list_12)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_B/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
-                numerator_need_sdf_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_need_sdf_C = sum(numerator_need_sdf_list_15)
+                denominator = sum(denominator_need_sdf_list_15)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_C/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
-                numerator_need_sdf_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_need_sdf_E = sum(numerator_need_sdf_list_lte12)
+                denominator = sum(denominator_need_sdf_list_lte12)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_E/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
-                numerator_need_sdf_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_need_sdf_F = sum(numerator_need_sdf_list_13_18)
+                denominator = sum(denominator_need_sdf_list_13_18)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_F/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
-                numerator_need_sdf_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_need_sdf_G = sum(numerator_need_sdf_list_19_60)
+                denominator = sum(denominator_need_sdf_list_19_60)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_G/denominator)*100,1))
                 except:
                     total_need_sdf.append(0)
 
-                numerator_need_sdf_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_need_sdf_H = sum(numerator_need_sdf_list_gte61)
+                denominator = sum(denominator_need_sdf_list_gte61)
                 try:
                     total_need_sdf.append(round((numerator_need_sdf_H/denominator)*100,1))
                 except:
@@ -3096,50 +3159,50 @@ class CrossSectionalVisualization(APIView):
 
 
                 # Need Extraction
-                numerator_need_extraction_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_need_extraction_A = sum(numerator_need_extraction_list_6)
+                denominator = sum(denominator_need_extraction_list_6)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_A/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
-                numerator_need_extraction_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_need_extraction_B = sum(numerator_need_extraction_list_12)
+                denominator = sum(denominator_need_extraction_list_12)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_B/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
-                numerator_need_extraction_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_need_extraction_C = sum(numerator_need_extraction_list_15)
+                denominator = sum(denominator_need_extraction_list_15)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_C/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
-                numerator_need_extraction_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_need_extraction_E = sum(numerator_need_extraction_list_lte12)
+                denominator = sum(denominator_need_extraction_list_lte12)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_E/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
-                numerator_need_extraction_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_need_extraction_F = sum(numerator_need_extraction_list_13_18)
+                denominator = sum(denominator_need_extraction_list_13_18)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_F/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
-                numerator_need_extraction_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_need_extraction_G = sum(numerator_need_extraction_list_19_60)
+                denominator = sum(denominator_need_extraction_list_19_60)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_G/denominator)*100,1))
                 except:
                     total_need_extraction.append(0)
 
-                numerator_need_extraction_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_need_extraction_H = sum(numerator_need_extraction_list_gte61)
+                denominator = sum(denominator_need_extraction_list_gte61)
                 try:
                     total_need_extraction.append(round((numerator_need_extraction_H/denominator)*100,1))
                 except:
@@ -3148,52 +3211,51 @@ class CrossSectionalVisualization(APIView):
                 need_extraction_ABC = [numerator_need_extraction_A,numerator_need_extraction_B,numerator_need_extraction_C]
                 need_extraction_EFGH = [numerator_need_extraction_E,numerator_need_extraction_F,numerator_need_extraction_G,numerator_need_extraction_H]
 
-
                 # Need fv
-                numerator_need_fv_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_need_fv_A = sum(numerator_need_fv_list_6)
+                denominator = sum(denominator_need_fv_list_6)
                 try:
                     total_need_fv.append(round((numerator_need_fv_A/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
-                numerator_need_fv_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_need_fv_B = sum(numerator_need_fv_list_12)
+                denominator = sum(denominator_need_fv_list_12)
                 try:
                     total_need_fv.append(round((numerator_need_fv_B/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
-                numerator_need_fv_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_need_fv_C = sum(numerator_need_fv_list_15)
+                denominator = sum(denominator_need_fv_list_15)
                 try:
                     total_need_fv.append(round((numerator_need_fv_C/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
-                numerator_need_fv_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_need_fv_E = sum(numerator_need_fv_list_lte12)
+                denominator = sum(denominator_need_fv_list_lte12)
                 try:
                     total_need_fv.append(round((numerator_need_fv_E/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
-                numerator_need_fv_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_need_fv_F = sum(numerator_need_fv_list_13_18)
+                denominator = sum(denominator_need_fv_list_13_18)
                 try:
                     total_need_fv.append(round((numerator_need_fv_F/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
-                numerator_need_fv_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_need_fv_G = sum(numerator_need_fv_list_19_60)
+                denominator = sum(denominator_need_fv_list_19_60)
                 try:
                     total_need_fv.append(round((numerator_need_fv_G/denominator)*100,1))
                 except:
                     total_need_fv.append(0)
 
-                numerator_need_fv_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_need_fv_H = sum(numerator_need_fv_list_gte61)
+                denominator = sum(denominator_need_fv_list_gte61)
                 try:
                     total_need_fv.append(round((numerator_need_fv_H/denominator)*100,1))
                 except:
@@ -3202,53 +3264,52 @@ class CrossSectionalVisualization(APIView):
                 need_fv_ABC = [numerator_need_fv_A,numerator_need_fv_B,numerator_need_fv_C]
                 need_fv_EFGH = [numerator_need_fv_E,numerator_need_fv_F,numerator_need_fv_G,numerator_need_fv_H]
 
-
                 # Need dentist or hygienist
-                numerator_need_dentist_or_hygienist_A = sum(numerator_list_6)
-                denominator = sum(denominator_list_6)
+                numerator_need_dentist_or_hygienist_A = sum(numerator_need_dentist_or_hygienist_list_6)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_6)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_A/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
-                numerator_need_dentist_or_hygienist_B = sum(numerator_list_12)
-                denominator = sum(denominator_list_12)
+                numerator_need_dentist_or_hygienist_B = sum(numerator_need_dentist_or_hygienist_list_12)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_12)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_B/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
-                numerator_need_dentist_or_hygienist_C = sum(numerator_list_15)
-                denominator = sum(denominator_list_15)
+                numerator_need_dentist_or_hygienist_C = sum(numerator_need_dentist_or_hygienist_list_15)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_15)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_C/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
                 
 
-                numerator_need_dentist_or_hygienist_E = sum(numerator_list_lte12)
-                denominator = sum(denominator_list_lte12)
+                numerator_need_dentist_or_hygienist_E = sum(numerator_need_dentist_or_hygienist_list_lte12)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_lte12)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_E/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
-                numerator_need_dentist_or_hygienist_F = sum(numerator_list_13_18)
-                denominator = sum(denominator_list_13_18)
+                numerator_need_dentist_or_hygienist_F = sum(numerator_need_dentist_or_hygienist_list_13_18)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_13_18)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_F/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
-                numerator_need_dentist_or_hygienist_G = sum(numerator_list_19_60)
-                denominator = sum(denominator_list_19_60)
+                numerator_need_dentist_or_hygienist_G = sum(numerator_need_dentist_or_hygienist_list_19_60)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_19_60)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_G/denominator)*100,1))
                 except:
                     total_need_dentist_or_hygienist.append(0)
 
-                numerator_need_dentist_or_hygienist_H = sum(numerator_list_gte61)
-                denominator = sum(denominator_list_gte61)
+                numerator_need_dentist_or_hygienist_H = sum(numerator_need_dentist_or_hygienist_list_gte61)
+                denominator = sum(denominator_need_dentist_or_hygienist_list_gte61)
                 try:
                     total_need_dentist_or_hygienist.append(round((numerator_need_dentist_or_hygienist_H/denominator)*100,1))
                 except:
@@ -3495,7 +3556,6 @@ class CrossSectionalVisualization(APIView):
                     str(sum(numerator_need_dentist_or_hygienist_total)) + "(" + str(total_need_dentist_or_hygienist[9]) + "%)",
                     ]
                 
-
                 rowA_total = numerator_carries_risk_low_A + numerator_carries_risk_medium_A + numerator_carries_risk_high_A \
                     + numerator_untreated_caries_present_A + numerator_cavity_permanent_molar_A \
                     + numerator_cavity_permanent_anterior_A + numerator_active_infection_A \
@@ -3546,8 +3606,59 @@ class CrossSectionalVisualization(APIView):
                     + numerator_need_fv_H + numerator_need_dentist_or_hygienist_H
                 
             
+                grand_total = rowE_total + rowF_total + rowG_total + rowH_total
+                try:
+                    rowA_total_percent = round((rowA_total / grand_total) * 100,1)
+                except:
+                    rowA_total_percent = 0
+
+                try:
+                    rowB_total_percent = round((rowB_total / grand_total) * 100,1)
+                except:
+                    rowB_total_percent = 0
+                
+                try:
+                    rowC_total_percent = round((rowC_total / grand_total) * 100,1)
+                except:
+                    rowC_total_percent = 0
+                
+                try:
+                    rowE_total_percent = round((rowE_total / grand_total) * 100,1)
+                except:
+                    rowE_total_percent = 0
+                
+                try:
+                    rowF_total_percent = round((rowF_total / grand_total) * 100,1)
+                except:
+                    rowF_total_percent = 0
+
+                try:
+                    rowG_total_percent = round((rowG_total / grand_total) * 100,1)
+                except:
+                    rowG_total_percent = 0
+                
+                try:
+                    rowH_total_percent = round((rowH_total / grand_total) * 100,1)
+                except:
+                    rowH_total_percent = 0
+
+                try:
+                    grand_total_percent = round((grand_total / grand_total) * 100,1)
+                except:
+                    grand_total_percent = 0
+
                 row_total = [
-                    "Totals",rowA_total,rowB_total,rowC_total,"",rowE_total,rowF_total,rowG_total,rowH_total
+                    "Totals",
+                    str(rowA_total) + "(" + str(rowA_total_percent) + "%" + ")",
+                    str(rowB_total) + "(" + str(rowB_total_percent) + "%" + ")",
+                    str(rowC_total) + "(" + str(rowC_total_percent) + "%" + ")",
+                    "",
+                    str(rowE_total) + "(" + str(rowE_total_percent) + "%" + ")",
+                    str(rowF_total) + "(" + str(rowF_total_percent) + "%" + ")",
+                    str(rowG_total) + "(" + str(rowG_total_percent) + "%" + ")",
+                    str(rowH_total) + "(" + str(rowH_total_percent) + "%" + ")",
+                    "",
+                    str(grand_total) + "(" + str(grand_total_percent) + "%" + ")",
                 ]
    
                 data = [
