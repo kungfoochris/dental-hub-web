@@ -22321,3 +22321,174 @@ NameError: name 'decayed_permanent_teeth_mean_decayed_permanent_teeth_list_ABC' 
 2022-02-28 18:08:35,465 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
 2022-02-28 18:08:36,362 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21393
 2022-02-28 18:09:54,994 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21114
+2022-03-02 14:51:47,137 django.request WARNING  Unauthorized: /api/v1/treatment
+2022-03-02 14:51:47,169 django.server WARNING  "GET /api/v1/treatment HTTP/1.1" 401 9935
+2022-03-02 14:51:47,854 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-03-02 14:51:47,935 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-03-02 14:51:48,319 django.request WARNING  Not Found: /favicon.ico
+2022-03-02 14:51:48,320 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-03-02 14:51:50,177 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/treatment HTTP/1.1" 200 2719
+2022-03-02 14:51:56,544 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-03-02 14:51:56,880 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15474
+2022-03-02 14:52:06,411 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-03-02 14:52:09,444 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476
+2022-03-02 14:52:26,255 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-03-02 14:52:26,427 django.server INFO     "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 17610
+2022-03-02 14:53:26,513 django.request WARNING  Unauthorized: /api/v1/patients
+2022-03-02 14:53:26,514 django.server WARNING  "GET /api/v1/patients HTTP/1.1" 401 9839
+2022-03-02 14:53:26,607 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-03-02 14:53:26,631 django.server INFO     "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2022-03-02 14:53:26,646 django.server INFO     "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3385
+2022-03-02 14:53:26,656 django.server INFO     "GET /static/rest_framework/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+2022-03-02 14:53:26,657 django.server INFO     "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3597
+2022-03-02 14:53:26,661 django.server INFO     "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1735
+2022-03-02 14:53:26,664 django.server INFO     "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1131
+2022-03-02 14:53:26,699 django.server INFO     "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2022-03-02 14:53:26,701 django.server INFO     "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 37045
+2022-03-02 14:53:26,720 django.server INFO     "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1262
+2022-03-02 14:53:26,814 django.server INFO     "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2022-03-02 14:53:29,058 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/patients HTTP/1.1" 200 2718
+2022-03-02 14:53:37,823 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-03-02 14:53:37,838 patientapp.api.patient INFO     Patient listed by:  abhiyantrik
+2022-03-02 14:53:40,714 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112482
+2022-03-02 14:54:12,698 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-03-02 14:54:12,855 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:54:12,861 django.server INFO     "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+2022-03-02 14:54:12,862 django.server INFO     "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2022-03-02 14:54:12,865 django.server INFO     "GET /static/admin/js/core.js HTTP/1.1" 200 7134
+2022-03-02 14:54:12,867 django.server INFO     "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+2022-03-02 14:54:12,886 django.server INFO     "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2022-03-02 14:54:12,887 django.server INFO     "GET /static/admin/js/actions.js HTTP/1.1" 200 6538
+2022-03-02 14:54:12,897 django.server INFO     "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+2022-03-02 14:54:12,899 django.server INFO     "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972
+2022-03-02 14:54:12,900 django.server INFO     "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+2022-03-02 14:54:12,919 django.server INFO     "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751
+2022-03-02 14:54:12,925 django.server INFO     "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+2022-03-02 14:54:12,945 django.server INFO     "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2022-03-02 14:54:12,952 django.server INFO     "GET /static/import_export/action_formats.js HTTP/1.1" 200 765
+2022-03-02 14:54:12,971 django.server INFO     "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+2022-03-02 14:54:12,988 django.server INFO     "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+2022-03-02 14:54:13,032 django.server INFO     "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+2022-03-02 14:54:13,047 django.server INFO     "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+2022-03-02 14:54:13,293 django.server INFO     "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2022-03-02 14:54:13,295 django.server INFO     "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2022-03-02 14:54:13,297 django.server INFO     "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2022-03-02 14:54:19,154 django.server INFO     "GET /maintainer/visualizationapp/visualization/5485C71B443B47FAB43F67F5B1B62C45/change/ HTTP/1.1" 200 23809
+2022-03-02 14:54:19,271 django.server INFO     "GET /static/admin/css/forms.css HTTP/1.1" 200 8505
+2022-03-02 14:54:19,287 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:54:19,290 django.server INFO     "GET /static/admin/js/calendar.js HTTP/1.1" 200 7777
+2022-03-02 14:54:19,300 django.server INFO     "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20281
+2022-03-02 14:54:19,301 django.server INFO     "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+2022-03-02 14:54:19,302 django.server INFO     "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+2022-03-02 14:54:19,332 django.server INFO     "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+2022-03-02 14:54:19,475 django.server INFO     "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+2022-03-02 14:55:08,857 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-03-02 14:55:11,852 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476
+2022-03-02 14:55:42,612 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.1" 200 2642
+2022-03-02 14:55:42,687 django.server INFO     "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2022-03-02 14:55:42,739 django.server INFO     "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2022-03-02 14:55:42,748 django.server INFO     "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2022-03-02 14:55:44,363 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 17430
+2022-03-02 14:55:44,444 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:55:49,944 django.server INFO     "POST /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4231
+2022-03-02 14:55:50,035 django.server INFO     "GET /static/admin/js/cancel.js HTTP/1.1" 200 410
+2022-03-02 14:55:51,494 django.server INFO     "POST /maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2022-03-02 14:55:51,565 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4840
+2022-03-02 14:55:51,626 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:55:56,346 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-03-02 14:55:56,447 django.server INFO     "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 17610
+2022-03-02 14:56:18,836 encounterapp.api.encounter INFO     Encounter added successfully by Shyam Magar
+2022-03-02 14:56:18,902 django.server INFO     "POST /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 16797
+2022-03-02 14:56:21,449 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-03-02 14:56:21,553 django.server INFO     "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 18544
+2022-03-02 14:56:51,470 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13211
+2022-03-02 14:56:51,650 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:56:57,422 django.server INFO     "POST /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 3680
+2022-03-02 14:56:58,859 django.server INFO     "POST /maintainer/visualizationapp/visualization/ HTTP/1.1" 302 0
+2022-03-02 14:56:58,940 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 4839
+2022-03-02 14:56:59,040 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:57:01,476 django.server INFO     "GET /maintainer/visualizationapp/ HTTP/1.1" 200 2642
+2022-03-02 14:57:03,701 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13838
+2022-03-02 14:57:03,848 django.server INFO     "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+2022-03-02 14:57:06,278 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 12137
+2022-03-02 14:57:06,352 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:57:11,219 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 200 4895
+2022-03-02 14:57:12,891 django.server INFO     "POST /maintainer/encounterapp/encounter/ HTTP/1.1" 302 0
+2022-03-02 14:57:12,973 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 5504
+2022-03-02 14:57:13,052 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 14:57:25,519 django.request WARNING  Bad Request: /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters
+2022-03-02 14:57:25,520 django.server WARNING  "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 400 16756
+2022-03-02 14:57:47,664 encounterapp.api.encounter INFO     Encounter added successfully by Shyam Magar
+2022-03-02 14:57:47,729 django.server INFO     "POST /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 16797
+2022-03-02 14:57:50,444 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-03-02 14:57:50,538 django.server INFO     "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 17610
+2022-03-02 15:00:43,055 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 9430
+2022-03-02 15:00:43,144 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:00:46,884 django.server INFO     "GET /maintainer/encounterapp/encounter/FBA4917E42FB4A5082834FC1AD1BDB52/change/ HTTP/1.1" 200 49685
+2022-03-02 15:00:46,965 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:00:47,222 django.server INFO     "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+2022-03-02 15:01:11,346 django.server INFO     "GET /static/admin/img/calendar-icons.svg HTTP/1.1" 200 1094
+2022-03-02 15:01:21,208 django.server INFO     "POST /maintainer/encounterapp/encounter/FBA4917E42FB4A5082834FC1AD1BDB52/change/ HTTP/1.1" 302 0
+2022-03-02 15:01:21,316 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 9696
+2022-03-02 15:01:21,403 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:01:26,111 django.server INFO     "GET /maintainer/encounterapp/encounter/FBA4917E42FB4A5082834FC1AD1BDB52/change/ HTTP/1.1" 200 49704
+2022-03-02 15:01:26,213 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:01:28,880 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-03-02 15:01:28,988 django.server INFO     "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 17628
+2022-03-02 15:02:11,627 patientapp.api.patient INFO     Patient listed by:  shyam
+2022-03-02 15:02:14,842 django.server INFO     "GET /api/v1/patients HTTP/1.1" 200 112476
+2022-03-02 15:02:18,515 encounterapp.api.encounter INFO     Encounter listed by:  shyam
+2022-03-02 15:02:18,598 django.server INFO     "GET /api/v1/patients/54879BA1F74C453388D7AEA3D8EEB9FB/encounters HTTP/1.1" 200 17628
+2022-03-02 15:02:43,751 django.server INFO     "GET /api/v1/visupdate HTTP/1.1" 200 10346
+2022-03-02 15:02:52,544 django.server INFO     "GET /maintainer/encounterapp/encounter/FBA4917E42FB4A5082834FC1AD1BDB52/change/ HTTP/1.1" 200 49704
+2022-03-02 15:02:52,647 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:03:01,025 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 9441
+2022-03-02 15:03:05,304 django.server INFO     "GET /maintainer/encounterapp/encounter/FBA4917E42FB4A5082834FC1AD1BDB52/change/ HTTP/1.1" 200 49704
+2022-03-02 15:03:05,409 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:03:29,836 django.server INFO     "GET /maintainer/encounterapp/ HTTP/1.1" 200 4479
+2022-03-02 15:03:31,608 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 9441
+2022-03-02 15:03:31,707 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:03:36,825 django.server INFO     "GET /maintainer/encounterapp/encounter/FBA4917E42FB4A5082834FC1AD1BDB52/change/ HTTP/1.1" 200 49704
+2022-03-02 15:03:36,919 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:03:39,933 django.server INFO     "GET /maintainer/encounterapp/encounter/ HTTP/1.1" 200 9441
+2022-03-02 15:03:42,435 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13297
+2022-03-02 15:03:44,904 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13210
+2022-03-02 15:03:44,992 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:03:46,892 django.server INFO     "GET /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 200 23753
+2022-03-02 15:03:46,982 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:19:59,220 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13210
+2022-03-02 15:20:01,527 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13297
+2022-03-02 15:20:10,391 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 10512
+2022-03-02 15:20:10,481 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:20:18,743 django.server INFO     "GET /maintainer/patientapp/patient/54879BA1F74C453388D7AEA3D8EEB9FB/change/ HTTP/1.1" 200 107573
+2022-03-02 15:20:18,853 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:20:32,975 django.server INFO     "POST /maintainer/patientapp/patient/54879BA1F74C453388D7AEA3D8EEB9FB/change/ HTTP/1.1" 200 107753
+2022-03-02 15:20:33,043 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:20:44,318 django.server INFO     "POST /maintainer/patientapp/patient/54879BA1F74C453388D7AEA3D8EEB9FB/change/ HTTP/1.1" 302 0
+2022-03-02 15:20:44,506 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 10755
+2022-03-02 15:20:44,586 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:20:52,067 django.server INFO     "GET /maintainer/patientapp/patient/54879BA1F74C453388D7AEA3D8EEB9FB/change/ HTTP/1.1" 200 107611
+2022-03-02 15:20:52,146 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:20:57,190 django.server INFO     "GET /maintainer/patientapp/patient/ HTTP/1.1" 200 10527
+2022-03-02 15:20:58,817 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13234
+2022-03-02 15:21:02,186 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13210
+2022-03-02 15:21:02,260 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:21:04,313 django.server INFO     "GET /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 200 23753
+2022-03-02 15:21:04,397 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:22:29,502 django.server INFO     "GET /api/v1/visrecallupdate HTTP/1.1" 200 10393
+2022-03-02 15:22:37,460 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13210
+2022-03-02 15:22:39,338 django.server INFO     "GET /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 200 23753
+2022-03-02 15:22:39,428 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:22:49,930 django.server INFO     "POST /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 200 24046
+2022-03-02 15:22:49,995 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:23:14,281 django.server INFO     "POST /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 302 0
+2022-03-02 15:23:14,366 django.server INFO     "GET /maintainer/visualizationapp/visualization/ HTTP/1.1" 200 13489
+2022-03-02 15:23:14,462 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:23:16,806 django.server INFO     "GET /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 200 23794
+2022-03-02 15:23:16,908 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:23:22,363 django.server INFO     "GET /api/v1/visrecallupdate HTTP/1.1" 200 10393
+2022-03-02 15:23:26,791 django.server INFO     "GET /maintainer/visualizationapp/visualization/E238BF3E6C71426E87EBA4D7FC07FD3C/change/ HTTP/1.1" 200 23813
+2022-03-02 15:23:26,872 django.server INFO     "GET /maintainer/jsi18n/ HTTP/1.1" 200 3185
+2022-03-02 15:23:40,194 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13332
+2022-03-02 15:23:58,430 django.server INFO     "GET /api/v1/viscreatedupdate HTTP/1.1" 200 10408
+2022-03-02 15:30:20,406 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21387

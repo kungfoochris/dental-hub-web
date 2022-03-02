@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from dateutil import relativedelta
 from userapp.models import User
-from encounterapp.models import Encounter
+from encounterapp.models import Encounter, encounter
 from patientapp.models import Patient
 from encounterapp.serializers.encounter import (
     EncounterSerializer,
@@ -15,6 +15,7 @@ from encounterapp.serializers.encounter import (
     EncounterSerializer1,
     ChangeEncounterCreatedDateSerializer,
 )
+from visualizationapp.models.visualization import Visualization
 from encounterapp.models.modifydelete import ModifyDelete
 from addressapp.models import Ward, Activity
 from rest_framework.pagination import PageNumberPagination
@@ -208,8 +209,7 @@ class EncounterList(APIView,PaginationHandlerMixin):
             serializer = AllEncounterSerializer(encounter_obj, many=True)
         return Response(serializer.data,status=200)
 
-
-
+# not in use
 class EncounterUpdateView(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = EncounterUpdateSerializer
@@ -309,8 +309,6 @@ class EncounterUpdateView(APIView):
         return Response({"message": "id do not match"}, status=400)
 
 
-
-
 class ChangeEncounterCreatedDate(APIView):
     permission_classes = (IsPostOrIsAuthenticated,)
     serializer_class = ChangeEncounterCreatedDateSerializer
@@ -335,6 +333,32 @@ class ChangeEncounterCreatedDate(APIView):
                 return Response(serializer.data, status=400)
             return Response({'message':"Encounter with this id doesn't exist"}, status=400)
         return Response({"message","Only admin has access."},status=401)
-        
+    
+
+# this api used for once
+class VisualizationCreatedDateUpdate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+
+    def get(self, request):
+        vis_obj = Visualization.objects.all()
+        for i in vis_obj:
+            encounter_obj = Encounter.objects.get(id=i.encounter_id)
+            i.created = encounter_obj.created_at
+            i.save()
+        return Response("Created date updated in visualization table.")
+
+# this api used for once
+class VisualizationRecallDateUpdate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+
+    def get(self, request):
+        vis_obj = Visualization.objects.filter(refer_hp=True)
+        for i in vis_obj:
+            encounter_obj = Encounter.objects.get(id=i.encounter_id)
+            patient_obj = Patient.objects.get(id=encounter_obj.patient.id)
+            i.recall_date = patient_obj.recall_date
+            i.save()
+        return Response("Recall date updated in visualization table.")
+
 
 
