@@ -1596,34 +1596,20 @@ class CrossSectionalVisualization(APIView):
                 denominator_untreated_caries_present_list_gte61  = []
 
                 numerator_decayed_permanent_teeth_list_6 = []
-                denominator_decayed_permanent_teeth_list_6 = []
                 numerator_decayed_permanent_teeth_list_12 = []
-                denominator_decayed_permanent_teeth_list_12 = []
                 numerator_decayed_permanent_teeth_list_15 = []
-                denominator_decayed_permanent_teeth_list_15 = []
                 numerator_decayed_permanent_teeth_list_lte12  = []
-                denominator_decayed_permanent_teeth_list_lte12  = []
                 numerator_decayed_permanent_teeth_list_13_18 = []
-                denominator_decayed_permanent_teeth_list_13_18 = []
                 numerator_decayed_permanent_teeth_list_19_60 = []
-                denominator_decayed_permanent_teeth_list_19_60 = []
                 numerator_decayed_permanent_teeth_list_gte61  = []
-                denominator_decayed_permanent_teeth_list_gte61  = []
 
                 numerator_decayed_primary_teeth_list_6 = []
-                denominator_decayed_primary_teeth_list_6 = []
                 numerator_decayed_primary_teeth_list_12 = []
-                denominator_decayed_primary_teeth_list_12 = []
                 numerator_decayed_primary_teeth_list_15 = []
-                denominator_decayed_primary_teeth_list_15 = []
                 numerator_decayed_primary_teeth_list_lte12  = []
-                denominator_decayed_primary_teeth_list_lte12  = []
                 numerator_decayed_primary_teeth_list_13_18 = []
-                denominator_decayed_primary_teeth_list_13_18 = []
                 numerator_decayed_primary_teeth_list_19_60 = []
-                denominator_decayed_primary_teeth_list_19_60 = []
                 numerator_decayed_primary_teeth_list_gte61  = []
-                denominator_decayed_primary_teeth_list_gte61  = []
 
                 numerator_cavity_permanent_molar_list_6 = []
                 denominator_cavity_permanent_molar_list_6 = []
@@ -1760,8 +1746,6 @@ class CrossSectionalVisualization(APIView):
                 numerator_need_dentist_or_hygienist_list_gte61  = []
                 denominator_need_dentist_or_hygienist_list_gte61  = []
 
-
-
                 numerator_carries_risk_low_total = []
                 numerator_carries_risk_medium_total = []
                 numerator_carries_risk_high_total = []
@@ -1780,7 +1764,6 @@ class CrossSectionalVisualization(APIView):
 
                 denominator_all = []
                 
-
                 numerator_carries_risk_low_list_6
                 numerator_carries_risk_medium_list_6
                 numerator_carries_risk_high_list_6
@@ -1799,7 +1782,7 @@ class CrossSectionalVisualization(APIView):
                 # carries risk low
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
-                        if referral_type:
+                        if referral_type != "No Refer":
                             print("inside referral")
                             # carries risk low
                             numerator_carries_risk_low_total.append(Visualization.objects.filter(carries_risk="Low",created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
@@ -1874,53 +1857,94 @@ class CrossSectionalVisualization(APIView):
                             numerator_untreated_caries_present_list_gte61.append(Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
                             denominator_untreated_caries_present_list_gte61.append(Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct().count())
 
-                            
                             # Number of decayed primary teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_6.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_6.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_6.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_12.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_12.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_15.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_15.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_15.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_lte12.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_lte12.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_lte12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_13_18.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_13_18.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_13_18.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_19_60.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_19_60.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_19_60.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_gte61.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_gte61.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_gte61.append()
 
                             # Number of decayed permanent teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_6.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_6.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_6.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_12.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_12.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_15.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_15.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_15.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_lte12.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_lte12.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_lte12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_13_18.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_13_18.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_13_18.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_19_60.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_19_60.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_19_60.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_gte61.append(a.decayed_permanent_teeth_number)
-                            
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_gte61.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_gte61.append(0)
+
                             # Cavity permanent molar or premolar
                             numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type).values('patiend_id').distinct().count())
                             numerator_cavity_permanent_molar_list_6.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,referral_type=referral_type,age=6).values('patiend_id').distinct().count())
@@ -2160,48 +2184,89 @@ class CrossSectionalVisualization(APIView):
                             # Number of decayed primary teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_6.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_6.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_6.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_12.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_12.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_15.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_15.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_15.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_lte12.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_lte12.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_lte12(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_13_18.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_13_18.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_13_18.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_19_60.append(a.decayed_primary_teeth_number)
+                                if a:
+                                    numerator_decayed_primary_teeth_list_19_60.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_19_60.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_primary_teeth_list_gte61.append(a.decayed_primary_teeth_number)
-                            
+                                if a:
+                                    numerator_decayed_primary_teeth_list_gte61.append(a.decayed_primary_teeth_number)
+                                else:
+                                    numerator_decayed_primary_teeth_list_gte61.append(0)
                             # Number of decayed permanent teeth
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=6,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_6.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_6.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_6(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=12,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_12.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_12.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age=15,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_15.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_15.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_15.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__lt=13,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_lte12.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_lte12.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_lte12.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[13,18],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_13_18.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_13_18.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_13_18(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60]).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__range=[19,60],patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_19_60.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_19_60.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_19_60.append(0)
                             for x in Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60).values('patiend_id').distinct():
                                 a = Visualization.objects.filter(created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit,age__gt=60,patiend_id=x["patiend_id"]).order_by('-created_at').first()
-                                numerator_decayed_permanent_teeth_list_gte61.append(a.decayed_permanent_teeth_number)
+                                if a:
+                                    numerator_decayed_permanent_teeth_list_gte61.append(a.decayed_permanent_teeth_number)
+                                else:
+                                    numerator_decayed_permanent_teeth_list_gte61.append(0)
 
                             # Cavity permanent molar or premolar
                             numerator_cavity_permanent_molar_total.append(Visualization.objects.filter(cavity_permanent_posterior_teeth=True,created_at__range=[start_date, end_date],geography_id=l.id,activities_id=a.id,reason_for_visit=reason_for_visit).values('patiend_id').distinct().count())
@@ -3684,7 +3749,6 @@ class CrossSectionalVisualization(APIView):
                 return Response(data)
             return Response({"message":"Do not have permission."},status=401)
         return Response({"message":serializer.errors},status=400)    
-
 
 
 # class CrossSectionalVisualization(APIView):
