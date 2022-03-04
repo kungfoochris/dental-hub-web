@@ -234,30 +234,36 @@ EMAIL_HOST_PASSWORD = "admin@2018"
 EMAIL_PORT = 587
 
 
-logging.config.dictConfig(
-    {
-        "version": 1,
-        "disable_existing_loggers": False,
-        "formatters": {
-            "console": {
-                # exact format is not important, this is the minimum information
-                "format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s",
-            },
-            "file": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
+logging.config.dictConfig({
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            # exact format is not important, this is the minimum information
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
         },
-        "handlers": {
-            # console logs to stderr
-            "console": {"class": "logging.StreamHandler", "formatter": "console"},
-            "file": {
-                "level": "DEBUG",
-                "class": "logging.FileHandler",
-                "formatter": "file",
-                "filename": os.path.join((BASE_DIR), "debug.log"),
-            },
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        }
+    },
+    'handlers': {
+        # console logs to stderr
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
         },
-        "loggers": {
-            # default for all undefined Python modules
-            "": {"level": "INFO", "handlers": ["console", "file"]},
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': os.path.join((BASE_DIR), "log", "debug.log")\
+        }
+    },
+    'loggers': {
+        # default for all undefined Python modules
+        '': {
+            'level': 'INFO',
+            'handlers': ['console', 'file']
         },
-    }
-)
+    },
+})

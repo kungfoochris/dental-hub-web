@@ -1656,7 +1656,6 @@ class TreatmentStrategicData(APIView):
             except:
                 preventive_ratio_total = 0
 
-            
             return Response(
                 [   
                     [
