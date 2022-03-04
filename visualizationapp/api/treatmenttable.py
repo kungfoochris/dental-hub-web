@@ -2666,8 +2666,6 @@ class TreatmentStrategicData(APIView):
                     ).aggregate(Sum('art'))['art__sum']
                     )
 
-
-
                 totalfv_male.append(
                     Visualization.objects.filter(active=True,
                         gender="male",
