@@ -146,7 +146,7 @@ class TestLongitudinalVisualizationSerializer(serializers.ModelSerializer):
 class TestCrosssectionVisualizationSerializer(serializers.ModelSerializer):
     start_date = serializers.DateField(write_only=True,required=True)
     end_date = serializers.DateField(write_only=True,required=True)
-    reason_for_visit = serializers.ChoiceField(choices = REASON_CHOICES,write_only=True)
+    reason_for_visit = serializers.ChoiceField(choices = REASON_CHOICES,write_only=True,allow_null=True)
     referral_type = serializers.ChoiceField(choices = REFER_CHOICES,write_only=True,allow_null=True)
     activity = ActivityPKField(write_only=True, many=True)
     location = LocationPKField(write_only=True, many=True)
