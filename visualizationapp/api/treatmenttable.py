@@ -902,7 +902,7 @@ class TreatmentStrategicData(APIView):
                             d1 = l_en.created_at
                             d2 = a.recall_date
                             diff = abs((d1 - d2).days)
-                            if diff < 15 and diff > 0:
+                            if diff < 16 and diff > 0:
                                 refer_male += 1
             
             e_female = Visualization.objects.filter(active=True,

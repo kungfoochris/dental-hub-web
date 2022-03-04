@@ -22492,3 +22492,16 @@ NameError: name 'decayed_permanent_teeth_mean_decayed_permanent_teeth_list_ABC' 
 2022-03-02 15:23:40,194 django.server INFO     "GET /maintainer/ HTTP/1.1" 200 13332
 2022-03-02 15:23:58,430 django.server INFO     "GET /api/v1/viscreatedupdate HTTP/1.1" 200 10408
 2022-03-02 15:30:20,406 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21387
+2022-03-04 13:28:36,083 django.request WARNING  Unauthorized: /api/v1/treatment
+2022-03-04 13:28:36,128 django.server WARNING  "GET /api/v1/treatment HTTP/1.1" 401 9935
+2022-03-04 13:28:36,954 django.server INFO     "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121200
+2022-03-04 13:28:37,356 django.request WARNING  Not Found: /favicon.ico
+2022-03-04 13:28:37,357 django.server WARNING  "GET /favicon.ico HTTP/1.1" 404 3383
+2022-03-04 13:28:41,355 django.request WARNING  Unauthorized: /api/v1/crosssectional
+2022-03-04 13:28:41,356 django.server WARNING  "GET /api/v1/crosssectional HTTP/1.1" 401 9983
+2022-03-04 13:28:42,989 django.server INFO     "GET /api/v1/authlogin/?next=/api/v1/crosssectional HTTP/1.1" 200 2724
+2022-03-04 13:28:53,132 django.server INFO     "POST /api/v1/authlogin/ HTTP/1.1" 302 0
+2022-03-04 13:28:54,216 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21479
+2022-03-04 13:29:23,871 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21200
+2022-03-04 13:29:29,339 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21479
+2022-03-04 13:29:51,272 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21200

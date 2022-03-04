@@ -357,8 +357,9 @@ class VisualizationRecallDateUpdate(APIView):
             encounter_obj = Encounter.objects.get(id=i.encounter_id)
             patient_obj = Patient.objects.get(id=encounter_obj.patient.id)
             i.recall_date = patient_obj.recall_date
+            i.recall_time = patient_obj.recall_time
             i.save()
-        return Response("Recall date updated in visualization table.")
+        return Response("Recall date and time updated in visualization table.")
 
 
 
