@@ -7,6 +7,7 @@ from rest_framework import permissions
 from patientapp.models import Patient
 from rest_framework import filters
 import os
+from django.db.models import Sum
 from django.http import JsonResponse
 from django.db.models import OuterRef, Subquery
 from userapp.models import User, CustomUser
@@ -823,6 +824,35 @@ class TreatmentStrategicData(APIView):
 
     def get(self, request, format=None):
         if User.objects.filter(id=request.user.id).exists():
+            total_exo_male = []
+            total_exo_female = []
+            total_exo_child = []
+            total_exo_teen = []
+            total_exo_adult = []
+            total_exo_old = []
+
+            total_art_male = []
+            total_art_female = []
+            total_art_child = []
+            total_art_teen = []
+            total_art_adult = []
+            total_art_old = []
+
+            total_seal_male = []
+            total_seal_female = []
+            total_seal_child = []
+            total_seal_teen = []
+            total_seal_adult = []
+            total_seal_old = []
+
+            total_sdf_male = []
+            total_sdf_female = []
+            total_sdf_child = []
+            total_sdf_teen = []
+            total_sdf_adult = []
+            total_sdf_old = []
+
+
             encounter_male = (
                 Visualization.objects.values("encounter_id")
                 .annotate(Count("encounter_id"))
@@ -1021,37 +1051,70 @@ class TreatmentStrategicData(APIView):
                             if diff < 15 and diff > 0:
                                 refer_adult += 1
 
-            total_seal_male = Visualization.objects.filter(active=True,
-                gender="male",
-                seal=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_seal_female = Visualization.objects.filter(active=True,
-                gender="female",
-                seal=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_seal_child = Visualization.objects.filter(active=True,
-                age__lt=13,
-                seal=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_seal_teen = Visualization.objects.filter(active=True,
-                age__range=(13, 18),
-                seal=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_seal_adult = Visualization.objects.filter(active=True,
-                age__range=(19, 60),
-                seal=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_seal_old = Visualization.objects.filter(active=True,
-                age__gt=60,
-                seal=True,
-                created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
 
+            if Visualization.objects.filter(active=True,
+                gender="male",
+                created_at__range=[last_30_days_obj, today_date_obj],
+                ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                total_seal_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('seal'))['seal__sum']
+                )
+            if Visualization.objects.filter(active=True,
+                gender="female",
+                created_at__range=[last_30_days_obj, today_date_obj],
+                ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                total_seal_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('seal'))['seal__sum']
+                )
+            if Visualization.objects.filter(active=True,
+                age__lt=13,
+                created_at__range=[last_30_days_obj, today_date_obj],
+                ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                total_seal_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('seal'))['seal__sum']
+                )
+            if Visualization.objects.filter(active=True,
+                age__range=(13, 18),
+                created_at__range=[last_30_days_obj, today_date_obj],
+                ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                total_seal_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('seal'))['seal__sum']
+                )
+            if Visualization.objects.filter(active=True,
+                age__range=(19, 60),
+                created_at__range=[last_30_days_obj, today_date_obj],
+                ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                total_seal_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('seal'))['seal__sum']
+                )
+            if Visualization.objects.filter(active=True,
+                age__gt=60,
+                created_at__range=[last_30_days_obj, today_date_obj],
+                ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                total_seal_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('seal'))['seal__sum']
+                )
+
+
+            # fv
             totalfv_male = Visualization.objects.filter(active=True,
                 gender="male",
                 fv=True,
@@ -1083,98 +1146,191 @@ class TreatmentStrategicData(APIView):
                 created_at__range=[last_30_days_obj, today_date_obj],
             ).count()
 
-            total_exo_male = Visualization.objects.filter(active=True,
+            # exo
+            if Visualization.objects.filter(active=True,
                 gender="male",
-                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_exo_female = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                total_exo_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('exo'))['exo__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 gender="female",
-                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_exo_child = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                total_exo_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('exo'))['exo__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__lt=13,
-                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_exo_teen = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                total_exo_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('exo'))['exo__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__range=(13, 18),
-                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_exo_adult = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                total_exo_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('exo'))['exo__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__range=(19, 60),
-                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_exo_old = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                total_exo_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('exo'))['exo__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__gt=60,
-                exo=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
+                ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                total_exo_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('exo'))['exo__sum']
+                )
 
-            total_art_male = Visualization.objects.filter(active=True,
+            # art
+            if Visualization.objects.filter(active=True,
                 gender="male",
-                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_art_female = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('art'))['art__sum'] is not None:
+                total_art_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('art'))['art__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 gender="female",
-                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_art_child = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('art'))['art__sum'] is not None:
+                total_art_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('art'))['art__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__lt=13,
-                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_art_teen = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('art'))['art__sum'] is not None:
+                total_art_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('art'))['art__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__range=(13, 18),
-                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_art_adult = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('art'))['art__sum'] is not None:
+                total_art_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('art'))['art__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__range=(19, 60),
-                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_art_old = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('art'))['art__sum'] is not None:
+                total_art_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('art'))['art__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__gt=60,
-                art=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
+                ).aggregate(Sum('art'))['art__sum'] is not None:
+                total_art_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('art'))['art__sum']
+                )
 
-            total_sdf_male = Visualization.objects.filter(active=True,
+            # sdf
+            if Visualization.objects.filter(active=True,
                 gender="male",
-                sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_sdf_female = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                total_sdf_male.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 gender="female",
-                sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_sdf_child = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                total_sdf_female.append(
+                    Visualization.objects.filter(active=True,
+                        gender="male",
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__lt=13,
-                sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_sdf_teen = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                total_sdf_child.append(
+                    Visualization.objects.filter(active=True,
+                        age__lt=13,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__range=(13, 18),
-                sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_sdf_adult = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                total_sdf_teen.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(13, 18),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__range=(19, 60),
-                sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
-            total_sdf_old = Visualization.objects.filter(active=True,
+                ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                total_sdf_adult.append(
+                    Visualization.objects.filter(active=True,
+                        age__range=(19, 60),
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                )
+            if Visualization.objects.filter(active=True,
                 age__gt=60,
-                sdf=True,
                 created_at__range=[last_30_days_obj, today_date_obj],
-            ).count()
+                ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                total_sdf_old.append(
+                    Visualization.objects.filter(active=True,
+                        age__gt=60,
+                        created_at__range=[last_30_days_obj, today_date_obj],
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                )
 
             total_fsdf_male = Visualization.objects.filter(active=True,
                 gender="male",
@@ -1210,40 +1366,40 @@ class TreatmentStrategicData(APIView):
 
             # Preventive Ratio
             try:
-                preventive_ratio_male = (total_seal_male + totalfv_male + total_fsdf_male) / (
-                    total_exo_male + total_art_male + total_sdf_male
+                preventive_ratio_male = (sum(total_seal_male) + totalfv_male + total_fsdf_male) / (
+                    sum(total_exo_male) + sum(total_art_male) + sum(total_sdf_male)
                 )
             except:
                 preventive_ratio_male = 0
             try:
                 preventive_ratio_female = (total_seal_female + totalfv_female + total_fsdf_female) / (
-                    total_exo_female + total_art_female + total_sdf_female
+                    sum(total_exo_female) + sum(total_art_female) + sum(total_sdf_female)
                 )
             except:
                 preventive_ratio_female = 0
             try:
-                preventive_ratio_child = (total_seal_child + totalfv_child + total_fsdf_child) / (
-                    total_exo_child + total_art_child + total_sdf_child
+                preventive_ratio_child = (sum(total_seal_child) + totalfv_child + total_fsdf_child) / (
+                    sum(total_exo_child) + sum(total_art_child) + sum(total_sdf_child)
                 )
             except:
                 preventive_ratio_child = 0
             
             try:
-                preventive_ratio_teen = (total_seal_teen + totalfv_teen + total_fsdf_teen) / (
-                    total_exo_teen + total_art_teen + total_sdf_teen
+                preventive_ratio_teen = (sum(total_seal_teen) + totalfv_teen + total_fsdf_teen) / (
+                    sum(total_exo_teen) + sum(total_art_teen) + sum(total_sdf_teen)
                 )
             except:
                 preventive_ratio_teen = 0
 
             try:
-                preventive_ratio_adult = (total_seal_adult + totalfv_adult + total_fsdf_adult) / (
-                    total_exo_adult + total_art_adult + total_sdf_adult
+                preventive_ratio_adult = (sum(total_seal_adult) + totalfv_adult + total_fsdf_adult) / (
+                    sum(total_exo_adult) + sum(total_art_adult) + sum(total_sdf_adult)
                 )
             except:
                 preventive_ratio_adult = 0
             try:
-                preventive_ratio_old = (total_seal_old + totalfv_old + total_fsdf_old) / (
-                    total_exo_old + total_art_old + total_sdf_old
+                preventive_ratio_old = (sum(total_seal_old) + totalfv_old + total_fsdf_old) / (
+                    sum(total_exo_old) + sum(total_art_old) + sum(total_sdf_old)
                 )
             except:
                 preventive_ratio_old = 0
@@ -1285,7 +1441,7 @@ class TreatmentStrategicData(APIView):
             recall_percent_total = recall_percent_male + recall_percent_female
 
             # Prevention
-            prevention_male_number = total_fsdf_male + total_seal_male + totalfv_male  
+            prevention_male_number = total_fsdf_male + sum(total_seal_male) + totalfv_male  
             try:
                 prevention_male = (prevention_male_number * 100)/ (
                     encounter_male
@@ -1293,7 +1449,7 @@ class TreatmentStrategicData(APIView):
             except:
                 prevention_male = 0
             
-            prevention_female_number = total_fsdf_female + total_seal_female + totalfv_female
+            prevention_female_number = total_fsdf_female + sum(total_seal_female) + totalfv_female
             try:
                 prevention_female = (prevention_female_number * 100 ) / (
                     encounter_female
@@ -1301,7 +1457,7 @@ class TreatmentStrategicData(APIView):
             except:
                 prevention_female = 0
             
-            prevention_child_number = total_fsdf_child + total_seal_child + totalfv_child 
+            prevention_child_number = total_fsdf_child + sum(total_seal_child) + totalfv_child 
             try:
                 prevention_child = (prevention_child_number * 100) / (
                     encounter_child
@@ -1309,7 +1465,7 @@ class TreatmentStrategicData(APIView):
             except:
                 prevention_child = 0
             
-            prevention_teen_number = total_fsdf_teen + total_seal_teen + totalfv_teen
+            prevention_teen_number = total_fsdf_teen + sum(total_seal_teen) + totalfv_teen
             try:
                 prevention_teen = (prevention_teen_number * 100) / (
                     encounter_teen
@@ -1317,7 +1473,7 @@ class TreatmentStrategicData(APIView):
             except:
                 prevention_teen = 0
             
-            prevention_adult_number = total_fsdf_adult + total_seal_adult + totalfv_adult 
+            prevention_adult_number = total_fsdf_adult + sum(total_seal_adult) + totalfv_adult 
             try:
                 prevention_adult = (prevention_adult_number * 100) / (
                     encounter_adult
@@ -1325,7 +1481,7 @@ class TreatmentStrategicData(APIView):
             except:
                 prevention_adult = 0
             
-            prevention_old_number = total_fsdf_old + total_seal_old + totalfv_old 
+            prevention_old_number = total_fsdf_old + sum(total_seal_old) + totalfv_old 
             try:
                 prevention_old = (prevention_old_number * 100) / (
                     encounter_old
@@ -1336,56 +1492,56 @@ class TreatmentStrategicData(APIView):
             # Early Intervention Ratio
             try:
                 early_intervention_ratio_male = (
-                    total_art_male + total_sdf_male
-                ) / total_exo_male
+                    sum(total_art_male) + sum(total_sdf_male)
+                ) / sum(total_exo_male)
             except:
                 early_intervention_ratio_male = 0
 
             try:
                 early_intervention_ratio_female = (
-                    total_art_female + total_sdf_female
-                ) / total_exo_female
+                    sum(total_art_female) + sum(total_sdf_female)
+                ) / sum(total_exo_female)
             except:
                 early_intervention_ratio_female = 0
 
             try:
                 early_intervention_ratio_child = (
-                    total_art_child + total_sdf_child
-                ) / total_exo_child
+                    sum(total_art_child) + sum(total_sdf_child)
+                ) / sum(total_exo_child)
             except:
                 early_intervention_ratio_child = 0
             
             try:
                 early_intervention_ratio_teen = (
-                    total_art_teen + total_sdf_teen
-                ) / total_exo_teen
+                    sum(total_art_teen) + sum(total_sdf_teen)
+                ) / sum(total_exo_teen)
             except:
                 early_intervention_ratio_teen = 0
 
             try:
                 early_intervention_ratio_adult = (
-                    total_art_adult + total_sdf_adult
-                ) / total_exo_adult
+                    sum(total_art_adult) + sum(total_sdf_adult)
+                ) / sum(total_exo_adult)
             except:
                 early_intervention_ratio_adult = 0
 
             try:
                 early_intervention_ratio_old = (
-                    total_art_old + total_sdf_old
-                ) / total_exo_old
+                    sum(total_art_old) + sum(total_sdf_old)
+                ) / sum(total_exo_old)
             except:
                 early_intervention_ratio_old = 0
 
             try:
                 early_intervention_ratio_total = (
-                    total_art_male + total_sdf_male + total_art_female + total_sdf_female
-                ) / (total_exo_male + total_exo_female)
+                    sum(total_art_male) + sum(total_sdf_male) + sum(total_art_female) + sum(total_sdf_female)
+                ) / (sum(total_exo_male) + sum(total_exo_female))
             except:
                 early_intervention_ratio_total = 0
             
 
             # Early intervention  
-            early_intervention_male_number = total_art_male + total_sdf_male
+            early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
             try:
                 early_intervention_male = (early_intervention_male_number * 100) / (
                     encounter_male
@@ -1393,7 +1549,7 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_male = 0
             
-            early_intervention_female_number = total_art_female + total_sdf_female 
+            early_intervention_female_number = sum(total_art_female) + sum(total_sdf_female) 
             try:
                 early_intervention_female = (early_intervention_female_number * 100) / (
                     encounter_female
@@ -1401,7 +1557,7 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_female = 0
             
-            early_intervention_child_number = total_art_child + total_sdf_child
+            early_intervention_child_number = sum(total_art_child) + sum(total_sdf_child)
             try:
                 early_intervention_child = (early_intervention_child_number * 100) / (
                     encounter_child
@@ -1409,7 +1565,7 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_child = 0
             
-            early_intervention_teen_number = total_art_teen + total_sdf_teen 
+            early_intervention_teen_number = sum(total_art_teen) + sum(total_sdf_teen) 
             try:
                 early_intervention_teen = (early_intervention_teen_number * 100) / (
                     encounter_teen
@@ -1417,7 +1573,7 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_teen = 0
             
-            early_intervention_adult_number = total_art_adult + total_sdf_adult 
+            early_intervention_adult_number = sum(total_art_adult) + sum(total_sdf_adult) 
             try:
                 early_intervention_adult = (early_intervention_adult_number * 100 ) / (
                     encounter_adult
@@ -1425,7 +1581,7 @@ class TreatmentStrategicData(APIView):
             except:
                 early_intervention_adult = 0
             
-            early_intervention_old_number = total_art_old + total_sdf_old
+            early_intervention_old_number = sum(total_art_old) + sum(total_sdf_old)
             try:
                 early_intervention_old = (early_intervention_old_number * 100) / (
                     encounter_old
@@ -1434,7 +1590,7 @@ class TreatmentStrategicData(APIView):
                 early_intervention_old = 0
             
             # Surgical intervention  
-            surgical_intervention_male_number = total_art_male + total_exo_male + total_sdf_male
+            surgical_intervention_male_number = sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)
             try:
                 surgical_intervention_male = (surgical_intervention_male_number * 100) / (
                     encounter_male
@@ -1442,7 +1598,7 @@ class TreatmentStrategicData(APIView):
             except:
                 surgical_intervention_male = 0
             
-            surgical_intervention_female_number = total_art_female + total_exo_female + total_sdf_female 
+            surgical_intervention_female_number = sum(total_art_female) + sum(total_exo_female) + sum(total_sdf_female) 
             try:
                 surgical_intervention_female = (surgical_intervention_female_number * 100 ) / (
                     encounter_female
@@ -1450,7 +1606,7 @@ class TreatmentStrategicData(APIView):
             except:
                 surgical_intervention_female = 0
             
-            surgical_intervention_child_number = total_art_child + total_exo_child + total_sdf_child
+            surgical_intervention_child_number = sum(total_art_child) + sum(total_exo_child) + sum(total_sdf_child)
             try:
                 surgical_intervention_child = (surgical_intervention_child_number * 100) / (
                     encounter_child
@@ -1458,7 +1614,7 @@ class TreatmentStrategicData(APIView):
             except:
                 surgical_intervention_child = 0
             
-            surgical_intervention_teen_number = total_art_teen + total_exo_teen + total_sdf_teen 
+            surgical_intervention_teen_number = sum(total_art_teen) + sum(total_exo_teen) + sum(total_sdf_teen) 
             try:
                 surgical_intervention_teen = (surgical_intervention_teen_number * 100) / (
                     encounter_teen
@@ -1466,7 +1622,7 @@ class TreatmentStrategicData(APIView):
             except:
                 surgical_intervention_teen = 0
             
-            surgical_intervention_adult_number = total_art_adult + total_exo_adult + total_sdf_adult 
+            surgical_intervention_adult_number = sum(total_art_adult) + sum(total_exo_adult) + sum(total_sdf_adult) 
             try:
                 surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
                     encounter_adult
@@ -1474,7 +1630,7 @@ class TreatmentStrategicData(APIView):
             except:
                 surgical_intervention_adult = 0
             
-            surgical_intervention_old_number = total_art_old + total_exo_old + total_sdf_old
+            surgical_intervention_old_number = sum(total_art_old) + sum(total_exo_old) + sum(total_sdf_old)
             try:
                 surgical_intervention_old = (surgical_intervention_old_number * 100) / (
                     encounter_old
@@ -1957,97 +2113,560 @@ class TreatmentStrategicData(APIView):
                                 if diff < 15 and diff > 0:
                                     refer_old.append(1)
 
-                total_seal_male.append(
-                    Visualization.objects.filter(active=True,
-                        
-                        seal=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
                 
-                total_seal_female.append(
-                    Visualization.objects.filter(active=True,
-                        gender="female",
-                        seal=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
+                if Visualization.objects.filter(active=True,
+                    gender="male",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_seal_child.append(
-                    Visualization.objects.filter(active=True,
-                        age__lt=13,
-                        seal=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
+                    ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                    total_seal_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="male",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum']
                     )
-                    .count()
-                )
-                total_seal_teen.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(13, 18),
-                        seal=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
+                
+                if Visualization.objects.filter(active=True,
+                    gender="female",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_seal_adult.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(19, 60),
-                        seal=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
+                    ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                    total_seal_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="female",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum']
                     )
-                    .count()
-                )
-                total_seal_old.append(
-                    Visualization.objects.filter(active=True,
-                        age__gt=60,
-                        seal=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
+                
+                if Visualization.objects.filter(active=True,
+                    age__lt=13,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
                         Q(activities_id=health_post)
                         | Q(activities_id=seminar)
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                    total_seal_child.append(
+                        Visualization.objects.filter(active=True,
+                            age__lt=13,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum']
                     )
-                    .count()
-                )
+                if Visualization.objects.filter(active=True,
+                    age__range=(13, 18),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                    total_seal_teen.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__range=(19, 60),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                    total_seal_adult.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(19, 60),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__gt=60,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum'] is not None:
+                    total_seal_old.append(
+                        Visualization.objects.filter(active=True,
+                            age__gt=60,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('seal'))['seal__sum']
+                    )
+                
+                
+                # exo    
+                if Visualization.objects.filter(active=True,
+                    gender="male",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                    total_exo_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="male",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    gender="female",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                    total_exo_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="female",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__lt=13,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                    total_exo_child.append(
+                        Visualization.objects.filter(active=True,
+                            age__lt=13,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum']
+                    )
+                if Visualization.objects.filter(active=True,
+                    age__range=(13, 18),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                    total_exo_teen.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__range=(19, 60),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                    total_exo_adult.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(19, 60),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__gt=60,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum'] is not None:
+                    total_exo_old.append(
+                        Visualization.objects.filter(active=True,
+                            age__gt=60,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('exo'))['exo__sum']
+                    )
+
+                # sdf    
+                if Visualization.objects.filter(active=True,
+                    gender="male",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                    total_sdf_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="male",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    gender="female",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                    total_sdf_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="female",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__lt=13,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                    total_sdf_child.append(
+                        Visualization.objects.filter(active=True,
+                            age__lt=13,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                    )
+                if Visualization.objects.filter(active=True,
+                    age__range=(13, 18),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                    total_sdf_teen.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__range=(19, 60),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                    total_sdf_adult.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(19, 60),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__gt=60,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
+                    total_sdf_old.append(
+                        Visualization.objects.filter(active=True,
+                            age__gt=60,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('sdf'))['sdf__sum']
+                    )
+                
+                # art    
+                if Visualization.objects.filter(active=True,
+                    gender="male",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum'] is not None:
+                    total_art_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="male",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    gender="female",
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum'] is not None:
+                    total_art_male.append(
+                        Visualization.objects.filter(active=True,
+                            gender="female",
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__lt=13,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum'] is not None:
+                    total_art_child.append(
+                        Visualization.objects.filter(active=True,
+                            age__lt=13,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum']
+                    )
+                if Visualization.objects.filter(active=True,
+                    age__range=(13, 18),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum'] is not None:
+                    total_art_teen.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(13, 18),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__range=(19, 60),
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum'] is not None:
+                    total_art_adult.append(
+                        Visualization.objects.filter(active=True,
+                            age__range=(19, 60),
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum']
+                    )
+                
+                if Visualization.objects.filter(active=True,
+                    age__gt=60,
+                    geography_id=location.id,
+                    created_at__range=[start_date, end_date],
+                    ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum'] is not None:
+                    total_art_old.append(
+                        Visualization.objects.filter(active=True,
+                            age__gt=60,
+                            geography_id=location.id,
+                            created_at__range=[start_date, end_date],
+                        ).filter(
+                        Q(activities_id=health_post)
+                        | Q(activities_id=seminar)
+                        | Q(activities_id=outreach)
+                        | Q(activities_id=training)
+                    ).aggregate(Sum('art'))['art__sum']
+                    )
+
+
 
                 totalfv_male.append(
                     Visualization.objects.filter(active=True,
@@ -2141,280 +2760,7 @@ class TreatmentStrategicData(APIView):
                     .count()
                 )
 
-                total_exo_male.append(
-                    Visualization.objects.filter(active=True,
-                        gender="male",
-                        exo=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_exo_female.append(
-                    Visualization.objects.filter(active=True,
-                        gender="female",
-                        exo=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_exo_child.append(
-                    Visualization.objects.filter(active=True,
-                        age__lt=13,
-                        exo=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_exo_teen.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(13, 18),
-                        exo=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_exo_adult.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(19, 60),
-                        exo=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
                 
-                total_exo_old.append(
-                    Visualization.objects.filter(active=True,
-                        age__gt=60,
-                        exo=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-
-                total_art_male.append(
-                    Visualization.objects.filter(active=True,
-                        gender="male",
-                        art=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_art_female.append(
-                    Visualization.objects.filter(active=True,
-                        gender="female",
-                        art=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_art_child.append(
-                    Visualization.objects.filter(active=True,
-                        age__lt=13,
-                        art=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_art_teen.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(13, 18),
-                        art=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_art_adult.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(19, 60),
-                        art=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_art_old.append(
-                    Visualization.objects.filter(active=True,
-                        age__gt=60,
-                        art=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-
-                total_sdf_male.append(
-                    Visualization.objects.filter(active=True,
-                        gender="male",
-                        sdf=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                
-                total_sdf_female.append(
-                    Visualization.objects.filter(active=True,
-                        gender="female",
-                        sdf=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_sdf_child.append(
-                    Visualization.objects.filter(active=True,
-                        age__lt=13,
-                        sdf=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_sdf_teen.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(13, 18),
-                        sdf=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_sdf_adult.append(
-                    Visualization.objects.filter(active=True,
-                        age__range=(19, 60),
-                        sdf=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
-                total_sdf_old.append(
-                    Visualization.objects.filter(active=True,
-                        age__gt=60,
-                        sdf=True,
-                        created_at__range=[start_date, end_date],
-                        geography_id=location.id,
-                    )
-                    .filter(
-                        Q(activities_id=health_post)
-                        | Q(activities_id=seminar)
-                        | Q(activities_id=outreach)
-                        | Q(activities_id=training)
-                    )
-                    .count()
-                )
 
                 total_fsdf_male.append(
                     Visualization.objects.filter(active=True,

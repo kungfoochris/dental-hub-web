@@ -22507,3 +22507,8 @@ NameError: name 'decayed_permanent_teeth_mean_decayed_permanent_teeth_list_ABC' 
 2022-03-04 13:29:51,272 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21200
 2022-03-04 13:47:54,290 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21538
 2022-03-04 13:48:24,610 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21259
+2022-03-04 13:57:03,345 django.server INFO     "GET /api/v1/crosssectional HTTP/1.1" 200 21452
+2022-03-04 13:57:30,181 django.server INFO     "POST /api/v1/crosssectional HTTP/1.1" 200 21173
+2022-03-04 17:07:43,320 django.server INFO     "GET /api/v1/treatment HTTP/1.1" 200 15480
+2022-03-04 17:07:46,931 django.server INFO     "GET /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16512
+2022-03-04 17:08:00,236 django.server INFO     "POST /api/v1/treatmentstrategicdatas HTTP/1.1" 200 16513

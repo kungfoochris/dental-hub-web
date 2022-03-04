@@ -32,8 +32,8 @@ urlpatterns = [
 	path('encounterdatechange/<encounter_id>',ChangeEncounterCreatedDate.as_view()),
 	path('modifydeleteseen', ModifyDeleteSeen.as_view()),
 
-	path('viscreatedupdate', VisualizationCreatedDateUpdate.as_view()),
-	path('visrecallupdate', VisualizationRecallDateUpdate.as_view()),
+	# path('viscreatedupdate', VisualizationCreatedDateUpdate.as_view()),
+	# path('visrecallupdate', VisualizationRecallDateUpdate.as_view()),
 	
 
     ]
