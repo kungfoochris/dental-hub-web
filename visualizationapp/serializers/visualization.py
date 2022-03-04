@@ -17,7 +17,6 @@ REASON_CHOICES = (
 )
 
 REFER_CHOICES = (
-    ("No Refer", _("No Refer")),
     ("Refer Other", _("Refer Other")),
     ("Refer Hp", _("Refer Hp")),
     ("Refer Dent", _("Refer Dent")),

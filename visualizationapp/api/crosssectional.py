@@ -1713,21 +1713,6 @@ class CrossSectionalVisualization(APIView):
 
                 denominator_all = []
                 
-                numerator_carries_risk_low_list_6
-                numerator_carries_risk_medium_list_6
-                numerator_carries_risk_high_list_6
-                numerator_untreated_caries_present_list_6
-                numerator_decayed_permanent_teeth_list_6
-                numerator_decayed_primary_teeth_list_6
-                numerator_cavity_permanent_molar_list_6
-                numerator_cavity_permanent_anterior_list_6
-                numerator_active_infection_list_6
-                numerator_reversible_pulpitis_list_6
-                numerator_need_art_filling_list_6
-                numerator_need_sdf_list_6
-                numerator_need_extraction_list_6
-                numerator_need_fv_list_6
-                numerator_need_dentist_or_hygienist_list_6
                 # carries risk low
                 for l in serializer.validated_data['location']:
                     for a in serializer.validated_data['activity']:
