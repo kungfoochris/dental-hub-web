@@ -2403,7 +2403,7 @@ class TreatmentStrategicData(APIView):
                 print(total_exo_teen)
                 print(total_exo_adult)
                 print(total_exo_old)
-                
+
                 # sdf    
                 if Visualization.objects.filter(active=True,
                     gender="male",
@@ -2542,6 +2542,14 @@ class TreatmentStrategicData(APIView):
                     ).aggregate(Sum('sdf'))['sdf__sum']
                     )
                 
+                print("SDF list")
+                print(total_sdf_male)
+                print(total_sdf_female)
+                print(total_sdf_child)
+                print(total_sdf_teen)
+                print(total_sdf_adult)
+                print(total_sdf_old)
+
                 # art    
                 if Visualization.objects.filter(active=True,
                     gender="male",
@@ -2679,6 +2687,13 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=training)
                     ).aggregate(Sum('art'))['art__sum']
                     )
+                print("ART list")
+                print(total_art_male)
+                print(total_art_female)
+                print(total_art_child)
+                print(total_art_teen)
+                print(total_art_adult)
+                print(total_art_old)
 
                 totalfv_male.append(
                     Visualization.objects.filter(active=True,
