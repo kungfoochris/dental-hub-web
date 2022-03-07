@@ -34,5 +34,4 @@ urlpatterns = [
 	path('viscreatedupdate', VisualizationCreatedDateUpdate.as_view()),
 	path('visrecallupdate', VisualizationRecallDateUpdate.as_view()),
 	
-
     ]

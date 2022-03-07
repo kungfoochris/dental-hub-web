@@ -480,7 +480,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_ABC.append(0)
@@ -491,7 +491,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_ABC.append(0)
@@ -502,7 +502,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_ABC.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_ABC.append(0)
@@ -514,7 +514,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_EFGH.append(0)
@@ -525,7 +525,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_EFGH.append(0)
@@ -536,7 +536,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_EFGH.append(0)
@@ -547,7 +547,7 @@ class CrossSectionalVisualization(APIView):
                 decayed_permanent_teeth1.append(a.decayed_permanent_teeth_number)
             try:
                 total_decayed_permanent_teeth.append(round(statistics.stdev(decayed_permanent_teeth1),1))
-                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_primary_teeth1),1))
+                decayed_permanent_teeth_mean_list_EFGH.append(round(statistics.mean(decayed_permanent_teeth1),1))
             except:
                 total_decayed_permanent_teeth.append(0)
                 decayed_permanent_teeth_mean_list_EFGH.append(0)
