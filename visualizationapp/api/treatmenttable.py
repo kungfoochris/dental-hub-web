@@ -1208,6 +1208,14 @@ class TreatmentStrategicData(APIView):
                     ).aggregate(Sum('exo'))['exo__sum']
                 )
 
+            print("EXO list")
+            print(total_exo_male)
+            print(total_exo_female)
+            print(total_exo_child)
+            print(total_exo_teen)
+            print(total_exo_adult)
+            print(total_exo_old)
+
             # art
             if Visualization.objects.filter(active=True,
                 gender="male",
@@ -2250,7 +2258,6 @@ class TreatmentStrategicData(APIView):
                     ).aggregate(Sum('seal'))['seal__sum']
                     )
                 
-                
                 # exo    
                 if Visualization.objects.filter(active=True,
                     gender="male",
@@ -2756,8 +2763,6 @@ class TreatmentStrategicData(APIView):
                     )
                     .count()
                 )
-
-                
 
                 total_fsdf_male.append(
                     Visualization.objects.filter(active=True,

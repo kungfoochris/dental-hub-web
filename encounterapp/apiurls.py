@@ -9,7 +9,6 @@ from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatu
 	EncounterFlagDead,EncounterRestore,Recyclebin,CheckRestoreExpiry,CheckModifyExpiry,ModifyDeleteSeen
 
 
-
 app_name = 'encounterapp'
 
 urlpatterns = [

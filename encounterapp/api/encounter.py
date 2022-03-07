@@ -341,10 +341,16 @@ class VisualizationCreatedDateUpdate(APIView):
 
     def get(self, request):
         vis_obj = Visualization.objects.all()
+        enc_obj = Encounter.objects.all()
+        print(vis_obj.count)
+        print(enc_obj.count)
         for i in vis_obj:
-            encounter_obj = Encounter.objects.get(id=i.encounter_id)
-            i.created = encounter_obj.created_at
-            i.save()
+            try:
+                encounter_obj = Encounter.objects.get(id=i.encounter_id)
+                i.created = encounter_obj.created_at
+                i.save()
+            except:
+                continue
         return Response("Created date updated in visualization table.")
 
 # this api used for once
@@ -354,11 +360,14 @@ class VisualizationRecallDateUpdate(APIView):
     def get(self, request):
         vis_obj = Visualization.objects.filter(refer_hp=True)
         for i in vis_obj:
-            encounter_obj = Encounter.objects.get(id=i.encounter_id)
-            patient_obj = Patient.objects.get(id=encounter_obj.patient.id)
-            i.recall_date = patient_obj.recall_date
-            i.recall_time = patient_obj.recall_time
-            i.save()
+            try:
+                encounter_obj = Encounter.objects.get(id=i.encounter_id)
+                patient_obj = Patient.objects.get(id=encounter_obj.patient.id)
+                i.recall_date = patient_obj.recall_date
+                i.recall_time = patient_obj.recall_time
+                i.save()
+            except:
+                continue
         return Response("Recall date and time updated in visualization table.")
 
 
