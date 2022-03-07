@@ -342,8 +342,8 @@ class VisualizationCreatedDateUpdate(APIView):
     def get(self, request):
         vis_obj = Visualization.objects.all()
         enc_obj = Encounter.objects.all()
-        print(vis_obj.count)
-        print(enc_obj.count)
+        print(vis_obj.count())
+        print(enc_obj.count())
         for i in vis_obj:
             try:
                 encounter_obj = Encounter.objects.get(id=i.encounter_id)

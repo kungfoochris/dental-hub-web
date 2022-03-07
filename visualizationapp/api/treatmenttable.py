@@ -2396,14 +2396,6 @@ class TreatmentStrategicData(APIView):
                     ).aggregate(Sum('exo'))['exo__sum']
                     )
 
-                print("EXO list")
-                print(total_exo_male)
-                print(total_exo_female)
-                print(total_exo_child)
-                print(total_exo_teen)
-                print(total_exo_adult)
-                print(total_exo_old)
-
                 # sdf    
                 if Visualization.objects.filter(active=True,
                     gender="male",
@@ -2541,14 +2533,6 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=training)
                     ).aggregate(Sum('sdf'))['sdf__sum']
                     )
-                
-                print("SDF list")
-                print(total_sdf_male)
-                print(total_sdf_female)
-                print(total_sdf_child)
-                print(total_sdf_teen)
-                print(total_sdf_adult)
-                print(total_sdf_old)
 
                 # art    
                 if Visualization.objects.filter(active=True,
@@ -2687,13 +2671,6 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=training)
                     ).aggregate(Sum('art'))['art__sum']
                     )
-                print("ART list")
-                print(total_art_male)
-                print(total_art_female)
-                print(total_art_child)
-                print(total_art_teen)
-                print(total_art_adult)
-                print(total_art_old)
 
                 totalfv_male.append(
                     Visualization.objects.filter(active=True,
@@ -2879,309 +2856,316 @@ class TreatmentStrategicData(APIView):
                     .count()
                 )
 
-                # Preventive Ratio
-                try:
-                    preventive_ratio_male = (
-                        sum(total_seal_male) + sum(totalfv_male) + sum(total_fsdf_male)
-                    ) / (
-                        sum(total_exo_male)
-                        + sum(total_art_male)
-                        + sum(total_sdf_male)
-                    )
-                except:
-                    preventive_ratio_male = 0
-                try:
-                    preventive_ratio_female = (
-                        sum(total_seal_female) + sum(totalfv_female) + sum(total_fsdf_female)
-                    ) / (
-                        sum(total_exo_female)
-                        + sum(total_art_female)
-                        + sum(total_sdf_female)
-                    )
-                except:
-                    preventive_ratio_female = 0
-                try:
-                    preventive_ratio_child = (
-                        sum(total_seal_child) + sum(totalfv_child) + sum(total_fsdf_child)
-                    ) / (
-                        sum(total_exo_child)
-                        + sum(total_art_child)
-                        + sum(total_sdf_child)
-                    )
-                except:
-                    preventive_ratio_child = 0
-                try:
-                    preventive_ratio_teen = (
-                        sum(total_seal_teen) + sum(totalfv_teen) + sum(total_fsdf_teen)
-                    ) / (
-                        sum(total_exo_teen)
-                        + sum(total_art_teen)
-                        + sum(total_sdf_teen)
-                    )
-                except:
-                    preventive_ratio_teen = 0
-                try:
-                    preventive_ratio_adult = (
-                        sum(total_seal_adult) + sum(totalfv_adult) + sum(total_fsdf_adult)
-                    ) / (
-                        sum(total_exo_adult)
-                        + sum(total_art_adult)
-                        + sum(total_sdf_adult)
-                    )
-                except:
-                    preventive_ratio_adult = 0
-                try:
-                    preventive_ratio_old = (
-                        sum(total_seal_old) + sum(totalfv_old) + sum(total_fsdf_old)
-                    ) / (
-                        sum(total_exo_old) + sum(total_art_old) + sum(total_sdf_old)
-                    )
-                except:
-                    preventive_ratio_old = 0
+            # Preventive Ratio
+            try:
+                preventive_ratio_male = (
+                    sum(total_seal_male) + sum(totalfv_male) + sum(total_fsdf_male)
+                ) / (
+                    sum(total_exo_male)
+                    + sum(total_art_male)
+                    + sum(total_sdf_male)
+                )
+            except:
+                preventive_ratio_male = 0
+            try:
+                preventive_ratio_female = (
+                    sum(total_seal_female) + sum(totalfv_female) + sum(total_fsdf_female)
+                ) / (
+                    sum(total_exo_female)
+                    + sum(total_art_female)
+                    + sum(total_sdf_female)
+                )
+            except:
+                preventive_ratio_female = 0
+            try:
+                preventive_ratio_child = (
+                    sum(total_seal_child) + sum(totalfv_child) + sum(total_fsdf_child)
+                ) / (
+                    sum(total_exo_child)
+                    + sum(total_art_child)
+                    + sum(total_sdf_child)
+                )
+            except:
+                preventive_ratio_child = 0
+            try:
+                preventive_ratio_teen = (
+                    sum(total_seal_teen) + sum(totalfv_teen) + sum(total_fsdf_teen)
+                ) / (
+                    sum(total_exo_teen)
+                    + sum(total_art_teen)
+                    + sum(total_sdf_teen)
+                )
+            except:
+                preventive_ratio_teen = 0
+            try:
+                preventive_ratio_adult = (
+                    sum(total_seal_adult) + sum(totalfv_adult) + sum(total_fsdf_adult)
+                ) / (
+                    sum(total_exo_adult)
+                    + sum(total_art_adult)
+                    + sum(total_sdf_adult)
+                )
+            except:
+                preventive_ratio_adult = 0
+            try:
+                preventive_ratio_old = (
+                    sum(total_seal_old) + sum(totalfv_old) + sum(total_fsdf_old)
+                ) / (
+                    sum(total_exo_old) + sum(total_art_old) + sum(total_sdf_old)
+                )
+            except:
+                preventive_ratio_old = 0
 
-                # Early Intervention Ratio
-                try:
-                    early_intervention_ratio_male = (
-                        sum(total_art_male) + sum(total_sdf_male)
-                    ) / sum(total_exo_male)
-                except:
-                    early_intervention_ratio_male = 0
+            print("ART list")
+            print(total_art_male)
+            print("SDF list")
+            print(total_sdf_male)
+            print("EXO list")
+            print(total_exo_male)
+            
+            # Early Intervention Ratio
+            try:
+                early_intervention_ratio_male = (
+                    sum(total_art_male) + sum(total_sdf_male)
+                ) / sum(total_exo_male)
+            except:
+                early_intervention_ratio_male = 0
 
-                try:
-                    early_intervention_ratio_female = (
-                        sum(total_art_female) + sum(total_sdf_female)
-                    ) / sum(total_exo_female)
-                except:
-                    early_intervention_ratio_female = 0
+            try:
+                early_intervention_ratio_female = (
+                    sum(total_art_female) + sum(total_sdf_female)
+                ) / sum(total_exo_female)
+            except:
+                early_intervention_ratio_female = 0
 
-                try:
-                    early_intervention_ratio_child = (
-                        sum(total_art_child) + sum(total_sdf_child)
-                    ) / sum(total_exo_child)
-                except:
-                    early_intervention_ratio_child = 0
-                
-                try:
-                    early_intervention_ratio_teen = (
-                        sum(total_art_teen) + sum(total_sdf_teen)
-                    ) / sum(total_exo_teen)
-                except:
-                    early_intervention_ratio_teen = 0
+            try:
+                early_intervention_ratio_child = (
+                    sum(total_art_child) + sum(total_sdf_child)
+                ) / sum(total_exo_child)
+            except:
+                early_intervention_ratio_child = 0
+            
+            try:
+                early_intervention_ratio_teen = (
+                    sum(total_art_teen) + sum(total_sdf_teen)
+                ) / sum(total_exo_teen)
+            except:
+                early_intervention_ratio_teen = 0
 
-                try:
-                    early_intervention_ratio_adult = (
-                        sum(total_art_adult) + sum(total_sdf_adult)
-                    ) / sum(total_exo_adult)
-                except:
-                    early_intervention_ratio_adult = 0
+            try:
+                early_intervention_ratio_adult = (
+                    sum(total_art_adult) + sum(total_sdf_adult)
+                ) / sum(total_exo_adult)
+            except:
+                early_intervention_ratio_adult = 0
 
-                try:
-                    early_intervention_ratio_old = (
-                        sum(total_art_old) + sum(total_sdf_old)
-                    ) / sum(total_exo_old)
-                except:
-                    early_intervention_ratio_old = 0
-                
-                try:
-                    early_intervention_ratio_total = (
-                        sum(total_art_male) + sum(total_sdf_male) + sum(total_art_female) + sum(total_sdf_female)
-                    ) / (sum(total_exo_male) + sum(total_exo_female))
-                except:
-                    early_intervention_ratio_total = 0
+            try:
+                early_intervention_ratio_old = (
+                    sum(total_art_old) + sum(total_sdf_old)
+                ) / sum(total_exo_old)
+            except:
+                early_intervention_ratio_old = 0
+            
+            try:
+                early_intervention_ratio_total = (
+                    sum(total_art_male) + sum(total_sdf_male) + sum(total_art_female) + sum(total_sdf_female)
+                ) / (sum(total_exo_male) + sum(total_exo_female))
+            except:
+                early_intervention_ratio_total = 0
 
-                # Recall %
-                try:
-                    recall_percent_male = (
-                        sum(refer_male) / sum(encounter_male)
-                    ) * 100
-                except:
-                    recall_percent_male = 0
+            # Recall %
+            try:
+                recall_percent_male = (
+                    sum(refer_male) / sum(encounter_male)
+                ) * 100
+            except:
+                recall_percent_male = 0
 
-                try:
-                    recall_percent_female = (
-                        sum(refer_female) / sum(encounter_female)
-                    ) * 100
-                except:
-                    recall_percent_female = 0
+            try:
+                recall_percent_female = (
+                    sum(refer_female) / sum(encounter_female)
+                ) * 100
+            except:
+                recall_percent_female = 0
 
-                try:
-                    recall_percent_child = (
-                        sum(refer_child) / sum(encounter_child)
-                    ) * 100
-                except:
-                    recall_percent_child = 0
-                
-                try:
-                    recall_percent_teen = (
-                        sum(refer_teen) / sum(encounter_teen)
-                    ) * 100
-                except:
-                    recall_percent_teen = 0
+            try:
+                recall_percent_child = (
+                    sum(refer_child) / sum(encounter_child)
+                ) * 100
+            except:
+                recall_percent_child = 0
+            
+            try:
+                recall_percent_teen = (
+                    sum(refer_teen) / sum(encounter_teen)
+                ) * 100
+            except:
+                recall_percent_teen = 0
 
-                try:
-                    recall_percent_adult = (
-                        sum(refer_adult) / sum(encounter_adult)
-                    ) * 100
-                except:
-                    recall_percent_adult = 0
+            try:
+                recall_percent_adult = (
+                    sum(refer_adult) / sum(encounter_adult)
+                ) * 100
+            except:
+                recall_percent_adult = 0
 
-                try:
-                    recall_percent_old = (sum(refer_old) / sum(encounter_old)) * 100
-                except:
-                    recall_percent_old = 0
-                
-                try:
-                    recall_percent_total = ((sum(refer_male) + sum(refer_female))/ (sum(encounter_male) + sum(encounter_female))) * 100
-                except:
-                    recall_percent_total = 0
+            try:
+                recall_percent_old = (sum(refer_old) / sum(encounter_old)) * 100
+            except:
+                recall_percent_old = 0
+            
+            try:
+                recall_percent_total = ((sum(refer_male) + sum(refer_female))/ (sum(encounter_male) + sum(encounter_female))) * 100
+            except:
+                recall_percent_total = 0
 
 
-                # Prevention  
-                prevention_male_number = sum(total_fsdf_male) + sum(total_seal_male) + sum(totalfv_male) 
-                try:
-                    prevention_male = (prevention_male_number * 100) / (
-                        sum(encounter_male)
-                    )
-                except:
-                    prevention_male = 0
-                
-                prevention_female_number = sum(total_fsdf_female) + sum(total_seal_female) + sum(totalfv_female) 
-                try:
-                    prevention_female = (prevention_female_number * 100) / (
-                        sum(encounter_female)
-                    )
-                except:
-                    prevention_female = 0
-                
-                prevention_child_number = sum(total_fsdf_child) + sum(total_seal_child) + sum(totalfv_child) 
-                try:
-                    prevention_child = (prevention_child_number *100 ) / (
-                        sum(encounter_child)
-                    )
-                except:
-                    prevention_child = 0
-                
-                prevention_teen_number = sum(total_fsdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) 
-                try:
-                    prevention_teen = (prevention_teen_number * 100) / (
-                        sum(encounter_teen)
-                    )
-                except:
-                    prevention_teen = 0
-                
-                prevention_adult_number = sum(total_fsdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) 
-                try:
-                    prevention_adult = (prevention_adult_number * 100) / (
-                        sum(encounter_adult)
-                    )
-                except:
-                    prevention_adult = 0
-                
-                prevention_old_number = sum(total_fsdf_old) + sum(total_seal_old) + sum(totalfv_old) 
-                try:
-                    prevention_old = (prevention_old_number * 100 ) / (
-                        sum(encounter_old)
-                    )
-                except:
-                    prevention_old = 0
-                
-                # Early intervention  
-                early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
-                try:
-                    early_intervention_male = (early_intervention_male_number * 100) / (
-                        sum(encounter_male)
-                    )
-                except:
-                    early_intervention_male = 0
-                
-                early_intervention_female_number = sum(total_art_female) + sum(total_sdf_female) 
-                try:
-                    early_intervention_female = (early_intervention_female_number * 100 ) / (
-                        sum(encounter_female)
-                    )
-                except:
-                    early_intervention_female = 0
-                
-                early_intervention_child_number = sum(total_art_child) + sum(total_sdf_child)
-                try:
-                    early_intervention_child = (early_intervention_child_number * 100) / (
-                        sum(encounter_child)
-                    )
-                except:
-                    early_intervention_child = 0
-                
-                early_intervention_teen_number = sum(total_art_teen) + sum(total_sdf_teen) 
-                try:
-                    early_intervention_teen = (early_intervention_teen_number * 100) / (
-                        sum(encounter_teen)
-                    )
-                except:
-                    early_intervention_teen = 0
-                
-                early_intervention_adult_number = sum(total_art_adult) + sum(total_sdf_adult)
-                try:
-                    early_intervention_adult = (early_intervention_adult_number * 100) / (
-                        sum(encounter_adult)
-                    )
-                except:
-                    early_intervention_adult = 0
-                
-                early_intervention_old_number = sum(total_art_old) + sum(total_sdf_old)
-                try:
-                    early_intervention_old = (early_intervention_old_number) / (
-                        sum(encounter_old)
-                    )
-                except:
-                    early_intervention_old = 0
-                
-                # Surgical intervention  
-                surgical_intervention_male_number = sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)
-                try:
-                    surgical_intervention_male = (surgical_intervention_male_number *100) / (
-                        sum(encounter_male)
-                    )
-                except:
-                    surgical_intervention_male = 0
-                
-                surgical_intervention_female_number = sum(total_art_female) + sum(total_exo_female) + sum(total_sdf_female) 
-                try:
-                    surgical_intervention_female = (surgical_intervention_female_number * 100) / (
-                        sum(encounter_female)
-                    )
-                except:
-                    surgical_intervention_female = 0
-                
-                surgical_intervention_child_number = sum(total_art_child) + sum(total_exo_child) + sum(total_sdf_child)
-                try:
-                    surgical_intervention_child = (surgical_intervention_child_number * 100) / (
-                        sum(encounter_child)
-                    )
-                except:
-                    surgical_intervention_child = 0
-                
-                surgical_intervention_teen_number = sum(total_art_teen) + sum(total_exo_teen) + sum(total_sdf_teen)
-                try:
-                    surgical_intervention_teen = (surgical_intervention_teen_number * 100 ) / (
-                        sum(encounter_teen)
-                    )
-                except:
-                    surgical_intervention_teen = 0
-                
-                surgical_intervention_adult_number = sum(total_art_adult) + sum(total_exo_adult) + sum(total_sdf_adult) 
-                try:
-                    surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
-                        sum(encounter_adult)
-                    )
-                except:
-                    surgical_intervention_adult = 0
-                
-                surgical_intervention_old_number = sum(total_art_old) + sum(total_exo_old) + sum(total_sdf_old)
-                try:
-                    surgical_intervention_old = (surgical_intervention_old_number * 100) / (
-                        sum(encounter_old)
-                    )
-                except:
-                    surgical_intervention_old = 0
+            # Prevention  
+            prevention_male_number = sum(total_fsdf_male) + sum(total_seal_male) + sum(totalfv_male) 
+            try:
+                prevention_male = (prevention_male_number * 100) / (
+                    sum(encounter_male)
+                )
+            except:
+                prevention_male = 0
+            
+            prevention_female_number = sum(total_fsdf_female) + sum(total_seal_female) + sum(totalfv_female) 
+            try:
+                prevention_female = (prevention_female_number * 100) / (
+                    sum(encounter_female)
+                )
+            except:
+                prevention_female = 0
+            
+            prevention_child_number = sum(total_fsdf_child) + sum(total_seal_child) + sum(totalfv_child) 
+            try:
+                prevention_child = (prevention_child_number *100 ) / (
+                    sum(encounter_child)
+                )
+            except:
+                prevention_child = 0
+            
+            prevention_teen_number = sum(total_fsdf_teen) + sum(total_seal_teen) + sum(totalfv_teen) 
+            try:
+                prevention_teen = (prevention_teen_number * 100) / (
+                    sum(encounter_teen)
+                )
+            except:
+                prevention_teen = 0
+            
+            prevention_adult_number = sum(total_fsdf_adult) + sum(total_seal_adult) + sum(totalfv_adult) 
+            try:
+                prevention_adult = (prevention_adult_number * 100) / (
+                    sum(encounter_adult)
+                )
+            except:
+                prevention_adult = 0
+            
+            prevention_old_number = sum(total_fsdf_old) + sum(total_seal_old) + sum(totalfv_old) 
+            try:
+                prevention_old = (prevention_old_number * 100 ) / (
+                    sum(encounter_old)
+                )
+            except:
+                prevention_old = 0
+            
+            # Early intervention  
+            early_intervention_male_number = sum(total_art_male) + sum(total_sdf_male)
+            try:
+                early_intervention_male = (early_intervention_male_number * 100) / (
+                    sum(encounter_male)
+                )
+            except:
+                early_intervention_male = 0
+            
+            early_intervention_female_number = sum(total_art_female) + sum(total_sdf_female) 
+            try:
+                early_intervention_female = (early_intervention_female_number * 100 ) / (
+                    sum(encounter_female)
+                )
+            except:
+                early_intervention_female = 0
+            
+            early_intervention_child_number = sum(total_art_child) + sum(total_sdf_child)
+            try:
+                early_intervention_child = (early_intervention_child_number * 100) / (
+                    sum(encounter_child)
+                )
+            except:
+                early_intervention_child = 0
+            
+            early_intervention_teen_number = sum(total_art_teen) + sum(total_sdf_teen) 
+            try:
+                early_intervention_teen = (early_intervention_teen_number * 100) / (
+                    sum(encounter_teen)
+                )
+            except:
+                early_intervention_teen = 0
+            
+            early_intervention_adult_number = sum(total_art_adult) + sum(total_sdf_adult)
+            try:
+                early_intervention_adult = (early_intervention_adult_number * 100) / (
+                    sum(encounter_adult)
+                )
+            except:
+                early_intervention_adult = 0
+            
+            early_intervention_old_number = sum(total_art_old) + sum(total_sdf_old)
+            try:
+                early_intervention_old = (early_intervention_old_number) / (
+                    sum(encounter_old)
+                )
+            except:
+                early_intervention_old = 0
+            
+            # Surgical intervention  
+            surgical_intervention_male_number = sum(total_art_male) + sum(total_exo_male) + sum(total_sdf_male)
+            try:
+                surgical_intervention_male = (surgical_intervention_male_number *100) / (
+                    sum(encounter_male)
+                )
+            except:
+                surgical_intervention_male = 0
+            
+            surgical_intervention_female_number = sum(total_art_female) + sum(total_exo_female) + sum(total_sdf_female) 
+            try:
+                surgical_intervention_female = (surgical_intervention_female_number * 100) / (
+                    sum(encounter_female)
+                )
+            except:
+                surgical_intervention_female = 0
+            
+            surgical_intervention_child_number = sum(total_art_child) + sum(total_exo_child) + sum(total_sdf_child)
+            try:
+                surgical_intervention_child = (surgical_intervention_child_number * 100) / (
+                    sum(encounter_child)
+                )
+            except:
+                surgical_intervention_child = 0
+            
+            surgical_intervention_teen_number = sum(total_art_teen) + sum(total_exo_teen) + sum(total_sdf_teen)
+            try:
+                surgical_intervention_teen = (surgical_intervention_teen_number * 100 ) / (
+                    sum(encounter_teen)
+                )
+            except:
+                surgical_intervention_teen = 0
+            
+            surgical_intervention_adult_number = sum(total_art_adult) + sum(total_exo_adult) + sum(total_sdf_adult) 
+            try:
+                surgical_intervention_adult = (surgical_intervention_adult_number * 100) / (
+                    sum(encounter_adult)
+                )
+            except:
+                surgical_intervention_adult = 0
+            
+            surgical_intervention_old_number = sum(total_art_old) + sum(total_exo_old) + sum(total_sdf_old)
+            try:
+                surgical_intervention_old = (surgical_intervention_old_number * 100) / (
+                    sum(encounter_old)
+                )
+            except:
+                surgical_intervention_old = 0
                 
             total_encounter = sum(encounter_male) + sum(encounter_female)
             if total_encounter == 0:
