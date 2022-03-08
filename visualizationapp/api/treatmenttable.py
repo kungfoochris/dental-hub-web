@@ -1068,7 +1068,7 @@ class TreatmentStrategicData(APIView):
                 ).aggregate(Sum('seal'))['seal__sum'] is not None:
                 total_seal_female.append(
                     Visualization.objects.filter(active=True,
-                        gender="male",
+                        gender="female",
                         created_at__range=[last_30_days_obj, today_date_obj],
                     ).aggregate(Sum('seal'))['seal__sum']
                 )
@@ -1112,7 +1112,6 @@ class TreatmentStrategicData(APIView):
                         created_at__range=[last_30_days_obj, today_date_obj],
                     ).aggregate(Sum('seal'))['seal__sum']
                 )
-
 
             # fv
             totalfv_male = Visualization.objects.filter(active=True,
@@ -1163,7 +1162,7 @@ class TreatmentStrategicData(APIView):
                 ).aggregate(Sum('exo'))['exo__sum'] is not None:
                 total_exo_female.append(
                     Visualization.objects.filter(active=True,
-                        gender="male",
+                        gender="female",
                         created_at__range=[last_30_days_obj, today_date_obj],
                     ).aggregate(Sum('exo'))['exo__sum']
                 )
@@ -1233,7 +1232,7 @@ class TreatmentStrategicData(APIView):
                 ).aggregate(Sum('art'))['art__sum'] is not None:
                 total_art_female.append(
                     Visualization.objects.filter(active=True,
-                        gender="male",
+                        gender="female",
                         created_at__range=[last_30_days_obj, today_date_obj],
                     ).aggregate(Sum('art'))['art__sum']
                 )
@@ -1295,7 +1294,7 @@ class TreatmentStrategicData(APIView):
                 ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
                 total_sdf_female.append(
                     Visualization.objects.filter(active=True,
-                        gender="male",
+                        gender="female",
                         created_at__range=[last_30_days_obj, today_date_obj],
                     ).aggregate(Sum('sdf'))['sdf__sum']
                 )
@@ -2154,7 +2153,7 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
                     ).aggregate(Sum('seal'))['seal__sum'] is not None:
-                    total_seal_male.append(
+                    total_seal_female.append(
                         Visualization.objects.filter(active=True,
                             gender="female",
                             geography_id=location.id,
@@ -2292,7 +2291,7 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
                     ).aggregate(Sum('exo'))['exo__sum'] is not None:
-                    total_exo_male.append(
+                    total_exo_female.append(
                         Visualization.objects.filter(active=True,
                             gender="female",
                             geography_id=location.id,
@@ -2430,7 +2429,7 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
                     ).aggregate(Sum('sdf'))['sdf__sum'] is not None:
-                    total_sdf_male.append(
+                    total_sdf_female.append(
                         Visualization.objects.filter(active=True,
                             gender="female",
                             geography_id=location.id,
@@ -2568,7 +2567,7 @@ class TreatmentStrategicData(APIView):
                         | Q(activities_id=outreach)
                         | Q(activities_id=training)
                     ).aggregate(Sum('art'))['art__sum'] is not None:
-                    total_art_male.append(
+                    total_art_female.append(
                         Visualization.objects.filter(active=True,
                             gender="female",
                             geography_id=location.id,
