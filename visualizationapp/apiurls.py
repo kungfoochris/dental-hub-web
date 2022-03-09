@@ -25,7 +25,7 @@ WardUserlineVisualization,WardStrategicData,WardSettingVisualizationFilter
 
 # from visualizationapp.api.filtervisualization import OverviewVisualization
 
-from visualizationapp.api.crosssectional import SectionalVisualization,CrossSectionalVisualization
+from visualizationapp.api.crosssectional import CrossSectionalVisualization
 
 from visualizationapp.api.visualization_table import TableVisualization
 
@@ -75,7 +75,6 @@ urlpatterns = [
 	path('wardtreatmentgraph',WardTreatmentVisualization.as_view()),
 	path('wardtreatmentgraphfilter',WardTreatmentVisualizationFilter.as_view()),
 	# path('overviewvisualization/<start_date>/<end_date>/<location_id>',OverviewVisualization.as_view()),
-	path('sectional',SectionalVisualization.as_view()),
 	path('crosssectional',CrossSectionalVisualization.as_view()),
 	path('tablvisualization',TableVisualization.as_view()),
 	path('data',DataVisualization.as_view()),
