@@ -1379,7 +1379,7 @@ class TreatmentStrategicData(APIView):
             except:
                 preventive_ratio_male = 0
             try:
-                preventive_ratio_female = (total_seal_female + totalfv_female + total_fsdf_female) / (
+                preventive_ratio_female = (sum(total_seal_female) + totalfv_female + total_fsdf_female) / (
                     sum(total_exo_female) + sum(total_art_female) + sum(total_sdf_female)
                 )
             except:

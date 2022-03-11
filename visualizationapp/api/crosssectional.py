@@ -336,21 +336,21 @@ class CrossSectionalVisualization(APIView):
             # Any untreated caries present
             # WHO indicator age-groups
             numerator_untreated_caries_present_A = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(age=6,created_at__range=[last_30_days_obj, today_date_obj]).filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_A/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
 
             numerator_untreated_caries_present_B = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(age=12,created_at__range=[last_30_days_obj, today_date_obj]).filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_B/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_C = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(age=15,created_at__range=[last_30_days_obj, today_date_obj]).filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_C/denominator)*100,1))
             except:
@@ -360,27 +360,27 @@ class CrossSectionalVisualization(APIView):
             
             # Jevaia's indicator age groups
             numerator_untreated_caries_present_E = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(age__lt=13,created_at__range=[last_30_days_obj, today_date_obj]).filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_E/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_F = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(age__range=[13,18],created_at__range=[last_30_days_obj, today_date_obj]).filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_F/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             
             numerator_untreated_caries_present_G = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).filter(age__range=[19,60],created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_G/denominator)*100,1))
             except:
                 total_untreated_caries_present.append(0)
             numerator_untreated_caries_present_H = Visualization.objects.filter(Q(decayed_primary_teeth_number__gt=0)|Q(decayed_permanent_teeth_number__gt=0)).filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
-            denominator = Visualization.objects.filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
+            denominator = Visualization.objects.filter(Q(carries_risk="Low")|Q(carries_risk="Medium")|Q(carries_risk="High")).filter(age__gt=60,created_at__range=[last_30_days_obj, today_date_obj]).values('patiend_id').distinct().count()
             try:
                 total_untreated_caries_present.append(round((numerator_untreated_caries_present_H/denominator)*100,1))
             except:
@@ -1460,8 +1460,6 @@ class CrossSectionalVisualization(APIView):
             start_date = str(NepaliDate.from_date(serializer.validated_data['start_date']))
             end_date = str(NepaliDate.from_date(serializer.validated_data['end_date']))
 
-            print(start_date)
-            print(end_date)
 
             if start_date > end_date:
                 return Response({"message":"Start date cannot be later than end date."},status=400)
