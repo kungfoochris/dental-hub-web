@@ -1,6 +1,7 @@
 import logging
 import datetime
 import pytz
+from encounterapp.models.screeing import Screeing
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
@@ -369,6 +370,25 @@ class VisualizationRecallDateUpdate(APIView):
             except:
                 continue
         return Response("Recall date and time updated in visualization table.")
+
+
+# this api used for once
+class VisualizationNeedSDFUpdate(APIView):
+    permission_classes = (IsPostOrIsAuthenticated,)
+
+    def get(self, request):
+        vis_obj = Visualization.objects.all()
+        scr_obj = Screeing.objects.all()
+        print(vis_obj.count())
+        print(scr_obj.count())
+        for i in vis_obj:
+            try:
+                screening_obj = Screeing.objects.get(encounter_id__id=i.encounter_id)
+                i.need_sdf = screening_obj.need_sdf
+                i.save()
+            except:
+                continue
+        return Response("Need sdf updated in visualization table.")
 
 
 

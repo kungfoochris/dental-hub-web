@@ -428,8 +428,7 @@ class TreatmentTableBasicData(APIView):
                     )
 
 
-                    # F-SDF FV
-                    
+                    # F-SDF FV 
                     male_fsdf_and_fv1 = Visualization.objects.filter(
                         active=True,
                         gender="male",

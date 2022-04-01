@@ -132,10 +132,9 @@ def create_screeing(sender, **kwargs):
         visualization_obj.need_extraction = kwargs["instance"].need_extraction
         visualization_obj.need_sealant = kwargs["instance"].need_sealant
         visualization_obj.need_fv = kwargs["instance"].need_fv
+        visualization_obj.need_sdf = kwargs["instance"].need_sdf
         visualization_obj.need_dentist_or_hygienist = kwargs["instance"].need_dentist_or_hygienist
         visualization_obj.save()
-    # if kwargs['created']:
-
 
 post_save.connect(create_screeing, sender=Screeing)
 

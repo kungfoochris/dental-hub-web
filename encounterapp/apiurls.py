@@ -2,7 +2,7 @@
 from django.conf.urls import include
 from django.urls import path
 from encounterapp.api.history import PatientHistoryView, PatientHistoryUpdateView
-from encounterapp.api.encounter import EncounterView, EncounterUpdateView,EncounterUpdate,EncounterList,ChangeEncounterCreatedDate,VisualizationCreatedDateUpdate,VisualizationRecallDateUpdate
+from encounterapp.api.encounter import EncounterView, EncounterUpdateView,EncounterUpdate,EncounterList,ChangeEncounterCreatedDate,VisualizationCreatedDateUpdate,VisualizationRecallDateUpdate,VisualizationNeedSDFUpdate
 from encounterapp.api.refer import PatientReferView, PatientReferUpdateView
 from encounterapp.api.screeing import PatientScreeingView, PatientScreeingUpdateView
 from encounterapp.api.modifydelete import ModifyDeleteDetail,EncounterAdminStatus,\
@@ -33,5 +33,6 @@ urlpatterns = [
 
 	path('viscreatedupdate', VisualizationCreatedDateUpdate.as_view()),
 	path('visrecallupdate', VisualizationRecallDateUpdate.as_view()),
+	path('needsdfdupdate', VisualizationNeedSDFUpdate.as_view()),
 	
     ]
