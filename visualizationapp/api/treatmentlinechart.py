@@ -614,17 +614,17 @@ class TreatmentRecallDistribution(APIView):
                             geography_id=i.id,
                             created_at__month=x,
                         ).values('patiend_id').distinct()
-                        for i in e_male:
+                        for j in e_male:
                             l_en = Visualization.objects.filter(active=True,
                                 geography_id=i.id,
-                                patiend_id=i["patiend_id"],
+                                patiend_id=j["patiend_id"],
                                 created_at__month=x,
                                 ).order_by('-created_at').first()
                             if l_en:
                                 a = Visualization.objects.filter(active=True,
                                     geography_id=i.id,
                                     refer_hp=True,
-                                    patiend_id=i["patiend_id"],
+                                    patiend_id=j["patiend_id"],
                                 ).exclude(encounter_id=l_en.encounter_id).order_by('-created_at').first()
                                 if a:
                                     if a.recall_date:
