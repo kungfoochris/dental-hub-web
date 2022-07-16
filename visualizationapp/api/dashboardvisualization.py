@@ -28,7 +28,7 @@ from visualizationapp.serializers.visualization import TreatMentBarGraphVisualiz
 from addressapp.models import Address, District, Municipality, Ward
 from django.db.models import Sum
 import logging
-
+from patientapp.dobchange import dobchange
 # Get an instance of a logger
 from django.db.models import Count, Case, When, Value
 
@@ -44,8 +44,8 @@ np_date = NepaliDate()
 today_date = datetime.date.today()
 last_30_days = datetime.date.today() + datetime.timedelta(-30)
 
-today_date_obj = str(NepaliDate.from_date(today_date))
-last_30_days_obj = str(NepaliDate.from_date(last_30_days))
+today_date_obj = dobchange(str(NepaliDate.from_date(today_date)))
+last_30_days_obj = dobchange(str(NepaliDate.from_date(last_30_days)))
 
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):

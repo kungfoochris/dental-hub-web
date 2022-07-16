@@ -13,7 +13,6 @@ import os
 from django.http import JsonResponse
 from treatmentapp.models import Treatment
 from encounterapp.models import Encounter
-
 import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)

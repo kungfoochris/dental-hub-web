@@ -10,15 +10,15 @@ from addressapp.models import Activity
 from visualizationapp.serializers.visualization import OverViewVisualization
 from addressapp.models import Ward
 from django.db.models import Sum
-
+from patientapp.dobchange import dobchange
 
 logger = logging.getLogger(__name__)
 np_date = NepaliDate()
 today_date = datetime.date.today()
 last_30_days = datetime.date.today() + datetime.timedelta(-30)
 
-today_date_obj = str(NepaliDate.from_date(today_date))
-last_30_days_obj = str(NepaliDate.from_date(last_30_days))
+today_date_obj = dobchange(str(NepaliDate.from_date(today_date)))
+last_30_days_obj = dobchange(str(NepaliDate.from_date(last_30_days)))
 
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):

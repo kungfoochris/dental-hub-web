@@ -15,6 +15,7 @@ from treatmentapp.models import Treatment
 from encounterapp.models import Screeing, Encounter
 from visualizationapp.models import Visualization
 from nepali.datetime import NepaliDate
+from patientapp.dobchange import dobchange
 from django.db.models import DurationField, F, ExpressionWrapper
 from visualizationapp.serializers.visualization import (
     TreatMentBarGraphVisualization,
@@ -39,8 +40,8 @@ np_date = NepaliDate()
 today_date = datetime.date.today()
 last_30_days = datetime.date.today() + datetime.timedelta(-30)
 
-today_date_obj = str(NepaliDate.from_date(today_date))
-last_30_days_obj = str(NepaliDate.from_date(last_30_days))
+today_date_obj = dobchange(str(NepaliDate.from_date(today_date)))
+last_30_days_obj = dobchange(str(NepaliDate.from_date(last_30_days)))
 
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):

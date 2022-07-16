@@ -13,7 +13,6 @@ from visualizationapp.serializers.visualization import DataVisualizationSerializ
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from visualizationapp.models import Visualization
-
 import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)

@@ -18,7 +18,7 @@ from nepali.datetime import NepaliDate
 from django.db.models import DurationField, F, ExpressionWrapper
 import datetime
 from django.db.models import Q
-
+from patientapp.dobchange import dobchange
 from visualizationapp.models import Visualization
 import statistics
 
@@ -61,14 +61,14 @@ np_date = NepaliDate()
 today_date = datetime.date.today()
 last_30_days = datetime.date.today() + datetime.timedelta(-30)
 
-start_date2 = str(NepaliDate.from_date(today_date))
-end_date2 = str(NepaliDate.from_date(last_30_days))
+start_date2 = dobchange(str(NepaliDate.from_date(today_date)))
+end_date2 = dobchange(str(NepaliDate.from_date(last_30_days)))
 
 start = datetime.date.today() + datetime.timedelta(-61)
 end = datetime.date.today() + datetime.timedelta(-31)
 
-start_date1 = str(NepaliDate.from_date(start))
-end_date1 = str(NepaliDate.from_date(end))
+start_date1 = dobchange(str(NepaliDate.from_date(start)))
+end_date1 = dobchange(str(NepaliDate.from_date(end)))
 
 
 class IsPostOrIsAuthenticated(permissions.BasePermission):
